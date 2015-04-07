@@ -128,9 +128,9 @@ blockquote {
 pre, 
 code {
   font-size: 14px;
-  border: 3px solid #dadada;
-  border-radius: 7px;
-  background-color: #f2f2f2;
+  border: 3px solid $pre-border-color;
+  border-radius: 8px;
+  background-color: $pre-bg-color;
 }
 
 code {
@@ -139,7 +139,7 @@ code {
 
 pre {
     padding: 8px 12px;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     > code {
         border: 0;
