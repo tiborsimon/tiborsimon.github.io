@@ -8,6 +8,16 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+/**
+ * Override text highlight
+ */
+::selection {
+  background: #336699; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #336699; /* Gecko Browsers */
+}
+
 
 
 /**
