@@ -7,7 +7,7 @@
 
 // Our variables
 $base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   13px;
+$base-font-size:   14px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
@@ -16,6 +16,9 @@ $spacing-unit:     30px;
 $text-color:       #566471;
 $background-color: #ebebeb;
 $brand-color:      #336699;
+
+$pre-bg-color:      #f2f2f2;
+$pre-border-color:  #dadada;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
