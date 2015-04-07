@@ -8,6 +8,18 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+/**
+ * Override text highlight
+ */
+::selection {
+  background: $select-bg-color; /* WebKit/Blink Browsers */
+  color: $select-text-color;
+}
+::-moz-selection {
+  background: $select-bg-color; /* Gecko Browsers */
+  color: $select-text-color;
+}
+
 
 
 /**
