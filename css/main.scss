@@ -20,11 +20,11 @@ $brand-color:      #336699;
 $pre-bg-color:      #f2f2f2;
 $pre-border-color:  #dadada;
 
-$select-bg-color:   #566471;
+$select-bg-color:   lighten($grey-color, 60%);
 $select-text-color: #ebebeb;
 
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
+$grey-color:       $text-color;
+$grey-color-light: lighten($grey-color, 60%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
