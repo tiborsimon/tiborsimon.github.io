@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2015-04-05 13:33:00
-categories: jekyll update
+categories: update
 ---
 
 # This is a headline
