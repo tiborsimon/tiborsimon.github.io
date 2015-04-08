@@ -8,6 +8,8 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+
+
 /**
  * Override text highlight
  */
@@ -18,6 +20,28 @@ dl, dd, ol, ul, figure {
 ::-moz-selection {
   background: $select-bg-color; /* Gecko Browsers */
   color: $select-text-color;
+}
+
+/**
+ * Permalink to headers
+ */
+.header-link {
+  position: absolute;
+  left: -0.5em;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  -moz-transition: opacity 0.2s ease-in-out 0.1s;
+  -ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h1:hover .header-link,
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
 }
 
 
