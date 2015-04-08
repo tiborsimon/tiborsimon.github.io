@@ -26,8 +26,7 @@ dl, dd, ol, ul, figure {
  * Permalink to headers
  */
 .header-link {
-  position: absolute;
-  left: -0.5em;
+  margin-left: 6px;
   opacity: 0;
 
   -webkit-transition: opacity 0.2s ease-in-out 0.1s;
