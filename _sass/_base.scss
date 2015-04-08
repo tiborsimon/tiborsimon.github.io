@@ -173,6 +173,7 @@ code {
 
 code {
     padding: 1px 5px;
+    box-shadow: 0px 0px 6px 2px rgb(242, 239, 239) inset;
 }
 
 pre {
@@ -184,6 +185,14 @@ pre {
         padding-right: 0;
         padding-left: 0;
     }
+}
+
+p code {
+  border: solid 1px #dadada;
+  border-radius: 3px;
+  background-color: white;
+  /* box-shadow: 0px 0px 6px 2px rgb(245, 245, 245) inset; */
+  color: rgb(140, 132, 132);
 }
 
 
