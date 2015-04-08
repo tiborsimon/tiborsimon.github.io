@@ -166,9 +166,9 @@ blockquote {
 pre, 
 code {
   font-size: 14px;
-  border: 3px solid $pre-border-color;
+  border: 1px solid $pre-border-color;
   border-radius: 8px;
-  background-color: $pre-bg-color;
+  background-color: white;
 }
 
 code {
