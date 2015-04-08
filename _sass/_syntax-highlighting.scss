@@ -64,3 +64,24 @@
     .vi    { color: #008080 } // Name.Variable.Instance
     .il    { color: #099 } // Literal.Number.Integer.Long
 }
+
+.highlight-python:before {
+    content: 'PYTHON';
+}
+
+.highlight-bash:before, .highlight-jinja:before, .highlight-python:before, .highlight-yaml:before {
+  z-index: 10;
+  font-size: 9px;
+  padding: 0.1em 0.8em;
+  text-align: center;
+  color: #999;
+  display: block;
+  position: absolute;
+  border-radius: 0 3px 0 3px;
+  border-top: none;
+  border-right: none;
+  background-color: #f1f1f1;
+  top: 0;
+  right: 0;
+  height: 18px;
+}
