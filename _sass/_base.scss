@@ -57,6 +57,10 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+    background-image: url({{ site.url }}/{{ asset-path }}/image.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 
