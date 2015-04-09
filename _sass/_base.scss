@@ -29,10 +29,7 @@ dl, dd, ol, ul, figure {
   margin-left: 6px;
   opacity: 0;
   font-size: 70%;
-
-  -webkit-transition: opacity 0.1s ease-in-out 0.1s;
-  -moz-transition: opacity 0.1s ease-in-out 0.1s;
-  -ms-transition: opacity 0.1s ease-in-out 0.1s;
+  text-decoration: none;
 }
 
 h1:hover .header-link,
