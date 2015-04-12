@@ -1,5 +1,5 @@
 ---
-layout: 
+layout: post
 title: Autohotkey turns cheap Acer to a usable workstation
 categories: []
 tags: []
