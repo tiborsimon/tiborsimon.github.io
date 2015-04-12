@@ -1,7 +1,7 @@
-title:            Site Title
-description:      Describe your website here.
+title:            Tibor Simon
+description:      Engineering with passion
 disqus_shortname: hpstrtheme
-reading_time:     true
+reading_time:     false
 words_per_minute: 200
 # Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
 # When testing locally leave blank or use http://localhost:4000
@@ -9,8 +9,8 @@ url:
 
 # Owner/author information
 owner:
-  name:           Your Name
-  avatar:         avatar.jpg
+  name:           Tibor Simon
+  avatar:         tibor_bw.png
   bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
   email:          you@email.com
   # Social networking links used in footer. Update and remove as you like.
