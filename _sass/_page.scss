@@ -69,6 +69,7 @@ body {
 	width: 100%;
 	height: 400px;
 	overflow: hidden;
+	box-shadow: 0px 26px 25px inset;
 	.header-title-wrap {
 		display: table-cell;
 		vertical-align: middle;
@@ -364,7 +365,7 @@ header .entry-meta {
 	}
 	article {
 		background-color: $white;
-		box-shadow: 0 0 0 0, 0 6px 12px rgba($base-color,0.1);
+		box-shadow: 0 0 0 0, 0 7px 11px rgba($base-color,0.3);
 		@include rounded(3px);
 		margin-bottom: 20px;
 		padding: 25px 15px;
