@@ -37,7 +37,7 @@ bing_verify:
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Europe/Budapest
 future:      true
-highlighter: coderay
+highlighter: pygments
 markdown:    kramdown
 gems:
   - jekyll-sitemap
