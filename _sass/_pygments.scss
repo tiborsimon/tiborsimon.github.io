@@ -1,17 +1,23 @@
 .highlight {
-	margin-bottom: 1.5em;
-	@include font(12);
-	color: #586e75;
-	border: 1px solid darken($body-color, 5);
-	background-color: #fdf6e3;
-	@include rounded(6px);
-	pre {
-		position: relative;
-		margin: 0;
-		padding: 1em;
-	}
-	.hhl { background-color: #fdf6e3;}
-    .lineno { color: #93a1a1 } /* Line Numbers */
+    margin-bottom: 1.5em;
+    @include font(12);
+    color: #586e75;
+    border: 1px solid darken($body-color, 5);
+    background-color: #fdf6e3;
+    line-height: 1.2;
+    @include rounded(6px);
+    pre {
+        position: relative;
+        margin: 0;
+        padding: 1em;
+    }
+    .hhl { background-color: #fdf6e3;}
+    .lineno { 
+        color: #93a1a1; 
+        padding-right: 15px;
+        border-right: 1px solid;
+        margin-right: 4px;
+     } /* Line Numbers */
     .c { color: #93a1a1 } /* Comment */
     .err { color: #586e75 } /* Error */
     .g { color: #586e75 } /* Generic */
