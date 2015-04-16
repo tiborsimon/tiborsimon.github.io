@@ -23,7 +23,7 @@ python -m pip install --upgrade pip
 pip 6.1.1 from C:\Python34\lib\site-packages (python 3.4)
 ~~~
 
-{% highlight python title.py%}
+{% highlight python title.py %}
 __author__ = 'Tibor'
 
 from unittest import TestCase
