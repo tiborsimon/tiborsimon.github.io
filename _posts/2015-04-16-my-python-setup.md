@@ -23,3 +23,21 @@ python -m pip install --upgrade pip
 pip 6.1.1 from C:\Python34\lib\site-packages (python 3.4)
 ~~~
 
+{% highlight python title.py%}
+__author__ = 'Tibor'
+
+from unittest import TestCase
+
+from ..my_module import some_method
+
+class TestClass(TestCase):
+    def test__my_test(self):
+        print('I am a testcase..')
+        result = some_method()
+        self.assertEqual(42, result)
+
+    def test_my_second_test(self):
+        self.assertTrue(True)
+
+{% endhighlight %}
+
