@@ -4,12 +4,12 @@
     color: #586e75;
     border: 1px solid darken($body-color, 5);
     background-color: #fdf6e3;
-    line-height: 1.2;
     @include rounded(6px);
     pre {
         position: relative;
         margin: 0;
         padding: 1em;
+        line-height: 1.2;
     }
     .hhl { background-color: #fdf6e3;}
     .lineno { 
