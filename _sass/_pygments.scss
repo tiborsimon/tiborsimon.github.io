@@ -10,6 +10,11 @@ table.highlighttable tr td {
   margin-bottom: 15px;
   background: #ddd;
   padding-right: 3px;
+  border-style: solid;
+  border-top: 1px darken($body-color, 5);
+  border-left: 1px darken($body-color, 5);
+  border-bottom: 1px darken($body-color, 5);
+  @include border-radius(6px, 0, 0, 6px);
 }
 .highlight {
     margin-bottom: 1.5em;
