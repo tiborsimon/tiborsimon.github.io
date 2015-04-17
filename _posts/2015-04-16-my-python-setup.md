@@ -17,13 +17,8 @@ I use the standard cmd for this purpose, because cmder isn't installed properly 
 If python is installed correctly, the next step is to upgrade pip.
 Since I had no luck upgrading pip with pip in the past, I run the more generic command to upgrade pip:
 
-~~~
-python -m pip install --upgrade pip
-...
-pip 6.1.1 from C:\Python34\lib\site-packages (python 3.4)
-~~~
 
-{% highlight python linenos %}
+{% highlight python title linenos=table %}
 __author__ = 'Tibor'
 
 from unittest import TestCase
