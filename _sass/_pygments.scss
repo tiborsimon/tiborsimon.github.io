@@ -1,5 +1,7 @@
 table.highlighttable {
   border-collapse: collapse;
+  @include border-radius(0, 6px, 6px, 0);
+  border: 1px solid darken($body-color, 5);
 }
 table.highlighttable tr td {
   padding: 0;
@@ -10,20 +12,16 @@ table.highlighttable tr td {
   margin-bottom: 15px;
   background: #ddd;
   padding-right: 3px;
-  border-style: solid;
-  border-top: 1px darken($body-color, 5);
-  border-left: 1px darken($body-color, 5);
-  border-bottom: 1px darken($body-color, 5);
-  border-right: none;
-  @include border-radius(6px, 0, 0, 6px);
+  pre {
+      position: relative;
+      margin: 0;
+      padding: 1em;
+  }
 }
 .highlight {
-    margin-bottom: 1.5em;
     @include font(12);
     color: #586e75;
-    border: 1px solid darken($body-color, 5);
     background-color: #fdf6e3;
-    @include border-radius(0, 6px, 6px, 0);
     pre {
         position: relative;
         margin: 0;
