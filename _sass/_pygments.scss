@@ -17,6 +17,9 @@
         padding-right: 15px;
         border-right: 1px solid;
         margin-right: 4px;
+        pre {
+            line-height: 1.2;
+        }
      } /* Line Numbers */
     .c { color: #93a1a1 } /* Comment */
     .err { color: #586e75 } /* Error */
