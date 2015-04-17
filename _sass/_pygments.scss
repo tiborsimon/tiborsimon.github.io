@@ -3,6 +3,7 @@ table.highlighttable {
   border-spacing: 0;
   @include rounded(6px);
   border: 1px solid darken($body-color, 5);
+  @include box-shadow(0 3px 8px #eee)
 }
 table.highlighttable td {
   padding: 0;
