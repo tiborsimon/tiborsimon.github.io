@@ -1,7 +1,15 @@
+table.highlighttable {
+  border-collapse: collapse;
+}
+table.highlighttable td {
+  padding: 0;
+}
+
 .linenodiv {
   text-align: right;
   margin-bottom: 15px;
   background: #ddd;
+  padding-right: 3px;
 }
 .highlight {
     margin-bottom: 1.5em;
