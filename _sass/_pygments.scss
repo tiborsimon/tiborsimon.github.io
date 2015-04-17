@@ -1,24 +1,11 @@
 table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
-  /*@include rounded(6px);
-  border: 1px solid darken($body-color, 5);*/
+  @include rounded(6px);
   @include box-shadow(0 3px 8px #eee)
 }
 table.highlighttable td {
   padding: 0;
-}
-
-table.highlighttable tr:last-child td:first-child {
-    -moz-border-radius-bottomleft:10px;
-    -webkit-border-bottom-left-radius:10px;
-    border-bottom-left-radius:10px
-}
-
-table.highlighttable tr:last-child td:last-child {
-    -moz-border-radius-bottomright:10px;
-    -webkit-border-bottom-right-radius:10px;
-    border-bottom-right-radius:10px
 }
 
 .linenodiv {
