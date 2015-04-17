@@ -1,3 +1,8 @@
+.linenodiv {
+  text-align: right;
+  margin-bottom: 15px;
+  background: #ddd;
+}
 .highlight {
     margin-bottom: 1.5em;
     @include font(12);
