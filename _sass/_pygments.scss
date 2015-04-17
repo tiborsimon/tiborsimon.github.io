@@ -14,6 +14,7 @@ table.highlighttable tr td {
   border-top: 1px darken($body-color, 5);
   border-left: 1px darken($body-color, 5);
   border-bottom: 1px darken($body-color, 5);
+  border-right: none;
   @include border-radius(6px, 0, 0, 6px);
 }
 .highlight {
