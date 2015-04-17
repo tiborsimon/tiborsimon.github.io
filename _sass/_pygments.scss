@@ -4,13 +4,13 @@
     color: #586e75;
     border: 1px solid darken($body-color, 5);
     background-color: #fdf6e3;
-    @include rounded(6px);
-    /*pre {
+    @include border-radius(0 6px 6px 0);
+    pre {
         position: relative;
         margin: 0;
         padding: 1em;
         line-height: 1.2;
-    }*/
+    }
     .hhl { background-color: #fdf6e3;}
     .lineno { 
         color: #93a1a1; 
