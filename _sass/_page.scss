@@ -32,7 +32,6 @@ body {
     width: 100%;
     overflow: hidden;
     position: relative;
-    border-bottom: 1px solid white;
 }
 .header-title {
     text-align: center;
@@ -368,7 +367,7 @@ header .entry-meta {
     }
     article {
         background-color: $white;
-        box-shadow: 0 0 0 0, 0 7px 11px rgba($base-color,0.3);
+        box-shadow: 0 0 0 0, 0 7px 24px rgba($base-color,0.6);
         @include rounded(3px);
         margin-bottom: 20px;
         padding: 25px 15px;
