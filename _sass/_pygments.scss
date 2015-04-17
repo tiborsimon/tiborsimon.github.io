@@ -17,11 +17,9 @@ table.highlighttable td {
     @include font(12);
     color: #586e75;
     background-color: #fdf6e3;
-    /*pre {
-        position: relative;
-        margin: 0;
-        padding: 1em;
-    }*/
+    pre {
+        padding-left: 6px;
+    }
     .hhl { background-color: #fdf6e3;}
     .lineno { color: #93a1a1 } /* Line Numbers */
     .c { color: #93a1a1 } /* Comment */
