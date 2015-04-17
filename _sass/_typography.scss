@@ -111,6 +111,7 @@ li {
     }
 }
 pre {
+    margin: 0;
     @include font-rem(12);
     line-height: 1.2;
     overflow-x: auto;
