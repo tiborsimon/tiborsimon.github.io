@@ -4,7 +4,7 @@
     color: #586e75;
     border: 1px solid darken($body-color, 5);
     background-color: #fdf6e3;
-    @include border-radius(0 6px 6px 0);
+    @include border-radius(0, 6px, 6px, 0);
     pre {
         position: relative;
         margin: 0;
