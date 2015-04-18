@@ -145,7 +145,7 @@ body {
     color: $white;
     @include font-rem(12);
     text-align: right;
-    @include border-radius(3px,0,0,3px);
+    @include border-radius(6px,0,0,6px);
     z-index: 10;
     @media #{$medium} {
         max-width: 760px;
@@ -209,7 +209,7 @@ header .entry-meta {
         padding: 10px 15px;
         background-color: $white;
         box-shadow: 0 0 0 0, 0 6px 12px rgba($black,0.1);
-        @include rounded(3px);
+        @include rounded(6px);
         @media #{$medium} {
             margin-left: 10px;
             margin-right: 10px;
@@ -229,7 +229,7 @@ header .entry-meta {
         padding: 10px 15px;
         background-color: $white;
         box-shadow: 0 0 0 1px rgba($border-color,0.1), 0 6px 12px rgba($black,0.1);
-        @include rounded(3px);
+        @include rounded(6px);
         @media #{$medium} {
             margin-left: 10px;
             margin-right: 10px;
@@ -283,7 +283,7 @@ header .entry-meta {
     padding: 40px 15px 25px;
     background-color: $white;
     box-shadow: 0 0 0 1px rgba($border-color,0.1), 0 6px 12px rgba($black,0.1);
-    @include rounded(3px);
+    @include rounded(6px);
     @media #{$medium} {
         margin: 50px 10px 20px 10px;
         padding: 50px 40px 25px;
