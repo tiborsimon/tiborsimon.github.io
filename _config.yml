@@ -10,7 +10,7 @@ url: http://tiborsimon.github.io
 # Owner/author information
 owner:
   name:           Tibor Simon
-  avatar:         tibor_bw.png
+  avatar:         core/tibor_bw.png
   bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
   email:          you@email.com
   # Social networking links used in footer. Update and remove as you like.
@@ -26,7 +26,7 @@ owner:
   google_plus:    +yourid
 
 # Background image to be tiled on all pages
-background: middle-noise.png
+background: core/middle-noise.png
 
 # Analytics and webmaster tools stuff goes here
 google_analytics: UA-28507373-1
