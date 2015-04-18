@@ -62,7 +62,7 @@ end
 
 ### Standard Code Block
 
-    {% raw %}
+{% highlight html linenos=table %}
     <nav class="pagination" role="navigation">
         {% if page.previous %}
             <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
@@ -71,22 +71,22 @@ end
             <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
         {% endif %}
     </nav><!-- /.pagination -->
-    {% endraw %}
+{% endhighlight %}
 
 
 ### Fenced Code Blocks
 
 To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers and a few other things can be modified in `_config.yml`. Consult [Jekyll's documentation](http://jekyllrb.com/docs/configuration/) for more information.
 
-~~~ css
+{% highlight css linenos=table %}
 #container {
     float: left;
     margin: 0 -240px 0 0;
     width: 100%;
 }
-~~~
+{% endhighlight %}
 
-~~~ html
+{% highlight html linenos=table %}
 {% raw %}<nav class="pagination" role="navigation">
     {% if page.previous %}
         <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
@@ -95,9 +95,9 @@ To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers
         <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
     {% endif %}
 </nav><!-- /.pagination -->{% endraw %}
-~~~
+{% endhighlight %}
 
-~~~ ruby
+{% highlight ruby linenos=table %}
 module Jekyll
   class TagIndex < Page
     def initialize(site, base, dir, tag)
@@ -115,7 +115,7 @@ module Jekyll
     end
   end
 end
-~~~
+{% endhighlight %}
 
 ### GitHub Gist Embed
 
