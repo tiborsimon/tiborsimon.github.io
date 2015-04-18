@@ -17,6 +17,8 @@ table.highlighttable td {
     @include font(12);
     color: #586e75;
     background-color: #fdf6e3;
+    @include rounded(6px);
+    @include box-shadow(0 3px 8px #eee)
     pre {
         padding-left: 6px;
     }
