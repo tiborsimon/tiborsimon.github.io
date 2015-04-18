@@ -37,6 +37,7 @@ body {
 .header-title {
     text-align: center;
     margin: 30px 0 0;
+      background-image: url('{{ site.baseurl }}/images/transparent-grain.png');
     h1 {
         margin: 10px 20px;
         font-weight: 700;
