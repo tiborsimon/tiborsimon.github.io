@@ -2,16 +2,34 @@ table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
   @include rounded(6px);
-  @include box-shadow(0 3px 8px #eee);
+  @include box-shadow(0 3px 8px rgba(0, 0, 0, 0.13));
+  overflow: hidden;
 }
 table.highlighttable td {
   padding: 0;
+}
+
+td.code {
+  width: 610px;
+  overflow: hidden;
+  pre {
+    overflow: hidden;
+  }
+}
+
+td.linenos {
+  width: 30px;
+  overflow: hidden;
+  pre {
+    overflow: hidden;
+  }
 }
 
 .linenodiv {
   text-align: right;
   background: #ddd;
   padding-right: 3px;
+  color: #B0ADAD;
 }
 .highlight {
     @include font(12);
