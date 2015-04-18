@@ -89,10 +89,9 @@ To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers
 {% highlight html linenos=table %}
 {% raw %}<nav class="pagination" role="navigation">
     {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
+        
     {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
+    {% i
     {% endif %}
 </nav><!-- /.pagination -->{% endraw %}
 {% endhighlight %}
