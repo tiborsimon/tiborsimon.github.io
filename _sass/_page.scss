@@ -368,8 +368,8 @@ header .entry-meta {
     }
     article {
         background-color: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 0 0 0, 0 7px 24px rgba($base-color,0.6);
-        @include rounded(3px);
+        box-shadow: 0 0 0 0, 0 7px 24px rgba($base-color,0.45);
+        @include rounded(6px);
         margin-bottom: 20px;
         padding: 25px 15px;
         @media #{$medium} {
