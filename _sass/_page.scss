@@ -37,7 +37,6 @@ body {
 .header-title {
     text-align: center;
     margin: 30px 0 0;
-    background-image: url('/images/core/transparent-grain.png');
     h1 {
         margin: 10px 20px;
         font-weight: 700;
@@ -72,6 +71,7 @@ body {
     height: 400px;
     overflow: hidden;
     box-shadow: 0px 26px 25px inset;
+    background-image: url('/images/core/transparent-grain.png');
     .header-title-wrap {
         display: table-cell;
         vertical-align: middle;
