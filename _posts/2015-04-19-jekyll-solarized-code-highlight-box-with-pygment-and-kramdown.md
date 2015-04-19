@@ -7,5 +7,5 @@ published: True
 
 ---
 
-{% gist:bb1a6a61f370bdf6d3ef %}
+{% gist bb1a6a61f370bdf6d3ef %}
 
