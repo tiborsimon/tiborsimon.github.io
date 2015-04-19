@@ -1,3 +1,13 @@
+---
+layout: post
+title: Jekyll solarized code highlight box with pygment and kramdown
+categories: ['programming']
+tags: ['jekyll', 'web']
+published: True
+
+---
+
+{% highlight python linenos=table %}
 table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
@@ -114,3 +124,6 @@ td.linenos {
   .vi { color: #268bd2 } /* Name.Variable.Instance */
   .il { color: #2aa198 } /* Literal.Number.Integer.Long */
 }
+
+{% endhighlight %}
+
