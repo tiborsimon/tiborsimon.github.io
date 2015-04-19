@@ -125,7 +125,6 @@ td.linenos {
   .vi { color: #268bd2 } /* Name.Variable.Instance */
   .il { color: #2aa198 } /* Literal.Number.Integer.Long */
 }
-
 {% endraw %}
 {% endhighlight %}
 
