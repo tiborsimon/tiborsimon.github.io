@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My Python setup
-categories: ['python']
+categories: ['programming']
 tags: ['python']
 published: True
 ---
