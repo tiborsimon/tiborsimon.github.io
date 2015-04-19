@@ -18,7 +18,7 @@ If python is installed correctly, the next step is to upgrade pip.
 Since I had no luck upgrading pip with pip in the past, I run the more generic command to upgrade pip:
 
 
-{% highlight python title linenos=table %}
+{% highlight python linenos=table %}
 __author__ = 'Tibor'
 
 from unittest import TestCase
@@ -33,7 +33,6 @@ class TestClass(TestCase):
 
     def test_my_second_test(self):
         self.assertTrue(True)
-
 {% endhighlight %}
 
 and this is a line >D
