@@ -8,6 +8,7 @@ published: True
 ---
 
 {% highlight css linenos=table %}
+{% raw %}
 table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
@@ -125,5 +126,6 @@ td.linenos {
   .il { color: #2aa198 } /* Literal.Number.Integer.Long */
 }
 
+{% endraw %}
 {% endhighlight %}
 
