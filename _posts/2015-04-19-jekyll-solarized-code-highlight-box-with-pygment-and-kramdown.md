@@ -7,7 +7,7 @@ published: True
 
 ---
 
-{% highlight python linenos=table %}
+{% highlight css linenos=table %}
 table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
