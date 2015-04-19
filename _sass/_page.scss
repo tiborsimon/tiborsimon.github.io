@@ -73,7 +73,7 @@ body {
     display: table;
     margin-top: 0;
     width: 100%;
-    height: 300px;
+    height: $header-height;
     overflow: hidden;
     box-shadow: 0px 26px 25px inset;
     background-image: url('/images/core/transparent-grain.png');
@@ -116,7 +116,7 @@ body {
     left: -50%; 
     width: 200%; 
     height: 200%;
-    min-height: 300px;
+    min-height: $header-height;
     overflow: hidden;
     &:after {
         content: '';
@@ -135,7 +135,7 @@ body {
         bottom: 0; 
         margin: auto; 
         min-width: 50%;
-        min-height: 300px; // match .entry-image min-height
+        min-height: $header-height; // match .entry-image min-height
     }
 }
 // Feature Image Caption
