@@ -37,3 +37,7 @@ class TestClass(TestCase):
 
 and this is a line >D
 
+``` [language] [title] [url] [link text]
+code snippet
+```
+
