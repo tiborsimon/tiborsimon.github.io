@@ -2,7 +2,7 @@
 layout: post
 title: My Python setup
 categories: ['python']
-tags: ['setup', 'machine', 'windows']
+tags: ['python']
 published: True
 ---
 
