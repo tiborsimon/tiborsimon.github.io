@@ -18,6 +18,9 @@ table.highlighttable {
   margin-bottom: 25px;
   border: 1px solid rgba(147, 161, 161, 0.55);
 }
+table.highlighttable td {
+  padding: 0;
+}
 {% endraw %}
 {% endhighlight %}
 
