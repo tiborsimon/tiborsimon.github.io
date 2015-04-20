@@ -124,7 +124,7 @@
   .nc { color: $blue !important} /* Name.Class */
   .nd, .pl-s3 { color: $blue !important} /* Name.Decorator */
   .nf, .pl-en { color: $blue !important} /* Name.Function */
-  .bp, .pl-c1 { color: $blue !important} /* Name.Builtin.Pseudo */
+  .bp, .pl-c1, .pl-v, .pl-vpf { color: $blue !important} /* Name.Builtin.Pseudo */
   .nt, .pl-ent { color: $blue !important} /* Name.Tag */
   .nv { color: $blue !important} /* Name.Variable */
   .vc { color: $blue !important} /* Name.Variable.Class */
