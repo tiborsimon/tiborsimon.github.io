@@ -18,7 +18,7 @@ If python is installed correctly, the next step is to upgrade pip.
 Since I had no luck upgrading pip with pip in the past, I run the more generic command to upgrade pip:
 
 
-{% highlight python linenos=table %}
+{% highlight css linenos=table %}
 table.highlighttable {
   border-collapse: separate;
   border-spacing: 0;
