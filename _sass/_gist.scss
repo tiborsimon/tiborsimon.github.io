@@ -48,10 +48,10 @@
 
 .gist {
   ::selection {
-    background: $base2; /* WebKit/Blink Browsers */
+    background: $base2;
   }
   ::-moz-selection {
-    background: $base2; /* Gecko Browsers */
+    background: $base2;
   }
 }
 
