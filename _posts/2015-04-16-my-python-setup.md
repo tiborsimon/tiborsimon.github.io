@@ -18,16 +18,77 @@ If python is installed correctly, the next step is to upgrade pip.
 Since I had no luck upgrading pip with pip in the past, I run the more generic command to upgrade pip:
 
 
-{% highlight css linenos=table %}
-table.highlighttable {
-  border-collapse: separate;
-  border-spacing: 0;
-  @include rounded(6px);
-  @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
-  overflow: hidden;
-  margin-bottom: 25px;
-  border: 1px solid rgba(147, 161, 161, 0.55);
-}
+{% highlight python linenos=table %}
+from itertools import count
+ 
+def generate_primes(stop_at=0):
+    primes = []
+    for n in count(2):
+        if 0 < stop_at < n:
+            return # raises the StopIteration exception
+        composite = False
+        for p in primes:
+            if not n % p:
+                composite = True
+                break
+            elif p ** 2 > n:
+                break
+        if not composite:
+            primes.append(n)
+            yield n
+
+alist = ['a', 'b', 'c']
+
+print("I just printed {0} pages to the printer {1}".format(num, printer))
+
+print("""Dear %(recipient)s,
+ 
+I wish you to leave Sunnydale and never return.
+ 
+Not Quite Love,
+%(sender)s
+""" % {'sender': 'Buffy the Vampire Slayer', 'recipient': 'Spike'})
+
+title = "One Good Turn: " \
+        'A Natural History of the Screwdriver and the Screw'
+
+a_list = [1, 2, 3, "a dog"]
+a_second_list = list()
+a_second_list.append(4)
+a_second_list.append(5)
+
+def qsort(L):
+    if L == []:
+        return []
+    pivot = L[0]
+    return (qsort([x for x in L[1:] if x < pivot]) +
+            [pivot] +
+            qsort([x for x in L[1:] if x >= pivot]))
+
+class MyClass(object):
+   def get_a(self):
+      return self._a
+   def set_a(self, value):
+      self._a = value - 1
+   a = property(get_a, set_a, doc="Off by one a")
+ 
+# Python 2.6 style
+class MyClass(object):
+   @property
+   def a(self):
+      return self._a
+   @a.setter # makes the property writable
+   def a(self, value):
+      self._a = value - 1
+
+try:
+    ham = spam.eggs
+except AttributeError:
+    handle_error()
+
+@viking_chorus
+def menu_item():
+    print("spam")
 {% endhighlight %}
 
 and this is a line >D
