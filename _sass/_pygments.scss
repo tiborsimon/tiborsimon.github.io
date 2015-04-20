@@ -38,7 +38,7 @@
   width: 38px;
   overflow: hidden;
   text-align: right;
-  background: #eee8d5;
+  background: #eee8d5 !important;
   padding-right: 6px;
   color: #9da1a1;
   pre {
@@ -58,8 +58,8 @@
 
 .gist .highlight {
   @include font(12);
-  color: #586e75;
-  background-color: #fdf6e3;
+  color: #586e75 !important;
+  background-color: #fdf6e3 !important;
   pre {
       padding-left: 6px;
   }
