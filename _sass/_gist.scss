@@ -103,8 +103,8 @@
   .cs { color: $green !important} /* Comment.Special */
   .o  { color: $green !important} /* Operator */
   .gi { color: $green !important} /* Generic.Inserted */
-  .k, .pl-s3, .pl-sc  { color: $green !important} /* Keyword */
-  .kn { color: $green !important} /* Keyword.Namespace */
+  .k, .pl-sc, .pl-st { color: $green !important} /* Keyword */
+  .kn, .pl-k { color: $green !important} /* Keyword.Namespace */
   .kp { color: $green !important} /* Keyword.Pseudo */
   .ow { color: $green !important} /* Operator.Word */
   .nb { color: $yellow !important} /* Name.Builtin */
@@ -122,7 +122,7 @@
   .kd { color: $blue !important} /* Keyword.Declaration */
   .kr { color: $blue !important} /* Keyword.Reserved */
   .nc { color: $blue !important} /* Name.Class */
-  .nd { color: $blue !important} /* Name.Decorator */
+  .nd, .pl-s3 { color: $blue !important} /* Name.Decorator */
   .nf, .pl-en { color: $blue !important} /* Name.Function */
   .bp { color: $blue !important} /* Name.Builtin.Pseudo */
   .nt, .pl-ent { color: $blue !important} /* Name.Tag */
