@@ -38,11 +38,20 @@
   width: 38px;
   overflow: hidden;
   text-align: right;
-  background: #eee8d5 !important;
+  background: $base2 !important;
   padding-right: 6px;
   color: #9da1a1;
   pre {
     overflow: hidden;
+  }
+}
+
+.gist {
+  ::selection {
+    background: $base2; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: $base2; /* Gecko Browsers */
   }
 }
 
@@ -54,16 +63,6 @@
     color: rgba(187,187,187,0.8) !important;
   }
 }
-
-$base01:    #586e75;
-$base1:     #93a1a1;
-$base3:     #fdf6e3;
-$red:       #dc322f;
-$yellow:    #b58900;
-$orange:    #cb4b16;
-$green:     #859900;
-$blue:      #268bd2;
-$cyan:      #2aa198;
 
 
 .gist .highlight {
