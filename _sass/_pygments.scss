@@ -5,7 +5,7 @@
   @include rounded(6px);
 }
 
-.highlight {
+.gist .highlight {
   border-collapse: separate;
   border-spacing: 0;
   @include rounded(6px);
@@ -19,7 +19,14 @@
   padding: 0;
 }
 
-.line-data {
+.gist .gist-data {
+  overflow: visible !important;
+  word-wrap: normal !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+}
+
+.gist .line-data {
   width: 602px;
   overflow: hidden;
   pre {
@@ -27,7 +34,7 @@
   }
 }
 
-.line-numbers {
+.gist .line-numbers {
   width: 38px;
   overflow: hidden;
   text-align: right;
@@ -49,7 +56,7 @@
 }
 
 
-.highlight {
+.gist .highlight {
   @include font(12);
   color: #586e75;
   background-color: #fdf6e3;
