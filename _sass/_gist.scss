@@ -48,10 +48,12 @@
 
 .gist {
   ::selection {
-    background: $base2;
+    background: $magenta;
+    color: white;
   }
   ::-moz-selection {
-    background: $base2;
+    background: $magenta;
+    color: white;
   }
 }
 
