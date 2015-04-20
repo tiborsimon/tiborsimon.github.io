@@ -83,7 +83,7 @@
   .err{ color: $base01 !important} /* Error */
   .g  { color: $base01 !important} /* Generic */
   .l  { color: $base01 !important} /* Literal */
-  .n  { color: $base01 !important} /* Name */
+  .n, .pl-mp, .pl-vpf  { color: $base01 !important} /* Name */
   .p  { color: $base01 !important} /* Punctuation */
   .ge { color: $base01; font-style: italic !important} /* Generic.Emph */
   .go { color: $base01 !important} /* Generic.Output */
@@ -103,7 +103,7 @@
   .cs { color: $green !important} /* Comment.Special */
   .o  { color: $green !important} /* Operator */
   .gi { color: $green !important} /* Generic.Inserted */
-  .k  { color: $green !important} /* Keyword */
+  .k, .pl-s3, .pl-sc  { color: $green !important} /* Keyword */
   .kn { color: $green !important} /* Keyword.Namespace */
   .kp { color: $green !important} /* Keyword.Pseudo */
   .ow { color: $green !important} /* Operator.Word */
@@ -123,19 +123,19 @@
   .kr { color: $blue !important} /* Keyword.Reserved */
   .nc { color: $blue !important} /* Name.Class */
   .nd { color: $blue !important} /* Name.Decorator */
-  .nf { color: $blue !important} /* Name.Function */
+  .nf, .pl-en { color: $blue !important} /* Name.Function */
   .bp { color: $blue !important} /* Name.Builtin.Pseudo */
-  .nt { color: $blue !important} /* Name.Tag */
+  .nt, .pl-ent { color: $blue !important} /* Name.Tag */
   .nv { color: $blue !important} /* Name.Variable */
   .vc { color: $blue !important} /* Name.Variable.Class */
   .vi { color: $blue !important} /* Name.Variable.Instance */
   .vg { color: $blue !important} /* Name.Variable.Global */
   .gd { color: $cyan !important} /* Generic.Deleted */
-  .m  { color: $cyan !important} /* Literal.Number */
+  .m, .pl-c1  { color: $cyan !important} /* Literal.Number */
   .s  { color: $cyan !important} /* Literal.String */
   .mf { color: $cyan !important} /* Literal.Number.Float */
   .mh { color: $cyan !important} /* Literal.Number.Hex */
-  .mi { color: $cyan !important} /* Literal.Number.Integer */
+  .mi, .pl-c1 { color: $cyan !important} /* Literal.Number.Integer */
   .mo { color: $cyan !important} /* Literal.Number.Oct */
   .sc { color: $cyan !important} /* Literal.String.Char */
   .s2 { color: $cyan !important} /* Literal.String.Double */
