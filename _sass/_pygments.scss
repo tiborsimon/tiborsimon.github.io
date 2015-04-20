@@ -19,7 +19,7 @@
   padding: 0;
 }
 
-td.line-data {
+.line-data {
   width: 602px;
   overflow: hidden;
   pre {
@@ -27,7 +27,7 @@ td.line-data {
   }
 }
 
-td.line-numbers {
+.line-numbers {
   width: 38px;
   overflow: hidden;
   text-align: right;
