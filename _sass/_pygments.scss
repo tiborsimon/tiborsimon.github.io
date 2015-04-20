@@ -32,6 +32,15 @@ td.line-numbers {
   }
 }
 
+.gist-meta {
+  padding: 5px 40px;
+  background-color: transparent;
+  color: #9da1a1;
+  a {
+    color: #9da1a1;
+  }
+}
+
 
 .gist, .highlight {
   @include font(12);
