@@ -1,4 +1,10 @@
-.gist, .highlight {
+.gist {
+  background-color: transparent;
+  border: none;
+
+}
+
+.highlight {
   border-collapse: separate;
   border-spacing: 0;
   @include rounded(6px);
@@ -8,7 +14,7 @@
   border: 1px solid rgba(147, 161, 161, 0.55);
 }
 
-.gist, .highlight td {
+.highlight td {
   padding: 0;
 }
 
@@ -42,7 +48,7 @@ td.line-numbers {
 }
 
 
-.gist, .highlight {
+.highlight {
   @include font(12);
   color: #586e75;
   background-color: #fdf6e3;
