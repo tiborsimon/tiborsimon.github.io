@@ -107,7 +107,7 @@
   .kn, .pl-k { color: $green !important} /* Keyword.Namespace */
   .kp { color: $green !important} /* Keyword.Pseudo */
   .ow { color: $green !important} /* Operator.Word */
-  .nb { color: $yellow !important} /* Name.Builtin */
+  .nb, .pl-s3 { color: $yellow !important} /* Name.Builtin */
   .gu { color: $orange !important} /* Generic.Subheading */
   .ni { color: $orange !important} /* Name.Entity */
   .x  { color: $orange !important} /* Other */
