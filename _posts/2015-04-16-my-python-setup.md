@@ -19,20 +19,15 @@ Since I had no luck upgrading pip with pip in the past, I run the more generic c
 
 
 {% highlight python linenos=table %}
-__author__ = 'Tibor'
-
-from unittest import TestCase
-
-from ..my_module import some_method
-
-class TestClass(TestCase):
-    def test__my_test(self):
-        print('I am a testcase..')
-        result = some_method()
-        self.assertEqual(42, result)
-
-    def test_my_second_test(self):
-        self.assertTrue(True)
+table.highlighttable {
+  border-collapse: separate;
+  border-spacing: 0;
+  @include rounded(6px);
+  @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
+  overflow: hidden;
+  margin-bottom: 25px;
+  border: 1px solid rgba(147, 161, 161, 0.55);
+}
 {% endhighlight %}
 
 and this is a line >D
