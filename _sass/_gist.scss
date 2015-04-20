@@ -101,7 +101,7 @@
   .sh { color: $base01 !important} /* Literal.String.Heredoc */
   .cp { color: $green !important} /* Comment.Preproc */
   .cs { color: $green !important} /* Comment.Special */
-  .o  { color: $green !important} /* Operator */
+  .o, .pl-k  { color: $green !important} /* Operator */
   .gi { color: $green !important} /* Generic.Inserted */
   .k, .pl-sc, .pl-st { color: $green !important} /* Keyword */
   .kn, .pl-k { color: $green !important} /* Keyword.Namespace */
@@ -124,7 +124,7 @@
   .nc { color: $blue !important} /* Name.Class */
   .nd, .pl-s3 { color: $blue !important} /* Name.Decorator */
   .nf, .pl-en { color: $blue !important} /* Name.Function */
-  .bp { color: $blue !important} /* Name.Builtin.Pseudo */
+  .bp, .pl-c1 { color: $blue !important} /* Name.Builtin.Pseudo */
   .nt, .pl-ent { color: $blue !important} /* Name.Tag */
   .nv { color: $blue !important} /* Name.Variable */
   .vc { color: $blue !important} /* Name.Variable.Class */
@@ -132,7 +132,7 @@
   .vg { color: $blue !important} /* Name.Variable.Global */
   .gd { color: $cyan !important} /* Generic.Deleted */
   .m, .pl-c1  { color: $cyan !important} /* Literal.Number */
-  .s  { color: $cyan !important} /* Literal.String */
+  .s, .pl-s1  { color: $cyan !important} /* Literal.String */
   .mf { color: $cyan !important} /* Literal.Number.Float */
   .mh { color: $cyan !important} /* Literal.Number.Hex */
   .mi, .pl-c1 { color: $cyan !important} /* Literal.Number.Integer */
