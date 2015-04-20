@@ -1,4 +1,4 @@
-table.highlight {
+.gist, .highlight {
   border-collapse: separate;
   border-spacing: 0;
   @include rounded(6px);
@@ -8,7 +8,7 @@ table.highlight {
   border: 1px solid rgba(147, 161, 161, 0.55);
 }
 
-table.highlight td {
+.gist, .highlight td {
   padding: 0;
 }
 
@@ -33,7 +33,7 @@ td.line-numbers {
 }
 
 
-table.highlight {
+.gist, .highlight {
   @include font(12);
   color: #586e75;
   background-color: #fdf6e3;
