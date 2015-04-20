@@ -6,8 +6,12 @@
 }
 
 .gist {
-  ::selection,
+
   ::-moz-selection {
+    background: $magenta;
+    color: white;
+  }
+  ::selection {
     background: $magenta;
     color: white;
   }
@@ -53,6 +57,7 @@
     color: rgba(187,187,187,0.8) !important;
     a {
       color: rgba(187,187,187,0.8) !important;
+    }
   }
 
   .highlight {
