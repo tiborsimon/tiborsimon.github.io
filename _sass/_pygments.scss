@@ -1,7 +1,8 @@
-.gist {
-  background-color: transparent;
-  border: none;
-
+.gist .gist-file {
+  background-color: transparent !important;
+  border: none !important;
+  background-color: #fdf6e3;
+  @include rounded(6px);
 }
 
 .highlight {
