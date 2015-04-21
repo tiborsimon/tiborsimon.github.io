@@ -7,9 +7,13 @@
 
 .gist {
 
-  ::-moz-selection,
+  ::-moz-selection {
+    background-color: $selection-bg;
+    color: $selection-color;
+  }
+  
   ::selection {
-    background: $selection-bg;
+    background-color: $selection-bg;
     color: $selection-color;
   }
 
