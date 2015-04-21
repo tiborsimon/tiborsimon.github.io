@@ -7,13 +7,10 @@
 
 .gist {
 
-  ::-moz-selection {
-    background: $magenta;
-    color: white;
-  }
+  ::-moz-selection,
   ::selection {
-    background: $magenta;
-    color: white;
+    background: $selection-bg;
+    color: $selection-color;
   }
 
   .highlight {
