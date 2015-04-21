@@ -57,9 +57,9 @@
   .gist-meta {
     padding: 5px 40px !important;
     background-color: transparent !important;
-    color: rgba(187,187,187,0.8) !important;
+    color: $gist-meta-color !important;
     a {
-      color: rgba(187,187,187,0.8) !important;
+      color: $gist-meta-color !important;
     }
   }
 
