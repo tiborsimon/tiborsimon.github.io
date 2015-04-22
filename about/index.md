@@ -30,6 +30,6 @@ Remember kids, the only difference between Science  and screwing around is writi
 I am tired of the lack of professionalism and passion. In my book you do something because you are passionate about it. You have to do it well, otherwise there is no point of it. I was disappointed in my university. I was disappointed in my jobs.  I was faced with other people incompetency and slothfulness enough now. The only thing I can do is to keep myself on my way, and develop products with care, and hope that my passion will turn others to the right way.
 
 <div class="centered">
-<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a>
-<a href="https://github.com/tiborsimon" class="btn btn-success">Github page</a></div>
+<div markdown="0">
+<a href="https://github.com/tiborsimon" class="btn">Github page</a></div>
 </div>
