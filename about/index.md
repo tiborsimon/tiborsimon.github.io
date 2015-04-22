@@ -11,7 +11,8 @@ modified: 2015-04-22
 
 I am an engineer not a maker. I develop usable products and methods you can count on and not just hack things together and dance when they happen to work. Of course, I had started in that way, indeed, but over time I have realized that there is no point not to do things in the right way.
  
-<figure><img src="{{ site.url }}/images/core/tibor_about.png" alt="Tibor">
+<figure>
+<a href="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_b.jpg"><img src="{{ site.url }}/images/core/tibor_about.png" alt="Tibor"></a>
 </figure>
 
 If you've used any of [my other themes](http://mademistakes.com/work/jekyll-themes/) most of this should be familiar territory...
