@@ -93,7 +93,7 @@ blockquote {
 
 blockquote:before {
     display: block;
-    // content: "\201C";
+    content: "\201C";
     font-size: 80px;
     position: absolute;
     left: -20px;
@@ -109,7 +109,7 @@ blockquote cite {
 }
  
 blockquote cite:before {
-    // content: "\2014 \2009";
+    content: "\2014 \2009";
 }
 
 // List items
