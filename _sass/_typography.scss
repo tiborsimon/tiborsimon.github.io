@@ -92,24 +92,24 @@ blockquote {
 }
 
 blockquote:before {
-display: block;
-content: "\201C";
-font-size: 80px;
-position: absolute;
-left: -20px;
-top: -20px;
-color: #7a7a7a;
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
 }
 
 blockquote cite {
-color: #999999;
-font-size: 14px;
-display: block;
-margin-top: 5px;
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
 }
  
 blockquote cite:before {
-content: "\2014 \2009";
+    content: "\2014 \2009";
 }
 
 // List items
