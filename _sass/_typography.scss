@@ -1,4 +1,4 @@
-// Body
+|// Body
 // --------------------------------------------------
 body {
     font-family: $base-font;
@@ -68,7 +68,7 @@ figcaption {
 
 // Blockquotes
 // --------------------------------------------------
-blockquote {
+/*blockquote {
     font-family: $alt-font;
     font-style: italic;
     border-left: 8px solid $border-color;
@@ -77,6 +77,39 @@ blockquote {
         margin-left: -28px;
     }
     font-size: 31px;
+}*/
+
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 500px;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+}
+
+blockquote:before {
+display: block;
+content: "\201C";
+font-size: 80px;
+position: absolute;
+left: -20px;
+top: -20px;
+color: #7a7a7a;
+}
+
+blockquote cite {
+color: #999999;
+font-size: 14px;
+display: block;
+margin-top: 5px;
+}
+ 
+blockquote cite:before {
+content: "\2014 \2009";
 }
 
 // List items
