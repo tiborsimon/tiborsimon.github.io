@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About the Jekyll Theme
+title: About Tibor
 image:
   feature: abstract-5.jpg
   credit: dargadgetz
@@ -10,29 +10,18 @@ modified: 2015-04-22
 ---
 
 I am an engineer not a maker. I develop usable products and methods you can count on and not just hack things together and dance when they happen to work. Of course, I had started in that way, indeed, but over time I have realized that there is no point not to do things in the right way.
- 
+
+> "Remember kids, the only difference between Science  and screwing around is writing it down."- Adam Savage
+
 <figure>
-<a href="#"><img src="{{ site.url }}/images/core/tibor_about.png" alt="Tibor" width="300px"></a>
+<img src="{{ site.url }}/images/core/tibor_about.png" alt="Tibor" width="300px">
 </figure>
 
-If you've used any of [my other themes](http://mademistakes.com/work/jekyll-themes/) most of this should be familiar territory...
+You should document what you have done, and what you want to achieve. Plan ahead. The extra time will pay back. Always test your work as many way as you can. One of the biggest invention of the modern programming ages the Test Driven Development. This is the only way in my opinion to produce reliable products. Tests give you confidence. Confidence to change or refactor your code. Tests also help you verify the freshly manufactured hardware. A good testing harness leaves no chance for the errors to hide or spread around. 
 
-## What HPSTR brings to the table:
+I am tired of the lack of professionalism and passion. In my book you do something because you are passionate about it. You have to do it well, otherwise there is no point of it. I was disappointed in my university. I was disappointed in my jobs.  I was faced with other people incompetency and slothfulness enough now. The only thing I can do is to keep myself on my way, and develop products with care, and hope that my passion will turn others to the right way.
 
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrads in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Modern and minimal design.
-* Sweet animated menu.
-* Background image support.
-* Readable typography to make your words shine.
-* Support for large images to call out your favorite posts.
-* Built-in support for Sass courtesy of Jekyll 2.x.
-* Optional [Disqus](http://disqus.com) comments.
-* Simple and clear permalink structure[^1].
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page]({{ site.url }}/404.html) to get you started.
-* Stylesheets for Pygments and Coderay [syntax highlighting]({{ site.url }}/code-highlighting-post/) to make your code examples look snazzy.
+> "The only way to go fast is to go well" – Uncle Bob Martin
 
-<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a> <a href="https://github.com/mmistakes/hpstr-jekyll-theme" class="btn btn-success">Download HPSTR</a></div>
-
-[^1]: Example: *domain.com/category-name/post-title*
+<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a>
+<a href="https://github.com/tiborsimon" class="btn btn-success">Github page</a></div>
