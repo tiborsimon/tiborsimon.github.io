@@ -9,7 +9,7 @@ comments: false
 modified: 2015-04-22
 ---
 
-I am an engineer not a maker. I develop usable products and methods you can count on and not just hack things together and dance when they happen to work. Of course, I had started in that way, indeed, but over time I have realized that there is no point not to do things in the right way.
+"I am an engineer not a maker. I develop usable products and methods you can count on and not just hack things together and dance when they happen to work. Of course, I had started in that way, indeed, but over time I have realized that there is no point not to do things in the right way."
 
 <figure>
 <img src="{{ site.url }}/images/core/tibor_about.png" alt="Tibor" width="300px">
