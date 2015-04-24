@@ -12,12 +12,21 @@ I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color th
 
 I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient to use, but let's sum up all of the possibilities:
 
-- Buildt in Markdown/Kramdown support
-    - inline code highlight
-    - fenced code highlight
+- Buildt in Markdown/Kramdown inline and fenced
 - Liquid code highlights
 - Octopress flavored Backtick Code Blocks
 - 3rd party sourcecode sharing systems like Github Gists
+
+## My criterias
+
+| Criteria | Markdown | Liquid | Backtick | Gists |
+|:--------:|:--------:|:------:|:--------:|:-----:|
+| Line numbers |  |  |  |  |
+|--------------
+| Solarized |  |  |  |  |
+|------------------------
+| Shareable |  |  |  |  |  |
+|--------------------------
 
 
 
