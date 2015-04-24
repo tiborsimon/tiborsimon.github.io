@@ -10,8 +10,10 @@ I am a big fan of the (solarized)[http://ethanschoonover.com/solarized] color th
 
 # The motivation
 
-I was looking for the best way to post source code on my Jekyll based site. 
+I was looking for the best way to post source code on my Jekyll based site[^1].
 
 
 {% gist tiborsimon/2479af323b7af1381a35 %}
+
+[^1] If you are not familiar with the story, I have switched from wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major  drawback: it is dynamic. 
 
