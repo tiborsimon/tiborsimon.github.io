@@ -15,5 +15,5 @@ I was looking for the best way to post source code on my Jekyll based site[^1].
 
 {% gist tiborsimon/2479af323b7af1381a35 %}
 
-[^1] If you are not familiar with the story, I have switched from wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major  drawback: it is dynamic. 
+[^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell..
 
