@@ -6,11 +6,19 @@ tags: ['jekyll', 'web']
 published: True
 ---
 
-I am a big fan of the (solarized)[http://ethanschoonover.com/solarized] color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your (gist's)[gist.github.com] casual style into a much more elegant solarized one.
+I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) casual style into a much more elegant solarized one.
 
 # The motivation
 
-I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use markdown or kramdown, it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient to use.
+I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient to use, but let's sum up all of the possibilities:
+
+- Buildt in Markdown/Kramdown support
+    - inline code highlight
+    - fenced code highlight
+- Liquid code highlights
+- Octopress flavored Backtick Code Blocks
+- 3rd party sourcecode sharing systems like Github Gists
+
 
 
 {% gist tiborsimon/2479af323b7af1381a35 %}
