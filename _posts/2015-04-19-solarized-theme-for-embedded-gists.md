@@ -6,27 +6,25 @@ tags: ['jekyll', 'web']
 published: True
 ---
 
-I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) casual style into a much more elegant solarized one.
+I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
 
-# The motivation
+## Early solution - motivation
 
-I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient to use, but let's sum up all of the possibilities:
+I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [Kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient enough to use.
 
-- Buildt in Markdown/Kramdown inline and fenced
-- Liquid code highlights
-- Octopress flavored Backtick Code Blocks
-- 3rd party sourcecode sharing systems like Github Gists
+I am using the [HPSTR](https://github.com/mmistakes/hpstr-jekyll-theme) jekyll theme hosted on [Github Pages](https://pages.github.com). The theme uses Kramdown to process the markdown text, and [Pygments](http://pygments.org) to handle the syntax colorings. To get the desired solarized theme, I just had to create a custom css file.
 
-## My criterias
+After a few hours later, I came up with the custom `_pygments.css` file. I started to write this article, and bang.. I randomly tested the article by pushing it to GitHub, and I was sent by a nice letter about page build failure..
 
-| Criteria | Markdown | Liquid | Backtick | Gists |
-|:--------:|:--------:|:------:|:--------:|:-----:|
-| Line numbers |  |  |  |  |
-|--------------
-| Solarized |  |  |  |  |
-|------------------------
-| Shareable |  |  |  |  |  |
-|--------------------------
+<blockquote>
+The page build failed with the following error:
+
+The file `assets/css/main.scss` contains syntax errors. For more information, see https://help.github.com/articles/page-build-failed-markdown-errors.
+<cite>GitHub Pages staff</cite>
+</blockquote>
+
+
+
 
 
 
