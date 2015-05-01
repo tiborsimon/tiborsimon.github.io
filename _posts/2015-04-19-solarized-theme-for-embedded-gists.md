@@ -39,7 +39,7 @@ Using the `!important` CSS declaration it is possible to overwrite the default r
 The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system. I had to map the two class systems to be able to achieve a close approximation of the original Solarized coloring.
 
 | Pygments classes   |      Gist classes      |
-|:--------|:-------------|
+|:--------:|:-------------:|
 |.hll .c .err .g .k .l .n .o .x  | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp |
 |.p .cm .cp .c1 .cs .gd .ge .gr  | .pl-mr .pl-s1 .pl-v .pl-s3 .pl-sc  |
 |.gh .gi .go .gp .gs .gu .gt .kc | .pl-sv .pl-e .pl-en .pl-s1  .pl-s2 |
@@ -54,9 +54,13 @@ The biggest problem during the refactoring was that Pygments and the syntax colo
 |                                | .pl-mb .pl-md .pl-mdhf .pl-mdht    |
 |                                | .pl-mi1 .pl-mdr                    |
 
-There are some imperfections though, due to the different css class systems.
+There are some imperfections though, due to the different CSS class systems that I couldn't resolve:
 
 - In the original Solarized coloring the `@property` tag is blue, with my solution the `@` sign is blue, the following `property` is brown
+
+- The `from` and `import` keywords are greens instead of purple.
+
+- String formatting blocks are equally greens.
 
 ## Solution with SASS
 
