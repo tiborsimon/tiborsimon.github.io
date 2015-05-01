@@ -23,7 +23,18 @@ The file `assets/css/main.scss` contains syntax errors. For more information, se
 <cite>GitHub Pages staff</cite>
 </blockquote>
 
-My investigation resulted, that the css source code I tried to showcase in the article causing the problems.. Since the css contains classes called `.highlight` it conflicted with the _Liquid tags_ of the syntax highlighting blocks. Bummer.. I have
+My investigation resulted, that the css source code I tried to showcase in the article causing the problems. Since the css code contains classes called `.highlight` it conflicted with the _Liquid tags of the syntax highlighting blocks. Bummer. I am using GitHub Pages for hosting, so I can not modify the compilation tools. I need an other way to present source code on my site.
+
+
+## Using Gists
+
+On my previous Wordpress based site I used Gists as source code showcase tool. I found that this is the bast way among the others that uses various Wordpress plugins.
+
+Gists provides a perfect versioned way to showcase codes. It has one downside though. It looks a bit outdated for me. I don't like the pure white background, the dark font colors, and the sharp corners.
+
+It's time for a heavy CSS refactoring. Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file.
+
+
 
 
 

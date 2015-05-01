@@ -3,7 +3,7 @@ layout: post
 title: My Python setup
 categories: ['programming']
 tags: ['python']
-published: True
+published: False
 ---
 
 Let's sum up how I set up my workstations for Python development.
