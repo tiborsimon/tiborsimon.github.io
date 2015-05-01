@@ -42,11 +42,24 @@ The biggest problem during the refactoring was that Pygments and the syntax colo
 
 The predefined variables for the syntax coloring provides a very convinient way
 
-| Tables   |      Are      |  Cool |
-|:--------:|:-------------:|:-----:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| Pygments classes   |      Gist classes      |
+|:--------:|:-------------:|
+|.hll .c .err .g .k .l .n .o .x  | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp |
+|.p .cm .cp .c1 .cs .gd .ge .gr  | .pl-mr .pl-s1 .pl-v .pl-s3 .pl-sc  |
+|.gh .gi .go .gp .gs .gu .gt .kc | .pl-sv .pl-e .pl-en .pl-s1  .pl-s2 |
+|.kd .kn .kp .kr .kt .ld .m .s   | .pl-smi .pl-smp .pl-stj .pl-vo     |
+|.na .nb .nc .no .nd .ni .ne .nf | .pl-vpf .pl-ent .pl-k .pl-s .pl-st |
+|.nl .nn .nx .py .nt .nv .ow .w  | .pl-pds .pl-s1 .pl-s1  .pl-pse     |
+|.mf .mh .mi .mo .sb .sc .sd .s2 | .pl-s2 .pl-sr .pl-sr  .pl-cce      |
+|.se .sh .si .sx .sr .s1 .ss .bp | .pl-sr  .pl-sra .pl-sr  .pl-sre    |
+|.vc .vg .vi .il                 | .pl-src .pl-mo .pl-v .pl-id .pl-ii |
+|                                | .pl-sr  .pl-cce .pl-ml .pl-mh      |
+|                                | .pl-mh .pl-en .pl-ms .pl-mq .pl-mi |
+|                                | .pl-mb .pl-md .pl-mdhf .pl-mdht    |
+|                                | .pl-mi1 .pl-mdr                    |
+
+
+
 
 
 
