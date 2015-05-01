@@ -149,3 +149,10 @@ svg:not(:root) {
   border: 1px solid $comp-color;
   @include rounded(4px);
 }
+
+
+// Table
+// --------------------------------------------------
+table {
+  margin-bottom: 29px;
+}
