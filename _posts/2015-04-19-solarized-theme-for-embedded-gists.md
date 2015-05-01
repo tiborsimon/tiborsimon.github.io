@@ -36,14 +36,10 @@ Gists provides a perfect versioned way to showcase codes. It has one downside th
 
 Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file. My Jekyll configuration uses [SASS](http://sass-lang.com) so I was able to use CSS variables.
 
-The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system.
-
-## Solution with SASS
-
-The predefined variables for the syntax coloring provides a very convinient way
+The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system. I had to map the two class systems to be able to achieve a close approximation of the original Solarized coloring.
 
 | Pygments classes   |      Gist classes      |
-|:--------:|:-------------:|
+|:--------|:-------------|
 |.hll .c .err .g .k .l .n .o .x  | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp |
 |.p .cm .cp .c1 .cs .gd .ge .gr  | .pl-mr .pl-s1 .pl-v .pl-s3 .pl-sc  |
 |.gh .gi .go .gp .gs .gu .gt .kc | .pl-sv .pl-e .pl-en .pl-s1  .pl-s2 |
@@ -57,6 +53,16 @@ The predefined variables for the syntax coloring provides a very convinient way
 |                                | .pl-mh .pl-en .pl-ms .pl-mq .pl-mi |
 |                                | .pl-mb .pl-md .pl-mdhf .pl-mdht    |
 |                                | .pl-mi1 .pl-mdr                    |
+
+There are some imperfections though, due to the different css class systems.
+
+- In the original Solarized coloring the `@property` tag is blue, with my solution the `@` sign is blue, the following `property` is brown
+
+## Solution with SASS
+
+The predefined variables for the syntax coloring provides a very convinient way
+
+
 
 
 
