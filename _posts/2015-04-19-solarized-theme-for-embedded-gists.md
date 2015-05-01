@@ -43,7 +43,7 @@ The biggest problem during the refactoring was that Pygments and the syntax colo
 The predefined variables for the syntax coloring provides a very convinient way
 
 | Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
+|:--------:|:-------------:|:-----:|
 | col 1 is |  left-aligned | $1600 |
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
