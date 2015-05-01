@@ -8,7 +8,7 @@ published: True
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
 
-## Early solution -> motivation
+## Early solution and motivation
 
 I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [Kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient enough to use.
 
@@ -32,7 +32,23 @@ On my previous Wordpress based site I used Gists as source code showcase tool. I
 
 Gists provides a perfect versioned way to showcase codes. It has one downside though. It looks a bit outdated for me. I don't like the pure white background, the dark font colors, and the sharp corners.
 
-It's time for a heavy CSS refactoring. Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file.
+####It's time for a heavy CSS refactoring. 
+
+Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file. My Jekyll configuration uses [SASS](http://sass-lang.com) so I was able to use CSS variables.
+
+The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system.
+
+## Solution with SASS
+
+The predefined variables for the syntax coloring provides a very convinient way
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+
+
 
 
 
