@@ -54,17 +54,21 @@ The biggest problem during the refactoring was that Pygments and the syntax colo
 |                                | .pl-mb .pl-md .pl-mdhf .pl-mdht    |
 |                                | .pl-mi1 .pl-mdr                    |
 
-There are some imperfections though, due to the different CSS class systems that I couldn't resolve:
+There are some imperfections though, due to the different CSS class systems that I couldn't resolve. I will publish almost exclusively Python source code, so I map the two class system to minimize the difference in Python syntax coloring. 
 
-- In the original Solarized coloring the `@property` tag is blue, with my solution the `@` sign is blue, the following `property` is brown
+The known issues are the following:
+
+- In the original Solarized coloring the `@property` tag is blue, with my solution the `@` sign is blue, the following `property` is brown.
 
 - The `from` and `import` keywords are greens instead of purple.
 
 - String formatting blocks are equally greens.
 
-## Solution with SASS
+## Solution using SASS
 
-The predefined variables for the syntax coloring provides a very convinient way
+The predefined variables for the syntax coloring provides a very convenient way to create a template CSS code first, and then fine tune the variables later.
+
+{% gist tiborsimon/b6574052bb3167651f88 %}
 
 
 
