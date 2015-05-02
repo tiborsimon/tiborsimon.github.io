@@ -38,7 +38,7 @@ Using the `!important` CSS declaration it is possible to overwrite the default r
 
 The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system. I had to map the two class systems to be able to achieve a close approximation of the original Solarized coloring.
 
-| Pygments classes   |      Gist classes      |
+| Pygments CSS classes   |      Gist CSS classes      |
 |:--------:|:-------------:|
 |.hll .c .err .g .k .l .n .o .x  | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp.pl-mr .pl-s1   |
 |.p .cm .cp .c1 .cs .gd .ge .gr  | .pl-v .pl-s3 .pl-sc .pl-sv .pl-e .pl-en .pl-s1    |
@@ -61,6 +61,8 @@ The known issues are the following:
 - The `from` and `import` keywords are greens instead of purple.
 
 - String formatting blocks are equally greens.
+
+<i class="fa fa-github-alt"></i>
 
 ## Solution using SASS
 
