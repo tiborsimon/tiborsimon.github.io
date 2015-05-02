@@ -71,7 +71,7 @@ svg:not(:root) {
   color: $white;
   border-width: 2px !important;
   border-style: solid !important;
-  border-color: $primary;
+  border-color: $primary !important;
   @include rounded(3px);
   &:visited {
     color: $white;
@@ -83,7 +83,7 @@ svg:not(:root) {
 }
 .btn-inverse {
   background-color: $white;
-  color: $primary;
+  color: $primary !important;
   border-color: $white;
   &:visited {
     color: $primary;
@@ -96,7 +96,7 @@ svg:not(:root) {
 .btn-success {
   background-color: $success;
   color: $white;
-  border-color: $success;
+  border-color: $success !important;
   &:visited {
     color: $white;
   }
@@ -108,7 +108,7 @@ svg:not(:root) {
 .btn-warning {
   background-color: $warning;
   color: $white;
-  border-color: $warning;
+  border-color: $warning !important;
   &:visited {
     color: $white;
   }
@@ -120,7 +120,7 @@ svg:not(:root) {
 .btn-danger {
   background-color: $danger;
   color: $white;
-  border-color: $danger;
+  border-color: $danger !important;
   &:visited {
     color: $white;
   }
@@ -132,7 +132,7 @@ svg:not(:root) {
 .btn-info {
   background-color: $info;
   color: $white;
-  border-color: $info;
+  border-color: $info !important;
   &:visited {
     color: $white;
   }
