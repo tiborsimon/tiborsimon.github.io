@@ -72,5 +72,16 @@ The predefined variables for the syntax coloring provides a very convenient way 
 
 {% gist tiborsimon/d6a5511deee682f316aa %}
 
+{% highlight css linenos=table %}
+.gist .gist-file {
+  background-color: transparent !important;
+  border: none !important;
+  background-color: $base3;
+  -webkit-border-radius : 6px;
+  -moz-border-radius : 6px;
+  border-radius : 6px;
+}
+{% endhighlight %}
+
 [^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell.. It can be attacked and hacked too, it has WYSIWYG editor which sucks, versioning is almost impossible with it. I am going to write a whole article about my switch.
 
