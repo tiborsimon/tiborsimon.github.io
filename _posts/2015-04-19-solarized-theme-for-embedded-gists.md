@@ -68,40 +68,16 @@ The known issues are the following:
 
 The predefined variables for the syntax coloring provides a very convenient way to create a template CSS code first, and then fine tune the variables later.
 
+<a href="#" class="btn btn-info">Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values.</a>
+
 {% gist tiborsimon/b6574052bb3167651f88 %}
 
 {% gist tiborsimon/d6a5511deee682f316aa %}
 
-{% highlight css linenos=table %}
-.gist .gist-file {
-  background-color: transparent !important;
-  border: none !important;
-  background-color: $base3;
-  -webkit-border-radius : 6px;
-  -moz-border-radius : 6px;
-  border-radius : 6px;
-}
 
-// Syntax highlight colors
-// --------------------------------------------------
- 
-$base01              : #586e75;
-$base1               : #93a1a1;
-$base2               : #eee8d5;
-$base3               : #fdf6e3;
-$red                 : #dc322f;
-$magenta             : #d33682;
-$yellow              : #b58900;
-$orange              : #cb4b16;
-$green               : #859900;
-$blue                : #268bd2;
-$cyan                : #2aa198;
- 
-$selection-bg        : $base2;
-$selection-color     : $base01;
- 
-$gist-meta-color     : rgba(187,187,187,0.8)
-{% endhighlight %}
+
+## Solution with basic CSS
+
 
 [^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell.. It can be attacked and hacked too, it has WYSIWYG editor which sucks, versioning is almost impossible with it. I am going to write a whole article about my switch.
 
