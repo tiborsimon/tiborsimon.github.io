@@ -2,7 +2,7 @@
   background-color: transparent !important;
   border: none !important;
   background-color: $base3;
-  @inculde rounded(6px);
+  @include rounded(6px);
 }
 
 .gist {
@@ -18,8 +18,8 @@
   .highlight {
     border-collapse: separate;
     border-spacing: 0;
-    @inculde rounded(6px);
-    @inculde box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
+    @include rounded(6px);
+    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
     overflow: hidden;
     margin-bottom: 25px;
     border: 1px solid rgba(147, 161, 161, 0.55);
