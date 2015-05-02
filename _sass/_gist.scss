@@ -121,7 +121,7 @@
     .sr { color: $red !important} /* Literal.String.Regex */
     .kd { color: $blue !important} /* Keyword.Declaration */
     .kr { color: $blue !important} /* Keyword.Reserved */
-    .nc { color: $blue !important} /* Name.Class */
+    .nc, .pl-e { color: $blue !important} /* Name.Class */
     .nd { color: $blue !important} /* Name.Decorator */
     .nf, .pl-en { color: $blue !important} /* Name.Function */
     .bp, .pl-c1, .pl-v, .pl-vpf { color: $blue !important} /* Name.Builtin.Pseudo */
