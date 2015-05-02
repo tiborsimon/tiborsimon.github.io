@@ -83,7 +83,7 @@ The predefined variables for the syntax coloring provides a very convenient way 
 
 This CSS trick provide you the opportunity to post solarized code snippets to your site. One refinement could be a javascript script that prevents the site to load the original Gist CSS file, but since it isn't a huge overhead, I left it there.
 
-I hope you find this project useful :)
+I hope you have found this project useful :)
 
 
 [^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell.. It can be attacked and hacked too, it has WYSIWYG editor which sucks, versioning is almost impossible with it. I am going to write a whole article about my switch.
