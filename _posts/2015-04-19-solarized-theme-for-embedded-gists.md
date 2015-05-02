@@ -12,7 +12,7 @@ I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color th
 
 I was looking for the best way to post source code on my Jekyll based site[^1]. Since the Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [Kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient enough to use.
 
-I am using the [HPSTR](https://github.com/mmistakes/hpstr-jekyll-theme) jekyll theme hosted on [Github Pages](https://pages.github.com). The theme uses Kramdown to process the markdown text, and [Pygments](http://pygments.org) to handle the syntax colorings. To get the desired solarized theme, I just had to create a custom css file.
+I am using the [HPSTR](https://github.com/mmistakes/hpstr-jekyll-theme) jekyll theme hosted on [Github Pages](https://pages.github.com). The theme uses Kramdown to process the markdown text, and [Pygments](http://pygments.org) to handle the syntax colorings. To get the desired solarized theme, I just had to create a custom CSS file.
 
 After a few hours later, I came up with the custom `_pygments.css` file. I started to write this article, and bang.. I randomly tested the article by pushing it to GitHub, and I was sent by a nice letter about a page build failure..
 
@@ -23,7 +23,7 @@ The file `assets/css/main.scss` contains syntax errors. For more information, se
 <cite>GitHub Pages staff</cite>
 </blockquote>
 
-My investigation resulted, that the css source code I tried to showcase in the article causing the problems. Since the css code contains classes called `.highlight` it conflicted with the _Liquid tags of the syntax highlighting blocks. Bummer. I am using GitHub Pages for hosting, so I can not modify the compilation tools. I need an other way to present source code on my site.
+My investigation resulted, that the CSS source code I tried to showcase in the article causing the problems. Since the CSS code contains classes called `.highlight` it conflicted with the _Liquid tags of the syntax highlighting blocks. Bummer. I am using GitHub Pages for hosting, so I can not modify the compilation tools. I need an other way to present source code on my site.
 
 
 ## Using Gists
@@ -78,6 +78,8 @@ The predefined variables for the syntax coloring provides a very convenient way 
 ## Solution with basic CSS
 
 {% gist tiborsimon/9f32036b30be1954ecf4 %}
+
+Comment and discuss this project by clicking the article title.
 
 
 [^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell.. It can be attacked and hacked too, it has WYSIWYG editor which sucks, versioning is almost impossible with it. I am going to write a whole article about my switch.
