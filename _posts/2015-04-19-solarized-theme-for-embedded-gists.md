@@ -62,7 +62,7 @@ The known issues are the following:
 
 - String formatting blocks are equally greens.
 
-<i class="fa fa-github-alt"></i>
+For contributions, fork one of the following Gists and send me a message via GitHub, and I will update the Gists.
 
 ## Solution using SASS
 
