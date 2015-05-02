@@ -81,6 +81,26 @@ The predefined variables for the syntax coloring provides a very convenient way 
   -moz-border-radius : 6px;
   border-radius : 6px;
 }
+
+// Syntax highlight colors
+// --------------------------------------------------
+ 
+$base01              : #586e75;
+$base1               : #93a1a1;
+$base2               : #eee8d5;
+$base3               : #fdf6e3;
+$red                 : #dc322f;
+$magenta             : #d33682;
+$yellow              : #b58900;
+$orange              : #cb4b16;
+$green               : #859900;
+$blue                : #268bd2;
+$cyan                : #2aa198;
+ 
+$selection-bg        : $base2;
+$selection-color     : $base01;
+ 
+$gist-meta-color     : rgba(187,187,187,0.8)
 {% endhighlight %}
 
 [^1]: If you are not familiar with the story, I have switched from Wordpress to Jekyll. The reason was simple: Wordpress is a fantastic platform with lots and lots of customizations, but it has a major _(and a few smaller)_ drawback: it is dynamic. I.e. it is slow as hell.. It can be attacked and hacked too, it has WYSIWYG editor which sucks, versioning is almost impossible with it. I am going to write a whole article about my switch.
