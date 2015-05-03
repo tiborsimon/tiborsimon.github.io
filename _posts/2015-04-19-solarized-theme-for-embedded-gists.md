@@ -68,7 +68,7 @@ For contributions, fork one of the following Gists and send me a message via Git
 
 The predefined variables for the syntax coloring provides a very convenient way to create a template CSS code first, and then fine tune the variables later.
 
-<a class="btn btn-info">Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values.</a>
+_Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values._
 
 {% gist tiborsimon/b6574052bb3167651f88 %}
 
