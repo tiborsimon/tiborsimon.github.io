@@ -1,17 +1,15 @@
 ---
 layout: post
 title: Simple Input Parser
-categories: ['category']
-tags: ['tag']
+categories: ['programming']
+tags: ['matlab']
 published: True
 
 ---
 
-# Simple Input Parser
-
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tiborsimon/simple-input-parser-for-matlab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 Easy to use variable lenght input parser mechanism that provides a convenient way to enchance your custom function parameter handling.
+
+The current version sports a _MATLAB_ implementation, but other language ports are coming too.
 
 ### Features
 
@@ -21,6 +19,8 @@ Easy to use variable lenght input parser mechanism that provides a convenient wa
    - Bulk mode
    - Flag mode
 - Compact yet clear parameter passing
+- Parameter validation by type
+- Custom validator functions
 
 #### Old way to call a function
 
@@ -39,9 +39,9 @@ What if you could provide an on-line help for your users during reading and usin
 ```
 ssin('f', 440, 'A', 2, 'phi', 45, 'fs', 48e3, 'L', 0.8)
 ```
-Much better and readable way to call a function. Evryone knows exactly what is happening here. 
+Much better and readable way to call a function. Everyone knows what is happening exactly. 
 
-But do you really need to force your users to remember your parameter order that is probably inconvienient for them? 
+But do you really need to force your users to remember your parameter order that is probably inconvenient for them? 
 
 #### Arbitrary order?
 
@@ -61,66 +61,20 @@ Do your users like to type a lot of commas and apostrophes? I don't think so. Ho
 ssin('A f L fs phi', 2, 440, 0.8, 48e3, 45)
 ```
 
-With __Simple Input Parser__ this is a valid input for a function! 
+With __Simple Input Parser__ this is still a valid input for a function! 
 
 #### An even shorter way?
 
-Well, this is much less character to type here, but I see spaces. Do you want to force your users to type spaces if they don't necessary want to? What if they can left the spaces?
+Well, there is much less character to type, but I can see repeated spaces between the keys. Do you want to force your users to type spaces if they don't necessary want to? What if they can left the spaces?
 
 ```
 ssin('AfLfsphi', 2, 440, 0.8, 48e3, 45)
 ```
 
-Yes, this is the most compact form of a function call with __Simple Input Parser__. Do you think it is useful you?
+Yes, this is the most compact form of a function call with __Simple Input Parser__ that produces values. Do you think this is useful for you?
 
+There is an even shorter form that is called _Flag mode_ which receives only the keys and returns a boolean array based on the keys the user passes in.
 
 Don't hesitate to try it out.
 
-# How to use it?
 
-__Simple Input Parser__ does all of the internal parsing based on a predefined parameter array you pass in during the parsing function call.
-
-Let's say you are going to create a function that takes 3 parameters: a, b and c. Beside the functionality you need to
-- pass the parameters in as a single varargin parameter
-- create a parameter array and set the default values
-- pass these two into the `simple_input_parser()` funtion
-- you are done
-
-``` matlab
-function ret = my_function( varargin )
-
-    params.a = 42;
-    params.b = 'answer';
-    params.c = 55.3;
-
-    params = simple_input_parser(params, varargin);
-
-    % further functionalities
-
-end
-```
-By declaring a default data array you have done two things at once: 
-- defining the names of the parameters
-- defining it's type
-
-This is enough information for __SImple Input Parser__ to parse the given input, and during the parsing, executing a simple type checking.
-
-The `simple_input_parser()` function returns the parameter array with the updated values in it.
-
----
-
-Inside the parsing function three things is  happening:
-
-- mode selection
-- parsing
-- error checking
-
-During the _error checking_, __Simple Input Parser__ will check the data 
-
-# Offered modes of operations
-
-__Simple Input Parser__ can work in three mode. The decision of which mode will be used is decided under the hood based on the provided parameters. You only need to call only one function that will handle the input parsing for you.
-
-## Key value pair mode
-
-This mode is the longest but the most clearer mode of __Simple Input Parser__. You pass in a key, and then the appropriate value. It's that simple.
