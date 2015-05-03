@@ -63,7 +63,7 @@ svg:not(:root) {
 // Buttons
 // --------------------------------------------------
 .btn {
-  display: inline-block;
+  /*display: inline-block;*/
   margin-bottom: 20px;
   padding: 8px 20px;
   @include font-rem(14);
