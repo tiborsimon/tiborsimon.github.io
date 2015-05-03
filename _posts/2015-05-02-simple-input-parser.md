@@ -77,4 +77,4 @@ There is an even shorter form that is called _Flag mode_ which receives only the
 
 Don't hesitate to try it out.
 
-<a href='https://github.com/tiborsimon/simple-input-parser' class=""><i class="fa fa-github-alt"></i> Go to GitHub</a>
+<a href='https://github.com/tiborsimon/simple-input-parser' class="btn"><i class="fa fa-github-alt"></i> Go to GitHub</a>
