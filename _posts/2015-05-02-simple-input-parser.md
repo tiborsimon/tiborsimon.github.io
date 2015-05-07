@@ -22,7 +22,7 @@ The current version sports a _MATLAB_ implementation, but other language ports a
 - Parameter validation by type
 - Custom validator functions
 
-### Old way to call a function
+## Old way to call a function
 
 Say you have a function with a lot of parameters. Some of them may be optional. In the old way, your users had to remember exactly how many parameters would your function need and they had to remember the exact order of the parameters as well.
 
@@ -32,7 +32,7 @@ Let's take a sine syntesizer function.
 
 Is this a user friendly function? I don't think so. This is a __horrible__ function.. Sadly lot of the functions work this way. The user has to look up the definition of the function or the provided help to understand what is happening there.
 
-### Simple Input Parser way
+## Simple Input Parser way
 
 What if you could provide an on-line help for your users during reading and using your functions?
 
@@ -42,7 +42,7 @@ Much better and readable way to call a function. Everyone knows what is happenin
 
 But do you really need to force your users to remember your parameter order that is probably inconvenient for them? 
 
-### Arbitrary order?
+## Arbitrary order?
 
 How about they can pass the parameters in an arbitrary order as they want?
 
@@ -51,7 +51,7 @@ How about they can pass the parameters in an arbitrary order as they want?
 
 Okay, this function is really user friendly now. 
 
-### A shorter way?
+## A shorter way?
 
 Do your users like to type a lot of commas and apostrophes? I don't think so. How about this function call?
 
@@ -59,7 +59,7 @@ Do your users like to type a lot of commas and apostrophes? I don't think so. Ho
 
 With __Simple Input Parser__ this is still a valid input for a function! 
 
-### An even shorter way?
+## An even shorter way?
 
 Well, there is much less character to type, but I can see repeated spaces between the keys. Do you want to force your users to type spaces if they don't necessary want to? What if they can left the spaces?
 
