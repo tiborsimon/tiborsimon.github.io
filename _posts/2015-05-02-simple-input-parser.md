@@ -4,7 +4,7 @@ title: Simple Input Parser
 categories: ['programming']
 tags: ['matlab']
 published: True
-
+excerpt_separator: <!--more-->
 ---
 
 Easy to use variable lenght input parser mechanism that provides a convenient way to enchance your custom function parameter handling.
@@ -21,6 +21,8 @@ The current version sports a _MATLAB_ implementation, but other language ports a
 - Compact yet clear parameter passing
 - Parameter validation by type
 - Custom validator functions
+
+<!--more-->
 
 ## Old way to call a function
 
