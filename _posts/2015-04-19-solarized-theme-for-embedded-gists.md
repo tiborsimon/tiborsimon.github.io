@@ -4,7 +4,6 @@ title: Solarized theme for embedded Gists
 categories: ['tools']
 tags: ['jekyll', 'web']
 published: True
-excerpt_separator: <!--more-->
 ---
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
