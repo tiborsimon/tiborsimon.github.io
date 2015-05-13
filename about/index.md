@@ -23,7 +23,7 @@ Remember kids, the only difference between Science  and screwing around is writi
 You should document what you have done, and what you want to achieve. Plan ahead. The extra time will pay back. Always test your work as many way as you can. One of the biggest invention of the modern programming ages the Test Driven Development. This is the only way in my opinion to produce reliable products. Tests give you confidence. Confidence to change or refactor your code. Tests also help you verify the freshly manufactured hardware. A good testing harness leaves no chance for the errors to hide or spread around. 
 
 <blockquote>
-The only way to go fast is to go well
+The only way to go fast is to go well..
 <cite>Uncle Bob Martin</cite>
 </blockquote>
 
