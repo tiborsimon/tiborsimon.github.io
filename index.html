@@ -35,7 +35,7 @@ image:
     {% endif %}
   </header>
   <div class="entry-content">
-    {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+    {{ post.excerpt }}
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
 {% endfor %}
