@@ -485,6 +485,10 @@ header .entry-meta {
 // Simple search
 // --------------------------------------------------
 
+#search-inpu {
+    margin-bottom: 20px;
+}
+
 input#search-input {
   width: 100%;
   opacity: 0.4;
@@ -501,4 +505,20 @@ input#search-input {
 input#search-input:focus {
   opacity: 0.8;
   outline: 0;
+}
+
+#results-container {
+    padding: 10px;
+}
+
+.search-result-block-container{
+    margin-bottom: 10px;
+}
+
+.search-result-block-title{
+    font-weight: 700;
+}
+
+.search-result-block-content{
+    font-size: 80%;
 }
