@@ -101,8 +101,8 @@ image:
     var code = evt.charCode || evt.keyCode;
     if (code == 27) {
         input.value = '';
-        input.trigger('change');
-        input.trigger('focusout');
+        input.refresh();
+        input.blur();
     }
   }
 </script>
