@@ -480,3 +480,16 @@ header .entry-meta {
 #goog-wm-sb {
     @extend .btn;
 }
+
+
+// Simple search
+// --------------------------------------------------
+
+input#search-input {
+  width: 100%;
+  opacity: 0.3;
+  text-align: center;
+  @include rounded(6px);
+  border: none;
+  box-shadow: 0 1px 4px inset;
+}
