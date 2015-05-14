@@ -487,7 +487,7 @@ header .entry-meta {
 
 input#search-input {
   width: 100%;
-  opacity: 0.3;
+  opacity: 0.4;
   text-align: center;
   @include rounded(6px);
   border: none;
@@ -495,6 +495,7 @@ input#search-input {
   color: #888;
   padding: 4px;
   font-size: 90%;
+  display: block;
 }
 
 input#search-input:focus {
