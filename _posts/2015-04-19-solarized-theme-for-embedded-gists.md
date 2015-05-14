@@ -2,7 +2,7 @@
 layout: post
 title: Solarized theme for embedded Gists
 categories: ['tools']
-tags: ['jekyll', 'web']
+tags: ['jekyll', 'web', 'css']
 published: True
 ---
 
