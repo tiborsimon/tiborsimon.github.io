@@ -94,12 +94,8 @@ image:
     resultsContainer: document.getElementById('results-container'),
     json: '{{ site.baseurl }}/search.json',
     searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
-    noResultsText: 'No results found',
+    noResultsText: '<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">Try to search another keyword.</div>',
     limit: 10,
     fuzzy: true,
   })
-  
-  $(document).keyup(function(e) {
-    if (e.keyCode == 27) { document.getElementById('search-input').value = ""; }   // escape key maps to keycode `27`
-  });
 </script>
