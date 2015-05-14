@@ -98,4 +98,8 @@ image:
     limit: 10,
     fuzzy: true,
   })
+  
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { document.getElementById('search-input').value = ""; }   // escape key maps to keycode `27`
+  });
 </script>
