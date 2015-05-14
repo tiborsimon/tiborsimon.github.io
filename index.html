@@ -100,7 +100,9 @@ image:
   function keyPressed(evt) {
    if (evt.keyCode == 27) {
       //clear your textbox content here...
-      document.getElementById("search-input").value = '';
+      var input = document.getElementById("search-input");
+      input.value = '';
+      input.blur();
       document.getElementById("results-container").innerHTML  = '';
    }
   }
