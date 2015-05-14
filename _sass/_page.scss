@@ -502,6 +502,10 @@ input#search-input:focus {
   outline: 0;
 }
 
+#results-container li { 
+    transition: all 0.2s ease-out;
+}
+
 #results-container li:nth-child(1)  { -webkit-transform: translate3d(0, 0%, 0); transform: translate3d(0, 0%, 0); }
 #results-container li:nth-child(2)  { -webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); }
 #results-container li:nth-child(3)  { -webkit-transform: translate3d(0, 200%, 0); transform: translate3d(0, 200%, 0); }
