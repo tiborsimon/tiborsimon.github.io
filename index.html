@@ -12,7 +12,7 @@ image:
 
 <!-- Search form -->
 <div id="search-container">
-    <input type="text" id="search-input" placeholder="search..">
+    <input type="text" id="search-input" placeholder="search.." onkeydown="keyPressed(event)">
     <div id="results-container"></div>
 </div>
 
@@ -97,13 +97,11 @@ image:
     fuzzy: true
   })
 
-  $(function() {
-    $("#search-input").keyup(function(e) {
-        if (e.keyCode == 27) {
-            $(this).val("");
-            $(this).trigger("change");
-            $(this).trigger("focusout");
-        }
-    });
-  });
+  function keyPressed(evt) {
+   if (evt.keyCode == 27) {
+      //clear your textbox content here...
+      document.getElementById("search-input").value = '';
+      document.getElementById("results-container").innerHTML  = '';
+   }
+  }
 </script>
