@@ -485,10 +485,6 @@ header .entry-meta {
 // Simple search
 // --------------------------------------------------
 
-#search-inpu {
-    margin-bottom: 20px;
-}
-
 input#search-input {
   width: 100%;
   opacity: 0.4;
@@ -508,17 +504,30 @@ input#search-input:focus {
 }
 
 #results-container {
-    padding: 10px;
+  background: white;
+  margin: 7px 0 18px;
+  box-shadow: 0 1px 4px #555 inset;
+  opacity: 0.8;
+  border-radius: 6px;
 }
 
 .search-result-block-container{
-    margin-bottom: 10px;
+	display: block;
+  padding: 20px 20px 0px;
+}
+
+.search-result-block-container:last-child {
+  padding: 20px 20px;
 }
 
 .search-result-block-title{
-    font-weight: 700;
+	font-weight: 700;
+  border-bottom: solid 1px #ddd;
 }
 
 .search-result-block-content{
-    font-size: 80%;
+	font-size: 80%;
+  margin-left: 0px;
+  text-align: justify;
+  margin: 2px 8px 0;
 }
