@@ -11,10 +11,10 @@ image:
 ---
 
 <!-- Search form -->
-<p id="search-demo-container">
+<div id="search-container">
     <input type="text" id="search-input" placeholder="search..">
-    <ul id="results-container"></ul>
-</p>
+    <div id="results-container"></div>
+</div>
 
 {% for post in paginator.posts %}
 <article class="hentry">
@@ -93,7 +93,7 @@ image:
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
     json: '{{ site.baseurl }}/search.json',
-    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+    searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}">{title}</a></div><div class="search-result-block-content">{excerpt}</div>',
     noResultsText: 'No results found',
     limit: 10,
     fuzzy: true,
