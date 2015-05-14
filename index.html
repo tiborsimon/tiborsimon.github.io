@@ -93,7 +93,7 @@ image:
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
     json: '{{ site.baseurl }}/search.json',
-    searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}">{title}</a></div><div class="search-result-block-content">{excerpt}</div>',
+    searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
     noResultsText: 'No results found',
     limit: 10,
     fuzzy: true,
