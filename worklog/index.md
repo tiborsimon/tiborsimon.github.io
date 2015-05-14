@@ -18,12 +18,8 @@ Work harder!
 </blockquote>
 
 
-| Left align | Right align | Center align |
-|:-----------|------------:|:------------:|
-| This       |        This |     This     
-| column     |      column |    column    
-| will       |        will |     will     
-| be         |          be |      be      
-| left       |       right |    center    
-| aligned    |     aligned |   aligned
+| Date | Project ID | Acomplished task |
+|:-----------|:------------|:------------|
+| 2015-05-14 | TSPR000074 | Jekyll simple search integrated    
+
 
