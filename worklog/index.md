@@ -21,6 +21,6 @@ Work harder!
 
 | Date | Project ID | Acomplished task |
 |:-----------|:------------|:------------|
-| 2015-05-14 | TSPR000074 | Jekyll simple search integrated    
+| 2015-05-14 | TSPR000074 | Simple Jekyll search was integrated    
 
 
