@@ -12,7 +12,7 @@ image:
 
 <!-- Search form -->
 <div id="search-container">
-    <input type="text" id="search-input" placeholder="search.." onkeydown="keyPressed(event)">
+    <input type="text" class="focusable focused" id="search-input" placeholder="search.." onkeydown="keyPressed(event)">
     <div id="results-container"></div>
 </div>
 
@@ -91,7 +91,7 @@ image:
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
     json: '{{ site.baseurl }}/search.json',
-    searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}" tabindex="1"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
+    searchResultTemplate: '<div class="search-result-block-container"><div class="search-result-block-title"><a href="{url}" title="Open {title}" class="focusable"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
     noResultsText: '<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">The search algorithm tries to match your input to the following post parameters: <ul><li>title</li><li>category</li><li>tags</li><li>url</li><li>date</li><li>excerpt</li></ul>Make sure you pass the right keyword according to your needs.<br />You can search for a date as well. The accepted format is: <i>yyyy-mm-dd</i>.</div>',
     limit: 15,
     fuzzy: true
@@ -106,4 +106,19 @@ image:
       document.getElementById("results-container").innerHTML  = '';
    }
   }
+
+  // init
+  $('.focused').focus();
+
+  // actual code
+  $(document).keydown(function(e){    
+      if (e.keyCode == 38) { // up
+          if($('.focused').prev('.focusable').length)
+              $('.focused').removeClass('focused').prev('.focusable').focus().addClass('focused');
+      }
+      if (e.keyCode == 40) { // down
+          if($('.focused').next('.focusable').length)
+              $('.focused').removeClass('focused').next('.focusable').focus().addClass('focused');
+      }
+  });
 </script>

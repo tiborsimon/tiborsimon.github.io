@@ -55,8 +55,16 @@ The existing solutions are fine, but neither of them suffice my requirements:
 
 1. __Instantaneous__ - search results should appear during typing
 1. __Custom not found message__ - instead of a blank result placeholder
+1. __Standard behavior__ - be able to respond keystrokes: arrows and esc key
 1. __Transparent design__ - the search field should be an organic part of the existing design
-1. __Standard behavior__ - be able to respond keystrokes
+
+
+
+
+Arrow keys
+http://stackoverflow.com/a/11088943
+http://jsfiddle.net/FehKh/
+
 
 
 
