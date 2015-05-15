@@ -11,7 +11,7 @@ comments: false
 ---
 
 <blockquote>
-If a day passed without accomplished something new you were dead for that day..
+If a day passed without accomplished something new, you were dead for that day..
 <cite>Adam Savage's uncle</cite>
 </blockquote>
 
@@ -27,6 +27,6 @@ Work harder!
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
 | 2015-05-14 | TSPR000074 | Simple Jekyll search system was integrated    
-| 2015-05-15 | TSPR000074 | Writing Simple Jekyll search system article and experimenting with jQuery
+| 2015-05-15 | TSPR000074 | Writing Simple Jekyll search system article<br>and experimenting with jQuery
 
 
