@@ -11,7 +11,7 @@ Searching on a static website? Yep, it can be done easily. The only things you n
 
 I was looking for the best possible solution to integrate a search system into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
 
-## Basic construction 
+# Basic construction 
 
 There are already some implementations which provided a solid base for my project. The existing implementations are the following[^1]:
 
@@ -38,7 +38,27 @@ Because we are dealing with static sites, the only considerable method for a sea
 
 ## Trigger mechanism
 
-Almost every solution features 
+There are two solutions for this problem:
+
+- the traditional one that uses a search button to trigger the search event
+- the instantaneous one that provides the search result immediately, based on a _javascript_ or _AJAX_ event
+
+All mechanism are basic web development techniques, so nothing special here neither.
+
+# Existing solution summary
+
+The existing solutions are fine, but they introduce unwanted dependencies like: bowser, new ruby gem. These could be useful someone, but for me, they are just headaches..
+
+# My solution
+
+The existing solutions are fine, but neither of them suffice my requirements:
+
+1. __Instantaneous__ - search results should appear during typing
+1. __Custom not found message__ - instead of a blank result placeholder
+1. __Transparent design__ - the search field should be an organic part of the existing design
+1. __Standard behavior__ - be able to respond keystrokes
+
+
 
 
 [^1]: At least I have found these ones during my research
