@@ -10,7 +10,12 @@ share: true
 comments: false
 ---
 
-This might be a table..
+<blockquote>
+If a day passed without accomplished something new you were dead for that day..
+<cite>Adam Savage's uncle</cite>
+</blockquote>
+
+I am going to keep a diary like 
 
 
 <blockquote>
@@ -19,8 +24,9 @@ Work harder!
 </blockquote>
 
 
-| Date | Project ID | Acomplished task |
+| Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-05-14 | TSPR000074 | Simple Jekyll search was integrated    
+| 2015-05-14 | TSPR000074 | Simple Jekyll search system was integrated    
+| 2015-05-15 | TSPR000074 | Writing Simple Jekyll search system article and experimenting with jQuery
 
 
