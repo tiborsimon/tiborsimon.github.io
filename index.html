@@ -97,28 +97,74 @@ image:
     fuzzy: true
   })
 
-  function keyPressed(evt) {
-   if (evt.keyCode == 27) {
-      //clear your textbox content here...
-      var input = document.getElementById("search-input");
-      input.value = '';
-      input.blur();
-      document.getElementById("results-container").innerHTML  = '';
-   }
+  var current = null;
+
+  function get_next() {
+      if (current == null) {
+          current = $('.focusable').first();
+      } else {
+          if (!current.is($('.focusable').last())) {
+              current = current.next('.focusable');
+          }
+      }
+      return current;
   }
 
-  // init
-  $('.focused').focus();
-
-  // actual code
-  $(document).keydown(function(e){    
-      if (e.keyCode == 38) { // up
-          if($('.focused').prev('.focusable').length)
-              $('.focused').removeClass('focused').prev('.focusable').focus().addClass('focused');
+  function get_prev() {
+      if (current == null) {
+          current = $('.focusable').last();
+      } else {
+          if (!current.is($('.focusable').first())) {
+              current = current.prev('.focusable');
+          }
       }
-      if (e.keyCode == 40 || e.keyCode == 9) { // down
-          if($('.focused').next('.focusable').length)
-              $('.focused').removeClass('focused').next('.focusable').focus().addClass('focused');
+      return current;
+  }
+
+  function invalidate_selection() {
+      if (current != null) {
+          current.removeClass('selected');
+          current = null;
+      }
+  }
+
+  function select_next() {
+      if (current != null) {
+          current.removeClass('selected');
+      }
+      current = get_next().addClass('selected');
+  }
+
+  function select_prev() {
+      if (current != null) {
+          current.removeClass('selected');
+      }
+      current = get_prev().addClass('selected');
+  }
+
+  function goto_current_link() {
+      window.open(current.find('a').attr('href'),'_self');
+  }
+
+
+  $(window).keydown(function (e) {
+      if (e.which === 40) { // down
+          select_next();
+      } else if (e.which === 38) { // up
+          select_prev();
+      } else if (e.which === 27) { // esc
+          finishSearch();
+          invalidate_selection();
+      } else if (e.which === 13) { // enter
+          goto_current_link();
+      } else {
+          invalidate_selection();
       }
   });
+
+  function finishSearch() {
+      $('#results-container').html('');
+      $('#search-input').val('');
+      $('#search-input').blur();
+  }
 </script>

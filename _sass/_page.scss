@@ -511,6 +511,10 @@ input#search-input:focus {
   border-radius: 6px;
 }
 
+#result-contailer .selected {
+    background-color: yellow;
+}
+
 .search-result-block-container{
 	display: block;
   padding: 20px 20px 0px;
