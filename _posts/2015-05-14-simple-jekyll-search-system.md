@@ -30,7 +30,7 @@ Among few differences, every method was based around three main pillar:
 
 Every method use the same technique to create a static database. They are generating a `.json` file based on the site's content with _ruby_ or _liquid_ script. The file is generated during site compilation so getting the database data is equivalent as downloading a script file from the hosting server.
 
-The `.json` file content is configured by the user. It can be contain any data you can set for a post or other searchable objects on the site.
+The `.json` file content is configured by the user. It can be contain any data you can set for a post or other searchable objects on the site. With this file the search engine can match tags, categories, titles, dates, excerpts or the entire post content as well. Very usable feature.
 
 ## Searching algorithm
 
@@ -89,7 +89,15 @@ There is an editable _wrap around_ parameter which makes it possible to stop the
 
 ## 3. Transparent design
 
-I wanted 
+To create a fully blended in design I used these CSS rules for the project:
+
+{% gist tiborsimon/8015a8cb0311d6d16024 %}
+
+The search functionality is available only on the main page. I saw no reason to make it accessible on other pages.
+
+# Summary
+
+
 
 
 
