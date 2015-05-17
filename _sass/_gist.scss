@@ -15,6 +15,10 @@
     color: $selection-color;
   }
 
+  td {
+    border-top: none;
+  }
+
   .highlight {
     border-collapse: separate;
     border-spacing: 0;
