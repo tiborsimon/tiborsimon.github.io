@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple Jekyll search system
-categories: ['category']
+categories: ['tools']
 tags: ['jekyll', 'web', 'css', 'plugin']
 published: True
 
