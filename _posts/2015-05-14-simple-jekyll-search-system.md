@@ -60,13 +60,28 @@ The existing solutions are fine, but neither of them suffice my requirements:
 
 My starting point was _Christian Fei's_ [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search) project. This provided an instantaneous response as you typed in the search field.
 
-## 1. __Instantaneous__
+## 1. Instantaneous
 
 As you can see on [Chris' demo page](http://christian.fei.ninja/Simple-Jekyll-Search/), the search system responds immediately as you start typing. This is what I want. As less friction as I can get. If you have to press an additional button to list the results, that is an unnecessary extra action.. As the database is statically in a file, there is no point to force the user to click a button.
 
 Chris' solution contains the basic structure that provides this feature. He uses a minified javascript file that can capture the real time input of a dedicated input field, and produce output to a dedicated place on your site.
 
 {% gist tiborsimon/b1ea90fc8623fb5cd668 %}
+
+Check out the [Simple Jekyll Search repository](https://github.com/christian-fei/Simple-Jekyll-Search) for more details of the editable parameters.
+
+
+## 2. Standard behavior
+
+If I am using a search field I expect a standard behavior from it:
+
+1. Be able to navigate between the results with the arrow keys.
+1. Be able to abort the whole search procedure by pressing the ESC key.
+
+The small script I came up with provides this features. You can try the raw version:
+
+<iframe width="100%" height="300" src="//jsfiddle.net/Vtn5Y/869/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
 
 
 
