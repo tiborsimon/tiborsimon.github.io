@@ -1,5 +1,18 @@
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 
+<script type="text/javascript">
+    $('a').each(function() {
+       var a = new RegExp('/' + window.location.host + '/');
+       if(!a.test(this.href)) {
+           $(this).click(function(event) {
+               event.preventDefault();
+               event.stopPropagation();
+               window.open(this.href, '_blank');
+           });
+       }
+    });
+</script>
+
 {% if site.google_analytics %}
 <!-- Asynchronous Google Analytics snippet -->
 <script>
