@@ -101,24 +101,7 @@ You can test the finished search engine on the main page of this site. If you sa
 
 <a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub</a>
 
-
-
-
-
-
-
-
-
-
-
-Arrow keys
-http://stackoverflow.com/a/11088943
-http://jsfiddle.net/FehKh/
-
-
-
-
-
+---
 [^1]: At least I have found these ones during my research
 
 
