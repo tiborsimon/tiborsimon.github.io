@@ -576,8 +576,6 @@ td {
   font-size: 90%;
   padding-left: 6px;
   padding-bottom: 6px;
-  border-bottom: solid 1px #ccc;
-  :last-child {
-    border: none;
-  }
+  border-top: solid 1px #ccc;
+  box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
 }
