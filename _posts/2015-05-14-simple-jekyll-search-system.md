@@ -69,6 +69,12 @@ Chris' solution contains the basic structure that provides this feature. He uses
 
 Check out the [Simple Jekyll Search repository](https://github.com/christian-fei/Simple-Jekyll-Search) for more details of the editable parameters.
 
+To create a static database, I use the same solution as every other implementation do: a skeleton `.json` file with _Liquid_ and _Front Matter_.
+
+{% gist tiborsimon/5ae2d5fa3f6a2c6b3ec5 %}
+
+If you want to add more fields, make sure you stript the html with _Liquid_. Also keep in mind that your file have to be `json` compliant.
+
 
 ## 2. Standard behavior
 
