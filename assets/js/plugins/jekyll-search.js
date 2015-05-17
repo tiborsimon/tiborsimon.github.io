@@ -20,21 +20,6 @@
 //                Tibor Simon 2015 all rights reserved
 //
 //=============================================================================
-//                    S E A R C H   E N G I N E   C A L L
-//=============================================================================
-
-SimpleJekyllSearch({
-  searchInput: document.getElementById('search-input'),
-  resultsContainer: document.getElementById('results-container'),
-  json: '/search.json',
-  searchResultTemplate: '<div class="search-result-block-container focusable"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
-  noResultsText: '<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">The search algorithm tries to match your input to the following post parameters: <ul><li>title</li><li>category</li><li>tags</li><li>url</li><li>date</li><li>excerpt</li></ul>Make sure you pass the right keyword according to your needs.<br />You can search for a date as well. The accepted format is: <i>yyyy-mm-dd</i>.</div>',
-  limit: 15,
-  fuzzy: true
-})
-
-
-//=============================================================================
 //         N A V I G A T I O N   A N D   E V E N T   H A N D L I N G
 //=============================================================================
 
@@ -348,3 +333,18 @@ $(window).keydown(function (e) {
         "./Templater": 6
     }]
 }, {}, [7]);
+
+
+//=============================================================================
+//                    S E A R C H   E N G I N E   C A L L
+//=============================================================================
+
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '/search.json',
+  searchResultTemplate: '<div class="search-result-block-container focusable"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
+  noResultsText: '<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">The search algorithm tries to match your input to the following post parameters: <ul><li>title</li><li>category</li><li>tags</li><li>url</li><li>date</li><li>excerpt</li></ul>Make sure you pass the right keyword according to your needs.<br />You can search for a date as well. The accepted format is: <i>yyyy-mm-dd</i>.</div>',
+  limit: 15,
+  fuzzy: true
+})
