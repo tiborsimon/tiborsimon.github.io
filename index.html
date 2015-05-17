@@ -100,10 +100,10 @@ image:
   var current = null;
 
   function get_next() {
-      if (!$(current).is('.focusable')) {
+      if (current == null) {
           current = $('.focusable').first();
       } else {
-          if (current != null && !$(current).is($('.focusable').last())) {
+          if (!current.is($('.focusable').last())) {
               current = current.next('.focusable');
           }
       }
@@ -111,10 +111,10 @@ image:
   }
 
   function get_prev() {
-      if (!$(current).is('.focusable')) {
+      if (current == null) {
           current = $('.focusable').last();
       } else {
-          if (current != null && !$(current).is($('.focusable').first())) {
+          if (!current.is($('.focusable').first())) {
               current = current.prev('.focusable');
           }
       }
@@ -122,21 +122,21 @@ image:
   }
 
   function invalidate_selection() {
-      if (current != null && !$(current).is('.focusable')) {
+      if (current != null) {
           current.removeClass('selected');
           current = null;
       }
   }
 
   function select_next() {
-      if (current != null && !$(current).is('.focusable')) {
+      if (current != null) {
           current.removeClass('selected');
       }
       current = get_next().addClass('selected');
   }
 
   function select_prev() {
-      if (current != null && !$(current).is('.focusable')) {
+      if (current != null) {
           current.removeClass('selected');
       }
       current = get_prev().addClass('selected');
@@ -147,7 +147,7 @@ image:
   }
 
 
-  $(window).keyup(function (e) {
+  $(window).keydown(function (e) {
       if (e.which === 40) { // down
           select_next();
       } else if (e.which === 38) { // up
@@ -158,7 +158,7 @@ image:
       } else if (e.which === 13) { // enter
           goto_current_link();
       } else {
-          //invalidate_selection();
+          invalidate_selection();
       }
   });
 

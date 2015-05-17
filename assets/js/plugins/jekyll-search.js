@@ -191,7 +191,13 @@
 
             function registerInput() {
                 opt.searchInput.addEventListener("keyup", function(e) {
-                    return 0 == e.target.value.length ? void emptyResultsContainer() : void render(searcher.search(store, e.target.value))
+                    if (e.which === 40 || e.which === 38) {
+                        // nothing to do..
+                    } else if (0 == e.target.value.length) {
+                        return void emptyResultsContainer();
+                    } else {
+                        return void render(searcher.search(store, e.target.value));
+                    }
                 })
             }
 
