@@ -55,7 +55,6 @@ The existing solutions are fine, but neither of them suffice my requirements:
 
 1. __Instantaneous__ - search results should appear during typing
 1. __Standard behavior__ - be able to respond keystrokes: arrows and esc key
-1. __Custom not found message__ - instead of a blank result placeholder
 1. __Transparent design__ - the search field should be an organic part of the existing design
 
 My starting point was _Christian Fei's_ [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search) project. This provided an instantaneous response as you typed in the search field.
@@ -78,9 +77,22 @@ If I am using a search field I expect a standard behavior from it:
 1. Be able to navigate between the results with the arrow keys.
 1. Be able to abort the whole search procedure by pressing the ESC key.
 
-The small script I came up with provides this features. You can try the raw version:
+The small script I came up with provides this features. You can try out the raw version:
 
-<iframe width="100%" height="300" src="//jsfiddle.net/Vtn5Y/869/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/Vtn5Y/870/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+This script responds to the `UP`, `DOWN`, `ESC` and `ENTER` key events. You can select the search results with the `UP` and `DOWN` keys, choose the selected result by pressing `ENTER`, and abort the search with `ESC`. By selecting a result with the arrow keys, the script assigns a custom CSS class to the selected result, which makes it selected visually.
+
+To make the search engine compatible with this script, I had to make it not to response to the `UP` and `DOWN` during navigation. This was necessary, as the search engine refreshes the result content on every key strokes, and overrides the assigned selection CSS classes, and the selection goes away.
+
+There is an editable _wrap around_ parameter which makes it possible to stop the selection at the top and bottom of the result array, or to wrap around by demand.
+
+## 3. Transparent design
+
+I wanted 
+
+
+
 
 
 
