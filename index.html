@@ -100,7 +100,7 @@ image:
   var current = null;
 
   function get_next() {
-      if (current != null && !$(current).is('.focusable')) {
+      if (!$(current).is('.focusable')) {
           current = $('.focusable').first();
       } else {
           if (current != null && !$(current).is($('.focusable').last())) {
@@ -111,7 +111,7 @@ image:
   }
 
   function get_prev() {
-      if (current != null && !$(current).is('.focusable')) {
+      if (!$(current).is('.focusable')) {
           current = $('.focusable').last();
       } else {
           if (current != null && !$(current).is($('.focusable').first())) {
