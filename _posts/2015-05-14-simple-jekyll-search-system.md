@@ -66,7 +66,7 @@ As you can see on [Chris' demo page](http://christian.fei.ninja/Simple-Jekyll-Se
 
 Chris' solution contains the basic structure that provides this feature. He uses a minified javascript file that can capture the real time input of a dedicated input field, and produce output to a dedicated place on your site.
 
-{{ gist tiborsimon/b1ea90fc8623fb5cd668 }}
+{% gist tiborsimon/b1ea90fc8623fb5cd668 %}
 
 
 
