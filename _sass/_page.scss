@@ -552,21 +552,18 @@ input#search-input:focus {
 table {
   margin-bottom: 29px;
   border: solid 1px #ccc;
-  border-radius: 6px;
+  @include rounded(6px);
   border-collapse: separate;
   border-spacing: 0;
   box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
+  overflow: hidden;
 }
 
 thead {
   background: #eee;
-  /* padding: 0; */
-  /* margin: 0; */
   border-collapse: separate;
   border-spacing: 0;
   border: none;
-  /* padding-left: 10px; */
-  /* margin: 2px; */
 }
 
 th {
