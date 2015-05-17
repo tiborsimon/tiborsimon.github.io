@@ -544,3 +544,40 @@ input#search-input:focus {
   text-align: justify;
   margin: 2px 8px 0;
 }
+
+
+// Table
+// --------------------------------------------------
+
+table {
+  margin-bottom: 29px;
+  border: solid 1px #ccc;
+  border-radius: 6px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead {
+  background: #eee;
+  /* padding: 0; */
+  /* margin: 0; */
+  border-collapse: separate;
+  border-spacing: 0;
+  border: none;
+  /* padding-left: 10px; */
+  /* margin: 2px; */
+}
+
+th {
+  padding: 5px;
+}
+
+td {
+  font-size: 90%;
+  padding-left: 6px;
+  padding-bottom: 6px;
+  border-bottom: solid 1px #ccc;
+  :last-child {
+    border: none;
+  }
+}

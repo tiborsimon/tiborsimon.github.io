@@ -10,6 +10,8 @@ share: true
 comments: false
 ---
 
+# Motivation
+
 <blockquote>
 If a day passed without accomplished something new, you were dead for that day..
 <cite>Adam Savage's uncle</cite>
@@ -23,6 +25,7 @@ Work harder!
 <cite>Casey Neistat</cite>
 </blockquote>
 
+# Work Log
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
