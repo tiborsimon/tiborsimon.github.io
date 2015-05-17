@@ -40,15 +40,7 @@ The biggest problem during the refactoring was that Pygments and the syntax colo
 
 | Pygments CSS classes   |      Gist CSS classes      |
 |:--------:|:-------------:|
-|.hll .c .err .g .k .l .n .o .x  | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp.pl-mr .pl-s1   |
-|.p .cm .cp .c1 .cs .gd .ge .gr  | .pl-v .pl-s3 .pl-sc .pl-sv .pl-e .pl-en .pl-s1    |
-|.gh .gi .go .gp .gs .gu .gt .kc | .pl-s2 .pl-smi .pl-smp .pl-stj .pl-vo .pl-vpf     |
-|.kd .kn .kp .kr .kt .ld .m .s   | .pl-ent .pl-k .pl-s .pl-st.pl-pds .pl-s1 .pl-s1   |
-|.na .nb .nc .no .nd .ni .ne .nf | .pl-pse .pl-s2 .pl-sr .pl-sr .pl-cce .pl-sr       |
-|.nl .nn .nx .py .nt .nv .ow .w  | .pl-sra .pl-sr .pl-sre .pl-src .pl-mo .pl-v       |
-|.mf .mh .mi .mo .sb .sc .sd .s2 | .pl-id .pl-ii.pl-sr .pl-cce .pl-ml .pl-mh .pl-mh  |
-|.se .sh .si .sx .sr .s1 .ss .bp | .pl-en .pl-ms .pl-mq .pl-mi.pl-mb .pl-md .pl-mdhf |
-|.vc .vg .vi .il                 | .pl-mdht .pl-mi1 .pl-mdr                          |
+|.hll .c .err .g .k .l .n .o .x<br>.p .cm .cp .c1 .cs .gd .ge .gr<br>.gh .gi .go .gp .gs .gu .gt .kc<br>.kd .kn .kp .kr .kt .ld .m .s<br>.na .nb .nc .no .nd .ni .ne .nf<br>.nl .nn .nx .py .nt .nv .ow .w<br>.mf .mh .mi .mo .sb .sc .sd .s2<br>.se .sh .si .sx .sr .s1 .ss .bp<br>.vc .vg .vi .il | .pl-c .pl-c1 .pl-mdh .pl-mm .pl-mp.pl-mr .pl-s1<br>.pl-v .pl-s3 .pl-sc .pl-sv .pl-e .pl-en .pl-s1<br>.pl-s2 .pl-smi .pl-smp .pl-stj .pl-vo .pl-vpf<br>.pl-ent .pl-k .pl-s .pl-st.pl-pds .pl-s1 .pl-s1<br>.pl-pse .pl-s2 .pl-sr .pl-sr .pl-cce .pl-sr<br>.pl-sra .pl-sr .pl-sre .pl-src .pl-mo .pl-v<br>.pl-id .pl-ii.pl-sr .pl-cce .pl-ml .pl-mh .pl-mh<br>.pl-en .pl-ms .pl-mq .pl-mi.pl-mb .pl-md .pl-mdhf<br>.pl-mdht .pl-mi1 .pl-mdr |
 
 
 

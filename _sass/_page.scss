@@ -555,6 +555,7 @@ table {
   border-radius: 6px;
   border-collapse: separate;
   border-spacing: 0;
+  box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
 }
 
 thead {
@@ -577,5 +578,4 @@ td {
   padding-left: 6px;
   padding-bottom: 6px;
   border-top: solid 1px #ccc;
-  box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
 }
