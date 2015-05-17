@@ -7,7 +7,7 @@ published: True
 
 ---
 
-Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site. This method is also compatible with the GitHub Pages hosting service.
+Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site. This method is also compatible with GitHubPages.
 
 I was looking for the best possible solution to integrate a search system into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
 
@@ -54,9 +54,20 @@ The existing solutions are fine, but they introduce unwanted dependencies like: 
 The existing solutions are fine, but neither of them suffice my requirements:
 
 1. __Instantaneous__ - search results should appear during typing
-1. __Custom not found message__ - instead of a blank result placeholder
 1. __Standard behavior__ - be able to respond keystrokes: arrows and esc key
+1. __Custom not found message__ - instead of a blank result placeholder
 1. __Transparent design__ - the search field should be an organic part of the existing design
+
+My starting point was _Christian Fei's_ [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search) project. This provided an instantaneous response as you typed in the search field.
+
+## 1. __Instantaneous__
+
+As you can see on [Chris' demo page](http://christian.fei.ninja/Simple-Jekyll-Search/), the search system responds immediately as you start typing. This is what I want. As less friction as I can get. If you have to press an additional button to list the results, that is an unnecessary extra action.. As the database is statically in a file, there is no point to force the user to click a button.
+
+Chris' solution contains the basic structure that provides this feature. He uses a minified javascript file that can capture the real time input of a dedicated input field, and produce output to a dedicated place on your site.
+
+{{ gist tiborsimon/b1ea90fc8623fb5cd668 }}
+
 
 
 
