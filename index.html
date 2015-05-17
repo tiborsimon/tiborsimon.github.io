@@ -100,10 +100,10 @@ image:
   var current = [];
 
   function get_next() {
-      if (!$(current).is('.focusable')) {
+      if (current != null && !$(current).is('.focusable')) {
           current = $('.focusable').first();
       } else {
-          if (!$(current).is($('.focusable').last())) {
+          if (current != null && !$(current).is($('.focusable').last())) {
               current = current.next('.focusable');
           }
       }
@@ -111,10 +111,10 @@ image:
   }
 
   function get_prev() {
-      if (!$(current).is('.focusable')) {
+      if (current != null && !$(current).is('.focusable')) {
           current = $('.focusable').last();
       } else {
-          if (!$(current).is($('.focusable').first())) {
+          if (current != null && !$(current).is($('.focusable').first())) {
               current = current.prev('.focusable');
           }
       }
@@ -122,21 +122,21 @@ image:
   }
 
   function invalidate_selection() {
-      if (!$(current).is('.focusable')) {
+      if (current != null && !$(current).is('.focusable')) {
           current.removeClass('selected');
           current = null;
       }
   }
 
   function select_next() {
-      if (!$(current).is('.focusable')) {
+      if (current != null && !$(current).is('.focusable')) {
           current.removeClass('selected');
       }
       current = get_next().addClass('selected');
   }
 
   function select_prev() {
-      if (!$(current).is('.focusable')) {
+      if (current != null && !$(current).is('.focusable')) {
           current.removeClass('selected');
       }
       current = get_prev().addClass('selected');
