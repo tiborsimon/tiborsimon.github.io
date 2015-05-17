@@ -555,15 +555,12 @@ table {
   @include rounded(6px);
   border-collapse: separate;
   border-spacing: 0;
-  box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
+  @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
   overflow: hidden;
 }
 
 thead {
   background: #eee;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: none;
 }
 
 th {
