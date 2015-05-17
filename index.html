@@ -88,11 +88,11 @@ image:
 
 <script type="text/javascript">
   SimpleJekyllSearch({
-    searchInput: document.getElementById("search-input"),
-    resultsContainer: document.getElementById("results-container"),
-    json: "{{ site.baseurl }}/search.json",
-    searchResultTemplate: "<div class="search-result-block-container focusable"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>",
-    noResultsText: "<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">The search algorithm tries to match your input to the following post parameters: <ul><li>title</li><li>category</li><li>tags</li><li>url</li><li>date</li><li>excerpt</li></ul>Make sure you pass the right keyword according to your needs.<br />You can search for a date as well. The accepted format is: <i>yyyy-mm-dd</i>.</div>",
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ site.baseurl }}/search.json',
+    searchResultTemplate: '<div class="search-result-block-container focusable"><div class="search-result-block-title"><a href="{url}" title="Open {title}"><i class="fa fa-link"></i> {title}</a></div><div class="search-result-block-content">{excerpt}</div>',
+    noResultsText: '<div class="search-result-block-container"><div class="search-result-block-title"><i class="fa fa-exclamation-triangle"></i> No results were found..</div><div class="search-result-block-content">The search algorithm tries to match your input to the following post parameters: <ul><li>title</li><li>category</li><li>tags</li><li>url</li><li>date</li><li>excerpt</li></ul>Make sure you pass the right keyword according to your needs.<br />You can search for a date as well. The accepted format is: <i>yyyy-mm-dd</i>.</div>',
     limit: 15,
     fuzzy: true
   })
@@ -101,10 +101,10 @@ image:
 
   function get_next() {
       if (current == null) {
-          current = $(".focusable").first();
+          current = $('.focusable').first();
       } else {
-          if (!current.is($(".focusable").last())) {
-              current = current.next(".focusable");
+          if (!current.is($('.focusable').last())) {
+              current = current.next('.focusable');
           }
       }
       return current;
@@ -112,10 +112,10 @@ image:
 
   function get_prev() {
       if (current == null) {
-          current = $(".focusable").last();
+          current = $('.focusable').last();
       } else {
-          if (!current.is($(".focusable").first())) {
-              current = current.prev(".focusable");
+          if (!current.is($('.focusable').first())) {
+              current = current.prev('.focusable');
           }
       }
       return current;
@@ -123,32 +123,32 @@ image:
 
   function invalidate_selection() {
       if (current != null) {
-          current.removeClass("selected");
+          current.removeClass('selected');
           current = null;
       }
   }
 
   function select_next() {
       if (current != null) {
-          current.removeClass("selected");
+          current.removeClass('selected');
       }
-      current = get_next().addClass("selected");
+      current = get_next().addClass('selected');
   }
 
   function select_prev() {
       if (current != null) {
-          current.removeClass("selected");
+          current.removeClass('selected');
       }
-      current = get_prev().addClass("selected");
+      current = get_prev().addClass('selected');
   }
 
   function goto_current_link() {
-      window.open(current.find("a").attr("href"),"_self");
+      window.open(current.find('a').attr('href'),'_self');
   }
 
 
   $(window).keydown(function (e) {
-      if ($("#search-input").is(":focus")) {
+      if ($('#search-input').is(":focus")) {
         if (e.which === 40) { // down
             select_next();
         } else if (e.which === 38) { // up
@@ -165,8 +165,8 @@ image:
   });
 
   function finishSearch() {
-      $("#results-container").html("");
-      $("#search-input").val("");
-      $("#search-input").blur();
+      $('#results-container').html('');
+      $('#search-input').val('');
+      $('#search-input').blur();
   }
 </script>
