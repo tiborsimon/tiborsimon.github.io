@@ -74,8 +74,8 @@ Check out the [Simple Jekyll Search repository](https://github.com/christian-fei
 
 If I am using a search field I expect a standard behavior from it:
 
-1. Be able to navigate between the results with the arrow keys.
-1. Be able to abort the whole search procedure by pressing the ESC key.
+1. Be able to navigate between the results with the `UP` and `DOWN` arrow keys.
+1. Be able to abort the whole search procedure by pressing the `ESC` key.
 
 The small script I came up with provides this features. You can try out the raw version:
 
@@ -99,7 +99,7 @@ The search functionality is available only on the main page. I saw no reason to 
 
 You can test the finished search engine on the main page of this site. If you satisfied with it, you can adopt to your own Jekyll site by forking it's GitHub repository.
 
-<a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub</a>
+<a href='https://github.com/tiborsimon/jekyll-search-system' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub repository</a>
 
 ---
 [^1]: At least I have found these ones during my research
