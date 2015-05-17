@@ -7,7 +7,7 @@ published: True
 
 ---
 
-As Jekyll uses Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not? Hopefully, there is a simple javascript hack, that can redirect your external links to a new tab.
+As Jekyll uses Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not? Hopefully, there is a simple javascript hack, that can redirect your external links to a new blank tab.
 
 All the credits goes to [Austin](http://stackoverflow.com/users/1504966/austin) and to his [stackoverflow post](http://stackoverflow.com/a/11597448). I am just a happy user of this method :)
 
