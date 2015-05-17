@@ -9,11 +9,11 @@ published: True
 
 Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site. This method is also compatible with GitHubPages.
 
-I was looking for the best possible solution to integrate a search system into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
+I was looking for the best possible solution to integrate a search engine into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
 
-# Basic construction 
+# Existing solutions 
 
-There are already some implementations which provided a solid base for my project. The existing implementations are the following[^1]:
+There are already a few implementations which provide a solid base for my project. The existing implementations are the following[^1]:
 
 - [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search) by _Christian Fei_
 - [Jekyll + lunr.js](https://github.com/slashdotdash/jekyll-lunr-js-search) by _slashdotdash_
@@ -96,6 +96,10 @@ To create a fully blended in design I used these CSS rules for the project:
 The search functionality is available only on the main page. I saw no reason to make it accessible on other pages.
 
 # Summary
+
+You can test the finished search engine on the main page of this site. If you satisfied with it, you can adopt to your own Jekyll site by forking it's GitHub repository.
+
+<a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub</a>
 
 
 
