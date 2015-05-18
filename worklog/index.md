@@ -13,7 +13,7 @@ comments: false
 # Motivation
 
 <blockquote>
-If a day passed without accomplished something new, you were dead for that day..
+If a day passed without learning something new, you were dead for that day..
 <cite>Adam Savage's uncle</cite>
 </blockquote>
 
