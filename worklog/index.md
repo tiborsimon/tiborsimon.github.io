@@ -29,6 +29,7 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-05-18 | TSPR000055 | Testing the _winreg_ and _pydispatcher_ python library
 | 2015-05-17 | TSPR000074 | Finished Simple Jekyll search system and <br>[article](http://tiborsimon.github.io/tools/simple-jekyll-search-system/). [Redirect article.](http://tiborsimon.github.io/tools/redirect-external-links-to-new-tab/)
 | 2015-05-16 | TSPR000074 | Working on the search system..
 | 2015-05-15 | TSPR000074 | Writing Simple Jekyll search system article<br>and experimenting with jQuery
