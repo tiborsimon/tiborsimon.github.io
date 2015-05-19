@@ -12,9 +12,6 @@ comments: false
 
 # Motivation
 
-
-# Work Log
-
 | # | Date | Time | Distance | Avg. speed | Route |
 |:-----|:-----|:-----|:-----|:-----|:-----|
 | 1 | 2015-05-18 | 14:10 | 2.67 km | 11.3 km/h | <a href="https://github.com/tiborsimon/jekyll-search-system"><i class="fa fa-map-marker"></i> Download GPX</a> |
