@@ -71,6 +71,13 @@ _Make sure you are using SASS to preprocess your CSS files otherwise this method
 
 {% gist tiborsimon/9f32036b30be1954ecf4 %}
 
+## Contribution
+
+Contributions are welcomed as well as tips and suggestions for the project. If you want to discuss anything according to the project, you can do it on the Gitter thread of the project
+
+<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub repository</a><br />
+<a href='https://github.com/tiborsimon/solarized-gist/issues/new' class="btn-info btn centered"><i class="fa fa-bullhorn"></i> Go to Gitter</a><a href='https://github.com/tiborsimon/solarized-gist/issues/new' class="btn-info btn centered"><i class="fa fa-exclamation-circle fa-spin"></i> Report an Issue</a>
+
 ## Summary
 
 This CSS trick provide you the opportunity to post solarized code snippets to your site. One refinement could be a javascript script that prevents the site to load the original Gist CSS file, but since it isn't a huge overhead, I left it there.
