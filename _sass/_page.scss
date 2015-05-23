@@ -546,4 +546,34 @@ input#search-input:focus {
 }
 
 
+// Table
+// --------------------------------------------------
 
+table {
+  margin-bottom: 29px;
+  border: solid 1px #ccc;
+  @include rounded(6px);
+  border-collapse: separate;
+  border-spacing: 0;
+  @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
+  overflow: hidden;
+}
+
+thead {
+  background: #eee;
+}
+
+th {
+  padding: 5px;
+}
+
+td {
+  font-size: 90%;
+  padding-left: 6px;
+  padding-bottom: 6px;
+  border-top: solid 1px #ccc;
+}
+
+td a {
+  border-bottom: dotted 1px;
+}

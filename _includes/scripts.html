@@ -11,14 +11,6 @@
            });
        }
     });
-    
-    $('link').each(function(){
-      var $ele = $(this);
-    
-      if ( $ele.attr('href').search("gist-assets.github.com") > 0 ) {
-      	$ele.attr('href', '');
-      }
-    });
 </script>
 
 {% if site.google_analytics %}
