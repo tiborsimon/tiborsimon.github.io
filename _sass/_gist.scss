@@ -8,11 +8,11 @@
 .gist {
   ::-moz-selection {
     background-color: $gist-selection-bg;
-    color: $selection-color;
+    color: $gist-selection-color;
   }
   ::selection {
     background-color: $gist-selection-bg;
-    color: $selection-color;
+    color: $gist-selection-color;
   }
 
   td {
