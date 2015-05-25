@@ -73,6 +73,11 @@ $header-height       : 300px;
 // $blue:      #268bd2;
 // $cyan:      #2aa198;
 // $green:     #859900;
+//
+// $selection-bg        : $base2;
+// $selection-color     : $base01;
+//
+// $gist-meta-color     : rgba(187,187,187,0.8);
 
 $base03:    #fdf6e3;
 $base02:    #eee8d5;
@@ -92,10 +97,11 @@ $blue:      #d9742d;
 $cyan:      #d55e67;
 $green:     #7a66ff;
  
-$selection-bg        : $base2;
-$selection-color     : $base01;
+$selection-bg        : $magenta;
+$selection-color     : $base0;
 
-$gist-meta-color     : rgba(187,187,187,0.8);
+
+$gist-meta-color     : rgba(116, 112, 112, 0.8);
 
 
 // Donation colors
