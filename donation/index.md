@@ -12,7 +12,7 @@ comments: false
 
 Thank you very much that you have decided to support me with a small amount of donation. 
 
-Please choose your donation amount of donation:
+Please choose your amount of donation:
 
 <div class="donation-wrapper">
   <div class="donation-item">
