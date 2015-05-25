@@ -12,8 +12,6 @@ comments: false
 
 Thank you very much that you have decided to support me with a small amount of donation. 
 
-With your help I will be able maintain my ad-free open source projects. I hate ads, and the direction todays websites and apps are heading to. Small content surrounded with banners and ads. Same in the app world. There are very few apps without any ads in them. That is not the way developers should create value. Piss pour functionality bad implementation and ads.. Wtf??! Learn how to create quality products first, then release your products. There is no to do this in any other way. If your product is well designed and does what it meant to be, ads will be unnecessary.
-
 Please choose your donation amount of donation:
 
 <div class="donation-wrapper">
@@ -36,6 +34,8 @@ Please choose your donation amount of donation:
     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tibor%2dsimon%2ecom&lc=US&item_name=Donation%20to%20Tibor%20Simon%20to%20honor%20his%20effort%2e&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest" class="donation-button-row">other</a>
   </div>
 </div>
+
+With your help I will be able maintain my ad-free open source projects. I hate ads, and the direction todays websites and apps are heading to. Small content surrounded with banners and ads. Same in the app world. There are very few apps without any ads in them. That is not the way developers should create value. Piss pour functionality bad implementation and ads.. Wtf??! Learn how to create quality products first, then release your products. There is no to do this in any other way. If your product is well designed and does what it meant to be, ads will be unnecessary.
 
 After your donation has arrived, I am going to put your name here to the donors section of the page. You can also send me a message with a link that you want 
 
