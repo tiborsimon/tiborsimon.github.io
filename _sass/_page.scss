@@ -583,7 +583,7 @@ td a {
 // --------------------------------------------------
 
 .donation-button:hover {
-  background-color: #E5E327;
+  background-color: #E5A927;
   color: rgb(255, 255, 255);
 } 
 
@@ -597,7 +597,7 @@ td a {
 }
 
 .donation-button-row:hover {
-  background-color: #E5E327;
+  background-color: #E5A927;
   color: rgb(255, 255, 255);
 }
 
@@ -606,8 +606,9 @@ td a {
   background-color: #b3b3b3;
   color: white;
   @include rounded(3px);
-  padding: 3px;
-}
+  padding: 5px;
+  font-size: 98%;
+}  
 
 .donation-wrapper {
   text-align: center;
