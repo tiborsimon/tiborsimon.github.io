@@ -596,8 +596,6 @@ td a {
 }
 
 
-
-
 .donation-button-row:hover {
   background-color: #fff;
   color: rgba(0, 156, 222, 0);
@@ -639,12 +637,12 @@ td a {
 .donor {
   float: left;
   width: 20%;
-  padding: 0 0.8333%;
+  padding: 0 1%;
 }
 
 .donor-link {
   display: block;
-  background-color: $b3b3b3;
+  background-color: #b3b3b3;
   color: white;
   @include rounded(3px);
   padding: 5px;
