@@ -10,7 +10,11 @@ share: false
 comments: false
 ---
 
-Thank you very much that You have decided to support me with a small amount of donation. Now you can choose your donation type:
+Thank you very much that you have decided to support me with a small amount of donation. 
+
+With your help I will be able maintain my ad-free open source projects. I hate ads, and the direction todays websites and apps are heading to. Small content surrounded with banners and ads. Same in the app world. There are very few apps without any ads in them. That is not the way developers should create value. Piss pour functionality bad implementation and ads.. Wtf??! Learn how to create quality products first, then release your products. There is no to do this in any other way. If your product is well designed and does what it meant to be, ads will be unnecessary.
+
+Please choose your donation amount of donation:
 
 <div class="donation-wrapper">
   <div class="donation-item">
@@ -36,9 +40,9 @@ Thank you very much that You have decided to support me with a small amount of d
 After your donation has arrived, I am going to put your name here to the donors section of the page. You can also send me a message with a link that you want 
 
 
-# Donors
+## Donors
 
-Thank you very much to You!
+Here comes the great people from all around the world who have already donated to me. Thank you very much!
 
 <div class="donor-wrapper">
   <div class="donor">
