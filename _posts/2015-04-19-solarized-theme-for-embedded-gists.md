@@ -54,8 +54,6 @@ The known issues are the following:
 
 - String formatting blocks are equally greens.
 
-For contributions, fork one of the following Gists and send me a message via GitHub, and I will update the Gists.
-
 ## Solution using SASS
 
 The predefined variables for the syntax coloring provides a very convenient way to create a template CSS code first, and then fine tune the variables later.
