@@ -50,17 +50,17 @@ $large               : "only screen and (min-width: 800px)";
 $header-height       : 300px;
 
 
-// Solarized light syntax highlight
+// Solarized dark syntax highlight
 // --------------------------------------------------
 
-$gist-base03          : #002b36;
-$gist-base02          : #073642;
-$gist-base01          : #586e75;
-$gist-base00          : #657b83;
-$gist-base0           : #839496;
-$gist-base1           : #93a1a1;
-$gist-base2           : #eee8d5;
-$gist-base3           : #fdf6e3;
+$gist-base03          : #fdf6e3;
+$gist-base02          : #eee8d5;
+$gist-base01          : #93a1a1;
+$gist-base00          : #839496;
+$gist-base0           : #657b83;
+$gist-base1           : #586e75;
+$gist-base2           : #073642;
+$gist-base3           : #002b36;
 
 $gist-yellow          : #b58900;
 $gist-orange          : #cb4b16;
@@ -70,11 +70,11 @@ $gist-violet          : #6c71c4;
 $gist-blue            : #268bd2;
 $gist-cyan            : #2aa198;
 $gist-green           : #859900;
-
+    
+$gist-border-color    : $gist-base1;
 $gist-selection-bg    : $gist-red;
 $gist-selection-color : $gist-base2;
-$gist-border-color    : #d3d3d3;
-$gist-meta-color      : rgba(187,187,187,0.8);
+$gist-meta-color      : rgba(116, 112, 112, 0.8);
 
 
 // Donation colors
