@@ -109,14 +109,14 @@
     .kp { color: $green !important} /* Keyword.Pseudo */
     .ow { color: $green !important} /* Operator.Word */
     .nb, .pl-s3 { color: $gist-yellow !important} /* Name.Builtin */
-    .gu { color: $orange !important} /* Generic.Subheading */
-    .ni { color: $orange !important} /* Name.Entity */
-    .x  { color: $orange !important} /* Other */
-    .ne { color: $orange !important} /* Name.Exception */
-    .gh { color: $orange !important} /* Generic.Heading */
-    .no { color: $orange !important} /* Name.Constant */
-    .kc { color: $orange !important} /* Keyword.Constant */
-    .se { color: $orange !important} /* Literal.String.Escape */
+    .gu { color: $gist-orange !important} /* Generic.Subheading */
+    .ni { color: $gist-orange !important} /* Name.Entity */
+    .x  { color: $gist-orange !important} /* Other */
+    .ne { color: $gist-orange !important} /* Name.Exception */
+    .gh { color: $gist-orange !important} /* Generic.Heading */
+    .no { color: $gist-orange !important} /* Name.Constant */
+    .kc { color: $gist-orange !important} /* Keyword.Constant */
+    .se { color: $gist-orange !important} /* Literal.String.Escape */
     .gr { color: $red !important} /* Generic.Error */
     .kt { color: $red !important} /* Keyword.Type */
     .sr { color: $red !important} /* Literal.String.Regex */
