@@ -120,7 +120,8 @@ blockquote {
 // --------------------------------------------------
 .entry-content .footnotes {
     ol, li, p {
-        @include font-size(10);
+        font-size: 11pt;
+        line-height: 15px;
     }
 }
 
