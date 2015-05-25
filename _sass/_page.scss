@@ -577,3 +577,20 @@ td {
 td a {
   border-bottom: dotted 1px;
 }
+
+
+// Donation
+// --------------------------------------------------
+
+a.donation-button:hover {
+  background-color: rgb(228, 181, 33);
+}
+
+a.donation-button {
+  display: block;
+  margin: 10px;
+  background-color: #b3b3b3;
+  color: white;
+  @include rounded(3px);
+  padding: 3px;
+}
