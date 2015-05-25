@@ -119,8 +119,11 @@ blockquote {
 // Footnotes
 // --------------------------------------------------
 .entry-content .footnotes {
+    margin-top: 65px;
+    border-top: solid 1px #ccc;
+
     ol, li, p {
-        font-size: 11pt;
+        font-size: 10pt;
         line-height: 15px;
     }
 }
