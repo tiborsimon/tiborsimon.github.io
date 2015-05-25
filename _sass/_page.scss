@@ -617,6 +617,15 @@ td a {
 
 .donation-wrapper {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.donation-wrapper:before,
+.donation-wrapper:after {
+  content : "";
+  display: table;
+}
+.donation-wrapper:after {
   clear: both;
 }
 
@@ -628,9 +637,12 @@ td a {
 
 
 
-
-.donor-wrapper {
-  text-align: center;
+.donor-wrapper:before,
+.donor-wrapper:after {
+  content : "";
+  display: table;
+}
+.donor-wrapper:after {
   clear: both;
 }
 
@@ -638,6 +650,7 @@ td a {
   float: left;
   width: 20%;
   padding: 0 1%;
+  margin-bottom: 2%;
 }
 
 .donor-link {
