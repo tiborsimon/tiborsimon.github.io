@@ -596,6 +596,19 @@ td a {
   padding: 3px;
 }
 
+donation-button-row:hover {
+  background-color: #E5E327;
+  color: rgb(255, 255, 255);
+}
+
+donation-button-row {
+  display: block;
+  background-color: #b3b3b3;
+  color: white;
+  @include rounded(3px);
+  padding: 3px;
+}
+
 .donation-wrapper {
   text-align: center;
   clear: both;
@@ -603,4 +616,6 @@ td a {
 
 .donation-item {
   float: left;
+  width: 16.666666666666%;
+  padding: 0 0.8333%;
 }

@@ -14,22 +14,22 @@ Thank you very much that You have decided to support me with a small amount of d
 
 <div class="donation-wrapper">
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE $9</a>
+    <a href="" class="donation-button-row">$9</a>
   </div>
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE $19</a>
+    <a href="" class="donation-button-row">$19</a>
   </div>
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE $49</a>
+    <a href="" class="donation-button-row">$49</a>
   </div>
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE $99</a>
+    <a href="" class="donation-button-row">$99</a>
   </div>
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE $249</a>
+    <a href="" class="donation-button-row">$249</a>
   </div>
   <div class="donation-item">
-    <a href="" class="donation-button">DONATE other</a>
+    <a href="" class="donation-button-row">other</a>
   </div>
 </div>
 
