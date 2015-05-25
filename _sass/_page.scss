@@ -597,17 +597,20 @@ td a {
 }
 
 .donation-button-row:hover {
-  background-color: #E5A927;
-  color: rgb(255, 255, 255);
+  background-color: #fff;
+  color: #009cde;
+  border: solid 1px #009cde;
+  
 }
 
 .donation-button-row {
   display: block;
-  background-color: #b3b3b3;
+  background-color: #009cde;
   color: white;
   @include rounded(3px);
   padding: 5px;
   font-size: 98%;
+  border: solid 1px #009cde;
 }  
 
 .donation-wrapper {
