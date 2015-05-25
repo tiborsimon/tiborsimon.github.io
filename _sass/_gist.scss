@@ -7,12 +7,12 @@
 
 .gist {
   ::-moz-selection {
-    background-color: $gist-selection-bg;
-    color: $gist-selection-color;
+    background-color: $gist-select-bg;
+    color: $gist-select-color;
   }
   ::selection {
-    background-color: $gist-selection-bg;
-    color: $gist-selection-color;
+    background-color: $gist-select-bg;
+    color: $gist-select-color;
   }
 
   td {
