@@ -53,7 +53,7 @@
     background: $base2 !important;
     padding-right: 6px;
     color: $base1;
-    border: none;
+    border: none !important;
     pre {
       overflow: hidden;
     }
