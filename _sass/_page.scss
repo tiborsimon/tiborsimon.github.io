@@ -582,16 +582,25 @@ td a {
 // Donation
 // --------------------------------------------------
 
-a.donation-button:hover {
+.donation-button:hover {
   background-color: #E5E327;
   color: rgb(255, 255, 255);
 } 
 
-a.donation-button {
+.donation-button {
   display: block;
   margin: 10px;
   background-color: #b3b3b3;
   color: white;
   @include rounded(3px);
   padding: 3px;
+}
+
+.donation-wrapper {
+  text-align: center;
+  clear: both;
+}
+
+.donation-item {
+  float: left;
 }
