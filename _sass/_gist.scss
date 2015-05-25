@@ -1,7 +1,7 @@
 .gist .gist-file {
   background-color: transparent !important;
   border: none !important;
-  background-color: $gist-base3;
+  background-color: $base3;
   @include rounded(6px);
 }
 
@@ -71,11 +71,11 @@
   .highlight {
     font-size: 12px;
     color: $gist-base01 !important;
-    background-color: $gist-base3 !important;
+    background-color: $base3 !important;
     pre {
         padding-left: 6px;
     }
-    .hhl { background-color: $gist-base3 !important }
+    .hhl { background-color: $base3 !important }
     .lineno { color: $gist-base1 !important} /* Line Numbers */
     .c  { color: $gist-base1 !important} /* Comment */
     .cm { color: $gist-base1 !important} /* Comment.Multiline */
@@ -108,7 +108,7 @@
     .kn, .pl-k { color: $green !important} /* Keyword.Namespace */
     .kp { color: $green !important} /* Keyword.Pseudo */
     .ow { color: $green !important} /* Operator.Word */
-    .nb, .pl-s3 { color: $gist-yellow !important} /* Name.Builtin */
+    .nb, .pl-s3 { color: $yellow !important} /* Name.Builtin */
     .gu { color: $orange !important} /* Generic.Subheading */
     .ni { color: $orange !important} /* Name.Entity */
     .x  { color: $orange !important} /* Other */
