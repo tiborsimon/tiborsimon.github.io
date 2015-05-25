@@ -583,7 +583,7 @@ td a {
 // --------------------------------------------------
 
 .donation-button:hover {
-  background-color: #003087;
+  background-color: $donation-color;
 } 
 
 .donation-button {
@@ -598,7 +598,7 @@ td a {
 .donation-button-row:hover {
   background-color: #fff;
   color: rgba(0, 156, 222, 0);
-  border: solid 1px #003087;
+  border: solid 1px $donation-color;
   background-image: url("http://tiborsimon.github.com/images/paypal-logo.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -606,12 +606,12 @@ td a {
 
 .donation-button-row {
   display: block;
-  background-color: #003087;
+  background-color: $donation-color;
   color: white;
   @include rounded(3px);
   padding: 5px;
   font-size: 98%;
-  border: solid 1px #003087;
+  border: solid 1px $donation-color;
 }  
 
 .donation-wrapper {
