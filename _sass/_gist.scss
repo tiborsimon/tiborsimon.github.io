@@ -1,7 +1,7 @@
 .gist .gist-file {
   background-color: transparent !important;
   border: none !important;
-  background-color: $base3;
+  background-color: $gist-base3;
   @include rounded(6px);
 }
 
@@ -71,11 +71,11 @@
   .highlight {
     font-size: 12px;
     color: $base01 !important;
-    background-color: $base3 !important;
+    background-color: $gist-base3 !important;
     pre {
         padding-left: 6px;
     }
-    .hhl { background-color: $base3 !important }
+    .hhl { background-color: $gist-base3 !important }
     .lineno { color: $base1 !important} /* Line Numbers */
     .c  { color: $base1 !important} /* Comment */
     .cm { color: $base1 !important} /* Comment.Multiline */
