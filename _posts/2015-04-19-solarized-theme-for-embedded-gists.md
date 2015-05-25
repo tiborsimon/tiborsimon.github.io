@@ -36,7 +36,7 @@ Gists provides a perfect versioned way to showcase codes. It has one downside th
 
 Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file. My Jekyll configuration uses [SASS](http://sass-lang.com) so I was able to use CSS variables.
 
-The biggest problem during the refactoring was that Pygments and the syntax colorer used by Gist uses a completely different CSS class system. I had to map the two class systems to be able to achieve a close approximation of the original Solarized coloring.
+The biggest problem during the refactoring was that Pygments and the syntax highlighter used by Gist uses a completely different CSS class system. I had to map the two class systems to be able to achieve a close approximation of the original Solarized coloring.
 
 | Pygments CSS classes   |      Gist CSS classes      |
 |:--------:|:-------------:|
