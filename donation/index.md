@@ -35,7 +35,7 @@ Please choose your amount of donation:
   </div>
 </div>
 
-With your help I will be able maintain my ad-free open source projects. I hate ads, and the direction todays websites and apps are heading to. Small content surrounded with banners and ads. Same in the app world. There are very few apps without any ads in them. That is not the way developers should create value. Piss pour functionality bad implementation and ads.. Wtf??! Learn how to create quality products first, then release your products. There is no to do this in any other way. If your product is well designed and does what it meant to be, ads will be unnecessary.
+With your help I will be able maintain my ad-free open source projects. I hate ads, and the direction todays websites and apps are heading to. Small content surrounded with banners and ads. Same in the app world. There are very few apps without any ads in them. That is not the way developers should create value. Piss pour functionality bad implementation and ads.. Learn how to create quality products first, then release your products. There is no to do this in any other way. If your product is well designed and does what it meant to be, ads will be unnecessary.
 
 After your donation has arrived, I am going to put your name here to the donors section of the page. You can also send me a message with a link that you want 
 
