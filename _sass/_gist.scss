@@ -100,14 +100,14 @@
     .w  { color: $gist-base01 !important} /* Text.Whitespace */
     .sd { color: $gist-base01 !important} /* Literal.String.Doc */
     .sh { color: $gist-base01 !important} /* Literal.String.Heredoc */
-    .cp { color: $green !important} /* Comment.Preproc */
-    .cs { color: $green !important} /* Comment.Special */
-    .o, .pl-k  { color: $green !important} /* Operator */
-    .gi { color: $green !important} /* Generic.Inserted */
-    .k, .pl-sc, .pl-st { color: $green !important} /* Keyword */
-    .kn, .pl-k { color: $green !important} /* Keyword.Namespace */
-    .kp { color: $green !important} /* Keyword.Pseudo */
-    .ow { color: $green !important} /* Operator.Word */
+    .cp { color: $gist-green !important} /* Comment.Preproc */
+    .cs { color: $gist-green !important} /* Comment.Special */
+    .o, .pl-k  { color: $gist-green !important} /* Operator */
+    .gi { color: $gist-green !important} /* Generic.Inserted */
+    .k, .pl-sc, .pl-st { color: $gist-green !important} /* Keyword */
+    .kn, .pl-k { color: $gist-green !important} /* Keyword.Namespace */
+    .kp { color: $gist-green !important} /* Keyword.Pseudo */
+    .ow { color: $gist-green !important} /* Operator.Word */
     .nb, .pl-s3 { color: $gist-yellow !important} /* Name.Builtin */
     .gu { color: $gist-orange !important} /* Generic.Subheading */
     .ni { color: $gist-orange !important} /* Name.Entity */
