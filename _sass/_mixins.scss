@@ -314,27 +314,3 @@
   overflow: visible; 
 }
 
-
-// SOLARIZED COLORS
-// --------------------------------------------------
-
-@mixin setsolarizedtodark() {
-
-  $base03:    #fdf6e3;
-  $base02:    #eee8d5;
-  $base01:    #93a1a1;
-  $base00:    #839496;
-  $base0:     #657b83;
-  $base1:     #586e75;
-  $base2:     #073642;
-  $base3:     #002b36;
-
-  $yellow:    #4a76ff;
-  $orange:    #34b4e9;
-  $red:       #23cdd0;
-  $magenta:   #2cc97d;
-  $violet:    #938e3b;
-  $blue:      #d9742d;
-  $cyan:      #d55e67;
-  $green:     #7a66ff;
-}
