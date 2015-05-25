@@ -120,17 +120,17 @@
     .gr { color: $gist-red !important} /* Generic.Error */
     .kt { color: $gist-red !important} /* Keyword.Type */
     .sr { color: $gist-red !important} /* Literal.String.Regex */
-    .kd { color: $blue !important} /* Keyword.Declaration */
-    .kr { color: $blue !important} /* Keyword.Reserved */
-    .nc, .pl-e { color: $blue !important} /* Name.Class */
-    .nd { color: $blue !important} /* Name.Decorator */
-    .nf, .pl-en { color: $blue !important} /* Name.Function */
-    .bp, .pl-c1, .pl-v, .pl-vpf { color: $blue !important} /* Name.Builtin.Pseudo */
-    .nt, .pl-ent, .pl-vo { color: $blue !important} /* Name.Tag */
-    .nv { color: $blue !important} /* Name.Variable */
-    .vc { color: $blue !important} /* Name.Variable.Class */
-    .vi { color: $blue !important} /* Name.Variable.Instance */
-    .vg { color: $blue !important} /* Name.Variable.Global */
+    .kd { color: $gist-blue !important} /* Keyword.Declaration */
+    .kr { color: $gist-blue !important} /* Keyword.Reserved */
+    .nc, .pl-e { color: $gist-blue !important} /* Name.Class */
+    .nd { color: $gist-blue !important} /* Name.Decorator */
+    .nf, .pl-en { color: $gist-blue !important} /* Name.Function */
+    .bp, .pl-c1, .pl-v, .pl-vpf { color: $gist-blue !important} /* Name.Builtin.Pseudo */
+    .nt, .pl-ent, .pl-vo { color: $gist-blue !important} /* Name.Tag */
+    .nv { color: $gist-blue !important} /* Name.Variable */
+    .vc { color: $gist-blue !important} /* Name.Variable.Class */
+    .vi { color: $gist-blue !important} /* Name.Variable.Instance */
+    .vg { color: $gist-blue !important} /* Name.Variable.Global */
     .gd { color: $cyan !important} /* Generic.Deleted */
     .m, .pl-c1  { color: $cyan !important} /* Literal.Number */
     .s, .pl-s1, .pl-pds  { color: $cyan !important} /* Literal.String */
