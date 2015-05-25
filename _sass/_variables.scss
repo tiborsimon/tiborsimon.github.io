@@ -59,10 +59,10 @@ $header-height       : 300px;
 $gist-base03:    #002b36;
 $gist-base02:    #073642;
 $gist-base01:    #586e75;
-$base00:    #657b83;
-$base0:     #839496;
-$base1:     #93a1a1;
-$base2:     #eee8d5;
+$gist-base00:    #657b83;
+$gist-base0:     #839496;
+$gist-base1:     #93a1a1;
+$gist-base2:     #eee8d5;
 $base3:     #fdf6e3;
 
 $yellow:    #b58900;
@@ -75,17 +75,17 @@ $cyan:      #2aa198;
 $green:     #859900;
 
 $selection-bg        : $red;
-$selection-color     : $base2;
+$selection-color     : $gist-base2;
 $gist-border-color   : #d3d3d3;
 $gist-meta-color     : rgba(187,187,187,0.8);
 
 // $gist-base03:    #fdf6e3;
 // $gist-base02:    #eee8d5;
 // $gist-base01:    #93a1a1;
-// $base00:    #839496;
-// $base0:     #657b83;
-// $base1:     #586e75;
-// $base2:     #073642;
+// $gist-base00:    #839496;
+// $gist-base0:     #657b83;
+// $gist-base1:     #586e75;
+// $gist-base2:     #073642;
 // $base3:     #002b36;
 // 
 // $yellow:    #4a76ff;
@@ -98,7 +98,7 @@ $gist-meta-color     : rgba(187,187,187,0.8);
 // $green:     #7a66ff;
 // $gist-border-color   : #base1;
 // $selection-bg        : $red;
-// $selection-color     : $base2;
+// $selection-color     : $gist-base2;
 // 
 // $gist-meta-color     : rgba(116, 112, 112, 0.8);
 

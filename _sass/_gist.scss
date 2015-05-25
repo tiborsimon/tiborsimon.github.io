@@ -50,9 +50,9 @@
     overflow: hidden;
     text-align: right;
     font-size: 100%;
-    background: $base2 !important;
+    background: $gist-base2 !important;
     padding-right: 6px;
-    color: $base1 !important;
+    color: $gist-base1 !important;
     border: none !important;
     pre {
       overflow: hidden;
@@ -76,11 +76,11 @@
         padding-left: 6px;
     }
     .hhl { background-color: $base3 !important }
-    .lineno { color: $base1 !important} /* Line Numbers */
-    .c  { color: $base1 !important} /* Comment */
-    .cm { color: $base1 !important} /* Comment.Multiline */
-    .c1 { color: $base1 !important} /* Comment.Single */
-    .sb { color: $base1 !important} /* Literal.String.Backtick */
+    .lineno { color: $gist-base1 !important} /* Line Numbers */
+    .c  { color: $gist-base1 !important} /* Comment */
+    .cm { color: $gist-base1 !important} /* Comment.Multiline */
+    .c1 { color: $gist-base1 !important} /* Comment.Single */
+    .sb { color: $gist-base1 !important} /* Literal.String.Backtick */
     .err{ color: $gist-base01 !important} /* Error */
     .g  { color: $gist-base01 !important} /* Generic */
     .l  { color: $gist-base01 !important} /* Literal */
