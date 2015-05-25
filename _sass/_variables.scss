@@ -56,50 +56,50 @@ $header-height       : 300px;
 // Syntax highlight color variables
 // --------------------------------------------------
 
-$base03:    #002b36;
-$base02:    #073642;
-$base01:    #586e75;
-$base00:    #657b83;
-$base0:     #839496;
-$base1:     #93a1a1;
-$base2:     #eee8d5;
-$base3:     #fdf6e3;
+$gist-base03           : #002b36;
+$gist-base02           : #073642;
+$gist-base01           : #586e75;
+$gist-base00           : #657b83;
+$gist-base0            : #839496;
+$gist-base1            : #93a1a1;
+$gist-base2            : #eee8d5;
+$gist-base3            : #fdf6e3;
 
-$yellow:    #b58900;
-$orange:    #cb4b16;
-$red:       #dc322f;
-$magenta:   #d33682;
-$violet:    #6c71c4;
-$blue:      #268bd2;
-$cyan:      #2aa198;
-$green:     #859900;
+$gist-yellow           : #b58900;
+$gist-orange           : #cb4b16;
+$gist-red              : #dc322f;
+$gist-magenta          : #d33682;
+$gist-violet           : #6c71c4;
+$gist-blue             : #268bd2;
+$gist-cyan             : #2aa198;
+$gist-green            : #859900;
 
-$selection-bg        : $base2;
-$selection-color     : $base01;
+$gist-selection-bg     : $base2;
+$gist-selection-color  : $base01;
+$gist-border-color     : #d3d3d3;
+$gist-meta-color       : rgba(187,187,187,0.8);
 
-$gist-meta-color     : rgba(187,187,187,0.8);
-
-// $base03:    #fdf6e3;
-// $base02:    #eee8d5;
-// $base01:    #93a1a1;
-// $base00:    #839496;
-// $base0:     #657b83;
-// $base1:     #586e75;
-// $base2:     #073642;
-// $base3:     #002b36;
+// $gist-base03:    #fdf6e3;
+// $gist-base02:    #eee8d5;
+// $gist-base01:    #93a1a1;
+// $gist-base00:    #839496;
+// $gist-base0:     #657b83;
+// $gist-base1:     #586e75;
+// $gist-base2:     #073642;
+// $gist-base3:     #002b36;
 // 
-// $yellow:    #4a76ff;
-// $orange:    #34b4e9;
-// $red:       #23cdd0;
-// $magenta:   #2cc97d;
-// $violet:    #938e3b;
-// $blue:      #d9742d;
-// $cyan:      #d55e67;
-// $green:     #7a66ff;
+// $gist-yellow:    #4a76ff;
+// $gist-orange:    #34b4e9;
+// $gist-red:       #23cdd0;
+// $gist-magenta:   #2cc97d;
+// $gist-violet:    #938e3b;
+// $gist-blue:      #d9742d;
+// $gist-cyan:      #d55e67;
+// $gist-green:     #7a66ff;
 //  
-// $selection-bg        : $red;
-// $selection-color     : $base2;
-// 
+// $gist-selection-bg        : $red;
+// $gist-selection-color     : $base2;
+// $gist-border-color     : #93a1a1;
 // $gist-meta-color     : rgba(116, 112, 112, 0.8);
 
 
