@@ -121,7 +121,8 @@ blockquote {
 .entry-content .footnotes {
     margin-top: 65px;
     border-top: solid 1px #ccc;
-
+    opacity: 0.8;
+    
     ol, li, p {
         font-size: 10pt;
         line-height: 15px;
