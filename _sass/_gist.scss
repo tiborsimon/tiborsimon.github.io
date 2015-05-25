@@ -117,9 +117,9 @@
     .no { color: $gist-orange !important} /* Name.Constant */
     .kc { color: $gist-orange !important} /* Keyword.Constant */
     .se { color: $gist-orange !important} /* Literal.String.Escape */
-    .gr { color: $red !important} /* Generic.Error */
-    .kt { color: $red !important} /* Keyword.Type */
-    .sr { color: $red !important} /* Literal.String.Regex */
+    .gr { color: $gist-red !important} /* Generic.Error */
+    .kt { color: $gist-red !important} /* Keyword.Type */
+    .sr { color: $gist-red !important} /* Literal.String.Regex */
     .kd { color: $blue !important} /* Keyword.Declaration */
     .kr { color: $blue !important} /* Keyword.Reserved */
     .nc, .pl-e { color: $blue !important} /* Name.Class */
