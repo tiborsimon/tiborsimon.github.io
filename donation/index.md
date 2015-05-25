@@ -33,4 +33,34 @@ Thank you very much that You have decided to support me with a small amount of d
   </div>
 </div>
 
+After your donation has arrived, I am going to put your name here to the donors section of the page. You can also send me a message with a link that you want 
+
+
+# Donors
+
+Thank you very much to You!
+
+<div class="donor-wrapper">
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+  <div class="donor">
+    <a href="#" class="donor-link">Anonymous</a>
+  </div>
+</div>
+
+
+
 
