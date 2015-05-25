@@ -56,52 +56,51 @@ $header-height       : 300px;
 // Syntax highlight color variables
 // --------------------------------------------------
 
-// $base03:    #002b36;
-// $base02:    #073642;
-// $base01:    #586e75;
-// $base00:    #657b83;
-// $base0:     #839496;
-// $base1:     #93a1a1;
-// $base2:     #eee8d5;
-// $base3:     #fdf6e3;
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+$selection-bg        : $base2;
+$selection-color     : $base01;
+
+$gist-meta-color     : rgba(187,187,187,0.8);
+
+// $base03:    #fdf6e3;
+// $base02:    #eee8d5;
+// $base01:    #93a1a1;
+// $base00:    #839496;
+// $base0:     #657b83;
+// $base1:     #586e75;
+// $base2:     #073642;
+// $base3:     #002b36;
 // 
-// $yellow:    #b58900;
-// $orange:    #cb4b16;
-// $red:       #dc322f;
-// $magenta:   #d33682;
-// $violet:    #6c71c4;
-// $blue:      #268bd2;
-// $cyan:      #2aa198;
-// $green:     #859900;
-//
-// $selection-bg        : $base2;
-// $selection-color     : $base01;
-//
-// $gist-meta-color     : rgba(187,187,187,0.8);
-
-$base03:    #fdf6e3;
-$base02:    #eee8d5;
-$base01:    #93a1a1;
-$base00:    #839496;
-$base0:     #657b83;
-$base1:     #586e75;
-$base2:     #073642;
-$base3:     #002b36;
-
-$yellow:    #4a76ff;
-$orange:    #34b4e9;
-$red:       #23cdd0;
-$magenta:   #2cc97d;
-$violet:    #938e3b;
-$blue:      #d9742d;
-$cyan:      #d55e67;
-$green:     #7a66ff;
- 
-$selection-bg        : $red;
-$selection-color     : $base2;
-
-
-$gist-meta-color     : rgba(116, 112, 112, 0.8);
+// $yellow:    #4a76ff;
+// $orange:    #34b4e9;
+// $red:       #23cdd0;
+// $magenta:   #2cc97d;
+// $violet:    #938e3b;
+// $blue:      #d9742d;
+// $cyan:      #d55e67;
+// $green:     #7a66ff;
+//  
+// $selection-bg        : $red;
+// $selection-color     : $base2;
+// 
+// $gist-meta-color     : rgba(116, 112, 112, 0.8);
 
 
 // Donation colors
