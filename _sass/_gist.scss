@@ -1,7 +1,7 @@
 .gist .gist-file {
   background-color: transparent !important;
   border: none !important;
-  background-color: $gist-base3;
+  background-color: $base3;
   @include rounded(6px);
 }
 
@@ -70,36 +70,36 @@
 
   .highlight {
     font-size: 12px;
-    color: $base01 !important;
-    background-color: $gist-base3 !important;
+    color: $gist-base01 !important;
+    background-color: $base3 !important;
     pre {
         padding-left: 6px;
     }
-    .hhl { background-color: $gist-base3 !important }
+    .hhl { background-color: $base3 !important }
     .lineno { color: $base1 !important} /* Line Numbers */
     .c  { color: $base1 !important} /* Comment */
     .cm { color: $base1 !important} /* Comment.Multiline */
     .c1 { color: $base1 !important} /* Comment.Single */
     .sb { color: $base1 !important} /* Literal.String.Backtick */
-    .err{ color: $base01 !important} /* Error */
-    .g  { color: $base01 !important} /* Generic */
-    .l  { color: $base01 !important} /* Literal */
-    .n, .pl-mp, .pl-vpf  { color: $base01 !important} /* Name */
-    .p  { color: $base01 !important} /* Punctuation */
-    .ge { color: $base01; font-style: italic !important} /* Generic.Emph */
-    .go { color: $base01 !important} /* Generic.Output */
-    .gp { color: $base01 !important} /* Generic.Prompt */
-    .gs { color: $base01; font-weight: bold !important} /* Generic.Strong */
-    .gt { color: $base01 !important} /* Generic.Traceback */
-    .ld { color: $base01 !important} /* Literal.Date */
-    .na { color: $base01 !important} /* Name.Attribute */
-    .nl { color: $base01 !important} /* Name.Label */
-    .nn { color: $base01 !important} /* Name.Namespace */
-    .py { color: $base01 !important} /* Name.Property */
-    .nx { color: $base01 !important} /* Name.Other */
-    .w  { color: $base01 !important} /* Text.Whitespace */
-    .sd { color: $base01 !important} /* Literal.String.Doc */
-    .sh { color: $base01 !important} /* Literal.String.Heredoc */
+    .err{ color: $gist-base01 !important} /* Error */
+    .g  { color: $gist-base01 !important} /* Generic */
+    .l  { color: $gist-base01 !important} /* Literal */
+    .n, .pl-mp, .pl-vpf  { color: $gist-base01 !important} /* Name */
+    .p  { color: $gist-base01 !important} /* Punctuation */
+    .ge { color: $gist-base01; font-style: italic !important} /* Generic.Emph */
+    .go { color: $gist-base01 !important} /* Generic.Output */
+    .gp { color: $gist-base01 !important} /* Generic.Prompt */
+    .gs { color: $gist-base01; font-weight: bold !important} /* Generic.Strong */
+    .gt { color: $gist-base01 !important} /* Generic.Traceback */
+    .ld { color: $gist-base01 !important} /* Literal.Date */
+    .na { color: $gist-base01 !important} /* Name.Attribute */
+    .nl { color: $gist-base01 !important} /* Name.Label */
+    .nn { color: $gist-base01 !important} /* Name.Namespace */
+    .py { color: $gist-base01 !important} /* Name.Property */
+    .nx { color: $gist-base01 !important} /* Name.Other */
+    .w  { color: $gist-base01 !important} /* Text.Whitespace */
+    .sd { color: $gist-base01 !important} /* Literal.String.Doc */
+    .sh { color: $gist-base01 !important} /* Literal.String.Heredoc */
     .cp { color: $green !important} /* Comment.Preproc */
     .cs { color: $green !important} /* Comment.Special */
     .o, .pl-k  { color: $green !important} /* Operator */
