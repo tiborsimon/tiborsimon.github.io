@@ -26,7 +26,7 @@
     @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
     overflow: hidden;
     margin-bottom: 25px;
-    border: 1px solid $base1;
+    border: 1px solid $gist-border-color;
   }
 
   .gist-data {
