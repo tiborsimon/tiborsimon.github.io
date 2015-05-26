@@ -43,7 +43,7 @@ After your donation has arrived, I am going to put your name down here in the _d
 Here comes the great people from all around the world who have already donated to me. Thank you very much!
 
 
-<span style="text-align: center;">No donors yet.. :)</span>
+<i><span style="  text-align: center;margin: 80px auto;display: block;">No donors yet.. :)</span></i>
 <!--
 <div class="donor-wrapper">
   <div class="donor">
