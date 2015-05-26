@@ -688,9 +688,7 @@ td a {
     min-height: 80px; //mirrors avatar height
 }
 .author-name {
-    @include font-size(20,no);
 }
 .author-bio {
     margin-top: 0;
-    @include font-size(16);
 }
