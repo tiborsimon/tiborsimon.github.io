@@ -8,6 +8,8 @@ published: True
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
 
+<img src="http://tiborsimon.github.io/images/solarized-gist-demo-image.png" />
+
 ## Early solution and motivation
 
 I was looking for the best way to post source code on my Jekyll based site[^1]. Since Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [Kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient enough.
