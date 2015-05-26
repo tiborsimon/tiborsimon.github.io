@@ -667,3 +667,30 @@ td a {
   color: white;
   @include rounded(3px);
 } 
+
+
+
+// Author block
+// --------------------------------------------------
+
+.author-image {
+    position: absolute;
+    left: 0;
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: $border-radius;
+    }
+}
+.author-content {
+    word-wrap: break-word;
+    padding-left: 100px; //avatar width + 20px padding
+    min-height: 80px; //mirrors avatar height
+}
+.author-name {
+    @include font-size(20,no);
+}
+.author-bio {
+    margin-top: 0;
+    @include font-size(16);
+}
