@@ -673,6 +673,16 @@ td a {
 // Author block
 // --------------------------------------------------
 
+
+.author-block:before,
+.author-block:after {
+  content : "";
+  display: table;
+}
+.donation-wrapper:after {
+  clear: both;
+}
+
 .author-image {
     position: absolute;
     left: 0;
