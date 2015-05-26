@@ -8,6 +8,8 @@ published: True
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
 
+After reading this artice, you will be able to theme your Gists in Solarized color theme:
+
 <img src="http://tiborsimon.github.io/images/solarized-gist-demo-image.png" />
 
 ## Early solution and motivation
