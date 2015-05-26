@@ -86,11 +86,11 @@ svg:not(:root) {
   color: $primary !important;
   border-color: $white;
   &:visited {
-    color: $primary;
+    /*color: $primary;*/
   }
   &:hover {
     background-color: $primary;
-    color: $white;
+    color: $white !important;
   }
 }
 .btn-success {
