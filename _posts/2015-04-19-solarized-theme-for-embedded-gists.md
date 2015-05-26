@@ -64,6 +64,8 @@ The predefined variables for the syntax coloring provides a very convenient way 
 
 _Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values._
 
+<span name='demo' />
+
 {% gist tiborsimon/b6574052bb3167651f88 %}
 
 {% gist tiborsimon/d6a5511deee682f316aa %}
