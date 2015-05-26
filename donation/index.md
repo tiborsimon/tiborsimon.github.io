@@ -35,13 +35,16 @@ Please choose your amount of donation:
   </div>
 </div>
 
-After your donation has arrived, I am going to put your name here to the donors section of the page. You can also send me a message with a link that you want 
+After your donation has arrived, I am going to put your name down here in the _donors list_. You can also send me a message with a link that you want to add your name.
 
 
 ## Donors
 
 Here comes the great people from all around the world who have already donated to me. Thank you very much!
 
+
+No donors yet.. :)
+<!--
 <div class="donor-wrapper">
   <div class="donor">
     <a href="#" class="donor-link">Anonymous</a>
@@ -62,7 +65,7 @@ Here comes the great people from all around the world who have already donated t
     <a href="#" class="donor-link">Anonymous</a>
   </div>
 </div>
-
+-->
 
 
 
