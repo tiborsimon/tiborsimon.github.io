@@ -59,3 +59,7 @@
 b, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a {
     @include transition(all .2s ease);
 }
+
+ul a {
+    @include transition(none);
+}
