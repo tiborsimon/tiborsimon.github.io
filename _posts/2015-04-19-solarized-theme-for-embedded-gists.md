@@ -79,7 +79,7 @@ _Make sure you are using SASS to preprocess your CSS files otherwise this method
 
 Contributions are welcomed as well as tips and suggestions for the project. If you want to discuss anything according to the project, you can do it on the Gitter thread of the project
 
-<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub repository</a><br />
+<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to the GitHub repository</a><br />
 
 ## Summary
 
