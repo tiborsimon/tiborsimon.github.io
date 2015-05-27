@@ -10,7 +10,7 @@ I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color th
 
 After reading this artice, you will be able to theme your Gists in light or dark Solarized color theme:
 
-<img src="http://tiborsimon.github.io/images/solarized-gist-demo-image.png" />
+<img src="http://tiborsimon.github.io/images/solarized-gist/solarized-gist-demo-image.png" />
 
 ## Early solution and motivation
 
