@@ -29,6 +29,8 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork and home network planning
+| 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
 | 2015-05-26 | TSPR000074 | Author and twitter integration.
 | 2015-05-25 | TSPR000068 | Thesis finished :) Improved Solarized Gists article.
 | 2015-05-24 | TSPR000068 | Thesis work......
