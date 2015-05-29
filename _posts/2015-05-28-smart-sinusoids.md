@@ -21,9 +21,11 @@ The equation of a sinusoid signal is a known fact:
 
 <img src="http://upload.wikimedia.org/math/9/5/0/95070ea56bf2d63142b522d0e1c34d5d.png">
 
-However. This equation is only valid in the _continuous_ time_ domain, therefore without any modification it is useless in the _discrete time_ domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.
+However. This equation is only valid in the __continuous time__ domain, therefore without any modification it is useless in the __discrete time__ domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.
 
 Machines work with _discrete time series_ that has a new property called __resolution__. Resolution is the link between _continous_ and _discrete_ time domain. This property is implemented with __sampling__. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data point[^1].
+
+Therefore the _t_ variable in the equation can be represented as a vector of data points.
 
 ```
 t = [0:1:40];
