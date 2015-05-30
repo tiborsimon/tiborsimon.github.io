@@ -695,8 +695,7 @@ td a {
 .ribbon:last-child {
   border-radius: 6px 0 0 6px;
 }
-.ribbon:first-child,
-.ribbon:last-child {
+.ribbon:only-child {
   border-radius: 6px;
 }
 
