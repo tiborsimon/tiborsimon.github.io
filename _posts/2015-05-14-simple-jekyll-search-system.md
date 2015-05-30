@@ -4,10 +4,17 @@ title: Simple Jekyll search system
 categories: ['tools']
 tags: ['jekyll', 'web', 'css', 'plugin']
 published: True
-
+repo_link: https://github.com/tiborsimon/jekyll-search-system
+dowload_link: https://github.com/tiborsimon/jekyll-search-system/archive/v1.0.zip
+version: v1.0
 ---
 
 Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site without any external dependency. This method is also compatible with GitHubPages.
+
+<div class="half-centered-wrapper">
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
+</div>
 
 I was looking for the best possible solution to integrate a search engine into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
 
@@ -105,7 +112,10 @@ The search functionality is available only on the main page. I saw no reason to 
 
 You can test the finished search engine on the main page of this site. If you satisfied with it, you can adopt to your own Jekyll site by forking it's GitHub repository.
 
-<a href='https://github.com/tiborsimon/jekyll-search-system' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to GitHub repository</a>
+<div class="half-centered-wrapper">
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
+</div>
 
 ---
 [^1]: At least I have found these ones during my research

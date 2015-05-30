@@ -14,7 +14,7 @@ I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color th
 After reading this artice, you will be able to theme your Gists in light or dark Solarized color theme:
 
 <div class="half-centered-wrapper">
-<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
 <a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 
@@ -87,7 +87,7 @@ Contributions are welcomed as well as tips and suggestions for the project. If y
 
 
 <div class="half-centered-wrapper">
-<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
 <a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 
