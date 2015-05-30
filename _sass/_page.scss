@@ -695,6 +695,10 @@ td a {
 .ribbon:last-child {
   border-radius: 6px 0 0 6px;
 }
+.ribbon:first-child,
+.ribbon:last-child {
+  border-radius: 6px;
+}
 
 
 .ribbon-repo:hover {
@@ -707,7 +711,7 @@ td a {
   border: 1px solid $success;
 }
 
-.ribbon-conversation {
+.ribbon-conversation:hover {
   background-color: $warning;
   border: 1px solid $warning;
 }
