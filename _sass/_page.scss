@@ -208,6 +208,9 @@ body {
     .entry-reading-time {
         float: right;
     }
+    .entry-ribbons {
+        float: right;
+    }
 }
 header .entry-meta {
     display: none; // hide header meta on small screens
@@ -636,7 +639,6 @@ td a {
 }
 
 
-
 .donor-wrapper:before,
 .donor-wrapper:after {
   content : "";
@@ -666,4 +668,18 @@ td a {
   background-color: $donation-color;
   color: white;
   @include rounded(3px);
+}
+
+
+// Ribbons
+// --------------------------------------------------
+
+.ribbon {
+  display: block;
+  .ribbon-repo {
+    background-color: $info;
+  }
+  .ribbon-release {
+    background-color: $success;
+  }
 }

@@ -33,6 +33,14 @@ image:
         Reading time ~{% if readtime <= 1 %}1 minute{% else %}{{ readtime }} minutes{% endif %}
       </span><!-- /.entry-reading-time -->
       {% endif %}
+      <span class="entry-ribbons">
+      {% if page.repo_link %}
+        <div class="ribbon ribbon-repo"><i class="fa fa-github"></i></div>
+      {% endif %}
+      {% if page.dowload_link %}
+        <div class="ribbon ribbon-release"><i class="fa fa-download"></i></div>
+      {% endif %}
+      </span>
     </div><!-- /.entry-meta -->
     {% if post.link %}
       <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}"><i class="fa fa-bookmark"></i></a> <a href="{{ post.link }}">{{ post.title }}</a></h1>
