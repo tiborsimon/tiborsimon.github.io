@@ -142,6 +142,33 @@ svg:not(:root) {
   }
 }
 
+
+// Button management blocks
+// --------------------------------------------------
+
+.half-centered-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.half-centered-wrapper:before,
+.half-centered-wrapper:after {
+  content : "";
+  display: table;
+}
+.half-centered-wrapper:after {
+  clear: both;
+}
+
+.half-centered {
+  display: block;
+  text-align: center;
+  float: left;
+  margin: 0 0.5%;
+  width: 49%;
+}
+
+
 // Well
 // --------------------------------------------------
 .well {

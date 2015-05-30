@@ -666,31 +666,4 @@ td a {
   background-color: $donation-color;
   color: white;
   @include rounded(3px);
-} 
-
-
-
-// Author block
-// --------------------------------------------------
-
-
-.author-block:before,
-.author-block:after {
-  content : "";
-  display: table;
-}
-.donation-wrapper:after {
-  clear: both;
-}
-
-.author-image {
-    
-}
-.author-content {
-    
-}
-.author-name {
-}
-.author-bio {
-    
 }
