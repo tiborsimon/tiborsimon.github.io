@@ -676,10 +676,12 @@ td a {
 
 .ribbon {
   display: block;
-  .ribbon-repo {
-    background-color: $info;
-  }
-  .ribbon-release {
-    background-color: $success;
-  }
+}
+
+.ribbon-repo {
+  background-color: $info;
+}
+
+.ribbon-release {
+  background-color: $success;
 }
