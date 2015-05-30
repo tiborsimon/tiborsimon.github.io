@@ -676,13 +676,19 @@ td a {
 
 .ribbon {
   display: block;
-  color: white;
-  padding: 12px;
-  font-size: 109%;
+  color: rgb(228, 228, 228);
+  padding: 4px 6px;
+  font-size: 112%;
   float: right;
   position: relative;
-  bottom: 50px;
-  background-color: rgb(179, 179, 179);
+  border-radius: 3px;
+  margin-left: 4px;
+  box-shadow: 0px 1px 3px #D3D3D3 inset;
+}
+
+.ribbon:hover {
+  color: white;
+  box-shadow: 0px 1px 3px #777;
 }
 
 .ribbon:last-child {
