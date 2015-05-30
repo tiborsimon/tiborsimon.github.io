@@ -676,12 +676,26 @@ td a {
 
 .ribbon {
   display: block;
+  color: white;
+  padding: 12px;
+  font-size: 109%;
+  float: right;
+  position: relative;
+  bottom: 50px;
+  background-color: rgb(179, 179, 179);
 }
 
-.ribbon-repo {
+.ribbon:last-child {
+  border-radius: 0 0 0 6px;
+}
+.ribbon:first-child {
+  border-radius: 0 0 6px 0;
+}
+
+.ribbon-repo:hover {
   background-color: $info;
 }
 
-.ribbon-release {
+.ribbon-release:hover {
   background-color: $success;
 }
