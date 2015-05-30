@@ -13,7 +13,7 @@ I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color th
 
 After reading this artice, you will be able to theme your Gists in light or dark Solarized color theme:
 
-{{ include repo_and_release.htm }}
+{{ include repo_and_release.html }}
 
 ## Early solution and motivation
 
@@ -82,7 +82,7 @@ _Make sure you are using SASS to preprocess your CSS files otherwise this method
 
 Contributions are welcomed as well as tips and suggestions for the project. If you want to discuss anything according to the project, you can do it on the Gitter thread of the project
 
-{{ include repo_and_release.htm }}
+{{ include repo_and_release.html }}
 
 ## Summary
 
