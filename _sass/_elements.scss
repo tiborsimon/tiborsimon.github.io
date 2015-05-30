@@ -151,6 +151,9 @@ svg:not(:root) {
   margin-bottom: 20px;
   .fa {
     padding-right: 5px;
+    font-size: 130%;
+    position: relative;
+    top: 1px;
   }
 }
 
