@@ -34,11 +34,11 @@ image:
       </span><!-- /.entry-reading-time -->
       {% endif %}
       <span class="entry-ribbons">
-      {% if post.repo_link %}
-        <div class="ribbon ribbon-repo"><i class="fa fa-github"></i></div>
-      {% endif %}
       {% if post.dowload_link %}
-        <div class="ribbon ribbon-release"><i class="fa fa-download"></i></div>
+        <a href="{{ post.dowload_link }}" class="ribbon ribbon-release"><i class="fa fa-download"></i></a>
+      {% endif %}
+      {% if post.repo_link %}
+        <a href="{{ post.repo_link }}" class="ribbon ribbon-repo"><i class="fa fa-github"></i></a>
       {% endif %}
       </span>
     </div><!-- /.entry-meta -->

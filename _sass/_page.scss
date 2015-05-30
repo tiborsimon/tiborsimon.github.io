@@ -681,7 +681,6 @@ td a {
   font-size: 112%;
   float: right;
   position: relative;
-  border-radius: 3px;
   margin-left: 4px;
   border: 1px solid;
 }
@@ -691,10 +690,10 @@ td a {
 }
 
 .ribbon:first-child {
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 6px 6px 0;
 }
 .ribbon:last-child {
-  border-radius: 3px 0 0 3px;
+  border-radius: 6px 0 0 6px;
 }
 
 
