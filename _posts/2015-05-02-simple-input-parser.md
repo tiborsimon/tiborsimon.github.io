@@ -19,7 +19,11 @@ Easy to use variable lenght input parser mechanism that provides a convenient wa
 - Parameter validation by type
 - Custom validator functions
 
-<!--more-->
+<div class="half-centered-wrapper">
+<a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+
+<a href='https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.2</a>
+</div>
 
 ## Old way to call a function
 
