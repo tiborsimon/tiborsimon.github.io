@@ -22,7 +22,7 @@ Easy to use variable lenght input parser mechanism that provides a convenient wa
 - Parameter validation by type
 - Custom validator functions
 
-{{ include repo_and_release.html }}
+{% include repo_and_release.html %}
 
 ## Old way to call a function
 
@@ -73,5 +73,5 @@ There is an even shorter form that is called _Flag mode_ which receives only the
 
 Don't hesitate to try it out.
 
-{{ include repo_and_release.html }}
+{% include repo_and_release.html %}
 
