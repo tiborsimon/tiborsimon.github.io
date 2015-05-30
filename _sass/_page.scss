@@ -699,8 +699,10 @@ td a {
 
 .ribbon-repo:hover {
   background-color: $info;
+  border: 1px solid $info;
 }
 
 .ribbon-release:hover {
   background-color: $success;
+  border: 1px solid $success;
 }
