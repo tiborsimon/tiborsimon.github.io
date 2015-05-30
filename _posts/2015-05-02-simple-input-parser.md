@@ -4,6 +4,9 @@ title: Simple Input Parser
 categories: ['programming']
 tags: ['matlab']
 published: True
+repo_link: https://github.com/tiborsimon/simple-input-parser
+dowload_link: https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip
+version: v1.2
 ---
 
 Easy to use variable lenght input parser mechanism that provides a convenient way to enchance your custom function parameter handling. The current version sports a _MATLAB_ implementation, but other language ports are coming too.
@@ -20,9 +23,8 @@ Easy to use variable lenght input parser mechanism that provides a convenient wa
 - Custom validator functions
 
 <div class="half-centered-wrapper">
-<a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
-
-<a href='https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.2</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 
 ## Old way to call a function
@@ -76,8 +78,7 @@ Don't hesitate to try it out.
 
 
 <div class="half-centered-wrapper">
-<a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
-
-<a href='https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.2</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 

@@ -4,18 +4,18 @@ title: Solarized theme for embedded Gists
 categories: ['tools']
 tags: ['jekyll', 'web', 'css']
 published: True
+repo_link: https://github.com/tiborsimon/solarized-gist
+dowload_link: https://github.com/tiborsimon/solarized-gist/archive/v1.0.zip
+version: v1.0
 ---
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
 
 After reading this artice, you will be able to theme your Gists in light or dark Solarized color theme:
 
-<img src="http://tiborsimon.github.io/images/solarized-gist/solarized-gist-demo-image.png" />
-
 <div class="half-centered-wrapper">
-<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
-
-<a href='https://github.com/tiborsimon/solarized-gist/archive/v1.0.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.0</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 
 ## Early solution and motivation
@@ -87,9 +87,8 @@ Contributions are welcomed as well as tips and suggestions for the project. If y
 
 
 <div class="half-centered-wrapper">
-<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
-
-<a href='https://github.com/tiborsimon/solarized-gist/archive/v1.0.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.0</a>
+<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
 
 ## Summary
