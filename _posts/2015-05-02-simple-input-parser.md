@@ -72,5 +72,5 @@ Don't hesitate to try it out.
 
 <a href='https://github.com/tiborsimon/simple-input-parser' class="btn-info btn centered"><i class="fa fa-github-alt"></i> Go to the GitHub repository</a>
 
-<a href='https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip' class="btn-info btn centered"><i class="fa fa-download"></i> Download the latest v1.2 version</a>
+<a href='https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip' class="btn-success btn centered"><i class="fa fa-download"></i> Download the latest v1.2 version</a>
 
