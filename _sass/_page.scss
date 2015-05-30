@@ -683,10 +683,12 @@ td a {
   position: relative;
   margin-left: 4px;
   border: 1px solid;
+  opacity: 0.4;
 }
 
 .ribbon:hover {
   color: white;
+  opacity: 1;
 }
 
 .ribbon:first-child {
