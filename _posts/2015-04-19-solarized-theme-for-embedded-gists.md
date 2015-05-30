@@ -83,7 +83,7 @@ Contributions are welcomed as well as tips and suggestions for the project. If y
 <div class="half-centered-wrapper">
 <a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
 
-<a href='https://github.com/tiborsimon/solarized-gist/releases/tag/v1.0.zip' class="btn-success btn half-centered"><i class="fa fa-spinner fa-spin"></i></a>
+<a href='https://github.com/tiborsimon/solarized-gist/releases/tag/v1.0.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.0</a>
 </div>
 
 ## Summary
