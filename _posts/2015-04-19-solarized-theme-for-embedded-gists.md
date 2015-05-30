@@ -12,6 +12,12 @@ After reading this artice, you will be able to theme your Gists in light or dark
 
 <img src="http://tiborsimon.github.io/images/solarized-gist/solarized-gist-demo-image.png" />
 
+<div class="half-centered-wrapper">
+<a href='https://github.com/tiborsimon/solarized-gist' class="btn-info btn half-centered"><i class="fa fa-github-alt"></i> GitHub repository</a>
+
+<a href='https://github.com/tiborsimon/solarized-gist/releases/tag/v1.0.zip' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download v1.0</a>
+</div>
+
 ## Early solution and motivation
 
 I was looking for the best way to post source code on my Jekyll based site[^1]. Since Jekyll sites use [Markdown](http://en.wikipedia.org/wiki/Markdown) or [Kramdown](http://kramdown.gettalong.org), it is a pretty reasonable first thought that using the provided syntax highlighting methods will be sufficient enough.
