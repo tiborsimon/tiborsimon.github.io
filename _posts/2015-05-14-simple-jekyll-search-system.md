@@ -11,10 +11,7 @@ version: v1.0
 
 Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site without any external dependency. This method is also compatible with GitHubPages.
 
-<div class="half-centered-wrapper">
-<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
-<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
-</div>
+{{ include repo_and_release.htm }}
 
 I was looking for the best possible solution to integrate a search engine into my Jekyll site. The original idea came from the designer of the theme I am using right now. He created another theme called [So Simple](https://mademistakes.com/work/so-simple-jekyll-theme/) that features a search functionality. For me the fact that a static site can have such a search system was marvelous. I started a research on how to create these systems.
 
@@ -112,10 +109,7 @@ The search functionality is available only on the main page. I saw no reason to 
 
 You can test the finished search engine on the main page of this site. If you satisfied with it, you can adopt to your own Jekyll site by forking it's GitHub repository.
 
-<div class="half-centered-wrapper">
-<a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
-<a href='{{ page.dowload_link }}' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
-</div>
+{{ include repo_and_release.htm }}
 
 ---
 [^1]: At least I have found these ones during my research
