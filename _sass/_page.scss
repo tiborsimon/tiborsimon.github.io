@@ -684,6 +684,7 @@ td a {
   margin-left: 4px;
   border: 1px solid;
   opacity: 0.5;
+  border-right: none;
 }
 
 .ribbon:hover {
@@ -693,6 +694,7 @@ td a {
 
 .ribbon:first-child {
   border-radius: 0 6px 6px 0;
+  border-right: 1px solid;
 }
 .ribbon:last-child {
   border-radius: 6px 0 0 6px;
@@ -704,15 +706,15 @@ td a {
 
 .ribbon-repo:hover {
   background-color: $info;
-  border: 1px solid $info;
+  border-color: $info;
 }
 
 .ribbon-release:hover {
   background-color: $success;
-  border: 1px solid $success;
+  border-color: $success;
 }
 
 .ribbon-conversation:hover {
   background-color: $warning;
-  border: 1px solid $warning;
+  border-color: $warning;
 }
