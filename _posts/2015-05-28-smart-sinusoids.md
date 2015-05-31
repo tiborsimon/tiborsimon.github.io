@@ -9,11 +9,11 @@ published: True
 
 The easiest way to generate a sine or cosine signal in MATLAB. With this library there are almost infinite ways to describe and generate a sinusoid signals. 
 
-# Generating sinusoids
+# Generating sinusoid signals
 
-Generating a sinusoid signal is often the first step for a more complex computations. It should be a routine, but actually it isn't. Many people struggles with it.
+Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.
 
-## Generating sinusoid signals
+## The problem
 
 The equation of a sinusoid signal is a known fact:
 
@@ -21,31 +21,33 @@ The equation of a sinusoid signal is a known fact:
 
 However. This equation is only valid in the __continuous time__ domain, therefore without any modification it is useless in the __discrete time__ domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.
 
-Machines work with _discrete time series_ that has a new property called __resolution__. Resolution is the link between _continous_ and _discrete_ time domain. This property is implemented with __sampling__. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data point[^1].
+Machines work with _discrete time series_ that has a property called __resolution__. Resolution is the link between _continous_ and _discrete_ time domain. This property is implemented with __sampling__. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data point[^1].
 
-Therefore the _t_ variable in the equation can be represented as a vector of data points. 
+Therefore the _t_ variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval. 
 
-To create such a time vector, you have to choose a sampling interval. Let's say you want to use __10 samples per seconds__ (`fs=10Hz`), and you want to have __20 samples__ in your vector. That also means that your time vector will cover almost __2 seconds__[^2] of continuous time. As you can see, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
+Let's say you want to get __10 samples per seconds__ _(fs=10Hz)_, and you want to have __20 samples__ in your vector. That also means that your time vector will cover almost __2 seconds__[^2] of continuous time. As you can see, as a constraint, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
 
 {% gist tiborsimon/619da807c9fe3892eaac %}
 
-You can test that the `t1` and `t2` vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate now a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:
+You can test that the `t1` and `t2` vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:
 
 {% gist tiborsimon/ec5c237f47cdee3c7794 %}
 
-If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as it was expected.
+If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected. 
 
 <img src="/images/smart-sinusoids/signal001.png" />
 
-However. There are use cases when you don't want to match up the __continuous__ time with the __discrete__ time, so you don't have to bother with the sampling frequency, and you can generate a time vector from 0 to 1, and pass it to the equation something like this:
+This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer's _digital to analog converter_.
+
+However. There are other use cases when we don't want to link the __discrete time__ to the __continuous time__, so we don't have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:
 
 {% gist tiborsimon/f7f3d7a521c01022b41d %}
 
-The result will be a 100 sample long sinusoid signal, that contains 3 periods.
+The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can't be used as the previous one until we specify the sampling frequency.
 
 <img src="/images/smart-sinusoids/signal002.png" />
 
-As you can see, generating sinusoids isn't so hard at all. But you __have to think__ about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal.. 
+As you can see, generating sinusoids in these basic ways isn't so hard at all. But you __have to think__ about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal..
 
 ## Signal generation use cases
 
@@ -63,13 +65,13 @@ In the previous section we discussed the two most basic ways for generating a si
 | N                  | number of periods     |
 | n                  | number of samples     |
 
-| Method number | Required parameters         |
-|:-------------:|:----------------------------|
-| 1             | n, N                        | 
-| 2             | f, N, fs                    |
-| 3             | f, n, fs                    |
-| 4             | L, n, fs                    |
-| 5             | f, L, fs                    |
+| Method number | Required parameters |
+|:-------------:|:--------------------|
+| 1             | n, N                | 
+| 2             | f, N, fs            |
+| 3             | f, n, fs            |
+| 4             | L, n, fs            |
+| 5             | f, L, fs            |
 
 We have already discussed __method 1__ and __method 2__ in the previous section.
 
