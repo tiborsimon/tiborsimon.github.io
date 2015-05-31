@@ -52,7 +52,7 @@ As you can see, generating sinusoids isn't so hard at all. But you __have to thi
 In the previous section we discussed the basic ways to generating a sinusoid signal.  In this section we will go through all the possible signal generation methods.
 
 | Variable name      | Possible parameters   |
-|-----:|:----------------------|
+|:-----:|:----------------------|
 | phi   | phase                 |
 | A     | amplitude             |
 | f     | frequency             |
@@ -64,7 +64,7 @@ In the previous section we discussed the basic ways to generating a sinusoid sig
 | n     | number of samples     |
 
 | Method number | Required parameters |
-|-----:|:----------------------|
+|:-----:|:----------------------|
 | 1     | n, N
 
 
