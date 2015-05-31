@@ -49,23 +49,29 @@ As you can see, generating sinusoids isn't so hard at all. But you __have to thi
 
 ## Signal generation use cases
 
-In the previous section we discussed the basic ways to generating a sinusoid signal.  In this section we will go through all the possible signal generation methods.
+In the previous section we discussed the two most basic ways for generating a sinusoid signal.  In this section we will go through all the possible signal generation methods.
 
 | Variable name      | Possible parameters   |
-|:-----:|:----------------------|
-| phi   | phase                 |
-| A     | amplitude             |
-| f     | frequency             |
-| fs    | sample rate           |
-| T     | period                |
-| dt    | sampling time         |
-| L     | signal duration       |
-| N     | number of periods     |
-| n     | number of samples     |
+|:------------------:|:----------------------|
+| phi                | phase                 |
+| A                  | amplitude             |
+| f                  | frequency             |
+| fs                 | sample rate           |
+| T                  | period                |
+| dt                 | sample time           |
+| L                  | signal duration       |
+| N                  | number of periods     |
+| n                  | number of samples     |
 
-| Method number | Required parameters |
-|:-----:|:----------------------|
-| 1     | n, N
+| Method number | Required parameters         |
+|:-------------:|:----------------------------|
+| 1             | n, N                        | 
+| 2             | f, N, fs                    |
+| 3             | f, n, fs                    |
+| 4             | L, n, fs                    |
+| 5             | f, L, fs                    |
+
+We have already discussed __method 1__ and __method 2__ in the previous section.
 
 
 
