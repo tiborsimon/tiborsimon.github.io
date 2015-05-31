@@ -27,7 +27,7 @@ Machines work with _discrete time series_ that has a new property called __resol
 
 Therefore the _t_ variable in the equation can be represented as a vector of data points. 
 
-To create such a data point vector, you have to choose a sampling interval. Let's say you want to use 10 samples per seconds (`fs=10Hz`), and you want to have 20 samples in your vector. That also means that your time vector will cover 2 seconds of continuous time. As you can see, the given duration in continuous time is equivalent with the given sampling frequency with the number of samples:
+To create such a data point vector, you have to choose a sampling interval. Let's say you want to use __10 samples per seconds__ (`fs=10Hz`), and you want to have __20 samples__ in your vector. That also means that your time vector will cover __2 seconds__ of continuous time. As you can see, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
 
 {% gist tiborsimon/619da807c9fe3892eaac %}
 
