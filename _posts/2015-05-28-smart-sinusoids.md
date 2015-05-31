@@ -29,7 +29,7 @@ To create such a time vector, you have to choose a sampling interval. Let's say 
 
 {% gist tiborsimon/619da807c9fe3892eaac %}
 
-You can test that the `t1` and `t2` vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate now a sinusoid signal with a frequency of 3Hz. This will result 6 periods in the signal:
+You can test that the `t1` and `t2` vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate now a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:
 
 {% gist tiborsimon/ec5c237f47cdee3c7794 %}
 
@@ -39,6 +39,15 @@ If we plot the generated signal, we can see, that it is not a sine signal at all
 
 However. There are use cases when you don't want to match up the __continuous__ time with the __discrete__ time, so you don't have to bother with the sampling frequency, and you can generate a time vector from 0 to 1, and pass it to the equation something like this:
 
+{% gist tiborsimon/f7f3d7a521c01022b41d %}
+
+The result will be a 100 sample long sinusoid signal, that contains 3 periods.
+
+<img src="/images/smart-sinusoids/signal002.png" />
+
+As you can see, generating sinusoids isn't so hard at all. But you have to think about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal.. With __Smart Sinusoids__ you can save a lot of time, by delegating all the calculations to the library, and getting the signals by writing only one line of code.
+
+## The new Smart Sinusoids way
 
 
 
