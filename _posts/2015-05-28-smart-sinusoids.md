@@ -9,13 +9,11 @@ published: True
 
 The easiest way to generate a sine or cosine signal in MATLAB. With this library there are almost infinite ways to describe and generate a sinusoid signals. 
 
-<a href="http://tiborsimon.github.io/tools/solarized-theme-for-embedded-gists/" target="_blank"><img src="http://tiborsimon.github.io/images/core/corresponding-article.png" /></a>   <a href="http://tiborsimon.github.io/tools/solarized-theme-for-embedded-gists#discussion" target="_blank"><img src="http://tiborsimon.github.io/images/core/join-to-the-discussion.png" /></a>   <a href="http://tiborsimon.github.io/tools/solarized-theme-for-embedded-gists#demo" target="_blank"><img src="http://tiborsimon.github.io/images/core/live-demo.png" /></a>
-
 # Generating sinusoids
 
 Generating a sinusoid signal is often the first step for a more complex computations. It should be a routine, but actually it isn't. Many people struggles with it.
 
-### The old way
+## The old way
 
 The equation of a sinusoid signal is a known fact:
 
@@ -27,10 +25,28 @@ Machines work with _discrete time series_ that has a new property called __resol
 
 Therefore the _t_ variable in the equation can be represented as a vector of data points. 
 
-To create such a data point vector, you have to choose a sampling interval. Let's say you want to use __10 samples per seconds__ (`fs=10Hz`), and you want to have __20 samples__ in your vector. That also means that your time vector will cover __2 seconds__ of continuous time. As you can see, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
+To create such a time vector, you have to choose a sampling interval. Let's say you want to use __10 samples per seconds__ (`fs=10Hz`), and you want to have __20 samples__ in your vector. That also means that your time vector will cover almost __2 seconds__[^2] of continuous time. As you can see, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
 
 {% gist tiborsimon/619da807c9fe3892eaac %}
+
+You can test that the `t1` and `t2` vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate now a sinusoid signal with a frequency of 3Hz. This will result 6 periods in the signal:
+
+{% gist tiborsimon/ec5c237f47cdee3c7794 %}
+
+If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as it was expected.
+
+<img src="/images/smart-sinusoids/signal001.png" />
+
+However. There are use cases when you don't want to match up the __continuous__ time with the __discrete__ time, so you don't have to bother with the sampling frequency, and you can generate a time vector from 0 to 1, and pass it to the equation something like this:
+
+
+
+
+
+
 
 
 
 [^1]: Of course this is a very high level overview of the [sampling theorem](http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem). There are much more detail how these things really work.
+
+[^2]: Because we have started the our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds (`2s - 1/fs = 1.9s`).
