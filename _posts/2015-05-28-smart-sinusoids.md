@@ -29,28 +29,8 @@ Therefore the _t_ variable in the equation can be represented as a vector of dat
 
 To create such a data point vector, you have to choose a sampling interval. Let's say you want to use 10 samples per seconds (`fs=10Hz`), and you want to have 20 samples in your vector. That also means that your time vector will cover 2 seconds of continuous time. As you can see, the given duration in continuous time is equivalent with the given sampling frequency with the number of samples:
 
-{% highlight css %}
-fs = 10;
+{% gist tiborsimon/619da807c9fe3892eaac %}
 
-% continuous duration is known
-T = 2;
-t1 = [0:1/fs:T-1/fs];
-
-% number of samples are known
-N = 20;
-t2 = [0:N-1]./fs;
-{% endhighlight %}
-
-
-
-```
-t = [0:1:40];
-f = 500;
-fs = 8000;
-x = sin(2*pi*f/fs*t);
-figure(1)
-stem(t,x,'r');
-```
 
 
 [^1]: Of course this is a very high level overview of the [sampling theorem](http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem). There are much more detail how these things really work.
