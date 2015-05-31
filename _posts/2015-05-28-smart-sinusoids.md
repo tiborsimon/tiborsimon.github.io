@@ -13,7 +13,7 @@ The easiest way to generate a sine or cosine signal in MATLAB. With this library
 
 Generating a sinusoid signal is often the first step for a more complex computations. It should be a routine, but actually it isn't. Many people struggles with it.
 
-## The old way
+## Generating sinusoid signals
 
 The equation of a sinusoid signal is a known fact:
 
@@ -45,9 +45,33 @@ The result will be a 100 sample long sinusoid signal, that contains 3 periods.
 
 <img src="/images/smart-sinusoids/signal002.png" />
 
-As you can see, generating sinusoids isn't so hard at all. But you have to think about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal.. With __Smart Sinusoids__ you can save a lot of time, by delegating all the calculations to the library, and getting the signals by writing only one line of code.
+As you can see, generating sinusoids isn't so hard at all. But you __have to think__ about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal.. 
 
-## The new Smart Sinusoids way
+## Signal generation use cases
+
+In the previous section we discussed the basic ways to generating a sinusoid signal.  In this section we will go through all the possible signal generation methods.
+
+|       | Possible parameters   |
+|:-----:|:----------------------|
+| phi   | phase                 |
+| A     | amplitude             |
+| f     | frequency             |
+| fs    | sample rate           |
+| T     | period                |
+| dt    | sampling time         |
+| L     | signal duration       |
+| N     | number of periods     |
+| n     | number of samples     |
+
+| Index | Required informations |
+|:-----:|:----------------------|
+| 1     | n, N
+
+
+
+
+
+
 
 
 
@@ -58,4 +82,4 @@ As you can see, generating sinusoids isn't so hard at all. But you have to think
 
 [^1]: Of course this is a very high level overview of the [sampling theorem](http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem). There are much more detail how these things really work.
 
-[^2]: Because we have started the our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds (`2s - 1/fs = 1.9s`).
+[^2]: Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds _(2s - 1/fs = 1.9s)_.
