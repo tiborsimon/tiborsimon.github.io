@@ -13,7 +13,7 @@ The easiest way to generate a sine or cosine signal in MATLAB. With this library
 
 # Generating sinusoids
 
-Generating a sinusoid signal is often the first step for more complex computations. It should be a routine, but actually it isn't. Many people struggles with it.
+Generating a sinusoid signal is often the first step for a more complex computations. It should be a routine, but actually it isn't. Many people struggles with it.
 
 ### The old way
 
@@ -25,7 +25,23 @@ However. This equation is only valid in the __continuous time__ domain, therefor
 
 Machines work with _discrete time series_ that has a new property called __resolution__. Resolution is the link between _continous_ and _discrete_ time domain. This property is implemented with __sampling__. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data point[^1].
 
-Therefore the _t_ variable in the equation can be represented as a vector of data points.
+Therefore the _t_ variable in the equation can be represented as a vector of data points. 
+
+To create such a data point vector, you have to choose a sampling interval. Let's say you want to use 10 samples per seconds (`fs=10Hz`), and you want to have 20 samples in your vector. That also means that your time vector will cover 2 seconds of continuous time. As you can see, the given duration in continuous time is equivalent with the given sampling frequency with the number of samples:
+
+{% highlight css %}
+fs = 10;
+
+% continuous duration is known
+T = 2;
+t1 = [0:1/fs:T-1/fs];
+
+% number of samples are known
+N = 20;
+t2 = [0:N-1]./fs;
+{% endhighlight %}
+
+
 
 ```
 t = [0:1:40];
