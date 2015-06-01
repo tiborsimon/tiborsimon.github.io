@@ -47,11 +47,11 @@ The result will be a 100 sample long sinusoid signal, that contains 3 periods. B
 
 <img src="/images/smart-sinusoids/signal002.png" />
 
-As you can see, generating sinusoids in these basic ways isn't so hard at all. But you __have to think__ about the method, the formulas and the units. This could be very time consuming if you have to think about it every time you want to generate a signal..
+As you can see, generating sinusoids with these basic methods isn't hard at all. But you __have to think__ about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal..
 
 ## Signal generation use cases
 
-In the previous section we discussed the two most basic ways for generating a sinusoid signal.  In this section we will go through all the possible signal generation methods.
+In the previous section we discussed the two most basic ways for generating a sinusoid signal. In this section we will go through all the possible signal generation use cases.
 
 | Variable name      | Possible parameters   |
 |:------------------:|:----------------------|
@@ -65,13 +65,13 @@ In the previous section we discussed the two most basic ways for generating a si
 | N                  | number of periods     |
 | n                  | number of samples     |
 
-| Method number | Required parameters |
-|:-------------:|:--------------------|
-| 1             | n, N                | 
-| 2             | f, N, fs            |
-| 3             | f, n, fs            |
-| 4             | L, n, fs            |
-| 5             | f, L, fs            |
+| Method number | Required parameters | Description  |
+|:-------------:|:--------------------|:-------------|
+| 1             | n, N                | a signal consisting of _n_ data points with _N_ periods in it
+| 2             | f, N, fs            | a signal with _f_ frequency sampled at _fs_ sampling rate with _N_ periods in it
+| 3             | f, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
+| 4             | L, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate having the length of L seconds
+| 5             | f, L, fs            | 
 
 We have already discussed __method 1__ and __method 2__ in the previous section.
 
