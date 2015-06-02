@@ -4,7 +4,9 @@ title: Smart Sinusoids
 categories: ['programming']
 tags: ['matlab']
 published: True
-
+repo_link: https://github.com/tiborsimon/smart-sinusoids
+dowload_link: 
+version: v1.0
 ---
 
 The easiest way to generate a sine or cosine signal in MATLAB. With this library there are almost infinite ways to describe and generate a sinusoid signals. 
