@@ -5,7 +5,7 @@ categories: ['web']
 tags: ['jekyll', 'web', 'css', 'plugin']
 published: True
 repo_link: https://github.com/tiborsimon/jekyll-search-system
-dowload_link: https://github.com/tiborsimon/jekyll-search-system/archive/v1.0.zip
+dowload_link: https://github.com/tiborsimon/jekyll-search-system/archive/v1.1.zip
 version: v1.1
 ---
 
