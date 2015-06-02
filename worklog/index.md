@@ -29,6 +29,10 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-01 | TSPR000078<br>TSPR000065 | Smart Sinusoids article + Python learning + Home network shared devices installation
+| 2015-05-31 | TSPR000078 | Smart Sinusoids article
+| 2015-05-30 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring + building home network
+| 2015-05-29 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring
 | 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork and home network planning
 | 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
 | 2015-05-26 | TSPR000074 | Author and twitter integration.
