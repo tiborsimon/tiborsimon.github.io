@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Smart Sinusoids
-categories: ['tools']
+categories: ['programming']
 tags: ['matlab']
 published: True
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple Jekyll search system
-categories: ['tools']
+categories: ['web']
 tags: ['jekyll', 'web', 'css', 'plugin']
 published: True
 repo_link: https://github.com/tiborsimon/jekyll-search-system

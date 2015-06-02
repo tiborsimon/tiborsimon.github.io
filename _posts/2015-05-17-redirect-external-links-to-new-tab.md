@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Redirect external links to new tab
-categories: ['tools']
+categories: ['web']
 tags: ['jekyll', 'hack', 'javascript']
 published: True
 
