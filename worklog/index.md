@@ -31,7 +31,7 @@ Work harder!
 |:-----------|:------------|:------------|
 | 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 | 2015-05-31 | TSPR000078 | Smart Sinusoids article
-| 2015-05-30 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring<br>building home network
+| 2015-05-30 | TSPR000078<br>TSPR000079 | Simple Input Parser and Smart sinusoids refactoring<br>building home network
 | 2015-05-29 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring
 | 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork<br>Home network planning
 | 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
