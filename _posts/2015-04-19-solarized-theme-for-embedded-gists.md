@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Solarized theme for embedded Gists
-categories: ['tools']
+categories: ['web']
 tags: ['jekyll', 'web', 'css']
 published: True
 repo_link: https://github.com/tiborsimon/solarized-gist
