@@ -29,9 +29,9 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article +<br>Python learning +<br>Home network shared devices installation
+| 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 | 2015-05-31 | TSPR000078 | Smart Sinusoids article
-| 2015-05-30 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring +<br>building home network
+| 2015-05-30 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring<br>building home network
 | 2015-05-29 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring
 | 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork and home network planning
 | 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
@@ -42,7 +42,7 @@ Work harder!
 | 2015-05-22 | TSPR000068 | Thesis work....
 | 2015-05-21 | TSPR000068 | Thesis work...
 | 2015-05-20 | TSPR000068 | Thesis work..
-| 2015-05-19 | TSPR000055<br>TSPR000068 | _winreg_ study and thesis
+| 2015-05-19 | TSPR000055<br>TSPR000068 | _winreg_ study<br>thesis
 | 2015-05-18 | TSPR000055 | Testing the _winreg_ and _pydispatcher_ python library
 | 2015-05-17 | TSPR000074 | Finished Simple Jekyll search system and <br>[article](http://tiborsimon.github.io/tools/simple-jekyll-search-system/). [Redirect article.](http://tiborsimon.github.io/tools/redirect-external-links-to-new-tab/)
 | 2015-05-16 | TSPR000074 | Working on the search system..
