@@ -65,13 +65,13 @@ In the previous section we discussed the two most basic ways for generating a si
 | N                  | number of periods     |
 | n                  | number of samples     |
 
-| Method number | Required parameters | Description  |
+| Method index | Required parameters | Description  |
 |:-------------:|:--------------------|:-------------|
 | 1             | n, N                | a signal consisting of _n_ data points with _N_ periods in it
-| 2             | f, N, fs            | a signal with _f_ frequency sampled at _fs_ sampling rate with _N_ periods in it
+| 2             | f, N, fs            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
 | 3             | f, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
 | 4             | L, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate having the length of L seconds
-| 5             | f, L, fs            | 
+| 5             | f, L, fs            | a signal sampled at _fs_ sampling rate with the duration of _L_ seconds with the frequency _f_
 
 We have already discussed __method 1__ and __method 2__ in the previous section.
 
