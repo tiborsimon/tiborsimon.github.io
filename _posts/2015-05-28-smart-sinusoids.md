@@ -57,7 +57,7 @@ We have seen the actual equation for the sinusoid signals. In this section we wi
 
 <img src="/images/smart-sinusoids/detailed.png" />
 
-In order to know all the details about generating a signal, you should be familiar with all of the parameters. The following tables will sum up all the parameters and the generation methods you can use.
+You should be familiar with all of the parameters needed to generate a sinusoid signal if you want to master the it. The following tables will sum up all the parameters and the generation methods you can use.
 
 | Variable name      | Possible parameters   |
 |:------------------:|:----------------------|
@@ -71,13 +71,13 @@ In order to know all the details about generating a signal, you should be famili
 | N                  | number of periods     |
 | n                  | number of samples     |
 
-| Method index | Required parameters | Description  |
-|:-------------:|:--------------------|:-------------|
-| 1             | n, N                | a signal consisting of _n_ data points with _N_ periods in it
-| 2             | L, N, fs            | _L_ seconds long signal consisting _N_ periods with the frequency _f_
-| 3             | f, N, fs            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
-| 4             | f, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
-| 5             | f, L, fs            | a signal sampled at _fs_ sampling rate with the duration of _L_ seconds with the frequency _f_
+| Method index | Required parameters | Continuous lock | Description  |
+|:-------------:|:-------------------|:---------------|:-------------|
+| 1             | n, N               | No             | a signal consisting of _n_ data points with _N_ periods in it
+| 2             | L, N, fs           | Yes            | _L_ seconds long signal consisting _N_ periods with the frequency _f_
+| 3             | f, N, fs           | Yes            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
+| 4             | f, n, fs           | Yes            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
+| 5             | f, L, fs           | Yes            | a signal sampled at _fs_ sampling rate with the duration of _L_ seconds with the frequency _f_
 
 There is no more options to specify a sinusoid signal. All the other possible specifications are redundant as _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
