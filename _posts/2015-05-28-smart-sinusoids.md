@@ -81,7 +81,9 @@ You should be familiar with all of the parameters needed to generate a sinusoid 
 
 There is no more options to specify a sinusoid signal. All the other possible specifications are redundant as _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
-We have already discussed __method 1__ and __method 2__ in the previous section, but let's go through all of the methods once more just for sure :)
+We have already discussed _method 1_ and _method 2_ in the previous section, but let's go through all of the methods once more just for sure :) All of the following example will generate exactly the same signal:
+
+<img src="/images/smart-sinusoids/demo_signal.png" />
 
 ### Method 1 - n, N
 
