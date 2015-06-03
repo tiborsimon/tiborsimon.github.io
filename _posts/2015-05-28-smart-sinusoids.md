@@ -70,12 +70,14 @@ In the previous section we discussed the two most basic ways for generating a si
 | Method index | Required parameters | Description  |
 |:-------------:|:--------------------|:-------------|
 | 1             | n, N                | a signal consisting of _n_ data points with _N_ periods in it
-| 2             | f, N, fs            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
-| 3             | f, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
-| 4             | L, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate having the length of L seconds
+| 2             | L, N, fs            | _L_ seconds long signal consisting _N_ periods with the frequency _f_
+| 3             | f, N, fs            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
+| 4             | f, n, fs            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
 | 5             | f, L, fs            | a signal sampled at _fs_ sampling rate with the duration of _L_ seconds with the frequency _f_
 
-We have already discussed __method 1__ and __method 2__ in the previous section.
+There is no more options to specify a sinusoid signal. All the other possible specifications are redundant as _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
+
+We have already discussed __method 1__ and __method 2__ in the previous section.c
 
 
 
