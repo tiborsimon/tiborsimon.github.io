@@ -71,8 +71,8 @@ You should be familiar with all of the parameters needed to generate a sinusoid 
 | N                  | number of periods     |
 | n                  | number of samples     |
 
-| Method index | Required parameters | Continuous lock | Description  |
-|:-------------:|:-------------------|:---------------|:-------------|
+| Method index | Required parameters | CT DT lock     | Description  |
+|:-------------:|:------------------:|:--------------:|:-------------|
 | 1             | n, N               | No             | a signal consisting of _n_ data points with _N_ periods in it
 | 2             | L, N, fs           | Yes            | _L_ seconds long signal consisting _N_ periods with the frequency _f_
 | 3             | f, N, fs           | Yes            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
