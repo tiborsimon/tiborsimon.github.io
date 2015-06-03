@@ -85,7 +85,7 @@ We have already discussed _method 1_ and _method 2_ in the previous section, but
 
 <img src="/images/smart-sinusoids/demo_signal.png" />
 
-### Method 1 - n, N
+### Method 1
 
 Generating a sinusoid signal with __n__ data points with __N__ periods in it.
 
@@ -93,7 +93,7 @@ Generating a sinusoid signal with __n__ data points with __N__ periods in it.
 
 
 
-### Method 2 - L, N, fs
+### Method 2
 
 Generating __L__ seconds long signal consisting __N__ periods in it with the frequency __f__.
 
@@ -101,7 +101,7 @@ Generating __L__ seconds long signal consisting __N__ periods in it with the fre
 
 
 
-### Method 3 - f, N, fs
+### Method 3
 
 Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods in it with the frequency __f__.
 
@@ -109,7 +109,7 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods 
 
 
 
-### Method 4 - f, n, fs
+### Method 4
 
 a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__.
 
@@ -117,11 +117,14 @@ a signal consisting of __n__ data points sampled at __fs__ sampling rate with th
 
 
 
-### Method 5 - f, L, fs
+### Method 5
 
 Generating a sinusoid signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency __f__.
 
 {% gist tiborsimon/51dca17af664f51ecc0b %}
+
+
+That's it. These methods cover all the possible non redundant methods for generating sinusoidal signals.
 
 
 
