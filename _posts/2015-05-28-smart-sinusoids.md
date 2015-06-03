@@ -60,7 +60,7 @@ We have seen the actual equation for the sinusoid signals. In this section we wi
 You should be familiar with all of the parameters needed to generate a sinusoid signal if you want to master the it. The following tables will sum up all the parameters and the generation methods you can use.
 
 | Variable name  | Unit | Possible parameters   |
-|:--------------:|:----:|:----------------------|
+|:--------------:|:----:|:---------------------:|
 | __phi__        | degree    | phase                 |
 | __A__          | full scale   | amplitude[^3]             |
 | __f__          |   Hz   | frequency             |
