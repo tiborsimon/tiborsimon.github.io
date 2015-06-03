@@ -124,7 +124,13 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with the duration o
 {% gist tiborsimon/51dca17af664f51ecc0b %}
 
 
-That's it. These methods cover all the possible non redundant methods for generating sinusoidal signals.
+That's it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you _study_ them? Will you _derive_ them over and over again? There is a better way for these basic tasks.
+
+# Smart Sinusoids - the easy way
+
+If your answer for the last two questions is both _nope_, the following method will like you.
+
+
 
 
 
