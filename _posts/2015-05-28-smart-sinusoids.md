@@ -59,17 +59,17 @@ We have seen the actual equation for the sinusoid signals. In this section we wi
 
 You should be familiar with all of the parameters needed to generate a sinusoid signal if you want to master the it. The following tables will sum up all the parameters and the generation methods you can use.
 
-| Variable name      | Possible parameters   |
-|:------------------:|:----------------------|
-| __phi__                | phase                 |
-| __A__                  | amplitude             |
-| __f__                  | frequency             |
-| __fs__                 | sample rate           |
-| __T__                  | period                |
-| __dt__                 | sample time           |
-| __L__                  | signal duration       |
-| __N__                  | number of periods     |
-| __n__                  | number of samples     |
+| Variable name  | Unit | Possible parameters   |
+|:--------------:|:----:|:----------------------|
+| __phi__        | degree    | phase                 |
+| __A__          | full scale   | amplitude[^3]             |
+| __f__          |   Hz   | frequency             |
+| __fs__         |   Hz   | sample rate           |
+| __T__          |   s   | period                |
+| __dt__         |   s   | sample time           |
+| __L__          |   s   | signal duration       |
+| __N__          |   -   | number of periods     |
+| __n__          |   -   | number of samples     |
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
@@ -139,3 +139,5 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with the duration o
 [^1]: Of course this is a very high level overview of the [sampling theorem](http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem). There are much more detail how these things really work.
 
 [^2]: Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds _(2s - 1/fs = 1.9s)_.
+
+[^3]: PC sound cards usually accept signals scaled -1 to 1.
