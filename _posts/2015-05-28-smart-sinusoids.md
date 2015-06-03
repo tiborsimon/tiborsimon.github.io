@@ -73,11 +73,11 @@ You should be familiar with all of the parameters needed to generate a sinusoid 
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
-| 1             | n, N               | No             | a signal consisting of _n_ data points with _N_ periods in it
-| 2             | L, N, fs           | Yes            | _L_ seconds long signal consisting _N_ periods with the frequency _f_
-| 3             | f, N, fs           | Yes            | a signal sampled at _fs_ sampling rate with _N_ periods in it with the frequency _f_
-| 4             | f, n, fs           | Yes            | a signal consisting of _n_ data points sampled at _fs_ sampling rate with the frequency _f_
-| 5             | f, L, fs           | Yes            | a signal sampled at _fs_ sampling rate with the duration of _L_ seconds with the frequency _f_
+| 1             | __n__, __N__                   | No             | a signal consisting of __n__ data points with __N__ periods in it
+| 2             | __L__, __N__, __fs__           | Yes            | __L__ seconds long signal consisting __N__ periods with the frequency __f__
+| 3             | __f__, __N__, __fs__           | Yes            | a signal sampled at __fs__ sampling rate with __N__ periods in it with the frequency __f__
+| 4             | __f__, __n__, __fs__           | Yes            | a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__
+| 5             | __f__, __L__, __fs__           | Yes            | a signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency _f_
 
 There is no more options to specify a sinusoid signal. All the other possible specifications are redundant as _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
