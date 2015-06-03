@@ -27,7 +27,7 @@ Machines work with _discrete time series_ that has a property called __resolutio
 
 Therefore the _t_ variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval. 
 
-Let's say you want to get __10 samples per seconds__ _(fs=10Hz)_, and you want to have __20 samples__ in your vector. That also means that your time vector will cover almost __2 seconds__[^2] of continuous time. As you can see, as a constraint, the given duration in continuous time is equivalent with the given number of samples if the sampling frequency is known.
+Let's say you want to get __10 samples per seconds__ _(fs=10Hz)_, and you want to have __20 samples__ in your vector. That also means that your time vector will cover almost __2 seconds__[^2] of continuous time.
 
 {% gist tiborsimon/619da807c9fe3892eaac %}
 
@@ -51,9 +51,13 @@ The result will be a 100 sample long sinusoid signal, that contains 3 periods. B
 
 As you can see, generating sinusoids with these basic methods isn't hard at all. But you __have to think__ about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal..
 
-## Signal generation use cases
+## Sinusoid signal parameters
 
-In the previous section we discussed the two most basic ways for generating a sinusoid signal. In this section we will go through all the possible signal generation use cases.
+We have seen the actual equation for the sinusoid signals. In this section we will examine all of the possible parameters that can be used to describe such a signal. Let's start with a figure, that shows all signal parameters at once:
+
+<img src="/images/smart-sinusoids/detailed.png" />
+
+In order to know all the details about generating a signal, you should be familiar with all of the parameters. The following tables will sum up all the parameters and the generation methods you can use.
 
 | Variable name      | Possible parameters   |
 |:------------------:|:----------------------|
