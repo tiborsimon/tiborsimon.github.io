@@ -3,4 +3,17 @@
 $(document).ready(function() {
     $('#toc').toc();
 });
+
+$(document).scroll(function() {
+  var height = $(.entry-content).style.height;
+  var y = $(this).scrollTop();
+  if (y < 800) {
+    $('#toc').fadeIn();
+  } else {
+    $('#toc').fadeOut();
+  }
+});
+
+
+
 </script>
