@@ -29,13 +29,16 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-03 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (modules)
+| 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (namespace, modules)
+| 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (functions, generators)
 | 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 | 2015-05-31 | TSPR000078 | Smart Sinusoids article
 | 2015-05-30 | TSPR000078<br>TSPR000079 | Simple Input Parser and Smart sinusoids refactoring<br>building home network
 | 2015-05-29 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring
 | 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork<br>Home network planning
 | 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
-| 2015-05-26 | TSPR000074 | Author and twitter integration.
+| 2015-05-26 | TSPR000074 | <strike>Author and twitter integration</strike>.
 | 2015-05-25 | TSPR000068 | Thesis finished :) Improved Solarized Gists article.
 | 2015-05-24 | TSPR000068 | Thesis work......
 | 2015-05-23 | TSPR000068 | Thesis work.....
