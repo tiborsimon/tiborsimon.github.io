@@ -1,5 +1,6 @@
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 
+<!-- External url handling -->
 <script type="text/javascript">
     $('a').each(function() {
        var a = new RegExp('/' + window.location.host + '/');
@@ -12,6 +13,9 @@
        }
     });
 </script>
+
+<!-- Table of Contents -->
+<script src="/assets/js/plugins/toc.js" type="text/javascript"></script>
 
 {% if site.google_analytics %}
 <!-- Asynchronous Google Analytics snippet -->
