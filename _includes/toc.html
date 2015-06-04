@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 $(document).scroll(function() {
-  var hh = $(.entry-content).height();  
+  var hh = $('.entry-content').height();  
   var y = $(this).scrollTop();
   if (y < hh) {
     if (!toc_visible) {
