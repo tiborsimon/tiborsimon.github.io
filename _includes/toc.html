@@ -2,7 +2,9 @@
 <script type="text/javascript">
 var toc_visible = true;
 $(document).ready(function() {
-    $('#toc').toc();
+    setTimeout(function(){
+        $('#toc').toc();
+    }, 1500);
 });
 
 $(document).scroll(function() {
