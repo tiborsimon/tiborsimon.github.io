@@ -728,15 +728,13 @@ td a {
 
 div#toc {
   position: fixed;
-  left: 50%;
-  margin-left: 220px;
+  right: 50%;
+  margin-right: 201px;
   white-space: nowrap;
-  /* background-color: red; */
-  /* z-index: -99; */
   top: 301px;
   opacity: 0.4;
 }
 
 div#toc:hover {
-  margin-left: 383px;
+  margin-right: 340px;
 }

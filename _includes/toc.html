@@ -2,9 +2,11 @@
 <script type="text/javascript">
 var toc_visible = true;
 $(document).ready(function() {
-    setTimeout(function(){
-        $('#toc').toc({ showEffect: 'fadeIn' });
-    }, 1500);
+  var pos = $('.entry-content').position();
+  $('#toc').css({ 'top' : pos.top + 'px'});
+  setTimeout(function(){
+      $('#toc').toc({ showEffect: 'fadeIn' });
+  }, 1500);
 });
 
 $(document).scroll(function() {
