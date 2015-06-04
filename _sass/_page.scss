@@ -721,6 +721,11 @@ td a {
 // TOC
 // --------------------------------------------------
 
+.entry-content {
+  position: relative;
+  z-index: 1;
+}
+
 div#toc {
   position: fixed;
   left: 50%;
