@@ -1,16 +1,23 @@
 <div id="toc"></div>
 <script type="text/javascript">
 $(document).ready(function() {
+    var toc_visible = true;
     $('#toc').toc();
 });
 
 $(document).scroll(function() {
-  var height = $(.entry-content).style.height;
+  var hh = $(.entry-content).style.height;  
   var y = $(this).scrollTop();
-  if (y < 800) {
-    $('#toc').fadeIn();
+  if (y < hh) {
+    if (!toc_visible) {
+      toc_visible = true;
+      $('#toc').fadeIn();
+    }
   } else {
-    $('#toc').fadeOut();
+    if (toc_visible) {
+      toc_visible = false;
+      $('#toc').fadeOut();
+    }
   }
 });
 
