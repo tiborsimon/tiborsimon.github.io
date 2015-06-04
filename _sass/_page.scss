@@ -726,7 +726,8 @@ div#toc {
   left: 50%;
   margin-left: 385px;
   white-space: nowrap;
-  background-color: red;
-  z-index: -99;
-  top: 270px;
+  /* background-color: red; */
+  /* z-index: -99; */
+  top: 301px;
+  opacity: 0.4;
 }
