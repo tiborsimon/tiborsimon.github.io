@@ -731,13 +731,14 @@ div#toc {
   right: 50%;
   margin-right: 232px;
   white-space: nowrap;
-  /* top: 301px; */
   opacity: 0.4;
   padding-left: 50px;
+  display: block;
+  width: 218px;
 }
 
 div#toc:hover {
-  margin-right: 400px;
+  margin-right: 430px;
 }
 
 #toc ol {
