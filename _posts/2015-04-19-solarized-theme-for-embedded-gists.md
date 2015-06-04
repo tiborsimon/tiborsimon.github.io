@@ -41,7 +41,7 @@ On my previous Wordpress based site I used Gists as source code showcase tool. I
 
 Gists provides a perfect versioned way to showcase codes. It has one downside though. It looks a bit outdated for me. I don't like the pure white background, the dark font colors, and the sharp corners.
 
-####It's time for a heavy CSS refactoring. 
+###It's time for a heavy CSS refactoring. 
 
 Using the `!important` CSS declaration it is possible to overwrite the default rules downloaded as an external CSS file. My Jekyll configuration uses [SASS](http://sass-lang.com) so I was able to use CSS variables.
 
