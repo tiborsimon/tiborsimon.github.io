@@ -3,7 +3,7 @@
 var toc_visible = true;
 $(document).ready(function() {
   var pos = $('.entry-content').position();
-  $('#toc').css({ 'top' : pos.top + 'px'});
+  $('#toc').css({ 'top' : (pos.top+60) + 'px'});
   setTimeout(function(){
       $('#toc').toc({ showEffect: 'fadeIn' });
   }, 1500);
