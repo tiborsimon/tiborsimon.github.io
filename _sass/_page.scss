@@ -729,14 +729,15 @@ td a {
 div#toc {
   position: fixed;
   right: 50%;
-  margin-right: 201px;
+  margin-right: 220px;
   white-space: nowrap;
-  top: 301px;
+  /* top: 301px; */
   opacity: 0.4;
+  padding-left: 50px;
 }
 
 div#toc:hover {
-  margin-right: 340px;
+  margin-right: 400px;
 }
 
 #toc ol {
