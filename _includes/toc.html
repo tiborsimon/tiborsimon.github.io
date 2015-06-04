@@ -5,12 +5,12 @@ $(document).ready(function() {
   var pos = $('.entry-content').position();
   $('#toc').css({ 'top' : (pos.top+60) + 'px'});
   setTimeout(function(){
-      $('#toc').toc({ showEffect: 'fadeIn' });
+      $('#toc').toc();
   }, 1500);
 });
 
 $(document).scroll(function() {
-  var hh = $('.entry-content').height();  
+  var hh = $('.entry-content').height()-80;  
   var y = $(this).scrollTop();
   if (y < hh) {
     if (!toc_visible) {
