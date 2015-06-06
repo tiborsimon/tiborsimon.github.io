@@ -31,7 +31,7 @@ In the Main Menu you have 4 options but in reality 3 of them is working right no
 - Exit – it exits the game
 
 <figure>
-    <img src="/images/java-shooter/javashooter-1.png" alt="" width="400" />
+    <img src="/images/java-shooter/javashooter-1.png" alt="" width="550" />
 </figure>
 
 
@@ -44,7 +44,7 @@ In the New Game Menu you can start Easy, Normal and Expert game.
 - Expert – slow enemies with slow spawning time + manual aiming (very hard!)
 
 <figure>
-    <img src="/images/java-shooter/javashooter-2.png" alt="" width="400" />
+    <img src="/images/java-shooter/javashooter-2.png" alt="" width="550" />
 </figure>
 
 # Player menu
@@ -55,7 +55,7 @@ In the Player Menu you can view the stats of the current player, export your pla
 - New – it goes to the New Player Menu
 
 <figure>
-    <img src="/images/java-shooter/javashooter-3.png" alt="" width="400" />
+    <img src="/images/java-shooter/javashooter-3.png" alt="" width="550" />
 </figure>
 
 # Controlling the game
@@ -78,7 +78,7 @@ I have built in the possibility to mack around with the main game parameters. To
 
 The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces.
 
-__If the game crashes, make sure you set higher pool limits than 10!__
+__If the game crashes, make sure you set the pool limits higher than 10!__
 
 For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
 The content of the text file in this case should be like this:
