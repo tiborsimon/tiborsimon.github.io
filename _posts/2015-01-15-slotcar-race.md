@@ -9,6 +9,11 @@ published: True
 
 At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track. The only information we had was the acceleration data comes from the car itself. Based on this information we had to control the voltage of the car’s motor to run the fastest lap on the track. It doesn’t sounds too hard, does it.
 
+<figure class="half">
+    <img src="/images/slotcar/promo1.jpg" alt="">
+    <img src="/images/slotcar/promo2.jpg" alt="">
+</figure>
+
 # About the competition
 
 However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.
