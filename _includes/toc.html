@@ -12,10 +12,14 @@ $(document).ready(function() {
 });
 
 $(document).scroll(function() {
-  var hh = $('.entry-content').height()-200;  
+  var th = $('.entry-content').height()-200;  
   var y = $(this).scrollTop();
-  var op = 0.5;
-  if (y>hh) {
+  var maxop = 0.5;
+  var delta = 60;
+  var op = maxop;
+  if (y>th) {
+    op = -(maxop/delta)*y + (maxop*(th+delta))/delta;
+  } elseif (y>th+delta) {
     op = 0.0;
   }
   $('#toc').css({ 'opacity' : (op) }); 
