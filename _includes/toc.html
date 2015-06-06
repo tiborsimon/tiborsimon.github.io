@@ -19,7 +19,7 @@ $(document).scroll(function() {
   var op = maxop;
   if (y>th) {
     op = -(maxop/delta)*y + (maxop*(th+delta))/delta;
-  } elseif (y>th+delta) {
+  } else if (y>th+delta) {
     op = 0.0;
   }
   $('#toc').css({ 'opacity' : (op) }); 
