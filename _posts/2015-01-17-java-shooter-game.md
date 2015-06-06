@@ -31,11 +31,61 @@ In the Main Menu you have 4 options but in reality 3 of them is working right no
 - Exit – it exits the game
 
 <figure>
-    <img src="/images/java-shooter/javashooter-1.png" alt="" width="400" align="middle" />
+    <img src="/images/java-shooter/javashooter-1.png" alt="" width="400" />
 </figure>
 
 
-# 
+# Game menu
+
+In the New Game Menu you can start Easy, Normal and Expert game.
+
+- Easy – slow enemies with slow spawning time + auto aiming
+- Normal – faster enemies with faster spawning time + auto aiming
+- Expert – slow enemies with slow spawning time + manual aiming (very hard!)
+
+<figure>
+    <img src="/images/java-shooter/javashooter-2.png" alt="" width="400" />
+</figure>
+
+# Player menu
+
+In the Player Menu you can view the stats of the current player, export your player data, and create new player.
+
+- Export – it exports the current player stats to transfer them another computer.
+- New – it goes to the New Player Menu
+
+<figure>
+    <img src="/images/java-shooter/javashooter-3.png" alt="" width="400" />
+</figure>
+
+# Controlling the game
+
+The game follows the conventions: you can move with the arrow keys, and fire with the `space bar`. In _Easy_ and _Normal_ mode the game aims for you, but in _Expert_ mode aiming is your task with `T` and `H` keys.
+
+During the game the mouse pointer disappears (in mac you have to move the pointer a bit unless it won’t disappear). With the `ESC` key you can bring up the Pause Menu, and the mouse pointer will show up again.
+
+# Modding the gameplay
+
+I have built in the possibility to mack around with the main game parameters. To do this you have to create a text file called mods_for_the_game.txt into the same folder where the jar file located.
+
+## Hackable parameters
+
+- fullscreen [true/false] – the game can load in window or full screen mode.
+- overclock [fps in int] – sets the target fps. The actual fps is dependent on your machine.
+- showFPS [true/false] – turns the fps counter on or off
+- explosionPoolLimit [pool limit in int] – it is expensive to allocate many animation frames in real time, therefore the game allocates the explosion animation frames before the game starts. You can set the max number of animations preloaded to the animation pool. For high FPS rate it is recommended to set this value greater than 10. The game will load slower but it wont crash due to empty animation pool.
+- sparkPoolLimit [pool limit in int] – same as the explosionPoolLimit parameter. If you set high FPS rate set this value higher than 10.
+
+The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces.
+
+__If the game crashes, make sure you set higher pool limits than 10!__
+
+For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
+The content of the text file in this case should be like this:
+
+{% gist tiborsimon/bb949b0256f7b003055b %}
+
+Example video about how to overclock the game a bit.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
 

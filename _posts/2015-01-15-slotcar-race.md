@@ -36,7 +36,9 @@ The track was a casual slot car track with two corners and a cross over section.
 
 Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.
 
-<img src="/images/slotcar/car.jpg" width="400" alt="">
+<figure>
+    <img src="/images/slotcar/car.jpg" width="400" alt="">
+</figure>
 
 # Solving the problem
 
@@ -75,14 +77,14 @@ Right at this moment, the car was switched to state three, in which the algorith
 # Period finder algorithm
 
 <figure>
-    <img src="/images/slotcar/raw-data.png" width="400" alt="">
+    <img src="/images/slotcar/raw-data.png" width="550" alt="">
     <figcaption>Raw accelerometer data</figcaption>
 </figure>
 
 The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)
 
 <figure>
-    <img src="/images/slotcar/algorithm.png" width="400" alt="">
+    <img src="/images/slotcar/algorithm.png" width="550" alt="">
     <figcaption>Algorithm output signals</figcaption>
 </figure>
 
