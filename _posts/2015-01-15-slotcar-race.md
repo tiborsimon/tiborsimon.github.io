@@ -45,6 +45,8 @@ The third question was easier after the second one. We knew that the acceleratio
 
 Let’s see how the car performs with the final algorithm before we dive into the details.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Aj9IzfBdFBo" frameborder="0" allowfullscreen></iframe>
+
 # What is happening on the video?
 
 You will learn later from the source code listed below, that the whole program stands from three main states:
@@ -67,3 +69,4 @@ As you can see, the final output of the algorithm was shown above.
 
 Below you can find the nicely commented source code of the period finder algorithm. The final code that runs on the car itself is not showed.
 
+{% gist tiborsimon/fd6dbd9c76b32de9e834 %}
