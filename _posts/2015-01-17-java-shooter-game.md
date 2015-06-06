@@ -89,3 +89,10 @@ Example video about how to overclock the game a bit.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
 
+
+# Summary
+
+The developed program isn't a full featured game but a skeleton, which you can develop further.
+
+{% include repo_and_release.html %}
+
