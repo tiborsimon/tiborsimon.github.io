@@ -2,11 +2,15 @@
 <script type="text/javascript">
 var toc_visible = true;
 $(document).ready(function() {
+  $("#toc").toggleClass("hovered");
   var pos = $('.entry-content').position();
   $('#toc').css({ 'top' : (pos.top+60) + 'px'});
   setTimeout(function(){
       $('#toc').toc();
   }, 200);
+  setTimeout(function(){
+      $("#toc").toggleClass("hovered");
+  }, 1500);
 });
 
 $(document).scroll(function() {
