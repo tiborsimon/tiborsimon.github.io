@@ -5,9 +5,7 @@ $(document).ready(function() {
   $("#toc").toggleClass("hovered");
   var pos = $('.entry-content').position();
   $('#toc').css({ 'top' : (pos.top+60) + 'px'});
-  setTimeout(function(){
-      $('#toc').toc();
-  }, 200);
+  $('#toc').toc();
   setTimeout(function(){
       $("#toc").toggleClass("hovered");
   }, 4000);
