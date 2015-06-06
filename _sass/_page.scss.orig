@@ -731,8 +731,13 @@ div#toc {
   right: 50%;
   margin-right: 258px;
   white-space: nowrap;
+<<<<<<< HEAD
   opacity: 0.5;
+  padding-left: 50px;
+=======
+  opacity: 0.4;
   padding-left: 100px;
+>>>>>>> 2d0739e5c80f017c2583cb7a33c743632c73a077
   display: block;
   width: 243px;
 }
