@@ -21,6 +21,18 @@ If the game won’t open by clicking on it (like on OSX Moutain Lion), you have 
 
 {% gist tiborsimon/b052b74db0fdc360a885 %}
 
+# Main menu
+
+In the Main Menu you have 4 options but in reality 3 of them is working right now.
+
+- Play – it goes t the new game menu
+- Player – it goes to the player menu
+- Scores – currently not working
+- Exit – it exits the game
+
+<img src="/images/java-shooter/javashooter-1.png" alt="" width="500" />
+
+# 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
 
