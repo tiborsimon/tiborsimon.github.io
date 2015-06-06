@@ -29,7 +29,9 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-06-03 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (modules)
+| 2015-06-05 | TSPR000074 | TOC development and old article import
+| 2015-06-04 | TSPR000074 | TOC development
+| 2015-06-03 | TSPR000074 | TOC development
 | 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (namespace, modules)
 | 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (functions, generators)
 | 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
