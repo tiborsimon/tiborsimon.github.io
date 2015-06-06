@@ -30,7 +30,7 @@ In the Main Menu you have 4 options but in reality 3 of them is working right no
 - Scores – currently not working
 - Exit – it exits the game
 
-<img src="/images/java-shooter/javashooter-1.png" alt="" width="500" />
+<img src="/images/java-shooter/javashooter-1.png" alt="" width="500" align="middle" />
 
 # 
 
