@@ -28,7 +28,9 @@ The rules of the competition
 
 The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.
 
+<figure>
 <img src="/images/slotcar/track.jpg" alt="">
+</figure>
 
 # Car
 
