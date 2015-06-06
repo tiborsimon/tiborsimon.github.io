@@ -12,19 +12,15 @@ $(document).ready(function() {
 });
 
 $(document).scroll(function() {
-  var hh = $('.entry-content').height()-300;  
+  var hh = $('.entry-content').height()-200;  
   var y = $(this).scrollTop();
-  if (y < hh) {
-    if (!toc_visible) {
-      toc_visible = true;
-      $('#toc').fadeIn();
-    }
-  } else {
-    if (toc_visible) {
-      toc_visible = false;
-      $('#toc').fadeOut();
-    }
+  var op = 1.0;
+  if (y>hh) {
+    
+  } elseif (y>hh+50) {
+    op = 0.0;
   }
+  $('#toc').css({ 'opacity' : (op) }); 
 });
 
 
