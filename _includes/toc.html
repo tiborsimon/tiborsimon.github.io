@@ -14,8 +14,8 @@ $(document).ready(function() {
 $(document).scroll(function() {
   var hh = $('.entry-content').height()-200;  
   var y = $(this).scrollTop();
-  var op = 1.0;
-  if (y>hh+50) {
+  var op = 0.5;
+  if (y>hh) {
     op = 0.0;
   }
   $('#toc').css({ 'opacity' : (op) }); 
