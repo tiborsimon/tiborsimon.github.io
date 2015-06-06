@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SlotCar Race
-categories: ['category']
-tags: ['tag']
+categories: ['electronics']
+tags: ['electronics', 'matlab']
 published: True
 
 ---
@@ -72,7 +72,17 @@ Right at this moment, the car was switched to state three, in which the algorith
 
 # Period finder algorithm
 
+<figure>
+    <img src="/images/slotcar/raw-data.png" alt="">
+    <figcaption>Raw accelerometer data</figcaption>
+</figure>
+
 The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)
+
+<figure>
+    <img src="/images/slotcar/algorithm.png" alt="">
+    <figcaption>Algorithm output signals</figcaption>
+</figure>
 
 As you can see, the final output of the algorithm was shown above.
 
