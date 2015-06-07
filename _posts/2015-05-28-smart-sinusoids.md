@@ -53,23 +53,24 @@ As you can see, generating sinusoids with these basic methods isn't hard at all.
 
 ## Sinusoid signal parameters
 
-We have seen the actual equation for the sinusoid signals. In this section we will examine all of the possible parameters that can be used to describe such a signal. Let's start with a figure, that shows all signal parameters at once:
+There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with all of the parameters.
 
 <img src="/images/smart-sinusoids/detailed.png" />
 
-You should be familiar with all of the parameters needed to generate a sinusoid signal if you want to master the it. The following tables will sum up all the parameters and the generation methods you can use.
 
 | Variable name  | Unit | Possible parameters   |
 |:--------------:|:----:|:---------------------:|
-| __phi__        | [degree]    | phase                 |
-| __A__          | [full scale]   | amplitude[^3]             |
-| __f__          | [Hz]   | frequency             |
-| __fs__         | [Hz]  | sample rate           |
-| __T__          | [s]   | period                |
-| __dt__         | [s]   | sample time           |
-| __L__          | [s]   | signal duration       |
-| __N__          | [-]   | number of periods     |
-| __n__          | [-]   | number of samples     |
+| __phi__        | [degree]    | phase          |
+| __A__          | [full scale] | amplitude[^3] |
+| __f__          | [Hz]   | frequency           |
+| __fs__         | [Hz]  | sample rate          |
+| __T__          | [s]   | period               |
+| __dt__         | [s]   | sample time          |
+| __L__          | [s]   | signal duration      |
+| __N__          | [-]   | number of periods    |
+| __n__          | [-]   | number of samples    |
+
+With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn't count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
@@ -79,11 +80,11 @@ You should be familiar with all of the parameters needed to generate a sinusoid 
 | 4             | __f__, __n__, __fs__           | Yes            | Generating a sinusoid signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__
 | 5             | __f__, __L__, __fs__           | Yes            | a signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency __f__
 
-There is no more options to specify a sinusoid signal. All the other possible specifications are redundant as _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
-
-We have already discussed _method 1_ and _method 2_ in the previous section, but let's go through all of the methods once more just for sure :) All of the following example will generate exactly the same signal:
+Let's try out all methods, to see how you can use them in practice. Let's generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:
 
 <img src="/images/smart-sinusoids/demo_signal.png" />
+
+The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.
 
 ### Method 1 - [n,N]
 
