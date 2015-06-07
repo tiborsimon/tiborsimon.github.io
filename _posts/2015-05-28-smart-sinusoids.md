@@ -132,7 +132,11 @@ If your answers for the last two questions were both _nope_, the following metho
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
-These two script produce exactly the same signal. Smart Sinusoids requires only one line versus a couple of lines with the old method. The biggest advantage is that you don't need to know how to generate the sinusoid with the given requirement set. As we have reviewed, there are 5 different method to generate a sinusoid signal depending on the 
+These two script produce exactly the same signal while Smart Sinusoids requires only one line versus a couple of lines with the old method. The biggest advantage is that you don't need to know how to generate the sinusoid with the given requirement set. 
+
+As we have reviewed, there are 5 different method to generate a sinusoid signal depending on the requirements. With Smart Sinusoids the previous five use cases looks like this:
+
+
 
 |  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
