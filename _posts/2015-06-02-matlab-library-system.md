@@ -9,6 +9,6 @@ dowload_link: https://github.com/tiborsimon/MATLAB-Library-System-template/archi
 version: v1.1.1
 ---
 
-Have you ever became angry due to the lack of namespace handling of MATLAB?
+Have you ever became angry due to the path handling in MATLAB. If you do, this project could be interesting for you.
 
 
