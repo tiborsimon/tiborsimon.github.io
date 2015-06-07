@@ -132,6 +132,8 @@ If your answers for the last two questions were both _nope_, the following metho
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
+These two script produce exactly the same signal, and there are obvious differences.
+
 | Typing factors  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
 | Line count | 6 | 3
