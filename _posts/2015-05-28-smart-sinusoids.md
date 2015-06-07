@@ -61,15 +61,15 @@ You should be familiar with all of the parameters needed to generate a sinusoid 
 
 | Variable name  | Unit | Possible parameters   |
 |:--------------:|:----:|:---------------------:|
-| __phi__        | degree    | phase                 |
-| __A__          | full scale   | amplitude[^3]             |
-| __f__          |   Hz   | frequency             |
-| __fs__         |   Hz   | sample rate           |
-| __T__          |   s   | period                |
-| __dt__         |   s   | sample time           |
-| __L__          |   s   | signal duration       |
-| __N__          |   -   | number of periods     |
-| __n__          |   -   | number of samples     |
+| __phi__        | [degree]    | phase                 |
+| __A__          | [full scale]   | amplitude[^3]             |
+| __f__          | [Hz]   | frequency             |
+| __fs__         | [Hz]  | sample rate           |
+| __T__          | [s]   | period                |
+| __dt__         | [s]   | sample time           |
+| __L__          | [s]   | signal duration       |
+| __N__          | [-]   | number of periods     |
+| __n__          | [-]   | number of samples     |
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
