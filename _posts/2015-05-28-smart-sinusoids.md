@@ -112,7 +112,7 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods 
 
 ### Method 4 - [f,n,fs]
 
-a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__.
+Generating a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__.
 
 {% gist tiborsimon/d6ea2be7afba202f2923 %}
 
