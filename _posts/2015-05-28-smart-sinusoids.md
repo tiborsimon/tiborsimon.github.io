@@ -130,8 +130,11 @@ That's it. These 5 methods cover all the possible non redundant ways to generate
 
 If your answers for the last two questions were both _nope_, the following method will like you. What method do you prefer the most?
 
-{% gist tiborsimon/89c9ca291f761c988d7e %}
 
+<figure>
+{% gist tiborsimon/89c9ca291f761c988d7e %}
+{% gist tiborsimon/89c9ca291f761c988d7e %}
+</figure>
 
 
 
