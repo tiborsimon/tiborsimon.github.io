@@ -136,8 +136,8 @@ These two script produce exactly the same signal, and there are obvious differen
 
 |  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
-| __Pros__ | You know exactly how the<br>signal was generated | 3
-| __Cons__ | You have to know exactly how<br>the signal can be generated     | 63                 |
+| __Pros__ | You know the method | You don't need to know the method<br>Much more faster signal generation<br>Flexible parameters<br>Any parameter configuration
+| __Cons__ | You have to know the method    | Hides the geners                |
 
 
 
