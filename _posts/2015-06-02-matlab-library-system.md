@@ -1,8 +1,8 @@
 ---
 layout: post
 title: MATLAB Library System
-categories: ['category']
-tags: ['tag']
+categories: ['programming']
+tags: ['matlab']
 published: True
 repo_link: https://github.com/tiborsimon/MATLAB-Library-System-template
 dowload_link: https://github.com/tiborsimon/MATLAB-Library-System-template/archive/v1.1.1.zip
