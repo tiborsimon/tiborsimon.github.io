@@ -98,7 +98,7 @@ $(window).keydown(function (e) {
     }
 });
 $('#search-input').focusout(function (e) {
-    finishSearch()
+    finishSearch();
 });
 
 
