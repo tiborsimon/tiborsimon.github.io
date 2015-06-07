@@ -24,7 +24,7 @@ The rules of the competition
 - No physical modification were allowed.
 - You have 3 attempts.
 
-# Track
+# The track
 
 The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.
 
@@ -32,7 +32,7 @@ The track was a casual slot car track with two corners and a cross over section.
     <img src="/images/slotcar/track.jpg" width="400" alt="">
 </figure>
 
-# Car
+# The car
 
 Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.
 

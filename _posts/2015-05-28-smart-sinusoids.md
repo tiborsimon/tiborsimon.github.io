@@ -132,19 +132,12 @@ If your answers for the last two questions were both _nope_, the following metho
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
-These two script produce exactly the same signal, and there are obvious differences.
-
-| Typing factors  | Old method | Smart Sinusoids |
-|:--------------:|:----:|:---------------------:|
-| Line count | 6 | 3
-| Character count       | 80    | 63                 |
-
-Smart Sinusoids requires less typing.
+These two script produce exactly the same signal, and there are obvious differences:
 
 |  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
-| Pros | 6 | 3
-| Cons | 80    | 63                 |
+| __Pros__ | You know exactly how the<br>signal was generated | 3
+| __Cons__ | You have to know exactly how<br>the signal can be generated     | 63                 |
 
 
 
