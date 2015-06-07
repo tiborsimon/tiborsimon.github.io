@@ -85,7 +85,7 @@ We have already discussed _method 1_ and _method 2_ in the previous section, but
 
 <img src="/images/smart-sinusoids/demo_signal.png" />
 
-### Method 1
+### Method 1 - [n,N]
 
 Generating a sinusoid signal with __n__ data points with __N__ periods in it.
 
@@ -93,7 +93,7 @@ Generating a sinusoid signal with __n__ data points with __N__ periods in it.
 
 
 
-### Method 2
+### Method 2 - [L,N,fs]
 
 Generating __L__ seconds long signal consisting __N__ periods in it with the frequency __f__.
 
@@ -101,7 +101,7 @@ Generating __L__ seconds long signal consisting __N__ periods in it with the fre
 
 
 
-### Method 3
+### Method 3 - [f,N,fs]
 
 Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods in it with the frequency __f__.
 
@@ -109,7 +109,7 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods 
 
 
 
-### Method 4
+### Method 4 - [f,n,fs]
 
 a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__.
 
@@ -117,7 +117,7 @@ a signal consisting of __n__ data points sampled at __fs__ sampling rate with th
 
 
 
-### Method 5
+### Method 5 - [f,L,fs]
 
 Generating a sinusoid signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency __f__.
 
