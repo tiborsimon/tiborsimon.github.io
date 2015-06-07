@@ -132,9 +132,20 @@ If your answers for the last two questions were both _nope_, the following metho
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
-| Feature  | Old method | New method  |
+| Typing factors  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
-| Speed       | degree    | phase                 |
+| Line count | 6 | 3
+| Character count       | 80    | 63                 |
+
+Smart Sinusoids requires less typing.
+
+|  | Old method | Smart Sinusoids |
+|:--------------:|:----:|:---------------------:|
+| Pros | 6 | 3
+| Cons | 80    | 63                 |
+
+
+
 
 
 
