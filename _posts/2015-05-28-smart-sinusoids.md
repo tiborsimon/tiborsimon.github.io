@@ -136,7 +136,7 @@ These two script produce exactly the same signal while Smart Sinusoids requires 
 
 As we have reviewed, there are 5 different method to generate a sinusoid signal depending on the requirements. With Smart Sinusoids the previous five use cases looks like this:
 
-
+{% gist tiborsimon/a7551c20ca9203eaa6f1 %}
 
 |  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
