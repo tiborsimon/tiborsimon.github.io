@@ -2,7 +2,7 @@
 layout: post
 title: SlotCar Race
 categories: ['electronics']
-tags: ['embedded', 'matlab', 'dsp']
+tags: ['embedded', 'dsp']
 published: True
 
 ---
