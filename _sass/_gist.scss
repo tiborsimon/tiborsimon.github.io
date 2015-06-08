@@ -49,6 +49,10 @@
     color: $gist-selection-color;
   }
 
+  table {
+    border-radius: 0px !important;  
+  }
+
   td {
     border-top: none;
   }
