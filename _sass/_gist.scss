@@ -31,11 +31,11 @@
 }
 
 
-
 .gist .gist-file {
   background-color: transparent !important;
   border: none !important;
   background-color: $gist-base3;
+  @include rounded(6px);
   @include scrollbars(.5em, slategray);
 }
 
@@ -56,18 +56,18 @@
   .highlight {
     border-collapse: separate;
     border-spacing: 0;
+    @include rounded(6px);
+    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
     overflow: hidden;
     margin-bottom: 25px;
-    border: none !important;
+    border: 1px solid $gist-border-color;
   }
 
   .gist-data {
     overflow-x: auto !important;
     word-wrap: normal !important;
     background-color: transparent !important;
-    @include rounded(6px);
-    border: 1px solid $gist-border-color;
-    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
+    border-bottom: none !important;
   }
 
   .line-data {
