@@ -58,7 +58,7 @@ The third question was easier after the second one. We knew that the acceleratio
 
 Let’s see how the car performs with the final algorithm before we dive into the details.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Aj9IzfBdFBo" frameborder="0" allowfullscreen></iframe>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Aj9IzfBdFBo" frameborder="0" allowfullscreen></iframe>
 
 # What is happening on the video?
 
