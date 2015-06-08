@@ -7,6 +7,7 @@ published: True
 repo_link: https://github.com/tiborsimon/solarized-gist
 dowload_link: https://github.com/tiborsimon/solarized-gist/archive/v1.0.zip
 version: v1.0
+modified: 2015-06-08
 ---
 
 I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
