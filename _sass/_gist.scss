@@ -34,7 +34,7 @@
   background-color: transparent !important;
   border: none !important;
   background-color: $gist-base3;
-  @include scrollbars(.5em, $gist-red, $gist-base2);
+  @include scrollbars(.5em, $gist-meta-color, $gist-base2);
 }
 
 .gist {
