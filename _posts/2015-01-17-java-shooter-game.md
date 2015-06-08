@@ -76,7 +76,9 @@ I have built in the possibility to mack around with the main game parameters. To
 - explosionPoolLimit [pool limit in int] – it is expensive to allocate many animation frames in real time, therefore the game allocates the explosion animation frames before the game starts. You can set the max number of animations preloaded to the animation pool. For high FPS rate it is recommended to set this value greater than 10. The game will load slower but it wont crash due to empty animation pool.
 - sparkPoolLimit [pool limit in int] – same as the explosionPoolLimit parameter. If you set high FPS rate set this value higher than 10.
 
-The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces.
+The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces. The default settings are the following:
+
+{% gist tiborsimon/710934002c523b733247 %}
 
 __If the game crashes, make sure you set the pool limits higher than 10!__
 
