@@ -15,10 +15,12 @@
 
   ::-webkit-scrollbar-thumb {
       background: $foreground-color;
+      @include rounded(6px);
   }
 
   ::-webkit-scrollbar-track {
       background: $background-color;
+      @include rounded(6px);
   }
 
   // For Internet Explorer
