@@ -2,7 +2,6 @@
   background-color: transparent !important;
   border: none !important;
   background-color: #fdf6e3;
-  @include scrollbars(.5em, #d5cdb4, #eee8d5);
 
   // For Google Chrome
   ::-webkit-scrollbar {
