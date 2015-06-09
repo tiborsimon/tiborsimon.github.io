@@ -27,7 +27,7 @@
   background-color: transparent !important;
   border: none !important;
   background-color: $gist-base3;
-  @include scrollbars(.5em, $gist-meta-color, $gist-scroll-track);
+  @include scrollbars(.5em, $gist-scroll-thumb, $gist-scroll-track);
 }
 
 .gist {
