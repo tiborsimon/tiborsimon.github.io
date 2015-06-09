@@ -8,12 +8,12 @@
 
   ::-webkit-scrollbar-thumb {
       background: $foreground-color;
-      @include rounded(0 0 6px 6px);
+      @include rounded(0 0 5px 5px);
   }
 
   ::-webkit-scrollbar-track {
       background: $background-color;
-      @include rounded(0 0 6px 6px);
+      @include rounded(0 0 5px 5px);
   }
 
   // For Internet Explorer
