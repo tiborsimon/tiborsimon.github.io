@@ -142,9 +142,10 @@ li {
         white-space: nowrap;
         margin: 0 2px;
         padding: 0 5px;
-        border: 1px solid lighten($black, 90);
+        border: 1px solid $gist-border-color;
         background-color: $gist-base3;
-        @include rounded(3px);
+        color: $gist-base1;
+        @include rounded(4px);
     }
 }
 pre {
