@@ -1,33 +1,32 @@
-@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
-
-  // For Google Chrome
-  ::-webkit-scrollbar {
-      width:  $size;
-      height: $size;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      background: $foreground-color;
-      @include rounded(0 0 5px 5px);
-  }
-
-  ::-webkit-scrollbar-track {
-      background: $background-color;
-      @include rounded(0 0 5px 5px);
-  }
-
-  // For Internet Explorer
-  body {
-    scrollbar-face-color: $foreground-color;
-    scrollbar-track-color: $background-color;
-  }
-}
-
 .gist .gist-file {
   background-color: transparent !important;
   border: none !important;
   background-color: #fdf6e3;
   @include scrollbars(.5em, #d5cdb4, #eee8d5);
+
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  .5em;
+      height: .5em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: #d5cdb4;
+      @include rounded();
+      -webkit-border-radius : 0 0 5px 5px;
+      -moz-border-radius : 0 0 5px 5px;
+      border-radius : 0 0 5px 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background:  #eee8d5;
+      -webkit-border-radius : 0 0 5px 5px;
+      -moz-border-radius : 0 0 5px 5px;
+      border-radius : 0 0 5px 5px;
+  }
+
+  scrollbar-face-color: $foreground-color;
+  scrollbar-track-color: $background-color;
 }
 
 .gist {
@@ -60,9 +59,13 @@
     overflow-x: auto !important;
     word-wrap: normal !important;
     background-color: transparent !important;
-    @include rounded(6px);
+    -webkit-border-radius : 6px;
+    -moz-border-radius : 6px;
+    border-radius : 6px; 
     border: 1px solid #d3d3d3;
-    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.09));
+    -webkit-box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
+    box-shadow : 0 2px 5px rgba(0, 0, 0, 0.09);
   }
 
   .line-data {
