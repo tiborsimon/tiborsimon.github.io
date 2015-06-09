@@ -53,13 +53,13 @@ $header-height       : 300px;
 // Solarized light syntax highlight
 // --------------------------------------------------
 
-#002b36          : #002b36;
-#073642          : #073642;
-#586e75          : #586e75;
-#657b83          : #657b83;
-#839496           : #839496;
-#93a1a1           : #93a1a1;
-#eee8d5           : #eee8d5;
+$gist-base03          : #002b36;
+$gist-base02          : #073642;
+$gist-base01          : #586e75;
+$gist-base00          : #657b83;
+$gist-base0           : #839496;
+$gist-base1           : #93a1a1;
+$gist-base2           : #eee8d5;
 $gist-base3           : #fdf6e3;
 
 $gist-yellow          : #b58900;
@@ -71,10 +71,10 @@ $gist-blue            : #268bd2;
 $gist-cyan            : #2aa198;
 $gist-green           : #859900;
 
-$gist-scroll-track    : #eee8d5;
+$gist-scroll-track    : $gist-base2;
 $gist-scroll-thumb    : #d5cdb4;
 
-$gist-selection-bg    : #eee8d5;
+$gist-selection-bg    : $gist-base2;
 $gist-selection-color : $gist-blue;
 $gist-border-color    : #d3d3d3;
 $gist-meta-color      : rgba(187,187,187,0.8);
