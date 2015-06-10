@@ -143,6 +143,20 @@ As we have reviewed, there are 5 different method to generate a sinusoid signal 
 
 {% gist tiborsimon/a7551c20ca9203eaa6f1 %}
 
+Sounds better and easier? Let's see what can you do with Smart Sinusoids.
+
+## Input parameters
+
+Smart Sinusoids uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) as an input parser framework, so it can accept various input configurations.
+
+The main advantage here is the arbitrary parameter order. You give the parameters in any order you want. There are two possible style Smart Sinusoids will accepts:
+
+- Arbitrary key vale pairs
+- Arbitrary bulk parameter mode
+
+
+
+
 |  | Old method | Smart Sinusoids |
 |:--------------:|:----:|:---------------------:|
 | __Pros__ | You know the method | You don't need to know the method<br>Flexible parameters<br>Any parameter configuration
