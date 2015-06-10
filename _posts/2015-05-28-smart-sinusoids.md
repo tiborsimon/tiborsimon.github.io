@@ -151,8 +151,19 @@ Smart Sinusoids uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-p
 
 The main advantage here is the arbitrary parameter order. You give the parameters in any order you want. There are two possible style Smart Sinusoids will accepts:
 
-- Arbitrary key vale pairs
+- Arbitrary key-value pairs mode
 - Arbitrary bulk parameter mode
+
+### Key-value pairs mode
+
+In this mode you write a parameter name in string, then you pass the value with an existing variable or a pure value. The available keys are the following:
+
+`phi` `A` `f` `fs` `T` `dt` `L` `N` `n` 
+
+
+### Bulk parameter mode
+
+
 
 
 
