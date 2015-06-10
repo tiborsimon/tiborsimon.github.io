@@ -29,6 +29,10 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-09 | TSPR000074 | Solarized Gists scroll feature finished
+| 2015-06-08 | TSPR000074 | Solarized Gists scroll feature
+| 2015-06-07 | TSPR000074 | Old article import
+| 2015-06-06 | TSPR000074 | Old article import
 | 2015-06-05 | TSPR000074 | TOC development and old article import
 | 2015-06-04 | TSPR000074 | TOC development
 | 2015-06-03 | TSPR000074 | TOC development
