@@ -11,6 +11,10 @@ version: v1.0
 
 The easiest way to generate a sine or cosine signal in MATLAB. With this library there are almost infinite ways to describe and generate a sinusoid signals. 
 
+<img src="/images/smart-sinusoids/3d.png" />
+
+{% include repo_and_release.html %}
+
 # Generating sinusoid signals
 
 Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.
