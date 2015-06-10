@@ -145,7 +145,7 @@ As we have reviewed, there are 5 different method to generate a sinusoid signal 
 
 Sounds better and easier? Let's see what can you do with Smart Sinusoids.
 
-## Input parameters
+## Input parameter configurations
 
 Smart Sinusoids uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) as an input parser framework, so it can accept various input configurations.
 
@@ -160,8 +160,31 @@ In this mode you write a parameter name in string, then you pass the value with 
 
 `phi` `A` `f` `fs` `T` `dt` `L` `N` `n` 
 
+You can pass redundant informations, Smart Sinusoids will warn you if the is ambiguouty in your parameters. Here is an example using this mode:
+
+{% gist tiborsimon/8b90eec73bf33cc16385 %}
+
+This small snippet will generate a 2 seconds long 440 Hz tone at the sampling rate of 48 kHz.
+
+Again, the parameter order is arbitrary, and you can pass any combination of parameters, Smart Sinusoids will try to generate a sinusoid signal with the given parameters.
 
 ### Bulk parameter mode
+
+This mode allows you to list all the parameter keys you want to use at once as the first parameter, then you list all the values one to another. This mode is much more faster to type than the key-value pairs mode. You can use the same parameter set as before. Let's see an example:
+
+{% gist tiborsimon/6920894232f8a25985b4 %}
+
+This snippet will generate exactly the same signal as the key-value pairs example, however you had to type much less.
+
+Another benefit of using [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) is the no need for spaces. Do you like to type spaces if you doesn't forced to? I don't think so. The following snippet is still a perfectly valid input for Smart Sinusoids:
+
+{% gist tiborsimon/ddb0379f90b1bbfeca77 %}
+
+This is the most compact way to tell Smart Sinusoids what you want to generate.
+
+## Output parameter configurations
+
+Smart 
 
 
 
