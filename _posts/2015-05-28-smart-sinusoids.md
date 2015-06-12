@@ -145,7 +145,7 @@ As we have reviewed, there are 5 different method to generate a sinusoid signal 
 
 Sounds better and easier? Let's see what can you do with Smart Sinusoids.
 
-## Input parameter configurations
+# Input parameter configurations
 
 Smart Sinusoids uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) as an input parser framework, so it can accept various input configurations.
 
@@ -154,7 +154,7 @@ The main advantage here is the arbitrary parameter order. You give the parameter
 - Arbitrary key-value pairs mode
 - Arbitrary bulk parameter mode
 
-### Key-value pairs mode
+## Key-value pairs mode
 
 In this mode you write a parameter name in string, then you pass the value with an existing variable or a pure value. The available keys are the following:
 
@@ -168,7 +168,7 @@ This small snippet will generate a 2 seconds long 440 Hz tone at the sampling ra
 
 Again, the parameter order is arbitrary, and you can pass any combination of parameters, Smart Sinusoids will try to generate a sinusoid signal with the given parameters.
 
-### Bulk parameter mode
+## Bulk parameter mode
 
 This mode allows you to list all the parameter keys you want to use at once as the first parameter, then you list all the values one to another. This mode is much more faster to type than the key-value pairs mode. You can use the same parameter set as before. Let's see an example:
 
@@ -182,7 +182,7 @@ Another benefit of using [Simple Input Parser]({% post_url 2015-05-02-simple-inp
 
 This is the most compact way to tell Smart Sinusoids what you want to generate.
 
-## Output parameter configurations
+# Output parameter configurations
 
 Smart Sinusoids provides three output configurations:
 
@@ -190,15 +190,15 @@ Smart Sinusoids provides three output configurations:
 - One output argument
 - Two output arguments
 
-### No output arguments
+## No output arguments
 
 With this configuration Smart Sinusoid generates a vector containing the desired signal in place. In this way you can use it inside other functions parameterlist e.g. plot and the others.
 
-### One output argument
+## One output argument
 
 In one output argument configuration Smart Sinusoids loads the output vector in  variable you provided. You can then do whatever you want with this variable.
 
-### Two output arguments
+## Two output arguments
 
 Smart Sinusoids is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
 
