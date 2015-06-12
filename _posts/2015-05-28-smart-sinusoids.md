@@ -204,9 +204,9 @@ Smart Sinusoids is capable of generating a time vector for the generated signal 
 
 | Time vector type | `x` parameter value | Default | Description |
 |:-----------------|:-------------------:|:-------:|:------------|
-| Sample count     | `index`             | Yes     | The time vector contains the sample indexes in the MATLAB convention. the first sample will be index 1, and the Nth sample will be index N.
-| Normalized       | `norm`              | No      | The time vector spans 0 to 1 through the whole signal.
-| Time             | `time`              | No      | The time vector contains the actual signal length in seconds. Make sure you use with continous loacked signals, otherwise this representation will be invalid.
+| Sample count     | `index`             | Yes     | The time vector contains the sample indexes.<br>The first sample will be index 1, and the<br>Nth sample will be index N.
+| Normalized       | `norm`              | No      | The time vector spans 0 to 1 through the<br>whole signal.
+| Time             | `time`              | No      | The time vector contains the actual signal<br>length in seconds. Make sure you use<br>with continous loacked signals, otherwise this<br>representation will be invalid.
 
 
 
