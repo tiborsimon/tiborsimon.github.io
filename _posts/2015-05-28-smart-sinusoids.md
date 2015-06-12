@@ -184,7 +184,32 @@ This is the most compact way to tell Smart Sinusoids what you want to generate.
 
 ## Output parameter configurations
 
-Smart 
+Smart Sinusoids provides three output configurations:
+
+- No output arguments
+- One output argument
+- Two output arguments
+
+### No output arguments
+
+With this configuration Smart Sinusoid generates a vector containing the desired signal in place. In this way you can use it inside other functions parameterlist e.g. plot and the others.
+
+### One output argument
+
+In one output argument configuration Smart Sinusoids loads the output vector in  variable you provided. You can then do whatever you want with this variable.
+
+### Two output arguments
+
+Smart Sinusoids is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
+
+| Time vector type | `x` parameter value | Default | Description |
+|:-----------------|:-------------------:|:-------:|:------------|
+| Sample count     | `index`             | Yes     | The time vector contains the sample indexes in the MATLAB convention. the first sample will be index 1, and the Nth sample will be index N.
+| Normalized       | `norm`              | No      | The time vector spans 0 to 1 through the whole signal.
+| Time             | `time`              | No      | The time vector contains the actual signal length in seconds. Make sure you use with continous loacked signals, otherwise this representation will be invalid.
+
+
+
 
 
 
