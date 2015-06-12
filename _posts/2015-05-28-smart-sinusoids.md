@@ -203,10 +203,10 @@ In one output argument configuration Smart Sinusoids loads the output vector in 
 Smart Sinusoids is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
 
 | Time vector type | `x` parameter  | Description |
-|:-----------------|:-------------------:|:------------|
+|:-----------------|:-------------------|:------------|
 | __Sample count__ _(default)_ | `index` | Sample indexes from 1 to the number of samples.
 | Normalized       | `norm`              | Normalized vector spans from 0 to 1.
-| Time [s]         | `time` or 's'       | Time duration of the signal in seconds.
+| Time [s]         | `time` or `s`       | Time duration of the signal in seconds.
 | Time [ms]        | `militime` or `ms`  | Time duration of the signal in seconds.
 
 Since MATLAB's plotting functions expects the x vector first, Smart Sinusoids provides the time vector in the first one of the two output parameterst.
