@@ -134,19 +134,16 @@ blockquote {
 tt, code, kbd, samp, pre {
     font-family: $code-font;
 }
-p,
-li { 
-    code {
-        @include font-rem(12);
-        line-height: 1.5;
-        white-space: nowrap;
-        margin: 0 2px;
-        padding: 0 5px;
-        border: 1px solid $gist-border-color;
-        background-color: $gist-base3;
-        color: #586e75;
-        @include rounded(4px);
-    }
+code {
+    @include font-rem(12);
+    line-height: 1.5;
+    white-space: nowrap;
+    margin: 0 2px;
+    padding: 0 5px;
+    border: 1px solid $gist-border-color;
+    background-color: $gist-base3;
+    color: #586e75;
+    @include rounded(4px);
 }
 pre {
     margin: 0;
