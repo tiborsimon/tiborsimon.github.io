@@ -202,11 +202,11 @@ In one output argument configuration Smart Sinusoids loads the output vector in 
 
 Smart Sinusoids is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
 
-| Time vector type | `x` parameter value | Default | Description |
-|:-----------------|:-------------------:|:-------:|:------------|
-| Sample count     | `index`             | Yes     | The time vector contains the sample indexes.<br>The first sample will be index 1, and the<br>Nth sample will be index N.
-| Normalized       | `norm`              | No      | The time vector spans 0 to 1 through the<br>whole signal.
-| Time             | `time`              | No      | The time vector contains the actual signal<br>length in seconds. Make sure you use<br>with continous loacked signals, otherwise this<br>representation will be invalid.
+| Time vector type | `x` parameter  | Description |
+|:-----------------|:-------------------:|:------------|
+| __Sample count__ _(default)_     | `index`             | The time vector contains the sample indexes.<br>The first sample will be index 1, and the<br>Nth sample will be index N.
+| Normalized       | `norm`              | The time vector spans 0 to 1 through the<br>whole signal.
+| Time             | `time`              | The time vector contains the actual signal<br>length in seconds. Make sure you use<br>with continous loacked signals, otherwise this<br>representation will be invalid.
 
 
 
