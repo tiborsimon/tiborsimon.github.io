@@ -78,11 +78,11 @@ With these parameters there are 5 main generation methods for sinusoid signals. 
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
-| 1 | `n`, `N`          | No  | a signal consisting of `n` data points with `N` periods in it
-| 2 | `L`, `N`, `fs`  | Yes | `L` seconds long signal consisting `N` periods with the frequency `f`
-| 3 | `f`, `N`, `fs`  | Yes | a signal sampled at `fs` sampling rate with `N` periods in it with the frequency `f`
-| 4 | `f`, `n`, `fs`  | Yes | Generating a sinusoid signal consisting of `n` data points sampled at `fs` sampling rate with the frequency `f`
-| 5 | `f`, `L`, `fs`  | Yes | a signal sampled at `fs` sampling rate with the duration of `L` seconds with the frequency `f`
+| 1 | `n`, `N`          | No  | a signal consisting of `n` data points with `N`<br> periods in it
+| 2 | `L`, `N`, `fs`    | Yes | `L` seconds long signal consisting `N` periods<br> with the frequency `f`
+| 3 | `f`, `N`, `fs`    | Yes | a signal sampled at `fs` sampling rate with `N` <br>periods in it with the frequency `f`
+| 4 | `f`, `n`, `fs`    | Yes | Generating a sinusoid signal consisting of `n` <br>data points sampled at `fs` sampling rate with the frequency `f`
+| 5 | `f`, `L`, `fs`    | Yes | a signal sampled at `fs` sampling rate with the <br>duration of `L` seconds with the frequency `f`
 
 Let's try out all methods, to see how you can use them in practice. Let's generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:
 
