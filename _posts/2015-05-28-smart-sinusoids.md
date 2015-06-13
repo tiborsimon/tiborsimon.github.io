@@ -194,9 +194,13 @@ Smart Sinusoids provides three output configurations:
 
 With this configuration Smart Sinusoid generates a vector containing the desired signal in place. In this way you can use it inside other functions parameterlist e.g. plot and the others.
 
+{% gist tiborsimon/19dac7dc5ab5248675e1 %}
+
 ## One output argument
 
 In one output argument configuration Smart Sinusoids loads the output vector in  variable you provided. You can then do whatever you want with this variable.
+
+{% gist tiborsimon/39ddcd1a2e4248f7746e %}
 
 ## Two output arguments
 
@@ -211,6 +215,7 @@ Smart Sinusoids is capable of generating a time vector for the generated signal 
 
 Since MATLAB's plotting functions expects the x vector first, Smart Sinusoids provides the time vector in the first one of the two output parameterst.
 
+{% gist tiborsimon/2eb122ef8ccdadf6f1a5 %}
 
 
 
