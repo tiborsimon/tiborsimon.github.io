@@ -77,7 +77,7 @@ There are 9 parameters that a pure sinusoid signal could have. In order to be ab
 With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn't count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
 | Method index | Required parameters | CT DT lock     | Description  |
-|:-------------|:------------------|:--------------|:-------------|
+|:-------------:|:------------------|:--------------|:-------------|
 | 1 | `n`, `N`          | No  | a signal consisting of `n` data points with `N`<br> periods in it
 | 2 | `L`, `N`, `fs`    | Yes | `L` seconds long signal consisting `N` periods<br> with the frequency `f`
 | 3 | `f`, `N`, `fs`    | Yes | a signal sampled at `fs` sampling rate with `N` <br>periods in it with the frequency `f`
