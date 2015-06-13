@@ -231,7 +231,7 @@ Since MATLAB's plotting functions expects the x vector first, __Smart Sinusoids_
 | 1/T | 1/f | L fs | L/T | 1/dt | 1/fs | N T |
 | N/L | L/N | L/dt | L f | n/L | L/n | n dt |
 | n dt/L/T | L/n/dt/f | N T/dt | n dt/T | n/N/T | N T/n | N/f |
-| n/fs/T/L | L fs/n/f | N T f | n dt fs | n/L/f/T | L f T/n | n/fs |
+| n/fs/T/L | L fs/n/f | N T fs | n dt f | n/L/f/T | L f T/n | n/fs |
 | - | - | - | n/fs/T | - | - | - |
 | - | - | - | n f/fs | - | - | - |
 
