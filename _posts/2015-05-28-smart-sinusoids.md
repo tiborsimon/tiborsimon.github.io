@@ -131,27 +131,27 @@ Generating a sinusoid signal sampled at `fs` sampling rate with the duration of 
 
 That's it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you _study_ them? Will you _derive_ them over and over again? There is a better way for these basic tasks.
 
-If your answers for the last two questions were both _nope_, then the go ahead and meet Smart Sinusoids. 
+If your answers for the last two questions were both _nope_, then the go ahead and meet __Smart Sinusoids__. 
 
 # Smart Sinusoids - the easy way
 
-Smart Sinusoids is a trigonomecric function wrapper thats main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the Parameter engine written inside of it.
+__Smart Sinusoids__ is a trigonomecric function wrapper that's main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the Parameter engine written inside of it. [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) allows you to give __Smart Sinusoids__ parameters in any order you want, and the _Parameter Engine_
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
-These two script produce exactly the same signal while Smart Sinusoids requires only one line versus a couple of lines with the old method. The biggest advantage is that you don't need to know how to generate the sinusoid with the given requirement set. 
+These two script produce exactly the same signal while __Smart Sinusoids__ requires only one line versus a couple of lines with the old method. The biggest advantage is that you don't need to know how to generate the sinusoid with the given requirement set. 
 
-As we have reviewed, there are 5 different method to generate a sinusoid signal depending on the requirements. With Smart Sinusoids the previous five use cases looks like this:
+As we have reviewed, there are 5 different method to generate a sinusoid signal depending on the requirements. With __Smart Sinusoids__ the previous five use cases looks like this:
 
 {% gist tiborsimon/a7551c20ca9203eaa6f1 %}
 
-Sounds better and easier? Let's see what can you do with Smart Sinusoids.
+Sounds better and easier? Let's see what can you do with __Smart Sinusoids__.
 
 # Input parameter configurations
 
-Smart Sinusoids uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) as an input parser framework, so it can accept various input configurations.
+__Smart Sinusoids__ uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) as an input parser framework, so it can accept various input configurations.
 
-The main advantage here is the arbitrary parameter order. You give the parameters in any order you want. There are two possible style Smart Sinusoids will accepts:
+The main advantage here is the arbitrary parameter order. You give the parameters in any order you want. There are two possible style __Smart Sinusoids__ will accepts:
 
 - Arbitrary key-value pairs mode
 - Arbitrary bulk parameter mode
@@ -162,13 +162,13 @@ In this mode you write a parameter name in string, then you pass the value with 
 
 `phi` `A` `f` `fs` `T` `dt` `L` `N` `n` 
 
-You can pass redundant informations, Smart Sinusoids will warn you if the is ambiguouty in your parameters. Here is an example using this mode:
+You can pass redundant informations, __Smart Sinusoids__ will warn you if the is ambiguouty in your parameters. Here is an example using this mode:
 
 {% gist tiborsimon/8b90eec73bf33cc16385 %}
 
 This small snippet will generate a 2 seconds long 440 Hz tone at the sampling rate of 48 kHz.
 
-Again, the parameter order is arbitrary, and you can pass any combination of parameters, Smart Sinusoids will try to generate a sinusoid signal with the given parameters.
+Again, the parameter order is arbitrary, and you can pass any combination of parameters, __Smart Sinusoids__ will try to generate a sinusoid signal with the given parameters.
 
 ## Bulk parameter mode
 
@@ -178,15 +178,15 @@ This mode allows you to list all the parameter keys you want to use at once as t
 
 This snippet will generate exactly the same signal as the key-value pairs example, however you had to type much less.
 
-Another benefit of using [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) is the no need for spaces. Do you like to type spaces if you doesn't forced to? I don't think so. The following snippet is still a perfectly valid input for Smart Sinusoids:
+Another benefit of using [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) is the no need for spaces. Do you like to type spaces if you doesn't forced to? I don't think so. The following snippet is still a perfectly valid input for __Smart Sinusoids__:
 
 {% gist tiborsimon/ddb0379f90b1bbfeca77 %}
 
-This is the most compact way to tell Smart Sinusoids what you want to generate.
+This is the most compact way to tell __Smart Sinusoids__ what you want to generate.
 
 # Output parameter configurations
 
-Smart Sinusoids provides three output configurations:
+__Smart Sinusoids__ provides three output configurations:
 
 - No output arguments
 - One output argument
@@ -200,13 +200,13 @@ With this configuration Smart Sinusoid generates a vector containing the desired
 
 ## One output argument
 
-In one output argument configuration Smart Sinusoids loads the output vector in  variable you provided. You can then do whatever you want with this variable.
+In one output argument configuration __Smart Sinusoids__ loads the output vector in  variable you provided. You can then do whatever you want with this variable.
 
 {% gist tiborsimon/39ddcd1a2e4248f7746e %}
 
 ## Two output arguments
 
-Smart Sinusoids is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
+__Smart Sinusoids__ is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
 
 | Time vector type | `x` parameter  | Description |
 |:-----------------|:-------------------|:------------|
@@ -215,7 +215,7 @@ Smart Sinusoids is capable of generating a time vector for the generated signal 
 | Time [s]         | `time` or `s`       | Time duration of the signal in seconds.
 | Time [ms]        | `militime` or `ms`  | Time duration of the signal in seconds.
 
-Since MATLAB's plotting functions expects the x vector first, Smart Sinusoids provides the time vector in the first one of the two output parameterst.
+Since MATLAB's plotting functions expects the x vector first, __Smart Sinusoids__ provides the time vector in the first one of the two output parameterst.
 
 {% gist tiborsimon/2eb122ef8ccdadf6f1a5 %}
 
