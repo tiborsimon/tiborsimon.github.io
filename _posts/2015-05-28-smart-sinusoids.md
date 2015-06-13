@@ -241,6 +241,9 @@ The signal generator mechanism first tries to use method number one and it asks 
 
 If the last generator method failed, the generator mechanism warns the user that the provided parameters were insufficient.
 
+# Summary
+
+Do you like these features? If you do, don't hesitate to try it out. 
 
 {% include repo_and_release.html %}
 
