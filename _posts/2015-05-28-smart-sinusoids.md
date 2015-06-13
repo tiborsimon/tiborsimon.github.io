@@ -190,7 +190,7 @@ Smart Sinusoids provides three output configurations:
 - One output argument
 - Two output arguments
 
-## No output arguments
+## No output argument
 
 With this configuration Smart Sinusoid generates a vector containing the desired signal in place. In this way you can use it inside other functions parameterlist e.g. plot and the others.
 
