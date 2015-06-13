@@ -226,6 +226,8 @@ Since MATLAB's plotting functions expects the x vector first, __Smart Sinusoids_
 
 # The Parameter Engine
 
+The parameter engine tries to generate the needed parameters used by the five methods discussed before from the provided parameters. It uses the following table of equations that consists all of the possible connections between the individual parameters.
+
 | f   | T   | n   | N   | fs  | dt  | L   |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 1/T | 1/f | L fs | L/T | 1/dt | 1/fs | N T |
@@ -235,37 +237,12 @@ Since MATLAB's plotting functions expects the x vector first, __Smart Sinusoids_
 | - | - | - | n/fs/T | - | - | - |
 | - | - | - | n f/fs | - | - | - |
 
+The signal generator mechanism first tries to use method number one and it asks for the required parameters from the _Parameter Engine_ which tries to construct the parameter from the other given parameters if the needed parameter isn't provided explicitly. If the construction fails too, the engine throws an exception signaling that the method could not be used, and the signal generator falls back to the next generation mechanism, and asks for the necessary parameters from the _Parameter Engine_...
+
+If the last generator method failed, the generator mechanism warns the user that the provided parameters were insufficient.
 
 
-
-
-
-
-
-
-|  | Old method | Smart Sinusoids |
-|:--------------:|:----:|:---------------------:|
-| __Pros__ | You know the method | You don't need to know the method<br>Flexible parameters<br>Any parameter configuration
-| __Cons__ | You have to know the method    | Hides the generation details (you should know them)            |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{% include repo_and_release.html %}
 
 
 
