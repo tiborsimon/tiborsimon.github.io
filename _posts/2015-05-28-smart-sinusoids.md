@@ -131,9 +131,11 @@ Generating a sinusoid signal sampled at `fs` sampling rate with the duration of 
 
 That's it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you _study_ them? Will you _derive_ them over and over again? There is a better way for these basic tasks.
 
+If your answers for the last two questions were both _nope_, then the go ahead and meet Smart Sinusoids. 
+
 # Smart Sinusoids - the easy way
 
-If your answers for the last two questions were both _nope_, the following method will like you. What method do you prefer the most?
+Smart Sinusoids is a trigonomecric function wrapper thats main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the Parameter engine written inside of it.
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
