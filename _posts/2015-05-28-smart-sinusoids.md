@@ -133,9 +133,14 @@ That's it. These 5 methods cover all the possible non redundant ways to generate
 
 If your answers for the last two questions were both _nope_, then the go ahead and meet __Smart Sinusoids__. 
 
+
+
+
 # Smart Sinusoids - the easy way
 
-__Smart Sinusoids__ is a trigonomecric function wrapper that's main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the Parameter engine written inside of it. [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) allows you to give __Smart Sinusoids__ parameters in any order you want, and the _Parameter Engine_
+__Smart Sinusoids__ is a trigonomecric function wrapper that's main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the _Parameter Engine_ written inside of it. [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) allows you to give __Smart Sinusoids__ parameters in any order you want, and the _Parameter Engine_ allows you to give any type of parameters and it will try to compose with them a sinusoid signal.
+
+To demonstrate how easy is to use __Smart Sinusoids__ let's generate the signals generated in the old fashion way before:
 
 {% gist tiborsimon/89c9ca291f761c988d7e %}
 
