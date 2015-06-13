@@ -62,27 +62,27 @@ There are 9 parameters that a pure sinusoid signal could have. In order to be ab
 <img src="/images/smart-sinusoids/detailed.png" />
 
 
-| Variable name  | Unit | Possible parameters   |
+| Parameter name | Unit | Possible parameters   |
 |:--------------:|:----:|:---------------------:|
-| __phi__        | [degree]    | phase          |
-| __A__          | [full scale] | amplitude[^3] |
-| __f__          | [Hz]   | frequency           |
-| __fs__         | [Hz]  | sample rate          |
-| __T__          | [s]   | period               |
-| __dt__         | [s]   | sample time          |
-| __L__          | [s]   | signal duration      |
-| __N__          | [-]   | number of periods    |
-| __n__          | [-]   | number of samples    |
+| `phi`        | [degree]    | phase          |
+| `A`          | [full scale] | amplitude[^3] |
+| `f`          | [Hz]   | frequency           |
+| `fs`         | [Hz]  | sample rate          |
+| `T`          | [s]   | period               |
+| `dt`         | [s]   | sample time          |
+| `L`          | [s]   | signal duration      |
+| `N`          | [-]   | number of periods    |
+| `n`          | [-]   | number of samples    |
 
 With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn't count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: _fs = 1/dt_, _T = 1/f_ and _L=n*dt_.
 
 | Method index | Required parameters | CT DT lock     | Description  |
 |:-------------:|:------------------:|:--------------:|:-------------|
-| 1             | __n__, __N__                   | No             | a signal consisting of __n__ data points with __N__ periods in it
-| 2             | __L__, __N__, __fs__           | Yes            | __L__ seconds long signal consisting __N__ periods with the frequency __f__
-| 3             | __f__, __N__, __fs__           | Yes            | a signal sampled at __fs__ sampling rate with __N__ periods in it with the frequency __f__
-| 4             | __f__, __n__, __fs__           | Yes            | Generating a sinusoid signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__
-| 5             | __f__, __L__, __fs__           | Yes            | a signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency __f__
+| 1 | `n`, `N`          | No  | a signal consisting of `n` data points with `N` periods in it
+| 2 | `L`, `N`, `fs`  | Yes | `L` seconds long signal consisting `N` periods with the frequency `f`
+| 3 | `f`, `N`, `fs`  | Yes | a signal sampled at `fs` sampling rate with `N` periods in it with the frequency `f`
+| 4 | `f`, `n`, `fs`  | Yes | Generating a sinusoid signal consisting of `n` data points sampled at `fs` sampling rate with the frequency `f`
+| 5 | `f`, `L`, `fs`  | Yes | a signal sampled at `fs` sampling rate with the duration of `L` seconds with the frequency `f`
 
 Let's try out all methods, to see how you can use them in practice. Let's generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:
 
@@ -92,7 +92,7 @@ The used parameters may seem a bit odd for the first time, but due to the constr
 
 ### Method 1 - [n,N]
 
-Generating a sinusoid signal with __n__ data points with __N__ periods in it.
+Generating a sinusoid signal with `n` data points with `N` periods in it.
 
 {% gist tiborsimon/8e167f64fb80e2a95b13 %}
 
@@ -100,7 +100,7 @@ Generating a sinusoid signal with __n__ data points with __N__ periods in it.
 
 ### Method 2 - [L,N,fs]
 
-Generating __L__ seconds long signal consisting __N__ periods in it with the frequency __f__.
+Generating `L` seconds long signal consisting `N` periods in it with the frequency `f`.
 
 {% gist tiborsimon/abe9fb85958ee9205ea0 %}
 
@@ -108,7 +108,7 @@ Generating __L__ seconds long signal consisting __N__ periods in it with the fre
 
 ### Method 3 - [f,N,fs]
 
-Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods in it with the frequency __f__.
+Generating a sinusoid signal sampled at `fs` sampling rate with `N` periods in it with the frequency `f`.
 
 {% gist tiborsimon/7ba58552ddfc4d605c80 %}
 
@@ -116,7 +116,7 @@ Generating a sinusoid signal sampled at __fs__ sampling rate with __N__ periods 
 
 ### Method 4 - [f,n,fs]
 
-Generating a signal consisting of __n__ data points sampled at __fs__ sampling rate with the frequency __f__.
+Generating a signal consisting of `n` data points sampled at `fs` sampling rate with the frequency `f`.
 
 {% gist tiborsimon/d6ea2be7afba202f2923 %}
 
@@ -124,7 +124,7 @@ Generating a signal consisting of __n__ data points sampled at __fs__ sampling r
 
 ### Method 5 - [f,L,fs]
 
-Generating a sinusoid signal sampled at __fs__ sampling rate with the duration of __L__ seconds with the frequency __f__.
+Generating a sinusoid signal sampled at `fs` sampling rate with the duration of `L` seconds with the frequency `f`.
 
 {% gist tiborsimon/51dca17af664f51ecc0b %}
 
