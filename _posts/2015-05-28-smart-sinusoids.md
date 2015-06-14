@@ -57,7 +57,7 @@ As you can see, generating sinusoids with these basic methods isn't hard at all.
 
 ## Sinusoid signal parameters
 
-There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with all of the parameters.
+There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.
 
 <img src="/images/smart-sinusoids/detailed.png" />
 
