@@ -138,7 +138,7 @@ If your answers for the last two questions were both _nope_, then the go ahead a
 
 # Smart Sinusoids - the easy way
 
-__Smart Sinusoids__ is a trigonomecric function wrapper that's main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the _Parameter Engine_ written inside of it. [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) allows you to give __Smart Sinusoids__ parameters in any order you want, and the _Parameter Engine_ allows you to give any type of parameters and it will try to compose with them a sinusoid signal.
+__Smart Sinusoids__ is a trigonomecric function wrapper that's main purpose is to help you to generate sinusoid signals. It does this with the help of [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) and the _Parameter Engine_ written inside of it. [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) allows you to pass __Smart Sinusoids__ parameters in any order you want, and the _Parameter Engine_ allows you to give any type of parameters and it will try to compose with them a sinusoid signal.
 
 To demonstrate how easy is to use __Smart Sinusoids__ let's compare it to the old fashion way.
 
