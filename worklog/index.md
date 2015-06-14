@@ -29,6 +29,10 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-13 | TSPR000078<br>TSPR000080 | Smart Sinusoids article<br>Being sick..<br>iOS development environment setup
+| 2015-06-12 | TSPR000078 | Smart Sinusoids article<br>Being sick..
+| 2015-06-11 | TSPR000078<br>TSPR000068 | Learning for the finals..<br>Being sick..
+| 2015-06-10 | TSPR000078 | Smart Sinusoids article<br>Being sick..
 | 2015-06-09 | TSPR000074 | Solarized Gists scroll feature finished
 | 2015-06-08 | TSPR000074 | Solarized Gists scroll feature
 | 2015-06-07 | TSPR000074 | Old article import
