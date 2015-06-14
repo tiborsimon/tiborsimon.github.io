@@ -34,6 +34,6 @@ I am tired of the lack of professionalism and passion. In my book you do somethi
 <a href="https://github.com/tiborsimon" class="btn btn-info">Github page</a></div>
 </div>
 
-# Do you have any question?
+<h1><i class="fa fa-question"></i> Do you have any question?</h1>
 
-Ask me right down here!
+<h3>Ask me right down here!</h3>
