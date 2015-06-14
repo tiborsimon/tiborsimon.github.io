@@ -205,7 +205,7 @@ With this configuration Smart Sinusoid generates a vector containing the desired
 
 ## One output argument
 
-In one output argument configuration __Smart Sinusoids__ loads the output vector in  variable you provided. You can then do whatever you want with this variable.
+In one output argument configuration __Smart Sinusoids__ loads the output vector in a variable you provided. You can use this variable for further computations.
 
 {% gist tiborsimon/39ddcd1a2e4248f7746e %}
 
