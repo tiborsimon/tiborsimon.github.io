@@ -100,7 +100,7 @@ Generating a sinusoid signal with `n` data points with `N` periods in it.
 
 ### Method 2 - [L,N,fs]
 
-Generating `L` seconds long signal consisting `N` periods in it with the frequency `f`.
+Generating `L` seconds long signal sampled at `fs` consisting of `N` periods in it
 
 {% gist tiborsimon/abe9fb85958ee9205ea0 %}
 
