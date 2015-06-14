@@ -5,7 +5,7 @@ categories: ['programming']
 tags: ['matlab']
 published: True
 repo_link: https://github.com/tiborsimon/smart-sinusoids
-dowload_link: 
+dowload_link: https://github.com/tiborsimon/smart-sinusoids/archive/v1.0.zip
 version: v1.0
 ---
 
