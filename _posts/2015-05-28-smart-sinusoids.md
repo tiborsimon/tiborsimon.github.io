@@ -177,7 +177,7 @@ Again, the parameter order is arbitrary, and you can pass any combination of par
 
 ## Bulk parameter mode
 
-This mode allows you to list all the parameter keys you want to use at once as the first parameter, then you list all the values one to another. This mode is much more faster to type than the key-value pairs mode. You can use the same parameter set as before. Let's see an example:
+This mode allows you to list all parameter keys you want to use at once as the first parameter. After the key listing you list all the values one to another. This mode is much more faster to type than the key-value pairs mode. You can use the same parameter set as before. Let's see an example:
 
 {% gist tiborsimon/6920894232f8a25985b4 %}
 
