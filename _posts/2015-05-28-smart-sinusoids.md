@@ -241,6 +241,14 @@ The signal generator mechanism first tries to use method number one and it asks 
 
 If the last generator method failed, the generator mechanism warns the user that the provided parameters were insufficient.
 
+# Dependency
+
+Since __Smart Sinusoids__ uses [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) you have to make sure that [Simple Input Parser]({% post_url 2015-05-02-simple-input-parser %}) is in your path. If you are not sure, how to use the MATLAB path, just copy `simple_input_parser.m` file next to the three __Smart Sinusoids__ file, and you are good to go.
+
+There is another solution though. I have created a MATLAB library handling script [MATLAB Library System]({% post 2015-06-02-matlab-library-system %}) that helps you to create libraries that you can turn on or off. With this script you can make file visible from a different folder than you are currently in. You can turn on or turn off files in libraries to be visible also. If you are tired of MATLAB and you want to make it a little bit more useful, [MATLAB Library System]({% post 2015-06-02-matlab-library-system %}) worth a look.
+
+Of course, you can set your path manually at any time if you prefer that way :)
+
 # Summary
 
 Do you like these features? If you do, don't hesitate to try it out. 
