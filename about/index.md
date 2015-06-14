@@ -36,5 +36,5 @@ I am tired of the lack of professionalism and passion. In my book you do somethi
 
 <div style="text-align: center">
 <h1>Do you have any question?</h1>
-<h3><i class="fa fa-comments-o"></i>   <i>Ask me right down here!</i></h3>
+<h2><i class="fa fa-comments-o"></i>   <i>Ask me right down here!</i></h2>
 </div>
