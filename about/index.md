@@ -31,10 +31,10 @@ I am tired of the lack of professionalism and passion. In my book you do somethi
 
 <div class="centered">
 <div markdown="0">
-<a href="https://github.com/tiborsimon" class="btn btn-info">Github page</a></div>
+<a href="https://github.com/tiborsimon" class="btn btn-info"><i class="fa fa-github-square"></i>   Github page</a></div>
 </div>
 
 <div style="text-align: center">
 <h1>Do you have any question?</h1>
-<h2><i class="fa fa-comments-o"></i>   <i>Ask me right down here!</i></h2>
+<h3><i class="fa fa-comments-o"></i>   <i>Ask me right down here!</i></h3>
 </div>
