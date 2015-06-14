@@ -167,7 +167,7 @@ In this mode you write a parameter name in string, then you pass the value with 
 
 `phi` `A` `f` `fs` `T` `dt` `L` `N` `n` 
 
-You can pass redundant informations, __Smart Sinusoids__ will warn you if the is ambiguouty in your parameters. Here is an example using this mode:
+You can pass redundant informations, __Smart Sinusoids__ will warn you in case of ambiguity. Here is an example using this mode:
 
 {% gist tiborsimon/8b90eec73bf33cc16385 %}
 
