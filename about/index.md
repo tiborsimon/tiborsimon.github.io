@@ -5,7 +5,7 @@ image:
   feature: abstract-5.jpg
   credit: dargadgetz
   creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-comments: false
+comments: true
 modified: 2015-04-22
 ---
 
@@ -33,3 +33,7 @@ I am tired of the lack of professionalism and passion. In my book you do somethi
 <div markdown="0">
 <a href="https://github.com/tiborsimon" class="btn btn-info">Github page</a></div>
 </div>
+
+# Do you have any question?
+
+Ask me right down here!
