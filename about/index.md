@@ -31,7 +31,7 @@ I am tired of the lack of professionalism and passion. In my book you do somethi
 
 <div class="centered">
 <div markdown="0">
-<a href="https://github.com/tiborsimon" class="btn btn-info"><i class="fa fa-github-square"></i>   Github page</a></div>
+<a href="https://github.com/tiborsimon" class="centered btn btn-info"><i class="fa fa-github-square"></i>   Github page</a></div>
 </div>
 
 <div style="text-align: center">
