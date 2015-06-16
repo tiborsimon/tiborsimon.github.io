@@ -85,12 +85,10 @@ The predefined variables for the syntax coloring provides a very convenient way 
 
 _Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values._
 
-If you want to create a custom color scheme for your gists, you can modify the variables and you are good to go.
-
 
 ## Solution with basic CSS
 
-If you are not using a CSS preprocessor, there is a compiled solution for you. I replaced all variables and functions used by SASS for the Solarized light and dark style too. Use the 
+If you are not using a CSS preprocessor, there is a compiled solution for you. I replaced all variables and functions used by SASS for the Solarized light and dark style too. Since it's contains hard coded color codes it is much more harder to customize, so if you want so do so, I recommend starting with the SASS version and replace the variables with your custom color codes.
 
 
 ## Contribution
