@@ -16,15 +16,14 @@ After reading this artice, you will be able to theme your Gists in light or dark
 
 <img src="http://tiborsimon.github.io/images/solarized-gist/solarized-gist-demo-image.png" />
 
-
-{% include repo_and_release.html %}
-
 ## Features
 
 - Unique appearance embedded code snippets
 - Solarized light or dark theme with further customization options
 - Full featured embedded Gist with all standard features
 - Pure CSS solution (static and SASS version)
+
+{% include repo_and_release.html %}
 
 ## Early solution and motivation
 
