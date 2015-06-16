@@ -64,22 +64,23 @@ The known issues are the following:
 
 - String formatting blocks are equally greens.
 
+<div id="demo"></div>
+
+{% gist tiborsimon/d1551331a83abd0c7f8d %}
+
 ## Solution using SASS
 
 The predefined variables for the syntax coloring provides a very convenient way to create a template CSS code first, and then fine tune the variables later.
 
 _Make sure you are using SASS to preprocess your CSS files otherwise this method won't work for you, and you only be able to use the basic CSS solution with hard coded color values._
 
-<div id="demo"></div>
-
-{% gist tiborsimon/b6574052bb3167651f88 %}
-
-{% gist tiborsimon/d6a5511deee682f316aa %}
+If you want to create a custom color scheme for your gists, you can modify the variables and you are good to go.
 
 
 ## Solution with basic CSS
 
-{% gist tiborsimon/9f32036b30be1954ecf4 %}
+If you are not using a CSS preprocessor, there is a compiled solution for you. I replaced all variables and functions used by SASS for the Solarized light and dark style too. Use the 
+
 
 ## Contribution
 
