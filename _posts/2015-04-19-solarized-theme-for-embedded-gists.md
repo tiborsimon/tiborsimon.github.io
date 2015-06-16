@@ -10,11 +10,18 @@ version: v1.2
 modified: 2015-06-1o
 ---
 
-I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant solarized one.
+I am a big fan of the [solarized](http://ethanschoonover.com/solarized) color theme. I use it wherever I can, and my embedded code snippets on my site aren't an exception. In this article I will demonstrate a method that will turn your [gist's](gist.github.com) normal style into a much more elegant Solarized one.
 
 After reading this artice, you will be able to theme your Gists in light or dark Solarized color theme:
 
 <img src="http://tiborsimon.github.io/images/solarized-gist/solarized-gist-demo-image.png" />
+
+### Features
+
+- Unique appearance embedded code snippets
+- Solarized light or dark theme with further customization options
+- Full featured embedded Gist with all standard features
+- Pure CSS solution (static and SASS version)
 
 {% include repo_and_release.html %}
 
@@ -33,7 +40,7 @@ The file `assets/css/main.scss` contains syntax errors. For more information, se
 <cite>GitHub Pages staff</cite>
 </blockquote>
 
-My investigation resulted, that the CSS source code I tried to showcase in the article caused the problems. Since the CSS code contains classes called `.highlight` it conflicted with the _Liquid tags of the syntax highlighting blocks. Bummer. I am using GitHub Pages for hosting, so I can not modify the compilation tools. I need an other way to present source code on my site.
+My investigation resulted, that the CSS source code I tried to showcase in the article caused the problems. Since the CSS code contains classes called `.highlight` it conflicted with the _Liquid_ tags of the syntax highlighting blocks. Bummer. I am using GitHub Pages for hosting, so I can not modify the compilation tools. I need an other way to present source code on my site.
 
 
 ## Using Gists
@@ -64,11 +71,11 @@ The known issues are the following:
 
 - String formatting blocks are equally greens.
 
-## Demo
+## Live demo
 
 <div id="demo"></div>
 
-The following code snippet contains a python code that wide enough to trigger the scroll feature of the embedded gist content.
+The following code snippet contains a python code wide enough to trigger the scroll feature of the embedded gist content.
 
 {% gist tiborsimon/d1551331a83abd0c7f8d %}
 
