@@ -64,7 +64,11 @@ The known issues are the following:
 
 - String formatting blocks are equally greens.
 
+## Demo
+
 <div id="demo"></div>
+
+The following code snippet contains a python code that wide enough to trigger the scroll feature of the embedded gist content.
 
 {% gist tiborsimon/d1551331a83abd0c7f8d %}
 
