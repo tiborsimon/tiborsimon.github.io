@@ -15,9 +15,9 @@ Library handling module that makes shipment and adding/removing MATLAB scripts a
 
 {% include repo_and_release.html %}
 
-## Using the system
+# Using the system
 
-### Manual way
+## Manual way
 
 1. Create a new folder that will be the root folder of your project.
 1. Copy the content of this repository into that folder.
@@ -26,7 +26,7 @@ Library handling module that makes shipment and adding/removing MATLAB scripts a
 1. Done. Your project is ready to ship.
 1. You can test your library by running the `install.m` script.
 
-### Command line way
+## Command line way
 
 1. Clone this repository to your system:<br />
    `git clone git@github.com:tiborsimon/MATLAB-Library-System.git my_library`<br />
@@ -36,13 +36,13 @@ Library handling module that makes shipment and adding/removing MATLAB scripts a
 1. Done. Your project is ready to ship.
 1. You can test your library by running the `install.m` script.
 
-## Folder structure
+# Folder structure
 
 __MATLAB Library System__ has got a simple folder structure.
 
 {% gist tiborsimon/aa4f1fa04736459a6018 %}
 
-## Changing the library's name and version
+# Changing the library's name and version
 
 If you want to modify your library's name and version, you can edit the `mylib/.core_system/librarydata` file according to your needs. The first row contains the library name and the second row contains the library version.
 
@@ -55,11 +55,15 @@ By modifying this file, the installer and uninstaller script will print the new 
 {% gist tiborsimon/bb6435be20fc9fa765d1 %}
 
 
-## Possible use case
+# Possible use case
 
 You can put your every project into a __MATLAB Library System__ so you can manage them separately by installing or uninstalling them on demand. You can ship your projects to others in a nice and isolated way too. No more hassle with the MATLAB path. Your customer just runs the install script and your project is ready to use. 
 
 _Less friction in the customer side equals happier customers :)_
+
+# Summary
+
+__MATLAB Library System__ provides you a clean solution for writing libraries in MATLAB. You can install and uninstall them, and you can also create an easy to ship package as well. Do you think it is useful for you? Discuss it below!
 
 {% include repo_and_release.html %}
 
