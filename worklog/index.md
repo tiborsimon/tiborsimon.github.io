@@ -29,6 +29,10 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-17 | TSPR000055 | MATLAB Library System version update v2.1
+| 2015-06-16 | TSPR000068 | Learning for the finals..
+| 2015-06-15 | TSPR000068 | Learning for the finals..
+| 2015-06-14 | TSPR000080 | iOS development environment setup
 | 2015-06-13 | TSPR000078<br>TSPR000080 | Smart Sinusoids article<br>Being sick..<br>iOS development environment setup
 | 2015-06-12 | TSPR000078 | Smart Sinusoids article<br>Being sick..
 | 2015-06-11 | TSPR000078<br>TSPR000068 | Learning for the finals..<br>Being sick..
