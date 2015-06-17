@@ -5,8 +5,8 @@ categories: ['programming']
 tags: ['matlab']
 published: True
 repo_link: https://github.com/tiborsimon/MATLAB-Library-System-template
-dowload_link: https://github.com/tiborsimon/MATLAB-Library-System/archive/v2.0.zip
-version: v2.0
+dowload_link: https://github.com/tiborsimon/MATLAB-Library-System/archive/v2.1.zip
+version: v2.1
 ---
 
 Have you ever became angry due to the path handling in MATLAB. If you do, this project could be interesting for you. 
