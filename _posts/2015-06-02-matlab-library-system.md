@@ -9,7 +9,12 @@ dowload_link: https://github.com/tiborsimon/MATLAB-Library-System-template/archi
 version: v1.1.1
 ---
 
-Have you ever became angry due to the path handling in MATLAB. If you do, this project could be interesting for you. __MATLAB Library System__ is a library handling module that makes shipment and adding/removing MATLAB scripts and functions convenient for you and your customers.
+Have you ever became angry due to the path handling in MATLAB. If you do, this project could be interesting for you. 
+
+__MATLAB Library System__ is a library handling module that makes shipment and adding/removing MATLAB scripts and functions convenient for you and your customers.
+
+
+{% include repo_and_release.html %}
 
 # Using the system
 
@@ -31,8 +36,6 @@ Have you ever became angry due to the path handling in MATLAB. If you do, this p
 1. Copy your project into the `library` folder.
 1. Done. Your project is ready to ship.
 1. You can test your library by running the `install.m` script.
-
-{% include repo_and_release.html %}
 
 # Folder structure
 
