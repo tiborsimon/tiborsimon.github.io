@@ -11,11 +11,9 @@ version: v1.1.1
 
 Have you ever became angry due to the path handling in MATLAB. If you do, this project could be interesting for you.
 
+Library handling module that makes shipment and adding/removing MATLAB scripts and functions convenient for you and your customers.
+
 {% include repo_and_release.html %}
-
-# MATLAB Library System
-
-Library handling module that makes adding and removing your MATLAB scripts and functions convenient.
 
 ## Using the system
 
