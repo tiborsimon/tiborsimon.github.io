@@ -5,8 +5,8 @@ categories: ['programming']
 tags: ['matlab']
 published: True
 repo_link: https://github.com/tiborsimon/simple-input-parser
-dowload_link: https://github.com/tiborsimon/simple-input-parser/archive/v1.2.zip
-version: v1.2
+dowload_link: https://github.com/tiborsimon/simple-input-parser/archive/v1.3.zip
+version: v1.3
 ---
 
 Easy to use variable lenght input parser mechanism that provides a convenient way to enchance your custom function parameter handling. The current version sports a _MATLAB_ implementation, but other language ports are coming too.
