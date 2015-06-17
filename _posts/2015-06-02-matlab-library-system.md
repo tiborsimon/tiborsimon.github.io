@@ -43,7 +43,7 @@ __MATLAB Library System__ has got a simple folder structure.
 
 {% gist tiborsimon/aa4f1fa04736459a6018 %}
 
-# Changing the library's name and version
+# Changing the name and version
 
 If you want to modify your library's name and version, you can edit the `my_library/librarydata.txt` file according to your needs. The first row contains the library name and the second row contains the library version.
 
