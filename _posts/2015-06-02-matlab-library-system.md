@@ -43,18 +43,23 @@ __MATLAB Library System__ has got a simple folder structure.
 
 {% gist tiborsimon/aa4f1fa04736459a6018 %}
 
-# Changing the name and version
+# Modifying the library properties
 
-If you want to modify your library's name and version, you can edit the `my_library/librarydata.txt` file according to your needs. The first row contains the library name and the second row contains the library version.
+There are three library properties you can edit in the `my_library/librarydata.txt` file indexed by the rows of the file:
+
+1. Library name
+2. Library version
+3. Message to the user after installation _(optional)_
+
+Further lines will be ignored.
 
 The default `librarydata.txt` file looks like this:
 
 {% gist tiborsimon/9a3c197ad4ade3347afa %}
 
-By modifying this file, the installer and uninstaller script will print the new name and version implicitly.
+These settings will produce the following output during installation.
 
 {% gist tiborsimon/bb6435be20fc9fa765d1 %}
-
 
 # Possible use case
 
