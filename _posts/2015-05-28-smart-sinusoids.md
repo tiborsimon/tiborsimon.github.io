@@ -211,7 +211,7 @@ In one output argument configuration __Smart Sinusoids__ loads the output vector
 
 ## Two output arguments
 
-__Smart Sinusoids__ is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vector, by adding an extra parameter `x` to your parameter list.
+__Smart Sinusoids__ is capable of generating a time vector for the generated signal vector if you use two output parameters. It can generate three types of time vectors, by adding an extra parameter `x` to your parameter list.
 
 | Time vector type | `x` parameter  | Description |
 |:-----------------|:-------------------|:------------|
