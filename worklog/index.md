@@ -29,6 +29,10 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-21 | TSPR000081<br>TSPR000082 | Learning PyQt<br>Learning python freezing into executable
+| 2015-06-20 | TSPR000011<br>TSPR000012 | Transporting the personal diarry and picture<br>to one place
+| 2015-06-19 | TSPR000068 | Passing the finals :) Good by BME..
+| 2015-06-18 | TSPR000068 | Learning for the finals..
 | 2015-06-17 | TSPR000055 | MATLAB Library System version update v2.1
 | 2015-06-16 | TSPR000068 | Learning for the finals..
 | 2015-06-15 | TSPR000068 | Learning for the finals..
