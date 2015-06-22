@@ -27,7 +27,8 @@ Work harder!
 
 # Work Log
 
-### 2015. 06
+## 2015
+### June
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
 | 2015-06-21 | TSPR000081<br>TSPR000082 | Learning PyQt<br>Learning python freezing into executable
@@ -54,7 +55,7 @@ Work harder!
 | 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 
 
-### 2015. 05
+### May
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
 | 2015-05-31 | TSPR000078 | Smart Sinusoids article
