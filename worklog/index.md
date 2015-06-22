@@ -28,7 +28,7 @@ Work harder!
 
 # 2015
 
-### June
+## June
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
@@ -56,7 +56,7 @@ Work harder!
 | 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 
 
-### May
+## May
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
