@@ -25,9 +25,8 @@ Work harder!
 <cite>Casey Neistat</cite>
 </blockquote>
 
-# Work Log
 
-## 2015
+# 2015
 
 ### June
 
