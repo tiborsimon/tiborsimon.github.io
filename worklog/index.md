@@ -28,7 +28,9 @@ Work harder!
 # Work Log
 
 ## 2015
+
 ### June
+
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
 | 2015-06-21 | TSPR000081<br>TSPR000082 | Learning PyQt<br>Learning python freezing into executable
@@ -56,6 +58,7 @@ Work harder!
 
 
 ### May
+
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
 | 2015-05-31 | TSPR000078 | Smart Sinusoids article
