@@ -32,6 +32,9 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-24 | TSPR000083 | Mass Replacer development
+| 2015-06-23 | TSPR000083 | Mass Replacer development
+| 2015-06-22 | TSPR000083 | Mass Replacer development
 | 2015-06-21 | TSPR000081<br>TSPR000082 | Learning PyQt<br>Learning python freezing into executable
 | 2015-06-20 | TSPR000011<br>TSPR000012 | Transporting the personal diarry and picture<br>to one place
 | 2015-06-19 | TSPR000068 | Passing the finals :) Good by BME..
