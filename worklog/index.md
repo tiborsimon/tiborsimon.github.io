@@ -32,6 +32,12 @@ Work harder!
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
+| 2015-06-30 | TSPR000083 | Mass Replacer development
+| 2015-06-29 | TSPR000083 | Mass Replacer development
+| 2015-06-28 | TSPR000083 | Mass Replacer development
+| 2015-06-27 | TSPR000083 | Mass Replacer development
+| 2015-06-26 | TSPR000083 | Mass Replacer development
+| 2015-06-25 | TSPR000083 | Mass Replacer development
 | 2015-06-24 | TSPR000083 | Mass Replacer development
 | 2015-06-23 | TSPR000083 | Mass Replacer development
 | 2015-06-22 | TSPR000083 | Mass Replacer development
