@@ -28,6 +28,20 @@ Work harder!
 
 # 2015
 
+## July
+
+| Date | Project ID | Accomplished task |
+| 2015-06-09 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-08 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-07 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-06 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-05 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-04 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-03 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-02 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-01 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+
+
 ## June
 
 | Date | Project ID | Accomplished task |
