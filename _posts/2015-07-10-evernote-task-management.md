@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Evernote Task Management
-categories: ['category']
-tags: ['tag']
+categories: ['tools']
+tags: ['evernote', 'task', 'management']
 published: True
 
 ---
@@ -33,16 +33,14 @@ Above the basic hierarchical organization there is the tag system which provides
 
 In the Evernote Task Management System (let's call it System), we are going to use the following hierarchical structure:
 
-```
-_TASKS
- !_admin
- !_log
- 0_pool
- 1_ongoing
- 2_on_hold
- 3_completed
- 4_obsoleted
-```
+- _PROJECTS [stack]
+    - !_admin [notebook]
+    - !_log  [notebook]
+    - 0_pool  [notebook]
+    - 1_ongoing  [notebook]
+    - 2_on_hold  [notebook]
+    - 3_completed  [notebook]
+    - 4_obsoleted  [notebook]
 
 ## Main stack
 
