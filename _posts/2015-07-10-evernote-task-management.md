@@ -7,7 +7,9 @@ published: True
 
 ---
 
-Evernote is a very good application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags on them. With this article you will be able to use Evernote as a task management system. This system offers you the followings:
+Evernote is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags on them. If you sacrifice some time overhead you can extend Evernote's functionality to create a complete task management system. 
+
+With this article you will be able to use Evernote as a task management system. This system offers you the followings:
 
 - Keep track of your tasks
 - Keep the tasks and the corresponding knowledge in one place
@@ -15,11 +17,9 @@ Evernote is a very good application for keeping your ideas and notes synchronize
 - Set up reminders and due dates
 - Keep your files organized and in association with the tasks
 
-Get in context with any of your previous tasks faster. It is mandatory to follow the conventions if you want a reliable system you can count on. If you follow the rules, you will end up a system, that will improve you work, and in the end, you can work faster.
-
 # Warning!
 
-There are some administrative overhead, which you have to count with if you decide to apply this method. The extra time will pay back of course, as it results a clear and traceable reference of your work.
+There are some administrative overhead though, which you have to count with if you decide to apply this method. The extra time will pay back, as it results a clear and traceable reference of your work.
 
 # Hierarchical structure
 
@@ -29,7 +29,9 @@ In Evernote there are three basic hierarchical levels:
 - Notebooks - contains arbitrary number of notes
 - Stacks - contains arbitrary number of notebooks
 
-Above the basic hierarchical organization there is the tag system which provides a finer, fourth level of hierarchical arrangement. You can tag notes arbitrary number of tags, and you can organize tags into its own hierarchy as well. In the Evernote Task Management System (let's call it System), we are going to use the following hierarchical structure:
+Above the basic hierarchical organization there is the tag system which provides a finer, fourth level of hierarchical arrangement. You can tag notes arbitrary number of tags, and you can organize tags into its own hierarchy as well. 
+
+In the Evernote Task Management System (let's call it System), we are going to use the following hierarchical structure:
 
 ```
 _TASKS
