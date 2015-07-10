@@ -31,6 +31,7 @@ In Evernote there are three basic hierarchical levels:
 
 Above the basic hierarchical organization there is the tag system which provides a finer, fourth level of hierarchical arrangement. You can tag notes arbitrary number of tags, and you can organize tags into its own hierarchy as well. In the Evernote Task Management System (let's call it System), we are going to use the following hierarchical structure:
 
+```
 _TASKS
  !_admin
  !_log
@@ -39,7 +40,7 @@ _TASKS
  2_on_hold
  3_completed
  4_obsoleted
-
+```
 ## Main stack
 
 The whole system takes place in one separated stack called _TASKS. The leading underscore anchors the stack in the top of the notebooks list, as Evernote doesn't have the possibility of manually sorting the stacks or notebooks. It simply sorts them in alphabetical order[^1].
@@ -50,36 +51,36 @@ Inside the _TASK stack there are 7 notebooks which provide the first organizatio
 you can notice, there are leading prefixes in front of the notebooks. These are optional, if you doesn't
 care about the alphabetical sorting of Evernote, which will mess up the logical order of the notebooks[^2].
 
-# !_admin
+### !_admin
 
 This notebook purpose is to contain the task template and the optional master admin note.
 
-## !_log
+### !_log
 
 Optional notebook to keep track of the daily tasks on the fly. It contains only log note that are created daily and named by the actual date.
 
-## 0_pool
+### 0_pool
 
 This notebook is the container for all of your newly created tasks (task notes). You can put here ideas you will be working on in the future, tasks that are not started yet. I.e. a task appears in this notebook in the creation phase. Tasks remain here during the brainstorming phase too. As soon as you started working on it, the task moves to the 1_ongoing notebook.
 
-## 1_ongoing
+### 1_ongoing
 
 This notebook contains the tasks you are working on right now. If you pull a task from the 0_pool or the 2_on_hold notebooks, it enters to the working phase, and moves to this notebook. 
 
-## 2_on_hold
+### 2_on_hold
 
 If you cannot continue the work on a task because of the task's priority dropped or you faced a dependency problem on another task or person, you put your task from the 1_ongoing notebook to this notebook, and the task enters to the hold phase.
 
-## 3_completed
+### 3_completed
 
 When you have finished a task, you put your task in this notebook, and the task will enter the completed phase.
 
-## 4_obsoleted
+### 4_obsoleted
 
 If your task becomes obsoleted due to any reason, it enters to the obsolete phase, and moves to this notebook.
 
 
-# Notes
+## Notes
 
 There are four possible types of notes in the System.
 
@@ -88,7 +89,7 @@ There are four possible types of notes in the System.
 - Log note
 - Task note
 
-## Admin note
+### Admin note
 
 This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the task you working on/have worked on. This note only contains a table which has the following headers:
 
@@ -98,7 +99,7 @@ This is an optional note. It adds a fair bit of overhead to the administration p
 - Finished - The date you have completed or obsolete the task.
 - Started - The day you pulled the task from the pool.
 
-## Task template note
+### Task template note
 
 This note contains the blueprint for the new task notes you create. Using this template ensures the uniform outfit of the System. It contains all the parts a task administration note would need to be as usable as possible.
 
@@ -107,7 +108,7 @@ The template contains two main parts:
 - Header - where the administrative parts are located
 - Body - where you write and collect all the information and resources you needed during the task in an grouped structure
 
-## Header part
+#### Header part
 
 The header contains the following sections:
 
@@ -118,11 +119,11 @@ The header contains the following sections:
 - Associated files - This section keeps track of the files and folders associated with the current task. You insert a new row into a table when you add a new associated file or folder. The task root is mandatory. It is up to you to track the further files and folders located in the task root.
 - Subtasks - In this section you keep track of the subtask of your task. Each subtask has an ID, a name and a priority. This section is a table, where each row corresponds to a subtask. The rule here is similar to the rule in the brainstorming section: deletion is forbidden[^5]. If a subtask became obsoleted, simply write it down close the subtask, and go on with another. If you have finished a subtask you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority subtask to work on. This section also keeps track of the creation and last modification of the subtask.
 
-## Body part
+#### Body part
 
 This is the part where you elaborate your subtasks. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: deletion is forbidden! Each subtask elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable task template note below. Import it to your !_admin notebook, and you are ready to go.
 
-# Log note
+### Log note
 
 If you decided to keep track of your work in the way that provides higher resolution, you will have a !_log notebook in your _TASKS stack, which will contain all of the log notes, you create in a daily manner. You gave the current date as the title for each log note.
 Each log note contains sections that match to the same pattern:
@@ -133,7 +134,7 @@ Each log note contains sections that match to the same pattern:
 
 This provides a uniform outfit and a superior search-ability and accountability of the work you have done.
 
-# Task note
+### Task note
 
 You have already got familiar with the structure of the task notes introduced in the task template note description.
 
@@ -142,7 +143,7 @@ You can set up reminders for the task notes, to set up due dates:
 
 The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your task note to another notebook, the associated reminders will move to the now notebook as well.
 
-# File system
+## File system
 
 Each task has a folder in your file system. You should put and save all the task related files in that folder. The name of the folder could be the following[^8]:
 
@@ -150,7 +151,7 @@ Each task has a folder in your file system. You should put and save all the task
 
 For example, if you have a task named “My task” with an ID “TASK00023”, its folder should be TASK00023_My_task. The preferable location of the task root folder is here: d:\_tasks\
 
-# Summary
+## Summary
 
 In this section you have got familiar with the structure of the System: the three level hierarchical system, and the elements taking place in each level. The following section will contain the use cases for the System. Based on the current knowledge and the next one you will gather in the next section you will be able to fully adopt the System, and start using it.
 
