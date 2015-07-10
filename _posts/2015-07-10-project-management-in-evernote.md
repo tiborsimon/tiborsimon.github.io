@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Evernote Task Management
+title: Project Management in Evernote
 categories: ['tools']
 tags: ['evernote', 'task', 'management']
 published: True
@@ -84,7 +84,7 @@ If your task becomes obsoleted due to any reason, it enters to the `obsolete pha
 
 ## Notes
 
-There are four possible types of notes in the System.
+There are four possible note types in the System.
 
 - Admin note (singleton)
 - Project template note (singleton)
