@@ -51,6 +51,8 @@ Inside the `_PROJECTS` stack there are 7 notebooks which provide the first organ
 you can notice, there are leading prefixes in front of the notebooks. These are optional, if you doesn't
 care about the alphabetical sorting of Evernote, which will mess up the logical order of the notebooks[^2].
 
+## Notebooks
+
 ### !_admin
 
 This notebook purpose is to contain the task template and the optional master admin note.
