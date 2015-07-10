@@ -55,31 +55,31 @@ care about the alphabetical sorting of Evernote, which will mess up the logical 
 
 ### !_admin
 
-This notebook purpose is to contain the task template and the optional master admin note.
+This notebook purpose is to contain the `task template` and the optional master `admin note`.
 
 ### !_log
 
-Optional notebook to keep track of the daily tasks on the fly. It contains only log note that are created daily and named by the actual date.
+Optional notebook to keep track of the daily tasks on the fly. It contains only `log notes` that are created daily and named by the actual date.
 
 ### 0_pool
 
-This notebook is the container for all of your newly created tasks (task notes). You can put here ideas you will be working on in the future, tasks that are not started yet. I.e. a task appears in this notebook in the creation phase. Tasks remain here during the brainstorming phase too. As soon as you started working on it, the task moves to the 1_ongoing notebook.
+This notebook is the container for all of your newly created projects (`project notes`). You can put here ideas you will be working on in the future, projects that are not started yet. Projects notes appear here in the `creation phase`. Project notes remain here during the `brainstorming` phase too. As soon as you started working on it, the task moves to the `1_ongoing notebook`.
 
 ### 1_ongoing
 
-This notebook contains the tasks you are working on right now. If you pull a task from the 0_pool or the 2_on_hold notebooks, it enters to the working phase, and moves to this notebook. 
+This notebook contains the projects you are working on right now. If you choose a project from the `0_pool` or the `2_on_hold` notebooks, it enters to the `working phase`, and moves to this notebook. 
 
 ### 2_on_hold
 
-If you cannot continue the work on a task because of the task's priority dropped or you faced a dependency problem on another task or person, you put your task from the 1_ongoing notebook to this notebook, and the task enters to the hold phase.
+If you cannot continue the work on a project because of the project's priority dropped or you faced a dependency problem, you put your actual project from the `1_ongoing` notebook to this notebook, and the task enters to the `hold phase`.
 
 ### 3_completed
 
-When you have finished a task, you put your task in this notebook, and the task will enter the completed phase.
+When you have finished a project, you put your task in this notebook, and the task will enter the `complete phase`.
 
 ### 4_obsoleted
 
-If your task becomes obsoleted due to any reason, it enters to the obsolete phase, and moves to this notebook.
+If your task becomes obsoleted due to any reason, it enters to the `obsolete phase`, and moves to this notebook.
 
 
 ## Notes
@@ -87,9 +87,9 @@ If your task becomes obsoleted due to any reason, it enters to the obsolete phas
 There are four possible types of notes in the System.
 
 - Admin note (singleton)
-- Task template note (singleton)
+- Project template note (singleton)
 - Log note
-- Task note
+- Project note
 
 ### Admin note
 
