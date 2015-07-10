@@ -33,18 +33,19 @@ Above the basic hierarchical organization there is the tag system which provides
 
 In the Evernote Task Management System (let's call it System), we are going to use the following hierarchical structure:
 
-- _PROJECTS [stack]
-    - !_admin [notebook]
-    - !_log  [notebook]
-    - 0_pool  [notebook]
-    - 1_ongoing  [notebook]
-    - 2_on_hold  [notebook]
-    - 3_completed  [notebook]
-    - 4_obsoleted  [notebook]
+- __ _PROJECTS__
+    - !_admin
+    - !_log 
+    - 0_pool 
+    - 1_ongoing 
+    - 2_on_hold 
+    - 3_completed 
+    - 4_obsoleted 
 
-## Main stack
 
-The whole system takes place in one separated stack called _TASKS. The leading underscore anchors the stack in the top of the notebooks list, as Evernote doesn't have the possibility of manually sorting the stacks or notebooks. It simply sorts them in alphabetical order[^1].
+## _PROJECTS Main stack
+
+The whole system takes place in one separated stack called _PROJECTS. The leading underscore anchors the stack in the top of the notebooks list, as Evernote doesn't have the possibility of manually sorting the stacks or notebooks. It simply sorts them in alphabetical order[^1].
 
 ## Notebooks
 
@@ -126,7 +127,7 @@ This is the part where you elaborate your subtasks. You can write here any infor
 
 ### Log note
 
-If you decided to keep track of your work in the way that provides higher resolution, you will have a !_log notebook in your _TASKS stack, which will contain all of the log notes, you create in a daily manner. You gave the current date as the title for each log note.
+If you decided to keep track of your work in the way that provides higher resolution, you will have a !_log notebook in your _PROJECTS stack, which will contain all of the log notes, you create in a daily manner. You gave the current date as the title for each log note.
 Each log note contains sections that match to the same pattern:
 
 - Timestamp[^7]
@@ -150,7 +151,7 @@ Each task has a folder in your file system. You should put and save all the task
 
 `[task ID]_[Task name with underscores]`
 
-For example, if you have a task named “My task” with an ID “TASK00023”, its folder should be TASK00023_My_task. The preferable location of the task root folder is here: d:\_tasks\
+For example, if you have a task named “My task” with an ID “TASK00023”, its folder should be TASK00023_My_task. The preferable location of the task root folder is here: d:\_PROJECTS\
 
 ## Summary
 
