@@ -41,6 +41,7 @@ _TASKS
  3_completed
  4_obsoleted
 ```
+
 ## Main stack
 
 The whole system takes place in one separated stack called _TASKS. The leading underscore anchors the stack in the top of the notebooks list, as Evernote doesn't have the possibility of manually sorting the stacks or notebooks. It simply sorts them in alphabetical order[^1].
