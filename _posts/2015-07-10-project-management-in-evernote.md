@@ -4,6 +4,7 @@ title: Project Management in Evernote
 categories: ['tools']
 tags: ['evernote', 'task', 'management']
 published: True
+share_buttons: True
 
 ---
 
