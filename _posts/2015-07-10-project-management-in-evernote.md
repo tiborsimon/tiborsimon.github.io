@@ -19,17 +19,17 @@ With this article you will be able to use _Evernote_ as a project management sys
 
 # Warning!
 
-There are some administrative overhead though, which you have to count with if you decide to apply this method. The extra time will pay back, as it results a clear and traceable reference of your work.
+There is some administrative overhead though you have to count with if you decide to apply this method. The extra time will pay back of course, as a clear and traceable reference of your work.
 
 # Hierarchical structure
 
 In _Evernote_ there are three basic hierarchical levels:
 
-- Notes - the basic building blocks
-- Notebooks - contains arbitrary number of notes
-- Stacks - contains arbitrary number of notebooks
+- _Notes_ - the basic building blocks
+- _Notebooks_ - contains arbitrary number of notes
+- _Stacks_ - contains arbitrary number of notebooks
 
-Above the basic hierarchical organization there is the tag system which provides a finer, fourth level of hierarchical arrangement. You can tag notes arbitrary number of tags, and you can organize tags into its own hierarchy as well. 
+Above the basic hierarchical organization there is the tag system which provides a finer, fourth level hierarchical arrangement. You can tag notes arbitrary number of tags, and you can organize tags into its own hierarchy as well. 
 
 In the __Evernote Task Management System__ (let's call it __System__), we are going to use the following hierarchical structure:
 
@@ -42,12 +42,13 @@ In the __Evernote Task Management System__ (let's call it __System__), we are go
     - 3_completed 
     - 4_obsoleted 
 
+We will use one main stack with various notebooks in it. The notebooks will contain the notes which are the actual projects. Each project can be assigned with tags to indicate it's id and priority.
 
 ## _PROJECTS - main stack
 
 The whole system takes place in one separated stack called `_PROJECTS`. The leading underscore anchors the stack in the top of the notebooks list, as _Evernote_ doesn't have the possibility of manually sorting the stacks or notebooks. It simply sorts them in alphabetical order[^1].
 
-Inside the `_PROJECTS` stack there are 7 notebooks which provide the first organization level of the System. As you can notice, there are leading prefixes in front of the notebooks. These are optional, if you doesn't care about the alphabetical sorting of _Evernote_, which will mess up the logical order of the notebooks[^2].
+Inside the `_PROJECTS` stack there are 7 notebooks which provide the first organization level of the __System__. As you can notice, there are leading prefixes too in front of the notebooks. These are optional, you can leave them off if you doesn't care about the alphabetical sorting. _Evernote_ will mess up the logical order of the notebooks and will use alphabetical sorting[^2].
 
 ## Notebooks
 
@@ -61,7 +62,7 @@ Optional notebook to keep track of the daily projects on the fly. It contains on
 
 ### 0_pool
 
-This notebook is the container for all of your newly created projects (`project notes`). You can put here ideas you will be working on in the future, projects that are not started yet. Projects notes appear here in the `creation phase`. Project notes remain here during the `brainstorming` phase too. As soon as you started working on it, the project moves to the `1_ongoing notebook`.
+This notebook is the container for all of your newly created projects (`project notes`). You can put ideas you will be working on in the future here, projects that are not started yet. `Projects notes` appear here in the `creation phase`. `Project notes` remain here during the `brainstorming` phase too. As soon as you started working on it, the project moves to the `1_ongoing notebook`.
 
 ### 1_ongoing
 
@@ -82,30 +83,30 @@ If your project becomes obsoleted due to any reason, it enters to the `obsolete 
 
 ## Notes
 
-There are four possible note types in the System.
+There are four possible note types:
 
-- Admin note (singleton)
-- Project template note (singleton)
-- Log note
-- Project note
+- `Admin note` (singleton)
+- `Project template note` (singleton)
+- `Log note`
+- `Project note`
 
 ### Admin note
 
 This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the project you working on/have worked on. This note only contains a table which has the following headers:
 
 - _Project id_ - a unique id that identifies the project
-- _Project link_ - you can obtain a link by right clicking on the project note, and choose Copy Note Link
-- _Project status_ - there are five states[^3] a project can be in: `NOT_STARTED`, `ONGOING`, `ON_HOLD`, `DONE`, `OBSOLETED`
+- _Project link_ - you can obtain a link by _right clicking_ on the project note, and choose _Copy Note Link_
+- _Project status_ - there are five states[^3] for the projects: `NOT_STARTED`, `ONGOING`, `ON_HOLD`, `DONE`, `OBSOLETED`
 - _Finished_ - The date you have completed or obsolete the project.
 - _Started_ - The day you pulled the project from the pool.
 
 ### Project template note
 
-This note contains the blueprint for the new project notes you create. Using this template ensures the uniform outfit of the System. It contains all the parts a project administration note would need to be as usable as possible.
+This note contains the blueprint for the new project notes you create. Using this template ensures the uniform outfit of the __System__. It contains all the parts a project administration note would need to be as effective as possible.
 
 The template contains two main parts:
 
-- __Header__ - where the administrative parts are located
+- __Header__ - where the administrative information is located
 - __Body__ - where you write and collect all the information and resources you needed during the project in an grouped structure
 
 #### Header part
@@ -115,7 +116,7 @@ The header contains the following sections:
 - `Dependency` - you can list the projects you depend on with this project, and has to finish before you can continue the current project. There is a checkbox[^4] before each note link you list in this section.
 - `Corresponding projects` - in this section you can list all of the projects you think are related to the current project but you don't depend on them. These associations helps you find solutions for a problem faster.
 - `Description` - Describe the project shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the project again.
-- `Brainstorming` - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over the time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words and sentences.
+- `Brainstorming` - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words or sentences.
 - `Associated files` - This section keeps track of the files and folders associated with the current project. You insert a new row into a table when you add a new associated file or folder. The project root is mandatory. It is up to you to track the further files and folders located in the project root.
 - `Tasks` - In this section you keep track of the tasks of your project. Each task has an ID a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: __deletion is forbidden__[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
 
@@ -125,25 +126,25 @@ This is the part where you elaborate your projects. You can write here any infor
 
 ### Log note
 
-If you decided to keep track of your work in the way that provides higher resolution, you will have a !_log notebook in your `_PROJECTS` stack, which will contain all of the log notes, you create in a daily manner. You gave the current date as the title for each log note.
+If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a !_log notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
 Each log note contains sections that match to the same pattern:
 
 - Timestamp[^7]
 - Short description of the work you have just done preferably with plain text.
 - Empty line
 
-This provides a uniform outfit and a superior search-ability and accountability of the work you have done.
+This provides a uniform outfit, a superior searchability and accountability of the work you have done.
 
 ### Project note
 
-You have already got familiar with the structure of the project notes introduced in the project template note description.
+You have already got familiar with the structure of the `project notes` introduced in the `project template note` description.
 
-Project notes are the central parts of the System. They contain all the necessary information a project can correspond with. If you were assigned with a project, you create a project note, fill out the header sections, and start working on the project. 
+`Project notes` are the central parts of the __System__. They contain all the necessary information a project can correspond with. If you were assigned with a project, you create a project note, fill out the header sections, and start working on the project. 
 
-The location of the project note determines its state. You can drag and drop project notes from one notebook to another if you want to change the state of the current project note.
+The location of the `project note` determines its state. You can drag and drop `project notes` from one notebook to another if you want to change the state of the current `roject note`.
 
-Each project note has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a project, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: TASK00001. You can increment the numbers as you create new project notes. By using the tag system of _Evernote_ help you find the next ID for the newly created project note. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last easily. You can easily spot the errors by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the System nice and organized.
-You can set up reminders for the project notes, to set up due dates:
+Each `project note` has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a project, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: P00001 _(I use the TSPR prefix that stands for Tibor Simon PRoject)_. You can increment the numbers as you create new `project notes`. By using the tag system of _Evernote_ help you find the next ID for the newly created `project note` easily. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last one easily. You can spot the errors as well by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the __System__ nice and organized.
+You can set up reminders for the `project notes`, to set up due dates:
 
 The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
 
@@ -157,12 +158,12 @@ For example, if you have a project named “My project” with an ID “TASK0002
 
 ## Summary
 
-In this section you have got familiar with the structure of the System: the three level hierarchical system, and the elements taking place in each level. The following section will contain the use cases for the System. Based on the current knowledge and the next one you will gather in the next section you will be able to fully adopt the System, and start using it.
+In this section you have got familiar with the structure of the __System__: the three level hierarchical system, and the elements taking place in each level. The following section will contain the use cases for the __System__. Based on the current knowledge and the next one you will gather in the next section you will be able to fully adopt the __System__, and start using it.
 
 
 # Task Phases
 
-In this section we will get familiar with the actual usage of the System. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
+In this section we will get familiar with the actual usage of the __System__. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
 
 ## Phase Workflow
 
