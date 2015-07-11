@@ -5,8 +5,8 @@ googleplus: true
 linkedin: true
 reddit: true
 hackernews: false
-pinterest: true
-tumblr: true
+pinterest: false
+tumblr: false
 pocket: true
 email: true
 
