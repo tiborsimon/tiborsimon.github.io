@@ -12,10 +12,10 @@ $(document).ready(function() {
 });
 
 $(document).scroll(function() {
-  var th = $('.entry-content').height()-300;  
+  var th = $('.entry-content').height()-400;  
   var y = $(this).scrollTop();
   var maxop = 0.5;
-  var delta = 240;
+  var delta = 120;
   var op = maxop;
   if (y>th) {
     op = -(maxop/delta)*y + (maxop*(th+delta))/delta;
