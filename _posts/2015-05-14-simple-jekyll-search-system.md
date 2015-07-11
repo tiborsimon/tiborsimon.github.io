@@ -7,6 +7,7 @@ published: True
 repo_link: https://github.com/tiborsimon/jekyll-search-system
 dowload_link: https://github.com/tiborsimon/jekyll-search-system/archive/v1.3.zip
 version: v1.3
+share_buttons: True
 ---
 
 Searching on a static website? Yep, it can be done easily. The only things you need is a static database and a searching algorithm. This article describes the necessary steps to create a lightning fast good looking search system for your Jekyll based site without any external dependency. This method is also compatible with GitHubPages.

@@ -4,6 +4,7 @@ title: SlotCar Race
 categories: ['electronics']
 tags: ['embedded', 'dsp']
 published: True
+share_buttons: True
 
 ---
 

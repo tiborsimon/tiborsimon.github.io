@@ -5,7 +5,7 @@ categories: ['tools']
 tags: ['evernote', 'task', 'management']
 published: True
 share_buttons: True
-
+share_buttons: True
 ---
 
 Evernote is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags on them. If you sacrifice some time overhead you can extend Evernote's functionality to create a complete task management system. 
