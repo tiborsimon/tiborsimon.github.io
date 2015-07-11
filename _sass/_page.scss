@@ -753,6 +753,11 @@ div#toc.hovered {
   padding: 0 0 0 13px;
 }
 
+#toc li:hover {
+  position: relative;
+  left: -5px;
+}
+
 #toc a:hover {
   color: black;
 }
