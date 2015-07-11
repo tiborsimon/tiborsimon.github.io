@@ -758,7 +758,7 @@ div#toc.hovered {
   display: block;
 }
 
-#toc li:hover {
+#toc a:hover {
   margin-left: -3px;
   background-color: red;
 }
