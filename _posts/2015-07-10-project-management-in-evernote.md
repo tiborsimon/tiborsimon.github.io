@@ -12,11 +12,11 @@ Evernote is an application for keeping your ideas and notes synchronized between
 
 With this article you will be able to use Evernote as a task management system. This system offers you the followings:
 
-- Keep track of your tasks
-- Keep the tasks and the corresponding knowledge in one place
+- Keep track of your projects
+- Keep the projects and the corresponding knowledge in one place
 - Manage task dependencies
 - Set up reminders and due dates
-- Keep your files organized and in association with the tasks
+- Keep your files organized and in association with the projects
 
 # Warning!
 
@@ -56,7 +56,7 @@ care about the alphabetical sorting of Evernote, which will mess up the logical 
 
 ### !_admin
 
-This notebook purpose is to contain the `task template` and the optional master `admin note`.
+This notebook purpose is to contain the `project template` and the optional master `admin note`.
 
 ### !_log
 
@@ -96,20 +96,20 @@ There are four possible note types in the System.
 
 This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the task you working on/have worked on. This note only contains a table which has the following headers:
 
-- Task id - a unique id that identifies the task
-- Task link - you can obtain a link by right clicking on the task note, and choose Copy Note Link
-- Task status - there are five states[^3] a task can be in: NOT_STARTED, ONGOING, ON_HOLD, DONE, OBSOLETED
-- Finished - The date you have completed or obsolete the task.
-- Started - The day you pulled the task from the pool.
+- Project id - a unique id that identifies the project
+- Project link - you can obtain a link by right clicking on the project note, and choose Copy Note Link
+- Project status - there are five states[^3] a task can be in: NOT_STARTED, ONGOING, ON_HOLD, DONE, OBSOLETED
+- Finished - The date you have completed or obsolete the project.
+- Started - The day you pulled the project from the pool.
 
-### Task template note
+### Project template note
 
-This note contains the blueprint for the new task notes you create. Using this template ensures the uniform outfit of the System. It contains all the parts a task administration note would need to be as usable as possible.
+This note contains the blueprint for the new project notes you create. Using this template ensures the uniform outfit of the System. It contains all the parts a project administration note would need to be as usable as possible.
 
 The template contains two main parts:
 
 - Header - where the administrative parts are located
-- Body - where you write and collect all the information and resources you needed during the task in an grouped structure
+- Body - where you write and collect all the information and resources you needed during the project in an grouped structure
 
 #### Header part
 
