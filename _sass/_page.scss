@@ -742,6 +742,8 @@ div#toc {
   width: 243px;
   -webkit-transition: margin-right 0.28s; /* Safari 3.1 to 6.0 */
   transition: margin-right 0.28s;
+  -webkit-transition: left 0.28s; /* Safari 3.1 to 6.0 */
+  transition: left 0.28s;
 }
 
 div#toc:hover,
@@ -754,12 +756,7 @@ div#toc.hovered {
 }
 
 #toc a:hover {
+  color: black;
   position: relative;
   left: -3px;
-  -webkit-transition: margin-right 0.28s; /* Safari 3.1 to 6.0 */
-  transition: margin-right 0.28s;
-}
-
-#toc a:hover {
-  color: black;
 }
