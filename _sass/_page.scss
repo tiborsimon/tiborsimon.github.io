@@ -245,6 +245,7 @@ header .entry-meta {
         padding: 10px 15px;
         background-color: $white;
         box-shadow: 0 7px 24px rgba(34,34,34,0.45);
+        position: relative;
         @include rounded(6px);
         @media #{$medium} {
             margin-left: 10px;
