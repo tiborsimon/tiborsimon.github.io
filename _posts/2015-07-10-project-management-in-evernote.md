@@ -159,6 +159,157 @@ For example, if you have a task named “My task” with an ID “TASK00023”, 
 In this section you have got familiar with the structure of the System: the three level hierarchical system, and the elements taking place in each level. The following section will contain the use cases for the System. Based on the current knowledge and the next one you will gather in the next section you will be able to fully adopt the System, and start using it.
 
 
+# Task Phases
+
+In this section we will get familiar with the actual usage of the System. We will start with the summary of the different task phases, and then we are going to delve into the details of each phase.
+
+## Phase Workflow
+
+By using the system, each task you are working on can go through 6 phases.
+
+ 
+### Creation phase
+
+This is the phase when you create a new task note and assign a unique ID to it, and do the administrative work.
+
+### Brainstorming phase
+
+After the creation phase, optionally you can have a brainstorming phase, where you can add ideas to the task, which might help you the work. During the work phase you are allowed to add ideas too.
+
+### Working phase
+
+In this phase you are working on the task. You create subtasks and to keep your work and the corresponding information organized.
+
+### Hold phase
+
+If you have encountered a problem, which you can’t solve by your own, or you are waiting for another person, you can put the task into hold. You drag and drop the task to the 2_on_hold notebook, and do the necessary administrative work.
+
+### Completed phase
+
+After you have done with the task, you put the task note into the 3_completed notebook.
+
+### Obsolete phase
+
+If the task became obsolete you simply drop it to the 4_obsoleted notebook. Note that you can pull 
+it out again if it became active again.
+
+# Use cases
+
+After you got familiar with the phases, let’s look at the concrete steps for the phases.
+
+## Create a new task
+
+When you were assigned by a new task or you came up an idea you will working on, you create and administrate a new task note. The steps are the following:
+
+1.  Copy the content of the task note template.
+1.  Create a new note in the 0_pool notebook.
+1.  Name your task.
+1.  Paste the copied template to the created note.
+1.  Assign an ID to the note by adding a tag named after the ID.
+1.  Write a short description of your task.
+1.  Create a folder in your tasks root folder.
+1.  In the associated file section update the link  and date .
+1.  In the subtask section update the “Task created” row with the current timestamp in both date fields.
+1. If you have list the decencies in the dependency section.
+1. If you have list the corresponding tasks.
+1. If you are using the admin note, create a new row into the task list, and fill out the fields (set status to NOT_STARTED).
+1. If you are using log notes, log that you have created a new task.
+
+At this point you have a task that you haven’t started yet. If you have further ideas before you start, the task will enter to the brainstorming phase. After you start the task, the task will enter the working phase as it will moved to the 1_ongoing notebook.
+
+## Add an idea for the task
+
+If you have any idea for the task during the creation phase or the working phase or even during the hold phase, you can add ideas to the task.
+
+1.  Write your idea in the brainstorming section of the task note into the next point.
+
+## Remove an idea from the task
+
+If you have thought that an idea won’t work for that task, you always do the following by keeping mind the deletion is forbidden rule:
+
+1.  Select the idea you want to remove.
+1.  Change its formatting to strikethrough.
+
+## Adding new subtask
+
+During the work, you have finished a subtask, or just by starting the task and you want to create new subtask(s) you will be working on.
+
+### Header part
+
+1.  Create a new row into the subtask section by right clicking on the last row in any cell, and select Insert Row Below.
+1.  Assign the next subtask ID by incrementing the last one.
+1.  Put a checkbox  into the section name.
+1.  Add a short name for the subtask.
+1.  Assign a priority value (more @ signs means higher priority).
+1.  Fill out the two date fields 
+1.  Optionally you can grey out the Section created field indicating that it has to be immutable.
+
+### Body part
+
+1.  Below the last subtask elaboration clear out some space.
+1.  Type the subtask ID.
+1.  Right after that add a horizontal line .
+1.  Press enter a few times.
+1.  Go back and select the subtask ID above the horizontal line.
+1.  Change its size to 24 pt.
+
+Start working on a task
+     When you have reached the point that you are going to start a task (whether it isn’t started yet, or it is in the hold or obsoleted phase), you do the followings:
+
+1.  Move the task note wherever it was to the 1_ongoing notebook.
+2.  If you are using the admin note, change the task status to ONGOING.
+3.  If you are using log notes, log that you have started a new subtask.
+
+## Finish working on a subtask
+
+When you finish your work on a subtask (it doesn’t matter if you have finished it completely or just start something else) you can do the followings:
+
+1.  Update the Last modified field in the task note’s header section for the current subtask with the current timestamp.
+1.  If you are using log notes, log that you have finished work on a subtask.
+
+## Putting a task to hold
+
+If you stuck with the current task you working in, you can put in hold, while you waiting to be able to continue the work.
+
+1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the task note to the 2_on_hold notebook by drag and drop.
+1.  If you are using the admin note, change the task status to ON_HOLD.
+1.  If you are using log notes, log that you have put a task on hold.
+
+## Finish a task
+
+At the point when you have finished your task, you have to do the followings:
+
+1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the task note to the 3_completed notebook by drag and drop.
+1.  If you are using the admin note, change the task status to DONE.
+1.  If you are using log notes, log that you have finished a task.
+
+## Finding the next subtask to work on
+
+If you have finished your current subtask and you want to start the highest priority one:
+
+1.  Scroll through the Subtask section, and find the row with the most @ signs in it.
+
+## Obsolete a task
+
+If you were told that your task is obsolete now, you should put the task into the obsolete state:
+
+1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the task note to the 4_obsoleted notebook by drag and drop.
+1.  If you are using the admin note, change the task status to OBSOLETED.
+1.  If you are using log notes, log that you have obsoleted a task.
+
+## Starting the day
+
+When you are about to start your day..
+
+1.  If you are using log notes, create a new note in your !_log notebook, and name it according to the actual date.
+1.  Go into the newly created note, and insert the current timestamp 
+1.  Type in shortly that you have started your work, and what is the first task of the day.
+
+
+
 
 
 [^1]: Don't be confused, if you created a notebook or a stack, and it's not sorted by alphabetical order. This is a bug in Evernote. It will be sorted after a restart..
