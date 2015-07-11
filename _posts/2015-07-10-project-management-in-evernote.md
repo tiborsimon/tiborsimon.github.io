@@ -8,13 +8,13 @@ share_buttons: True
 share_buttons: True
 ---
 
-_Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags on them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete task management system. 
+_Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags on them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete project management system. 
 
-With this article you will be able to use _Evernote_ as a task management system. This system offers you the followings:
+With this article you will be able to use _Evernote_ as a project management system. This system offers you the followings:
 
 - Keep track of your projects
 - Keep the projects and the corresponding knowledge in one place
-- Manage task dependencies
+- Manage project dependencies
 - Set up reminders and due dates
 - Keep your files organized and in association with the projects
 
@@ -58,11 +58,11 @@ This notebook purpose is to contain the `project template` and the optional mast
 
 ### !_log
 
-Optional notebook to keep track of the daily tasks on the fly. It contains only `log notes` that are created daily and named by the actual date.
+Optional notebook to keep track of the daily projects on the fly. It contains only `log notes` that are created daily and named by the actual date.
 
 ### 0_pool
 
-This notebook is the container for all of your newly created projects (`project notes`). You can put here ideas you will be working on in the future, projects that are not started yet. Projects notes appear here in the `creation phase`. Project notes remain here during the `brainstorming` phase too. As soon as you started working on it, the task moves to the `1_ongoing notebook`.
+This notebook is the container for all of your newly created projects (`project notes`). You can put here ideas you will be working on in the future, projects that are not started yet. Projects notes appear here in the `creation phase`. Project notes remain here during the `brainstorming` phase too. As soon as you started working on it, the project moves to the `1_ongoing notebook`.
 
 ### 1_ongoing
 
@@ -70,15 +70,15 @@ This notebook contains the projects you are working on right now. If you choose 
 
 ### 2_on_hold
 
-If you cannot continue the work on a project because of the project's priority dropped or you faced a dependency problem, you put your actual project from the `1_ongoing` notebook to this notebook, and the task enters to the `hold phase`.
+If you cannot continue the work on a project because of the project's priority dropped or you faced a dependency problem, you put your actual project from the `1_ongoing` notebook to this notebook, and the project enters to the `hold phase`.
 
 ### 3_completed
 
-When you have finished a project, you put your task in this notebook, and the task will enter the `complete phase`.
+When you have finished a project, you put your project in this notebook, and the project will enter the `complete phase`.
 
 ### 4_obsoleted
 
-If your task becomes obsoleted due to any reason, it enters to the `obsolete phase`, and moves to this notebook.
+If your project becomes obsoleted due to any reason, it enters to the `obsolete phase`, and moves to this notebook.
 
 
 ## Notes
@@ -92,11 +92,11 @@ There are four possible note types in the System.
 
 ### Admin note
 
-This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the task you working on/have worked on. This note only contains a table which has the following headers:
+This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the project you working on/have worked on. This note only contains a table which has the following headers:
 
 - _Project id_ - a unique id that identifies the project
 - _Project link_ - you can obtain a link by right clicking on the project note, and choose Copy Note Link
-- _Project status_ - there are five states[^3] a task can be in: `NOT_STARTED`, `ONGOING`, `ON_HOLD`, `DONE`, `OBSOLETED`
+- _Project status_ - there are five states[^3] a project can be in: `NOT_STARTED`, `ONGOING`, `ON_HOLD`, `DONE`, `OBSOLETED`
 - _Finished_ - The date you have completed or obsolete the project.
 - _Started_ - The day you pulled the project from the pool.
 
@@ -114,15 +114,15 @@ The template contains two main parts:
 The header contains the following sections:
 
 - `Dependency` - you can list the projects you depend on with this project, and has to finish before you can continue the current project. There is a checkbox[^4] before each note link you list in this section.
-- `Corresponding projects` - in this section you can list all of the tasks you think are related to the current task but you don't depend on them. These associations helps you find solutions for a problem faster.
-- `Description` - Describe the task shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the task again.
-- `Brainstorming` - Write your ideas corresponding to the task here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over the time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words and sentences.
-- `Associated files` - This section keeps track of the files and folders associated with the current task. You insert a new row into a table when you add a new associated file or folder. The task root is mandatory. It is up to you to track the further files and folders located in the task root.
-- `Tasks` - In this section you keep track of the task of your project. Each task has an ID, a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: __deletion is forbidden__[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
+- `Corresponding projects` - in this section you can list all of the projects you think are related to the current project but you don't depend on them. These associations helps you find solutions for a problem faster.
+- `Description` - Describe the project shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the project again.
+- `Brainstorming` - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over the time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words and sentences.
+- `Associated files` - This section keeps track of the files and folders associated with the current project. You insert a new row into a table when you add a new associated file or folder. The project root is mandatory. It is up to you to track the further files and folders located in the project root.
+- `Tasks` - In this section you keep track of the tasks of your project. Each task has an ID a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: __deletion is forbidden__[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
 
 #### Body part
 
-This is the part where you elaborate your tasks. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: __deletion is forbidden! Each task elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable task template note below. Import it to your !_admin notebook, and you are ready to go.
+This is the part where you elaborate your projects. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: __deletion is forbidden! Each project elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable project template note below. Import it to your !_admin notebook, and you are ready to go.
 
 ### Log note
 
@@ -137,24 +137,24 @@ This provides a uniform outfit and a superior search-ability and accountability 
 
 ### Project note
 
-You have already got familiar with the structure of the project notes introduced in the task template note description.
+You have already got familiar with the structure of the project notes introduced in the project template note description.
 
-Project notes are the central parts of the System. They contain all the necessary information a task can correspond with. If you were assigned with a task, you create a task note, fill out the header sections, and start working on the task. 
+Project notes are the central parts of the System. They contain all the necessary information a project can correspond with. If you were assigned with a project, you create a project note, fill out the header sections, and start working on the project. 
 
-The location of the task note determines its state. You can drag and drop task notes from one notebook to another if you want to change the state of the current task note.
+The location of the project note determines its state. You can drag and drop project notes from one notebook to another if you want to change the state of the current project note.
 
-Each task note has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a task, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: TASK00001. You can increment the numbers as you create new task notes. By using the tag system of _Evernote_ help you find the next ID for the newly created task note. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last easily. You can easily spot the errors by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the System nice and organized.
-You can set up reminders for the task notes, to set up due dates:
+Each project note has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a project, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: TASK00001. You can increment the numbers as you create new project notes. By using the tag system of _Evernote_ help you find the next ID for the newly created project note. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last easily. You can easily spot the errors by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the System nice and organized.
+You can set up reminders for the project notes, to set up due dates:
 
-The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your task note to another notebook, the associated reminders will move to the now notebook as well.
+The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
 
 ## File system
 
-Each task has a folder in your file system. You should put and save all the task related files in that folder. The name of the folder could be the following[^8]:
+Each project has a folder in your file system. You should put and save all the project related files in that folder. The name of the folder could be the following[^8]:
 
 `[task ID]_[Task name with underscores]`
 
-For example, if you have a task named “My task” with an ID “TASK00023”, its folder should be TASK00023_My_PROJECTS. The preferable location of the task root folder is here: d:\_PROJECTS\
+For example, if you have a project named “My project” with an ID “TASK00023”, its folder should be TASK00023_My_PROJECTS. The preferable location of the project root folder is here: d:\_PROJECTS\
 
 ## Summary
 
@@ -163,78 +163,78 @@ In this section you have got familiar with the structure of the System: the thre
 
 # Task Phases
 
-In this section we will get familiar with the actual usage of the System. We will start with the summary of the different task phases, and then we are going to delve into the details of each phase.
+In this section we will get familiar with the actual usage of the System. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
 
 ## Phase Workflow
 
-By using the system, each task you are working on can go through 6 phases.
+By using the system, each project you are working on can go through 6 phases.
 
  
 ### Creation phase
 
-This is the phase when you create a new task note and assign a unique ID to it, and do the administrative work.
+This is the phase when you create a new project note and assign a unique ID to it, and do the administrative work.
 
 ### Brainstorming phase
 
-After the creation phase, optionally you can have a brainstorming phase, where you can add ideas to the task, which might help you the work. During the work phase you are allowed to add ideas too.
+After the creation phase, optionally you can have a brainstorming phase, where you can add ideas to the project, which might help you the work. During the work phase you are allowed to add ideas too.
 
 ### Working phase
 
-In this phase you are working on the task. You create subtasks and to keep your work and the corresponding information organized.
+In this phase you are working on the project. You create subtasks and to keep your work and the corresponding information organized.
 
 ### Hold phase
 
-If you have encountered a problem, which you can’t solve by your own, or you are waiting for another person, you can put the task into hold. You drag and drop the task to the 2_on_hold notebook, and do the necessary administrative work.
+If you have encountered a problem, which you can’t solve by your own, or you are waiting for another person, you can put the project into hold. You drag and drop the project to the 2_on_hold notebook, and do the necessary administrative work.
 
 ### Completed phase
 
-After you have done with the task, you put the task note into the 3_completed notebook.
+After you have done with the project, you put the project note into the 3_completed notebook.
 
 ### Obsolete phase
 
-If the task became obsolete you simply drop it to the 4_obsoleted notebook. Note that you can pull 
+If the project became obsolete you simply drop it to the 4_obsoleted notebook. Note that you can pull 
 it out again if it became active again.
 
 # Use cases
 
 After you got familiar with the phases, let’s look at the concrete steps for the phases.
 
-## Create a new task
+## Create a new project
 
-When you were assigned by a new task or you came up an idea you will working on, you create and administrate a new task note. The steps are the following:
+When you were assigned by a new project or you came up an idea you will working on, you create and administrate a new project note. The steps are the following:
 
-1.  Copy the content of the task note template.
+1.  Copy the content of the project note template.
 1.  Create a new note in the 0_pool notebook.
-1.  Name your task.
+1.  Name your project.
 1.  Paste the copied template to the created note.
 1.  Assign an ID to the note by adding a tag named after the ID.
-1.  Write a short description of your task.
-1.  Create a folder in your tasks root folder.
+1.  Write a short description of your project.
+1.  Create a folder in your projects root folder.
 1.  In the associated file section update the link  and date .
 1.  In the subtask section update the “Task created” row with the current timestamp in both date fields.
 1. If you have list the decencies in the dependency section.
-1. If you have list the corresponding tasks.
-1. If you are using the admin note, create a new row into the task list, and fill out the fields (set status to NOT_STARTED).
-1. If you are using log notes, log that you have created a new task.
+1. If you have list the corresponding projects.
+1. If you are using the admin note, create a new row into the project list, and fill out the fields (set status to NOT_STARTED).
+1. If you are using log notes, log that you have created a new project.
 
-At this point you have a task that you haven’t started yet. If you have further ideas before you start, the task will enter to the brainstorming phase. After you start the task, the task will enter the working phase as it will moved to the 1_ongoing notebook.
+At this point you have a project that you haven’t started yet. If you have further ideas before you start, the project will enter to the brainstorming phase. After you start the project, the project will enter the working phase as it will moved to the 1_ongoing notebook.
 
-## Add an idea for the task
+## Add an idea for the project
 
-If you have any idea for the task during the creation phase or the working phase or even during the hold phase, you can add ideas to the task.
+If you have any idea for the project during the creation phase or the working phase or even during the hold phase, you can add ideas to the project.
 
-1.  Write your idea in the brainstorming section of the task note into the next point.
+1.  Write your idea in the brainstorming section of the project note into the next point.
 
-## Remove an idea from the task
+## Remove an idea from the project
 
-If you have thought that an idea won’t work for that task, you always do the following by keeping mind the deletion is forbidden rule:
+If you have thought that an idea won’t work for that project, you always do the following by keeping mind the deletion is forbidden rule:
 
 1.  Select the idea you want to remove.
 1.  Change its formatting to strikethrough.
 
 ## Adding new subtask
 
-During the work, you have finished a subtask, or just by starting the task and you want to create new subtask(s) you will be working on.
+During the work, you have finished a subtask, or just by starting the project and you want to create new subtask(s) you will be working on.
 
 ### Header part
 
@@ -255,37 +255,37 @@ During the work, you have finished a subtask, or just by starting the task and y
 1.  Go back and select the subtask ID above the horizontal line.
 1.  Change its size to 24 pt.
 
-Start working on a task
-     When you have reached the point that you are going to start a task (whether it isn’t started yet, or it is in the hold or obsoleted phase), you do the followings:
+Start working on a project
+     When you have reached the point that you are going to start a project (whether it isn’t started yet, or it is in the hold or obsoleted phase), you do the followings:
 
-1.  Move the task note wherever it was to the 1_ongoing notebook.
-2.  If you are using the admin note, change the task status to ONGOING.
+1.  Move the project note wherever it was to the 1_ongoing notebook.
+2.  If you are using the admin note, change the project status to ONGOING.
 3.  If you are using log notes, log that you have started a new subtask.
 
 ## Finish working on a subtask
 
 When you finish your work on a subtask (it doesn’t matter if you have finished it completely or just start something else) you can do the followings:
 
-1.  Update the Last modified field in the task note’s header section for the current subtask with the current timestamp.
+1.  Update the Last modified field in the project note’s header section for the current subtask with the current timestamp.
 1.  If you are using log notes, log that you have finished work on a subtask.
 
-## Putting a task to hold
+## Putting a project to hold
 
-If you stuck with the current task you working in, you can put in hold, while you waiting to be able to continue the work.
+If you stuck with the current project you working in, you can put in hold, while you waiting to be able to continue the work.
 
-1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
-1.  Move the task note to the 2_on_hold notebook by drag and drop.
-1.  If you are using the admin note, change the task status to ON_HOLD.
-1.  If you are using log notes, log that you have put a task on hold.
+1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the project note to the 2_on_hold notebook by drag and drop.
+1.  If you are using the admin note, change the project status to ON_HOLD.
+1.  If you are using log notes, log that you have put a project on hold.
 
-## Finish a task
+## Finish a project
 
-At the point when you have finished your task, you have to do the followings:
+At the point when you have finished your project, you have to do the followings:
 
-1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
-1.  Move the task note to the 3_completed notebook by drag and drop.
-1.  If you are using the admin note, change the task status to DONE.
-1.  If you are using log notes, log that you have finished a task.
+1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the project note to the 3_completed notebook by drag and drop.
+1.  If you are using the admin note, change the project status to DONE.
+1.  If you are using log notes, log that you have finished a project.
 
 ## Finding the next subtask to work on
 
@@ -293,14 +293,14 @@ If you have finished your current subtask and you want to start the highest prio
 
 1.  Scroll through the Subtask section, and find the row with the most @ signs in it.
 
-## Obsolete a task
+## Obsolete a project
 
-If you were told that your task is obsolete now, you should put the task into the obsolete state:
+If you were told that your project is obsolete now, you should put the project into the obsolete state:
 
-1.  Update the Last modified field in the task note’s header section for the last subtask you have worked on with the current timestamp.
-1.  Move the task note to the 4_obsoleted notebook by drag and drop.
-1.  If you are using the admin note, change the task status to OBSOLETED.
-1.  If you are using log notes, log that you have obsoleted a task.
+1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Move the project note to the 4_obsoleted notebook by drag and drop.
+1.  If you are using the admin note, change the project status to OBSOLETED.
+1.  If you are using log notes, log that you have obsoleted a project.
 
 ## Starting the day
 
@@ -308,7 +308,7 @@ When you are about to start your day..
 
 1.  If you are using log notes, create a new note in your !_log notebook, and name it according to the actual date.
 1.  Go into the newly created note, and insert the current timestamp 
-1.  Type in shortly that you have started your work, and what is the first task of the day.
+1.  Type in shortly that you have started your work, and what is the first project of the day.
 
 
 
@@ -318,7 +318,7 @@ When you are about to start your day..
 
 [^2]: Without the prefixes the order will be the following: admin, completed, log, obsoleted, on_hold, ongoing, pool.
 
-[^3]: Don't be confused. There are phases and states according to notes. The phases describes the actions you may do during your work. The status is just an indicator for the current state of the task, and only used int he admin note.
+[^3]: Don't be confused. There are phases and states according to notes. The phases describes the actions you may do during your work. The status is just an indicator for the current state of the project, and only used int he admin note.
 
 [^4]: Press Ctrl+Shift+C to insert a checkbox.
 
@@ -328,4 +328,4 @@ When you are about to start your day..
 
 [^7]: Press Shift+Alt+D to insert the actual timestamp.
 
-[^8]: You are on your own naming your folders, but keep in mind that using the task ID sin the folder names will help you find the desired content much more easily.
+[^8]: You are on your own naming your folders, but keep in mind that using the project ID sin the folder names will help you find the desired content much more easily.
