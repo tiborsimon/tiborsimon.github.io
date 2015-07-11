@@ -112,7 +112,6 @@ You can test the finished search engine on the main page of this site. If you sa
 
 {% include repo_and_release.html %}
 
----
 [^1]: At least I have found these ones during my research
 
 
