@@ -100,7 +100,7 @@ $social-list: (
           background-color: #b3b3b3;
 
           &:hover {
-            background-color: rgba(136,136,136,0.8);
+            background-color: darken(nth($s-name, 2), 10%);
           }
         }
       }
