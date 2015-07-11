@@ -15,7 +15,7 @@ $(document).scroll(function() {
   var th = $('.entry-content').height()-300;  
   var y = $(this).scrollTop();
   var maxop = 0.5;
-  var delta = 120;
+  var delta = 200;
   var op = maxop;
   if (y>th) {
     op = -(maxop/delta)*y + (maxop*(th+delta))/delta;
