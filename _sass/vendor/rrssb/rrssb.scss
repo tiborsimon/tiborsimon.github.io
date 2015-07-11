@@ -66,7 +66,7 @@ $social-list: (
 .rrssb-buttons {
   box-sizing: border-box;
   font-family: $rrssb-main-font;
-  height: 36px;
+  height: 21px;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -117,7 +117,7 @@ $social-list: (
       -webkit-font-smoothing: antialiased;
       font-weight: bold;
       height: 100%;
-      padding: 11px 7px 12px 27px;
+      padding: 7px 4px 12px 4px;
       position: relative;
       text-align: center;
       text-decoration: none;
@@ -127,15 +127,15 @@ $social-list: (
 
       .rrssb-icon {
         display: block;
-        left: 10px;
-        padding-top: 9px;
+        left: 16px;
+        padding-top: 4px;
         position: absolute;
         top: 0;
         width: 10%;
 
         svg {
-          height: 17px;
-          width: 17px;
+          height: 13px;
+          width: 13px;
 
           path, polygon {
             fill: $rrssb-txt;
