@@ -742,8 +742,6 @@ div#toc {
   width: 243px;
   -webkit-transition: margin-right 0.28s; /* Safari 3.1 to 6.0 */
   transition: margin-right 0.28s;
-  -webkit-transition: left 0.28s; /* Safari 3.1 to 6.0 */
-  transition: left 0.28s;
 }
 
 div#toc:hover,
@@ -753,6 +751,11 @@ div#toc.hovered {
 
 #toc ol {
   padding: 0 0 0 13px;
+}
+
+#toc a {
+  width: 200px;
+  display: block;
 }
 
 #toc a:hover {
