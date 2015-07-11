@@ -6,7 +6,7 @@ tags: ['java', 'game']
 published: True
 repo_link: https://github.com/tiborsimon/JavaShooterGame
 dowload_link: https://github.com/tiborsimon/JavaShooterGame/archive/v1.2.zip
-version: v1.2
+version: v1.3
 ---
 
 During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.
