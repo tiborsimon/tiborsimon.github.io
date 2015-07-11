@@ -756,14 +756,13 @@ div#toc.hovered {
 #toc a {
   width: 200px;
   display: block;
-  transition: all 0.28s;
 }
 
 #toc a:hover {
   color: black;
   margin-left: -3px;
-  background: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.8)); /*Safari 5.1-6*/
-  background: -o-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,0.8)); /*Opera 11.1-12*/
-  background: -moz-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,0.8)); /*Fx 3.6-15*/
-  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8)); /*Standard*/
+  background: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)); /*Standard*/
 }
