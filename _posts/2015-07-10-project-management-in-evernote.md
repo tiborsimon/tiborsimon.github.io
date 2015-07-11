@@ -115,16 +115,16 @@ The template contains two main parts:
 
 The header contains the following sections:
 
-- Dependency - you can list the tasks you depend on this task, and has to finish before you can continue the current task. There is a checkbox[^4] before each note link you list in this section.
-- Corresponding tasks - in this section you can list all of the tasks you think are related to the current task but you don't depend on them. These associations helps you find solutions for a problem faster.
-- Description - Describe the task shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the task again.
-- Brainstorming - Write your ideas corresponding to the task here. The only rule is: deletion is forbidden. You can't be sure enough that the smaller ideas won't be useful over the time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words and sentences.
-- Associated files - This section keeps track of the files and folders associated with the current task. You insert a new row into a table when you add a new associated file or folder. The task root is mandatory. It is up to you to track the further files and folders located in the task root.
-- Subtasks - In this section you keep track of the subtask of your task. Each subtask has an ID, a name and a priority. This section is a table, where each row corresponds to a subtask. The rule here is similar to the rule in the brainstorming section: deletion is forbidden[^5]. If a subtask became obsoleted, simply write it down close the subtask, and go on with another. If you have finished a subtask you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority subtask to work on. This section also keeps track of the creation and last modification of the subtask.
+- `Dependency` - you can list the projects you depend on with this project, and has to finish before you can continue the current project. There is a checkbox[^4] before each note link you list in this section.
+- `Corresponding projects` - in this section you can list all of the tasks you think are related to the current task but you don't depend on them. These associations helps you find solutions for a problem faster.
+- `Description` - Describe the task shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the task again.
+- `Brainstorming` - Write your ideas corresponding to the task here. The only rule is: deletion is forbidden. You can't be sure enough that the smaller ideas won't be useful over the time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words and sentences.
+- `Associated files` - This section keeps track of the files and folders associated with the current task. You insert a new row into a table when you add a new associated file or folder. The task root is mandatory. It is up to you to track the further files and folders located in the task root.
+- `Tasks` - In this section you keep track of the task of your project. Each task has an ID, a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: deletion is forbidden[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
 
 #### Body part
 
-This is the part where you elaborate your subtasks. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: deletion is forbidden! Each subtask elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable task template note below. Import it to your !_admin notebook, and you are ready to go.
+This is the part where you elaborate your tasks. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: deletion is forbidden! Each task elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable task template note below. Import it to your !_admin notebook, and you are ready to go.
 
 ### Log note
 
