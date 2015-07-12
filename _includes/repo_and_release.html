@@ -18,7 +18,7 @@
             for (var i = 0; i < release.assets.length; i++) {
                 downloadCount += release.assets[i].download_count;
             }
-            var releaseInfo = release.name + " was updated " + $.timeago(asset.updated_at) + " and downloaded " + downloadCount + " times.";
+            var releaseInfo = release.name + " was downloaded " + downloadCount + " times.";
             $(".sharex-download").attr("href", downloadURL);
             $(".release-info").text(releaseInfo);
             $(".release-info").fadeIn("slow");
