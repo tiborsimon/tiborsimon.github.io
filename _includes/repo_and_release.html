@@ -2,3 +2,26 @@
 <a href='{{ page.repo_link }}' class="btn-info btn half-centered"><i class="fa fa-github"></i> GitHub repository</a>
 <a href='{{ page.repo_link }}/releases/latest' class="btn-success btn half-centered"><i class="fa fa-download"></i> Download {{ page.version }}</a>
 </div>
+<a class="sharex-download">Download</a>
+<div class="release-info"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetLatestReleaseInfo("{{ page.repo_link }}/releases/latest");
+    });
+
+    function GetLatestReleaseInfo() {
+        $.getJSON("https://api.github.com/repos/ShareX/ShareX/releases/latest").done(function (release) {
+            var asset = release.assets[0];
+            var downloadURL = "https://github.com/ShareX/ShareX/releases/download/" + release.tag_name + "/" + asset.name;
+            var downloadCount = 0;
+            for (var i = 0; i < release.assets.length; i++) {
+                downloadCount += release.assets[i].download_count;
+            }
+            var releaseInfo = release.name + " was updated " + $.timeago(asset.updated_at) + " and downloaded " + downloadCount + " times.";
+            $(".sharex-download").attr("href", downloadURL);
+            $(".release-info").text(releaseInfo);
+            $(".release-info").fadeIn("slow");
+        });
+    }
+</script>
