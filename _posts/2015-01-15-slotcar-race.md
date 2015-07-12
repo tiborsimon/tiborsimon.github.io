@@ -16,8 +16,6 @@ At the university me and my partner have faced a midterm project that contained 
     <img src="/images/slotcar/promo2.jpg" alt="">
 </figure>
 
-{% include repo_and_release.html %}
-
 # About the competition
 
 However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.
@@ -27,6 +25,8 @@ The rules of the competition
 - Run the fastest 5 lap without sliding off the track.
 - No physical modification were allowed.
 - You have 3 attempts.
+
+{% include repo_and_release.html %}
 
 # The track
 
