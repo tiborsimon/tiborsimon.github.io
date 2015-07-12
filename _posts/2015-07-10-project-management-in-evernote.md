@@ -9,7 +9,7 @@ share_buttons: True
 ---
 
 
-ADAM _Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags to them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete project management system. 
+_Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags to them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete project management system. 
 
 With this article you will be able to use _Evernote_ as a project management system. This system offers you the followings:
 
@@ -34,14 +34,7 @@ Above the basic hierarchical organization there is the tag system which provides
 
 In the __Evernote Task Management System__ (let's call it __System__), we are going to use the following hierarchical structure:
 
-- _PROJECTS
-    - !_admin
-    - !_log 
-    - 0_pool 
-    - 1_ongoing 
-    - 2_on_hold 
-    - 3_completed 
-    - 4_obsoleted 
+<img src="/images/project-management/notebook-structure.png" />
 
 We will use one main stack with various notebooks in it. The notebooks will contain the notes which are the actual projects. Each project can be assigned with tags to indicate it's id and priority.
 
@@ -117,30 +110,27 @@ The header contains the following sections:
 - __Dependency__ - you can list the projects you depend on with this project, and has to finish before you can continue the current project. There is a checkbox[^4] before each note link you list in this section.
 - __Corresponding projects__ - in this section you can list all of the projects you think are related to the current project but you don't depend on them. These associations helps you find solutions for a problem faster.
 - __Description__ - Describe the project shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you resume the project again.
-- __Brainstorming__ - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words or sentences.
+- __Brainstorming__ - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over time. Write here everything you came up with. This is not the right place for elaboration, use only a few words or sentences.
 - __Associated files__ - This section keeps track of the files and folders associated with the current project. You insert a new row into a table when you add a new associated file or folder. The project root is mandatory. It is up to you to track the further files and folders located in the project root.
 - __Tasks__ - In this section you keep track of the tasks of your project. Each task has an ID a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: __deletion is forbidden__[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
 
 #### Body part
 
-This is the part where you elaborate your projects. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: __deletion is forbidden! Each project elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable project template note below. Import it to your !_admin notebook, and you are ready to go.
+This is the part where you elaborate your projects. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: __deletion is forbidden! Each project elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable project template note below. Import it to your `!_admin` notebook, and you are ready to go.
 
 ### Project note
 
 You have already got familiar with the structure of the `project notes` introduced in the `project template note` description.
 
-`Project notes` are the central parts of the __System__. They contain all the necessary information a project can correspond with. If you were assigned with a project, you create a project note, fill out the header sections, and start working on the project. 
+`Project notes` are the central parts of the __System__. They contain all the necessary information a project can correspond with. The location of the `project note` determines its state. You can drag and drop `project notes` from one notebook to another if you want to change the state of the current `project note`.
 
-The location of the `project note` determines its state. You can drag and drop `project notes` from one notebook to another if you want to change the state of the current `roject note`.
+Each `project note` has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a project, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: P00001 _(I use the __TSPR__ prefix that stands for __Tibor Simon PRoject__)_. You can increment the numbers as you create new `project notes`. By using the tag system of _Evernote_ help you find the next ID for the newly created `project note` easily. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last one easily. You can spot the errors as well by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the __System__ nice and organized.
 
-Each `project note` has a unique ID. The system keeps track of the used ID-s by tags. If you assign an ID to a project, you add a tag named after the next ID. It is up to you, how you name your ID-s. A preferable format would be the following: P00001 _(I use the TSPR prefix that stands for Tibor Simon PRoject)_. You can increment the numbers as you create new `project notes`. By using the tag system of _Evernote_ help you find the next ID for the newly created `project note` easily. As you start typing the name of your ID format, _Evernote_ will list all of the tags matches to the typed ID-s, and you can spot the last one easily. You can spot the errors as well by adding the same ID to notes: _Evernote_ has a tag-view, where it counts all the notes that were using the tags. Each ID tags should have only one usage to keep the __System__ nice and organized.
-You can set up reminders for the `project notes`, to set up due dates:
-
-The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
+You can set up reminders for the `project notes`, to set up due dates: The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
 
 ### Log note
 
-If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a !_log notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
+If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a `!_log` notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
 Each log note contains sections that match to the same pattern:
 
 - Timestamp[^7]
@@ -149,19 +139,11 @@ Each log note contains sections that match to the same pattern:
 
 This provides a uniform outfit, a superior searchability and accountability of the work you have done.
 
-
-
 ## File system
 
-Each project has a folder in your file system. You should put and save all the project related files in that folder. The name of the folder could be the following[^8]:
+Each project has a folder in your file system. You should put and save all the project related files in that folder. For example, if you have a project named “My project” with an ID “TASK00023”, its folder should be "TASK00023".
 
-`[task ID]_[Task name with underscores]`
-
-For example, if you have a project named “My project” with an ID “TASK00023”, its folder should be TASK00023_My_PROJECTS. The preferable location of the project root folder is here: d:\_PROJECTS\
-
-## Summary
-
-In this section you have got familiar with the structure of the __System__: the three level hierarchical system, and the elements taking place in each level. The following section will contain the use cases for the __System__. Based on the current knowledge and the next one you will gather in the next section you will be able to fully adopt the __System__, and start using it.
+I use _Dropbox_ to sync my files between my machines. It is convinient to have all my project related files inside the [Dropbox_root]/_PROJECTS folder.
 
 
 # Task Phases
@@ -330,5 +312,3 @@ When you are about to start your day..
 [^6]: Press Ctrl+Shift+- to insert a horizontal line on the go.
 
 [^7]: Press Shift+Alt+D to insert the actual timestamp.
-
-[^8]: You are on your own naming your folders, but keep in mind that using the project ID sin the folder names will help you find the desired content much more easily.
