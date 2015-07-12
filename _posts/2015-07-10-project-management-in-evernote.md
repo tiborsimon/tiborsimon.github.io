@@ -242,7 +242,7 @@ During the work, you have finished a subtask, or just by starting the project an
 1.  Add a short name for the subtask.
 1.  Assign a priority value (more @ signs means higher priority).
 1.  Fill out the two date fields 
-1.  Optionally you can grey out the Section created field indicating that it has to be immutable.
+1.  Optionally you can gray out the Section created field indicating that it has to be immutable.
 
 ### Body part
 
@@ -324,4 +324,4 @@ When you are about to start your day..
 
 [^6]: Press Ctrl+Shift+- to insert a horizontal line on the go.
 
-[^7]: Press Shift+Alt+D to insert the actual timestamp.
+[^7]: Press Shift+Alt+D to insert the actual timestamps.
