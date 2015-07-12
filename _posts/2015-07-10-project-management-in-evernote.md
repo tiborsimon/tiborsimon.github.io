@@ -34,7 +34,10 @@ Above the basic hierarchical organization there is the tag system which provides
 
 In the __Evernote Task Management System__ (let's call it __System__), we are going to use the following hierarchical structure:
 
-<img src="/images/project-management/notebook-structure.png" />
+
+<figure>
+    <img src="/images/project-management/notebook-structure.png" width="400" alt="">
+</figure>
 
 We will use one main stack with various notebooks in it. The notebooks will contain the notes which are the actual projects. Each project can be assigned with tags to indicate it's id and priority.
 
@@ -66,11 +69,15 @@ This notebook contains the projects you are working on right now. If you choose 
 
 If you cannot continue the work on a project because of the project's priority dropped or you faced a dependency problem, you put your actual project from the `1_ongoing` notebook to this notebook, and the project enters to the `hold phase`.
 
-### 3_completed
+### 3_permament
+
+You store the projects that will be last forever, like a workout log or a daily log of coffee intake.
+
+### 4_completed
 
 When you have finished a project, you put your project in this notebook, and the project will enter the `complete phase`.
 
-### 4_obsoleted
+### 5_obsoleted
 
 If your project becomes obsoleted due to any reason, it enters to the `obsolete phase`, and moves to this notebook.
 
@@ -128,6 +135,10 @@ Each `project note` has a unique ID. The system keeps track of the used ID-s by 
 
 You can set up reminders for the `project notes`, to set up due dates: The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
 
+<figure>
+    <img src="/images/project-management/reminder.png" width="200" alt="">
+</figure>
+
 ### Log note
 
 If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a `!_log` notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
@@ -149,6 +160,10 @@ I use _Dropbox_ to sync my files between my machines. It is convinient to have a
 # Task Phases
 
 In this section we will get familiar with the actual usage of the __System__. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
+
+<figure>
+    <img src="/images/project-management/phases.png" width="500" alt="">
+</figure>
 
 ## Phase Workflow
 
