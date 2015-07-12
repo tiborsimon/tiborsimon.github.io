@@ -195,6 +195,8 @@ If the project became obsolete you simply drop it to the `4_obsoleted` notebook.
 
 # Use cases
 
+After you got familiar with the phases, let's look at the concrete steps for the phases.
+
 ## Create a new project
 
 When you were assigned with a new project or you came up an idea you will working on, you create and administrate a new project note. The steps are the following:
