@@ -172,7 +172,7 @@ By using the system, each project you are working on can go through 6 phases.
  
 ### Creation phase
 
-This is the phase when you create a new project note and assign a unique ID to it, and do the administrative work.
+This is the phase when you create a new project note and assign a unique ID to it and do the administrative work.
 
 ### Brainstorming phase
 
@@ -180,24 +180,21 @@ After the creation phase, optionally you can have a brainstorming phase, where y
 
 ### Working phase
 
-In this phase you are working on the project. You create subtasks and to keep your work and the corresponding information organized.
+In this phase you are working on the project. You add tasks to the actual project and keep the corresponding `log note` up to date.
 
 ### Hold phase
 
-If you have encountered a problem, which you can’t solve by your own, or you are waiting for another person, you can put the project into hold. You drag and drop the project to the 2_on_hold notebook, and do the necessary administrative work.
+If you have encountered a problem, which you can't solve by your own, or you are waiting for another person, you can put the project into hold. You drag and drop the project to the `2_on_hold` notebook, and do the necessary administrative work.
 
 ### Completed phase
 
-After you have done with the project, you put the project note into the 3_completed notebook.
+After you have finished the project you put the project note into the `3_completed` notebook.
 
 ### Obsolete phase
 
-If the project became obsolete you simply drop it to the 4_obsoleted notebook. Note that you can pull 
-it out again if it became active again.
+If the project became obsolete you simply drop it to the `4_obsoleted` notebook. Note that you can pull it out again if it became active again.
 
 # Use cases
-
-After you got familiar with the phases, let’s look at the concrete steps for the phases.
 
 ## Create a new project
 
@@ -217,7 +214,7 @@ When you were assigned by a new project or you came up an idea you will working 
 1. If you are using the admin note, create a new row into the project list, and fill out the fields (set status to NOT_STARTED).
 1. If you are using log notes, log that you have created a new project.
 
-At this point you have a project that you haven’t started yet. If you have further ideas before you start, the project will enter to the brainstorming phase. After you start the project, the project will enter the working phase as it will moved to the 1_ongoing notebook.
+At this point you have a project that you haven't started yet. If you have further ideas before you start, the project will enter to the brainstorming phase. After you start the project, the project will enter the working phase as it will moved to the 1_ongoing notebook.
 
 ## Add an idea for the project
 
@@ -227,7 +224,7 @@ If you have any idea for the project during the creation phase or the working ph
 
 ## Remove an idea from the project
 
-If you have thought that an idea won’t work for that project, you always do the following by keeping mind the deletion is forbidden rule:
+If you have thought that an idea won't work for that project, you always do the following by keeping mind the deletion is forbidden rule:
 
 1.  Select the idea you want to remove.
 1.  Change its formatting to strikethrough.
@@ -256,24 +253,24 @@ During the work, you have finished a subtask, or just by starting the project an
 1.  Change its size to 24 pt.
 
 Start working on a project
-     When you have reached the point that you are going to start a project (whether it isn’t started yet, or it is in the hold or obsoleted phase), you do the followings:
+     When you have reached the point that you are going to start a project (whether it isn't started yet, or it is in the hold or obsoleted phase), you do the followings:
 
 1.  Move the project note wherever it was to the 1_ongoing notebook.
-2.  If you are using the admin note, change the project status to ONGOING.
-3.  If you are using log notes, log that you have started a new subtask.
+1.  If you are using the admin note, change the project status to ONGOING.
+1.  If you are using log notes, log that you have started a new subtask.
 
 ## Finish working on a subtask
 
-When you finish your work on a subtask (it doesn’t matter if you have finished it completely or just start something else) you can do the followings:
+When you finish your work on a subtask (it doesn't matter if you have finished it completely or just start something else) you can do the followings:
 
-1.  Update the Last modified field in the project note’s header section for the current subtask with the current timestamp.
+1.  Update the Last modified field in the project note's header section for the current subtask with the current timestamp.
 1.  If you are using log notes, log that you have finished work on a subtask.
 
 ## Putting a project to hold
 
 If you stuck with the current project you working in, you can put in hold, while you waiting to be able to continue the work.
 
-1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Update the Last modified field in the project note's header section for the last subtask you have worked on with the current timestamp.
 1.  Move the project note to the 2_on_hold notebook by drag and drop.
 1.  If you are using the admin note, change the project status to ON_HOLD.
 1.  If you are using log notes, log that you have put a project on hold.
@@ -282,7 +279,7 @@ If you stuck with the current project you working in, you can put in hold, while
 
 At the point when you have finished your project, you have to do the followings:
 
-1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Update the Last modified field in the project note's header section for the last subtask you have worked on with the current timestamp.
 1.  Move the project note to the 3_completed notebook by drag and drop.
 1.  If you are using the admin note, change the project status to DONE.
 1.  If you are using log notes, log that you have finished a project.
@@ -297,7 +294,7 @@ If you have finished your current subtask and you want to start the highest prio
 
 If you were told that your project is obsolete now, you should put the project into the obsolete state:
 
-1.  Update the Last modified field in the project note’s header section for the last subtask you have worked on with the current timestamp.
+1.  Update the Last modified field in the project note's header section for the last subtask you have worked on with the current timestamp.
 1.  Move the project note to the 4_obsoleted notebook by drag and drop.
 1.  If you are using the admin note, change the project status to OBSOLETED.
 1.  If you are using log notes, log that you have obsoleted a project.
