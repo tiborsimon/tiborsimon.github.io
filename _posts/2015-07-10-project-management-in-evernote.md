@@ -198,7 +198,7 @@ If the project became obsolete you simply drop it to the `4_obsoleted` notebook.
 
 ## Create a new project
 
-When you were assigned by a new project or you came up an idea you will working on, you create and administrate a new project note. The steps are the following:
+When you were assigned with a new project or you came up an idea you will working on, you create and administrate a new project note. The steps are the following:
 
 1.  Copy the content of the project note template.
 1.  Create a new note in the 0_pool notebook.
