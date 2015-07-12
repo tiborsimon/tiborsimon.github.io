@@ -4,7 +4,7 @@ title: Java Shooter Game
 categories: ['programming']
 tags: ['java', 'game']
 published: True
-repo_link: https://github.com/tiborsimon/JavaShooterGame
+repo_link: https://github.com/tiborsimon/java-shooter-game
 version: v1.3
 share_buttons: True
 ---
