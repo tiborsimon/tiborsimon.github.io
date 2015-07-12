@@ -228,7 +228,7 @@ If you have any idea for the project during the creation phase or the working ph
 If you have thought that an idea won't work for that project, you always do the following by keeping mind the deletion is forbidden rule:
 
 1.  Select the idea you want to remove.
-1.  Change its formatting to strikethrough.
+1.  Change its formatting to strike through.
 
 ## Adding new subtask
 
