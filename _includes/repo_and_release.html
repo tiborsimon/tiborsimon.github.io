@@ -7,13 +7,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        GetLatestReleaseInfo("{{ page.repo_link }}/releases/latest");
+        GetLatestReleaseInfo();
     });
 
     function GetLatestReleaseInfo(url) {
-        $.getJSON(url).done(function (release) {
+        $.getJSON("{{ page.repo_link }}/releases/latest").done(function (release) {
             var asset = release.assets[0];
-            var downloadURL = "https://github.com/ShareX/ShareX/releases/download/" + release.tag_name + "/" + asset.name;
+            var downloadURL = "{{ page.repo_link }}/releases/download/" + release.tag_name + "/" + asset.name;
             var downloadCount = 0;
             for (var i = 0; i < release.assets.length; i++) {
                 downloadCount += release.assets[i].download_count;
