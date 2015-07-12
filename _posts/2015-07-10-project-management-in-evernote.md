@@ -36,7 +36,7 @@ In the __Evernote Task Management System__ (let's call it __System__), we are go
 
 
 <figure>
-    <img src="/images/project-management/notebook-structure.png" width="400" alt="">
+    <img src="/images/project-management/notebook-structure.png" width="500" alt="">
 </figure>
 
 We will use one main stack with various notebooks in it. The notebooks will contain the notes which are the actual projects. Each project can be assigned with tags to indicate it's id and priority.
@@ -162,7 +162,7 @@ I use _Dropbox_ to sync my files between my machines. It is convinient to have a
 In this section we will get familiar with the actual usage of the __System__. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
 
 <figure>
-    <img src="/images/project-management/phases.png" width="500" alt="">
+    <img src="/images/project-management/phases.png" width="380" alt="">
 </figure>
 
 ## Phase Workflow
