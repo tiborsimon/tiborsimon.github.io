@@ -8,7 +8,8 @@ share_buttons: True
 share_buttons: True
 ---
 
-_Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags to them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete project management system. 
+
+ADAM _Evernote_ is an application for keeping your ideas and notes synchronized between your various devices. You can create notes in notebooks, and you can assign tags to them. If you sacrifice some time overhead you can extend _Evernote_'s functionality to create a complete project management system. 
 
 With this article you will be able to use _Evernote_ as a project management system. This system offers you the followings:
 
