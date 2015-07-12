@@ -161,14 +161,13 @@ I use _Dropbox_ to sync my files between my machines. It is convinient to have a
 
 In this section we will get familiar with the actual usage of the __System__. We will start with the summary of the different project phases, and then we are going to delve into the details of each phase.
 
-<figure>
-    <img src="/images/project-management/phases.png" width="380" alt="">
-</figure>
-
 ## Phase Workflow
 
 By using the system, each project you are working on can go through 6 phases.
 
+<figure>
+    <img src="/images/project-management/phases.png" width="380" alt="">
+</figure>
  
 ### Creation phase
 
