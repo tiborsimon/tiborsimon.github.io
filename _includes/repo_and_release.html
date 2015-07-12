@@ -20,7 +20,7 @@
             }
             var releaseInfo = release.name + " was downloaded " + downloadCount + " times.";
             $(".sharex-download").attr("href", downloadURL);
-            $(".release-info").text(releaseInfo);
+            $(".release-info").innerhtml(releaseInfo);
             $(".release-info").fadeIn("slow");
         });
     }
