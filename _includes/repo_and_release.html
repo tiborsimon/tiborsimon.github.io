@@ -10,8 +10,8 @@
         GetLatestReleaseInfo("{{ page.repo_link }}/releases/latest");
     });
 
-    function GetLatestReleaseInfo() {
-        $.getJSON("https://api.github.com/repos/ShareX/ShareX/releases/latest").done(function (release) {
+    function GetLatestReleaseInfo(url) {
+        $.getJSON(url).done(function (release) {
             var asset = release.assets[0];
             var downloadURL = "https://github.com/ShareX/ShareX/releases/download/" + release.tag_name + "/" + asset.name;
             var downloadCount = 0;
