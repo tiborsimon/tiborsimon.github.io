@@ -6,7 +6,6 @@ tags: ['embedded', 'dsp']
 published: True
 share_buttons: True
 repo_link: https://github.com/tiborsimon/slotcar-race
-download_link: https://github.com/tiborsimon/slotcar-race/releases/download/dv1.0/hello.zip
 version: v1.0
 ---
 
