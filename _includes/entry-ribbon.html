@@ -1,7 +1,7 @@
 <span class="entry-ribbons">
   <a href="{{ post.url }}#discussion" class="ribbon ribbon-conversation" title="Go to the discussion threads"><i class="fa fa-comments"></i></a>
 {% if post.repo_link %}
-  <a href="{{ post.dowload_link }}" class="ribbon ribbon-release" title="Download {{ post.version }}"><i class="fa fa-download"></i></a>
+  <a href="{{ post.repo_link }}/releases/latest" class="ribbon ribbon-release" title="Download {{ post.version }}"><i class="fa fa-download"></i></a>
   <a href="{{ post.repo_link }}" class="ribbon ribbon-repo" title="GitHub repository"><i class="fa fa-github"></i></a>
 {% endif %}
 </span>
