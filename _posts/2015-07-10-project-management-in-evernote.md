@@ -87,12 +87,12 @@ There are four possible note types:
 
 - `Admin note` (singleton)
 - `Project template note` (singleton)
-- `Log note`
 - `Project note`
+- `Log note`
 
 ### Admin note
 
-This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the project you working on/have worked on. This note only contains a table which has the following headers:
+This is an optional note. It adds a fair bit of overhead to the administration process, but it provides a clear overview of the projects you working on/have worked on. This note only contains a table which has the following headers:
 
 - _Project id_ - a unique id that identifies the project
 - _Project link_ - you can obtain a link by _right clicking_ on the project note, and choose _Copy Note Link_
@@ -115,7 +115,7 @@ The header contains the following sections:
 
 - __Dependency__ - you can list the projects you depend on with this project, and has to finish before you can continue the current project. There is a checkbox[^4] before each note link you list in this section.
 - __Corresponding projects__ - in this section you can list all of the projects you think are related to the current project but you don't depend on them. These associations helps you find solutions for a problem faster.
-- __Description__ - Describe the project shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you pulling the project again.
+- __Description__ - Describe the project shortly in this section. You shouldn't write a novel though, but some summary information can help you get in context faster, if you resume the project again.
 - __Brainstorming__ - Write your ideas corresponding to the project here. The only rule is: __deletion is forbidden__. You can't be sure enough that the smaller ideas won't be useful over time. Write here everything you came up with. This is not the right place for the elaboration, use only a few words or sentences.
 - __Associated files__ - This section keeps track of the files and folders associated with the current project. You insert a new row into a table when you add a new associated file or folder. The project root is mandatory. It is up to you to track the further files and folders located in the project root.
 - __Tasks__ - In this section you keep track of the tasks of your project. Each task has an ID a name and a priority. This section is a table, where each row corresponds to a task. The rule here is similar to the rule in the brainstorming section: __deletion is forbidden__[^5]. If a task became obsoleted, simply write it down close the task, and go on with another. If you have finished a task you can check it's corresponding checkbox, and remove the priority markers from it to help yourself finding the next highest priority task to work on. This section also keeps track of the creation and last modification of the task.
@@ -123,17 +123,6 @@ The header contains the following sections:
 #### Body part
 
 This is the part where you elaborate your projects. You can write here any information, workarounds, solutions, code, links, images, figures you like. As mentioned before two times: __deletion is forbidden! Each project elaboration has a title, a horizontal line[^6], and the content itself. You can find the path to the importable project template note below. Import it to your !_admin notebook, and you are ready to go.
-
-### Log note
-
-If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a !_log notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
-Each log note contains sections that match to the same pattern:
-
-- Timestamp[^7]
-- Short description of the work you have just done preferably with plain text.
-- Empty line
-
-This provides a uniform outfit, a superior searchability and accountability of the work you have done.
 
 ### Project note
 
@@ -147,6 +136,19 @@ Each `project note` has a unique ID. The system keeps track of the used ID-s by 
 You can set up reminders for the `project notes`, to set up due dates:
 
 The reminder list are located on the top of the notebook view containing the note you added a reminder to. If you move your project note to another notebook, the associated reminders will move to the now notebook as well.
+
+### Log note
+
+If you decided to keep track of your work in the way that provides higher resolution of your progress, you should have a !_log notebook in your `_PROJECTS` stack, which will contain all of the `log notes`, you create in a daily manner. You gave the current date as the title for each log note.
+Each log note contains sections that match to the same pattern:
+
+- Timestamp[^7]
+- Short description of the work you have just done preferably with plain text.
+- Empty line
+
+This provides a uniform outfit, a superior searchability and accountability of the work you have done.
+
+
 
 ## File system
 
