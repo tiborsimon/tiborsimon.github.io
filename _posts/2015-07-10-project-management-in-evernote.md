@@ -5,7 +5,6 @@ categories: ['tools']
 tags: ['evernote', 'task', 'management']
 published: True
 share_buttons: True
-share_buttons: True
 ---
 
 

@@ -5,7 +5,8 @@ categories: ['electronics']
 tags: ['embedded', 'dsp']
 published: True
 share_buttons: True
-
+repo_link: https://github.com/tiborsimon/slot-car-algorithm
+version: v1.0
 ---
 
 At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track. The only information we had was the acceleration data comes from the car itself. Based on this information we had to control the voltage of the car’s motor to run the fastest lap on the track. It doesn’t sounds too hard, does it.
@@ -14,6 +15,8 @@ At the university me and my partner have faced a midterm project that contained 
     <img src="/images/slotcar/promo1.jpg" alt="">
     <img src="/images/slotcar/promo2.jpg" alt="">
 </figure>
+
+{% include repo_and_release.html %}
 
 # About the competition
 
@@ -91,6 +94,10 @@ The period finder algorithm is a very simple thus a very specific algorithm that
 
 As you can see, the final output of the algorithm was shown above.
 
-Below you can find the nicely commented source code of the period finder algorithm. The final code that runs on the car itself is not showed.
+Below you can find the repository for the nicely commented source code of the period finder algorithm. The final code that runs on the car itself is not showed, it is up to you to implement it in the target platform.
 
-{% gist tiborsimon/fd6dbd9c76b32de9e834 %}
+{% include repo_and_release.html %}
+
+# Summary
+
+With this algoritm you will be able to have a strong foundtation for your own algorithm if you are faceing a similar contest. Feel free to contribute to the algorithm, to make it more durable. 

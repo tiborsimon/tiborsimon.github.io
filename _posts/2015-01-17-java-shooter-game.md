@@ -5,7 +5,6 @@ categories: ['programming']
 tags: ['java', 'game']
 published: True
 repo_link: https://github.com/tiborsimon/JavaShooterGame
-dowload_link: https://github.com/tiborsimon/JavaShooterGame/archive/v1.2.zip
 version: v1.3
 share_buttons: True
 ---

@@ -5,7 +5,6 @@ categories: ['programming']
 tags: ['matlab']
 published: True
 repo_link: https://github.com/tiborsimon/simple-input-parser
-dowload_link: https://github.com/tiborsimon/simple-input-parser/archive/v1.3.zip
 version: v1.3
 share_buttons: True
 ---

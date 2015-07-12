@@ -5,7 +5,6 @@ categories: ['web']
 tags: ['jekyll', 'web', 'css']
 published: True
 repo_link: https://github.com/tiborsimon/solarized-gist
-dowload_link: https://github.com/tiborsimon/solarized-gist/archive/v1.2.zip
 version: v1.2
 modified: 2015-06-16
 share_buttons: True
