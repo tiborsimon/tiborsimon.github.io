@@ -5,7 +5,7 @@ categories: ['electronics']
 tags: ['embedded', 'dsp']
 published: True
 share_buttons: True
-repo_link: https://github.com/tiborsimon/slot-car-algorithm
+repo_link: https://github.com/tiborsimon/slotcar-race
 version: v1.0
 ---
 

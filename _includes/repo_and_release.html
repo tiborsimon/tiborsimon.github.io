@@ -4,24 +4,3 @@
 </div>
 <a class="sharex-download">Download</a>
 <div class="release-info"></div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        GetLatestReleaseInfo();
-    });
-
-    function GetLatestReleaseInfo(url) {
-        $.getJSON("{{ page.repo_link }}/releases/latest").done(function (release) {
-            var asset = release.assets[0];
-            var downloadURL = "{{ page.repo_link }}/releases/download/" + release.tag_name + "/" + asset.name;
-            var downloadCount = 0;
-            for (var i = 0; i < release.assets.length; i++) {
-                downloadCount += release.assets[i].download_count;
-            }
-            var releaseInfo = release.name + " was downloaded " + downloadCount + " times.";
-            $(".sharex-download").attr("href", downloadURL);
-            $(".release-info").innerhtml(releaseInfo);
-            $(".release-info").fadeIn("slow");
-        });
-    }
-</script>
