@@ -37,9 +37,6 @@ Work harder!
 | 2015-06-15 | TSPR000001 | Evernote Project Management v2.0
 
 
-
---------
-
 <div style="color: red;">
 <h1>New project administration method</h1>
 The old method <i>(Project Management in Evernote v1.0)</i> was deprecated due to high inefficiency and administration overhead. The definition of <b>Evernote Project Management v2.0</b> has been started at 2015-06-15. The project ids has been reset too.
