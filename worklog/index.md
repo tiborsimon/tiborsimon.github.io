@@ -44,7 +44,8 @@ The old method (Project Management in Evernote v1.0 was deprecated due to high i
 </div>
 
 
-<div id="deprecated_logs" style="opacity: 0.5">
+<div style="opacity: 0.5">
+
 # 2015
 
 ## July
