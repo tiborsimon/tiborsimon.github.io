@@ -40,11 +40,10 @@ Work harder!
 
 <div style="color: red;">
 <h1>New project administration method</h1>
-The old method (Project Management in Evernote v1.0 was deprecated due to high inefficiency and administration overhead. The definition of __Evernote Project Management v2.0__ has been started at 2015-06-15. The project ids has been reset too.
+The old method <i>(Project Management in Evernote v1.0)</i> was deprecated due to high inefficiency and administration overhead. The definition of <b>Evernote Project Management v2.0</b> has been started at 2015-06-15. The project ids has been reset too.
 </div>
 
 
-<div style="opacity: 0.5">
 
 # 2015
 
@@ -128,4 +127,3 @@ The old method (Project Management in Evernote v1.0 was deprecated due to high i
 | 2015-05-15 | <strike>TSPR000074</strike> | Writing Simple Jekyll search system article<br>and experimenting with jQuery
 | 2015-05-14 | <strike>TSPR000074</strike> | Simple Jekyll search system was integrated
 
-</div>
