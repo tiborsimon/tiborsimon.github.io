@@ -26,81 +26,103 @@ Work harder!
 </blockquote>
 
 
+
+
 # 2015
 
 ## July
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-06-09 | TSPR000083<br>TSPR000065<br>TSPR000084<br> | Replaceit development<br>Python learning<br>Calculator Hero
-| 2015-06-08 | TSPR000083<br>TSPR000065<br>TSPR000084<br>TSPR000064 | Replaceit development<br>Python learning<br>Calculator Hero<br>Develogger
-| 2015-06-07 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-06 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-05 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-04 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-03 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-02 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
-| 2015-06-01 | TSPR000083<br>TSPR000065 | Replaceit development<br>Python learning
+| 2015-06-15 | TSPR000001 | Evernote Project Management v2.0
+
+
+
+<div style="color: red;">
+<h1>New project administration method</h1>
+The old method (Project Management in Evernote v1.0 was deprecated due to high inefficiency and administration overhead. The definition of __Evernote Project Management v2.0__ has been started at 2015-06-15. The project ids has been reset too.
+</div>
+
+# 2015
+
+## July
+
+| Date | Project ID | Accomplished task |
+|:-----------|:------------|:------------|
+| 2015-06-14 | <strike>TSPR000083</strike> | Replaceit development
+| 2015-06-13 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike><br> | Replaceit development<br>Python learning
+| 2015-06-12 | <strike>TSPR000083</strike> | Replaceit development
+| 2015-06-11 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike>| Replaceit development<br>Python learning
+| 2015-06-10 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike><br><strike>TSPR000084</strike><br> | Replaceit development<br>Python learning<br>Calculator Hero
+| 2015-06-09 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike><br><strike>TSPR000084</strike><br> | Replaceit development<br>Python learning<br>Calculator Hero
+| 2015-06-08 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike><br><strike>TSPR000084</strike><br><strike>TSPR000064</strike> | Replaceit development<br>Python learning<br>Calculator Hero<br>Develogger
+| 2015-06-07 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-06 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-05 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-04 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-03 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-02 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
+| 2015-06-01 | <strike>TSPR000083</strike><br><strike>TSPR000065</strike> | Replaceit development<br>Python learning
 
 
 ## June
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-06-30 | TSPR000083 | Mass Replacer development
-| 2015-06-29 | TSPR000083 | Mass Replacer development
-| 2015-06-28 | TSPR000083 | Mass Replacer development
-| 2015-06-27 | TSPR000083 | Mass Replacer development
-| 2015-06-26 | TSPR000083 | Mass Replacer development
-| 2015-06-25 | TSPR000083 | Mass Replacer development
-| 2015-06-24 | TSPR000083 | Mass Replacer development
-| 2015-06-23 | TSPR000083 | Mass Replacer development
-| 2015-06-22 | TSPR000083 | Mass Replacer development
-| 2015-06-21 | TSPR000081<br>TSPR000082 | Learning PyQt<br>Learning python freezing into executable
-| 2015-06-20 | TSPR000011<br>TSPR000012 | Transporting the personal diarry and picture<br>to one place
-| 2015-06-19 | TSPR000068 | Passing the finals :) Good by BME..
-| 2015-06-18 | TSPR000068 | Learning for the finals..
-| 2015-06-17 | TSPR000055 | MATLAB Library System version update v2.1
-| 2015-06-16 | TSPR000068 | Learning for the finals..
-| 2015-06-15 | TSPR000068 | Learning for the finals..
-| 2015-06-14 | TSPR000080 | iOS development environment setup
-| 2015-06-13 | TSPR000078<br>TSPR000080 | Smart Sinusoids article<br>Being sick..<br>iOS development environment setup
-| 2015-06-12 | TSPR000078 | Smart Sinusoids article<br>Being sick..
-| 2015-06-11 | TSPR000078<br>TSPR000068 | Learning for the finals..<br>Being sick..
-| 2015-06-10 | TSPR000078 | Smart Sinusoids article<br>Being sick..
-| 2015-06-09 | TSPR000074 | Solarized Gists scroll feature finished
-| 2015-06-08 | TSPR000074 | Solarized Gists scroll feature
-| 2015-06-07 | TSPR000074 | Old article import
-| 2015-06-06 | TSPR000074 | Old article import
-| 2015-06-05 | TSPR000074 | TOC development and old article import
-| 2015-06-04 | TSPR000074 | TOC development
-| 2015-06-03 | TSPR000074 | TOC development
-| 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (namespace, modules)
-| 2015-06-02 | TSPR000078<br>TSPR000065 | Smart Sinusoids article<br>Python learning (functions, generators)
-| 2015-06-01 | TSPR000078<br>TSPR000065<br>TSPR000079 | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
+| 2015-06-30 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-29 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-28 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-27 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-26 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-25 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-24 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-23 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-22 | <strike>TSPR000083</strike> | Mass Replacer development
+| 2015-06-21 | <strike>TSPR000081</strike><br><strike>TSPR000082</strike> | Learning PyQt<br>Learning python freezing into executable
+| 2015-06-20 | <strike>TSPR000011</strike><br><strike>TSPR000012</strike> | Transporting the personal diarry and picture<br>to one place
+| 2015-06-19 | <strike>TSPR000068</strike> | Passing the finals :) Good by BME..
+| 2015-06-18 | <strike>TSPR000068</strike> | Learning for the finals..
+| 2015-06-17 | <strike>TSPR000055</strike> | MATLAB Library System version update v2.1
+| 2015-06-16 | <strike>TSPR000068</strike> | Learning for the finals..
+| 2015-06-15 | <strike>TSPR000068</strike> | Learning for the finals..
+| 2015-06-14 | <strike>TSPR000080</strike> | iOS development environment setup
+| 2015-06-13 | <strike>TSPR000078</strike><br><strike>TSPR000080</strike> | Smart Sinusoids article<br>Being sick..<br>iOS development environment setup
+| 2015-06-12 | <strike>TSPR000078</strike> | Smart Sinusoids article<br>Being sick..
+| 2015-06-11 | <strike>TSPR000078</strike><br><strike>TSPR000068</strike> | Learning for the finals..<br>Being sick..
+| 2015-06-10 | <strike>TSPR000078</strike> | Smart Sinusoids article<br>Being sick..
+| 2015-06-09 | <strike>TSPR000074</strike> | Solarized Gists scroll feature finished
+| 2015-06-08 | <strike>TSPR000074</strike> | Solarized Gists scroll feature
+| 2015-06-07 | <strike>TSPR000074</strike> | Old article import
+| 2015-06-06 | <strike>TSPR000074</strike> | Old article import
+| 2015-06-05 | <strike>TSPR000074</strike> | TOC development and old article import
+| 2015-06-04 | <strike>TSPR000074</strike> | TOC development
+| 2015-06-03 | <strike>TSPR000074</strike> | TOC development
+| 2015-06-02 | <strike>TSPR000078</strike><br><strike>TSPR000065</strike> | Smart Sinusoids article<br>Python learning (namespace, modules)
+| 2015-06-02 | <strike>TSPR000078</strike><br><strike>TSPR000065</strike> | Smart Sinusoids article<br>Python learning (functions, generators)
+| 2015-06-01 | <strike>TSPR000078</strike><br><strike>TSPR000065</strike><br><strike>TSPR000079</strike> | Smart Sinusoids article<br>Python learning<br>Home network shared devices installation
 
 
 ## May
 
 | Date | Project ID | Accomplished task |
 |:-----------|:------------|:------------|
-| 2015-05-31 | TSPR000078 | Smart Sinusoids article
-| 2015-05-30 | TSPR000078<br>TSPR000079 | Simple Input Parser and Smart sinusoids refactoring<br>building home network
-| 2015-05-29 | TSPR000078 | Simple Input Parser and Smart sinusoids refactoring
-| 2015-05-28 | TSPR000078<br>TSPR000079 | Smart sinusoids artwork<br>Home network planning
-| 2015-05-27 | TSPR000078 | Smart sinusoids artwork.
-| 2015-05-26 | TSPR000074 | <strike>Author and twitter integration</strike>.
-| 2015-05-25 | TSPR000068 | Thesis finished :) Improved Solarized Gists article.
-| 2015-05-24 | TSPR000068 | Thesis work......
-| 2015-05-23 | TSPR000068 | Thesis work.....
-| 2015-05-22 | TSPR000068 | Thesis work....
-| 2015-05-21 | TSPR000068 | Thesis work...
-| 2015-05-20 | TSPR000068 | Thesis work..
-| 2015-05-19 | TSPR000055<br>TSPR000068 | _winreg_ study<br>Thesis
-| 2015-05-18 | TSPR000055 | Testing the _winreg_ and _pydispatcher_ python library
-| 2015-05-17 | TSPR000074 | Finished Simple Jekyll search system and <br>[article](http://tiborsimon.github.io/tools/simple-jekyll-search-system/). [Redirect article.](http://tiborsimon.github.io/tools/redirect-external-links-to-new-tab/)
-| 2015-05-16 | TSPR000074 | Working on the search system..
-| 2015-05-15 | TSPR000074 | Writing Simple Jekyll search system article<br>and experimenting with jQuery
-| 2015-05-14 | TSPR000074 | Simple Jekyll search system was integrated
+| 2015-05-31 | <strike>TSPR000078</strike> | Smart Sinusoids article
+| 2015-05-30 | <strike>TSPR000078</strike><br><strike>TSPR000079</strike> | Simple Input Parser and Smart sinusoids refactoring<br>building home network
+| 2015-05-29 | <strike>TSPR000078</strike> | Simple Input Parser and Smart sinusoids refactoring
+| 2015-05-28 | <strike>TSPR000078</strike><br><strike>TSPR000079</strike> | Smart sinusoids artwork<br>Home network planning
+| 2015-05-27 | <strike>TSPR000078</strike> | Smart sinusoids artwork.
+| 2015-05-26 | <strike>TSPR000074</strike> | <strike>Author and twitter integration</strike>.
+| 2015-05-25 | <strike>TSPR000068</strike> | Thesis finished :) Improved Solarized Gists article.
+| 2015-05-24 | <strike>TSPR000068</strike> | Thesis work......
+| 2015-05-23 | <strike>TSPR000068</strike> | Thesis work.....
+| 2015-05-22 | <strike>TSPR000068</strike> | Thesis work....
+| 2015-05-21 | <strike>TSPR000068</strike> | Thesis work...
+| 2015-05-20 | <strike>TSPR000068</strike> | Thesis work..
+| 2015-05-19 | <strike>TSPR000055</strike><br><strike>TSPR000068</strike> | _winreg_ study<br>Thesis
+| 2015-05-18 | <strike>TSPR000055</strike> | Testing the _winreg_ and _pydispatcher_ python library
+| 2015-05-17 | <strike>TSPR000074</strike> | Finished Simple Jekyll search system and <br>[article](http://tiborsimon.github.io/tools/simple-jekyll-search-system/). [Redirect article.](http://tiborsimon.github.io/tools/redirect-external-links-to-new-tab/)
+| 2015-05-16 | <strike>TSPR000074</strike> | Working on the search system..
+| 2015-05-15 | <strike>TSPR000074</strike> | Writing Simple Jekyll search system article<br>and experimenting with jQuery
+| 2015-05-14 | <strike>TSPR000074</strike> | Simple Jekyll search system was integrated
 
 
