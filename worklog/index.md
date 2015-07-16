@@ -43,6 +43,8 @@ Work harder!
 The old method (Project Management in Evernote v1.0 was deprecated due to high inefficiency and administration overhead. The definition of __Evernote Project Management v2.0__ has been started at 2015-06-15. The project ids has been reset too.
 </div>
 
+
+<div id="deprecated_logs" style="opacity: 0.5">
 # 2015
 
 ## July
@@ -125,4 +127,4 @@ The old method (Project Management in Evernote v1.0 was deprecated due to high i
 | 2015-05-15 | <strike>TSPR000074</strike> | Writing Simple Jekyll search system article<br>and experimenting with jQuery
 | 2015-05-14 | <strike>TSPR000074</strike> | Simple Jekyll search system was integrated
 
-
+</div>
