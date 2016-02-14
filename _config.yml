@@ -26,7 +26,7 @@ owner:
   google_plus:
 
 # Background image to be tiled on all pages
-# background: core/middle-noise.png
+background: # core/middle-noise.png
 
 # Analytics and webmaster tools stuff goes here
 google_analytics: UA-28507373-1
