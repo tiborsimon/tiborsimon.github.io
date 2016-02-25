@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="/" rel="alternate"></link><link href="/feeds/tools.atom.xml" rel="self"></link><id>/</id><updated>2015-09-13T00:00:00+00:00</updated><entry><title>BusPirate setup for OSX</title><link href="/tools/buspirate-setup-for-osx/" rel="alternate"></link><updated>2015-09-13T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:,2015-09-13:tools/buspirate-setup-for-osx/</id><summary type="html">&lt;p&gt;On my windows machine I used &lt;strong&gt;Putty&lt;/strong&gt;
+for this purpose. In mac there is &lt;strong&gt;Zterm&lt;/strong&gt; as an alternative, but I wanted to
+use the terminal. &lt;strong&gt;Screen&lt;/strong&gt; is the perfect alternative for this job. The
+workflow is the following:&lt;/p&gt;
+&lt;h3&gt;1. Find out the serial number of your BusPirate&lt;/h3&gt;
+&lt;p&gt;To be able to communicate your BusPirate you have to know it's serial number.
+List the connected devices before you connect your Buspirate with the following
+command: &lt;code&gt;$ ls /dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This command will list all the connected devices. Save them somewhere, and then
+connect your BusPirate and list the devices again. Find the one that is only
+present when you connect your BusPirate to your machine.&lt;/p&gt;
+&lt;p&gt;There you go, mine was: &lt;code&gt;tty.usbserial-AD01W63E&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;2. Connect to your device&lt;/h3&gt;
+&lt;p&gt;Use &lt;strong&gt;screen&lt;/strong&gt; to connect to your BusPirate:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ screen /dev/tty.usbserial-AD01W63E 115200 8N1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The BusPirate console should appear on your terminal. To exit the session press
+&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;a&lt;/kbd&gt; then &lt;kbd&gt;k&lt;/kbd&gt; and after the prompt press
+&lt;kbd&gt;y&lt;/kbd&gt; to kill the screen.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Screen&lt;/strong&gt; could be weird at first, but there are tons of shortcuts that will
+help you. &lt;a href="http://ss64.com/osx/screen.html"&gt;Screen manual for osx&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;3. Make your life easier&lt;/h3&gt;
+&lt;p&gt;Create an alias for the connection by writing into your &lt;em&gt;~/.bash_profile&lt;/em&gt;
+file.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;alias buspirate='screen /dev/tty.usbserial-AD01W63E 115200 8N1'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Source the modified file or restart the terminal, and type in &lt;code&gt;buspirate&lt;/code&gt;, and
+the BusPirate terminal should open.&lt;/p&gt;</summary><category term="tools"></category><category term="embedded"></category><category term="device"></category></entry></feed>

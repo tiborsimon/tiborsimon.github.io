@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Java Shooter Game"/>
+  <meta property="og:url" content="/programming/java-shooter-game/"/>
+  <meta property="og:description" content="During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries."/>
+  <meta property="article:published_time" content="2015-01-17" />
+  <meta property="article:section" content="programming" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">Java Shooter Game</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-01-17T00:00:00+00:00"> Sat 17 January 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/programming.html">programming</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/java.html">java</a>,           <a href="/tag/game.html">game</a>
+  <!-- SERIES -->
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</p></div>
+
+              <iframe class="video" width="640" height="360" src="https://www.youtube.com/embed/dUKqIYJZlOk" frameborder="0" allowfullscreen></iframe>
+
+<p>It uses some open source stuff, like the explosion animation and the music for the promo video. The game is open source, so you can go to GitHub to see how the game functionalities were implemented.</p>
+<p>If the game won’t open by clicking on it (like on OSX Moutain Lion), you have to open it from command line. If the command line returns an error like pixel format not accelerated, you should check out these sites for the solution.</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> &lt;path to the the jar file&gt;
+<span class="nv">$ </span>java -jar JavaShooter.jar
+</pre></div>
+
+
+<h1>Main menu</h1>
+<p>In the Main Menu you have 4 options but in reality 3 of them is working right now.</p>
+<ul>
+<li>Play – it goes t the new game menu</li>
+<li>Player – it goes to the player menu</li>
+<li>Scores – currently not working</li>
+<li>Exit – it exits the game</li>
+</ul>
+<p><img src="/images/articles/java-shooter/javashooter-1.png" alt="Java Shooter Game: main menu" width="550" /></p>
+<h1>Game menu</h1>
+<p>In the New Game Menu you can start Easy, Normal and Expert game.</p>
+<ul>
+<li>Easy – slow enemies with slow spawning time + auto aiming</li>
+<li>Normal – faster enemies with faster spawning time + auto aiming</li>
+<li>Expert – slow enemies with slow spawning time + manual aiming (very hard!)</li>
+</ul>
+<p><img src="/images/articles/java-shooter/javashooter-2.png" alt="Java Shooter Game: game menu" width="550" /></p>
+<h1>Player menu</h1>
+<p>In the Player Menu you can view the stats of the current player, export your player data, and create new player.</p>
+<ul>
+<li>Export – it exports the current player stats to transfer them another computer.</li>
+<li>New – it goes to the New Player Menu</li>
+</ul>
+<p><img src="/images/articles/java-shooter/javashooter-3.png" alt="Java Shooter Game: player menu" width="550" /></p>
+<h1>Controlling the game</h1>
+<p>The game follows the conventions: you can move with the arrow keys, and fire with the <code>space bar</code>. In <em>Easy</em> and <em>Normal</em> mode the game aims for you, but in <em>Expert</em> mode aiming is your task with <code>T</code> and <code>H</code> keys.</p>
+<p>During the game the mouse pointer disappears (in mac you have to move the pointer a bit unless it won’t disappear). With the <code>ESC</code> key you can bring up the Pause Menu, and the mouse pointer will show up again.</p>
+<h1>Modding the gameplay</h1>
+<p>I have built in the possibility to mack around with the main game parameters. To do this you have to create a text file called mods_for_the_game.txt into the same folder where the jar file located.</p>
+<h2>Hackable parameters</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Property name</th>
+<th align="left">Unit</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>fullscreen</code></td>
+<td align="left">[true/false]</td>
+<td align="left">false</td>
+<td align="left">the game can load in window or full screen mode</td>
+</tr>
+<tr>
+<td align="left"><code>overclock</code></td>
+<td align="left">[fps in int]</td>
+<td align="left">60</td>
+<td align="left">sets the target fps. The actual fps is dependent on your machine</td>
+</tr>
+<tr>
+<td align="left"><code>showFPS</code></td>
+<td align="left">[true/false]</td>
+<td align="left">false</td>
+<td align="left">turns the fps counter on or off</td>
+</tr>
+<tr>
+<td align="left"><code>explosionPoolLimit</code></td>
+<td align="left">[pool limit in int]</td>
+<td align="left">10</td>
+<td align="left">it is expensive to allocate many animation frames in real time, therefore the game allocates the explosion animation frames before the game starts. You can set the max number of animations preloaded to the animation pool. For high FPS rate it is recommended to set this value greater than 10. The game will load slower but it wont crash due to empty animation pool</td>
+</tr>
+<tr>
+<td align="left"><code>sparkPoolLimit</code></td>
+<td align="left">[pool limit in int]</td>
+<td align="left">10</td>
+<td align="left">same as the explosionPoolLimit parameter. If you set high FPS rate set this value higher than 10</td>
+</tr>
+</tbody>
+</table>
+<p>The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces. The default settings are the following:</p>
+<div class="highlight"><pre>fullscreen false overclock 60 showfPS false explosionpoollimit 10 sparkpoollimit 10
+</pre></div>
+
+
+<p><strong>If the game crashes, make sure you set the pool limits higher than 10!</strong></p>
+<p>For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
+The content of the text file in this case should be like this:</p>
+<div class="highlight"><pre>overclock 75 fullscreen true showfPS true
+</pre></div>
+
+
+<p>Example video about how to overclock the game a bit.</p>
+<iframe class="video" width="640" height="360" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
+
+<h1>Summary</h1>
+<p>The developed program isn't a full featured game but a skeleton, which you can develop further.</p>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/programming/java-shooter-game/";
+        this.page.identifier = "tiborsimon-article-java-shooter-game";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

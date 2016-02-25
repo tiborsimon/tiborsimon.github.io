@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?" />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Mandatory + arbitrary order"/>
+  <meta property="og:url" content="/python/mandatory-arbitrary-order/"/>
+  <meta property="og:description" content="What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?"/>
+  <meta property="article:published_time" content="2015-10-29" />
+  <meta property="article:section" content="python" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">Mandatory + arbitrary order</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-10-29T00:00:00+00:00"> Thu 29 October 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/python.html">python</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/regexp.html">regexp</a>,           <a href="/tag/permutation.html">permutation</a>
+  <!-- SERIES -->
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?</p></div>
+
+              <p>You cannot use character set like <code>[abc]</code> because this pattern does not garanties the mandatoryness, even if you write the
+exact number of it <code>[abc]{3}</code>. It will match three <code>a</code> characters too. You cannot force the regular expression engine to
+handle arbitrary order with the mandatory constraint. You have to do it yourself with permutation.</p>
+<p>You have to tell the regexp engine that you want allow all the possible permutation of a character list, with optional
+charachters between them. You can do it with options.</p>
+<p>For example, if you want to match words that has <code>a</code> and <code>b</code> in them in arbitrary order, you can write: <code>((.*a.*b.*)|(.*b.*a.*))</code>.
+Not so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
+<div class="highlight"><pre>((.*a.*b.*c.*)|
+ (.*a.*c.*b.*)|
+ (.*b.*a.*c.*)|
+ (.*b.*c.*a.*)|
+ (.*c.*a.*b.*)|
+ (.*c.*b.*a.*))
+</pre></div>
+
+
+<p>For 4 characters, it reaches the 409 charachters length:</p>
+<div class="highlight"><pre>((.*a.*b.*c.*d.*)|
+ (.*a.*b.*d.*c.*)|
+ (.*a.*c.*b.*d.*)|
+ (.*a.*c.*d.*b.*)|
+ (.*a.*d.*b.*c.*)|
+ (.*a.*d.*c.*b.*)|
+ (.*b.*a.*c.*d.*)|
+ (.*b.*a.*d.*c.*)|
+ (.*b.*c.*a.*d.*)|
+ (.*b.*c.*d.*a.*)|
+ (.*b.*d.*a.*c.*)|
+ (.*b.*d.*c.*a.*)|
+ (.*c.*a.*b.*d.*)|
+ (.*c.*a.*d.*b.*)|
+ (.*c.*b.*a.*d.*)|
+ (.*c.*b.*d.*a.*)|
+ (.*c.*d.*a.*b.*)|
+ (.*c.*d.*b.*a.*)|
+ (.*d.*a.*b.*c.*)|
+ (.*d.*a.*c.*b.*)|
+ (.*d.*b.*a.*c.*)|
+ (.*d.*b.*c.*a.*)|
+ (.*d.*c.*a.*b.*)|
+ (.*d.*c.*b.*a.*))
+</pre></div>
+
+
+<h3>Generator in python</h3>
+<p>You can write a generator for this regexp pattern easily in python:</p>
+<div class="highlight"><pre><span class="s-Atom">from</span> <span class="s-Atom">itertools</span> <span class="s-Atom">import</span> <span class="s-Atom">permutations</span>
+<span class="s-Atom">import</span> <span class="s-Atom">re</span>
+
+<span class="s-Atom">def</span> <span class="nf">generate_mandatory_arbitrary</span><span class="p">(</span><span class="s-Atom">content</span><span class="p">)</span><span class="s-Atom">:</span>
+    <span class="s-Atom">pattern_string</span> <span class="o">=</span> <span class="s-Atom">&#39;(&#39;</span>
+    <span class="s-Atom">for</span> <span class="s-Atom">p</span> <span class="s-Atom">in</span> <span class="nf">permutations</span><span class="p">(</span><span class="s-Atom">content</span><span class="p">)</span><span class="s-Atom">:</span>
+        <span class="s-Atom">pattern_string</span> <span class="s-Atom">+=</span> <span class="s-Atom">&#39;(.*&#39;</span>
+        <span class="s-Atom">for</span> <span class="s-Atom">i</span> <span class="s-Atom">in</span> <span class="nn">p</span><span class="p">:</span>
+            <span class="s-Atom">pattern_string</span> <span class="s-Atom">+=</span> <span class="s-Atom">&#39;{}.*&#39;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s-Atom">i</span><span class="p">)</span>
+        <span class="s-Atom">pattern_string</span> <span class="s-Atom">+=</span> <span class="s-Atom">&#39;)|&#39;</span>
+    <span class="s-Atom">return</span> <span class="s-Atom">pattern_string</span><span class="p">[:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s-Atom">&#39;)&#39;</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">generate_mandatory_arbitrary</span><span class="p">(</span><span class="s-Atom">&#39;abc&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/python/mandatory-arbitrary-order/";
+        this.page.identifier = "tiborsimon-article-mandatory-arbitrary-order";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

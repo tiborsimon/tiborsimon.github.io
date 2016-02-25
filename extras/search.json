@@ -1,0 +1,201 @@
+[
+    {
+        "category": " ",
+        "date": "2016-2-14",
+        "summary": "As I was creating my site, I wanted to split a list of articles in half to display them in two columns. There are two options to do this: with Jinja2 built in filters, or a custom Jinja2 filter.",
+        "tags": [
+            " #pelican",
+            " #jinja2",
+            " #lists",
+            " #hack"
+        ],
+        "title": "Get half of the list in Pelican",
+        "url": "http://tiborsimon.io/python/get-half-of-the-list-in-pelican/"
+    },
+    {
+        "category": " ",
+        "date": "2015-11-11",
+        "summary": "In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set.",
+        "tags": [
+            " #parameter",
+            " #equation"
+        ],
+        "title": "Writing an equation engine",
+        "url": "http://tiborsimon.io/programming/writing-an-equation-engine/"
+    },
+    {
+        "category": " ",
+        "date": "2015-10-30",
+        "summary": "Chart.js is a bit tricky to use if you have dynamic tabs on your site. How about having multiple tabs with multiple tabs in them? Things get serious.",
+        "tags": [
+            " #javascript",
+            " #chart",
+            " #bootstrap"
+        ],
+        "title": "Chart.js with subtabbed tabs",
+        "url": "http://tiborsimon.io/web/chartjs-with-subtabbed-tabs/"
+    },
+    {
+        "category": " ",
+        "date": "2015-10-29",
+        "summary": "What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?",
+        "tags": [
+            " #regexp",
+            " #permutation"
+        ],
+        "title": "Mandatory + arbitrary order",
+        "url": "http://tiborsimon.io/python/mandatory-arbitrary-order/"
+    },
+    {
+        "category": " ",
+        "date": "2015-10-25",
+        "summary": "What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.",
+        "tags": [
+            " #fuzzy",
+            " #search",
+            " #sorting"
+        ],
+        "title": "Fuzzy search and sort algorithm",
+        "url": "http://tiborsimon.io/python/fuzzy-search-and-sort-algorithm/"
+    },
+    {
+        "category": " ",
+        "date": "2015-10-24",
+        "summary": "I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download.",
+        "tags": [
+            " #web",
+            " #hack",
+            " #soup"
+        ],
+        "title": "Collect all nouns in hungarian",
+        "url": "http://tiborsimon.io/python/collect-all-nouns-in-hungarian/"
+    },
+    {
+        "category": " ",
+        "date": "2015-10-17",
+        "summary": "Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.",
+        "tags": [
+            " #signals",
+            " #basics"
+        ],
+        "title": "Generating sinusoid signals",
+        "url": "http://tiborsimon.io/dsp/generating-sinusoid-signals/"
+    },
+    {
+        "category": " ",
+        "date": "2015-9-13",
+        "summary": "As I have switched to mac in the past days, I want to set up my BusPirate to be able to communicate with other circuits.",
+        "tags": [
+            " #tools",
+            " #embedded",
+            " #device"
+        ],
+        "title": "BusPirate setup for OSX",
+        "url": "http://tiborsimon.io/tools/buspirate-setup-for-osx/"
+    },
+    {
+        "category": " ",
+        "date": "2015-5-17",
+        "summary": "As Pelican can use Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?",
+        "tags": [
+            " #pelican",
+            " #hack",
+            " #javascript"
+        ],
+        "title": "Redirect external links to new tab",
+        "url": "http://tiborsimon.io/web/redirect-external-links-to-new-tab/"
+    },
+    {
+        "category": " ",
+        "date": "2015-1-17",
+        "summary": "During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.",
+        "tags": [
+            " #java",
+            " #game"
+        ],
+        "title": "Java Shooter Game",
+        "url": "http://tiborsimon.io/programming/java-shooter-game/"
+    },
+    {
+        "category": " ",
+        "date": "2015-1-15",
+        "summary": "At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it\u2019s guided track.",
+        "tags": [
+            " #embedded",
+            " #dsp",
+            " #accelerometer"
+        ],
+        "title": "SlotCar Race",
+        "url": "http://tiborsimon.io/embedded/slotcar-race/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        PR000019\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                            Contents\r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\nLatest revision\r\n\r\nDuring the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game ...",
+        "tags": [
+            " #log"
+        ],
+        "title": "Java Shooter Game",
+        "url": "http://tiborsimon.io/projects/PR000019/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        TSPR0001\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                            Contents\r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\n        Documentation v2.3.0\r\n\r\nMATLAB Library System is a lightweight modular packaging method addressing the inconvenient third party library handling in MATLAB1. It provides a one-command way to install/uninstall the third party functionality into your MATLAB ...",
+        "tags": [
+            " #log"
+        ],
+        "title": "MATLAB Library System",
+        "url": "http://tiborsimon.io/projects/TSPR0001/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-22",
+        "summary": "Log page about the work Tibor had done.",
+        "tags": [
+            " #log"
+        ],
+        "title": "Running diary",
+        "url": "http://tiborsimon.io/running/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        TSPR0002\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                            Contents\r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\nDocumentation v2.0.0\r\n\r\nWhat would you do in a situation, when you want to use a third party function or library, but the only documentation is a usage example?\r\n\r\n\r\n\r\nWell, unless you are desperate enough to delve ...",
+        "tags": [
+            " #log"
+        ],
+        "title": "Simple Input Parser",
+        "url": "http://tiborsimon.io/projects/TSPR0002/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        PR000020\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                            Contents\r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\nLatest revision\r\n\r\nAt the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it's guided track. The ...",
+        "tags": [
+            " #log"
+        ],
+        "title": "Slotcar Race",
+        "url": "http://tiborsimon.io/projects/PR000020/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        TSPR0003\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                            Contents\r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\nDocumentation v1.3.0\r\n\r\nThe easiest way to generate a sine or cosine signal in MATLAB. With this library there are almost infinite ways to describe and generate a sinusoid signals.\r\n\r\nDependecy\r\n\r\nTo use ssin or scos, you ...",
+        "tags": [
+            " #log"
+        ],
+        "title": "Smart Sinusoids",
+        "url": "http://tiborsimon.io/projects/TSPR0003/"
+    },
+    {
+        "category": " ",
+        "date": "2015-8-31",
+        "summary": "\r\n    \r\n        \r\n            \r\n                \r\n                    \r\n                        PR000006\r\n                    \r\n                    \r\n                        Corresponding articles\r\n                        \r\n                        \r\n                        \r\n                        \r\n                    \r\n                    \r\n                        \r\n                    \r\n                    \r\n                        \r\n<!-- =======================================================================================================================\r\n   D O C   S T A R T\r\n======================================================================================================================== -->  \r\n\r\n<!-- =======================================================================================================================\r\n   D O C   E N D\r\n======================================================================================================================== -->  \r\n                        \r\n                    \r\n                \r\n            \r\n        \r\n    \r\n",
+        "tags": [
+            " #log"
+        ],
+        "title": "Solarized Gists",
+        "url": "http://tiborsimon.io/projects/PR000006/"
+    }
+]

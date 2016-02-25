@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Fuzzy search and sort algorithm"/>
+  <meta property="og:url" content="/python/fuzzy-search-and-sort-algorithm/"/>
+  <meta property="og:description" content="What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way."/>
+  <meta property="article:published_time" content="2015-10-25" />
+  <meta property="article:section" content="python" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">Fuzzy search and sort algorithm</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-10-25T00:00:00+00:00"> Sun 25 October 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/python.html">python</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/fuzzy.html">fuzzy</a>,           <a href="/tag/search.html">search</a>,           <a href="/tag/sorting.html">sorting</a>
+  <!-- SERIES -->
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</p></div>
+
+              <p>A good example for this is Sublime Text's search mechanism. You start to type in your query, and apart from
+the exact matches you will get the matches containing the letters you gave but not in the exact order. In this
+way you will find what you are looking for with a good chance even if you don't know the exact name.</p>
+<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to provide all the relevant results that matched to
+the search query, but you have to sort the result in the relevance order.</p>
+<h3>Searching</h3>
+<p>The first part is the easier part. You only have to generate a clever regular expression from the
+given search query.</p>
+<p>You need to make sure, that between the given query's characters there might be another characters.
+This can be achieved by inserting <code>.*</code> tokens:</p>
+<p><code>foo</code> -&gt; <code>.*f.*o.*o.*</code></p>
+<p>You may also want to capture each provided search characters in order to know it's positions for later use.
+The regexp engine can provide the positions for the matched groups.</p>
+<p><code>.*f.*o.*o.*</code> -&gt; <code>.*(f).*(o).*(o).*</code></p>
+<p>But be aware. This capturing may result you an unexpected result when you want to use the provided group
+positions by the regexp engine. Consider the following scenario: you want to find matches for 'x'. The
+search query will be transformed into <code>.*(x).*</code>. Everything seems to be good, until your database contains
+ a key that has more than one <code>x</code> characters in it. The regexp engine will match this key, but it will
+capture the last <code>x</code> character in the key<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. If your sorting mechanism is based on the captured group
+positions, this will be misleading for you.</p>
+<p>To solve this issue, you have to force the regexp engine to match every character but to next captured character in the pattern.
+You need to generate a more complex regular expression:</p>
+<p><code>.*(f).*(o).*(o).*</code> -&gt; <code>[^f]*(f)[^o]*(o)[^o]*(o).*</code></p>
+<p>This is the final regular expression we are going to use in this article. We can now produce the match
+results, it's time to sort them.</p>
+<h3>Sorting</h3>
+<p>As I mentioned earlier, we are going to use the captured group's positions to sort the matched results.
+The sorting algorithm will weight every match result, and based on that weight, the soring can be executed.</p>
+<p>The weighting is based on the distance between the captured groups in a weighted manner. The distance between the first
+characters is punished by more weight that the distance between the last characters. In this way if you know partly the first few characters
+you want to search, this weighting method will provide the results matched in the first characters first. The lightest the matched result, the
+more relevant it is, so it will be present earlier in the provided search result.</p>
+<p>You can implement this behavior by iterating through the captured groups position list from back to front, calculating the distance between the matches and
+multiplying them by a weighting factor. After each iteration you increase this weighting factor. And that's is.</p>
+<h3>Summary</h3>
+<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage example and the implementation in the following code snippets:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">fuzzy</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;efo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;efoo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;dfsfoo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;efiofo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;abc&#39;</span><span class="p">,</span>
+    <span class="s">&#39;cba&#39;</span><span class="p">,</span>
+    <span class="s">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;ertfo&#39;</span><span class="p">,</span>
+    <span class="s">&#39;fefefofefioiio&#39;</span>
+<span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">fuzzy</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="s">&#39;foo&#39;</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c"># &gt;&gt; [&#39;foo&#39;, &#39;efoo&#39;, &#39;efiofo&#39;, &#39;dfsfoo&#39;, &#39;fefefofefioiio&#39;]</span>
+</pre></div>
+
+
+<p>The previous example had the following internal data structure.</p>
+<div class="highlight"><pre>[{&#39;spans&#39;: ((0, 1), (1, 2), (2, 3)), &#39;string&#39;: &#39;foo&#39;, &#39;weight&#39;: 0},
+ {&#39;spans&#39;: ((1, 2), (2, 3), (3, 4)), &#39;string&#39;: &#39;efoo&#39;, &#39;weight&#39;: 4},
+ {&#39;spans&#39;: ((1, 2), (3, 4), (5, 6)), &#39;string&#39;: &#39;efiofo&#39;, &#39;weight&#39;: 7},
+ {&#39;spans&#39;: ((1, 2), (4, 5), (5, 6)), &#39;string&#39;: &#39;dfsfoo&#39;, &#39;weight&#39;: 8},
+ {&#39;spans&#39;: ((0, 1), (5, 6), (10, 11)), &#39;string&#39;: &#39;fefefofefioiio&#39;, &#39;weight&#39;: 12}]
+</pre></div>
+
+
+<p>And here is the implementation available as a gist.</p>
+<div class="highlight"><pre># F U Z Z Y   S E A R C H   S Y S T E M
+# Created by Tibor Simon
+#
+# The MIT License (MIT)
+#
+# Copyright (c) 2015 Tibor Simon
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the &quot;Software&quot;), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+import re
+
+
+def search(raw_list, search_string, ignore_case=True):
+    if search_string == &#39;&#39;:
+        return raw_list
+    else:
+        search_pattern = _create_search_pattern_from(search_string)
+        result = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
+        result = _sort_result_list(result)
+        return [r[&#39;string&#39;] for r in result]
+
+
+def _create_search_pattern_from(pattern):
+    grouped = &#39;[^{}]*&#39;.format(pattern[0])
+    for i in range(len(pattern)):
+        if i &lt; len(pattern) - 1:
+            grouped += &#39;({})[^{}]*&#39;.format(pattern[i], pattern[i + 1])
+        else:
+            grouped += &#39;({})&#39;.format(pattern[i])
+    grouped += &#39;.*&#39;
+    return grouped
+
+
+def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
+    if ignore_case:
+        p = re.compile(search_pattern, re.IGNORECASE)
+    else:
+        p = re.compile(search_pattern)
+    result = [{&#39;string&#39;: link, &#39;spans&#39;: p.search(link).regs[1:]} for link in raw_list if p.match(link)]
+    return result
+
+
+def _calculate_weight_for_match(spans):
+    mult = 1
+    weight = 0
+    for i in reversed(range(len(spans))):
+        prev = 0 if i == 0 else spans[i-1][1]
+        weight += (spans[i][0] - prev) * mult
+        mult *= 2
+    return weight
+
+
+def _sort_result_list(result):
+    for r in result:
+        r[&#39;weight&#39;] = _calculate_weight_for_match(r[&#39;spans&#39;])
+    result = sorted(result, key=lambda k: k[&#39;weight&#39;])
+    return result
+</pre></div>
+
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>At least that was the case using the regexp engine shipped with Python 3.4 on OSX.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/python/fuzzy-search-and-sort-algorithm/";
+        this.page.identifier = "tiborsimon-article-fuzzy-search-and-sort-algorithm";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

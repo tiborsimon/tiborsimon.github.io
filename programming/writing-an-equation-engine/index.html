@@ -1,0 +1,777 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Writing an equation engine"/>
+  <meta property="og:url" content="/programming/writing-an-equation-engine/"/>
+  <meta property="og:description" content="In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set."/>
+  <meta property="article:published_time" content="2015-11-11" />
+  <meta property="article:section" content="programming" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">Writing an equation engine</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-11-11T00:00:00+00:00"> Wed 11 November 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/programming.html">programming</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/parameter.html">parameter</a>,           <a href="/tag/equation.html">equation</a>
+  <!-- SERIES -->
+    <span class="article-series padded-icon">
+      <i class="fa fa-briefcase"></i>
+      Part 2 of 2 in <i>TSPR0003</i>
+    </span>
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set.</p></div>
+
+              <h2>Sinusoid generation summary</h2>
+<p>Let's sum up the previous article. If you want to generate a sinusoid signal you have 5 possibble ways to do that.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method index</th>
+<th align="left">Required parameters</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left"><code>n</code> <code>N</code></td>
+<td align="left">a signal consisting of <code>n</code> data points with <code>N</code><br> periods in it</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>L</code> <code>N</code> <code>fs</code></td>
+<td align="left"><code>L</code> seconds long signal sampled at <code>fs</code> consisting of <br><code>N</code> periods in it</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>f</code> <code>N</code> <code>fs</code></td>
+<td align="left">a signal sampled at <code>fs</code> sampling rate with <code>N</code> <br>periods in it with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><code>f</code> <code>n</code> <code>fs</code></td>
+<td align="left">a signal consisting of <code>n</code> <br>data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><code>f</code> <code>L</code> <code>fs</code></td>
+<td align="left">a signal sampled at <code>fs</code> sampling rate with the <br>duration of <code>L</code> seconds with the frequency <code>f</code></td>
+</tr>
+</tbody>
+</table>
+<p>Where the parameters are</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Unit</th>
+<th align="left">Parameter name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>phi</code></td>
+<td align="left">[degree]</td>
+<td align="left">phase</td>
+</tr>
+<tr>
+<td align="left"><code>A</code></td>
+<td align="left">[full scale]</td>
+<td align="left">amplitude</td>
+</tr>
+<tr>
+<td align="left"><code>f</code></td>
+<td align="left">[Hz]</td>
+<td align="left">frequency</td>
+</tr>
+<tr>
+<td align="left"><code>fs</code></td>
+<td align="left">[Hz]</td>
+<td align="left">sample rate</td>
+</tr>
+<tr>
+<td align="left"><code>T</code></td>
+<td align="left">[s]</td>
+<td align="left">period</td>
+</tr>
+<tr>
+<td align="left"><code>dt</code></td>
+<td align="left">[s]</td>
+<td align="left">sample time</td>
+</tr>
+<tr>
+<td align="left"><code>L</code></td>
+<td align="left">[s]</td>
+<td align="left">signal duration</td>
+</tr>
+<tr>
+<td align="left"><code>N</code></td>
+<td align="left">[-]</td>
+<td align="left">number of periods</td>
+</tr>
+<tr>
+<td align="left"><code>n</code></td>
+<td align="left">[-]</td>
+<td align="left">number of samples</td>
+</tr>
+</tbody>
+</table>
+<h2>Required parts</h2>
+<p>To create an equation engine we have to solve the following problems:</p>
+<ol>
+<li>Identify the passed parameters</li>
+<li>Calculate the necessary parameters from the available ones</li>
+<li>Use the parameters in the equations</li>
+</ol>
+<h3>Identifying the passed parameters</h3>
+<p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
+calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
+that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
+<div class="highlight"><pre>[data, flags] = simple_input_parser(data, raw_varargin, validators);
+</pre></div>
+
+
+<p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
+zero if not.</p>
+<h3>Calculating the parameters</h3>
+<p>To be able to substitute to the generator equations, we need to make sure to have all the necessary parameters
+to do that. In case if wo do not have all the ones, we have to try to calculate them from the given ones.</p>
+<p>The following table contains all possible way to get a parameter from the others.</p>
+<table>
+<thead>
+<tr>
+<th align="left">f</th>
+<th align="left">T</th>
+<th align="left">n</th>
+<th align="left">N</th>
+<th align="left">fs</th>
+<th align="left">dt</th>
+<th align="left">L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1/T</td>
+<td align="left">1/f</td>
+<td align="left">L fs</td>
+<td align="left">L/T</td>
+<td align="left">1/dt</td>
+<td align="left">1/fs</td>
+<td align="left">N T</td>
+</tr>
+<tr>
+<td align="left">N/L</td>
+<td align="left">L/N</td>
+<td align="left">L/dt</td>
+<td align="left">L f</td>
+<td align="left">n/L</td>
+<td align="left">L/n</td>
+<td align="left">n dt</td>
+</tr>
+<tr>
+<td align="left">n dt/L/T</td>
+<td align="left">L/n/dt/f</td>
+<td align="left">N T/dt</td>
+<td align="left">n dt/T</td>
+<td align="left">n/N/T</td>
+<td align="left">N T/n</td>
+<td align="left">N/f</td>
+</tr>
+<tr>
+<td align="left">n/fs/T/L</td>
+<td align="left">L fs/n/f</td>
+<td align="left">N T fs</td>
+<td align="left">n dt f</td>
+<td align="left">n/L/f/T</td>
+<td align="left">L f T/n</td>
+<td align="left">n/fs</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">n/fs/T</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">n f/fs</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
+others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
+<div class="highlight"><pre><span class="c">%% Parameter construction</span>
+<span class="k">function</span><span class="w"> </span>f <span class="p">=</span><span class="w"> </span><span class="nf">get_f</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>T <span class="p">=</span><span class="w"> </span><span class="nf">get_T</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">T</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">T</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span>
+        <span class="n">T</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">T</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">falgs</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">T</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>n <span class="p">=</span><span class="w"> </span><span class="nf">get_n</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span>
+        <span class="n">n</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">n</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span>
+        <span class="n">n</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span>
+        <span class="n">n</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">n</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>N <span class="p">=</span><span class="w"> </span><span class="nf">get_N</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">N</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>fs <span class="p">=</span><span class="w"> </span><span class="nf">get_fs</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">fs</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span>
+        <span class="n">fs</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span>
+        <span class="n">fs</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">fs</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">fs</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>dt <span class="p">=</span><span class="w"> </span><span class="nf">get_dt</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span>
+        <span class="n">dt</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">dt</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span>
+        <span class="n">dt</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span>
+        <span class="n">dt</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span>
+        <span class="n">dt</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>L <span class="p">=</span><span class="w"> </span><span class="nf">get_L</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span> <span class="n">flags</span><span class="p">.</span><span class="n">L</span>
+        <span class="n">L</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">T</span>
+        <span class="n">L</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">dt</span>
+        <span class="n">L</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="p">.</span><span class="n">dt</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">f</span>
+        <span class="n">L</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">N</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">flags</span><span class="p">.</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">flags</span><span class="p">.</span><span class="n">fs</span>
+        <span class="n">L</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="n">data</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">throw</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<h3>Using the parameters in the equations</h3>
+<p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
+sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
+<div class="highlight"><pre><span class="c">%% Signal synthesizer functions</span>
+<span class="k">function</span><span class="w"> </span>s <span class="p">=</span><span class="w"> </span><span class="nf">construct_with_n_N</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">n</span> <span class="p">=</span> <span class="n">get_n</span><span class="p">();</span>
+    <span class="n">N</span> <span class="p">=</span> <span class="n">get_N</span><span class="p">();</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">phi</span><span class="p">;</span>
+
+    <span class="n">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">k</span> <span class="p">=</span> <span class="n">k</span><span class="o">/</span><span class="n">n</span><span class="p">;</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">phi</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">trigfun</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="n">phi</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>s <span class="p">=</span><span class="w"> </span><span class="nf">construct_with_L_N_fs</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span> <span class="p">=</span> <span class="n">get_L</span><span class="p">();</span>
+    <span class="n">N</span> <span class="p">=</span> <span class="n">get_N</span><span class="p">();</span>
+    <span class="n">fs</span> <span class="p">=</span> <span class="n">get_fs</span><span class="p">();</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">phi</span><span class="p">;</span>
+
+    <span class="n">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+    <span class="n">k</span><span class="p">=</span><span class="n">k</span><span class="o">/</span><span class="n">L</span><span class="p">;</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">phi</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">trigfun</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="n">phi</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>s <span class="p">=</span><span class="w"> </span><span class="nf">construct_with_f_N_fs</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span> <span class="p">=</span> <span class="n">get_f</span><span class="p">();</span>
+    <span class="n">N</span> <span class="p">=</span> <span class="n">get_N</span><span class="p">();</span>
+    <span class="n">fs</span> <span class="p">=</span> <span class="n">get_fs</span><span class="p">();</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">phi</span><span class="p">;</span>
+
+    <span class="n">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:(</span><span class="n">N</span><span class="o">/</span><span class="n">f</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">phi</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">trigfun</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="n">phi</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>s <span class="p">=</span><span class="w"> </span><span class="nf">construct_with_n_f_fs</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">n</span> <span class="p">=</span> <span class="n">get_n</span><span class="p">();</span>
+    <span class="n">f</span> <span class="p">=</span> <span class="n">get_f</span><span class="p">();</span>
+    <span class="n">fs</span> <span class="p">=</span> <span class="n">get_fs</span><span class="p">();</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">phi</span><span class="p">;</span>
+
+    <span class="n">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">k</span> <span class="p">=</span> <span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">);</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">phi</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">trigfun</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="n">phi</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>s <span class="p">=</span><span class="w"> </span><span class="nf">construct_with_L_f_fs</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span> <span class="p">=</span> <span class="n">get_L</span><span class="p">();</span>
+    <span class="n">f</span> <span class="p">=</span> <span class="n">get_f</span><span class="p">();</span>
+    <span class="n">fs</span> <span class="p">=</span> <span class="n">get_fs</span><span class="p">();</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">phi</span><span class="p">;</span>
+
+    <span class="n">n</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+    <span class="n">phi</span> <span class="p">=</span> <span class="n">phi</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">trigfun</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">phi</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<h2>Putting everything together</h2>
+<p>The last step is to put everything together.</p>
+<ol>
+<li>We have the flag structure that indicates what parameters were passed. This structure can be used by the <em>calculator functions</em> to
+   determine if a parameter can be calculated or not.</li>
+<li>We have <em>calculator functions</em> that can calculate the necessary parameters for the <em>generator functions</em>. If one parameter cannot be
+   calculated, an exception will be raised.</li>
+<li>We have <em>generator functions</em> that can generate the sinusoid signal if all necessary parameters are available for them.</li>
+</ol>
+<p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
+If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
+the given parameter set, there is no way to generate a sinusoud signal.</p>
+<div class="highlight"><pre><span class="c">%% Mode Selection</span>
+<span class="k">try</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">construct_with_n_N</span><span class="p">();</span>
+<span class="k">catch</span>
+   <span class="k">try</span>
+       <span class="n">s</span> <span class="p">=</span> <span class="n">construct_with_L_N_fs</span><span class="p">();</span>
+   <span class="k">catch</span>
+      <span class="k">try</span>
+          <span class="n">s</span> <span class="p">=</span> <span class="n">construct_with_f_N_fs</span><span class="p">();</span>
+      <span class="k">catch</span>
+          <span class="k">try</span>
+              <span class="n">s</span> <span class="p">=</span> <span class="n">construct_with_n_f_fs</span><span class="p">();</span>
+          <span class="k">catch</span>
+              <span class="k">try</span>
+                  <span class="n">s</span> <span class="p">=</span> <span class="n">construct_with_L_f_fs</span><span class="p">();</span>
+              <span class="k">catch</span>
+                  <span class="n">throw_exception</span><span class="p">(</span><span class="s">&#39;parameterError&#39;</span><span class="p">,</span><span class="s">&#39;With the given parameters there is no way to construct a sinusoid signal!&#39;</span><span class="p">);</span>
+              <span class="k">end</span>
+          <span class="k">end</span>
+
+      <span class="k">end</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<h2>Summary</h2>
+<p>And that's it. This method was used in <a href="http://tiborsimon.io/projects/TSPR0003/" target="_blank">Smart Sinusoids</a> to generate
+the sinusoid signals.</p>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/programming/writing-an-equation-engine/";
+        this.page.identifier = "tiborsimon-article-writing-an-equation-engine";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+<aside class="series-widget">
+  <div class="series-header">
+    <h2>This article is part 2 of 2 of the <b>TSPR0003</b> series</h2>
+  </div>
+  <div class="series-post previous">
+    <div>
+
+      <div class="article-date">
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-10-17T00:00:00+00:00"> Sat 17 October 2015</time>
+      </div>
+
+      <a href="/dsp/generating-sinusoid-signals/"><h3 class="post-title"><small>1.</small> Generating sinusoid signals</h3></a>
+
+      <div class="article-categories">
+        <!-- CATEGORY -->
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/dsp.html">dsp</a>
+
+        <!-- TAGS -->
+            <i class="fa fa-tags"></i>
+                <a href="/tag/signals.html">signals</a>,                 <a href="/tag/basics.html">basics</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="series-post current">
+    <div>
+
+      <div class="article-date">
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-11-11T00:00:00+00:00"> Wed 11 November 2015</time>
+      </div>
+
+      <a href="/programming/writing-an-equation-engine/"><h3 class="post-title"><small>2.</small> Writing an equation engine</h3></a>
+
+      <div class="article-categories">
+        <!-- CATEGORY -->
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/programming.html">programming</a>
+
+        <!-- TAGS -->
+            <i class="fa fa-tags"></i>
+                <a href="/tag/parameter.html">parameter</a>,                 <a href="/tag/equation.html">equation</a>
+      </div>
+
+    </div>
+  </div>
+
+</aside>
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="SlotCar Race"/>
+  <meta property="og:url" content="/embedded/slotcar-race/"/>
+  <meta property="og:description" content="At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track."/>
+  <meta property="article:published_time" content="2015-01-15" />
+  <meta property="article:section" content="embedded" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">SlotCar Race</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-01-15T00:00:00+00:00"> Thu 15 January 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/embedded.html">embedded</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/embedded.html">embedded</a>,           <a href="/tag/dsp.html">dsp</a>,           <a href="/tag/accelerometer.html">accelerometer</a>
+  <!-- SERIES -->
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track.</p></div>
+
+              <p>The only information we had was the acceleration data comes from the car itself. Based on this information we had to control the voltage of the car’s motor to run the fastest lap on the track. It doesn’t sounds too hard, does it.</p>
+<figure class="half">
+    <img src="/images/articles/slotcar/promo1.jpg" alt="">
+    <img src="/images/articles/slotcar/promo2.jpg" alt="">
+</figure>
+
+<h1>About the competition</h1>
+<p>However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.</p>
+<p>The rules of the competition</p>
+<ul>
+<li>Run the fastest 5 lap without sliding off the track.</li>
+<li>No physical modification were allowed.</li>
+<li>You have 3 attempts.</li>
+</ul>
+<h1>The track</h1>
+<p>The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.</p>
+<figure>
+    <img src="/images/articles/slotcar/track.jpg" width="400" alt="">
+</figure>
+
+<h1>The car</h1>
+<p>Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.</p>
+<figure>
+    <img src="/images/articles/slotcar/car.jpg" width="400" alt="">
+</figure>
+
+<h1>Solving the problem</h1>
+<p>There is a trivial solution for the problem: drive fast in the straight parts, brake before the corners, drive slow in the corners.
+But there are a few questions.</p>
+<ul>
+<li>What is the maximum speed the car can keep without sliding off the track.</li>
+<li>How do you know where are you on the track?</li>
+<li>How do you compensate the delay of the digital filter.</li>
+</ul>
+<p>The first question was a simple one. We slowly increased the motor voltage and run a few laps until the car slid off. But there was a small problem. Not all cars behaved exactly the same. Some cars slid off at the given motor voltage value, some cars didn’t. We had to take account of this behavior.
+The second question was a tougher one. The car only knew the acceleration data measured by itself. These data could be saved on a memory card during the runs, so we could analyse them offline.</p>
+<p>You can see the data coming from the car when it run 4 loops on the track on the picture down below. As you can see the only usable information comes from the X acceleration data. After the car speeds up, there is a nice periodic signal. Our main task was: find the period of the signal, so we could figure out where we are on the track. When we have the information about where we are, we can create an algorithm that drives the car faster on the straight lines, and slower in the corners. The period finder algorithm had to be prepared to find the period regardless of the starting position of the car.</p>
+<p>The third question was easier after the second one. We knew that the acceleration data had a delay in it. We had the knowledge about where we are on the track with a delay. So instead we make our decisions about braking or accelerating after we reached a straight line or a corner, we make a prediction before.</p>
+<p>Let’s see how the car performs with the final algorithm before we dive into the details.</p>
+<iframe class="video" width="640" height="360" src="https://www.youtube.com/embed/Aj9IzfBdFBo" frameborder="0" allowfullscreen></iframe>
+
+<h1>What is happening on the video?</h1>
+<p>You will learn later from the source code listed below, that the whole program stands from three main states:</p>
+<ul>
+<li>Normalization state – we are waiting the car to speed up to the maximum safe speed, and to run in a straight section of the road.</li>
+<li>Period finder state – the car runs at least two lap before it has enough information to run the period finder algorithm.</li>
+<li>Final state – the car accelerate and deccelerate according the information gathered in state 2.</li>
+</ul>
+<p>Let’s see how this happened on the video.</p>
+<p>The car was put down on the track. It accelerated to the maximum safe speed. It reached this speed a bit before the first corner, so it was on a straight section when the acceleration finished, therefore it entered state two, which is the period finder algorithm. The small blue led on the top of the car flashed when the car’s state changed, but the led flashed in the middle of the corner because the delay of the acceleration filtering.
+In state two the car run at least two full lap (because it collects at least two of every kind of event), collected informations, and after the second lap, when there was enough information, the period finder algorithm kicked in, and successfully found the period of the track.
+Right at this moment, the car was switched to state three, in which the algorithm takes care of the car’s speed according to the information collected in state two. The led blinked in every lap.</p>
+<h1>Period finder algorithm</h1>
+<figure>
+    <img src="/images/articles/slotcar/raw-data.png" width="550" alt="">
+    <figcaption>Raw accelerometer data</figcaption>
+</figure>
+
+<p>The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)</p>
+<figure>
+    <img src="/images/articles/slotcar/algorithm.png" width="550" alt="">
+    <figcaption>Algorithm output signals</figcaption>
+</figure>
+
+<p>As you can see, the final output of the algorithm was shown above.</p>
+<p>Below you can find the repository for the nicely commented source code of the period finder algorithm. The final code that runs on the car itself is not showed, it is up to you to implement it in the target platform.</p>
+<h1>Summary</h1>
+<p>With this algoritm you will be able to have a strong foundtation for your own algorithm if you are faceing a similar contest. Feel free to contribute to the algorithm, to make it more durable.</p>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/embedded/slotcar-race/";
+        this.page.identifier = "tiborsimon-article-slotcar-race";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

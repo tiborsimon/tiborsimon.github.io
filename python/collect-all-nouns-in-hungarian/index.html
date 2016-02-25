@@ -1,0 +1,521 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Collect all nouns in hungarian"/>
+  <meta property="og:url" content="/python/collect-all-nouns-in-hungarian/"/>
+  <meta property="og:description" content="I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download."/>
+  <meta property="article:published_time" content="2015-10-24" />
+  <meta property="article:section" content="python" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+
+              <h1 class="article-title">Collect all nouns in hungarian</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-10-24T00:00:00+00:00"> Sat 24 October 2015</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/python.html">python</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/web.html">web</a>,           <a href="/tag/hack.html">hack</a>,           <a href="/tag/soup.html">soup</a>
+  <!-- SERIES -->
+
+  <!-- GITHUB -->
+
+</div>              </div>
+
+
+              <div class="summary"><p>I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download.</p></div>
+
+              <p>Hopefully, there is a <a href="https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek" target="_blank">hungarian wiki dictionary</a>
+that contains all words in hungarian, and it has a noun filter. It can show the nouns breaked.
+Instead of manually copying the pages content for the available 200 pages, I fired up my two favorite
+python library: <em>BeautifulSoup4</em> and <em>Requests</em>.</p>
+<p>The nouns on the wiki page were arranged into a table, so I had to extract the words from the <code>&lt;li&gt;&lt;/li&gt;</code>
+tags from the html file, downloaded via a web request using the <em>Requests</em> library and created a soup
+from it with <em>BeautifulSoup4</em>.</p>
+<p>The whole process was arranged into an infinite while loop. It will run until a valid next page link
+ can be found. Not the best solution, but hey, it was just a scipt :) Inside this while loop, there is a
+ loop that will collect the words into a list. The delimiter for this inner loop was a common
+ word (magyar szótár), that was present on every page after the last listed noun.</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">next_link</span> <span class="o">=</span> <span class="s">&#39;https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">next_link</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s">&#39;html.parser&#39;</span><span class="p">)</span>
+            <span class="n">extract_words_from_soup</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;words.json&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+            <span class="n">next_link</span> <span class="o">=</span> <span class="s">&#39;https://hu.wiktionary.org&#39;</span> <span class="o">+</span> \
+                        <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s">&#39;következő oldal&#39;</span><span class="p">)[</span><span class="s">&#39;href&#39;</span><span class="p">]</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Word count: {} next_link: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">),</span> <span class="n">next_link</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">Finished with {} words&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">extract_words_from_soup</span><span class="p">(</span><span class="n">soup</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;li&#39;</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s">&#39;magyar szótár&#39;</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="o">!=</span> <span class="s">&#39;magyar főnévi alakok&#39;</span><span class="p">:</span>
+                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>During the process, I printed out every next link the script was found, so I had a feedback where the script
+was in the alphabet. As you can see, the last log was an exception printout, indicating that the script could
+not parse the next link from the html file.</p>
+<div class="highlight"><pre>Word count: 200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=adenokarcin%C3%B3ma#mw-pages
+Word count: 400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=agr%C3%A1rt%C3%B6rv%C3%A9ny#mw-pages
+Word count: 600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=akaszt%C3%B3fahumor#mw-pages
+Word count: 800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=alapilletm%C3%A9ny#mw-pages
+Word count: 1000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=almaexport#mw-pages
+Word count: 1200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=android#mw-pages
+Word count: 1400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=anyak%C3%B6nyv#mw-pages
+Word count: 1600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=aranymetsz%C3%A9s#mw-pages
+Word count: 1800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=assz%C3%B3#mw-pages
+Word count: 2000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=aut%C3%B3busz#mw-pages
+Word count: 2200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bakkecske#mw-pages
+Word count: 2400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bark%C3%B3ca#mw-pages
+Word count: 2600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bej%C3%A1r%C3%A1s#mw-pages
+Word count: 2800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=beteg+bor#mw-pages
+Word count: 3000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bifsztek#mw-pages
+Word count: 3200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bodob%C3%A1cs#mw-pages
+Word count: 3400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=borocska#mw-pages
+Word count: 3600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=bujt%C3%A1s#mw-pages
+Word count: 3800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=b%C3%A1nyakavics#mw-pages
+Word count: 4000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=b%C3%A9ket%C3%B6rekv%C3%A9s#mw-pages
+Word count: 4200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=b%C3%B6lcs%C3%A9szdoktor#mw-pages
+Word count: 4400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=b%C5%B1v%C3%B6let#mw-pages
+Word count: 4600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=ciszterna#mw-pages
+Word count: 4800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=csecs#mw-pages
+Word count: 5000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=csillagt%C3%A9rk%C3%A9p#mw-pages
+Word count: 5200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=csukl%C3%A1s#mw-pages
+Word count: 5400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=cukorm%C3%A1z#mw-pages
+Word count: 5600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=darukezel%C5%91#mw-pages
+Word count: 5800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=dics%C3%A9ret#mw-pages
+Word count: 6000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=dodzsem#mw-pages
+Word count: 6200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=d%C3%A1rid%C3%B3#mw-pages
+Word count: 6400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=efavirenz#mw-pages
+Word count: 6600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=elemelked%C3%A9s#mw-pages
+Word count: 6800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=eln%C3%B6kl%C3%A9s#mw-pages
+Word count: 7000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=el%C5%91v%C3%A1lad%C3%A9k#mw-pages
+Word count: 7200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=epicillin#mw-pages
+Word count: 7400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=etil%C3%A9n#mw-pages
+Word count: 7600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=fakalap%C3%A1cs#mw-pages
+Word count: 7800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=fegyverenged%C3%A9ly#mw-pages
+Word count: 8000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=felford%C3%ADt%C3%A1s#mw-pages
+Word count: 8200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=fenntart%C3%A1s#mw-pages
+Word count: 8400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=flam%C3%B3#mw-pages
+Word count: 8600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=ford%C3%ADt%C3%B3#mw-pages
+Word count: 8800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=fuvaroz%C3%A1s#mw-pages
+Word count: 9000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=f%C3%A9rfiszab%C3%B3#mw-pages
+Word count: 9200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=f%C3%BCrd%C5%91mester#mw-pages
+Word count: 9400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=gabonap%C3%A1linka#mw-pages
+Word count: 9600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=gikszer#mw-pages
+Word count: 9800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=gusztus#mw-pages
+Word count: 10000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=gy%C3%A1szeset#mw-pages
+Word count: 10200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=g%C3%A9mkapocs#mw-pages
+Word count: 10400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=haditud%C3%B3s%C3%ADt%C3%B3#mw-pages
+Word count: 10600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=haj%C3%B3padl%C3%B3#mw-pages
+Word count: 10800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=hang#mw-pages
+Word count: 11000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=hat%C3%A1reset#mw-pages
+Word count: 11200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=herer%C3%A1k#mw-pages
+Word count: 11400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=hold%C3%A9v#mw-pages
+Word count: 11600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=husztaj#mw-pages
+Word count: 11800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=h%C3%ADmz%C5%91n%C5%91#mw-pages
+Word count: 12000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=h%C5%B1b%C3%A9ris%C3%A9g#mw-pages
+Word count: 12200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=imak%C3%B6nyv#mw-pages
+Word count: 12400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=iparcikk#mw-pages
+Word count: 12600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=izomr%C3%A1ndul%C3%A1s#mw-pages
+Word count: 12800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=juhb%C5%91r#mw-pages
+Word count: 13000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=j%C3%BCan#mw-pages
+Word count: 13200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=kantni#mw-pages
+Word count: 13400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=karrierizmus#mw-pages
+Word count: 13600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=kelmefest%C5%91#mw-pages
+Word count: 13800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=ker%C3%A9kp%C3%A1rlop%C3%A1s#mw-pages
+Word count: 14000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=kimutat%C3%A1s#mw-pages
+Word count: 14200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=ki%C3%BAt#mw-pages
+Word count: 14400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=kompasz#mw-pages
+Word count: 14600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=korm%C3%A1nyker%C3%A9k#mw-pages
+Word count: 14800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=kubista#mw-pages
+Word count: 15000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=k%C3%A1lyhab%C3%A9l%C3%A9s#mw-pages
+Word count: 15200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=k%C3%A9ssz%C3%BAr%C3%A1s#mw-pages
+Word count: 15400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=k%C3%B6lts%C3%A9g-el%C5%91ir%C3%A1nyzat#mw-pages
+Word count: 15600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=k%C3%B6sz%C3%B6r%C5%B1s#mw-pages
+Word count: 15800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=k%C3%BAria#mw-pages
+Word count: 16000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=lak%C3%A1s%C3%ADns%C3%A9g#mw-pages
+Word count: 16200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=lend%C3%BClet#mw-pages
+Word count: 16400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=limlom#mw-pages
+Word count: 16600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=l%C3%A1gy#mw-pages
+Word count: 16800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=l%C3%A9p%C3%A9s#mw-pages
+Word count: 17000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=mad%C3%A1rtej#mw-pages
+Word count: 17200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=mangalica#mw-pages
+Word count: 17400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=megfigyel%C5%91#mw-pages
+Word count: 17600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=mell%C3%A9khere+feje#mw-pages
+Word count: 17800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=methemoglobin#mw-pages
+Word count: 18000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=mongol#mw-pages
+Word count: 18200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=munkanap#mw-pages
+Word count: 18400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=m%C3%A1zol%C3%B3#mw-pages
+Word count: 18600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=m%C5%B1ipar#mw-pages
+Word count: 18800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=napelem#mw-pages
+Word count: 19000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=nevel%C5%91n%C5%91#mw-pages
+Word count: 19200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=nyirokmirigy#mw-pages
+Word count: 19400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=n%C3%A9pbolond%C3%ADt%C3%A1s#mw-pages
+Word count: 19600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=okirat-hamis%C3%ADt%C3%A1s#mw-pages
+Word count: 19800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=orrnyereg#mw-pages
+Word count: 20000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=pajzs#mw-pages
+Word count: 20200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=parkol%C3%B3#mw-pages
+Word count: 20400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=perzsa#mw-pages
+Word count: 20600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=pl%C3%A9b%C3%A1nos#mw-pages
+Word count: 20800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=prakker#mw-pages
+Word count: 21000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=puncsost%C3%A1l#mw-pages
+Word count: 21200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=p%C3%A1rt%C3%A9p%C3%ADt%C3%A9s#mw-pages
+Word count: 21400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=rabl%C3%B3barlang#mw-pages
+Word count: 21600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=relativit%C3%A1selm%C3%A9let#mw-pages
+Word count: 21800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=riad%C3%B3ztat#mw-pages
+Word count: 22000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=rudli#mw-pages
+Word count: 22200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=r%C3%B3zsabimb%C3%B3#mw-pages
+Word count: 22400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sebhely#mw-pages
+Word count: 22600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=skorpi%C3%B3#mw-pages
+Word count: 22800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sporttev%C3%A9kenys%C3%A9g#mw-pages
+Word count: 23000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=szaft#mw-pages
+Word count: 23200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=szecesszi%C3%B3#mw-pages
+Word count: 23400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=szerelmeslev%C3%A9l#mw-pages
+Word count: 23600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sziszt%C3%A9ma#mw-pages
+Word count: 23800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=szulf%C3%A1t#mw-pages
+Word count: 24000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sz%C3%A9ler%C5%91ss%C3%A9g#mw-pages
+Word count: 24200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sz%C3%B3kapcsolat#mw-pages
+Word count: 24400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=sz%C5%91r#mw-pages
+Word count: 24600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=s%C3%B6r%C3%B6z%C5%91#mw-pages
+Word count: 24800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=tankhaj%C3%B3#mw-pages
+Word count: 25000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=tekn%C5%91sb%C3%A9kap%C3%A1nc%C3%A9l#mw-pages
+Word count: 25200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=tervsz%C3%A1m#mw-pages
+Word count: 25400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=toj%C3%A1s%C3%A9tel#mw-pages
+Word count: 25600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=tudatosul%C3%A1s#mw-pages
+Word count: 25800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=t%C3%A1vol%C3%ADt%C3%B3+ideg#mw-pages
+Word count: 26000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=t%C3%B6rt%C3%A9n%C3%A9s#mw-pages
+Word count: 26200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=t%C5%B1zolt%C3%B3osztag#mw-pages
+Word count: 26400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=uzsora#mw-pages
+Word count: 26600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=varj%C3%BAleves#mw-pages
+Word count: 26800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=veszetts%C3%A9g#mw-pages
+Word count: 27000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=vir%C3%A1gcsend%C3%A9let#mw-pages
+Word count: 27200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=vulvekt%C3%B3mia#mw-pages
+Word count: 27400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=v%C3%A9gagy#mw-pages
+Word count: 27600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=v%C3%ADzibetegs%C3%A9g#mw-pages
+Word count: 27800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=zajog#mw-pages
+Word count: 28000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=zugev%C5%91#mw-pages
+Word count: 28200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A1gy%C3%BAnasz%C3%A1d#mw-pages
+Word count: 28400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A1llom%C3%A1s%C3%A9p%C3%BClet#mw-pages
+Word count: 28600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A1rny%C3%A9kol%C3%A1s#mw-pages
+Word count: 28800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A1tlageredm%C3%A9ny#mw-pages
+Word count: 29000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A9letnagys%C3%A1g#mw-pages
+Word count: 29200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%A9rv%C3%A9nyes%C3%ADt%C3%A9s#mw-pages
+Word count: 29400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%B3rafed%C3%A9l#mw-pages
+Word count: 29600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%B6r%C3%B6kk%C3%A9val%C3%B3s%C3%A1g#mw-pages
+Word count: 29800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%BAton%C3%A1ll%C3%B3#mw-pages
+Word count: 30000 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C3%BCvegpoh%C3%A1r#mw-pages
+Word count: 30200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=%C5%91szap%C3%B3#mw-pages
+
+Finished with 30248 words
+</pre></div>
+
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/python/collect-all-nouns-in-hungarian/";
+        this.page.identifier = "tiborsimon-article-collect-all-nouns-in-hungarian";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>

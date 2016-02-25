@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="/" rel="alternate"></link><link href="/feeds/dsp.atom.xml" rel="self"></link><id>/</id><updated>2015-10-17T00:00:00+00:00</updated><entry><title>Generating sinusoid signals</title><link href="/dsp/generating-sinusoid-signals/" rel="alternate"></link><updated>2015-10-17T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:,2015-10-17:dsp/generating-sinusoid-signals/</id><summary type="html">&lt;h2&gt;The problem&lt;/h2&gt;
+&lt;p&gt;The equation of a sinusoid signal is a known fact:&lt;/p&gt;
+&lt;p class="equation"&gt;
+  `y(t) = A sin(2 pi f t + varphi) = A sin(omega t + varphi).`
+&lt;/p&gt;
+
+&lt;p&gt;However. This equation is only valid in the &lt;strong&gt;continuous time&lt;/strong&gt; domain, therefore without any modification it is useless in the &lt;strong&gt;discrete time&lt;/strong&gt; domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.&lt;/p&gt;
+&lt;p&gt;Machines work with &lt;em&gt;discrete time series&lt;/em&gt; that has a property called &lt;strong&gt;resolution&lt;/strong&gt;. Resolution is the link between &lt;em&gt;continous&lt;/em&gt; and &lt;em&gt;discrete&lt;/em&gt; time domain. This property is implemented with &lt;strong&gt;sampling&lt;/strong&gt;. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Therefore the &lt;em&gt;t&lt;/em&gt; variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.&lt;/p&gt;
+&lt;p&gt;Let's say you want to get &lt;strong&gt;10 samples per seconds&lt;/strong&gt; &lt;em&gt;(fs=10Hz)&lt;/em&gt;, and you want to have &lt;strong&gt;20 samples&lt;/strong&gt; in your vector. That also means that your time vector will cover almost &lt;strong&gt;2 seconds&lt;/strong&gt;&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; of continuous time.&lt;/p&gt;
+&lt;p&gt;You can test that the &lt;code&gt;t1&lt;/code&gt; and &lt;code&gt;t2&lt;/code&gt; vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;s = sin(2*pi*1*t1);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/articles/smart-sinusoids/signal001.png" alt="Discrete vs continous time sine signal" /&gt;&lt;/p&gt;
+&lt;p&gt;This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer's &lt;em&gt;digital to analog converter&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;However. There are other use cases when we don't want to link the &lt;strong&gt;discrete time&lt;/strong&gt; to the &lt;strong&gt;continuous time&lt;/strong&gt;, so we don't have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;t = linspace(0,1,100);
+s = sin(2*pi*3*t);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can't be used as the previous one until we specify the sampling frequency.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/articles/smart-sinusoids/signal002.png" alt="100 samples long sinusoid without discrete/continous time lock" /&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, generating sinusoids with these basic methods isn't hard at all. But you &lt;strong&gt;have to think&lt;/strong&gt; about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal..&lt;/p&gt;
+&lt;h2&gt;Sinusoid signal parameters&lt;/h2&gt;
+&lt;p&gt;There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/articles/smart-sinusoids/detailed.png" alt="Sinusoid signal parameters" /&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;Parameter name&lt;/th&gt;
+&lt;th align="left"&gt;Unit&lt;/th&gt;
+&lt;th align="left"&gt;Possible parameters&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;phi&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[degree]&lt;/td&gt;
+&lt;td align="left"&gt;phase&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;A&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[full scale]&lt;/td&gt;
+&lt;td align="left"&gt;amplitude&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[Hz]&lt;/td&gt;
+&lt;td align="left"&gt;frequency&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;fs&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[Hz]&lt;/td&gt;
+&lt;td align="left"&gt;sample rate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[s]&lt;/td&gt;
+&lt;td align="left"&gt;period&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;dt&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[s]&lt;/td&gt;
+&lt;td align="left"&gt;sample time&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;L&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[s]&lt;/td&gt;
+&lt;td align="left"&gt;signal duration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;N&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[-]&lt;/td&gt;
+&lt;td align="left"&gt;number of periods&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;code&gt;n&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;[-]&lt;/td&gt;
+&lt;td align="left"&gt;number of samples&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn't count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: &lt;em&gt;fs = 1/dt&lt;/em&gt;, &lt;em&gt;T = 1/f&lt;/em&gt; and &lt;em&gt;L=n*dt&lt;/em&gt;.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;Method index&lt;/th&gt;
+&lt;th align="left"&gt;Required parameters&lt;/th&gt;
+&lt;th align="left"&gt;CT DT lock&lt;/th&gt;
+&lt;th align="left"&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;1&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;n&lt;/code&gt; &lt;code&gt;N&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;No&lt;/td&gt;
+&lt;td align="left"&gt;a signal consisting of &lt;code&gt;n&lt;/code&gt; data points with &lt;code&gt;N&lt;/code&gt;&lt;br&gt; periods in it&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;2&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;L&lt;/code&gt; &lt;code&gt;N&lt;/code&gt; &lt;code&gt;fs&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;Yes&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;L&lt;/code&gt; seconds long signal sampled at &lt;code&gt;fs&lt;/code&gt; consisting of &lt;br&gt;&lt;code&gt;N&lt;/code&gt; periods in it&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;3&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;f&lt;/code&gt; &lt;code&gt;N&lt;/code&gt; &lt;code&gt;fs&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;Yes&lt;/td&gt;
+&lt;td align="left"&gt;a signal sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with &lt;code&gt;N&lt;/code&gt; &lt;br&gt;periods in it with the frequency &lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;4&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;f&lt;/code&gt; &lt;code&gt;n&lt;/code&gt; &lt;code&gt;fs&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;Yes&lt;/td&gt;
+&lt;td align="left"&gt;a signal consisting of &lt;code&gt;n&lt;/code&gt; &lt;br&gt;data points sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with the frequency &lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;5&lt;/td&gt;
+&lt;td align="left"&gt;&lt;code&gt;f&lt;/code&gt; &lt;code&gt;L&lt;/code&gt; &lt;code&gt;fs&lt;/code&gt;&lt;/td&gt;
+&lt;td align="left"&gt;Yes&lt;/td&gt;
+&lt;td align="left"&gt;a signal sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with the &lt;br&gt;duration of &lt;code&gt;L&lt;/code&gt; seconds with the frequency &lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Let's try out all methods, to see how you can use them in practice. Let's generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/articles/smart-sinusoids/demo_signal.png" alt="Reference signal for all the following generation methods" /&gt;&lt;/p&gt;
+&lt;p&gt;The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.&lt;/p&gt;
+&lt;h3&gt;Method 1 - [n,N]&lt;/h3&gt;
+&lt;p&gt;Generating a sinusoid signal with &lt;code&gt;n&lt;/code&gt; data points with &lt;code&gt;N&lt;/code&gt; periods in it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;60&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;N&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="nc"&gt;.5&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="nd"&gt;:n-1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sin&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;N&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="nt"&gt;stem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Method 2 - [L,N,fs]&lt;/h3&gt;
+&lt;p&gt;Generating &lt;code&gt;L&lt;/code&gt; seconds long signal sampled at &lt;code&gt;fs&lt;/code&gt; consisting of &lt;code&gt;N&lt;/code&gt; periods in it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;fs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;10&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;N&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="nc"&gt;.5&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;60&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="nd"&gt;:1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="nd"&gt;:L-1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;L&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sin&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;N&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="nt"&gt;stem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Method 3 - [f,N,fs]&lt;/h3&gt;
+&lt;p&gt;Generating a sinusoid signal sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with &lt;code&gt;N&lt;/code&gt; periods in it with the frequency &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;fs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;10&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;N&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="nc"&gt;.5&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;N&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;60&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="nd"&gt;:1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;:(&lt;/span&gt;&lt;span class="nt"&gt;N&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;f&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nt"&gt;-1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sin&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="nt"&gt;stem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Method 4 - [n,f,fs]&lt;/h3&gt;
+&lt;p&gt;Generating a signal consisting of &lt;code&gt;n&lt;/code&gt; data points sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with the frequency &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;fs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;10&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;60&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="nc"&gt;.5&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="nd"&gt;:n-1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;*(&lt;/span&gt;&lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sin&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;k&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="nt"&gt;stem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Method 5 - [f,L,fs]&lt;/h3&gt;
+&lt;p&gt;Generating a sinusoid signal sampled at &lt;code&gt;fs&lt;/code&gt; sampling rate with the duration of &lt;code&gt;L&lt;/code&gt; seconds with the frequency &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;60&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="nc"&gt;.5&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;L&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="nd"&gt;:1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="nd"&gt;:L-1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;sin&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="nt"&gt;stem&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;s&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;That's it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you &lt;em&gt;study&lt;/em&gt; them? Will you &lt;em&gt;derive&lt;/em&gt; them over and over again?&lt;/p&gt;
+&lt;p&gt;If your answers for the last two questions were both &lt;em&gt;nope&lt;/em&gt;, then the go ahead and meet &lt;b&gt;&lt;a href="http://tiborsimon.io/projects/#TSPR0003"&gt;Smart Sinusoids&lt;/a&gt;&lt;/b&gt;.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Of course this is a very high level overview of the &lt;a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem"&gt;sampling theorem&lt;/a&gt;. There are much more detail how these things really work.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds &lt;em&gt;(2s - 1/fs = 1.9s)&lt;/em&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;PC sound cards usually accept signals scaled -1 to 1.&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="signals"></category><category term="basics"></category></entry></feed>

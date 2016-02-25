@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<!--
+  Escape Velocity by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+      <title>tiborsimon.io</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/theme/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/theme/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+
+  <meta name="author" content="Tibor Simon" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations." />
+
+  <meta property="fb:app_id" content="551628881652865"/>
+  <meta property="og:site_name" content="tiborsimon.io" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Local MathJax in iOS apps"/>
+  <meta property="og:url" content="/ios/local-mathjax-in-ios-apps/"/>
+  <meta property="og:description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations."/>
+  <meta property="article:published_time" content="2016-02-20" />
+  <meta property="article:section" content="ios" />
+  <meta property="article:tag" content="" />
+  <meta property="article:author" content="Tibor Simon" />
+
+  </head>
+
+  <body class="right-sidebar">
+    <div id="page-wrapper">
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+  <div id="header">
+
+    <!-- Logo -->
+      <div id="logo">
+        <h1><a href="index.html">Engineering with passion</a></h1>
+        <p>Site of Tibor Simon - Blog, worklog, portfolio</p>
+      </div>
+
+    <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li class="current"><a href="/index.html">Home</a></li>
+          <li><a href="/archives.html">Archives</a></li>
+          <li><a href="/index.html#portfolio">Portfolio</a></li>
+          <!-- <li><a href="/worklog.html">Worklog</a></li> -->
+          <li><a href="/index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+<div class="wrapper style2">
+  <div class="title">Article</div>
+  <div id="main" class="container">
+    <div class="row 150%">
+      <div class="8u 12u(mobile)">
+
+        <!-- Content -->
+          <div id="content">
+            <article>
+
+<div class="github-button">
+<a href="https://github.com/tiborsimon" target="_blank" class="icon"><i class="fa fa-github-alt"></i></a>
+<a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">Goto repo</a>
+<a href="https://github.com/tiborsimon/ios-local-mathjax-template/releases/latest" target="_blank"><i class="fa fa-download"></i> latest release</a>
+</div>
+
+              <h1 class="article-title">Local MathJax in iOS apps</h1>
+
+              <div class="article-info">
+                <hr />
+<div class="article-date">
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+00:00"> Sat 20 February 2016</time>
+</div><div class="article-categories">
+  <!-- CATEGORY -->
+  <i class="fa fa-folder-open-o"></i>
+  <a href="/category/ios.html">ios</a>
+
+  <!-- TAGS -->
+      <i class="fa fa-tags padded-icon"></i>
+          <a href="/tag/ios.html">ios</a>,           <a href="/tag/hack.html">hack</a>,           <a href="/tag/javascript.html">javascript</a>,           <a href="/tag/swift.html">swift</a>,           <a href="/tag/math.html">math</a>,           <a href="/tag/latex.html">LaTEX</a>
+  <!-- SERIES -->
+    <span class="article-series padded-icon">
+      <i class="fa fa-briefcase"></i>
+      Part 1 of 1 in <i>iOS MathJax</i>
+    </span>
+
+  <!-- GITHUB -->
+  <span class="padded-icon"><a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank"><i class="fa fa-github-square"></i> Repo</a></span>
+
+</div>              </div>
+
+
+              <div class="summary"><p>Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations.</p></div>
+
+              <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Component</th>
+<th align="center">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">XCode</td>
+<td align="center">Version 7.2.1 (7C1002)</td>
+</tr>
+<tr>
+<td align="center">iOS</td>
+<td align="center">9.2</td>
+</tr>
+<tr>
+<td align="center">MathJax</td>
+<td align="center">2.6.1</td>
+</tr>
+</tbody>
+</table>
+<h2>Prerequisite</h2>
+<p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
+<div class="highlight"><pre><span class="nt">&lt;math</span> <span class="na">title=</span><span class="s">&quot;2^(2/(sqrt(6))&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mstyle</span> <span class="na">mathcolor=</span><span class="s">&quot;blue&quot;</span> <span class="na">fontfamily=</span><span class="s">&quot;sanserif&quot;</span> <span class="na">displaystyle=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;msup&gt;</span>
+      <span class="nt">&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;</span>
+      <span class="nt">&lt;mrow&gt;</span>
+        <span class="nt">&lt;mfrac&gt;</span>
+          <span class="nt">&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;</span>
+          <span class="nt">&lt;mrow&gt;</span>
+            <span class="nt">&lt;msqrt&gt;</span>
+              <span class="nt">&lt;mrow&gt;</span>
+                <span class="nt">&lt;mn&gt;</span>6<span class="nt">&lt;/mn&gt;</span>
+              <span class="nt">&lt;/mrow&gt;</span>
+            <span class="nt">&lt;/msqrt&gt;</span>
+          <span class="nt">&lt;/mrow&gt;</span>
+        <span class="nt">&lt;/mfrac&gt;</span>
+      <span class="nt">&lt;/mrow&gt;</span>
+    <span class="nt">&lt;/msup&gt;</span>
+  <span class="nt">&lt;/mstyle&gt;</span>
+<span class="nt">&lt;/math&gt;</span>
+</pre></div>
+
+
+<p>The equivalent <strong>LaTEX</strong> representation is:</p>
+<div class="highlight"><pre>2^{\frac{2}{\sqrt{6}}}
+</pre></div>
+
+
+<p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
+<h2>Downloading the external</h2>
+<h2>Credits</h2>
+<table>
+<thead>
+<tr>
+<th align="center">For this project I used the following articles and answers as guides and solutions for problems.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="http://new2objectivec.blogspot.rs/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://new2objectivec.blogspot.rs/2012/03/tutorial-how-to-setup-mathjax-locally.html">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://docs.mathjax.org/en/latest/start.html">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://stackoverflow.com/a/2660496">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://stackoverflow.com/a/747644">Link</a></td>
+</tr>
+</tbody>
+</table>
+
+<div class="github-button">
+<a href="https://github.com/tiborsimon" target="_blank" class="icon"><i class="fa fa-github-alt"></i></a>
+<a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">Goto repo</a>
+<a href="https://github.com/tiborsimon/ios-local-mathjax-template/releases/latest" target="_blank"><i class="fa fa-download"></i> latest release</a>
+</div>
+
+              <div class="addthis_sharing_toolbox"></div>
+
+            </article>
+
+
+            <div class="comments" id="discussion">
+              <h1>Comments</h1>
+              <hr />
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = "/ios/local-mathjax-in-ios-apps/";
+        this.page.identifier = "tiborsimon-article-local-mathjax-in-ios-apps";
+    };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//tiborsimon.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>            </div>
+          </div>
+
+      </div>
+
+<div class="4u 12u(mobile)">
+
+  <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="box">
+        <img src="/images/tibor4.jpg" style="border: 3px solid #ddd; margin: 0 auto" width=300 alt="Image of Tibor Simon" />
+        <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
+      </div>
+      <div class="box">
+<aside class="series-widget">
+  <div class="series-header">
+    <h2>This article is part 1 of 1 of the <b>iOS MathJax</b> series</h2>
+  </div>
+
+  <div class="series-post current">
+    <div>
+
+      <div class="article-date">
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+00:00"> Sat 20 February 2016</time>
+      </div>
+
+      <a href="/ios/local-mathjax-in-ios-apps/"><h3 class="post-title"><small>1.</small> Local MathJax in iOS apps</h3></a>
+
+      <div class="article-categories">
+        <!-- CATEGORY -->
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/ios.html">ios</a>
+
+        <!-- TAGS -->
+            <i class="fa fa-tags"></i>
+                <a href="/tag/ios.html">ios</a>,                 <a href="/tag/hack.html">hack</a>,                 <a href="/tag/javascript.html">javascript</a>,                 <a href="/tag/swift.html">swift</a>,                 <a href="/tag/math.html">math</a>,                 <a href="/tag/latex.html">LaTEX</a>
+      </div>
+
+    </div>
+  </div>
+
+</aside>
+      </div>
+      <div class="box">
+<aside class="tag-list">
+  <h2 class="widget-title">Tag Cloud</h2>
+  <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="/tag/LaTEX.html">#LaTEX</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/accelerometer.html">#accelerometer</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/basics.html">#basics</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/bootstrap.html">#bootstrap</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/chart.html">#chart</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/device.html">#device</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dsp.html">#dsp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/dunlop.html">#dunlop</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/embedded.html">#embedded</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/equation.html">#equation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/fuzzy.html">#fuzzy</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/game.html">#game</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/guitar.html">#guitar</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/hack.html">#hack</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/ios.html">#ios</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/java.html">#java</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/javascript.html">#javascript</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/jinja2.html">#jinja2</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/lists.html">#lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/math.html">#math</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/parameter.html">#parameter</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pelican.html">#pelican</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/permutation.html">#permutation</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/pick.html">#pick</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/regexp.html">#regexp</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/search.html">#search</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/signals.html">#signals</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/sorting.html">#sorting</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/soup.html">#soup</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/swift.html">#swift</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tools.html">#tools</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/tortextime.html">#tortextime</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="/tag/web.html">#web</a>
+      </span>
+  </div>
+</aside>
+<!-- .widget_tag_cloud -->      </div>
+      <div class="box">
+<aside class="category-list">
+  <h2 class="widget-title">Categories</h2>
+  <ul>
+      <li><a href="/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
+      <li><a href="/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
+      <li><a href="/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
+      <li><a href="/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
+      <li><a href="/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
+      <li><a href="/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
+      <li><a href="/category/web.html" title="Architecture Category Posts">web</a> (2)</li>
+  </ul>
+</aside>
+<!-- .widget_categories -->      </div>
+    </aside>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+  <div class="title">The rest of it..</div>
+  <div id="footer" class="container">
+    <header class="style1">
+      <h2>Do you want to support Tibor?</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
+          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
+        </a>
+        <a href="#" class="donation-button">
+          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <div class="addthis_sharing_toolbox"></div>
+  </div>
+  <div id="copyright">
+    <ul>
+      <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+      <script type="text/javascript" src="/theme/js/bundle.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://tiborsimon.disqus.com/count.js" id="dsq-count-scr" async></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68408613-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55feae79d6d0348d"></script>
+
+  </body>
+</html>
