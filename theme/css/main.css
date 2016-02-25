@@ -1780,7 +1780,7 @@ ol.default {
     margin-left: 7em; }
   /* Wrappers */
   .wrapper {
-    padding: 6em 0 9em 0; }
+    padding: 6em 0 4em 0; }
     .wrapper .title {
       font-size: 0.9em;
       width: 25em;
@@ -1794,6 +1794,8 @@ ol.default {
     padding: 0; }
   #intro-wrapper {
     padding-bottom: 8em; }
+  #main-wrapper {
+    margin-top: -5em; }
   /* Header */
   #header {
     position: relative;
