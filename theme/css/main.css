@@ -841,6 +841,8 @@ body {
         box-shadow: inset 0px 0px 2px 0px #606167; }
       .paginations .pagination-button.style2:active {
         box-shadow: inset 0px 0px 2px 0px #202127; }
+    .paginations .pagination-button.hidden {
+      display: none; }
 
 /* Tags page */
 .tags-and-categories-page .wrapper {
