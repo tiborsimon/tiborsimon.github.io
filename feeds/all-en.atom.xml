@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all-en.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-02-23T00:00:00+00:00</updated><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-23T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">&lt;p&gt;I have decided to buy a bunch of guitar picks at once to save money and time.&lt;/p&gt;
-&lt;p&gt;&lt;a class="twitter-timeline" href="https://twitter.com/hashtag/tortextime" data-widget-id="702267212221038593"&gt;#tortextime Tweets&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");&lt;/script&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all-en.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-02-28T00:00:00+00:00</updated><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-28T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">&lt;div class="row"&gt;
+  &lt;div class="6u 12u(mobile)"&gt;
+    I have decided to buy a bunch of guitar picks at once to save money and time.
+  &lt;/div&gt;
+  &lt;div class="6u 12u(mobile)"&gt;
+    &lt;a class="twitter-timeline" href="https://twitter.com/hashtag/tortextime" data-widget-id="702267212221038593"&gt;#tortextime Tweets&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");&lt;/script&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Pick usage&lt;/h1&gt;
 &lt;div class="tortex-time-wrapper"&gt;
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;1&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-empty.png" alt="1st pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-none.png" alt="1st pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Gifted away&lt;/div&gt;
     &lt;/div&gt;
@@ -13,7 +21,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;2&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-empty.png" alt="2nd pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-none.png" alt="2nd pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Gifted away&lt;/div&gt;
     &lt;/div&gt;
@@ -21,7 +29,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;3&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="3rd pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="3rd pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;In use&lt;br /&gt;23-02-2016..&lt;/div&gt;
     &lt;/div&gt;
@@ -29,7 +37,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;4&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="4th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="4th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -37,7 +45,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;5&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="5th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="5th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -45,7 +53,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;6&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="6th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="6th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -53,7 +61,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;7&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="7th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="7th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -61,7 +69,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;8&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="8th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="8th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -69,7 +77,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;9&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="9th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="9th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -77,7 +85,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;10&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="10th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="10th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -85,7 +93,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;11&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="11th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="11th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -93,7 +101,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;12&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="12th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="12th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -101,7 +109,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;13&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="13th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="13th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -109,7 +117,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;14&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="14th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="14th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -117,7 +125,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;15&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="15th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="15th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -125,7 +133,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;16&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="16th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="16th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -133,7 +141,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;17&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="17th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="17th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -141,7 +149,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;18&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="18th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="18th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -149,7 +157,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;19&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="19th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="19th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -157,7 +165,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;20&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="20th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="20th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -165,7 +173,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;21&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="21th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="21th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -173,7 +181,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;22&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="22th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="22th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -181,7 +189,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;23&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="23th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="23th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -189,7 +197,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;24&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="24th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="24th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -197,7 +205,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;25&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="25th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="25th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -205,7 +213,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;26&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="26th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="26th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -213,7 +221,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;27&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="27th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="27th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -221,7 +229,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;28&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="28th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="28th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -229,7 +237,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;29&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="29th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="29th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -237,7 +245,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;30&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="30th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="30th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -245,7 +253,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;31&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="31th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="31th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -253,7 +261,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;32&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="32th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="32th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -261,7 +269,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;33&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="33th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="33th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -269,7 +277,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;34&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="34th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="34th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -277,7 +285,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;35&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="35th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="35th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -285,7 +293,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;36&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="36th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="36th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -293,7 +301,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;37&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="37th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="37th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -301,7 +309,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;38&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="38th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="38th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -309,7 +317,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;39&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="39th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="39th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -317,7 +325,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;40&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="40th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="40th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -325,7 +333,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;41&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="41th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="41th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -333,7 +341,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;42&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="42th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="42th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -341,7 +349,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;43&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="43th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="43th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -349,7 +357,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;44&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="44th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="44th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -357,7 +365,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;45&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="45th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="45th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -365,7 +373,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;46&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="46th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="46th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -373,7 +381,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;47&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="47th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="47th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -381,7 +389,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;48&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="48th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="48th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -389,7 +397,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;49&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="49th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="49th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -397,7 +405,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;50&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="50th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="50th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -405,7 +413,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;51&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="51th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="51th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -413,7 +421,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;52&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="52th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="52th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -421,7 +429,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;53&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="53th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="53th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -429,7 +437,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;54&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="54th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="54th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -437,7 +445,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;55&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="55th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="55th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -445,7 +453,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;56&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="56th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="56th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -453,7 +461,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;57&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="57th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="57th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -461,7 +469,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;58&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="58th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="58th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -469,7 +477,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;59&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="59th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="59th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -477,7 +485,7 @@
 
   &lt;div class="tortex-time-pick"&gt;
       &lt;span class="pick-overlay"&gt;60&lt;/span&gt;
-      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-full.png" alt="60th pick image." width="50px" /&gt;
+      &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-new.png" alt="60th pick image." width="50px" /&gt;
     &lt;div class="tortex-descr"&gt;
       &lt;div&gt;&lt;br /&gt;Unused&lt;/div&gt;
     &lt;/div&gt;
@@ -487,7 +495,7 @@
 
   &lt;div class="tortex-latest"&gt;&lt;/div&gt;
 
-&lt;/div&gt;</summary><category term="guitar"></category><category term="pick"></category><category term="dunlop"></category><category term="tortextime"></category></entry><entry><title>Local MathJax in iOS apps</title><link href="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/" rel="alternate"></link><updated>2016-02-20T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-20:ios/local-mathjax-in-ios-apps/</id><summary type="html">&lt;p&gt;In this article I am going to show you a method to integrate &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; - &lt;em&gt;an external javascript display engine for mathematics&lt;/em&gt; - in an iOS app. I used the following components:&lt;/p&gt;
+&lt;/div&gt;</summary><category term="guitar"></category><category term="pick"></category><category term="dunlop"></category><category term="tortextime"></category><category term="data"></category><category term="statistics"></category></entry><entry><title>Local MathJax in iOS apps</title><link href="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/" rel="alternate"></link><updated>2016-02-20T00:00:00+00:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-20:ios/local-mathjax-in-ios-apps/</id><summary type="html">&lt;p&gt;In this article I am going to show you a method to integrate &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; - &lt;em&gt;an external javascript display engine for mathematics&lt;/em&gt; - in an iOS app. I used the following components:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

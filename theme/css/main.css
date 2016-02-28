@@ -732,7 +732,7 @@ body {
   height: 150px;
   border: 1px solid #dedede;
   border-radius: 5px;
-  margin: 0 4px 4px 0;
+  margin: 0 3px 6px 3px;
   box-shadow: 0 0 4px #f0f0f0;
   float: left; }
   .tortex-time-wrapper .tortex-time-pick .tortex-img {
@@ -772,7 +772,8 @@ body {
     margin-top: 0px;
     text-decoration: underline; }
     .article-card h3:hover {
-      opacity: 0.8; }
+      opacity: 0.8;
+      text-decoration: none !important; }
   .article-card .article-summary {
     line-height: 19px; }
     .article-card .article-summary p {
@@ -781,15 +782,28 @@ body {
 .article-date, .article-categories {
   font-size: 76%;
   display: inline-block;
-  color: #919499; }
+  color: #aaa !important; }
+  .article-date a, .article-categories a {
+    color: #aaa !important; }
   .article-date .padded-icon, .article-categories .padded-icon {
+    margin-left: 9px; }
+  .article-date .modified, .article-categories .modified {
     margin-left: 9px; }
 
 .addthis_sharing_toolbox {
-  text-align: center; }
+  text-align: center;
+  margin-top: 3em; }
 
 .avatar {
   border: 6px solid; }
+
+.widget-avatar {
+  box-shadow: 0 2px 16px #ddd;
+  text-align: center;
+  margin: 0 auto 16px auto;
+  display: block;
+  max-width: 775px;
+  border: 5px solid #fff; }
 
 /* Pagination */
 .paginations {
@@ -907,6 +921,10 @@ body {
 .article-date i {
   margin-right: 2px; }
 
+h2.widget-title {
+  margin-top: 1.6em !important;
+  margin-bottom: 12px !important; }
+
 /* S E R I E S */
 .series-widget {
   margin-bottom: 2em; }
@@ -947,22 +965,13 @@ body {
 /*  D O N A T I O N   B U T T O N S  */
 .donation-buttons {
   margin-bottom: 3em; }
-  .donation-buttons .donation-button {
-    padding: 8px 0;
-    display: inline-block;
-    width: 100px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.25) !important;
-    margin: 0 3px;
+  .donation-buttons .paypal-button {
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    padding: 6px;
     transition: all 0.4s; }
-    .donation-buttons .donation-button .donation-amount {
-      display: none; }
-    .donation-buttons .donation-button:hover {
-      color: white !important;
-      background: #f98780 url("../css/images/overlay.png"); }
-      .donation-buttons .donation-button:hover .donation-amount {
-        display: inline-block; }
+    .donation-buttons .paypal-button:hover {
+      border: 1px solid rgba(255, 255, 255, 0.3); }
 
 /* G I T H U B   B U T T O N */
 .github-button {
@@ -1128,6 +1137,14 @@ body {
     padding: 7px; } }
 
 @media screen and (max-width: 736px) {
+  .titleBar .toggle {
+    transition: all 1s; }
+  .latest-articles .article-card {
+    margin: 0 15px 22px 15px; }
+  .latest-articles .article-date {
+    margin-bottom: 5px !important; }
+  .twitter-feed {
+    margin: 0 15px 0 15px; }
   #content .article-title {
     font-size: 2.3em; }
   #content .article-info {
@@ -1310,10 +1327,6 @@ form ::-moz-focus-inner {
   border: 0; }
 
 /* Section/Article */
-section,
-article {
-  margin-bottom: 3em; }
-
 section > :last-child,
 article > :last-child,
 section:last-child,
@@ -1644,6 +1657,9 @@ ol.default {
     color: inherit;
     text-decoration: none; }
 
+.intro-text {
+  line-height: 1.2em !important; }
+
 /* Highlights */
 #highlights .highlight {
   text-align: center; }
@@ -1673,7 +1689,7 @@ ol.default {
   /* Basic */
   body, input, select, textarea {
     font-size: 13pt;
-    line-height: 1.75em;
+    line-height: 1.3em;
     letter-spacing: 0pt; }
   body {
     min-width: 1200px; }
@@ -1956,11 +1972,11 @@ ol.default {
   body {
     min-width: 1000px;
     font-size: 12pt;
-    line-height: 1.5em;
+    line-height: 1.3em;
     letter-spacing: 0.015em; }
   input, select, textarea {
     font-size: 12pt;
-    line-height: 1.5em;
+    line-height: 1.3em;
     letter-spacing: 0.015em; }
   body {
     min-width: 960px; }
@@ -1999,19 +2015,20 @@ ol.default {
   html, body {
     overflow-x: hidden; }
   body, input, select, textarea {
-    line-height: 1.5em;
+    line-height: 1.1em;
     font-size: 10.5pt;
     letter-spacing: 0; }
   h2, h3, h4, h5, h6 {
     font-size: 1.2em;
     letter-spacing: 0.05em;
     margin: 0 0 1em 0; }
+  .latest-articles {
+    margin-top: 26px; }
   hr {
     margin: 1em 0 1em 0; }
   /* Section/Article */
   section, article {
-    clear: both;
-    padding: 1em 0 1em 0 !important; }
+    clear: both; }
   header br {
     display: none; }
   header.style1 {
@@ -2038,7 +2055,7 @@ ol.default {
     margin: 0 auto; }
   /* List */
   ul.actions {
-    margin: 2em 0 0 0; }
+    margin: 2em 15px 0 15px; }
     ul.actions li {
       margin: 15px 0 0 0; }
   form ul.actions {

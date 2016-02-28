@@ -160,20 +160,29 @@
     <header class="style1">
       <h2>Do you want to support Tibor?</h2>
       <div class="donation-buttons">
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tibor%40tiborsimon%2eio&lc=GB&amount=1%2e00&currency_code=USD&no_note=0&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" class="donation-button">
-          <i class="fa fa-thumbs-up"></i> <span class="donation-amount">$1</span>
-        </a>
-        <a href="#" class="donation-button">
-          <i class="fa fa-coffee"></i> <span class="donation-amount">$5</span>
-        </a>
-        <a href="#" class="donation-button">
-          <i class="fa fa-beer"></i> <span class="donation-amount">$10</span>
-        </a>
-        <a href="#" class="donation-button">
-          <i class="fa fa-trophy"></i> <span class="donation-amount">$100</span>
-        </a>
-      </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <!-- Identify your business so that you can collect the payments. -->
+          <input type="hidden" name="business"
+              value="tibor@tiborsimon.io">
+
+          <!-- Specify a Donate button. -->
+          <input type="hidden" name="cmd" value="_donations">
+
+          <!-- Specify details about the contribution -->
+          <input type="hidden" name="item_name" value="Donation for Tibor">
+          <input type="hidden" name="item_number" value="To support his projects">
+          <input TYPE="hidden" name="return" value="https://tiborsimon.io/guitar/tortex-time/">
+          <input type="hidden" name="currency_code" value="USD">
+
+          <!-- Display the payment button. -->
+          <input type="image" name="submit" class="paypal-button"
+          src="/images/paypal.png"
+          alt="PayPal - The safer, easier way to pay online" width=120>
+          <img alt="" width="1" height="1"
+          src="/images/paypal.png">
+        </form>
     </header>
+
     <hr />
     <div class="addthis_sharing_toolbox"></div>
   </div>
@@ -182,17 +191,13 @@
       <li>&copy; Tibor Simon</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
     </ul>
   </div>
-</div>
-    </div>
-
+</div>    </div>
     ​<script type="text/javascript">
     var addthis_config = addthis_config||{};
         addthis_config.data_track_addressbar = false;
         addthis_config.data_track_clickback = false;
     </script>
-
-    <!-- Scripts -->
-      <script type="text/javascript" src="https://tiborsimon.io/theme/js/bundle.min.js" charset="utf-8" async></script>
+    <script type="text/javascript" src="https://tiborsimon.io/theme/js/bundle.min.js" charset="utf-8" async></script>
 
         <script type="text/javascript">
           var addthis_share = addthis_share || {}
