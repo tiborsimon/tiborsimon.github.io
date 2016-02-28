@@ -720,7 +720,8 @@ body {
     transition: color 0.2s, background-color 0.2s; }
   .about-section .about-button {
     float: left;
-    margin-right: 12px; }
+    margin-right: 12px;
+    font-size: 18px !important; }
 
 .intro-text {
   font-size: 140%; }
@@ -1137,8 +1138,23 @@ h2.widget-title {
     padding: 7px; } }
 
 @media screen and (max-width: 736px) {
-  .titleBar .toggle {
-    transition: all 1s; }
+  .about-buttons {
+    font-size: 13px !important; }
+  #logo h1 {
+    line-height: 1em; }
+  .container {
+    margin-top: 20px; }
+  #copyright {
+    margin: 0 15px; }
+  .wrapper {
+    padding-top: 20px; }
+  .donation-buttons {
+    max-width: 120px;
+    text-align: center;
+    display: block;
+    margin: 0 auto; }
+  #highlights .highlight p {
+    height: 38px !important; }
   .latest-articles .article-card {
     margin: 0 15px 22px 15px; }
   .latest-articles .article-date {
