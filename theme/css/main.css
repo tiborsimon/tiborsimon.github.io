@@ -950,7 +950,7 @@ h2.widget-title {
       background: #e97770 url("../css/images/overlay.png");
       color: #fff !important; }
       .series-widget .series-post.current a, .series-widget .series-post.current h3 {
-        color: #fff; }
+        color: #fff !important; }
       .series-widget .series-post.current .article-date, .series-widget .series-post.current .article-categories {
         color: rgba(255, 255, 255, 0.8); }
         .series-widget .series-post.current .article-date a, .series-widget .series-post.current .article-categories a {
