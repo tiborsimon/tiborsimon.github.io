@@ -1143,6 +1143,8 @@ h2.widget-title {
     margin: 0 15px 22px 15px; }
   .latest-articles .article-date {
     margin-bottom: 5px !important; }
+  .latest-articles h3 {
+    line-height: 1em; }
   .twitter-feed {
     margin: 0 15px 0 15px; }
   #content .article-title {
