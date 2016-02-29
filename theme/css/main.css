@@ -782,14 +782,14 @@ body {
 
 .article-date, .article-categories {
   font-size: 76%;
-  display: inline-block;
-  color: #aaa !important; }
-  .article-date a, .article-categories a {
-    color: #aaa !important; }
+  display: inline-block; }
   .article-date .padded-icon, .article-categories .padded-icon {
     margin-left: 9px; }
   .article-date .modified, .article-categories .modified {
     margin-left: 9px; }
+
+.series-header {
+  line-height: 1.2em; }
 
 .addthis_sharing_toolbox {
   text-align: center;
