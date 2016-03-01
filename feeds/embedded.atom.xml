@@ -5,6 +5,11 @@
     &lt;img src="/images/articles/slotcar/promo2.jpg" alt=""&gt;
 &lt;/figure&gt;
 
+&lt;div class="gallery"&gt;
+    &lt;img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="Small slot car that has to be driven autonomously." data-jslghtbx data-jslghtbx-caption="The slot car we have to program." data-jslghtbx-group="slotcar-group-1" /&gt;
+    &lt;img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="The track the slot car has to run." data-jslghtbx data-jslghtbx-caption="The track the slot car has to run." data-jslghtbx-group="slotcar-group-1" /&gt;
+&lt;/div&gt;
+
 &lt;h1&gt;About the competition&lt;/h1&gt;
 &lt;p&gt;However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.&lt;/p&gt;
 &lt;p&gt;The rules of the competition&lt;/p&gt;
@@ -16,13 +21,13 @@
 &lt;h1&gt;The track&lt;/h1&gt;
 &lt;p&gt;The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/track.jpg" width="400" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/track.jpg" width="400" alt="The track."&gt;
 &lt;/figure&gt;
 
 &lt;h1&gt;The car&lt;/h1&gt;
 &lt;p&gt;Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/car.jpg" width="400" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/car.jpg" width="400" alt="The slot car."&gt;
 &lt;/figure&gt;
 
 &lt;h1&gt;Solving the problem&lt;/h1&gt;
@@ -53,13 +58,13 @@ In state two the car run at least two full lap (because it collects at least two
 Right at this moment, the car was switched to state three, in which the algorithm takes care of the car’s speed according to the information collected in state two. The led blinked in every lap.&lt;/p&gt;
 &lt;h1&gt;Period finder algorithm&lt;/h1&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/raw-data.png" width="550" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/raw-data.png" width="550" alt="Raw accelerometer data"&gt;
     &lt;figcaption&gt;Raw accelerometer data&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/algorithm.png" width="550" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/algorithm.png" width="550" alt="lgorithm output signals"&gt;
     &lt;figcaption&gt;Algorithm output signals&lt;/figcaption&gt;
 &lt;/figure&gt;
 

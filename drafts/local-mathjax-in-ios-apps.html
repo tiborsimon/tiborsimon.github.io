@@ -15,16 +15,16 @@
 
   <meta name="author" content="Tibor Simon" />
   <meta name="keywords" content="" />
-  <meta name="description" content="As Pelican can use Markdown to render it&#39;s contents, and Markdown doesn&#39;t support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?" />
+  <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations." />
 
   <meta property="fb:app_id" content="551628881652865"/>
   <meta property="og:site_name" content="tiborsimon.io" />
   <meta property="og:type" content="article"/>
-  <meta property="og:title" content="Redirect external links to new tab"/>
-  <meta property="og:url" content="https://tiborsimon.io/web/redirect-external-links-to-new-tab/"/>
-  <meta property="og:description" content="As Pelican can use Markdown to render it&#39;s contents, and Markdown doesn&#39;t support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?"/>
-  <meta property="article:published_time" content="2015-05-17" />
-  <meta property="article:section" content="web" />
+  <meta property="og:title" content="Local MathJax in iOS apps"/>
+  <meta property="og:url" content="https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html"/>
+  <meta property="og:description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations."/>
+  <meta property="article:published_time" content="2016-02-20" />
+  <meta property="article:section" content="ios" />
   <meta property="article:tag" content="" />
   <meta property="article:author" content="Tibor Simon" />
 
@@ -72,49 +72,122 @@
           <div id="content">
             <article>
 
-              <h1 class="article-title">Redirect external links to new tab</h1>
+              <h1 class="article-title">Local MathJax in iOS apps</h1>
 
               <div class="article-info">
                 <hr />
 <div class="article-date">
-  <i class="fa fa-clock-o"></i> Posted on <time datetime="2015-05-17T00:00:00+00:00"> Sun 17 May 2015</time>
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+00:00"> Sat 20 February 2016</time>
 </div><div class="article-categories">
   <!-- CATEGORY -->
   <i class="fa fa-folder-open-o"></i>
-  <a href="https://tiborsimon.io/category/web.html">web</a>
+  <a href="https://tiborsimon.io/category/ios.html">ios</a>
 
   <!-- TAGS -->
       <i class="fa fa-tags padded-icon"></i>
-          <a href="https://tiborsimon.io/tag/pelican.html">pelican</a>,           <a href="https://tiborsimon.io/tag/hack.html">hack</a>,           <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>
+          <a href="https://tiborsimon.io/tag/ios.html">ios</a>,           <a href="https://tiborsimon.io/tag/hack.html">hack</a>,           <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>,           <a href="https://tiborsimon.io/tag/swift.html">swift</a>,           <a href="https://tiborsimon.io/tag/math.html">math</a>,           <a href="https://tiborsimon.io/tag/latex.html">LaTEX</a>
   <!-- SERIES -->
+    <span class="article-series padded-icon">
+      <i class="fa fa-briefcase"></i>
+      Part <built-in method index of str object at 0x104438430> of 0 in <i></i>
+    </span>
 
   <!-- GITHUB -->
+  <span class="padded-icon"><a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank"><i class="fa fa-github-square"></i> Repo</a></span>
 
 </div>              </div>
 
 
-              <div class="summary"><p>As Pelican can use Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?</p></div>
+              <div class="summary"><p>Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations.</p></div>
 
-              <p>Hopefully, there is a simple javascript hack, that can redirect your external
-links to a new blank tab.</p>
-<p>All the credits go to <a href="http://stackoverflow.com/users/1504966/austin">Austin</a>
-and to his <a href="http://stackoverflow.com/a/11597448">stackoverflow post</a>. I am just
-a happy user of this method :)</p>
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
-   <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="p">{</span>
-       <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-           <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-           <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">);</span>
-       <span class="p">});</span>
-   <span class="p">}</span>
-<span class="p">});</span>
+              <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Component</th>
+<th align="center">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">XCode</td>
+<td align="center">Version 7.2.1 (7C1002)</td>
+</tr>
+<tr>
+<td align="center">iOS</td>
+<td align="center">9.2</td>
+</tr>
+<tr>
+<td align="center">MathJax</td>
+<td align="center">2.6.1</td>
+</tr>
+</tbody>
+</table>
+<h2>Prerequisite</h2>
+<p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
+<div class="highlight"><pre><span class="nt">&lt;math</span> <span class="na">title=</span><span class="s">&quot;2^(2/(sqrt(6))&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mstyle</span> <span class="na">mathcolor=</span><span class="s">&quot;blue&quot;</span> <span class="na">fontfamily=</span><span class="s">&quot;sanserif&quot;</span> <span class="na">displaystyle=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;msup&gt;</span>
+      <span class="nt">&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;</span>
+      <span class="nt">&lt;mrow&gt;</span>
+        <span class="nt">&lt;mfrac&gt;</span>
+          <span class="nt">&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;</span>
+          <span class="nt">&lt;mrow&gt;</span>
+            <span class="nt">&lt;msqrt&gt;</span>
+              <span class="nt">&lt;mrow&gt;</span>
+                <span class="nt">&lt;mn&gt;</span>6<span class="nt">&lt;/mn&gt;</span>
+              <span class="nt">&lt;/mrow&gt;</span>
+            <span class="nt">&lt;/msqrt&gt;</span>
+          <span class="nt">&lt;/mrow&gt;</span>
+        <span class="nt">&lt;/mfrac&gt;</span>
+      <span class="nt">&lt;/mrow&gt;</span>
+    <span class="nt">&lt;/msup&gt;</span>
+  <span class="nt">&lt;/mstyle&gt;</span>
+<span class="nt">&lt;/math&gt;</span>
 </pre></div>
 
 
-<p>The method just works. Nothing fancy about it, it does what is supposed to do.
-Thank you Austin!</p>
+<p>The equivalent <strong>LaTEX</strong> representation is:</p>
+<div class="highlight"><pre>2^{\frac{2}{\sqrt{6}}}
+</pre></div>
+
+
+<p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
+<h2>Downloading the external</h2>
+<div class="gallery">
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
+</div>
+
+<h2>Credits</h2>
+<table>
+<thead>
+<tr>
+<th align="center">For this project I used the following articles and answers as guides and solutions for problems.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="http://new2objectivec.blogspot.rs/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://new2objectivec.blogspot.rs/2012/03/tutorial-how-to-setup-mathjax-locally.html">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://docs.mathjax.org/en/latest/start.html">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://stackoverflow.com/a/2660496">Link</a></td>
+</tr>
+<tr>
+<td align="center"><a href="http://stackoverflow.com/a/747644">Link</a></td>
+</tr>
+</tbody>
+</table>
 
               <div class="addthis_sharing_toolbox"></div>
 
@@ -128,8 +201,8 @@ Thank you Austin!</p>
 <script>
 
     var disqus_config = function () {
-        this.page.url = "https://tiborsimon.io/web/redirect-external-links-to-new-tab/";
-        this.page.identifier = "tiborsimon-article-redirect-external-links-to-new-tab";
+        this.page.url = "https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html";
+        this.page.identifier = "tiborsimon-article-local-mathjax-in-ios-apps";
     };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -155,8 +228,36 @@ s.setAttribute('data-timestamp', +new Date());
         <p >Hi, my name is <b>Tibor Simon.</b> I am a graduated electrical engineer with a masters degree.  I live in Budapest, and I am currently working at Nokia Networks.</p>
       </div>
       <div class="box">
+<div class="github-button">
+  <a href="https://github.com/tiborsimon" target="_blank" class="icon"><i class="fa fa-github-alt"></i></a>
+  <a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">Goto repo</a>
+  <a href="https://github.com/tiborsimon/ios-local-mathjax-template/releases/latest" target="_blank"><i class="fa fa-download"></i> latest release</a>
+</div>
       </div>
       <div class="box">
+<aside class="series-widget">
+  <div class="series-header">
+    <h2>This article is part <built-in method index of str object at 0x104438430> of 0 of the <b></b> series</h2>
+  </div>
+
+  <div class="series-post current">
+      <div class="article-date">
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+00:00"> Sat 20 February 2016</time>
+      </div>
+
+      <a href="https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html"><h3 class="post-title"><small><built-in method index of str object at 0x104438430>.</small> Local MathJax in iOS apps</h3></a>
+
+      <div class="article-categories">
+        <!-- CATEGORY -->
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://tiborsimon.io/category/ios.html">ios</a>
+
+        <!-- TAGS -->
+            <i class="fa fa-tags"></i>
+                <a href="https://tiborsimon.io/tag/ios.html">ios</a>,                 <a href="https://tiborsimon.io/tag/hack.html">hack</a>,                 <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>,                 <a href="https://tiborsimon.io/tag/swift.html">swift</a>,                 <a href="https://tiborsimon.io/tag/math.html">math</a>,                 <a href="https://tiborsimon.io/tag/latex.html">LaTEX</a>      </div>
+  </div>
+
+</aside>
       </div>
       <div class="box">
 <aside class="tag-list">
@@ -331,7 +432,7 @@ s.setAttribute('data-timestamp', +new Date());
       passthrough : {
         twitter: {
           via: "tiborsimonio",
-          text: "Tibor Simon - As Pelican can use Markdown to render it's contents, and ....."
+          text: "Tibor Simon - Integrating MathJax locally in an iOS app to be able to use ....."
         }
       },
       url_transforms : {

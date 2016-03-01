@@ -512,94 +512,7 @@
       &lt;div class="tortex-latest"&gt;&lt;/div&gt;
 
     &lt;/div&gt;
-  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tibor Simon</dc:creator><pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate><guid>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</guid><category>guitar</category><category>pick</category><category>dunlop</category><category>tortextime</category><category>statistics</category></item><item><title>Local MathJax in iOS apps</title><link>https://tiborsimon.io/ios/local-mathjax-in-ios-apps/</link><description>&lt;p&gt;In this article I am going to show you a method to integrate &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; - &lt;em&gt;an external javascript display engine for mathematics&lt;/em&gt; - in an iOS app. I used the following components:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;Component&lt;/th&gt;
-&lt;th align="center"&gt;Version&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;XCode&lt;/td&gt;
-&lt;td align="center"&gt;Version 7.2.1 (7C1002)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;iOS&lt;/td&gt;
-&lt;td align="center"&gt;9.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;MathJax&lt;/td&gt;
-&lt;td align="center"&gt;2.6.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;Prerequisite&lt;/h2&gt;
-&lt;p&gt;I wanted to display &lt;em&gt;mathematical equations&lt;/em&gt; inside an iOS app using existing math render packages. According to &lt;a href="http://stackoverflow.com/a/16002611"&gt;this Stack overflow answer&lt;/a&gt;, &lt;em&gt;mathML&lt;/em&gt; is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;math&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2^(2/(sqrt(6))&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/1998/Math/MathML&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;mstyle&lt;/span&gt; &lt;span class="na"&gt;mathcolor=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;blue&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;fontfamily=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sanserif&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;displaystyle=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;msup&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;mfrac&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;msqrt&amp;gt;&lt;/span&gt;
-              &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
-                &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;6&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
-              &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;/msqrt&amp;gt;&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/mfrac&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;/msup&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;/mstyle&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/math&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;The equivalent &lt;strong&gt;LaTEX&lt;/strong&gt; representation is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;2^{\frac{2}{\sqrt{6}}}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; for this purpose.&lt;/p&gt;
-&lt;h2&gt;Downloading the external&lt;/h2&gt;
-&lt;div class="gallery"&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
-&lt;/div&gt;
-
-&lt;h2&gt;Credits&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;For this project I used the following articles and answers as guides and solutions for problems.&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="http://new2objectivec.blogspot.rs/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1"&gt;Link&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="http://new2objectivec.blogspot.rs/2012/03/tutorial-how-to-setup-mathjax-locally.html"&gt;Link&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="http://docs.mathjax.org/en/latest/start.html"&gt;Link&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="http://stackoverflow.com/a/2660496"&gt;Link&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;&lt;a href="http://stackoverflow.com/a/747644"&gt;Link&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tibor Simon</dc:creator><pubDate>Sat, 20 Feb 2016 00:00:00 +0000</pubDate><guid>tag:tiborsimon.io,2016-02-20:ios/local-mathjax-in-ios-apps/</guid><category>ios</category><category>hack</category><category>javascript</category><category>swift</category><category>math</category><category>LaTEX</category></item><item><title>Get half of the list in Pelican</title><link>https://tiborsimon.io/python/get-half-of-the-list-in-pelican/</link><description>&lt;p&gt;I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.&lt;/p&gt;
+  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tibor Simon</dc:creator><pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate><guid>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</guid><category>guitar</category><category>pick</category><category>dunlop</category><category>tortextime</category><category>statistics</category></item><item><title>Get half of the list in Pelican</title><link>https://tiborsimon.io/python/get-half-of-the-list-in-pelican/</link><description>&lt;p&gt;I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.&lt;/p&gt;
 &lt;h1&gt;Using built in Jinja2 filters&lt;/h1&gt;
 &lt;p&gt;In the &lt;strong&gt;first&lt;/strong&gt; solution &lt;em&gt;we are using&lt;/em&gt; only the built in Jinja filters. Because of the lack of mathematical functions in the built in filters, we need to hack the only available rounding filter (&lt;code&gt;round&lt;/code&gt;) to be able to use it as a &lt;code&gt;ceil&lt;/code&gt; like function.&lt;/p&gt;
 &lt;p&gt;The steps are the followings:&lt;/p&gt;
@@ -1846,6 +1759,11 @@ The content of the text file in this case should be like this:&lt;/p&gt;
     &lt;img src="/images/articles/slotcar/promo2.jpg" alt=""&gt;
 &lt;/figure&gt;
 
+&lt;div class="gallery"&gt;
+    &lt;img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="Small slot car that has to be driven autonomously." data-jslghtbx data-jslghtbx-caption="The slot car we have to program." data-jslghtbx-group="slotcar-group-1" /&gt;
+    &lt;img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="The track the slot car has to run." data-jslghtbx data-jslghtbx-caption="The track the slot car has to run." data-jslghtbx-group="slotcar-group-1" /&gt;
+&lt;/div&gt;
+
 &lt;h1&gt;About the competition&lt;/h1&gt;
 &lt;p&gt;However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.&lt;/p&gt;
 &lt;p&gt;The rules of the competition&lt;/p&gt;
@@ -1857,13 +1775,13 @@ The content of the text file in this case should be like this:&lt;/p&gt;
 &lt;h1&gt;The track&lt;/h1&gt;
 &lt;p&gt;The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/track.jpg" width="400" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/track.jpg" width="400" alt="The track."&gt;
 &lt;/figure&gt;
 
 &lt;h1&gt;The car&lt;/h1&gt;
 &lt;p&gt;Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/car.jpg" width="400" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/car.jpg" width="400" alt="The slot car."&gt;
 &lt;/figure&gt;
 
 &lt;h1&gt;Solving the problem&lt;/h1&gt;
@@ -1894,13 +1812,13 @@ In state two the car run at least two full lap (because it collects at least two
 Right at this moment, the car was switched to state three, in which the algorithm takes care of the car’s speed according to the information collected in state two. The led blinked in every lap.&lt;/p&gt;
 &lt;h1&gt;Period finder algorithm&lt;/h1&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/raw-data.png" width="550" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/raw-data.png" width="550" alt="Raw accelerometer data"&gt;
     &lt;figcaption&gt;Raw accelerometer data&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img src="/images/articles/slotcar/algorithm.png" width="550" alt=""&gt;
+    &lt;img src="/images/articles/slotcar/algorithm.png" width="550" alt="lgorithm output signals"&gt;
     &lt;figcaption&gt;Algorithm output signals&lt;/figcaption&gt;
 &lt;/figure&gt;
 

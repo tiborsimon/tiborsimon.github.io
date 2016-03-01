@@ -101,6 +101,11 @@
     <img src="/images/articles/slotcar/promo2.jpg" alt="">
 </figure>
 
+<div class="gallery">
+    <img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="Small slot car that has to be driven autonomously." data-jslghtbx data-jslghtbx-caption="The slot car we have to program." data-jslghtbx-group="slotcar-group-1" />
+    <img class="jslghtbx-thmb" src="/images/articles/slotcar/promo1.jpg" alt="The track the slot car has to run." data-jslghtbx data-jslghtbx-caption="The track the slot car has to run." data-jslghtbx-group="slotcar-group-1" />
+</div>
+
 <h1>About the competition</h1>
 <p>However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.</p>
 <p>The rules of the competition</p>
@@ -112,13 +117,13 @@
 <h1>The track</h1>
 <p>The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.</p>
 <figure>
-    <img src="/images/articles/slotcar/track.jpg" width="400" alt="">
+    <img src="/images/articles/slotcar/track.jpg" width="400" alt="The track.">
 </figure>
 
 <h1>The car</h1>
 <p>Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.</p>
 <figure>
-    <img src="/images/articles/slotcar/car.jpg" width="400" alt="">
+    <img src="/images/articles/slotcar/car.jpg" width="400" alt="The slot car.">
 </figure>
 
 <h1>Solving the problem</h1>
@@ -149,13 +154,13 @@ In state two the car run at least two full lap (because it collects at least two
 Right at this moment, the car was switched to state three, in which the algorithm takes care of the car’s speed according to the information collected in state two. The led blinked in every lap.</p>
 <h1>Period finder algorithm</h1>
 <figure>
-    <img src="/images/articles/slotcar/raw-data.png" width="550" alt="">
+    <img src="/images/articles/slotcar/raw-data.png" width="550" alt="Raw accelerometer data">
     <figcaption>Raw accelerometer data</figcaption>
 </figure>
 
 <p>The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)</p>
 <figure>
-    <img src="/images/articles/slotcar/algorithm.png" width="550" alt="">
+    <img src="/images/articles/slotcar/algorithm.png" width="550" alt="lgorithm output signals">
     <figcaption>Algorithm output signals</figcaption>
 </figure>
 
@@ -211,9 +216,6 @@ s.setAttribute('data-timestamp', +new Date());
   <h2 class="widget-title"><a href="https://tiborsimon.io/tags.html">Tags</a></h2>
   <div class="tagcloud">
       <span class="tagcloud-button">
-        <a href="https://tiborsimon.io/tag/LaTEX.html">LaTEX</a>
-      </span>
-      <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/accelerometer.html">accelerometer</a>
       </span>
       <span class="tagcloud-button">
@@ -253,9 +255,6 @@ s.setAttribute('data-timestamp', +new Date());
         <a href="https://tiborsimon.io/tag/hack.html">hack</a>
       </span>
       <span class="tagcloud-button">
-        <a href="https://tiborsimon.io/tag/ios.html">ios</a>
-      </span>
-      <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/java.html">java</a>
       </span>
       <span class="tagcloud-button">
@@ -266,9 +265,6 @@ s.setAttribute('data-timestamp', +new Date());
       </span>
       <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/lists.html">lists</a>
-      </span>
-      <span class="tagcloud-button">
-        <a href="https://tiborsimon.io/tag/math.html">math</a>
       </span>
       <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/parameter.html">parameter</a>
@@ -301,9 +297,6 @@ s.setAttribute('data-timestamp', +new Date());
         <a href="https://tiborsimon.io/tag/statistics.html">statistics</a>
       </span>
       <span class="tagcloud-button">
-        <a href="https://tiborsimon.io/tag/swift.html">swift</a>
-      </span>
-      <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/tools.html">tools</a>
       </span>
       <span class="tagcloud-button">
@@ -322,7 +315,6 @@ s.setAttribute('data-timestamp', +new Date());
       <li><a href="https://tiborsimon.io/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
-      <li><a href="https://tiborsimon.io/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
       <li><a href="https://tiborsimon.io/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
       <li><a href="https://tiborsimon.io/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
