@@ -736,6 +736,11 @@ body {
     display: table;
     clear: both; }
 
+figure figcaption {
+  font-size: 80%;
+  text-align: center;
+  margin: -10px 0 40px 0; }
+
 /*  T O R T E X - T I M E  */
 .tortex-time-wrapper .tortex-time-pick {
   display: block;
