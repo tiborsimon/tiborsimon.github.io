@@ -11,7 +11,7 @@
         &lt;p&gt;Follow me on twitter (&lt;a href="https://twitter.com/tiborsimonio" target="_blank"&gt;@tiborsimonio&lt;/a&gt;) or search for the &lt;a href="https://twitter.com/search?q=%23tortextime" target="_blank"&gt;#tortextime&lt;/a&gt; hashtag to be up to date :)&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class="6u 12u(mobile)"&gt;
-        &lt;a class="twitter-timeline" href="https://twitter.com/hashtag/tortextime" data-widget-id="704378995211632640" height="340"&gt;#tortextime Tweets&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");&lt;/script&gt;
+        &lt;a class="twitter-timeline" href="https://twitter.com/hashtag/tortextime" data-widget-id="704742922370076672" height="340"&gt;#tortextime Tweets&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");&lt;/script&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 
