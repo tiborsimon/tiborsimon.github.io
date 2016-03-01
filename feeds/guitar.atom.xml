@@ -4,11 +4,11 @@
 
     &lt;div class="row"&gt;
       &lt;div class="6u 12u(mobile)"&gt;
-        &lt;p&gt;I have decided to buy a bunch of guitar picks at once to save money and time. I won't need to go in the music store every other week, and I won't have to pay the extra price in the local midtown music stores. And that's not all. I also can create a usage statistic, about how I use guitar picks.&lt;/p&gt;
+        &lt;p&gt;I have decided to buy a bunch of guitar picks at once to save money and time. I won't need to go in the music store every other week, and I won't have to pay the extra price of the local midtown music stores. And that's not all. I also can create a usage statistic, about how I use guitar picks.&lt;/p&gt;
 
         &lt;p&gt;I numbered every pick I've got - all sixty of them - to keep track of the lifetime. I will also keep track of my guitar sessions to be able to correlate the usage to the actual wearing.&lt;/p&gt;
 
-        &lt;p&gt;Follow me on twitter (&lt;a href="https://twitter.com/tiborsimonio" target="_blank"&gt;@tiborsimonio&lt;/a&gt;) of search for the &lt;a href="https://twitter.com/search?q=%23tortextime" target="_blank"&gt;#tortextime&lt;/a&gt; hashtag to be up to date :)&lt;/p&gt;
+        &lt;p&gt;Follow me on twitter (&lt;a href="https://twitter.com/tiborsimonio" target="_blank"&gt;@tiborsimonio&lt;/a&gt;) or search for the &lt;a href="https://twitter.com/search?q=%23tortextime" target="_blank"&gt;#tortextime&lt;/a&gt; hashtag to be up to date :)&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class="6u 12u(mobile)"&gt;
         &lt;a class="twitter-timeline" href="https://twitter.com/hashtag/tortextime" data-widget-id="704378995211632640" height="340"&gt;#tortextime Tweets&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");&lt;/script&gt;
@@ -16,9 +16,9 @@
     &lt;/div&gt;
 
     &lt;div class="gallery"&gt;
-      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-main.jpg" alt="Tortex time main image. 60 picks on the table." data-jslghtbx data-jslghtbx-caption="60 picks on the table." data-jslghtbx-group="tortex-time-group" /&gt;
-      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-stack.jpg" alt="Tortex time 60 pick tall stack." data-jslghtbx data-jslghtbx-caption="60 pick tall stack." data-jslghtbx-group="tortex-time-group" /&gt;
-      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-numbering.jpg" alt="Tortex time pick numbering 1-60." data-jslghtbx data-jslghtbx-caption="Pick numbering 1-60." data-jslghtbx-group="tortex-time-group" /&gt;
+      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-main.jpg" alt="Tortex time main image. 60 picks on the table." data-jslghtbx data-jslghtbx-caption="58 picks on the table. 2 other picks have been given as a gift :)" data-jslghtbx-group="tortex-time-group" /&gt;
+      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-stack.jpg" alt="Tortex time 60 pick tall stack." data-jslghtbx data-jslghtbx-caption="58 pick tall stack." data-jslghtbx-group="tortex-time-group" /&gt;
+      &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-numbering.jpg" alt="Tortex time pick numbering 1-60." data-jslghtbx data-jslghtbx-caption="Pick numbering 3-60. The first two was given as a gift." data-jslghtbx-group="tortex-time-group" /&gt;
       &lt;img class="jslghtbx-thmb" src="/images/articles/tortex-time/tortex-time-deviation.jpg" alt="Tortex time manufacturing deviation." data-jslghtbx data-jslghtbx-caption="Manufacturing deviation in the painting." data-jslghtbx-group="tortex-time-group" /&gt;
     &lt;/div&gt;
 
@@ -31,7 +31,7 @@
           &lt;span class="pick-overlay"&gt;1&lt;/span&gt;
           &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-none.png" alt="1st pick image." width="50px" /&gt;
         &lt;div class="tortex-descr"&gt;
-          &lt;div&gt;&lt;br /&gt;Gifted away&lt;/div&gt;
+          &lt;div&gt;&lt;br /&gt;Given as a gift&lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
 
@@ -39,7 +39,7 @@
           &lt;span class="pick-overlay"&gt;2&lt;/span&gt;
           &lt;img class="tortex-img" src="/images/articles/tortex-time/pick-none.png" alt="2nd pick image." width="50px" /&gt;
         &lt;div class="tortex-descr"&gt;
-          &lt;div&gt;&lt;br /&gt;Gifted away&lt;/div&gt;
+          &lt;div&gt;&lt;br /&gt;Given as a gift&lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
 

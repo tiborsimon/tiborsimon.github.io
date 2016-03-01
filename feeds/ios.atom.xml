@@ -53,6 +53,15 @@
 
 &lt;p&gt;To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; for this purpose.&lt;/p&gt;
 &lt;h2&gt;Downloading the external&lt;/h2&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" /&gt;
+&lt;/div&gt;
+
 &lt;h2&gt;Credits&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;

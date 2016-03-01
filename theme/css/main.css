@@ -727,11 +727,14 @@ body {
   font-size: 140%; }
 
 .gallery {
-  clear: both;
   padding: 0 auto; }
   .gallery .jslghtbx-thmb {
     float: left;
     margin: 1em 3px 2em 3px !important; }
+  .gallery:after {
+    content: "";
+    display: table;
+    clear: both; }
 
 /*  T O R T E X - T I M E  */
 .tortex-time-wrapper .tortex-time-pick {
@@ -774,6 +777,8 @@ body {
 /* Latest articles */
 .article-card {
   margin-bottom: 25px; }
+  .article-card .article-date {
+    margin-bottom: 4px; }
   .article-card h3 {
     font-size: 2em;
     margin-bottom: 10px;
@@ -984,21 +989,18 @@ h2.widget-title {
 /* G I T H U B   B U T T O N */
 .github-button {
   margin-bottom: 20px;
-  border-radius: 3px;
-  height: 27px;
+  border-radius: 6px;
   display: block;
-  background: #b9b8be url("../css/images/overlay.png"); }
+  background: #89888c url("../css/images/overlay.png"); }
   .github-button a {
     color: #fff !important;
     text-decoration: none;
-    padding: 0 12px;
+    padding: 12px 12px;
     display: inline-block;
-    font-size: 0.7em;
+    font-size: 0.9em;
     font-weight: lighter;
     height: 100%;
-    text-align: center;
-    position: relative;
-    top: -2px; }
+    text-align: center; }
     .github-button a:first-child {
       border-right: 1px dashed rgba(255, 255, 255, 0.54); }
     .github-button a:last-child {
