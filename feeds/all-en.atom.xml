@@ -512,7 +512,156 @@
       &lt;div class="tortex-latest"&gt;&lt;/div&gt;
 
     &lt;/div&gt;
-  </summary><category term="guitar"></category><category term="pick"></category><category term="dunlop"></category><category term="tortextime"></category><category term="statistics"></category></entry><entry><title>Get half of the list in Pelican</title><link href="https://tiborsimon.io/python/get-half-of-the-list-in-pelican/" rel="alternate"></link><updated>2016-02-14T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-14:python/get-half-of-the-list-in-pelican/</id><summary type="html">&lt;p&gt;I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.&lt;/p&gt;
+  </summary><category term="guitar"></category><category term="pick"></category><category term="dunlop"></category><category term="tortextime"></category><category term="statistics"></category></entry><entry><title>Local MathJax in iOS apps</title><link href="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/" rel="alternate"></link><updated>2016-02-20T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-20:ios/local-mathjax-in-ios-apps/</id><summary type="html">&lt;p&gt;In this article I am going to show you a method to integrate &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; - &lt;em&gt;an external javascript display engine for mathematics&lt;/em&gt; - in an iOS app. I used the following components:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Component&lt;/th&gt;
+&lt;th align="center"&gt;Version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;XCode&lt;/td&gt;
+&lt;td align="center"&gt;Version 7.2.1 (7C1002)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;iOS&lt;/td&gt;
+&lt;td align="center"&gt;9.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;MathJax&lt;/td&gt;
+&lt;td align="center"&gt;2.6.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Prerequisite&lt;/h2&gt;
+&lt;p&gt;I wanted to display &lt;em&gt;mathematical equations&lt;/em&gt; inside an iOS app using existing math render packages. According to &lt;a href="http://stackoverflow.com/a/16002611"&gt;this Stack overflow answer&lt;/a&gt;, &lt;em&gt;mathML&lt;/em&gt; is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;math&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2^(2/(sqrt(6))&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/1998/Math/MathML&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;mstyle&lt;/span&gt; &lt;span class="na"&gt;mathcolor=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;blue&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;fontfamily=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sanserif&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;displaystyle=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;msup&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;mfrac&amp;gt;&lt;/span&gt;
+          &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
+          &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;msqrt&amp;gt;&lt;/span&gt;
+              &lt;span class="nt"&gt;&amp;lt;mrow&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;mn&amp;gt;&lt;/span&gt;6&lt;span class="nt"&gt;&amp;lt;/mn&amp;gt;&lt;/span&gt;
+              &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/msqrt&amp;gt;&lt;/span&gt;
+          &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/mfrac&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;/mrow&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/msup&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/mstyle&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/math&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The equivalent &lt;strong&gt;LaTEX&lt;/strong&gt; representation is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;2^{\frac{2}{\sqrt{6}}}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose &lt;a href="https://www.mathjax.org"&gt;MathJax&lt;/a&gt; for this purpose.&lt;/p&gt;
+&lt;h2&gt;Downloading MathJax&lt;/h2&gt;
+&lt;p&gt;Download the sources from &lt;a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank"&gt;MathJax's Github page&lt;/a&gt;. At the time I wrote this article, the latest version was &lt;em&gt;2.6.1&lt;/em&gt;. It could take quite a bit of time to download the whole zip file.&lt;/p&gt;
+&lt;p&gt;I put the downloaded files into the Xcode project's Vendor folder:&lt;/p&gt;
+&lt;p&gt;Simply unboxed the zip, the package takes up &lt;strong&gt;180 MB&lt;/strong&gt; space &lt;em&gt;(that's a lot!)&lt;/em&gt;. In a future article I will show you the minimal needed content of this package that is be able to render the expressions.&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-vendor-folder.png" alt="Location of the downloaded MathJax sources" data-jslghtbx data-jslghtbx-caption="Location of the downloaded MathJax sources" data-jslghtbx-group="mathjax-ios-group-03" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-raw-package-size.png" alt="Size of the freshly downloaded package" data-jslghtbx data-jslghtbx-caption="Size of the freshly downloaded package" data-jslghtbx-group="mathjax-ios-group-03" /&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Adding the MathJax package to the project&lt;/h2&gt;
+&lt;p&gt;I added the downloaded and extracted MathJax sources to a single view based Xcode project, by dragging the folder into the project navigator. I unchecked the copy sources option.&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/adding-the-sources.png" alt="Adding the sources to the project" data-jslghtbx data-jslghtbx-caption="Adding the sources to the project" data-jslghtbx-group="mathjax-ios-group-02" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/copy-items.png" alt="Unchecking the copy items if needed option" data-jslghtbx data-jslghtbx-caption="Unchecking the copy items if needed option" data-jslghtbx-group="mathjax-ios-group-02" /&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Using the MathJax package&lt;/h2&gt;
+&lt;p&gt;After the sources are placed to the right place, it's time to use them. I draged a &lt;em&gt;UIWebView&lt;/em&gt; to the Storyboard, and created a connection to the ViewController class (&lt;code&gt;@IBOutlet weak var myWebView: UIWebView!&lt;/code&gt;). I wanted to display the following simple html page in the UIWebView...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;MathJax TeX Test Page&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;async&lt;/span&gt;
+            &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-size: 30pt; color: #eee;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            $$    
+            \begin{equation}
+              \prod_{\substack{
+                        1\le i \le n\\
+                        1\le j \le m}}
+                 M_{i,j}
+            \end{equation}
+            $$
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;... so I used its &lt;code&gt;loadHTMLString&lt;/code&gt; method to do that:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;//&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;  &lt;span class="n"&gt;ViewController&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;swift&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;  &lt;span class="n"&gt;MathJaxTest01&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;  &lt;span class="n"&gt;Created&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;Tibor&lt;/span&gt; &lt;span class="n"&gt;Simon&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;16.&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;  &lt;span class="n"&gt;Copyright&lt;/span&gt; &lt;span class="err"&gt;©&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt; &lt;span class="n"&gt;Tibor&lt;/span&gt; &lt;span class="n"&gt;Simon&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;All&lt;/span&gt; &lt;span class="n"&gt;rights&lt;/span&gt; &lt;span class="n"&gt;reserved&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;UIKit&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ViewController&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UIViewController&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@IBOutlet&lt;/span&gt; &lt;span class="n"&gt;weak&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;myWebView&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UIWebView&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
+
+    &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;viewDidLoad&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;viewDidLoad&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt; &lt;span class="n"&gt;additional&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt; &lt;span class="n"&gt;after&lt;/span&gt; &lt;span class="n"&gt;loading&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;typically&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;a&lt;/span&gt; &lt;span class="nn"&gt;nib.&lt;/span&gt;
+
+        &lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NSBundle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mainBundle&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bundlePath&lt;/span&gt;
+        &lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;baseURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NSURL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fileURLWithPath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;myHTML&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;MathJax TeX Test Page&amp;lt;/title&amp;gt;&amp;lt;script type=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;text/javascript&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt; async  src=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  &amp;lt;div style=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;font-size: 30pt; color: #eee;&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;$$&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;begin{equation}&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;prod_{&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;substack{1&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;le i &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;le n&lt;/span&gt;&lt;span class="se"&gt;\\\\&lt;/span&gt;&lt;span class="s"&gt; 1&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;le j &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;le m}}M_{i,j} &lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;end{equation}$$&amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;myWebView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadHTMLString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;myHTML&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;baseURL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;baseURL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Dispose&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt; &lt;span class="n"&gt;resources&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;recreated&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Testing with the simulator&lt;/h2&gt;
+&lt;p&gt;The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the &lt;em&gt;UIWebView&lt;/em&gt; in 8 phases:&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-00.png" alt="Rendering phase 1: It starts as a blank screen." data-jslghtbx data-jslghtbx-caption="Rendering phase 1: It starts as a blank screen." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.png" alt="Rendering phase 2: Then it loads the raw LaTEX source." data-jslghtbx data-jslghtbx-caption="Rendering phase 2: Then it loads the raw LaTEX source." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.png" alt="Rendering phase 3: First rendering pass." data-jslghtbx data-jslghtbx-caption="Rendering phase 3: First rendering pass." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.png" alt="Rendering phase 4: Loading CommonHTML sources for the final rendering pass." data-jslghtbx data-jslghtbx-caption="Rendering phase 4: Loading CommonHTML sources for the final rendering pass." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.png" alt="Rendering phase 5: Renders final image." data-jslghtbx data-jslghtbx-caption="Rendering phase 5: Renders final image." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.png" alt="Rendering phase 6: Becames blank again." data-jslghtbx data-jslghtbx-caption="Rendering phase 6: Becames blank again." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.png" alt="Rendering phase 7: Final image appears in fractions." data-jslghtbx data-jslghtbx-caption="Rendering phase 7: Final image appears in fractions." data-jslghtbx-group="mathjax-ios-group" /&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-07.png" alt="Rendering phase 8: Render finished." data-jslghtbx data-jslghtbx-caption="Rendering phase 8: Render finished." data-jslghtbx-group="mathjax-ios-group" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The whole rendering happens in less then half a second, but it is noticeable. If you want to use this method to render mathematical expresions in your app, you have to make sure, you only show your &lt;em&gt;UIWebView&lt;/em&gt;, when it fulli loaded.&lt;/p&gt;
+&lt;h2&gt;Try it out yourself!&lt;/h2&gt;
+&lt;p&gt;You can download the whole Xcode project with the added MathJax sources from &lt;a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank"&gt;the project's Github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Acknowledgement&lt;/h2&gt;
+&lt;p&gt;For this project, I get a lot of ideas from &lt;a href="http://new2objectivec.blogspot.hu/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1" target="_blank"&gt;New 2 Objective-C&lt;/a&gt; blog. His implementation is based on a local file writing and reading, which is pretty slow, but it works :)&lt;/p&gt;
+&lt;p&gt;I also used some ideas from Stack Overflow to &lt;a href="http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview" target="_blank"&gt;make my UIWebView transparent&lt;/a&gt;&lt;/p&gt;</summary><category term="ios"></category><category term="hack"></category><category term="javascript"></category><category term="swift"></category><category term="math"></category><category term="LaTEX"></category></entry><entry><title>Get half of the list in Pelican</title><link href="https://tiborsimon.io/python/get-half-of-the-list-in-pelican/" rel="alternate"></link><updated>2016-02-14T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-14:python/get-half-of-the-list-in-pelican/</id><summary type="html">&lt;p&gt;I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.&lt;/p&gt;
 &lt;h1&gt;Using built in Jinja2 filters&lt;/h1&gt;
 &lt;p&gt;In the &lt;strong&gt;first&lt;/strong&gt; solution &lt;em&gt;we are using&lt;/em&gt; only the built in Jinja filters. Because of the lack of mathematical functions in the built in filters, we need to hack the only available rounding filter (&lt;code&gt;round&lt;/code&gt;) to be able to use it as a &lt;code&gt;ceil&lt;/code&gt; like function.&lt;/p&gt;
 &lt;p&gt;The steps are the followings:&lt;/p&gt;

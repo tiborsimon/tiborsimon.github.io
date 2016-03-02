@@ -15,14 +15,14 @@
 
   <meta name="author" content="Tibor Simon" />
   <meta name="keywords" content="" />
-  <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations." />
+  <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX." />
 
   <meta property="fb:app_id" content="551628881652865"/>
   <meta property="og:site_name" content="tiborsimon.io" />
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="Local MathJax in iOS apps"/>
-  <meta property="og:url" content="https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html"/>
-  <meta property="og:description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations."/>
+  <meta property="og:url" content="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/"/>
+  <meta property="og:description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX."/>
   <meta property="article:published_time" content="2016-02-20" />
   <meta property="article:section" content="ios" />
   <meta property="article:tag" content="" />
@@ -34,6 +34,9 @@
       <meta name="twitter:description" content="A blog and portfolio about programming, engineering, electronics and music. Tibor, the host, is a graduated electrical engineer from Budapest." />
       <meta name="twitter:image" content="https://tiborsimon.io/images/tibor4.jpg" />
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+</head>
   </head>
 
   <body class="right-sidebar">
@@ -89,7 +92,7 @@
   <!-- SERIES -->
     <span class="article-series padded-icon">
       <i class="fa fa-briefcase"></i>
-      Part <built-in method index of str object at 0x1043f93f0> of 0 in <i></i>
+      Part 1 of 1 in <i>iOS MathJax</i>
     </span>
 
   <!-- GITHUB -->
@@ -98,7 +101,7 @@
 </div>              </div>
 
 
-              <div class="summary"><p>Integrating MathJax locally in an iOS app to be able to use mathematical equations stored as LaTEX equations.</p></div>
+              <div class="summary"><p>Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.</p></div>
 
               <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
 <table>
@@ -153,42 +156,103 @@
 
 
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
-<h2>Downloading the external</h2>
-<!--
+<h2>Downloading MathJax</h2>
+<p>Download the sources from <a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank">MathJax's Github page</a>. At the time I wrote this article, the latest version was <em>2.6.1</em>. It could take quite a bit of time to download the whole zip file.</p>
+<p>I put the downloaded files into the Xcode project's Vendor folder:</p>
+<p>Simply unboxed the zip, the package takes up <strong>180 MB</strong> space <em>(that's a lot!)</em>. In a future article I will show you the minimal needed content of this package that is be able to render the expressions.</p>
 <div class="gallery">
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.jpg" alt="" data-jslghtbx data-jslghtbx-caption="" data-jslghtbx-group="mathjax-ios-group" />
-</div> -->
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-vendor-folder.png" alt="Location of the downloaded MathJax sources" data-jslghtbx data-jslghtbx-caption="Location of the downloaded MathJax sources" data-jslghtbx-group="mathjax-ios-group-03" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-raw-package-size.png" alt="Size of the freshly downloaded package" data-jslghtbx data-jslghtbx-caption="Size of the freshly downloaded package" data-jslghtbx-group="mathjax-ios-group-03" />
+</div>
 
-<h2>Credits</h2>
-<table>
-<thead>
-<tr>
-<th align="center">For this project I used the following articles and answers as guides and solutions for problems.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a href="http://new2objectivec.blogspot.rs/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1">Link</a></td>
-</tr>
-<tr>
-<td align="center"><a href="http://new2objectivec.blogspot.rs/2012/03/tutorial-how-to-setup-mathjax-locally.html">Link</a></td>
-</tr>
-<tr>
-<td align="center"><a href="http://docs.mathjax.org/en/latest/start.html">Link</a></td>
-</tr>
-<tr>
-<td align="center"><a href="http://stackoverflow.com/a/2660496">Link</a></td>
-</tr>
-<tr>
-<td align="center"><a href="http://stackoverflow.com/a/747644">Link</a></td>
-</tr>
-</tbody>
-</table>
+<h2>Adding the MathJax package to the project</h2>
+<p>I added the downloaded and extracted MathJax sources to a single view based Xcode project, by dragging the folder into the project navigator. I unchecked the copy sources option.</p>
+<div class="gallery">
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/adding-the-sources.png" alt="Adding the sources to the project" data-jslghtbx data-jslghtbx-caption="Adding the sources to the project" data-jslghtbx-group="mathjax-ios-group-02" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/copy-items.png" alt="Unchecking the copy items if needed option" data-jslghtbx data-jslghtbx-caption="Unchecking the copy items if needed option" data-jslghtbx-group="mathjax-ios-group-02" />
+</div>
+
+<h2>Using the MathJax package</h2>
+<p>After the sources are placed to the right place, it's time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView...</p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>MathJax TeX Test Page<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">async</span>
+            <span class="na">src=</span><span class="s">&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;font-size: 30pt; color: #eee;&quot;</span><span class="nt">&gt;</span>
+            $$    
+            \begin{equation}
+              \prod_{\substack{
+                        1\le i \le n\\
+                        1\le j \le m}}
+                 M_{i,j}
+            \end{equation}
+            $$
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>... so I used its <code>loadHTMLString</code> method to do that:</p>
+<div class="highlight"><pre><span class="o">//</span>
+<span class="o">//</span>  <span class="n">ViewController</span><span class="o">.</span><span class="n">swift</span>
+<span class="o">//</span>  <span class="n">MathJaxTest01</span>
+<span class="o">//</span>
+<span class="o">//</span>  <span class="n">Created</span> <span class="n">by</span> <span class="n">Tibor</span> <span class="n">Simon</span> <span class="n">on</span> <span class="mi">20</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="mf">16.</span>
+<span class="o">//</span>  <span class="n">Copyright</span> <span class="err">©</span> <span class="mi">2016</span> <span class="n">Tibor</span> <span class="n">Simon</span><span class="o">.</span> <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
+<span class="o">//</span>
+
+<span class="kn">import</span> <span class="nn">UIKit</span>
+
+<span class="k">class</span> <span class="nc">ViewController</span><span class="p">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
+
+    <span class="nd">@IBOutlet</span> <span class="n">weak</span> <span class="n">var</span> <span class="n">myWebView</span><span class="p">:</span> <span class="n">UIWebView</span><span class="err">!</span>
+
+    <span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+        <span class="o">//</span> <span class="n">Do</span> <span class="nb">any</span> <span class="n">additional</span> <span class="n">setup</span> <span class="n">after</span> <span class="n">loading</span> <span class="n">the</span> <span class="n">view</span><span class="p">,</span> <span class="n">typically</span> <span class="kn">from</span> <span class="nn">a</span> <span class="nn">nib.</span>
+
+        <span class="n">let</span> <span class="n">path</span> <span class="o">=</span> <span class="n">NSBundle</span><span class="o">.</span><span class="n">mainBundle</span><span class="p">()</span><span class="o">.</span><span class="n">bundlePath</span>
+        <span class="n">let</span> <span class="n">baseURL</span> <span class="o">=</span> <span class="n">NSURL</span><span class="o">.</span><span class="n">fileURLWithPath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="n">let</span> <span class="n">myHTML</span> <span class="o">=</span> <span class="s">&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=</span><span class="se">\&quot;</span><span class="s">text/javascript</span><span class="se">\&quot;</span><span class="s"> async  src=</span><span class="se">\&quot;</span><span class="s">MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML</span><span class="se">\&quot;</span><span class="s">&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=</span><span class="se">\&quot;</span><span class="s">font-size: 30pt; color: #eee;</span><span class="se">\&quot;</span><span class="s">&gt;$$</span><span class="se">\\</span><span class="s">begin{equation}</span><span class="se">\\</span><span class="s">prod_{</span><span class="se">\\</span><span class="s">substack{1</span><span class="se">\\</span><span class="s">le i </span><span class="se">\\</span><span class="s">le n</span><span class="se">\\\\</span><span class="s"> 1</span><span class="se">\\</span><span class="s">le j </span><span class="se">\\</span><span class="s">le m}}M_{i,j} </span><span class="se">\\</span><span class="s">end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>
+        <span class="n">myWebView</span><span class="o">.</span><span class="n">loadHTMLString</span><span class="p">(</span><span class="n">myHTML</span><span class="p">,</span> <span class="n">baseURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">)</span>
+
+    <span class="p">}</span>
+
+    <span class="n">override</span> <span class="n">func</span> <span class="n">didReceiveMemoryWarning</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">didReceiveMemoryWarning</span><span class="p">()</span>
+        <span class="o">//</span> <span class="n">Dispose</span> <span class="n">of</span> <span class="nb">any</span> <span class="n">resources</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">recreated</span><span class="o">.</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Testing with the simulator</h2>
+<p>The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the <em>UIWebView</em> in 8 phases:</p>
+<div class="gallery">
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-00.png" alt="Rendering phase 1: It starts as a blank screen." data-jslghtbx data-jslghtbx-caption="Rendering phase 1: It starts as a blank screen." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-01.png" alt="Rendering phase 2: Then it loads the raw LaTEX source." data-jslghtbx data-jslghtbx-caption="Rendering phase 2: Then it loads the raw LaTEX source." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-02.png" alt="Rendering phase 3: First rendering pass." data-jslghtbx data-jslghtbx-caption="Rendering phase 3: First rendering pass." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-03.png" alt="Rendering phase 4: Loading CommonHTML sources for the final rendering pass." data-jslghtbx data-jslghtbx-caption="Rendering phase 4: Loading CommonHTML sources for the final rendering pass." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-04.png" alt="Rendering phase 5: Renders final image." data-jslghtbx data-jslghtbx-caption="Rendering phase 5: Renders final image." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-05.png" alt="Rendering phase 6: Becames blank again." data-jslghtbx data-jslghtbx-caption="Rendering phase 6: Becames blank again." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-06.png" alt="Rendering phase 7: Final image appears in fractions." data-jslghtbx data-jslghtbx-caption="Rendering phase 7: Final image appears in fractions." data-jslghtbx-group="mathjax-ios-group" />
+  <img class="jslghtbx-thmb" src="/images/articles/mathjax-ios/mathjax-ios-07.png" alt="Rendering phase 8: Render finished." data-jslghtbx data-jslghtbx-caption="Rendering phase 8: Render finished." data-jslghtbx-group="mathjax-ios-group" />
+</div>
+
+<p>The whole rendering happens in less then half a second, but it is noticeable. If you want to use this method to render mathematical expresions in your app, you have to make sure, you only show your <em>UIWebView</em>, when it fulli loaded.</p>
+<h2>Try it out yourself!</h2>
+<p>You can download the whole Xcode project with the added MathJax sources from <a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">the project's Github repository</a>.</p>
+<h2>Acknowledgement</h2>
+<p>For this project, I get a lot of ideas from <a href="http://new2objectivec.blogspot.hu/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1" target="_blank">New 2 Objective-C</a> blog. His implementation is based on a local file writing and reading, which is pretty slow, but it works :)</p>
+<p>I also used some ideas from Stack Overflow to <a href="http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview" target="_blank">make my UIWebView transparent</a></p>
 
               <div class="addthis_sharing_toolbox"></div>
 
@@ -202,7 +266,7 @@
 <script>
 
     var disqus_config = function () {
-        this.page.url = "https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html";
+        this.page.url = "https://tiborsimon.io/ios/local-mathjax-in-ios-apps/";
         this.page.identifier = "tiborsimon-article-local-mathjax-in-ios-apps";
     };
 
@@ -238,7 +302,7 @@ s.setAttribute('data-timestamp', +new Date());
       <div class="box">
 <aside class="series-widget">
   <div class="series-header">
-    <h2>This article is part <built-in method index of str object at 0x1043f93f0> of 0 of the <b></b> series</h2>
+    <h2>This article is part 1 of 1 of the <b>iOS MathJax</b> series</h2>
   </div>
 
   <div class="series-post current">
@@ -246,7 +310,7 @@ s.setAttribute('data-timestamp', +new Date());
         <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+01:00"> Sat 20 February 2016</time>
       </div>
 
-      <a href="https://tiborsimon.io/drafts/local-mathjax-in-ios-apps.html"><h3 class="post-title"><small><built-in method index of str object at 0x1043f93f0>.</small> Local MathJax in iOS apps</h3></a>
+      <a href="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/"><h3 class="post-title"><small>1.</small> Local MathJax in iOS apps</h3></a>
 
       <div class="article-categories">
         <!-- CATEGORY -->
@@ -264,6 +328,9 @@ s.setAttribute('data-timestamp', +new Date());
 <aside class="tag-list">
   <h2 class="widget-title"><a href="https://tiborsimon.io/tags.html">Tags</a></h2>
   <div class="tagcloud">
+      <span class="tagcloud-button">
+        <a href="https://tiborsimon.io/tag/LaTEX.html">LaTEX</a>
+      </span>
       <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/accelerometer.html">accelerometer</a>
       </span>
@@ -304,6 +371,9 @@ s.setAttribute('data-timestamp', +new Date());
         <a href="https://tiborsimon.io/tag/hack.html">hack</a>
       </span>
       <span class="tagcloud-button">
+        <a href="https://tiborsimon.io/tag/ios.html">ios</a>
+      </span>
+      <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/java.html">java</a>
       </span>
       <span class="tagcloud-button">
@@ -314,6 +384,9 @@ s.setAttribute('data-timestamp', +new Date());
       </span>
       <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/lists.html">lists</a>
+      </span>
+      <span class="tagcloud-button">
+        <a href="https://tiborsimon.io/tag/math.html">math</a>
       </span>
       <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/parameter.html">parameter</a>
@@ -346,6 +419,9 @@ s.setAttribute('data-timestamp', +new Date());
         <a href="https://tiborsimon.io/tag/statistics.html">statistics</a>
       </span>
       <span class="tagcloud-button">
+        <a href="https://tiborsimon.io/tag/swift.html">swift</a>
+      </span>
+      <span class="tagcloud-button">
         <a href="https://tiborsimon.io/tag/tools.html">tools</a>
       </span>
       <span class="tagcloud-button">
@@ -364,6 +440,7 @@ s.setAttribute('data-timestamp', +new Date());
       <li><a href="https://tiborsimon.io/category/dsp.html" title="Architecture Category Posts">dsp</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/embedded.html" title="Architecture Category Posts">embedded</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/guitar.html" title="Architecture Category Posts">guitar</a> (1)</li>
+      <li><a href="https://tiborsimon.io/category/ios.html" title="Architecture Category Posts">ios</a> (1)</li>
       <li><a href="https://tiborsimon.io/category/programming.html" title="Architecture Category Posts">programming</a> (2)</li>
       <li><a href="https://tiborsimon.io/category/python.html" title="Architecture Category Posts">python</a> (4)</li>
       <li><a href="https://tiborsimon.io/category/tools.html" title="Architecture Category Posts">tools</a> (1)</li>
