@@ -950,7 +950,7 @@ h2.widget-title {
     font-size: 1.4em;
     margin-bottom: 0.7em; }
   .series-widget .series-post {
-    border-radius: 6px;
+    border-radius: 3px;
     padding: 10px 13px;
     line-height: 18px;
     margin-bottom: 10px; }
@@ -984,7 +984,7 @@ h2.widget-title {
 .donation-buttons {
   margin-bottom: 3em; }
   .donation-buttons .paypal-button {
-    border-radius: 6px;
+    border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0);
     padding: 6px;
     transition: all 0.4s; }
@@ -994,7 +994,7 @@ h2.widget-title {
 /* G I T H U B   B U T T O N */
 .github-button {
   margin-bottom: 20px;
-  border-radius: 6px;
+  border-radius: 3px;
   display: block;
   background: #89888c url("../css/images/overlay.png"); }
   .github-button a {
@@ -1082,7 +1082,7 @@ h2.widget-title {
   color: #8a8a8a; }
 
 #content pre {
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 8px; }
 
 #content code {
@@ -1092,7 +1092,7 @@ h2.widget-title {
 #content table {
   border-collapse: separate;
   border: 1px solid #ccc;
-  border-radius: 6px; }
+  border-radius: 3px; }
   #content table thead {
     background-color: #ededed;
     color: #8a8a8a; }
@@ -1105,9 +1105,9 @@ h2.widget-title {
     border-top: none;
     overflow: hidden; }
   #content table th:first-child {
-    border-radius: 6px 0 0 0; }
+    border-radius: 3px 0 0 0; }
   #content table th:last-child {
-    border-radius: 0 6px 0 0; }
+    border-radius: 0 3px 0 0; }
   #content table td:first-child, #content table th:first-child {
     border-left: none; }
   #content table tr:hover td {
