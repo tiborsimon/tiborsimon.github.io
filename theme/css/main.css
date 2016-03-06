@@ -736,10 +736,20 @@ body {
     display: table;
     clear: both; }
 
+.site-info {
+  text-align: center;
+  font-size: 80%;
+  color: rgba(255, 255, 255, 0.25); }
+
 figure figcaption {
   font-size: 80%;
   text-align: center;
   margin: -10px 0 40px 0; }
+
+.article-sharing {
+  max-width: 350px;
+  display: block;
+  margin: 0 auto; }
 
 /*  T O R T E X - T I M E  */
 .tortex-time-wrapper:after {
@@ -1137,10 +1147,6 @@ h2.widget-title {
   max-width: 775px; }
 
 @media screen and (min-width: 737px) and (max-width: 1210px) {
-  .article-sharing {
-    max-width: 350px;
-    display: block;
-    margin: 0 auto; }
   #content .article-title {
     font-size: 3em; }
   #content .article-info {
@@ -1161,10 +1167,6 @@ h2.widget-title {
     padding: 7px; } }
 
 @media screen and (max-width: 736px) {
-  .article-sharing {
-    max-width: 350px;
-    display: block;
-    margin: 0 auto; }
   .about-buttons {
     font-size: 13px !important; }
   #logo h1 {
@@ -1701,10 +1703,6 @@ button,
 
 /* Desktop + Tablet */
 @media screen and (min-width: 737px) {
-  .article-sharing {
-    max-width: 350px;
-    display: block;
-    margin: 0 auto; }
   /* Basic */
   body, input, select, textarea {
     font-size: 13pt;
