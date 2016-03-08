@@ -728,6 +728,8 @@ body {
 
 .gallery {
   padding: 0 auto; }
+  .gallery .no-shadow {
+    box-shadow: none !important; }
   .gallery .jslghtbx-thmb {
     float: left;
     margin: 1em 3px 2em 3px !important; }

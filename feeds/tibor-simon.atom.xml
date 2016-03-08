@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/tibor-simon.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-07T00:00:00+01:00</updated><entry><title>Minimal MathJax package</title><link href="https://tiborsimon.io/web/minimal-mathjax-package/" rel="alternate"></link><updated>2016-03-07T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-07:web/minimal-mathjax-package/</id><summary type="html">&lt;p&gt;In the &lt;a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/"&gt;previous article&lt;/a&gt; we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 586KB package. This is 99.6% size reduction.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/tibor-simon.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-07T00:00:00+01:00</updated><entry><title>Minimal MathJax package</title><link href="https://tiborsimon.io/web/minimal-mathjax-package/" rel="alternate"></link><updated>2016-03-07T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-07:web/minimal-mathjax-package/</id><summary type="html">&lt;p&gt;In the &lt;a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/"&gt;previous article&lt;/a&gt; we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -45,12 +45,18 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This html test page renders the following equations:&lt;/p&gt;
+&lt;p&gt;The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser's inspector view to find out what is missing.&lt;/p&gt;
 &lt;div class="gallery"&gt;
-  &lt;img class="jslghtbx-thmb" src="/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file." data-jslghtbx data-jslghtbx-caption="Testing the MathJax package with a small html file." data-jslghtbx-group="minimal-mathjax-group-01" /&gt;
+  &lt;img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/reducer-atom-project.png" alt="Editing the html file while putting back the necessary resources." data-jslghtbx data-jslghtbx-caption="Editing the html file while putting back the necessary resources." data-jslghtbx-group="minimal-mathjax-group-02" /&gt;
+  &lt;img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/missing-resources.png" alt="Discovering missing resources in the browser's inspector.``" data-jslghtbx data-jslghtbx-caption="Discovering missing resources in the browser's inspector." data-jslghtbx-group="minimal-mathjax-group-02" /&gt;
 &lt;/div&gt;
 
-&lt;p&gt;If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations.&lt;/p&gt;
+&lt;p&gt;This html test page renders the following equations:&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file." data-jslghtbx data-jslghtbx-caption="Testing the MathJax package with a small html file." data-jslghtbx-group="minimal-mathjax-group-01" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up &lt;strong&gt;623KB&lt;/strong&gt; on disk.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;MathJax-2.6.1
 ├── MathJax.js
 ├── config
@@ -74,7 +80,11 @@
             │       ├── AMS-Regular.js
             │       └── fontdata.js
             └── jax.js
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="hack"></category><category term="javascript"></category><category term="math"></category><category term="LaTEX"></category></entry><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-28T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once again: I used &lt;strong&gt;LaTEX&lt;/strong&gt; with &lt;strong&gt;Common HTML&lt;/strong&gt; output rendering. This setup heavily depends on your input and output method.&lt;/p&gt;
+&lt;p&gt;Hope you find this article series useful ;)&lt;/p&gt;</summary><category term="hack"></category><category term="javascript"></category><category term="math"></category><category term="LaTEX"></category></entry><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-28T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">
 
 
     &lt;div class="row"&gt;
