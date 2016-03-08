@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/dsp.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2015-10-17T00:00:00+02:00</updated><entry><title>Generating sinusoid signals</title><link href="https://tiborsimon.io/dsp/generating-sinusoid-signals/" rel="alternate"></link><updated>2015-10-17T00:00:00+02:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2015-10-17:dsp/generating-sinusoid-signals/</id><summary type="html">&lt;h2&gt;The problem&lt;/h2&gt;
 &lt;p&gt;The equation of a sinusoid signal is a known fact:&lt;/p&gt;
 &lt;p class="equation"&gt;
-  `y(t) = A sin(2 pi f t + varphi) = A sin(omega t + varphi).`
+  $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
 &lt;/p&gt;
 
 &lt;p&gt;However. This equation is only valid in the &lt;strong&gt;continuous time&lt;/strong&gt; domain, therefore without any modification it is useless in the &lt;strong&gt;discrete time&lt;/strong&gt; domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.&lt;/p&gt;

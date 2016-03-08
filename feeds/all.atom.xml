@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-02-28T00:00:00+01:00</updated><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-28T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-07T00:00:00+01:00</updated><entry><title>Minimal MathJax package</title><link href="https://tiborsimon.io/web/minimal-mathjax-package/" rel="alternate"></link><updated>2016-03-07T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-07:web/minimal-mathjax-package/</id><summary type="html">&lt;p&gt;In the &lt;a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/"&gt;previous article&lt;/a&gt; we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 586KB package. This is 99.6% size reduction.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Component&lt;/th&gt;
+&lt;th align="center"&gt;Version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;MathJax&lt;/td&gt;
+&lt;td align="center"&gt;2.6.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1&gt;Choose your configuration&lt;/h1&gt;
+&lt;p&gt;MathJax supports a very wide range of input and output methods. That is the reason that it is big package. Therefore the most important thing in MathJax size reduction is to decide what input and output method you want to support. In this way you only need to have those sources that implement that methods by throwing away the rest of the package.&lt;/p&gt;
+&lt;p&gt;In my example, I wanted to have &lt;strong&gt;LaTEX&lt;/strong&gt; input and &lt;strong&gt;Common HTML&lt;/strong&gt; output.&lt;/p&gt;
+&lt;h1&gt;The reducing method&lt;/h1&gt;
+&lt;p&gt;The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn't present. In this way you will end up a package that contains just the right resources to render your equations.&lt;/p&gt;
+&lt;p&gt;I started with a simple html page containing a basic MathJax setup:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;MathJax TeX Test Page&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;async&lt;/span&gt;  &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+      $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
+      $$\begin{equation}L&amp;#39; = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
+      $$\begin{align} B&amp;#39;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;=-\nabla \times E,\\E&amp;#39;&lt;span class="err"&gt;&amp;amp;&lt;/span&gt;=\nabla \times B - 4\pi j,\end{align} $$
+      $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/x-mathjax-config&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;MathJax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Hub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Config&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;CommonHTML&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This html test page renders the following equations:&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file." data-jslghtbx data-jslghtbx-caption="Testing the MathJax package with a small html file." data-jslghtbx-group="minimal-mathjax-group-01" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;MathJax-2.6.1
+├── MathJax.js
+├── config
+│   └── TeX-AMS_CHTML.js
+├── fonts
+│   └── HTML-CSS
+│       └── TeX
+│           └── woff
+│               ├── MathJax_AMS-Regular.woff
+│               ├── MathJax_Math-Italic.woff
+│               ├── MathJax_Size2-Regular.woff
+│               ├── MathJax_Size3-Regular.woff
+│               └── MathJax_Size4-Regular.woff
+└── jax
+    └── output
+        └── CommonHTML
+            ├── autoload
+            │   └── mtable.js
+            ├── fonts
+            │   └── TeX
+            │       ├── AMS-Regular.js
+            │       └── fontdata.js
+            └── jax.js
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="hack"></category><category term="javascript"></category><category term="math"></category><category term="LaTEX"></category></entry><entry><title>Tortex time</title><link href="https://tiborsimon.io/guitar/tortex-time/" rel="alternate"></link><updated>2016-02-28T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-02-23:guitar/tortex-time/</id><summary type="html">
 
 
     &lt;div class="row"&gt;
@@ -1550,7 +1625,7 @@ Finished with 30248 words
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="web"></category><category term="hack"></category><category term="soup"></category></entry><entry><title>Generating sinusoid signals</title><link href="https://tiborsimon.io/dsp/generating-sinusoid-signals/" rel="alternate"></link><updated>2015-10-17T00:00:00+02:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2015-10-17:dsp/generating-sinusoid-signals/</id><summary type="html">&lt;h2&gt;The problem&lt;/h2&gt;
 &lt;p&gt;The equation of a sinusoid signal is a known fact:&lt;/p&gt;
 &lt;p class="equation"&gt;
-  `y(t) = A sin(2 pi f t + varphi) = A sin(omega t + varphi).`
+  $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
 &lt;/p&gt;
 
 &lt;p&gt;However. This equation is only valid in the &lt;strong&gt;continuous time&lt;/strong&gt; domain, therefore without any modification it is useless in the &lt;strong&gt;discrete time&lt;/strong&gt; domain used by every digital machine. You won't be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.&lt;/p&gt;
