@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/programming.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2015-11-11T00:00:00+01:00</updated><entry><title>Writing an equation engine</title><link href="https://tiborsimon.io/programming/writing-an-equation-engine/" rel="alternate"></link><updated>2015-11-11T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2015-11-11:programming/writing-an-equation-engine/</id><summary type="html">&lt;h2&gt;Sinusoid generation summary&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/programming.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-19T00:00:00+01:00</updated><entry><title>Upload ssh key via Github API</title><link href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/" rel="alternate"></link><updated>2016-03-19T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-19:programming/upload-ssh-key-via-github-api/</id><summary type="html">&lt;p&gt;Don't you hate the way you used to upload your ssh keys to GitHub? Generate the key. Copy the public key in somehow. You have to use the mouse. You have to click. :D&lt;/p&gt;
+&lt;p&gt;Anyway. If you are working on a remote machine, for example one you've just spun up with &lt;strong&gt;vagrant&lt;/strong&gt;, tricks with the mouse might not an option for you. Of course, you can copy your already generated and used ssh key to your machine, but this is not the best approach.&lt;/p&gt;
+&lt;h2&gt;Using the GitHub API&lt;/h2&gt;
+&lt;p&gt;Using the &lt;a href="https://developer.github.com/v3/"&gt;GitHub v3 API&lt;/a&gt;, we are able to upload our ssh keys via a &lt;a href="https://developer.github.com/v3/users/keys/"&gt;HTTP request&lt;/a&gt; by &lt;a href="https://developer.github.com/v3/users/keys/#create-a-public-key"&gt;creating a public key&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following code snippets will use the GitHub API call to upload the named public key to the predefined GitHub account. It also handles the possible error cases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;authentication error&lt;/li&gt;
+&lt;li&gt;key is already uploaded&lt;/li&gt;
+&lt;li&gt;connection error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can copy and paste this script to your machine, modify the &lt;code&gt;GITHUB_USERNAME&lt;/code&gt; variable, and you are ready to go.&lt;/p&gt;
+&lt;p&gt;This is the exact method what I used in my &lt;strong&gt;dotfiles&lt;/strong&gt; deployment system. To learn more about that, read the &lt;a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/"&gt;corresponding article&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;GITHUB_USERNAME=tiborsimon&lt;/span&gt;
+&lt;span class="x"&gt;SSH_KEY=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.ssh/id_rsa&lt;/span&gt;
+
+&lt;span class="x"&gt;if [ ! -f &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;SSH_KEY&lt;/span&gt;&lt;span class="x"&gt; ] || [ ! -f &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;SSH_KEY&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;pub&lt;/span&gt;&lt;span class="x"&gt; ]; then&lt;/span&gt;
+&lt;span class="x"&gt;  echo &amp;#39;Generate your ssh key first!&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;  exit&lt;/span&gt;
+&lt;span class="x"&gt;fi&lt;/span&gt;
+
+&lt;span class="x"&gt;github_result=0&lt;/span&gt;
+&lt;span class="x"&gt;echo &amp;#39;How do you want to name the key?&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;read -e KEY_NAME&lt;/span&gt;
+&lt;span class="x"&gt;until [ &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;github_result&lt;/span&gt;&lt;span class="x"&gt; -eq 1 ]; do&lt;/span&gt;
+&lt;span class="x"&gt;  curl --silent -u &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;GITHUB_USERNAME&lt;/span&gt;&lt;span class="x"&gt;&amp;quot; --data &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;\&amp;quot;title\&amp;quot;:\&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;KEY_NAME&lt;/span&gt;&lt;span class="x"&gt;\&amp;quot;,\&amp;quot;key\&amp;quot;:\&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="err"&gt;cat&lt;/span&gt; &lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;SSH_KEY&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;pub&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="x"&gt;\&amp;quot;}&amp;quot; https://api.github.com/user/keys &amp;gt; gh-result&lt;/span&gt;
+&lt;span class="x"&gt;  if grep -q &amp;#39;key is already in use&amp;#39; gh-result; then&lt;/span&gt;
+&lt;span class="x"&gt;    github_result=1&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;#39;Key is already in use.&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;  elif grep -q &amp;#39;&amp;quot;verified&amp;quot;: true&amp;#39; gh-result; then&lt;/span&gt;
+&lt;span class="x"&gt;    github_result=1&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;quot;Key (&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;KEY_NAME&lt;/span&gt;&lt;span class="x"&gt;) has been added successfully.&amp;quot;&lt;/span&gt;
+&lt;span class="x"&gt;  elif grep -q &amp;#39;Bad credentials&amp;#39; gh-result; then&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;#39;Error during login: invalid username or password!&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;#39;Try again!&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;  else&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;#39;A problem occured during the upload!&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;    cat gh-result&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;#39;Try again!&amp;#39;&lt;/span&gt;
+&lt;span class="x"&gt;  fi&lt;/span&gt;
+&lt;span class="x"&gt;  rm gh-result&lt;/span&gt;
+&lt;span class="x"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You were presented to a method that allows you to upload ssh keys to your GitHub account via the command line.&lt;/p&gt;</summary><category term="script"></category><category term="url"></category><category term="github"></category><category term="api"></category><category term="upload"></category><category term="ssh"></category><category term="key"></category></entry><entry><title>Writing an equation engine</title><link href="https://tiborsimon.io/programming/writing-an-equation-engine/" rel="alternate"></link><updated>2015-11-11T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2015-11-11:programming/writing-an-equation-engine/</id><summary type="html">&lt;h2&gt;Sinusoid generation summary&lt;/h2&gt;
 &lt;p&gt;Let's sum up the previous article. If you want to generate a sinusoid signal you have 5 possibble ways to do that.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;

@@ -1027,26 +1027,23 @@ h2.widget-title {
 
 /* G I T H U B   B U T T O N */
 .github-button {
-  margin-bottom: 20px;
-  border-radius: 3px;
-  display: block;
-  background: #444 url("../css/images/overlay.png");
-  max-width: 350px;
-  height: 25px;
-  margin: 0 auto; }
+  position: relative;
+  bottom: 5px; }
   .github-button a {
     color: #fff !important;
     text-decoration: none;
+    background: #444 url("../css/images/overlay.png");
     display: table-cell;
+    border-radius: 3px;
     font-size: 0.74em;
     font-weight: lighter;
-    width: 175px;
+    width: 350px;
     text-align: center;
     height: 25px;
-    padding-top: 2px;
-    transition: all 0.4s; }
-    .github-button a:first-child {
-      border-right: 1px dashed rgba(255, 255, 255, 0.54); }
+    padding-top: 1px;
+    transition: all 0.4s;
+    margin: 0 3px;
+    border: 1px solid white; }
     .github-button a:hover {
       background: #000 url("../css/images/overlay.png"); }
 
