@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all-en.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-07T00:00:00+01:00</updated><entry><title>Minimal MathJax package</title><link href="https://tiborsimon.io/web/minimal-mathjax-package/" rel="alternate"></link><updated>2016-03-07T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-07:web/minimal-mathjax-package/</id><summary type="html">&lt;p&gt;In the &lt;a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/"&gt;previous article&lt;/a&gt; we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Engineering with passion</title><link href="https://tiborsimon.io/" rel="alternate"></link><link href="https://tiborsimon.io/feeds/all-en.atom.xml" rel="self"></link><id>https://tiborsimon.io/</id><updated>2016-03-19T00:00:00+01:00</updated><entry><title>Dotfiles with URL deployment</title><link href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/" rel="alternate"></link><updated>2016-03-19T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-19:tools/dotfiles-with-url-deployment/</id><summary type="html">&lt;p&gt;I started to improve my &lt;strong&gt;dotfiles&lt;/strong&gt; system with &lt;strong&gt;one command URL deployment&lt;/strong&gt;. In this way I can run a single command on a virgin system to deploy my configuration. This method works on OS X as well as any Linux system.&lt;/p&gt;
+&lt;h2&gt;How does it work?&lt;/h2&gt;
+&lt;p&gt;I use &lt;code&gt;curl&lt;/code&gt; to download the &lt;strong&gt;bootstrap&lt;/strong&gt; script which will prepare the machine to be able to clone my dotfiles repo, and then it runs the &lt;strong&gt;deploy&lt;/strong&gt; script.&lt;/p&gt;
+&lt;p&gt;To download a script stored on &lt;strong&gt;GitHub&lt;/strong&gt; you can use the raw file listing. My &lt;strong&gt;bootstrap&lt;/strong&gt; script can be reached via the &lt;a href="https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap" target="_blank"&gt;https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap&lt;/a&gt; link. Notice, that this is not a convenient link to type..&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I can take care of this problem by having a custom domain, and creating a redirect, I am using &lt;strong&gt;CloudFlare&lt;/strong&gt; as a nameserver and &lt;em&gt;ssl&lt;/em&gt; provider, so I can set up a custom &lt;strong&gt;Page Rule&lt;/strong&gt; to redirect the &lt;code&gt;tiborsimon.io/dotfiles&lt;/code&gt; to the raw script listing.&lt;/p&gt;
+&lt;div class="gallery"&gt;
+  &lt;img class="jslghtbx-thmb" src="/images/articles/dotfiles/custom-page-forward-rule.png" alt="CloudFlare custom Page Rule" data-jslghtbx data-jslghtbx-caption="CloudFlare custom Page Rule" data-jslghtbx-group="dotfiles-group-01" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this way, I can type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;curl tiborsimon.io/dotfiles
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Downloading and executing the script&lt;/h2&gt;
+&lt;p&gt;The script is available for execution. The next step is to use it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sh &amp;lt;(curl -fsSL tiborsimon.io/dotfiles)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can feed the raw sript to &lt;code&gt;sh&lt;/code&gt;, &lt;code&gt;bash&lt;/code&gt; or &lt;code&gt;zsh&lt;/code&gt;. Curl will download the script in a subshell, then it will return the downloaded script, which we will feed to the &lt;code&gt;sh&lt;/code&gt; in this example.&lt;/p&gt;
+&lt;p&gt;The flags make sure, curl not corrupt the script during download:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; -f, --fail          Fail silently (no output at all) on HTTP errors (H)
+ -s, --silent        Silent mode (don&amp;#39;t output anything)
+ -S, --show-error    Show error. With -s, make curl show errors when they occur
+ -L, --location      Follow redirects (H)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Make sure you have the latest curl on your system, because older curl versions tend to act weird with the &lt;em&gt;HTTPS&lt;/em&gt; protocol, and wont be able to connect.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;[vagrant@localhost ~]$ bash &amp;lt;(curl -fsSLv https://tiborsimon.io/dotfiles)
+* About to connect() to tiborsimon.io port 443 (#0)
+*   Trying 104.18.43.82... connected
+* Connected to tiborsimon.io (104.18.43.82) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* NSS error -12286
+* Closing connection #0
+* SSL connect error
+curl: (35) SSL connect error
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;We can now use our scripts via URL deployment. You can install &lt;strong&gt;Docker&lt;/strong&gt; in this way for example.&lt;/p&gt;</summary><category term="dotfiles"></category><category term="tools"></category><category term="script"></category><category term="url"></category><category term="forward"></category><category term="hack"></category></entry><entry><title>Minimal MathJax package</title><link href="https://tiborsimon.io/web/minimal-mathjax-package/" rel="alternate"></link><updated>2016-03-07T00:00:00+01:00</updated><author><name>Tibor Simon</name></author><id>tag:tiborsimon.io,2016-03-07:web/minimal-mathjax-package/</id><summary type="html">&lt;p&gt;In the &lt;a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/"&gt;previous article&lt;/a&gt; we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

@@ -1030,7 +1030,7 @@ h2.widget-title {
   margin-bottom: 20px;
   border-radius: 3px;
   display: block;
-  background: #89888c url("../css/images/overlay.png");
+  background: #444 url("../css/images/overlay.png");
   max-width: 350px;
   height: 25px;
   margin: 0 auto; }
@@ -1044,11 +1044,11 @@ h2.widget-title {
     text-align: center;
     height: 25px;
     padding-top: 2px;
-    transition: all 0.7s; }
+    transition: all 0.4s; }
     .github-button a:first-child {
       border-right: 1px dashed rgba(255, 255, 255, 0.54); }
     .github-button a:hover {
-      background: #939196 url("../css/images/overlay.png"); }
+      background: #000 url("../css/images/overlay.png"); }
 
 .comments h1 {
   font-size: 2em;
@@ -1064,7 +1064,8 @@ h2.widget-title {
   font-size: 3.3em;
   text-align: left;
   margin: 0 0 1px 0 !important;
-  line-height: 1em; }
+  line-height: 1em;
+  white-space: nowrap; }
 
 #content .article-info {
   line-height: 17px;
