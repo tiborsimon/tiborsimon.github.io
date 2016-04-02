@@ -6,7 +6,7 @@
 -->
 <html>
   <head>
-  <title>Minimal MathJax package - Tibor Simon</title>
+  <title>My dotfile system - Tibor Simon</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="https://tiborsimon.io/theme/js/ie/html5shiv.js"></script><![endif]-->
@@ -14,26 +14,25 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="https://tiborsimon.io/theme/css/ie8.css" /><![endif]-->
 
   <meta name="author" content="Tibor Simon" />
-  <meta name="keywords" content="MathJax, local, solution, xcode, ios, hack, javascript, swift, math, LaTEX" />
-  <meta name="description" content="MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB." />
+  <meta name="keywords" content="" />
+  <meta name="description" content="I hate to be machine dependent. For me a computer is just a tool to get things done. If one breaks down for various reasons or I switch machine I want to have my tools and setup without any manual configuration." />
 
   <meta property="fb:app_id" content="551628881652865" />
   <meta property="og:site_name" content="tiborsimon.io" />
   <meta property="og:type" content="article"/>
-  <meta property="og:title" content="Minimal MathJax package" />
-  <meta property="og:url" content="https://tiborsimon.io/web/minimal-mathjax-package/" />
-  <meta property="og:description" content="MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB." />
-  <meta property="article:published_time" content="2016-03-07" />
-  <meta property="article:section" content="web" />
+  <meta property="og:title" content="My dotfile system" />
+  <meta property="og:url" content="https://tiborsimon.io/tools/my-dotfile-system/" />
+  <meta property="og:description" content="I hate to be machine dependent. For me a computer is just a tool to get things done. If one breaks down for various reasons or I switch machine I want to have my tools and setup without any manual configuration." />
+  <meta property="article:published_time" content="2016-04-01" />
+  <meta property="article:section" content="tools" />
   <meta property="article:tag" content="" />
   <meta property="article:author" content="Tibor Simon" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@tiborsimonio" />
-  <meta name="twitter:title" content="Minimal MathJax package" />
-  <meta name="twitter:description" content="MathJax is a pretty big javascript package, but you can make it ....." />
+  <meta name="twitter:title" content="My dotfile system" />
+  <meta name="twitter:description" content="I hate to be machine dependent. For me a computer is just a tool ....." />
 
-    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
   </head>
 
   <body class="right-sidebar">
@@ -72,120 +71,110 @@
           <div id="content">
             <article>
 
-              <h1 class="article-title">Minimal MathJax package</h1>
+              <h1 class="article-title">My dotfile system</h1>
 
               <div class="article-info">
                 <hr />
 <div class="article-date">
-  <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-03-07T00:00:00+01:00"> Mon 07 March 2016</time>
+  <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-04-01T00:00:00+02:00"> Fri 01 April 2016</time>
 </div><div class="article-categories">
   <!-- CATEGORY -->
   <i class="fa fa-folder-open-o"></i>
-  <a href="https://tiborsimon.io/category/web.html">web</a>
+  <a href="https://tiborsimon.io/category/tools.html">tools</a>
 
   <!-- TAGS -->
       <i class="fa fa-tags padded-icon"></i>
-          <a href="https://tiborsimon.io/tag/mathjax.html">MathJax</a>,           <a href="https://tiborsimon.io/tag/hack.html">hack</a>,           <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>,           <a href="https://tiborsimon.io/tag/math.html">math</a>,           <a href="https://tiborsimon.io/tag/latex.html">LaTEX</a>
+          <a href="https://tiborsimon.io/tag/dotfiles.html">dotfiles</a>,           <a href="https://tiborsimon.io/tag/tools.html">tools</a>,           <a href="https://tiborsimon.io/tag/script.html">script</a>,           <a href="https://tiborsimon.io/tag/linux.html">linux</a>,           <a href="https://tiborsimon.io/tag/unix.html">unix</a>
   <!-- SERIES -->
     <span class="article-series padded-icon">
       <i class="fa fa-briefcase"></i>
-      Part 2 of 2 in <i>iOS MathJax</i>
+      Part 3 of 3 in <i>Dotfiles</i>
     </span>
 
   <!-- GITHUB -->
-  <span class="padded-icon"><a href="https://github.com/tiborsimon/mathjax-minimal-package" target="_blank"><i class="fa fa-github-square"></i> Repo</a></span>
+  <span class="padded-icon"><a href="https://github.com/tiborsimon/dotfiles" target="_blank"><i class="fa fa-github-square"></i> Repo</a></span>
 
 </div>              </div>
 
 
-              <div class="summary"><p>MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB.</p></div>
+              <div class="summary"><p>I hate to be machine dependent. For me a computer is just a tool to get things done. If one breaks down for various reasons or I switch machine I want to have my tools and setup without any manual configuration.</p></div>
 
-              <p>In the <a href="{{ SITEURL }}/ios/local-mathjax-in-ios-apps/">previous article</a> we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.</p>
-<table>
-<thead>
-<tr>
-<th align="center">Component</th>
-<th align="center">Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">MathJax</td>
-<td align="center">2.6.1</td>
-</tr>
-</tbody>
-</table>
-<h1>Choose your configuration</h1>
-<p>MathJax supports a very wide range of input and output methods. That is the reason that it is big package. Therefore the most important thing in MathJax size reduction is to decide what input and output method you want to support. In this way you only need to have those sources that implement that methods by throwing away the rest of the package.</p>
-<p>In my example, I wanted to have <strong>LaTEX</strong> input and <strong>Common HTML</strong> output.</p>
-<h1>The reducing method</h1>
-<p>The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn't present. In this way you will end up a package that contains just the right resources to render your equations.</p>
-<p>I started with a simple html page containing a basic MathJax setup:</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>MathJax TeX Test Page<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">async</span>  <span class="na">src=</span><span class="s">&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div&gt;</span>
-      $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
-      $$\begin{equation}L&#39; = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
-      $$\begin{align} B&#39;<span class="err">&amp;</span>=-\nabla \times E,\\E&#39;<span class="err">&amp;</span>=\nabla \times B - 4\pi j,\end{align} $$
-      $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
-    <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-      <span class="s2">&quot;CommonHTML&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">scale</span><span class="o">:</span> <span class="mi">200</span>
-      <span class="p">}</span>
-      <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+              <p>Have you ever felt <em>crippled on a new machine</em> you've just logged in for the first time? Tools missing, and if not, they have weird default configurations. Before you can start to work, you need to move in that machine: download all your needed tools, configure them one by one by hand. You quickly realize this is not the best way you can do..</p>
+<div class="divider">Solution one</div>
+
+<h1>Externally saved configuration</h1>
+<p>You can speed up the initial configuration if you have a previously saved config file set in a machine independent storage, say Dropbox or a USB drive.</p>
+<p>These files are generally called <strong>dotfiles</strong>, as command line tools often expect their configuration files to start with a dot indicating the file is hidden for normal use. Dotfiles are generally located in the current user's <em>home</em> directory. When you start using a new machine, you simply  copy your saved config files to your home directory and you are home. </p>
+<p>Besides the custom configuration files, you can also save out a list of installable programs and tools that you want to have by default on a machine. Some package manager tools supporst installing from files, but if not, you can write a small script that will install your tools one by one. You can create a <code>packages.txt</code> file for this purpose:</p>
+<div class="code-name">packages.txt</div>
+
+<div class="highlight"><pre>git
+mc
+vim
 </pre></div>
 
 
-<p>The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser's inspector view to find out what is missing.</p>
-<div class="gallery">
-  <img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/reducer-atom-project.png" alt="Editing the html file while putting back the necessary resources." data-jslghtbx data-jslghtbx-caption="Editing the html file while putting back the necessary resources." data-jslghtbx-group="minimal-mathjax-group-02" />
-  <img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/missing-resources.png" alt="Discovering missing resources in the browser's inspector.``" data-jslghtbx data-jslghtbx-caption="Discovering missing resources in the browser's inspector." data-jslghtbx-group="minimal-mathjax-group-02" />
-</div>
-
-<p>This html test page renders the following equations:</p>
-<div class="gallery">
-  <img class="jslghtbx-thmb no-shadow" src="/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file." data-jslghtbx data-jslghtbx-caption="Testing the MathJax package with a small html file." data-jslghtbx-group="minimal-mathjax-group-01" />
-</div>
-
-<p>If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up <strong>623KB</strong> on disk.</p>
-<div class="highlight"><pre>MathJax-2.6.1
-├── MathJax.js
-├── config
-│   └── TeX-AMS_CHTML.js
-├── fonts
-│   └── HTML-CSS
-│       └── TeX
-│           └── woff
-│               ├── MathJax_AMS-Regular.woff
-│               ├── MathJax_Math-Italic.woff
-│               ├── MathJax_Size2-Regular.woff
-│               ├── MathJax_Size3-Regular.woff
-│               └── MathJax_Size4-Regular.woff
-└── jax
-    └── output
-        └── CommonHTML
-            ├── autoload
-            │   └── mtable.js
-            ├── fonts
-            │   └── TeX
-            │       ├── AMS-Regular.js
-            │       └── fontdata.js
-            └── jax.js
+<p>The <em>one-by-one</em> installer script could be something like this:</p>
+<div class="highlight"><pre><span class="x">for app in </span><span class="p">$(</span><span class="err">cat</span> <span class="err">path/to/your/packages.txt</span><span class="p">)</span><span class="x">; do </span>
+<span class="x">  echo &quot;Installing </span><span class="p">$</span><span class="nv">app</span><span class="x">..&quot;</span>
+<span class="x">  if </span><span class="p">$</span><span class="nv">YOUR_PACKAGE_MANAGER</span><span class="x"> install -y </span><span class="p">$</span><span class="nv">app</span><span class="x">&gt;temp_log_file 2&gt;&amp;1; then</span>
+<span class="x">    echo &quot;</span><span class="p">$</span><span class="nv">app</span><span class="x"> installed.&quot;</span>
+<span class="x">  else</span>
+<span class="x">    echo &quot;</span><span class="p">$</span><span class="nv">app</span><span class="x"> installation failed! Error: \n</span><span class="p">$(</span><span class="err">cat</span> <span class="err">temp_log_file</span><span class="p">)</span><span class="x">&quot;</span>
+<span class="x">  fi</span>
+<span class="x">  rm -f temp_log_file</span>
+<span class="x">done</span>
 </pre></div>
 
 
-<p>Once again: I used <strong>LaTEX</strong> with <strong>Common HTML</strong> output rendering. This setup heavily depends on your input and output method.</p>
-<p>Hope you find this article series useful ;)</p>
+<p>You might need to have administrator priviliges to install packages on your machine. You have to replace the path to your <em>packages.txt</em> file and your system's package manager.</p>
+<h3>Conclusion</h3>
+<p>This method is semi-manual, as you have to copy the files, and run the commands yourself. It would be much more elegant if you would have a <em>one-command deployment</em> solution. An another big drawback is the lack of version control (unless you have a local git repo on you USB drive). It is always a good idea to use versioning for <strong>anything</strong> you do in you machine in case of an accident<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<div class="divider">Solution two</div>
+
+<h1>Hosted and versioned configuration</h1>
+<p>The next improvement step is to put your config files in a version control system, and host it on the internet. If you want a public configuration, you can't find better place than <strong>GitHub</strong>. However, if you want your config to be in a private place, I can suggest using <strong>BitBucket</strong>, as it offers free private repositories. Eighter versioning provider you choose, you will end up having an easy-to-deploy config system. You can clone your setup on a new machine, and you will have your setup ready to use.</p>
+<p>There is only one problem with this approach. If you clone your repository into your home directory, then your entire home directory will became a repository, but this is probably not what you want. You can solve this issue by cloning your repo into a separate directory, and then symlink your dotfiles into the expected place.</p>
+<p>This is the exact method I use for my dotfile system. I clone my dotfiles repository into the <code>~/.dotfiles</code> directory, and then I run my deploy script, that will symlink the dotfiles one-by-one into their dedicated place. Then I only have to modify the dotfiles located in the <code>~/dotfiles</code> directory, and my changes automatically appear in place.</p>
+<p>For deployment script, I use <a href="https://github.com/holman/dotfiles">Zach Holman's dotfiles</a> project that has a separated scructure that I further customized to meet my needs.</p>
+<h3>Conclusion</h3>
+<p>Putting your dotfiles into a versioned repository and hosting it online gives you amazing flexibility. You can have your own configuration in any machine in minutes while keeping it on a dedicated place. You only need to clone your repository into a dedicated directory, and run your deployment script.</p>
+<p>How about one more improvement that will allow you to not just have your configuration on your new machine, but have your your configuration and identity with only a single command?</p>
+<div class="divider">Final solution</div>
+
+<h1>Ultimate deployment</h1>
+<p>Since I have my custom domain name, I felt like there still more room for improvements. My final solution is for my machine independent setup is my <strong>deploy-over-url</strong> dotfiles system that will:</p>
+<ul>
+<li>recognizes the current system (os x or linux)</li>
+<li>downloads my entire configuration via a specified protocol (https or ssh)</li>
+<li>creates a new ssh key if I need it</li>
+<li>uploads the created or existing ssh key to GitHub and BitBucket</li>
+<li>deploys my downloaded configuration files</li>
+<li>installs the necessary tools to ready to work</li>
+<li>and it does this through a convenient command line menu system</li>
+</ul>
+<p>All I have to do is type in the following command:</p>
+<div class="highlight"><pre>bash &lt;(curl -fsSL tiborsimon.io/dotfiles)
+</pre></div>
+
+
+<p>I can choose what protocol do I want to use for downloading the configuration. If I choose <strong>https</strong> the configuration will download instantly, and the ssh key generation will be skipped, since I only need my user name and password for GitHub to push back the config modification I will make later. If I choose <strong>ssh</strong> for the download protocol, I will be prompted if to create a new ssh key, and optionally upload it ti GitHub or BitBucket. </p>
+<h3>Conclusion</h3>
+<p>In this way I automated all of the critical stepts I do not want to repeate every time on a new machine.</p>
+<p>You can find detailed informations about my URL deployment and automated ssh key upload in my dedicated articles:</p>
+<ul>
+<li><a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/">Dotfiles with URL deployment</a></li>
+<li><a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/">Upload ssh key via Github API</a></li>
+</ul>
+<p>If you want to take a look at the system itself, you can go to my <a href="https://github.com/tiborsimon/dotfiles">dotfiles GitHub repo</a>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Oh the irony.. Exactly after I typed this sentence my machine froze while traveling home on a bus.. :D Commit often, people! Espacially when you turned off swap file generation in vim :D&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
             </article>
@@ -202,7 +191,7 @@
     <ul class="rrssb-buttons clearfix">
 
         <li class="rrssb-facebook">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/web/minimal-mathjax-package/" class="popup">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/tools/my-dotfile-system/" class="popup">
             <span class="rrssb-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg>
             </span>
@@ -211,7 +200,7 @@
         </li>
 
           <li class="rrssb-twitter">
-            <a href="https://twitter.com/intent/tweet?text=Minimal MathJax package - MathJax is a pretty big javascript package, but you can make it ... https://tiborsimon.io/web/minimal-mathjax-package/ @tiborsimonio"
+            <a href="https://twitter.com/intent/tweet?text=My dotfile system - I hate to be machine dependent. For me a computer is just a tool ... https://tiborsimon.io/tools/my-dotfile-system/ @tiborsimonio"
             class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/></svg>
@@ -221,7 +210,7 @@
           </li>
 
           <li class="rrssb-linkedin">
-            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;title=Minimal%20MathJax%20package&amp;summary=MathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB." class="popup">
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/tools/my-dotfile-system/&amp;title=My%20dotfile%20system&amp;summary=I%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration." class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M25.424 15.887v8.447h-4.896v-7.882c0-1.98-.71-3.33-2.48-3.33-1.354 0-2.158.91-2.514 1.802-.13.315-.162.753-.162 1.194v8.216h-4.9s.067-13.35 0-14.73h4.9v2.087c-.01.017-.023.033-.033.05h.032v-.05c.65-1.002 1.812-2.435 4.414-2.435 3.222 0 5.638 2.106 5.638 6.632zM5.348 2.5c-1.676 0-2.772 1.093-2.772 2.54 0 1.42 1.066 2.538 2.717 2.546h.032c1.71 0 2.77-1.132 2.77-2.546C8.056 3.593 7.02 2.5 5.344 2.5h.005zm-2.48 21.834h4.896V9.604H2.867v14.73z"/></svg>
               </span>
@@ -230,7 +219,7 @@
           </li>
 
           <li class="rrssb-reddit">
-            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;text=%3Cp%3EMathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB.%3C/p%3E" target="_blank">
+            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/tools/my-dotfile-system/&amp;text=%3Cp%3EI%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration.%3C/p%3E" target="_blank">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M11.794 15.316c0-1.03-.835-1.895-1.866-1.895-1.03 0-1.893.866-1.893 1.896s.863 1.9 1.9 1.9c1.023-.016 1.865-.916 1.865-1.9zM18.1 13.422c-1.03 0-1.895.864-1.895 1.895 0 1 .9 1.9 1.9 1.865 1.03 0 1.87-.836 1.87-1.865-.006-1.017-.875-1.917-1.875-1.895zM17.527 19.79c-.678.68-1.826 1.007-3.514 1.007h-.03c-1.686 0-2.834-.328-3.51-1.005a.677.677 0 0 0-.958 0c-.264.265-.264.7 0 1 .943.9 2.4 1.4 4.5 1.402.005 0 0 0 0 0 .005 0 0 0 0 0 2.066 0 3.527-.46 4.47-1.402a.678.678 0 0 0 .002-.958c-.267-.334-.688-.334-.988-.043z"/><path d="M27.707 13.267a3.24 3.24 0 0 0-3.236-3.237c-.792 0-1.517.287-2.08.76-2.04-1.294-4.647-2.068-7.44-2.218l1.484-4.69 4.062.955c.07 1.4 1.3 2.6 2.7 2.555a2.696 2.696 0 0 0 2.695-2.695C25.88 3.2 24.7 2 23.2 2c-1.06 0-1.98.616-2.42 1.508l-4.633-1.09a.683.683 0 0 0-.803.454l-1.793 5.7C10.55 8.6 7.7 9.4 5.6 10.75c-.594-.45-1.3-.75-2.1-.72-1.785 0-3.237 1.45-3.237 3.2 0 1.1.6 2.1 1.4 2.69-.04.27-.06.55-.06.83 0 2.3 1.3 4.4 3.7 5.9 2.298 1.5 5.3 2.3 8.6 2.325 3.227 0 6.27-.825 8.57-2.325 2.387-1.56 3.7-3.66 3.7-5.917 0-.26-.016-.514-.05-.768.965-.465 1.577-1.565 1.577-2.698zm-4.52-9.912c.74 0 1.3.6 1.3 1.3a1.34 1.34 0 0 1-2.683 0c.04-.655.596-1.255 1.396-1.3zM1.646 13.3c0-1.038.845-1.882 1.883-1.882.31 0 .6.1.9.21-1.05.867-1.813 1.86-2.26 2.9-.338-.328-.57-.728-.57-1.26zm20.126 8.27c-2.082 1.357-4.863 2.105-7.83 2.105-2.968 0-5.748-.748-7.83-2.105-1.99-1.3-3.087-3-3.087-4.782 0-1.784 1.097-3.484 3.088-4.784 2.08-1.358 4.86-2.106 7.828-2.106 2.967 0 5.7.7 7.8 2.106 1.99 1.3 3.1 3 3.1 4.784C24.86 18.6 23.8 20.3 21.8 21.57zm4.014-6.97c-.432-1.084-1.19-2.095-2.244-2.977.273-.156.59-.245.928-.245 1.036 0 1.9.8 1.9 1.9a2.073 2.073 0 0 1-.57 1.327z"/></svg>
               </span>
@@ -248,7 +237,7 @@
           </li>
 
           <li class="rrssb-pocket">
-           <a href="https://getpocket.com/save?url=https://tiborsimon.io/web/minimal-mathjax-package/">
+           <a href="https://getpocket.com/save?url=https://tiborsimon.io/tools/my-dotfile-system/">
              <span class="rrssb-icon">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.782.002c2.03.002 3.193 1.12 3.182 3.106-.022 3.57.17 7.16-.158 10.7-1.09 11.773-14.588 18.092-24.6 11.573C2.72 22.458.197 18.313.057 12.937c-.09-3.36-.05-6.72-.026-10.08C.04 1.113 1.212.016 3.02.008 7.347-.006 11.678.004 16.006.002c4.258 0 8.518-.004 12.776 0zM8.65 7.856c-1.262.135-1.99.57-2.357 1.476-.392.965-.115 1.81.606 2.496a746.818 746.818 0 0 0 7.398 6.966c1.086 1.003 2.237.99 3.314-.013a700.448 700.448 0 0 0 7.17-6.747c1.203-1.148 1.32-2.468.365-3.426-1.01-1.014-2.302-.933-3.558.245-1.596 1.497-3.222 2.965-4.75 4.526-.706.715-1.12.627-1.783-.034a123.71 123.71 0 0 0-4.93-4.644c-.47-.42-1.123-.647-1.478-.844z"/></svg>
              </span>
@@ -264,47 +253,24 @@
           <div class="neighbors">
             <div class="row">
 
+
                 <div class="6u 12u(mobile)">
                   <div class="article-date">
                     <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-03-19T00:00:00+01:00">Sat 19 March 2016</time>
                   </div>
 
-                  <a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/"><h3 class="post-title">Upload ssh key via Github API</h3></a>
+                  <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/"><h3 class="post-title">Dotfiles with URL deployment</h3></a>
 
                   <div class="article-categories">
                     <!-- CATEGORY -->
                     <i class="fa fa-folder-open-o"></i>
-                    <a href="https://tiborsimon.io/category/programming.html">programming</a>
+                    <a href="https://tiborsimon.io/category/tools.html">tools</a>
 
                     <!-- TAGS -->
                         <i class="fa fa-tags"></i>
-                            <a href="https://tiborsimon.io/tag/script.html">script</a>,                             <a href="https://tiborsimon.io/tag/url.html">url</a>,                             <a href="https://tiborsimon.io/tag/github.html">github</a>,                             <a href="https://tiborsimon.io/tag/api.html">api</a>,                             <a href="https://tiborsimon.io/tag/upload.html">upload</a>,                             <a href="https://tiborsimon.io/tag/ssh.html">ssh</a>,                             <a href="https://tiborsimon.io/tag/key.html">key</a>                  </div>
-
+                            <a href="https://tiborsimon.io/tag/dotfiles.html">dotfiles</a>,                             <a href="https://tiborsimon.io/tag/tools.html">tools</a>,                             <a href="https://tiborsimon.io/tag/script.html">script</a>,                             <a href="https://tiborsimon.io/tag/url.html">url</a>,                             <a href="https://tiborsimon.io/tag/forward.html">forward</a>,                             <a href="https://tiborsimon.io/tag/hack.html">hack</a>                  </div>
                   <div class="article-summary">
-                    In this article I will show you a way to upload your ssh key to GitHub via the GitHub API. This could be useful for you if you don't like the traditional way of uploading ssh keys.
-                  </div>
-                  <div class="direction">
-                    Next article
-                  </div>
-                </div>
-
-                <div class="6u 12u(mobile)">
-                  <div class="article-date">
-                    <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-23T00:00:00+01:00">Tue 23 February 2016</time>
-                  </div>
-
-                  <a href="https://tiborsimon.io/guitar/tortex-time/"><h3 class="post-title">Tortex time</h3></a>
-
-                  <div class="article-categories">
-                    <!-- CATEGORY -->
-                    <i class="fa fa-folder-open-o"></i>
-                    <a href="https://tiborsimon.io/category/guitar.html">guitar</a>
-
-                    <!-- TAGS -->
-                        <i class="fa fa-tags"></i>
-                            <a href="https://tiborsimon.io/tag/guitar.html">guitar</a>,                             <a href="https://tiborsimon.io/tag/pick.html">pick</a>,                             <a href="https://tiborsimon.io/tag/dunlop.html">dunlop</a>,                             <a href="https://tiborsimon.io/tag/tortextime.html">tortextime</a>,                             <a href="https://tiborsimon.io/tag/statistics.html">statistics</a>                  </div>
-                  <div class="article-summary">
-                    I have bought 60 piece of guitar picks to make it impossible to run out of pick in the next 4-5 years. I am going to keep track of every pick, so you can follow the progress with me :)
+                    You can curl down a file and run it as a setup script. Some tech companies use this approach too.
                   </div>
                   <div class="direction">
                     Previous article
@@ -321,8 +287,8 @@
 <script>
 
     var disqus_config = function () {
-        this.page.url = "https://tiborsimon.io/web/minimal-mathjax-package/";
-        this.page.identifier = "tiborsimon-article-minimal-mathjax-package";
+        this.page.url = "https://tiborsimon.io/tools/my-dotfile-system/";
+        this.page.identifier = "tiborsimon-article-my-dotfile-system";
     };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -351,7 +317,7 @@ s.setAttribute('data-timestamp', +new Date());
     <ul class="rrssb-buttons clearfix">
 
         <li class="rrssb-facebook">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/web/minimal-mathjax-package/" class="popup">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/tools/my-dotfile-system/" class="popup">
             <span class="rrssb-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg>
             </span>
@@ -360,7 +326,7 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
 
           <li class="rrssb-twitter">
-            <a href="https://twitter.com/intent/tweet?text=Minimal MathJax package - MathJax is a pretty big javascript package, but you can make it ... https://tiborsimon.io/web/minimal-mathjax-package/ @tiborsimonio"
+            <a href="https://twitter.com/intent/tweet?text=My dotfile system - I hate to be machine dependent. For me a computer is just a tool ... https://tiborsimon.io/tools/my-dotfile-system/ @tiborsimonio"
             class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/></svg>
@@ -370,7 +336,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-linkedin">
-            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;title=Minimal%20MathJax%20package&amp;summary=MathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB." class="popup">
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/tools/my-dotfile-system/&amp;title=My%20dotfile%20system&amp;summary=I%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration." class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M25.424 15.887v8.447h-4.896v-7.882c0-1.98-.71-3.33-2.48-3.33-1.354 0-2.158.91-2.514 1.802-.13.315-.162.753-.162 1.194v8.216h-4.9s.067-13.35 0-14.73h4.9v2.087c-.01.017-.023.033-.033.05h.032v-.05c.65-1.002 1.812-2.435 4.414-2.435 3.222 0 5.638 2.106 5.638 6.632zM5.348 2.5c-1.676 0-2.772 1.093-2.772 2.54 0 1.42 1.066 2.538 2.717 2.546h.032c1.71 0 2.77-1.132 2.77-2.546C8.056 3.593 7.02 2.5 5.344 2.5h.005zm-2.48 21.834h4.896V9.604H2.867v14.73z"/></svg>
               </span>
@@ -379,7 +345,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-reddit">
-            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;text=%3Cp%3EMathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB.%3C/p%3E" target="_blank">
+            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/tools/my-dotfile-system/&amp;text=%3Cp%3EI%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration.%3C/p%3E" target="_blank">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M11.794 15.316c0-1.03-.835-1.895-1.866-1.895-1.03 0-1.893.866-1.893 1.896s.863 1.9 1.9 1.9c1.023-.016 1.865-.916 1.865-1.9zM18.1 13.422c-1.03 0-1.895.864-1.895 1.895 0 1 .9 1.9 1.9 1.865 1.03 0 1.87-.836 1.87-1.865-.006-1.017-.875-1.917-1.875-1.895zM17.527 19.79c-.678.68-1.826 1.007-3.514 1.007h-.03c-1.686 0-2.834-.328-3.51-1.005a.677.677 0 0 0-.958 0c-.264.265-.264.7 0 1 .943.9 2.4 1.4 4.5 1.402.005 0 0 0 0 0 .005 0 0 0 0 0 2.066 0 3.527-.46 4.47-1.402a.678.678 0 0 0 .002-.958c-.267-.334-.688-.334-.988-.043z"/><path d="M27.707 13.267a3.24 3.24 0 0 0-3.236-3.237c-.792 0-1.517.287-2.08.76-2.04-1.294-4.647-2.068-7.44-2.218l1.484-4.69 4.062.955c.07 1.4 1.3 2.6 2.7 2.555a2.696 2.696 0 0 0 2.695-2.695C25.88 3.2 24.7 2 23.2 2c-1.06 0-1.98.616-2.42 1.508l-4.633-1.09a.683.683 0 0 0-.803.454l-1.793 5.7C10.55 8.6 7.7 9.4 5.6 10.75c-.594-.45-1.3-.75-2.1-.72-1.785 0-3.237 1.45-3.237 3.2 0 1.1.6 2.1 1.4 2.69-.04.27-.06.55-.06.83 0 2.3 1.3 4.4 3.7 5.9 2.298 1.5 5.3 2.3 8.6 2.325 3.227 0 6.27-.825 8.57-2.325 2.387-1.56 3.7-3.66 3.7-5.917 0-.26-.016-.514-.05-.768.965-.465 1.577-1.565 1.577-2.698zm-4.52-9.912c.74 0 1.3.6 1.3 1.3a1.34 1.34 0 0 1-2.683 0c.04-.655.596-1.255 1.396-1.3zM1.646 13.3c0-1.038.845-1.882 1.883-1.882.31 0 .6.1.9.21-1.05.867-1.813 1.86-2.26 2.9-.338-.328-.57-.728-.57-1.26zm20.126 8.27c-2.082 1.357-4.863 2.105-7.83 2.105-2.968 0-5.748-.748-7.83-2.105-1.99-1.3-3.087-3-3.087-4.782 0-1.784 1.097-3.484 3.088-4.784 2.08-1.358 4.86-2.106 7.828-2.106 2.967 0 5.7.7 7.8 2.106 1.99 1.3 3.1 3 3.1 4.784C24.86 18.6 23.8 20.3 21.8 21.57zm4.014-6.97c-.432-1.084-1.19-2.095-2.244-2.977.273-.156.59-.245.928-.245 1.036 0 1.9.8 1.9 1.9a2.073 2.073 0 0 1-.57 1.327z"/></svg>
               </span>
@@ -397,7 +363,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-pocket">
-           <a href="https://getpocket.com/save?url=https://tiborsimon.io/web/minimal-mathjax-package/">
+           <a href="https://getpocket.com/save?url=https://tiborsimon.io/tools/my-dotfile-system/">
              <span class="rrssb-icon">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.782.002c2.03.002 3.193 1.12 3.182 3.106-.022 3.57.17 7.16-.158 10.7-1.09 11.773-14.588 18.092-24.6 11.573C2.72 22.458.197 18.313.057 12.937c-.09-3.36-.05-6.72-.026-10.08C.04 1.113 1.212.016 3.02.008 7.347-.006 11.678.004 16.006.002c4.258 0 8.518-.004 12.776 0zM8.65 7.856c-1.262.135-1.99.57-2.357 1.476-.392.965-.115 1.81.606 2.496a746.818 746.818 0 0 0 7.398 6.966c1.086 1.003 2.237.99 3.314-.013a700.448 700.448 0 0 0 7.17-6.747c1.203-1.148 1.32-2.468.365-3.426-1.01-1.014-2.302-.933-3.558.245-1.596 1.497-3.222 2.965-4.75 4.526-.706.715-1.12.627-1.783-.034a123.71 123.71 0 0 0-4.93-4.644c-.47-.42-1.123-.647-1.478-.844z"/></svg>
              </span>
@@ -407,50 +373,67 @@ s.setAttribute('data-timestamp', +new Date());
 
     </ul>
 <!-- Buttons end here --><div class="github-button">
-    <a href="https://github.com/tiborsimon/mathjax-minimal-package" target="_blank"><i class="fa fa-github-alt"></i></a>
-    <a href="https://github.com/tiborsimon/mathjax-minimal-package/releases/latest" target="_blank"><i class="fa fa-download"></i></a>
+    <a href="https://github.com/tiborsimon/dotfiles" target="_blank"><i class="fa fa-github-alt"></i></a>
 </div>
         </div>
       </div>
       <div class="box">
 <aside class="series-widget">
   <div class="series-header">
-    <h2>This article is part 2 of 2 of the <b>iOS MathJax</b> series</h2>
+    <h2>This article is part 3 of 3 of the <b>Dotfiles</b> series</h2>
   </div>
     <div class="series-post previous">
 
       <div class="article-date">
-        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-02-20T00:00:00+01:00"> Sat 20 February 2016</time>
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-03-19T00:00:00+01:00"> Sat 19 March 2016</time>
       </div>
 
-      <a href="https://tiborsimon.io/ios/local-mathjax-in-ios-apps/"><h3 class="post-title"><small>1.</small> Local MathJax in iOS apps</h3></a>
+      <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/"><h3 class="post-title"><small>1.</small> Dotfiles with URL deployment</h3></a>
 
       <div class="article-categories">
         <!-- CATEGORY -->
         <i class="fa fa-folder-open-o"></i>
-        <a href="https://tiborsimon.io/category/ios.html">ios</a>
+        <a href="https://tiborsimon.io/category/tools.html">tools</a>
 
         <!-- TAGS -->
             <i class="fa fa-tags"></i>
-                <a href="https://tiborsimon.io/tag/mathjax.html">MathJax</a>,                 <a href="https://tiborsimon.io/tag/ios.html">ios</a>,                 <a href="https://tiborsimon.io/tag/hack.html">hack</a>,                 <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>,                 <a href="https://tiborsimon.io/tag/swift.html">swift</a>,                 <a href="https://tiborsimon.io/tag/math.html">math</a>,                 <a href="https://tiborsimon.io/tag/latex.html">LaTEX</a>
+                <a href="https://tiborsimon.io/tag/dotfiles.html">dotfiles</a>,                 <a href="https://tiborsimon.io/tag/tools.html">tools</a>,                 <a href="https://tiborsimon.io/tag/script.html">script</a>,                 <a href="https://tiborsimon.io/tag/url.html">url</a>,                 <a href="https://tiborsimon.io/tag/forward.html">forward</a>,                 <a href="https://tiborsimon.io/tag/hack.html">hack</a>
+      </div>
+    </div>
+    <div class="series-post previous">
+
+      <div class="article-date">
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-03-19T00:00:00+01:00"> Sat 19 March 2016</time>
+      </div>
+
+      <a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/"><h3 class="post-title"><small>2.</small> Upload ssh key via Github API</h3></a>
+
+      <div class="article-categories">
+        <!-- CATEGORY -->
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://tiborsimon.io/category/programming.html">programming</a>
+
+        <!-- TAGS -->
+            <i class="fa fa-tags"></i>
+                <a href="https://tiborsimon.io/tag/script.html">script</a>,                 <a href="https://tiborsimon.io/tag/url.html">url</a>,                 <a href="https://tiborsimon.io/tag/github.html">github</a>,                 <a href="https://tiborsimon.io/tag/api.html">api</a>,                 <a href="https://tiborsimon.io/tag/upload.html">upload</a>,                 <a href="https://tiborsimon.io/tag/ssh.html">ssh</a>,                 <a href="https://tiborsimon.io/tag/key.html">key</a>
       </div>
     </div>
 
   <div class="series-post current">
       <div class="article-date">
-        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-03-07T00:00:00+01:00"> Mon 07 March 2016</time>
+        <i class="fa fa-clock-o"></i> Posted on <time datetime="2016-04-01T00:00:00+02:00"> Fri 01 April 2016</time>
       </div>
 
-      <a href="https://tiborsimon.io/web/minimal-mathjax-package/"><h3 class="post-title"><small>2.</small> Minimal MathJax package</h3></a>
+      <a href="https://tiborsimon.io/tools/my-dotfile-system/"><h3 class="post-title"><small>3.</small> My dotfile system</h3></a>
 
       <div class="article-categories">
         <!-- CATEGORY -->
         <i class="fa fa-folder-open-o"></i>
-        <a href="https://tiborsimon.io/category/web.html">web</a>
+        <a href="https://tiborsimon.io/category/tools.html">tools</a>
 
         <!-- TAGS -->
             <i class="fa fa-tags"></i>
-                <a href="https://tiborsimon.io/tag/mathjax.html">MathJax</a>,                 <a href="https://tiborsimon.io/tag/hack.html">hack</a>,                 <a href="https://tiborsimon.io/tag/javascript.html">javascript</a>,                 <a href="https://tiborsimon.io/tag/math.html">math</a>,                 <a href="https://tiborsimon.io/tag/latex.html">LaTEX</a>      </div>
+                <a href="https://tiborsimon.io/tag/dotfiles.html">dotfiles</a>,                 <a href="https://tiborsimon.io/tag/tools.html">tools</a>,                 <a href="https://tiborsimon.io/tag/script.html">script</a>,                 <a href="https://tiborsimon.io/tag/linux.html">linux</a>,                 <a href="https://tiborsimon.io/tag/unix.html">unix</a>      </div>
   </div>
 
 </aside>
@@ -659,7 +642,7 @@ s.setAttribute('data-timestamp', +new Date());
     <ul class="rrssb-buttons clearfix">
 
         <li class="rrssb-facebook">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/web/minimal-mathjax-package/" class="popup">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://tiborsimon.io/tools/my-dotfile-system/" class="popup">
             <span class="rrssb-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg>
             </span>
@@ -668,7 +651,7 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
 
           <li class="rrssb-twitter">
-            <a href="https://twitter.com/intent/tweet?text=Minimal MathJax package - MathJax is a pretty big javascript package, but you can make it ... https://tiborsimon.io/web/minimal-mathjax-package/ @tiborsimonio"
+            <a href="https://twitter.com/intent/tweet?text=My dotfile system - I hate to be machine dependent. For me a computer is just a tool ... https://tiborsimon.io/tools/my-dotfile-system/ @tiborsimonio"
             class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/></svg>
@@ -678,7 +661,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-linkedin">
-            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;title=Minimal%20MathJax%20package&amp;summary=MathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB." class="popup">
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tiborsimon.io/tools/my-dotfile-system/&amp;title=My%20dotfile%20system&amp;summary=I%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration." class="popup">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M25.424 15.887v8.447h-4.896v-7.882c0-1.98-.71-3.33-2.48-3.33-1.354 0-2.158.91-2.514 1.802-.13.315-.162.753-.162 1.194v8.216h-4.9s.067-13.35 0-14.73h4.9v2.087c-.01.017-.023.033-.033.05h.032v-.05c.65-1.002 1.812-2.435 4.414-2.435 3.222 0 5.638 2.106 5.638 6.632zM5.348 2.5c-1.676 0-2.772 1.093-2.772 2.54 0 1.42 1.066 2.538 2.717 2.546h.032c1.71 0 2.77-1.132 2.77-2.546C8.056 3.593 7.02 2.5 5.344 2.5h.005zm-2.48 21.834h4.896V9.604H2.867v14.73z"/></svg>
               </span>
@@ -687,7 +670,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-reddit">
-            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/web/minimal-mathjax-package/&amp;text=%3Cp%3EMathJax%20is%20a%20pretty%20big%20javascript%20package%2C%20but%20you%20can%20make%20it%20work%20after%20you%20stripped%20off%20most%20of%20the%20files.%20The%20final%20package%20size%20could%20be%20around%20623KB.%3C/p%3E" target="_blank">
+            <a href="http://www.reddit.com/submit?url=https://tiborsimon.io/tools/my-dotfile-system/&amp;text=%3Cp%3EI%20hate%20to%20be%20machine%20dependent.%20For%20me%20a%20computer%20is%20just%20a%20tool%20to%20get%20things%20done.%20If%20one%20breaks%20down%20for%20various%20reasons%20or%20I%20switch%20machine%20I%20want%20to%20have%20my%20tools%20and%20setup%20without%20any%20manual%20configuration.%3C/p%3E" target="_blank">
               <span class="rrssb-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M11.794 15.316c0-1.03-.835-1.895-1.866-1.895-1.03 0-1.893.866-1.893 1.896s.863 1.9 1.9 1.9c1.023-.016 1.865-.916 1.865-1.9zM18.1 13.422c-1.03 0-1.895.864-1.895 1.895 0 1 .9 1.9 1.9 1.865 1.03 0 1.87-.836 1.87-1.865-.006-1.017-.875-1.917-1.875-1.895zM17.527 19.79c-.678.68-1.826 1.007-3.514 1.007h-.03c-1.686 0-2.834-.328-3.51-1.005a.677.677 0 0 0-.958 0c-.264.265-.264.7 0 1 .943.9 2.4 1.4 4.5 1.402.005 0 0 0 0 0 .005 0 0 0 0 0 2.066 0 3.527-.46 4.47-1.402a.678.678 0 0 0 .002-.958c-.267-.334-.688-.334-.988-.043z"/><path d="M27.707 13.267a3.24 3.24 0 0 0-3.236-3.237c-.792 0-1.517.287-2.08.76-2.04-1.294-4.647-2.068-7.44-2.218l1.484-4.69 4.062.955c.07 1.4 1.3 2.6 2.7 2.555a2.696 2.696 0 0 0 2.695-2.695C25.88 3.2 24.7 2 23.2 2c-1.06 0-1.98.616-2.42 1.508l-4.633-1.09a.683.683 0 0 0-.803.454l-1.793 5.7C10.55 8.6 7.7 9.4 5.6 10.75c-.594-.45-1.3-.75-2.1-.72-1.785 0-3.237 1.45-3.237 3.2 0 1.1.6 2.1 1.4 2.69-.04.27-.06.55-.06.83 0 2.3 1.3 4.4 3.7 5.9 2.298 1.5 5.3 2.3 8.6 2.325 3.227 0 6.27-.825 8.57-2.325 2.387-1.56 3.7-3.66 3.7-5.917 0-.26-.016-.514-.05-.768.965-.465 1.577-1.565 1.577-2.698zm-4.52-9.912c.74 0 1.3.6 1.3 1.3a1.34 1.34 0 0 1-2.683 0c.04-.655.596-1.255 1.396-1.3zM1.646 13.3c0-1.038.845-1.882 1.883-1.882.31 0 .6.1.9.21-1.05.867-1.813 1.86-2.26 2.9-.338-.328-.57-.728-.57-1.26zm20.126 8.27c-2.082 1.357-4.863 2.105-7.83 2.105-2.968 0-5.748-.748-7.83-2.105-1.99-1.3-3.087-3-3.087-4.782 0-1.784 1.097-3.484 3.088-4.784 2.08-1.358 4.86-2.106 7.828-2.106 2.967 0 5.7.7 7.8 2.106 1.99 1.3 3.1 3 3.1 4.784C24.86 18.6 23.8 20.3 21.8 21.57zm4.014-6.97c-.432-1.084-1.19-2.095-2.244-2.977.273-.156.59-.245.928-.245 1.036 0 1.9.8 1.9 1.9a2.073 2.073 0 0 1-.57 1.327z"/></svg>
               </span>
@@ -705,7 +688,7 @@ s.setAttribute('data-timestamp', +new Date());
           </li>
 
           <li class="rrssb-pocket">
-           <a href="https://getpocket.com/save?url=https://tiborsimon.io/web/minimal-mathjax-package/">
+           <a href="https://getpocket.com/save?url=https://tiborsimon.io/tools/my-dotfile-system/">
              <span class="rrssb-icon">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.782.002c2.03.002 3.193 1.12 3.182 3.106-.022 3.57.17 7.16-.158 10.7-1.09 11.773-14.588 18.092-24.6 11.573C2.72 22.458.197 18.313.057 12.937c-.09-3.36-.05-6.72-.026-10.08C.04 1.113 1.212.016 3.02.008 7.347-.006 11.678.004 16.006.002c4.258 0 8.518-.004 12.776 0zM8.65 7.856c-1.262.135-1.99.57-2.357 1.476-.392.965-.115 1.81.606 2.496a746.818 746.818 0 0 0 7.398 6.966c1.086 1.003 2.237.99 3.314-.013a700.448 700.448 0 0 0 7.17-6.747c1.203-1.148 1.32-2.468.365-3.426-1.01-1.014-2.302-.933-3.558.245-1.596 1.497-3.222 2.965-4.75 4.526-.706.715-1.12.627-1.783-.034a123.71 123.71 0 0 0-4.93-4.644c-.47-.42-1.123-.647-1.478-.844z"/></svg>
              </span>

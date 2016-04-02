@@ -740,7 +740,7 @@ body {
 
 .site-info {
   text-align: center;
-  font-size: 80%;
+  font-size: 70%;
   color: rgba(255, 255, 255, 0.25); }
 
 figure figcaption {
@@ -1064,6 +1064,18 @@ h2.widget-title {
   line-height: 1em;
   white-space: nowrap; }
 
+#content .divider {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 6pt;
+  font-size: .5em;
+  position: relative;
+  top: 22px;
+  display: block;
+  line-height: 13px;
+  width: 100%;
+  border-bottom: 1px solid #eee; }
+
 #content .article-info {
   line-height: 17px;
   font-size: 12pt;
@@ -1082,16 +1094,19 @@ h2.widget-title {
     margin: 0 0 2px 0; }
 
 #content h1 {
+  line-height: 1em;
   font-size: 2em;
   margin-top: 46px;
   margin-bottom: 22px; }
 
 #content h2 {
+  line-height: 1em;
   font-size: 1.8em;
   margin-top: 40px;
   margin-bottom: 18px; }
 
 #content h3 {
+  line-height: 1em;
   font-size: 1.3em;
   margin-top: 30px;
   margin-bottom: 8px; }
@@ -1112,6 +1127,15 @@ h2.widget-title {
 
 #content ul {
   list-style-type: disc; }
+
+#content .code-name {
+  font-size: .7em;
+  text-align: right;
+  margin: -11px;
+  position: relative;
+  top: 13px;
+  right: 20px;
+  color: #a1a1a1; }
 
 #content pre, #content code {
   font-family: monospace;
