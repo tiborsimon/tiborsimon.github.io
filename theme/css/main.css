@@ -1135,7 +1135,17 @@ h2.widget-title {
   position: relative;
   top: 13px;
   right: 20px;
-  color: #a1a1a1; }
+  color: #a1a1a1;
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer */
+  -khtml-user-select: none;
+  /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none;
+  /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none;
+  /* Disable Android and iOS callouts*/ }
 
 #content pre, #content code {
   font-family: monospace;
