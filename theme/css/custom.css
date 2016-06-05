@@ -170,3 +170,14 @@
 .series-summary {
     text-align: justify;
 }
+
+/* github contribution calendar */
+.calendar-graph text.month {
+    display: none;
+}
+.contrib-footer {
+    display: none;
+}
+.calendar-graph text.month, .calendar-graph text.wday {
+    display: none;
+}
