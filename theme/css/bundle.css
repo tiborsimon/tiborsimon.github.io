@@ -9132,16 +9132,16 @@ button.close {
 /* github contribution calendar */
 
 .calendar-graph text.month {
-  display: none;
+  display: none !important;
 }
 
 .contrib-footer {
-  display: none;
+  display: none !important;
 }
 
 .calendar-graph text.month,
 .calendar-graph text.wday {
-  display: none;
+  display: none !important;
 }
 @font-face {
   font-family: 'et-line';
