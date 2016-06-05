@@ -172,6 +172,9 @@
 }
 
 /* github contribution calendar */
+.calendar {
+    overflow-x: auto;
+}
 .calendar-graph text.month {
     display: none !important;
 }
