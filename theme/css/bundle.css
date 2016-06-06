@@ -9135,6 +9135,10 @@ button.close {
   overflow-x: auto;
 }
 
+.contrib-column {
+  display: none !important;
+}
+
 .calendar-graph text.month {
   display: none !important;
 }
