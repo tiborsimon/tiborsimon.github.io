@@ -19,24 +19,6 @@
     .github-button a:hover {
       background-color: #000;}
 
-.jslghtbx-thmb {
-  padding: 2px;
-  max-width: 100%;
-  max-height: 140px;
-  cursor: pointer;
-  box-shadow: 0px 0px 3px 0px #000;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out; }
-  @media screen and (min-width: 451px) {
-    .jslghtbx-thmb {
-      margin: 1em; } }
-  @media screen and (max-width: 450px) {
-    .jslghtbx-thmb {
-      margin: 1em 0; } }
-  .jslghtbx-thmb:hover {
-    box-shadow: 0px 0px 14px 0px #000; }
 
 /*  T O R T E X - T I M E  */
 .tortex-time-wrapper:after {
