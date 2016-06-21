@@ -9123,6 +9123,18 @@ button.close {
 .calendar-graph text.wday {
   display: none !important;
 }
+
+#timeline .menu {
+  position: absolute;
+  z-index: 9999999999999999999999999999;
+  margin: 10px;
+  opacity: 0.3;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#timeline .menu:hover {
+  opacity: 1;
+}
 @font-face {
   font-family: 'et-line';
   src: url("../fonts/et-line.eot");
