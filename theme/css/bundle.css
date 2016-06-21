@@ -9123,6 +9123,12 @@ button.close {
 .calendar-graph text.wday {
   display: none !important;
 }
+
+/* timeline  */
+
+.vis-timeline {
+  border: 1px solid rgba(191, 191, 191, 0) !important;
+}
 @font-face {
   font-family: 'et-line';
   src: url("../fonts/et-line.eot");
