@@ -716,16 +716,6 @@ function initPageSliders(){
           
         var owl = $(".fullwidth-slideshow").data("owlCarousel");
         
-        $(document.documentElement).keyup(function(event){
-            // handle cursor keys
-            if (event.keyCode == 37) {
-                owl.prev();
-            }
-            else 
-                if (event.keyCode == 39) {
-                    owl.next();
-                }
-        });
         
         if ($(".owl-carousel").length) {
             var owl = $(".owl-carousel").data('owlCarousel');
