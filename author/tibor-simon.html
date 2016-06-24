@@ -27,15 +27,16 @@ $.ajax({
 		// Configuration for the Timeline
 		var options = {
 			zoomMin: 86400000*0.4,
-			zoomMax: 86400000*30,
+			zoomMax: 86400000*22,
             zoomable: false
 		};
 
 		// Create a Timeline
 		var timeline = new vis.Timeline(container, items, options);
 
+        timelineZoom(-0.2);
 		timeline.setSelection([1]);
-		timeline.focus([1]);
+        timeline.focus([1], {animation: false});
 
 		function timelinePrev () {
 			var current = timeline.getSelection();

@@ -825,7 +825,7 @@
 <li class="work-item mix programming">
     <a href="https://github.com/tiborsimon/matlab-library-system" class="work-lightbox-link mfp-iframe">
         <div class="work-img">
-            <img src="https://tiborsimon.io/images/pic02.jpg" alt="MATLAB Library System thumbnail" />
+            <img src="https://tiborsimon.io/images/pic03.jpg" alt="MATLAB Library System thumbnail" />
         </div>
         <div class="work-intro">
             <h3 class="work-title">MATLAB Library System</h3>
@@ -857,7 +857,7 @@
 <li class="work-item mix programming">
     <a href="https://github.com/tiborsimon/simple-input-parser" class="work-lightbox-link mfp-iframe">
         <div class="work-img">
-            <img src="https://tiborsimon.io/images/pic06.jpg" alt="Simple Input Parser thumbnail" />
+            <img src="https://tiborsimon.io/images/pic03.jpg" alt="Simple Input Parser thumbnail" />
         </div>
         <div class="work-intro">
             <h3 class="work-title">Simple Input Parser</h3>
@@ -1242,15 +1242,16 @@ $.ajax({
 		// Configuration for the Timeline
 		var options = {
 			zoomMin: 86400000*0.4,
-			zoomMax: 86400000*30,
+			zoomMax: 86400000*22,
             zoomable: false
 		};
 
 		// Create a Timeline
 		var timeline = new vis.Timeline(container, items, options);
 
+        timelineZoom(-0.2);
 		timeline.setSelection([1]);
-		timeline.focus([1]);
+        timeline.focus([1], {animation: false});
 
 		function timelinePrev () {
 			var current = timeline.getSelection();
