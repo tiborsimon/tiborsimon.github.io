@@ -13,7 +13,7 @@ GitHubCalendar(".calendar", "tiborsimon", {summary_text: ""});
 
 // load data via an ajax request. When the data is in, load the timeline
 $.ajax({
-	url: 'https://tiborsimon.io/worklog.json',
+	url: 'https://cdn.rawgit.com/tiborsimon/worklog/master/rendered/rendered_worklog.json',
 	success: function (data) {
 		// hide the "loading..." message
 		document.getElementById('loading').style.display = 'none';
