@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering with passion</title><link>https://tiborsimon.io/</link><description></description><atom:link href="https://tiborsimon.io/feeds/tibor-simon.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 01 Apr 2016 00:00:00 +0200</lastBuildDate><item><title>My dotfile system</title><link>https://tiborsimon.io/blog/tools/my-dotfile-system/</link><description>&lt;p&gt;Have you ever felt &lt;em&gt;crippled on a new machine&lt;/em&gt; you've just logged in for the first time? Tools missing, and if not, they have weird default configurations. Before you can start to work, you need to move in that machine: download all your needed tools, configure them one by one by hand. You quickly realize this is not the best way you can do..&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering with passion</title><link>https://tiborsimon.io/</link><description></description><atom:link href="https://tiborsimon.io/feeds/tibor-simon.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 15 Jul 2016 00:00:00 +0200</lastBuildDate><item><title>Compiling Emacs on CentOS</title><link>https://tiborsimon.io/blog/tools/compiling-emacs-on-centos/</link><description>&lt;p&gt;As I started to use Emacs as my primary text editor (I was a vimmer in the past), I noticed that my common config I created on my OSX machine for Emacs 24.5 doesn't work on one of my Vagrant based virtual machines running CentOS. If I tried to bring up the Helm buffer menu, it brings up an error that the &lt;em&gt;nesting exceeds `max-lisp-eval-depth'&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I figured out that the problem was that CentOS only has Emacs 23.1 available via yum, so I needed to compile it from the sources:&lt;/p&gt;
+&lt;p&gt;First of all, I have downloaded the emacs repository mirror from GitHub, and I checked out to the &lt;code&gt;emacs-24.5&lt;/code&gt; tag:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then I run &lt;code&gt;autogen.sh&lt;/code&gt; which has created the &lt;code&gt;configure&lt;/code&gt; script.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./autogen.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I run the created &lt;code&gt;configure&lt;/code&gt; script. As it could have been expected, there was some errors, so I installed the missing packages on demand:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./configure
+[error] no makeinfo
+sudo yum install texinfo
+
+./configure
+[error] no x
+sudo yum install libX11-devel
+
+./configure
+[error] no aw3d
+sudo yum install Xaw3d-devel
+
+./configure
+[error] no libpng libjpg libgif/libungif libtiff
+sudo yum install libjpeg-devel libpng-devel libungif-devel libtiff-devel
+
+./configure
+[error] no tputs
+sudo yum install ncurses-devel
+
+Where should the build process find the source code?    .
+  What compiler should emacs be built with?               gcc -std=gnu99 -g3 -O2
+  Should Emacs use the GNU version of malloc?             yes
+      (Using Doug Lea&amp;#39;s new malloc from the GNU C Library.)
+  Should Emacs use a relocating allocator for buffers?    no
+  Should Emacs use mmap(2) for buffer allocation?         no
+  What window system should Emacs use?                    x11
+  What toolkit should Emacs use?                          LUCID
+  Where do we find X Windows header files?                Standard dirs
+  Where do we find X Windows libraries?                   Standard dirs
+  Does Emacs use -lXaw3d?                                 yes
+  Does Emacs use -lXpm?                                   yes
+  Does Emacs use -ljpeg?                                  yes
+  Does Emacs use -ltiff?                                  yes
+  Does Emacs use a gif library?                           yes -lgif
+  Does Emacs use a png library?                           yes -lpng15 -lz -lm
+  Does Emacs use -lrsvg-2?                                no
+  Does Emacs use imagemagick?                             no
+  Does Emacs support sound?                               yes
+  Does Emacs use -lgpm?                                   no
+  Does Emacs use -ldbus?                                  no
+  Does Emacs use -lgconf?                                 no
+  Does Emacs use GSettings?                               no
+  Does Emacs use a file notification library?             yes -lglibc (inotify)
+  Does Emacs use access control lists?                    no
+  Does Emacs use -lselinux?                               no
+  Does Emacs use -lgnutls?                                no
+  Does Emacs use -lxml2?                                  no
+  Does Emacs use -lfreetype?                              no
+  Does Emacs use -lm17n-flt?                              no
+  Does Emacs use -lotf?                                   no
+  Does Emacs use -lxft?                                   no
+  Does Emacs directly use zlib?                           yes
+  Does Emacs use toolkit scroll bars?                     yes
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally as the &lt;code&gt;configure&lt;/code&gt; script finished, I compiled the whole software package:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make
+sudo make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that, I had a fully functioning Emacs installation, that worked flawlesly with my configuration.&lt;/p&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;You can compile Emacs from sources with the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
+sudo yum install texinfo libX11-devel Xaw3d-devel libjpeg-devel libpng-devel libungif-devel libtiff-devel ncurses-devel
+./autogen.sh
+./configure
+make
+sudo make install
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tibor Simon</dc:creator><pubDate>Fri, 15 Jul 2016 00:00:00 +0200</pubDate><guid>tag:tiborsimon.io,2016-07-15:blog/tools/compiling-emacs-on-centos/</guid><category>centos</category><category>emacs</category><category>compile</category><category>make</category><category>configure</category><category>github</category></item><item><title>My dotfile system</title><link>https://tiborsimon.io/blog/tools/my-dotfile-system/</link><description>&lt;p&gt;Have you ever felt &lt;em&gt;crippled on a new machine&lt;/em&gt; you've just logged in for the first time? Tools missing, and if not, they have weird default configurations. Before you can start to work, you need to move in that machine: download all your needed tools, configure them one by one by hand. You quickly realize this is not the best way you can do..&lt;/p&gt;
 &lt;div class="divider"&gt;Solution one&lt;/div&gt;
 
 &lt;h1&gt;Externally saved configuration&lt;/h1&gt;
