@@ -103,7 +103,13 @@
   padding: 10px;
   background-color: #ededed;
   overflow-x: auto;
-  color: #8a8a8a; }
+  color: #8a8a8a; 
+  overflow: auto;
+  display: block;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  white-space: pre !important;
+}
 
 #content pre {
   border-radius: 3px;

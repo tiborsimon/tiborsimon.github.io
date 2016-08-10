@@ -9033,6 +9033,11 @@ button.close {
   background-color: #ededed;
   overflow-x: auto;
   color: #8a8a8a;
+  overflow: auto;
+  display: block;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  white-space: pre !important;
 }
 
 #content pre {
@@ -14835,7 +14840,7 @@ Primary use:    MultiPurpose Template
 Project:    Rhythm
 Version:    2.6
 Last change:    18.04.2016
-Primary use:    MultiPurpose Template  
+Primary use:    MultiPurpose Template
 -------------------------------------------------------------------*/
 
 /*!
@@ -18829,7 +18834,7 @@ a.btn-mod:focus {
   z-index: 0;
 }
 
-/* 
+/*
  * Headings styles
  */
 
@@ -19658,8 +19663,8 @@ a.logo:hover {
   transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 
-/* 
- * Centered menu 
+/*
+ * Centered menu
  */
 
 .mn-centered {
@@ -19687,8 +19692,8 @@ a.logo:hover {
   margin-right: auto;
 }
 
-/* 
- * Aligned left menu 
+/*
+ * Aligned left menu
  */
 
 
@@ -20092,11 +20097,11 @@ a.logo:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 140px 0;
+  padding: 50px 0;
 }
 
 .small-section {
-  padding: 70px 0;
+  padding: 40px 0;
 }
 
 .small-title {
@@ -21109,7 +21114,7 @@ a.logo:hover {
 }
 
 /*
- * Works grid 
+ * Works grid
  */
 
 .works-grid {
@@ -21807,7 +21812,7 @@ a.logo:hover {
 }
 
 /* ==============================
-   Google maps 
+   Google maps
    ============================== */
 
 .google-map {
