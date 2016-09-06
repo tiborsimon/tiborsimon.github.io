@@ -20,13 +20,13 @@
     .days {
       font-size: 2em;
     }
-  </style><link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet" type="text/css"></head><body><h1>Lillus &amp; Tibcsi</h1><div class="text"> We have been in love since 2013.12.12.<br>which means we are<br><span id="date"></span><span class="days">days old.</span><br> We have been living together since 2014.06.04, that is <span id="home"></span> days. </div><script>
+  </style><link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet" type="text/css"></head><body><h1>Lillus &amp; Tibcsi</h1><div class="text"> We have been in love since 2013.12.12.<br>which means we are<br><span id="date">997</span><span class="days">days old.</span><br> We have been living together since 2014.06.04, that is <span id="home"></span> days. </div><script>
     function daysBetween(one, another) {
       return Math.round(Math.abs((+one) - (+another))/8.64e7);
     }
     var start = new Date(2013,11,12)
     var home = new Date(2014,5,4)
     var now = new Date()
-    document.getElementById('date').innerHTML = daysBetween(start, now);
+    // document.getElementById('date').innerHTML = daysBetween(start, now);
     document.getElementById('home').innerHTML = daysBetween(home, now);
   </script></body></html>
