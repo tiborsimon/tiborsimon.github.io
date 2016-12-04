@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Collect all nouns in hungarian - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Collect all nouns in hungarian</div>
+          <div class="details">
+            <div class="timestamp">2015. 10. 24.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/web/">web</a>
+              <a href="http://localhost:8000/tag/hack/">hack</a>
+              <a href="http://localhost:8000/tag/python/">python</a>
+              <a href="http://localhost:8000/tag/search/">search</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download.</div>
+          <hr>
+          <p>Hopefully, there is a <a href="https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek" target="_blank">hungarian wiki dictionary</a>
+that contains all words in hungarian, and it has a noun filter. It can show the nouns breaked.
+Instead of manually copying the pages content for the available 200 pages, I fired up my two favorite
+python library: <em>BeautifulSoup4</em> and <em>Requests</em>.</p>
+<p>The nouns on the wiki page were arranged into a table, so I had to extract the words from the <code>&lt;li&gt;&lt;/li&gt;</code>
+tags from the html file, downloaded via a web request using the <em>Requests</em> library and created a soup
+from it with <em>BeautifulSoup4</em>.</p>
+<p>The whole process was arranged into an infinite while loop. It will run until a valid next page link
+ can be found. Not the best solution, but hey, it was just a scipt :) Inside this while loop, there is a
+ loop that will collect the words into a list. The delimiter for this inner loop was a common
+ word (magyar szótár), that was present on every page after the last listed noun.</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-keyword">import</span> json
+
+words = []
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    next_link = <span class="hljs-string">'https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek'</span>
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>):
+            r = requests.get(next_link)
+            <span class="hljs-keyword">if</span> r.status_code != <span class="hljs-number">200</span>:
+                <span class="hljs-keyword">break</span>
+            soup = BeautifulSoup(r.text, <span class="hljs-string">'html.parser'</span>)
+            extract_words_from_soup(soup)
+            <span class="hljs-keyword">with</span> open(<span class="hljs-string">'words.json'</span>, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> outfile:
+                json.dump(words, outfile)
+            next_link = <span class="hljs-string">'https://hu.wiktionary.org'</span> + \
+                        soup.find(<span class="hljs-string">'a'</span>, string=<span class="hljs-string">'következő oldal'</span>)[<span class="hljs-string">'href'</span>]
+            print(<span class="hljs-string">'Word count: {} next_link: {}'</span>.format(len(words), next_link))
+    <span class="hljs-keyword">except</span> TypeError:
+        print(<span class="hljs-string">'\nFinished with {} words'</span>.format(len(words)))
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extract_words_from_soup</span><span class="hljs-params">(soup)</span>:</span>
+    <span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> soup.find_all(<span class="hljs-string">'li'</span>):
+        <span class="hljs-keyword">try</span>:
+            word = li.a.string
+            <span class="hljs-keyword">if</span> word == <span class="hljs-string">'magyar szótár'</span>:
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">if</span> word != <span class="hljs-string">'magyar főnévi alakok'</span>:
+                words.append(word)
+        <span class="hljs-keyword">except</span>:
+            <span class="hljs-keyword">pass</span>
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre>
+
+<p>During the process, I printed out every next link the script was found, so I had a feedback where the script
+was in the alphabet. As you can see, the last log was an exception printout, indicating that the script could
+not parse the next link from the html file.</p>
+<pre><code class="hljs bash">Word count: <span class="hljs-number">200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=adenokarcin%C3%B3ma<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=agr%C3%A1rt%C3%B6rv%C3%A9ny<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=akaszt%C3%B3fahumor<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=alapilletm%C3%A9ny<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">1000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=almaexport<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">1200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=android<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">1400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=anyak%C3%B6nyv<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">1600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=aranymetsz%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">1800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=assz%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">2000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=aut%C3%B3busz<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">2200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bakkecske<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">2400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bark%C3%B3ca<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">2600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bej%C3%A1r%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">2800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=beteg+bor<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">3000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bifsztek<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">3200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bodob%C3%A1cs<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">3400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=borocska<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">3600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=bujt%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">3800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=b%C3%A1nyakavics<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">4000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=b%C3%A9ket%C3%B6rekv%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">4200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=b%C3%B6lcs%C3%A9szdoktor<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">4400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=b%C5%B1v%C3%B6<span class="hljs-built_in">let</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">4600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=ciszterna<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">4800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=csecs<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">5000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=csillagt%C3%A9rk%C3%A9p<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">5200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=csukl%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">5400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=cukorm%C3%A1z<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">5600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=darukezel%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">5800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=dics%C3%A9ret<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">6000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=dodzsem<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">6200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=d%C3%A1rid%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">6400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=efavirenz<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">6600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=elemelked%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">6800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=eln%C3%B6kl%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">7000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=el%C5%<span class="hljs-number">91</span>v%C3%A1lad%C3%A9k<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">7200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=epicillin<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">7400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=etil%C3%A9n<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">7600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=fakalap%C3%A1cs<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">7800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=fegyverenged%C3%A9ly<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">8000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=felford%C3%ADt%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">8200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=fenntart%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">8400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=flam%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">8600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=ford%C3%ADt%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">8800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=fuvaroz%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">9000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=f%C3%A9rfiszab%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">9200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=f%C3%BCrd%C5%<span class="hljs-number">91</span>mester<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">9400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=gabonap%C3%A1linka<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">9600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=gikszer<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">9800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=gusztus<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">10000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=gy%C3%A1szeset<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">10200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=g%C3%A9mkapocs<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">10400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=haditud%C3%B3s%C3%ADt%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">10600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=haj%C3%B3padl%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">10800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=hang<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">11000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=hat%C3%A1reset<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">11200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=herer%C3%A1k<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">11400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=hold%C3%A9v<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">11600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=husztaj<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">11800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=h%C3%ADmz%C5%<span class="hljs-number">91</span>n%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">12000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=h%C5%B1b%C3%A9ris%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">12200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=imak%C3%B6nyv<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">12400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=iparcikk<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">12600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=izomr%C3%A1ndul%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">12800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=juhb%C5%<span class="hljs-number">91</span>r<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">13000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=j%C3%BCan<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">13200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=kantni<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">13400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=karrierizmus<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">13600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=kelmefest%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">13800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=ker%C3%A9kp%C3%A1rlop%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">14000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=kimutat%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">14200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=ki%C3%BAt<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">14400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=kompasz<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">14600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=korm%C3%A1nyker%C3%A9k<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">14800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=kubista<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">15000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=k%C3%A1lyhab%C3%A9l%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">15200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=k%C3%A9ssz%C3%BAr%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">15400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=k%C3%B6lts%C3%A9g-el%C5%<span class="hljs-number">91</span>ir%C3%A1nyzat<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">15600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=k%C3%B6sz%C3%B6r%C5%B1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">15800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=k%C3%BAria<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">16000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=lak%C3%A1s%C3%ADns%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">16200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=lend%C3%BC<span class="hljs-built_in">let</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">16400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=limlom<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">16600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=l%C3%A1gy<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">16800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=l%C3%A9p%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">17000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=mad%C3%A1rtej<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">17200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=mangalica<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">17400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=megfigyel%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">17600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=mell%C3%A9khere+feje<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">17800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=methemoglobin<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">18000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=mongol<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">18200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=munkanap<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">18400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=m%C3%A1zol%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">18600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=m%C5%B1ipar<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">18800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=napelem<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">19000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=nevel%C5%<span class="hljs-number">91</span>n%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">19200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=nyirokmirigy<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">19400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=n%C3%A9pbolond%C3%ADt%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">19600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=okirat-hamis%C3%ADt%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">19800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=orrnyereg<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">20000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=pajzs<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">20200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=parkol%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">20400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=perzsa<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">20600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=pl%C3%A9b%C3%A1nos<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">20800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=prakker<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">21000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=puncsost%C3%A1l<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">21200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=p%C3%A1rt%C3%A9p%C3%ADt%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">21400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=rabl%C3%B3barlang<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">21600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=relativit%C3%A1selm%C3%A9<span class="hljs-built_in">let</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">21800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=riad%C3%B3ztat<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">22000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=rudli<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">22200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=r%C3%B3zsabimb%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">22400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sebhely<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">22600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=skorpi%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">22800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sporttev%C3%A9kenys%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">23000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=szaft<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">23200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=szecesszi%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">23400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=szerelmeslev%C3%A9l<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">23600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sziszt%C3%A9ma<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">23800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=szulf%C3%A1t<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">24000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sz%C3%A9ler%C5%<span class="hljs-number">91</span>ss%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">24200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sz%C3%B3kapcsolat<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">24400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=sz%C5%<span class="hljs-number">91</span>r<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">24600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=s%C3%B6r%C3%B6z%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">24800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=tankhaj%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">25000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=tekn%C5%<span class="hljs-number">91</span>sb%C3%A9kap%C3%A1nc%C3%A9l<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">25200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=tervsz%C3%A1m<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">25400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=toj%C3%A1s%C3%A9tel<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">25600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=tudatosul%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">25800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=t%C3%A1vol%C3%ADt%C3%B3+ideg<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">26000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=t%C3%B6rt%C3%A9n%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">26200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=t%C5%B1zolt%C3%B3osztag<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">26400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=uzsora<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">26600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=varj%C3%BAleves<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">26800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=veszetts%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">27000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=vir%C3%A1gcsend%C3%A9<span class="hljs-built_in">let</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">27200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=vulvekt%C3%B3mia<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">27400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=v%C3%A9gagy<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">27600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=v%C3%ADzibetegs%C3%A9g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">27800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=zajog<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">28000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=zugev%C5%<span class="hljs-number">91</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">28200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A1gy%C3%BAnasz%C3%A1d<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">28400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A1llom%C3%A1s%C3%A9p%C3%BC<span class="hljs-built_in">let</span><span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">28600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A1rny%C3%A9kol%C3%A1s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">28800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A1tlageredm%C3%A9ny<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">29000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A9letnagys%C3%A1g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">29200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%A9rv%C3%A9nyes%C3%ADt%C3%A9s<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">29400</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%B3rafed%C3%A9l<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">29600</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%B6r%C3%B6kk%C3%A9val%C3%B3s%C3%A1g<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">29800</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%BAton%C3%A1ll%C3%B3<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">30000</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C3%BCvegpoh%C3%A1r<span class="hljs-comment">#mw-pages</span>
+Word count: <span class="hljs-number">30200</span> next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%<span class="hljs-number">91</span>nevek&amp;pagefrom=%C5%<span class="hljs-number">91</span>szap%C3%B3<span class="hljs-comment">#mw-pages</span>
+
+Finished with <span class="hljs-number">30248</span> words</code></pre>
+
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/dsp/generating-sinusoids" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/programming/fuzzy-search" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Generating sinusoid signals</span>
+            <span class="neighbour-title previous-title">Fuzzy search and sort algorithm</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

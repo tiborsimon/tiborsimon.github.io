@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Generating sinusoid signals - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Generating sinusoid signals</div>
+          <div class="details">
+            <div class="timestamp">2015. 10. 17.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/signals/">signals</a>
+              <a href="http://localhost:8000/tag/dsp/">dsp</a>
+              <a href="http://localhost:8000/tag/matlab/">Matlab</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.</div>
+          <hr>
+          <h1 id="the-problem">The problem</h1>
+<p>The equation of a sinusoid signal is a known fact:</p>
+<p class="equation">
+  $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
+</p>
+
+<p>However. This equation is only valid in the <strong>continuous time</strong> domain, therefore without any modification it is useless in the <strong>discrete time</strong> domain used by every digital machine. You won’t be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.</p>
+<p>Machines work with <em>discrete time series</em> that has a property called <strong>resolution</strong>. Resolution is the link between <em>continous</em> and <em>discrete</em> time domain. This property is implemented with <strong>sampling</strong>. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points[^1].</p>
+<p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
+<p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong>[^2] of continuous time.</p>
+<p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
+<pre><code class="hljs">s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*pi*<span class="hljs-number">1</span>*t1);</code></pre>
+
+<p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
+<p><img src="/images/articles/smart-sinusoids/signal001.png" alt="Discrete vs continous time sine signal" /></p>
+<p>This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer’s <em>digital to analog converter</em>.</p>
+<p>However. There are other use cases when we don’t want to link the <strong>discrete time</strong> to the <strong>continuous time</strong>, so we don’t have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:</p>
+<pre><code class="hljs">t = linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">100</span>);
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*pi*<span class="hljs-number">3</span>*t);</code></pre>
+
+<p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
+<p><img src="/images/articles/smart-sinusoids/signal002.png" alt="100 samples long sinusoid without discrete/continous time lock" /></p>
+<p>As you can see, generating sinusoids with these basic methods isn’t hard at all. But you <strong>have to think</strong> about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal..</p>
+<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters</h1>
+<p>There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.</p>
+<p><img src="/images/articles/smart-sinusoids/detailed.png" alt="Sinusoid signal parameters" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter name</th>
+<th style="text-align:left">Unit</th>
+<th style="text-align:left">Possible parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>phi</code></td>
+<td style="text-align:left">[degree]</td>
+<td style="text-align:left">phase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>A</code></td>
+<td style="text-align:left">[full scale]</td>
+<td style="text-align:left">amplitude[^3]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>f</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">frequency</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fs</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">sample rate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>T</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">period</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dt</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">sample time</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>L</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">signal duration</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>N</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of periods</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>n</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of samples</td>
+</tr>
+</tbody>
+</table>
+<p>With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn’t count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: <em>fs = 1/dt</em>, <em>T = 1/f</em> and <em>L=n*dt</em>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method index</th>
+<th style="text-align:left">Required parameters</th>
+<th style="text-align:left">CT DT lock</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><code>n</code> <code>N</code></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">a signal consisting of <code>n</code> data points with <code>N</code><br> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><code>L</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left"><code>L</code> seconds long signal sampled at <code>fs</code> consisting of <br><code>N</code> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><code>f</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with <code>N</code> <br>periods in it with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><code>f</code> <code>n</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal consisting of <code>n</code> <br>data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><code>f</code> <code>L</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with the <br>duration of <code>L</code> seconds with the frequency <code>f</code></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s try out all methods, to see how you can use them in practice. Let’s generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:</p>
+<p><img src="/images/articles/smart-sinusoids/demo_signal.png" alt="Reference signal for all the following generation methods" /></p>
+<p>The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.</p>
+<h2 id="method-1-n-n-">Method 1 - [n,N]</h2>
+<p>Generating a sinusoid signal with <code>n</code> data points with <code>N</code> periods in it.</p>
+<pre><code class="hljs matlab">n = <span class="hljs-number">60</span>;
+N = <span class="hljs-number">2.5</span>;
+
+k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
+k = k/n;
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k);
+
+stem(s)</code></pre>
+
+
+<h2 id="method-2-l-n-fs-">Method 2 - [L,N,fs]</h2>
+<p>Generating <code>L</code> seconds long signal sampled at <code>fs</code> consisting of <code>N</code> periods in it.</p>
+<pre><code class="hljs matlab">fs = <span class="hljs-number">10</span>;
+N = <span class="hljs-number">2.5</span>;
+L = <span class="hljs-number">60</span>/fs;
+
+k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
+k=k/L;
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k);
+
+stem(s)</code></pre>
+
+
+<h2 id="method-3-f-n-fs-">Method 3 - [f,N,fs]</h2>
+<p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with <code>N</code> periods in it with the frequency <code>f</code>.</p>
+<pre><code class="hljs matlab">fs = <span class="hljs-number">10</span>;
+N = <span class="hljs-number">2.5</span>;
+f = N*fs/<span class="hljs-number">60</span>;
+
+k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:(N/f)-<span class="hljs-number">1</span>/fs;
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k);
+
+stem(s)</code></pre>
+
+
+<h2 id="method-4-n-f-fs-">Method 4 - [n,f,fs]</h2>
+<p>Generating a signal consisting of <code>n</code> data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code>.</p>
+<pre><code class="hljs matlab">fs = <span class="hljs-number">10</span>;
+n = <span class="hljs-number">60</span>;
+f = <span class="hljs-number">2.5</span>*fs/n;
+
+k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
+k = k*(<span class="hljs-number">1</span>/fs);
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k);
+
+stem(s)</code></pre>
+
+
+<h2 id="method-5-f-l-fs-">Method 5 - [f,L,fs]</h2>
+<p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with the duration of <code>L</code> seconds with the frequency <code>f</code>.</p>
+<pre><code class="hljs matlab">L = <span class="hljs-number">60</span>/fs;
+f = <span class="hljs-number">2.5</span>/L;
+
+n = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
+s = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*n);
+
+stem(s)</code></pre>
+
+
+<h1 id="summary">Summary</h1>
+<p>That’s it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you <em>study</em> them? Will you <em>derive</em> them over and over again?</p>
+<p>If your answers for the last two questions were both <em>nope</em>, then the go ahead and meet <b><a href="http://tiborsimon.io/projects/#TSPR0003">Smart Sinusoids</a></b>.</p>
+<p>[^1]: Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem">sampling theorem</a>. There are much more detail how these things really work.</p>
+<p>[^2]: Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds <em>(2s - 1/fs = 1.9s)</em>.</p>
+<p>[^3]: PC sound cards usually accept signals scaled -1 to 1.</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/tools/buspirate-setup-for-mac" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/programming/collect-all-nouns" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">BusPirate setup for OSX</span>
+            <span class="neighbour-title previous-title">Collect all nouns in hungarian</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

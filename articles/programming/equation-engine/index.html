@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Writing an equation engine - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Writing an equation engine</div>
+          <div class="details">
+            <div class="timestamp">2015. 11. 11.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/matlab/">matlab</a>
+              <a href="http://localhost:8000/tag/hack/">hack</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set.</div>
+          <hr>
+          <h1 id="sinusoid-generation-summary">Sinusoid generation summary</h1>
+<p>Let’s sum up the previous article. If you want to generate a sinusoid signal you have 5 possibble ways to do that.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method index</th>
+<th style="text-align:left">Required parameters</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><code>n</code> <code>N</code></td>
+<td style="text-align:left">a signal consisting of <code>n</code> data points with <code>N</code><br> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><code>L</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left"><code>L</code> seconds long signal sampled at <code>fs</code> consisting of <br><code>N</code> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><code>f</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with <code>N</code> <br>periods in it with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><code>f</code> <code>n</code> <code>fs</code></td>
+<td style="text-align:left">a signal consisting of <code>n</code> <br>data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><code>f</code> <code>L</code> <code>fs</code></td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with the <br>duration of <code>L</code> seconds with the frequency <code>f</code></td>
+</tr>
+</tbody>
+</table>
+<p>Where the parameters are</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Unit</th>
+<th style="text-align:left">Parameter name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>phi</code></td>
+<td style="text-align:left">[degree]</td>
+<td style="text-align:left">phase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>A</code></td>
+<td style="text-align:left">[full scale]</td>
+<td style="text-align:left">amplitude</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>f</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">frequency</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fs</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">sample rate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>T</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">period</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dt</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">sample time</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>L</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">signal duration</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>N</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of periods</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>n</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of samples</td>
+</tr>
+</tbody>
+</table>
+<h1 id="required-parts">Required parts</h1>
+<p>To create an equation engine we have to solve the following problems:</p>
+<ol>
+<li>Identify the passed parameters</li>
+<li>Calculate the necessary parameters from the available ones</li>
+<li>Use the parameters in the equations</li>
+</ol>
+<h1 id="identifying-the-passed-parameters">Identifying the passed parameters</h1>
+<p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
+calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
+that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
+<pre><code class="hljs matlab"><span class="hljs-matrix">[data, flags]</span> = simple_input_parser(data, raw_varargin, validators);</code></pre>
+
+<p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
+zero if not.</p>
+<h2 id="calculating-the-parameters">Calculating the parameters</h2>
+<p>To be able to substitute to the generator equations, we need to make sure to have all the necessary parameters
+to do that. In case if wo do not have all the ones, we have to try to calculate them from the given ones.</p>
+<p>The following table contains all possible way to get a parameter from the others.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">f</th>
+<th style="text-align:left">T</th>
+<th style="text-align:left">n</th>
+<th style="text-align:left">N</th>
+<th style="text-align:left">fs</th>
+<th style="text-align:left">dt</th>
+<th style="text-align:left">L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1/T</td>
+<td style="text-align:left">1/f</td>
+<td style="text-align:left">L fs</td>
+<td style="text-align:left">L/T</td>
+<td style="text-align:left">1/dt</td>
+<td style="text-align:left">1/fs</td>
+<td style="text-align:left">N T</td>
+</tr>
+<tr>
+<td style="text-align:left">N/L</td>
+<td style="text-align:left">L/N</td>
+<td style="text-align:left">L/dt</td>
+<td style="text-align:left">L f</td>
+<td style="text-align:left">n/L</td>
+<td style="text-align:left">L/n</td>
+<td style="text-align:left">n dt</td>
+</tr>
+<tr>
+<td style="text-align:left">n dt/L/T</td>
+<td style="text-align:left">L/n/dt/f</td>
+<td style="text-align:left">N T/dt</td>
+<td style="text-align:left">n dt/T</td>
+<td style="text-align:left">n/N/T</td>
+<td style="text-align:left">N T/n</td>
+<td style="text-align:left">N/f</td>
+</tr>
+<tr>
+<td style="text-align:left">n/fs/T/L</td>
+<td style="text-align:left">L fs/n/f</td>
+<td style="text-align:left">N T fs</td>
+<td style="text-align:left">n dt f</td>
+<td style="text-align:left">n/L/f/T</td>
+<td style="text-align:left">L f T/n</td>
+<td style="text-align:left">n/fs</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">n/fs/T</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">n f/fs</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
+others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
+<pre><code class="hljs matlab"><span class="hljs-comment">%% Parameter construction</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span> = <span class="hljs-title">get_f</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.f
+        f = data.f;
+    <span class="hljs-keyword">elseif</span> flags.T
+        f = <span class="hljs-number">1</span> / data.T;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.L
+        f = data.N / data.L;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.L &amp;&amp; flags.T
+        f = data.n * data.dt / data.L / data.T;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs &amp;&amp; flags.L &amp;&amp; flags.T
+        f = data.n / data.fs / data.L / data.T;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">T</span> = <span class="hljs-title">get_T</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.T
+        T = data.T;
+    <span class="hljs-keyword">elseif</span> flags.f
+        T = <span class="hljs-number">1</span> / data.f;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.N
+        T = data.L / data.N;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
+        T = data.L / data.n / data.dt / data.f;
+    <span class="hljs-keyword">elseif</span> falgs.L &amp;&amp; flags.n &amp;&amp; flags.fs &amp;&amp; flags.f
+        T = data.L * data.fs / data.n / data.f;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">n</span> = <span class="hljs-title">get_n</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.n
+        n = data.n;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.fs
+        n = data.L * data.fs;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.dt
+        n = data.L / data.dt;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.dt
+        n = data.N * data.T / data.dt;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.fs
+        n = data.N * data.T * data.fs;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>)
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">N</span> = <span class="hljs-title">get_N</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.N
+        N = data.N;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.T
+        N = data.L / data.T;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.f
+        N = data.L * data.f;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.T
+        N = data.n * data.dt / data.T;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
+        N = data.n * data.dt * data.f;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs &amp;&amp; flags.T
+        N = data.n / data.fs / data.T;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.f &amp;&amp; flags.fs
+        N = data.n * data.f / data.fs;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>)
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fs</span> = <span class="hljs-title">get_fs</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.fs
+        fs = data.fs;
+    <span class="hljs-keyword">elseif</span> flags.dt
+        fs = <span class="hljs-number">1</span> / data.dt;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.L
+        fs = data.n / data.L;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.N &amp;&amp; flags.T
+        fs = data.n / data.N / data.T;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.L &amp;&amp; flags.f &amp;&amp; flags.T
+        fs = data.n / data.L / data.f / data.T;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dt</span> = <span class="hljs-title">get_dt</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.dt
+        dt = data.dt;
+    <span class="hljs-keyword">elseif</span> flags.fs
+        dt = <span class="hljs-number">1</span> / data.fs;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.n
+        dt = data.L / data.n;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.n
+        dt = data.N * data.T / data.n;
+    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.f &amp;&amp; flags.T &amp;&amp; flags.n
+        dt = data.L * data.f * data.T / data.n;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">L</span> = <span class="hljs-title">get_L</span><span class="hljs-params">()</span></span>
+    <span class="hljs-keyword">if</span> flags.L
+        L = data.L;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T
+        L = data.N * data.T;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt
+        L = data.n * data.dt;
+    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.f
+        L = data.N / data.f;
+    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs
+        L = data.n / data.fs;
+    <span class="hljs-keyword">else</span>
+        throw(<span class="hljs-string">'.'</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></code></pre>
+
+<h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations</h2>
+<p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
+sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
+<pre><code class="hljs matlab"><span class="hljs-comment">%% Signal synthesizer functions</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_n_N</span><span class="hljs-params">()</span></span>
+    n = get_n();
+    N = get_N();
+    phi = data.phi;
+
+    k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
+    k = k/n;
+    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
+    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k + phi);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_L_N_fs</span><span class="hljs-params">()</span></span>
+    L = get_L();
+    N = get_N();
+    fs = get_fs();
+    phi = data.phi;
+
+    k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
+    k=k/L;
+    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
+    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k + phi);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_f_N_fs</span><span class="hljs-params">()</span></span>
+    f = get_f();
+    N = get_N();
+    fs = get_fs();
+    phi = data.phi;
+
+    k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:(N/f)-<span class="hljs-number">1</span>/fs;
+    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
+    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k + phi);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_n_f_fs</span><span class="hljs-params">()</span></span>
+    n = get_n();
+    f = get_f();
+    fs = get_fs();
+    phi = data.phi;
+
+    k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
+    k = k*(<span class="hljs-number">1</span>/fs);
+    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
+    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k + phi);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_L_f_fs</span><span class="hljs-params">()</span></span>
+    L = get_L();
+    f = get_f();
+    fs = get_fs();
+    phi = data.phi;
+
+    n = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
+    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
+    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*n + phi);
+<span class="hljs-keyword">end</span></code></pre>
+
+<h1 id="putting-everything-together">Putting everything together</h1>
+<p>The last step is to put everything together.</p>
+<ol>
+<li>We have the flag structure that indicates what parameters were passed. This structure can be used by the <em>calculator functions</em> to
+determine if a parameter can be calculated or not.</li>
+<li>We have <em>calculator functions</em> that can calculate the necessary parameters for the <em>generator functions</em>. If one parameter cannot be
+calculated, an exception will be raised.</li>
+<li>We have <em>generator functions</em> that can generate the sinusoid signal if all necessary parameters are available for them.</li>
+</ol>
+<p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
+If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
+the given parameter set, there is no way to generate a sinusoud signal.</p>
+<pre><code class="hljs matlab"><span class="hljs-comment">%% Mode Selection</span>
+<span class="hljs-keyword">try</span>
+    s = construct_with_n_N();
+<span class="hljs-keyword">catch</span>
+   <span class="hljs-keyword">try</span>
+       s = construct_with_L_N_fs();
+   <span class="hljs-keyword">catch</span>
+      <span class="hljs-keyword">try</span>
+          s = construct_with_f_N_fs();
+      <span class="hljs-keyword">catch</span>
+          <span class="hljs-keyword">try</span>
+              s = construct_with_n_f_fs();
+          <span class="hljs-keyword">catch</span>
+              <span class="hljs-keyword">try</span>
+                  s = construct_with_L_f_fs();
+              <span class="hljs-keyword">catch</span>
+                  throw_exception(<span class="hljs-string">'parameterError'</span>,<span class="hljs-string">'With the given parameters there is no way to construct a sinusoid signal!'</span>);
+              <span class="hljs-keyword">end</span>
+          <span class="hljs-keyword">end</span>
+
+      <span class="hljs-keyword">end</span>
+   <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></code></pre>
+
+<h1 id="summary">Summary</h1>
+<p>And that’s it. This method was used in <a href="http://tiborsimon.io/projects/TSPR0003/" target="_blank">Smart Sinusoids</a> to generate
+the sinusoid signals.</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/web/chart-multitab" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/programming/ios-mathjax-integration" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Chart.js with subtabbed tabs</span>
+            <span class="neighbour-title previous-title">Local MathJax in iOS apps</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

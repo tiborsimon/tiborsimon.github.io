@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Minimal MathJax package - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Minimal MathJax package</div>
+          <div class="details">
+            <div class="timestamp">2016. 03. 07.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/mathjax/">MathJax</a>
+              <a href="http://localhost:8000/tag/hack/">hack</a>
+              <a href="http://localhost:8000/tag/javascript/">javascript</a>
+              <a href="http://localhost:8000/tag/latex/">LaTEX</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB.</div>
+          <hr>
+          <p>In the <a href="/articles/programming/ios-mathjax-integration">previous article</a> we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Component</th>
+<th style="text-align:center">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">MathJax</td>
+<td style="text-align:center">2.6.1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="choose-your-configuration">Choose your configuration</h1>
+<p>MathJax supports a very wide range of input and output methods. That is the reason that it is big package. Therefore the most important thing in MathJax size reduction is to decide what input and output method you want to support. In this way you only need to have those sources that implement that methods by throwing away the rest of the package.</p>
+<p>In my example, I wanted to have <strong>LaTEX</strong> input and <strong>Common HTML</strong> output.</p>
+<h1 id="the-reducing-method">The reducing method</h1>
+<p>The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn’t present. In this way you will end up a package that contains just the right resources to render your equations.</p>
+<p>I started with a simple html page containing a basic MathJax setup:</p>
+<pre><code class="hljs html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>MathJax TeX Test Page<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">async</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+      $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
+      $$\begin{equation}L' = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
+      $$\begin{align} B'&amp;=-\nabla \times E,\\E'&amp;=\nabla \times B - 4\pi j,\end{align} $$
+      $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/x-mathjax-config"</span>&gt;</span><span class="actionscript">
+    MathJax.Hub.Config({
+      <span class="hljs-string">"CommonHTML"</span>: {
+        scale: <span class="hljs-number">200</span>
+      }
+      });
+    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser's inspector view to find out what is missing.
+
+<div class="figures">
+<figure>
+<img src="/assets/images/articles/minimal-mathjax/reducer-atom-project.png" alt="Editing the html file while putting back the necessary resources.">
+<figcaption>Fig 1: Editing the html file while putting back the necessary resources.</figcaption>
+</figure>
+<figure>
+<img width=400 src="/assets/images/articles/minimal-mathjax/missing-resources.png" alt="Discovering missing resources in the browser's inspector.">
+<figcaption>Fig 2: Discovering missing resources in the browser's inspector.</figcaption>
+</figure>
+</div>
+
+This html test page renders the following equations:
+
+<div class="figures">
+<figure>
+  <img src="/assets/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file.">
+  <figcaption>Fig 3: Testing the MathJax package with a small html file.</figcaption>
+</figure>
+</div>
+
+If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up __623KB__ on disk.
+
+<pre><code class="hljs bash">MathJax-<span class="hljs-number">2.6</span>.<span class="hljs-number">1</span>
+├── MathJax.js
+├── config
+│   └── TeX-AMS_CHTML.js
+├── fonts
+│   └── HTML-CSS
+│       └── TeX
+│           └── woff
+│               ├── MathJax_AMS-Regular.woff
+│               ├── MathJax_Math-Italic.woff
+│               ├── MathJax_Size2-Regular.woff
+│               ├── MathJax_Size3-Regular.woff
+│               └── MathJax_Size4-Regular.woff
+└── jax
+    └── output
+        └── CommonHTML
+            ├── <span class="hljs-built_in">autoload</span>
+            │   └── mtable.js
+            ├── fonts
+            │   └── TeX
+            │       ├── AMS-Regular.js
+            │       └── fontdata.js
+            └── jax.js</code></pre>
+
+<p>Once again: I used <strong>LaTEX</strong> with <strong>Common HTML</strong> output rendering. This setup heavily depends on your input and output method.</p>
+<p>Hope you find this article series useful ;)</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/programming/ios-mathjax-integration" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/programming/upload-ssh-key-via-github-api" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Local MathJax in iOS apps</span>
+            <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

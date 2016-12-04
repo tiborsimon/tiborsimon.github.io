@@ -1,601 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-<loc>https://tiborsimon.io/</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/archives.html</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tags.html</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/categories.html</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/donation/</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/docs/projects/v1.0.0/</loc>
-<lastmod>2016-08-10T19:44:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/log/</loc>
-<lastmod>2015-07-26T23:43:29+02:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/tools/compiling-emacs-on-centos/</loc>
-<lastmod>2016-07-15T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/tools/my-dotfile-system/</loc>
-<lastmod>2016-04-01T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/tools/dotfiles-with-url-deployment/</loc>
-<lastmod>2016-03-19T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/programming/upload-ssh-key-via-github-api/</loc>
-<lastmod>2016-03-19T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/web/minimal-mathjax-package/</loc>
-<lastmod>2016-03-07T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/guitar/tortex-time/</loc>
-<lastmod>2016-02-28T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/ios/local-mathjax-in-ios-apps/</loc>
-<lastmod>2016-02-20T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/python/get-half-of-the-list-in-pelican/</loc>
-<lastmod>2016-02-14T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/programming/writing-an-equation-engine/</loc>
-<lastmod>2015-11-11T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/web/chartjs-with-subtabbed-tabs/</loc>
-<lastmod>2015-10-30T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/python/mandatory-arbitrary-order/</loc>
-<lastmod>2015-10-29T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/python/fuzzy-search-and-sort-algorithm/</loc>
-<lastmod>2015-10-25T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/python/collect-all-nouns-in-hungarian/</loc>
-<lastmod>2015-10-24T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/dsp/generating-sinusoid-signals/</loc>
-<lastmod>2015-10-17T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/tools/buspirate-setup-for-osx/</loc>
-<lastmod>2015-09-13T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/web/redirect-external-links-to-new-tab/</loc>
-<lastmod>2015-05-17T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/programming/java-shooter-game/</loc>
-<lastmod>2015-01-17T00:00:00+01:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/blog/embedded/slotcar-race/</loc>
-<lastmod>2013-05-19T00:00:00+02:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/dsp.html</loc>
-<lastmod>2015-10-17T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/embedded.html</loc>
-<lastmod>2013-05-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/guitar.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/ios.html</loc>
-<lastmod>2016-02-20T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/programming.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/python.html</loc>
-<lastmod>2016-02-14T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/tools.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/category/web.html</loc>
-<lastmod>2016-03-07T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/search.html</loc>
-<lastmod>2015-10-25T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/javascript.html</loc>
-<lastmod>2016-03-07T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/key.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/device.html</loc>
-<lastmod>2015-09-13T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/math.html</loc>
-<lastmod>2016-03-07T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/make.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/tortextime.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/latex.html</loc>
-<lastmod>2016-03-07T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/web.html</loc>
-<lastmod>2015-10-24T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/ios.html</loc>
-<lastmod>2016-02-20T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/tools.html</loc>
-<lastmod>2016-04-01T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/mathjax.html</loc>
-<lastmod>2016-03-07T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/soup.html</loc>
-<lastmod>2015-10-24T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/accelerometer.html</loc>
-<lastmod>2013-05-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/regexp.html</loc>
-<lastmod>2015-10-29T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/fuzzy.html</loc>
-<lastmod>2015-10-25T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/equation.html</loc>
-<lastmod>2015-11-11T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/statistics.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/centos.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/script.html</loc>
-<lastmod>2016-04-01T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/basics.html</loc>
-<lastmod>2015-10-17T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/unix.html</loc>
-<lastmod>2016-04-01T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/linux.html</loc>
-<lastmod>2016-04-01T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/bootstrap.html</loc>
-<lastmod>2015-10-30T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/pelican.html</loc>
-<lastmod>2016-02-14T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/dsp.html</loc>
-<lastmod>2013-05-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/hack.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/pick.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/upload.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/compile.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/game.html</loc>
-<lastmod>2015-01-17T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/configure.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/github.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/ssh.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/jinja2.html</loc>
-<lastmod>2016-02-14T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/signals.html</loc>
-<lastmod>2015-10-17T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/sorting.html</loc>
-<lastmod>2015-10-25T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/emacs.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/url.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/chart.html</loc>
-<lastmod>2015-10-30T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/swift.html</loc>
-<lastmod>2016-02-20T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/parameter.html</loc>
-<lastmod>2015-11-11T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/dunlop.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/api.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/guitar.html</loc>
-<lastmod>2016-02-28T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/forward.html</loc>
-<lastmod>2016-03-19T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/java.html</loc>
-<lastmod>2015-01-17T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/embedded.html</loc>
-<lastmod>2015-09-13T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/dotfiles.html</loc>
-<lastmod>2016-04-01T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/permutation.html</loc>
-<lastmod>2015-10-29T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/tag/lists.html</loc>
-<lastmod>2016-02-14T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://tiborsimon.io/author/tibor-simon.html</loc>
-<lastmod>2016-07-15T00:00:00+01:16</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url> <loc>https://tiborsimon.io/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/1/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/2/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/3/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/4/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/5/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/page/6/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/apps/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/clouds-are-coming/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/cold-front/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/dotfiles/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/dsp-controller/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/java-shooter-game/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/led-chaser/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/lightnings/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/lovesong/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/madagascar/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/matlab-library-system/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/milky-way/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/modern-love/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/mustang-test/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/projects/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/regart/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/simple-input-parser/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/slotcar-race/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/smart-sinusoids/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/starry-night/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/this-is-the-life/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/projects/zikkurat/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/dsp/generating-sinusoids/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/tools/buspirate-setup-for-mac/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/tools/compiling-emacs/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/tools/dotfile-system/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/tools/url-deployment/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/collect-all-nouns/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/equation-engine/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/fuzzy-search/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/ios-mathjax-integration/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/java-shooter-game/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/pelican-get-half-list/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/programming/writing-a-python-command-line-tool/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/web/chart-multitab/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/web/debugging-metalsmith/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/web/minimal-mathjax/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/web/redirect-external-links-to-new-tab/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/embedded/slot-car-race/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/embedded/communication/i2c/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/articles/embedded/communication/spi/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/signals/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/dsp/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/matlab/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/tools/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/embedded/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/serial/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/hardware/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/emacs/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/make/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/linux/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/dotfiles/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/config/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/deploy/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/github/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/hack/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/web/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/python/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/search/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/regexp/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/mathjax/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/ios/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/javascript/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/latex/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/java/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/game/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/api/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/ssh/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/bash/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/tool/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/cli/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/metalsmith/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/debug/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/plugin/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/pelican/index.html</loc> <changefreq>daily</changefreq> </url>
+<url> <loc>https://tiborsimon.io/tag/control/index.html</loc> <changefreq>daily</changefreq> </url>
 </urlset>

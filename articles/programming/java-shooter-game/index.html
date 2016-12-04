@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Java Shooter Game - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Java Shooter Game</div>
+          <div class="details">
+            <div class="timestamp">2015. 01. 17.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/java/">java</a>
+              <a href="http://localhost:8000/tag/game/">game</a>
+            </div>
+          </div>
+        </header>
+        <div class="article-links card">
+          <a class="button" href="https://github.com/tiborsimon/java-shooter-game" target="_blank"><span class="icon-github"></span> GitHub Repository</a>
+        </div>
+        <article class="content card padded">
+          <div class="summary">During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</div>
+          <hr>
+          <iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/dUKqIYJZlOk" frameborder="0" allowfullscreen></iframe>
+
+<p>It uses some open source stuff, like the explosion animation and the music for the promo video. The game is open source, so you can go to GitHub to see how the game functionalities were implemented.</p>
+<p>If the game won’t open by clicking on it (like on OSX Moutain Lion), you have to open it from command line. If the command line returns an error like pixel format not accelerated, you should check out these sites for the solution.</p>
+<pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> &lt;path to the the jar file&gt;
+$ java -jar JavaShooter.jar</code></pre>
+
+<h1 id="main-menu">Main menu</h1>
+<p>In the Main Menu you have 4 options but in reality 3 of them is working right now.</p>
+<ul>
+<li>Play – it goes t the new game menu</li>
+<li>Player – it goes to the player menu</li>
+<li>Scores – currently not working</li>
+<li>Exit – it exits the game</li>
+</ul>
+<div class="figures">
+<figure>
+<img src="/assets/images/articles/java-shooter/javashooter-1.png" width=550 alt="Java Shooter Game: main menu">
+<figcaption>Fig 1: Java Shooter Game: main menu</figcaption>
+</figure>
+</div>
+
+
+<h1 id="game-menu">Game menu</h1>
+<p>In the New Game Menu you can start Easy, Normal and Expert game.</p>
+<ul>
+<li>Easy – slow enemies with slow spawning time + auto aiming</li>
+<li>Normal – faster enemies with faster spawning time + auto aiming</li>
+<li>Expert – slow enemies with slow spawning time + manual aiming (very hard!)</li>
+</ul>
+<div class="figures">
+<figure>
+<img src="/assets/images/articles/java-shooter/javashooter-2.png" width=550 alt="Java Shooter Game: game menu">
+<figcaption>Fig 2: Java Shooter Game: game menu</figcaption>
+</figure>
+</div>
+
+
+<h1 id="player-menu">Player menu</h1>
+<p>In the Player Menu you can view the stats of the current player, export your player data, and create new player.</p>
+<ul>
+<li>Export – it exports the current player stats to transfer them another computer.</li>
+<li>New – it goes to the New Player Menu</li>
+</ul>
+<div class="figures">
+<figure>
+<img src="/assets/images/articles/java-shooter/javashooter-3.png" width=550 alt="Java Shooter Game: player menu">
+<figcaption>Fig 3: Java Shooter Game: player menu</figcaption>
+</figure>
+</div>
+
+<h1 id="controlling-the-game">Controlling the game</h1>
+<p>The game follows the conventions: you can move with the arrow keys, and fire with the <code>space bar</code>. In <em>Easy</em> and <em>Normal</em> mode the game aims for you, but in <em>Expert</em> mode aiming is your task with <code>T</code> and <code>H</code> keys.</p>
+<p>During the game the mouse pointer disappears (in mac you have to move the pointer a bit unless it won’t disappear). With the <code>ESC</code> key you can bring up the Pause Menu, and the mouse pointer will show up again.</p>
+<h1 id="modding-the-gameplay">Modding the gameplay</h1>
+<p>I have built in the possibility to mack around with the main game parameters. To do this you have to create a text file called mods_for_the_game.txt into the same folder where the jar file located.</p>
+<h2 id="hackable-parameters">Hackable parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Property name</th>
+<th style="text-align:left">Unit</th>
+<th style="text-align:left">Default value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>fullscreen</code></td>
+<td style="text-align:left">[true/false]</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">the game can load in window or full screen mode</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>overclock</code></td>
+<td style="text-align:left">[fps in int]</td>
+<td style="text-align:left">60</td>
+<td style="text-align:left">sets the target fps. The actual fps is dependent on your machine</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>showFPS</code></td>
+<td style="text-align:left">[true/false]</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">turns the fps counter on or off</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>explosionPoolLimit</code></td>
+<td style="text-align:left">[pool limit in int]</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">it is expensive to allocate many animation frames in real time, therefore the game allocates the explosion animation frames before the game starts. You can set the max number of animations preloaded to the animation pool. For high FPS rate it is recommended to set this value greater than 10. The game will load slower but it wont crash due to empty animation pool</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sparkPoolLimit</code></td>
+<td style="text-align:left">[pool limit in int]</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">same as the explosionPoolLimit parameter. If you set high FPS rate set this value higher than 10</td>
+</tr>
+</tbody>
+</table>
+<p>The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces. The default settings are the following:</p>
+<pre><code>fullscreen <span class="hljs-literal">false</span> overclock <span class="hljs-number">60</span> showfPS <span class="hljs-literal">false</span> explosionpoollimit <span class="hljs-number">10</span> sparkpoollimit <span class="hljs-number">10</span></code></pre>
+
+<p><strong>If the game crashes, make sure you set the pool limits higher than 10!</strong></p>
+<p>For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
+The content of the text file in this case should be like this:</p>
+<pre><code>overclock <span class="hljs-number">75</span> fullscreen <span class="hljs-literal">true</span> showfPS <span class="hljs-literal">true</span></code></pre>
+
+<p>Example video about how to overclock the game a bit.</p>
+<iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
+
+
+<h1 id="summary">Summary</h1>
+<p>The developed program isn’t a full featured game but a skeleton, which you can develop further.</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/embedded/slot-car-race" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/web/redirect-external-links-to-new-tab" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">SlotCar Race</span>
+            <span class="neighbour-title previous-title">Redirect external links to new tab</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Local MathJax in iOS apps - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Local MathJax in iOS apps</div>
+          <div class="details">
+            <div class="timestamp">2016. 02. 20.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/mathjax/">MathJax</a>
+              <a href="http://localhost:8000/tag/ios/">ios</a>
+              <a href="http://localhost:8000/tag/hack/">hack</a>
+              <a href="http://localhost:8000/tag/javascript/">javascript</a>
+              <a href="http://localhost:8000/tag/latex/">LaTEX</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.</div>
+          <hr>
+          <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Component</th>
+<th style="text-align:center">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">XCode</td>
+<td style="text-align:center">Version 7.2.1 (7C1002)</td>
+</tr>
+<tr>
+<td style="text-align:center">iOS</td>
+<td style="text-align:center">9.2</td>
+</tr>
+<tr>
+<td style="text-align:center">MathJax</td>
+<td style="text-align:center">2.6.1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="prerequisite">Prerequisite</h1>
+<p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">math</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"2^(2/(sqrt(6))"</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">"http://www.w3.org/1998/Math/MathML"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">mstyle</span> <span class="hljs-attribute">mathcolor</span>=<span class="hljs-value">"blue"</span> <span class="hljs-attribute">fontfamily</span>=<span class="hljs-value">"sanserif"</span> <span class="hljs-attribute">displaystyle</span>=<span class="hljs-value">"true"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">msup</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">mfrac</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">msqrt</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">msqrt</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">mfrac</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">msup</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">mstyle</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">math</span>&gt;</span></code></pre>
+
+<p>The equivalent <strong>LaTEX</strong> representation is:</p>
+<pre><code><span class="hljs-number">2</span>^{\frac{<span class="hljs-number">2</span>}{\<span class="hljs-built_in">sqrt</span>{<span class="hljs-number">6</span>}}}</code></pre>
+
+<p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
+<h1 id="downloading-mathjax">Downloading MathJax</h1>
+<p>Download the sources from <a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank">MathJax’s Github page</a>. At the time I wrote this article, the latest version was <em>2.6.1</em>. It could take quite a bit of time to download the whole zip file.</p>
+<p>I put the downloaded files into the Xcode project’s Vendor folder:</p>
+<p>Simply unboxed the zip, the package takes up <strong>180 MB</strong> space <em>(that’s a lot!)</em>. In a future article I will show you the minimal needed content of this package that is be able to render the expressions.</p>
+<div class="figures">
+<figure>
+<img width=400 src="/assets/images/articles/mathjax-ios/mathjax-ios-vendor-folder.png" alt="Location of the downloaded MathJax sources.">
+<figcaption>Fig 1: Location of the downloaded MathJax sources.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-raw-package-size.png" alt="Size of the freshly downloaded package.">
+<figcaption>Fig 2: Size of the freshly downloaded package.</figcaption>
+</figure>
+</div>
+
+<h1 id="adding-the-mathjax-package-to-the-project">Adding the MathJax package to the project</h1>
+<p>I added the downloaded and extracted MathJax sources to a single view based Xcode project, by dragging the folder into the project navigator. I unchecked the copy sources option.</p>
+<div class="figures">
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/adding-the-sources.png" alt="Adding the sources to the project.">
+<figcaption>Fig 3: Adding the sources to the project.</figcaption>
+</figure>
+<figure>
+<img width=500 src="/assets/images/articles/mathjax-ios/copy-items.png" alt="Unchecking the copy items if needed option.">
+<figcaption>Fig 4: Unchecking the copy items if needed option.</figcaption>
+</figure>
+</div>
+
+
+<h1 id="using-the-mathjax-package">Using the MathJax package</h1>
+<p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
+<pre><code class="hljs html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>MathJax TeX Test Page<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">async</span>
+            <span class="hljs-attribute">src</span>=<span class="hljs-value">"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML"</span>&gt;</span><span class="undefined">
+            </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"font-size: 30pt; color: #eee;"</span>&gt;</span>
+            $$    
+            \begin{equation}
+              \prod_{\substack{
+                        1\le i \le n\\
+                        1\le j \le m}}
+                 M_{i,j}
+            \end{equation}
+            $$
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+... so I used its `loadHTMLString` method to do that:
+
+<pre><code class="hljs swift"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  ViewController.swift</span>
+<span class="hljs-comment">//  MathJaxTest01</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by Tibor Simon on 20/02/16.</span>
+<span class="hljs-comment">//  Copyright © 2016 Tibor Simon. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-keyword">import</span> UIKit
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewController</span>: <span class="hljs-title">UIViewController</span> </span>{
+
+    <span class="hljs-preprocessor">@IBOutlet</span> <span class="hljs-keyword">weak</span> <span class="hljs-keyword">var</span> myWebView: <span class="hljs-type">UIWebView</span>!
+
+    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">viewDidLoad</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">super</span>.viewDidLoad()
+        <span class="hljs-comment">// Do any additional setup after loading the view, typically from a nib.</span>
+
+        <span class="hljs-keyword">let</span> path = <span class="hljs-type">NSBundle</span>.mainBundle().bundlePath
+        <span class="hljs-keyword">let</span> baseURL = <span class="hljs-type">NSURL</span>.fileURLWithPath(path)
+
+        <span class="hljs-keyword">let</span> myHTML = <span class="hljs-string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=\"text/javascript\" async  src=\"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=\"font-size: 30pt; color: #eee;\"&gt;$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</span>
+        myWebView.loadHTMLString(myHTML, baseURL:baseURL)
+
+    }
+
+    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">didReceiveMemoryWarning</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">super</span>.didReceiveMemoryWarning()
+        <span class="hljs-comment">// Dispose of any resources that can be recreated.</span>
+    }
+
+}</code></pre>
+
+<h1 id="testing-with-the-simulator">Testing with the simulator</h1>
+<p>The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the <em>UIWebView</em> in 8 phases:</p>
+<div class="figures">
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-00.png" alt="Rendering phase 1: It starts as a blank screen.">
+<figcaption>Fig 5: Rendering phase 1: It starts as a blank screen.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-01.png" alt="Rendering phase 2: Then it loads the raw LaTEX source.">
+<figcaption>Fig 6: Rendering phase 2: Then it loads the raw LaTEX source.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-02.png" alt="Rendering phase 3: First rendering pass.">
+<figcaption>Fig 7: Rendering phase 3: First rendering pass.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-03.png" alt="Rendering phase 4: Loading CommonHTML sources for the final rendering pass.">
+<figcaption>Fig 8: Rendering phase 4: Loading CommonHTML sources for the final rendering pass.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-04.png" alt="Rendering phase 5: Renders final image.">
+<figcaption>Fig 9: Rendering phase 5: Renders final image.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-05.png" alt="Rendering phase 6: Becames blank again.">
+<figcaption>Fig 10: Rendering phase 6: Becames blank again.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-06.png" alt="Rendering phase 7: Final image appears in fractions.">
+<figcaption>Fig 11: Rendering phase 7: Final image appears in fractions.</figcaption>
+</figure>
+<figure>
+<img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-07.png" alt="Rendering phase 8: Render finished.">
+<figcaption>Fig 12: Rendering phase 8: Render finished.</figcaption>
+</figure>
+</div>
+
+<p>The whole rendering happens in less then half a second, but it is noticeable. If you want to use this method to render mathematical expresions in your app, you have to make sure, you only show your <em>UIWebView</em>, when it fulli loaded.</p>
+<h1 id="try-it-out-yourself-">Try it out yourself!</h1>
+<p>You can download the whole Xcode project with the added MathJax sources from <a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">the project’s Github repository</a>.</p>
+<h1 id="acknowledgement">Acknowledgement</h1>
+<p>For this project, I get a lot of ideas from <a href="http://new2objectivec.blogspot.hu/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1" target="_blank">New 2 Objective-C</a> blog. His implementation is based on a local file writing and reading, which is pretty slow, but it works :)</p>
+<p>I also used some ideas from Stack Overflow to <a href="http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview" target="_blank">make my UIWebView transparent</a></p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/programming/equation-engine" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/web/minimal-mathjax" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Writing an equation engine</span>
+            <span class="neighbour-title previous-title">Minimal MathJax package</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

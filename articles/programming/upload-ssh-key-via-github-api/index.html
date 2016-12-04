@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Upload ssh key via Github API - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Upload ssh key via Github API</div>
+          <div class="details">
+            <div class="timestamp">2016. 03. 19.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/github/">GitHub</a>
+              <a href="http://localhost:8000/tag/api/">API</a>
+              <a href="http://localhost:8000/tag/ssh/">ssh</a>
+              <a href="http://localhost:8000/tag/bash/">bash</a>
+              <a href="http://localhost:8000/tag/deploy/">deploy</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">In this article I will show you a way to upload your ssh key to GitHub via the GitHub API. This could be useful for you if you don't like the traditional way of uploading ssh keys.</div>
+          <hr>
+          <p>Don’t you hate the way you used to upload your ssh keys to GitHub? Generate the key. Copy the public key in somehow. You have to use the mouse. You have to click. :D</p>
+<p>Anyway. If you are working on a remote machine, for example one you’ve just spun up with <strong>vagrant</strong>, tricks with the mouse might not an option for you. Of course, you can copy your already generated and used ssh key to your machine, but this is not the best approach.</p>
+<h1 id="using-the-github-api">Using the GitHub API</h1>
+<p>Using the <a href="https://developer.github.com/v3/">GitHub v3 API</a>, we are able to upload our ssh keys via a <a href="https://developer.github.com/v3/users/keys/">HTTP request</a> by <a href="https://developer.github.com/v3/users/keys/#create-a-public-key">creating a public key</a>.</p>
+<p>The following code snippets will use the GitHub API call to upload the named public key to the predefined GitHub account. It also handles the possible error cases:</p>
+<ul>
+<li>authentication error</li>
+<li>key is already uploaded</li>
+<li>connection error</li>
+</ul>
+<p>You can copy and paste this script to your machine, modify the <code>GITHUB_USERNAME</code> variable, and you are ready to go.</p>
+<p>This is the exact method what I used in my <strong>dotfiles</strong> deployment system. To learn more about that, read the <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/">corresponding article</a>.</p>
+<pre><code class="hljs bash">GITHUB_USERNAME=tiborsimon
+SSH_KEY=<span class="hljs-variable">$HOME</span>/.ssh/id_rsa
+
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-operator">-f</span> <span class="hljs-variable">$SSH_KEY</span> ] || [ ! <span class="hljs-operator">-f</span> <span class="hljs-variable">$SSH_KEY</span>.pub ]; <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">'Generate your ssh key first!'</span>
+  <span class="hljs-built_in">exit</span>
+<span class="hljs-keyword">fi</span>
+
+github_result=<span class="hljs-number">0</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">'How do you want to name the key?'</span>
+<span class="hljs-built_in">read</span> <span class="hljs-operator">-e</span> KEY_NAME
+until [ <span class="hljs-variable">$github_result</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">1</span> ]; <span class="hljs-keyword">do</span>
+  curl --silent -u <span class="hljs-string">"<span class="hljs-variable">$GITHUB_USERNAME</span>"</span> --data <span class="hljs-string">"{\"title\":\"<span class="hljs-variable">$KEY_NAME</span>\",\"key\":\"<span class="hljs-variable">$(cat $SSH_KEY.pub)</span>\"}"</span> https://api.github.com/user/keys &gt; gh-result
+  <span class="hljs-keyword">if</span> grep -q <span class="hljs-string">'key is already in use'</span> gh-result; <span class="hljs-keyword">then</span>
+    github_result=<span class="hljs-number">1</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Key is already in use.'</span>
+  <span class="hljs-keyword">elif</span> grep -q <span class="hljs-string">'"verified": true'</span> gh-result; <span class="hljs-keyword">then</span>
+    github_result=<span class="hljs-number">1</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Key (<span class="hljs-variable">$KEY_NAME</span>) has been added successfully."</span>
+  <span class="hljs-keyword">elif</span> grep -q <span class="hljs-string">'Bad credentials'</span> gh-result; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Error during login: invalid username or password!'</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Try again!'</span>
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">'A problem occured during the upload!'</span>
+    cat gh-result
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Try again!'</span>
+  <span class="hljs-keyword">fi</span>
+  rm gh-result
+<span class="hljs-keyword">done</span></code></pre>
+
+<h1 id="summary">Summary</h1>
+<p>You were presented to a method that allows you to upload ssh keys to your GitHub account via the command line.</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/web/minimal-mathjax" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/tools/url-deployment" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Minimal MathJax package</span>
+            <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

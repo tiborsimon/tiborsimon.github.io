@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fuzzy search and sort algorithm - Tibor's lab</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+</head>
+<body>
+  <nav class="flexwrap">
+    <div class="navmenu card padded">
+        <a class="logo" href="http://localhost:8000">
+          Tibor's Lab 
+        </a>
+      <div class="group">
+        <a href="http://localhost:8000#articles">Articles</a>
+        <a href="http://localhost:8000#projects">Projects</a>
+        <a href="http://localhost:8000#about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+
+          <div class="banner"></div>
+          <div class="article-title">Fuzzy search and sort algorithm</div>
+          <div class="details">
+            <div class="timestamp">2015. 10. 25.</div>
+            <div class="tag-list">
+              <a href="http://localhost:8000/tag/search/">search</a>
+              <a href="http://localhost:8000/tag/python/">python</a>
+              <a href="http://localhost:8000/tag/regexp/">regexp</a>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="summary">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
+          <hr>
+          <p>A good example for this is Sublime Text’s search mechanism. You start to type in your query, and apart from
+the exact matches you will get the matches containing the letters you gave but not in the exact order. In this
+way you will find what you are looking for with a good chance even if you don’t know the exact name.</p>
+<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to provide all the relevant results that matched to
+the search query, but you have to sort the result in the relevance order.</p>
+<h1 id="searching">Searching</h1>
+<p>The first part is the easier part. You only have to generate a clever regular expression from the
+given search query.</p>
+<p>You need to make sure, that between the given query’s characters there might be another characters.
+This can be achieved by inserting <code>.*</code> tokens:</p>
+<pre><code class="hljs bash">foo -&gt; .*f.*o.*o.*</code></pre>
+
+<p>You may also want to capture each provided search characters in order to know it’s positions for later use.
+The regexp engine can provide the positions for the matched groups.</p>
+<pre><code class="hljs bash">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*</code></pre>
+
+<p>But be aware. This capturing may result you an unexpected result when you want to use the provided group
+positions by the regexp engine. Consider the following scenario: you want to find matches for ‘x’. The
+search query will be transformed into <code>.*(x).*</code>. Everything seems to be good, until your database contains
+ a key that has more than one <code>x</code> characters in it. The regexp engine will match this key, but it will
+capture the last <code>x</code> character in the key[^1]. If your sorting mechanism is based on the captured group
+positions, this will be misleading for you.</p>
+<p>To solve this issue, you have to force the regexp engine to match every character but to next captured character in the pattern.
+You need to generate a more complex regular expression:</p>
+<pre><code class="hljs bash">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*</code></pre>
+
+<p>This is the final regular expression we are going to use in this article. We can now produce the match
+results, it’s time to sort them.</p>
+<h1 id="sorting">Sorting</h1>
+<p>As I mentioned earlier, we are going to use the captured group’s positions to sort the matched results.
+The sorting algorithm will weight every match result, and based on that weight, the soring can be executed.</p>
+<p>The weighting is based on the distance between the captured groups in a weighted manner. The distance between the first
+characters is punished by more weight that the distance between the last characters. In this way if you know partly the first few characters
+you want to search, this weighting method will provide the results matched in the first characters first. The lightest the matched result, the
+more relevant it is, so it will be present earlier in the provided search result.</p>
+<p>You can implement this behavior by iterating through the captured groups position list from back to front, calculating the distance between the matches and
+multiplying them by a weighting factor. After each iteration you increase this weighting factor. And that’s is.</p>
+<h1 id="summary">Summary</h1>
+<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage example and the implementation in the following code snippets:</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> fuzzy
+<span class="hljs-keyword">from</span> pprint <span class="hljs-keyword">import</span> pprint
+
+data_list = [
+    <span class="hljs-string">'efo'</span>,
+    <span class="hljs-string">'efoo'</span>,
+    <span class="hljs-string">'dfsfoo'</span>,
+    <span class="hljs-string">'efiofo'</span>,
+    <span class="hljs-string">'abc'</span>,
+    <span class="hljs-string">'cba'</span>,
+    <span class="hljs-string">'foo'</span>,
+    <span class="hljs-string">'ertfo'</span>,
+    <span class="hljs-string">'fefefofefioiio'</span>
+]
+
+result = fuzzy.search(data_list, <span class="hljs-string">'foo'</span>)
+
+pprint(result)
+
+<span class="hljs-comment"># &gt;&gt; ['foo', 'efoo', 'efiofo', 'dfsfoo', 'fefefofefioiio']</span></code></pre>
+
+<p>The previous example had the following internal data structure.</p>
+<pre><code class="hljs"><span class="hljs-list">[{<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">0</span>, <span class="hljs-number">1</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">2</span>, <span class="hljs-number">3</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'foo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">0</span>},
+ {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">2</span>, <span class="hljs-number">3</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">3</span>, <span class="hljs-number">4</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'efoo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">4</span>},
+ {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">3</span>, <span class="hljs-number">4</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'efiofo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">7</span>},
+ {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">4</span>, <span class="hljs-number">5</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'dfsfoo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">8</span>},
+ {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">0</span>, <span class="hljs-number">1</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">10</span>, <span class="hljs-number">11</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'fefefofefioiio</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">12</span>}]</span></code></pre>
+
+<p>And here is the implementation available as a gist.</p>
+<pre><code class="hljs"><span class="hljs-comment"># F U Z Z Y   S E A R C H   S Y S T E M</span>
+<span class="hljs-comment"># Created by Tibor Simon</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># The MIT License (MIT)</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Copyright (c) 2015 Tibor Simon</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="hljs-comment"># of this software and associated documentation files (the "Software"), to deal</span>
+<span class="hljs-comment"># in the Software without restriction, including without limitation the rights</span>
+<span class="hljs-comment"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="hljs-comment"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="hljs-comment"># furnished to do so, subject to the following conditions:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="hljs-comment"># copies or substantial portions of the Software.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="hljs-comment"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="hljs-comment"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="hljs-comment"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="hljs-comment"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="hljs-comment"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="hljs-comment"># SOFTWARE.</span>
+
+<span class="hljs-keyword">import</span> re
+
+
+def search(raw_list, search_string, ignore_case=<span class="hljs-type">True</span>):
+    <span class="hljs-keyword">if</span> search_string == '':
+        <span class="hljs-keyword">return</span> raw_list
+    <span class="hljs-keyword">else</span>:
+        search_pattern = _create_search_pattern_from(search_string)
+        <span class="hljs-literal">result</span> = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
+        <span class="hljs-literal">result</span> = _sort_result_list(<span class="hljs-literal">result</span>)
+        <span class="hljs-keyword">return</span> [r['<span class="hljs-type">string</span>'] <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-literal">result</span>]
+
+
+def _create_search_pattern_from(pattern):
+    grouped = '[^{}]*'.format(pattern[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-type">range</span>(len(pattern)):
+        <span class="hljs-keyword">if</span> i &lt; len(pattern) - <span class="hljs-number">1</span>:
+            grouped += '({})[^{}]*'.format(pattern[i], pattern[i + <span class="hljs-number">1</span>])
+        <span class="hljs-keyword">else</span>:
+            grouped += '({})'.format(pattern[i])
+    grouped += '.*'
+    <span class="hljs-keyword">return</span> grouped
+
+
+def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
+    <span class="hljs-keyword">if</span> ignore_case:
+        p = re.compile(search_pattern, re.<span class="hljs-type">IGNORECASE</span>)
+    <span class="hljs-keyword">else</span>:
+        p = re.compile(search_pattern)
+    <span class="hljs-literal">result</span> = [{'<span class="hljs-type">string</span>': link, 'spans': p.search(link).regs[<span class="hljs-number">1</span>:]} <span class="hljs-keyword">for</span> link <span class="hljs-keyword">in</span> raw_list <span class="hljs-keyword">if</span> p.match(link)]
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">result</span>
+
+
+def _calculate_weight_for_match(spans):
+    mult = <span class="hljs-number">1</span>
+    weight = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> reversed(<span class="hljs-type">range</span>(len(spans))):
+        prev = <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> spans[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]
+        weight += (spans[i][<span class="hljs-number">0</span>] - prev) * mult
+        mult *= <span class="hljs-number">2</span>
+    <span class="hljs-keyword">return</span> weight
+
+
+def _sort_result_list(<span class="hljs-literal">result</span>):
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-literal">result</span>:
+        r['weight'] = _calculate_weight_for_match(r['spans'])
+    <span class="hljs-literal">result</span> = sorted(<span class="hljs-literal">result</span>, key=lambda k: k['weight'])
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">result</span></code></pre>
+
+<p>[^1]: At least that was the case using the regexp engine shipped with Python 3.4 on OSX.</p>
+
+        </article>
+      </div>
+      <div class="discussion card">
+        <h1>Discussion</h1>
+        <div id="disqus_thread"></div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2016</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+      <img src="/assets/images/tibor.jpg" class="avatar"></img>
+      <!-- <button id="action-button"><i class="icon-bars"></i></button> -->
+    
+      <div class="card padded">
+        My name is <strong>Tibor Simon.</strong>
+        <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+        As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+      </div>
+      <div class="card">
+        <nav class="sidebar-nav">
+            <a href="http://localhost:8000/articles/programming/collect-all-nouns" class="next-a">Previous</a>
+            <a href="http://localhost:8000/articles/programming/regexp-mandatory-arbitrary" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Collect all nouns in hungarian</span>
+            <span class="neighbour-title previous-title">Mandatory + arbitrary order</span>
+        </nav>
+      </div>
+      <div class="card padded">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            hack<span>7</span>
+          </a>
+          <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            javascript<span>5</span>
+          </a>
+          <a href="http://localhost:8000/tag/python/#articles" class="count">
+            python<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/web/#articles" class="count">
+            web<span>4</span>
+          </a>
+          <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            deploy<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/github/#articles" class="count">
+            GitHub<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            tools<span>3</span>
+          </a>
+          <a href="http://localhost:8000/tag/config/#articles" class="count">
+            config<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            dotfiles<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            dsp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            embedded<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            LaTEX<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            linux<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            MathJax<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            regexp<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/search/#articles" class="count">
+            search<span>2</span>
+          </a>
+          <a href="http://localhost:8000/tag/api/#articles" class="count">
+            API<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            bash<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            CLI<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/control/#articles" class="count">
+            control<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            debug<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            emacs<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/game/#articles" class="count">
+            game<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            hardware<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            ios<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/java/#articles" class="count">
+            java<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/make/#articles" class="count">
+            make<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            Matlab<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            metalsmith<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            pelican<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            plugin<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            serial<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            signals<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            ssh<span>1</span>
+          </a>
+          <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            tool<span>1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<p>I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.</p>
+<h1 id="using-built-in-jinja2-filters">Using built in Jinja2 filters</h1>
+<p>In the <strong>first</strong> solution <em>we are using</em> only the built in Jinja filters. Because of the lack of mathematical functions in the built in filters, we need to hack the only available rounding filter (<code>round</code>) to be able to use it as a <code>ceil</code> like function.</p>
+<p>The steps are the followings:</p>
+<ol>
+<li>Get the half of the article list’s length</li>
+<li>Add a small number from the <code>]0,1[</code> intervallum</li>
+<li>Use the round filter</li>
+<li>Cast the result to <em>integer</em></li>
+</ol>
+<pre><code><span class="xml"></span><span class="hljs-template_tag">{% <span class="hljs-keyword">set</span> article_middle_index = articles<span class="hljs-filter">|<span class="hljs-keyword">length</span></span> / 2 %}</span><span class="xml">
+</span><span class="hljs-template_tag">{% <span class="hljs-keyword">set</span> article_middle_index = article_middle_index + 0.2 %}</span><span class="xml">
+</span><span class="hljs-template_tag">{% <span class="hljs-keyword">set</span> article_middle_index = article_middle_index<span class="hljs-filter">|<span class="hljs-keyword">round</span></span> %}</span><span class="xml">
+</span><span class="hljs-template_tag">{% <span class="hljs-keyword">set</span> article_middle_index = article_middle_index<span class="hljs-filter">|int</span> %}</span><span class="xml"></span></code></pre>
+
+<p>Since <code>{ 0.5|round }</code> is <code>0.0</code> according to Jinja2, we need to add a small number to the halfed number, to achieve the ceil-like behavior.</p>
+<h1 id="writing-a-custom-jinja-filter">Writing a custom Jinja filter</h1>
+<p>We can also write a custom Jinja filter that calculates the middle index of a list, by appending a small function definition and a special dictionary that tells Pelican to use the function definition as a Jinja filter to the <code>pelicanconf.py</code> file:</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">list_half_index</span><span class="hljs-params">(content, *args)</span>:</span>
+    <span class="hljs-keyword">return</span> ceil(len(content))
+
+JINJA_FILTERS = {
+    <span class="hljs-string">'list_half_index'</span>: list_half_index,
+}</code></pre>
+
+<p>In the Pelican template files, we can use our custom filter as follows:</p>
+<pre><code><span class="xml"></span><span class="hljs-template_tag">{% <span class="hljs-keyword">set</span> article_middle_index = articles<span class="hljs-filter">|middle_index</span> %}</span><span class="xml"></span></code></pre>
+
+<h1 id="using-the-middle-index">Using the middle index</h1>
+<p>We have now the middle index of an article list, so we can use it to split the list to half:</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"6u 6u(tablet) 12u(mobile)"</span>&gt;</span>
+    {% for article in articles[:article_middle_index] %}
+      {% include 'includes/article-card.html' %}
+    {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"6u 6u(tablet) 12u(mobile)"</span>&gt;</span>
+    {% for article in articles[article_middle_index:] %}
+      {% include 'includes/article-card.html' %}
+    {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+
+<p>We ended up having two coloms of articles that are generated from a single list.</p>
