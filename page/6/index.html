@@ -5,31 +5,39 @@
   <title>Tibor's Lab</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+
+  <!-- Worklog import from github -->
   <link rel="import" href="https://raw.githubusercontent.com/tiborsimon/worklog/master/publish/worklog.html">
+
 </head>
 <body>
 
   <nav class="flexwrap">
-    <div class="navmenu card padded">
-        <a class="logo" href="https://tiborsimon.io">
-          Tibor's Lab 
-        </a>
-      <div class="group">
-        <a href="https://tiborsimon.io#articles">Articles</a>
-        <a href="https://tiborsimon.io#projects">Projects</a>
-        <a href="https://tiborsimon.io#about">About</a>
+    <div class="navmenu-wrapper card padded">
+      <div class="fade-in">
+        <div class="navmenu">
+          <a class="logo" href="https://tiborsimon.io">
+            Tibor's Lab 
+          </a>
+          <div class="group">
+            <a href="https://tiborsimon.io#articles">Articles</a>
+            <a href="https://tiborsimon.io#projects">Projects</a>
+            <a href="https://tiborsimon.io#about">About</a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
 
   <div id="about" class="flexwrap">
     <section class="card avatar">
-      <img src="https://tiborsimon.io/assets/images/tibor.jpg" width=300 height=300 alt="Tibor Simon">
+      <div class="fade-in">
+        <img src="https://tiborsimon.io/assets/images/tibor.jpg" width=300 height=300 alt="Tibor Simon">
+      </div>
     </section>
     <section class="card">
-      <div class="about">
+      <div class="fade-in about">
         <div class="text">
-          <!-- <h1>Tibor's lab</h1> -->
           My name is <strong>Tibor Simon.</strong>
           <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
           As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
@@ -51,58 +59,60 @@
   <div class="flexwrap">
     <div class="vertflexwrap">
       <section class="calendar-wrapper card padded">
-        <h2>GitHub contributions</h2>
         <div class="fade-in">
+          <h2>GitHub contributions</h2>
           <div class="calendar"></div>
         </div>
       </section>
-      <section class="multibox card padded">
-        <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-        <label for="tab-1">Worklog</label>
-        <!-- <input id="tab-2" type="radio" name="tab-group" /> -->
-        <!-- <label for="tab-2">Counters</label> -->
-        <input id="tab-3" type="radio" name="tab-group" />
-        <label for="tab-3">PyPi</label>
-        <!-- <input id="tab-4" type="radio" name="tab-group" /> -->
-        <!-- <label for="tab-4">Gear</label> -->
-        <input id="tab-5" type="radio" name="tab-group" />
-        <label for="tab-5">Donation</label>
-        <div class="contents">
-          <div id="content-1">
-            <div id="worklog"></div>
-          </div>
-          <div id="content-2">
-          </div>
-          <div id="content-3">
-            <div class="pypi">
-              <h2>PyPi packages</h2>
-              <div class="packages">
-                <div class="package">
-                  <h3>Projects <small>1.0.9</small></h3>
-                  <p>Intuitive project manager and recursive scripting engine.</p>
-                  <a href="https://pypi.python.org/pypi?name=projects&version=1.0.9&:action=display" target="_blank">See on Pypi</a>
-                  <a href="https://github.com/tiborsimon/projects" target="_blank">See on GitHub</a>
-                </div>
-                <div class="package">
-                  <h3>Regart <small>1.0.5</small></h3>
-                  <p>Register art generator for ASCII based visual register section descriptions.</p>
-                  <a href="https://pypi.python.org/pypi?name=regart&version=1.0.5&:action=display" target="_blank">See on Pypi</a>
-                  <a href="https://github.com/tiborsimon/regart" target="_blank">See on GitHub</a>
+      <section class="multibox-card card padded">
+        <div class="multibox fade-in">
+          <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+          <label for="tab-1">Worklog</label>
+          <!-- <input id="tab-2" type="radio" name="tab-group" /> -->
+          <!-- <label for="tab-2">Counters</label> -->
+          <input id="tab-3" type="radio" name="tab-group" />
+          <label for="tab-3">PyPi</label>
+          <!-- <input id="tab-4" type="radio" name="tab-group" /> -->
+          <!-- <label for="tab-4">Gear</label> -->
+          <input id="tab-5" type="radio" name="tab-group" />
+          <label for="tab-5">Donation</label>
+          <div class="contents">
+            <div id="content-1">
+              <div id="worklog"></div>
+            </div>
+            <div id="content-2">
+            </div>
+            <div id="content-3">
+              <div class="pypi">
+                <h2>PyPi packages</h2>
+                <div class="packages">
+                  <div class="package">
+                    <h3>Projects <small>1.0.9</small></h3>
+                    <p>Intuitive project manager and recursive scripting engine.</p>
+                    <a href="https://pypi.python.org/pypi?name=projects&version=1.0.9&:action=display" target="_blank">See on Pypi</a>
+                    <a href="https://github.com/tiborsimon/projects" target="_blank">See on GitHub</a>
+                  </div>
+                  <div class="package">
+                    <h3>Regart <small>1.0.5</small></h3>
+                    <p>Register art generator for ASCII based visual register section descriptions.</p>
+                    <a href="https://pypi.python.org/pypi?name=regart&version=1.0.5&:action=display" target="_blank">See on Pypi</a>
+                    <a href="https://github.com/tiborsimon/regart" target="_blank">See on GitHub</a>
+                  </div>
                 </div>
               </div>
+              
             </div>
-            
-          </div>
-          <div id="content-4">
-          </div>
-          <div id="content-5">
+            <div id="content-4">
+            </div>
+            <div id="content-5">
+            </div>
           </div>
         </div>
       </section>
     </div>
     <section class="twitter-card card padded">
-      <h2>Latest tweets</h2>
       <div class="fade-in">
+        <h2>Latest tweets</h2>
         <span class="twitter-follow-button-wrapper">
           <a href="https://twitter.com/tiborsimonio" class="twitter-follow-button" data-show-count="false">Follow @tiborsimonio</a>
         </span>
@@ -114,72 +124,80 @@
   </div>
 
   <section id="articles">
-    <h1>Latest articles</h1>
+    <h1 class="fade-in">Latest articles</h1>
     <div class="articles-wrapper">
       <div class="articles">
         <article class="card padded">
-          <div class="details">
-            <header>
-              <h2>
-                <a href="https://tiborsimon.io/articles/web/redirect-external-links-to-new-tab">Redirect external links to new tab</a>
-              </h2>
-              <span class="timestamp">2015. 05. 17.</span>
-            </header>
-            <hr>
-            <div class="snippet">As Pelican can use Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?</div>
-            <div class="tag-list">
-              <a href="https://tiborsimon.io/tag/pelican/">pelican</a>
-              <a href="https://tiborsimon.io/tag/hack/">hack</a>
-              <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
-              <a href="https://tiborsimon.io/tag/web/">web</a>
-            </div>
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/web/redirect-external-links-to-new-tab">Redirect external links to new tab</a>
+                  </h2>
+                  <span class="timestamp">2015. 05. 17.</span>
+                </header>
+                <hr>
+                <div class="snippet">As Pelican can use Markdown to render it's contents, and Markdown doesn't support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/pelican/">pelican</a>
+                  <a href="https://tiborsimon.io/tag/hack/">hack</a>
+                  <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                  <a href="https://tiborsimon.io/tag/web/">web</a>
+                </div>
+              </div>
           </div>
         </article>
         <article class="card padded">
-          <div class="details">
-            <header>
-              <h2>
-                <a href="https://tiborsimon.io/articles/programming/java-shooter-game">Java Shooter Game</a>
-              </h2>
-              <span class="timestamp">2015. 01. 17.</span>
-            </header>
-            <hr>
-            <div class="snippet">During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</div>
-            <div class="tag-list">
-              <a href="https://tiborsimon.io/tag/java/">java</a>
-              <a href="https://tiborsimon.io/tag/game/">game</a>
-            </div>
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/programming/java-shooter-game">Java Shooter Game</a>
+                  </h2>
+                  <span class="timestamp">2015. 01. 17.</span>
+                </header>
+                <hr>
+                <div class="snippet">During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/java/">java</a>
+                  <a href="https://tiborsimon.io/tag/game/">game</a>
+                </div>
+              </div>
           </div>
         </article>
         <article class="card padded">
-          <div class="details">
-            <header>
-              <h2>
-                <a href="https://tiborsimon.io/articles/embedded/slot-car-race">SlotCar Race</a>
-              </h2>
-              <span class="timestamp">2013. 05. 19.</span>
-            </header>
-            <hr>
-            <div class="snippet">At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track.</div>
-            <div class="tag-list">
-              <a href="https://tiborsimon.io/tag/embedded/">embedded</a>
-              <a href="https://tiborsimon.io/tag/dsp/">dsp</a>
-              <a href="https://tiborsimon.io/tag/control/">control</a>
-            </div>
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/embedded/slot-car-race">SlotCar Race</a>
+                  </h2>
+                  <span class="timestamp">2013. 05. 19.</span>
+                </header>
+                <hr>
+                <div class="snippet">At the university me and my partner have faced a midterm project that contained a very interesting problem. We had to write an algorithm that drives a small electric car on it’s guided track.</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/embedded/">embedded</a>
+                  <a href="https://tiborsimon.io/tag/dsp/">dsp</a>
+                  <a href="https://tiborsimon.io/tag/control/">control</a>
+                </div>
+              </div>
           </div>
         </article>
       
         <div class="card">
-          <nav class="pagination-nav">
-              <a href="https://tiborsimon.io/page/5#articles">Previous</a>
-              <span>Next</span>
-          </nav>
+          <div class="fade-in">
+            <nav class="pagination-nav">
+                <a href="https://tiborsimon.io/page/5#articles">Previous</a>
+                <span>Next</span>
+            </nav>
+          </div>
         </div>
       
       </div>
       <div class="sidebar">
         <div class="card padded">
-          <div class="tags">
+          <div class="fade-in tags">
             <h2>Tags</h2>
             <div class="tag-list">
               <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
@@ -298,322 +316,326 @@
   </section>
 
   <section id="projects">
-    <h1>Projects</h1>
-    <div class="portfolio-list">
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/regart/thumbnail-300x300.jpg" alt="The responsive register drawing command line tool.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Regart</h2>
-              <div class="description">
-                The responsive register drawing command line tool.
+    <h1 class="fade-in">Projects</h1>
+    <div class="card">
+      <div class="fade-in">
+        <div class="portfolio-list">
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/regart/thumbnail-300x300.jpg" alt="The responsive register drawing command line tool.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Regart</div>
+                <div class="description">
+                  The responsive register drawing command line tool.
+                </div>
+                <small>2016. 07. 23. - programming</small>
+                <a href="https://github.com/tiborsimon/regart">details</a>
               </div>
-              <small>2016. 07. 23. - programming</small>
-              <a href="https://github.com/tiborsimon/regart">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/projects/thumbnail-300x300.jpg" alt="Intuitive project management and recursive scripting engine.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Projects</h2>
-              <div class="description">
-                Intuitive project management and recursive scripting engine.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/projects/thumbnail-300x300.jpg" alt="Intuitive project management and recursive scripting engine.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Projects</div>
+                <div class="description">
+                  Intuitive project management and recursive scripting engine.
+                </div>
+                <small>2016. 07. 07. - programming</small>
+                <a href="https://github.com/tiborsimon/projects">details</a>
               </div>
-              <small>2016. 07. 07. - programming</small>
-              <a href="https://github.com/tiborsimon/projects">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/dotfiles/thumbnail-300x300.jpg" alt="My unified configuration setup system with fast deployment.">
-          <figcaption>
-            <div class="overlay">
-              <h2>dotfiles</h2>
-              <div class="description">
-                My unified configuration setup system with fast deployment.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/dotfiles/thumbnail-300x300.jpg" alt="My unified configuration setup system with fast deployment.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">dotfiles</div>
+                <div class="description">
+                  My unified configuration setup system with fast deployment.
+                </div>
+                <small>2016. 01. 07. - programming</small>
+                <a href="https://github.com/tiborsimon/dotfiles">details</a>
               </div>
-              <small>2016. 01. 07. - programming</small>
-              <a href="https://github.com/tiborsimon/dotfiles">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/matlab-library-system/thumbnail-300x300.jpg" alt="Library handler that provides modularity and easy shipment for your projects and packages.">
-          <figcaption>
-            <div class="overlay">
-              <h2>MATLAB Library System</h2>
-              <div class="description">
-                Library handler that provides modularity and easy shipment for your projects and packages.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/matlab-library-system/thumbnail-300x300.jpg" alt="Library handler that provides modularity and easy shipment for your projects and packages.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">MATLAB Library System</div>
+                <div class="description">
+                  Library handler that provides modularity and easy shipment for your projects and packages.
+                </div>
+                <small>2015. 11. 03. - programming</small>
+                <a href="https://github.com/tiborsimon/matlab-library-system">details</a>
               </div>
-              <small>2015. 11. 03. - programming</small>
-              <a href="https://github.com/tiborsimon/matlab-library-system">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/smart-sinusoids/thumbnail-300x300.jpg" alt="The easiest way to generate sinusoid signals in MATLAB.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Smart Sinusoids</h2>
-              <div class="description">
-                The easiest way to generate sinusoid signals in MATLAB.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/smart-sinusoids/thumbnail-300x300.jpg" alt="The easiest way to generate sinusoid signals in MATLAB.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Smart Sinusoids</div>
+                <div class="description">
+                  The easiest way to generate sinusoid signals in MATLAB.
+                </div>
+                <small>2015. 10. 20. - dsp</small>
+                <a href="https://github.com/tiborsimon/smart-sinusoids">details</a>
               </div>
-              <small>2015. 10. 20. - dsp</small>
-              <a href="https://github.com/tiborsimon/smart-sinusoids">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/simple-input-parser/thumbnail-300x300.jpg" alt="Easy to use input parser for functions and methods that are using variable-length input argument list.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Simple Input Parser</h2>
-              <div class="description">
-                Easy to use input parser for functions and methods that are using variable-length input argument list.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/simple-input-parser/thumbnail-300x300.jpg" alt="Easy to use input parser for functions and methods that are using variable-length input argument list.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Simple Input Parser</div>
+                <div class="description">
+                  Easy to use input parser for functions and methods that are using variable-length input argument list.
+                </div>
+                <small>2015. 10. 13. - programming</small>
+                <a href="https://github.com/tiborsimon/simple-input-parser">details</a>
               </div>
-              <small>2015. 10. 13. - programming</small>
-              <a href="https://github.com/tiborsimon/simple-input-parser">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/dsp-controller/thumbnail-300x300.jpg" alt="Avr based human interface device for the analog devices sharc dsp evaluation board.">
-          <figcaption>
-            <div class="overlay">
-              <h2>DSP Controller</h2>
-              <div class="description">
-                Avr based human interface device for the analog devices sharc dsp evaluation board.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/dsp-controller/thumbnail-300x300.jpg" alt="Avr based human interface device for the analog devices sharc dsp evaluation board.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">DSP Controller</div>
+                <div class="description">
+                  Avr based human interface device for the analog devices sharc dsp evaluation board.
+                </div>
+                <small>2014. 01. 16. - electronics</small>
+                <a href="https://github.com/tiborsimon/dspcontroller-bundle">details</a>
               </div>
-              <small>2014. 01. 16. - electronics</small>
-              <a href="https://github.com/tiborsimon/dspcontroller-bundle">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/java-shooter-game/thumbnail-300x300.jpg" alt="Java Shooter Game is a simple open source Minigore-like game written in java as a university project.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Java shooter game</h2>
-              <div class="description">
-                Java Shooter Game is a simple open source Minigore-like game written in java as a university project.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/java-shooter-game/thumbnail-300x300.jpg" alt="Java Shooter Game is a simple open source Minigore-like game written in java as a university project.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Java shooter game</div>
+                <div class="description">
+                  Java Shooter Game is a simple open source Minigore-like game written in java as a university project.
+                </div>
+                <small>2013. 08. 19. - programming</small>
+                <a href="https://github.com/tiborsimon/java-shooter-game">details</a>
               </div>
-              <small>2013. 08. 19. - programming</small>
-              <a href="https://github.com/tiborsimon/java-shooter-game">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/slotcar-race/thumbnail-300x300.jpg" alt="Contest winning implementation of an accelerometer based cruse control algorithm for a toy slot car to make the fastest lap withput slipping out of the track.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Slotcar race</h2>
-              <div class="description">
-                Contest winning implementation of an accelerometer based cruse control algorithm for a toy slot car to make the fastest lap withput slipping out of the track.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/slotcar-race/thumbnail-300x300.jpg" alt="Contest winning implementation of an accelerometer based cruse control algorithm for a toy slot car to make the fastest lap withput slipping out of the track.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Slotcar race</div>
+                <div class="description">
+                  Contest winning implementation of an accelerometer based cruse control algorithm for a toy slot car to make the fastest lap withput slipping out of the track.
+                </div>
+                <small>2013. 05. 19. - electronics, dsp</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;Aj9IzfBdFBo">details</a>
               </div>
-              <small>2013. 05. 19. - electronics, dsp</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;Aj9IzfBdFBo">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/zikkurat/thumbnail-300x300.jpg" alt="Live recorded street music with a clone guitarists.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Zikkurat</h2>
-              <div class="description">
-                Live recorded street music with a clone guitarists.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/zikkurat/thumbnail-300x300.jpg" alt="Live recorded street music with a clone guitarists.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Zikkurat</div>
+                <div class="description">
+                  Live recorded street music with a clone guitarists.
+                </div>
+                <small>2013. 03. 11. - video</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;BbZDeATeR7c">details</a>
               </div>
-              <small>2013. 03. 11. - video</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;BbZDeATeR7c">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/madagascar/thumbnail-300x300.jpg" alt="Guitar loop cover of the Madagascar main theme with octave bass.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Madagascar</h2>
-              <div class="description">
-                Guitar loop cover of the Madagascar main theme with octave bass.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/madagascar/thumbnail-300x300.jpg" alt="Guitar loop cover of the Madagascar main theme with octave bass.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Madagascar</div>
+                <div class="description">
+                  Guitar loop cover of the Madagascar main theme with octave bass.
+                </div>
+                <small>2013. 02. 26. - music</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;XiYXvfuqvFw">details</a>
               </div>
-              <small>2013. 02. 26. - music</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;XiYXvfuqvFw">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/mustang-test/thumbnail-300x300.jpg" alt="First loop jam of my new Fender Mustang III DSP amplifier.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Mustang test</h2>
-              <div class="description">
-                First loop jam of my new Fender Mustang III DSP amplifier.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/mustang-test/thumbnail-300x300.jpg" alt="First loop jam of my new Fender Mustang III DSP amplifier.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Mustang test</div>
+                <div class="description">
+                  First loop jam of my new Fender Mustang III DSP amplifier.
+                </div>
+                <small>2012. 12. 01. - music</small>
+                <a href="https://soundcloud.com/tiborsimon/mustang-test">details</a>
               </div>
-              <small>2012. 12. 01. - music</small>
-              <a href="https://soundcloud.com/tiborsimon/mustang-test">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/lovesong/thumbnail-300x300.jpg" alt="Full guitar and vocal cover of Adele&#x27;s version of Lovesong.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Lovesong</h2>
-              <div class="description">
-                Full guitar and vocal cover of Adele&#x27;s version of Lovesong.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/lovesong/thumbnail-300x300.jpg" alt="Full guitar and vocal cover of Adele&#x27;s version of Lovesong.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Lovesong</div>
+                <div class="description">
+                  Full guitar and vocal cover of Adele&#x27;s version of Lovesong.
+                </div>
+                <small>2012. 09. 30. - music, video</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;qINOQfeV8o8">details</a>
               </div>
-              <small>2012. 09. 30. - music, video</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;qINOQfeV8o8">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/modern-love/thumbnail-300x300.jpg" alt="Acoustic guitar medley, mostly John frusciante covers.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Modern love</h2>
-              <div class="description">
-                Acoustic guitar medley, mostly John frusciante covers.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/modern-love/thumbnail-300x300.jpg" alt="Acoustic guitar medley, mostly John frusciante covers.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Modern love</div>
+                <div class="description">
+                  Acoustic guitar medley, mostly John frusciante covers.
+                </div>
+                <small>2012. 09. 14. - music</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;lxrcqMAhclI">details</a>
               </div>
-              <small>2012. 09. 14. - music</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;lxrcqMAhclI">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/this-is-the-life/thumbnail-300x300.jpg" alt="This is the life cover with electric and acoustic guitars.">
-          <figcaption>
-            <div class="overlay">
-              <h2>This is the life</h2>
-              <div class="description">
-                This is the life cover with electric and acoustic guitars.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/this-is-the-life/thumbnail-300x300.jpg" alt="This is the life cover with electric and acoustic guitars.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">This is the life</div>
+                <div class="description">
+                  This is the life cover with electric and acoustic guitars.
+                </div>
+                <small>2012. 08. 23. - music</small>
+                <a href="https://www.youtube.com/watch?v&#x3D;y00qwAemOj8">details</a>
               </div>
-              <small>2012. 08. 23. - music</small>
-              <a href="https://www.youtube.com/watch?v&#x3D;y00qwAemOj8">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/starry-night/thumbnail-300x300.jpg" alt="Slider night footage of a playground close to midnight.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Starry Night</h2>
-              <div class="description">
-                Slider night footage of a playground close to midnight.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/starry-night/thumbnail-300x300.jpg" alt="Slider night footage of a playground close to midnight.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Starry Night</div>
+                <div class="description">
+                  Slider night footage of a playground close to midnight.
+                </div>
+                <small>2012. 08. 20. - video</small>
+                <a href="https://vimeo.com/47858395">details</a>
               </div>
-              <small>2012. 08. 20. - video</small>
-              <a href="https://vimeo.com/47858395">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/milky-way/thumbnail-300x300.jpg" alt="Time lapse video of the Milky Way gacefully turning around with shooting star like planes.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Milky Way</h2>
-              <div class="description">
-                Time lapse video of the Milky Way gacefully turning around with shooting star like planes.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/milky-way/thumbnail-300x300.jpg" alt="Time lapse video of the Milky Way gacefully turning around with shooting star like planes.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Milky Way</div>
+                <div class="description">
+                  Time lapse video of the Milky Way gacefully turning around with shooting star like planes.
+                </div>
+                <small>2011. 10. 24. - video</small>
+                <a href="https://vimeo.com/31025344">details</a>
               </div>
-              <small>2011. 10. 24. - video</small>
-              <a href="https://vimeo.com/31025344">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/cold-front/thumbnail-300x300.jpg" alt="The last warm day of the year with multilayered clouds passing by.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Cold front</h2>
-              <div class="description">
-                The last warm day of the year with multilayered clouds passing by.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/cold-front/thumbnail-300x300.jpg" alt="The last warm day of the year with multilayered clouds passing by.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Cold front</div>
+                <div class="description">
+                  The last warm day of the year with multilayered clouds passing by.
+                </div>
+                <small>2011. 10. 16. - video</small>
+                <a href="https://vimeo.com/30624186">details</a>
               </div>
-              <small>2011. 10. 16. - video</small>
-              <a href="https://vimeo.com/30624186">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/lightnings/thumbnail-300x300.jpg" alt="Lightning photograpy at night.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Lightnings</h2>
-              <div class="description">
-                Lightning photograpy at night.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/lightnings/thumbnail-300x300.jpg" alt="Lightning photograpy at night.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Lightnings</div>
+                <div class="description">
+                  Lightning photograpy at night.
+                </div>
+                <small>2011. 08. 14. - photography</small>
+                <a href="https://github.com/tiborsimon/projects">details</a>
               </div>
-              <small>2011. 08. 14. - photography</small>
-              <a href="https://github.com/tiborsimon/projects">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/clouds-are-coming/thumbnail-300x300.jpg" alt="Time lapse video of clouds coming from northwest.">
-          <figcaption>
-            <div class="overlay">
-              <h2>Clouds are coming</h2>
-              <div class="description">
-                Time lapse video of clouds coming from northwest.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/clouds-are-coming/thumbnail-300x300.jpg" alt="Time lapse video of clouds coming from northwest.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">Clouds are coming</div>
+                <div class="description">
+                  Time lapse video of clouds coming from northwest.
+                </div>
+                <small>2011. 06. 23. - video</small>
+                <a href="https://vimeo.com/26811398">details</a>
               </div>
-              <small>2011. 06. 23. - video</small>
-              <a href="https://vimeo.com/26811398">details</a>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="portfolio-item">
-        <figure>
-          <img src="/assets/images/projects/led-chaser/thumbnail-300x300.jpg" alt="Avr based tiny led animation player written in assembly. flash based editor included.">
-          <figcaption>
-            <div class="overlay">
-              <h2>LED chaser</h2>
-              <div class="description">
-                Avr based tiny led animation player written in assembly. flash based editor included.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="portfolio-item">
+            <figure>
+              <img src="/assets/images/projects/led-chaser/thumbnail-300x300.jpg" alt="Avr based tiny led animation player written in assembly. flash based editor included.">
+              <figcaption>
+              <div class="overlay">
+                <div class="title">LED chaser</div>
+                <div class="description">
+                  Avr based tiny led animation player written in assembly. flash based editor included.
+                </div>
+                <small>2010. 07. 02. - electronics</small>
+                <a href="https://github.com/tiborsimon/led-chaser">details</a>
               </div>
-              <small>2010. 07. 02. - electronics</small>
-              <a href="https://github.com/tiborsimon/led-chaser">details</a>
-            </div>
-          </figcaption>
-        </figure>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -623,32 +645,43 @@
     tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
     Engineering with Passion
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
-  <script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
-  <script>
-GitHubCalendar(".calendar", "tiborsimon");
-  </script>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <!-- Worklog import from github -->
   <script>
     var link = document.querySelector('link[rel="import"]');
     var content = link.import;
     var el = content.querySelector('.worklog');
     document.getElementById("worklog").appendChild(el.cloneNode(true));
   </script>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
+  <script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
   <script>
-    (function(){
-      function loaderDone(event) {
-        let myElements = document.querySelectorAll(".fade-in");
-        for (let i = 0; i < myElements.length; i++) {
-          myElements[i].style.opacity = 1;
-        }
+    GitHubCalendar(".calendar", "tiborsimon");
+  </script>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
       }
-      document.onreadystatechange = function () {
-        if(document.readyState === 'complete') {
-          setTimeout(function(){loaderDone();}, 400);
-        }
-      };
-    })();
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
   </script>
 </body>
 </html>
