@@ -360,7 +360,7 @@ section {
       border-right: 1px solid rgba(0, 0, 0, 0.12); }
 
 .fade-in {
-  transition: all 0.2s ease;
+  transition: all 0.8s ease;
   opacity: 0; }
 
 .twitter-timeline {
