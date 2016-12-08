@@ -48,18 +48,35 @@
             <div class="summary">Debugging Metalsmith is a bit tricky. You have to write a custom plugin to print out the intermediate data structures passed through the various plugins.</div>
             <hr>
             <p>During the development of the <em>current iteration</em> of my website core, I have
-encountered with the problem of debugging Metalsmith with its plugin system.
-Metalsmith is a lightweight static site generator that has a very flexible
+encountered with the problem of debugging Metalsmith with its plugin system.</p>
+<p>Metalsmith is a lightweight static site generator that has a very flexible
 plugin system. You can chain together the plugins you like, and Metalsmith
-will call them one by one passing the current data structure to them.</p>
-<p>This method gives ultimate flexibility but it lacks debuggability. If you
-want to see the intermediate data structure that is returned by a plugin
-and is about to be passed to the next one, you need to write a custom plugin
-to do that. Metalsmith plugins often lacks of any usable documentation so this 
-article could be useful too to find out what data they added to the passed data structure.</p>
-<h2 id="metalsmith-s-plugin-system">Metalsmith’s plugin system</h2>
+will call them one by one passing the current data structure to them. This 
+functional approach makes it hard to understand at first, since there are no visible 
+variables you can look at during execution.</p>
 <h2 id="debug-plugin">Debug plugin</h2>
-<h2 id="conclusion">Conclusion</h2>
+<p>In order to peek into the data structure, you need to write a small plugin with the 
+required metalsmith plugin interface like so:</p>
+<pre><code class="hljs">let<span class="hljs-instruction"> monitor </span>=<span class="hljs-function"> (</span><span class="hljs-function">)</span> =&gt; {
+ <span class="hljs-instruction"> return </span>(files, metalsmith, done<span class="hljs-function">)</span> =&gt; {
+    //<span class="hljs-function"> console.log(</span>metalsmith._metadata.enhancedTags<span class="hljs-function">)</span>
+   <span class="hljs-function"> done(</span><span class="hljs-function">)</span>
+  }
+}
+
+<span class="hljs-keyword">.</span>..
+
+metalsmith(__dirname<span class="hljs-function">)</span>
+<span class="hljs-keyword">  .source</span>('contents'<span class="hljs-function">)</span>
+<span class="hljs-keyword">  .use</span>(monitor(<span class="hljs-function">)</span><span class="hljs-function">)</span>
+<span class="hljs-keyword">  .destination</span>('publish'<span class="hljs-function">)</span>
+<span class="hljs-keyword">  .build</span>(function<span class="hljs-function"> (</span>err<span class="hljs-function">)</span> {
+   <span class="hljs-instruction"> if </span>(err<span class="hljs-function">)</span> {
+     <span class="hljs-instruction"> throw </span>err;
+    }
+  }<span class="hljs-function">)</span></code></pre>
+
+<p>With this small plugin, you are be able to log out any data structure you want by inserting it to the plugin chain.</p>
 
           </div>
         </article>
@@ -208,10 +225,10 @@ article could be useful too to find out what data they added to the passed data 
               make<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              Matlab<span>1</span>
+              matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              matlab<span>1</span>
+              Matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>1</span>
