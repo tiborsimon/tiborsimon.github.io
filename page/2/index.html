@@ -64,16 +64,16 @@
       </section>
       <section class="multibox-card card padded">
         <div class="multibox fade-in">
-          <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-          <label for="tab-1">Worklog</label>
+          <!-- <input id="tab-1" type="radio" name="tab-group" checked="checked" /> -->
+          <!-- <label for="tab-1">Worklog</label> -->
           <!-- <input id="tab-2" type="radio" name="tab-group" /> -->
           <!-- <label for="tab-2">Counters</label> -->
-          <input id="tab-3" type="radio" name="tab-group" />
+          <input id="tab-3" type="radio" name="tab-group" checked="checked" />
           <label for="tab-3">PyPi</label>
-          <!-- <input id="tab-4" type="radio" name="tab-group" /> -->
-          <!-- <label for="tab-4">Gear</label> -->
-          <input id="tab-5" type="radio" name="tab-group" />
-          <label for="tab-5">Donation</label>
+          <input id="tab-4" type="radio" name="tab-group" />
+          <label for="tab-4">Web Apps</label>
+          <!-- <input id="tab-5" type="radio" name="tab-group" /> -->
+          <!-- <label for="tab-5">Donation</label> -->
           <div class="contents">
             <div id="content-1">
               <div id="worklog"></div>
@@ -101,6 +101,18 @@
               
             </div>
             <div id="content-4">
+              <div class="pypi">
+                <h2>Web Applications</h2>
+                <div class="packages">
+                  <div class="package">
+                    <h3>Ultimate timer <small>1.1</small></h3>
+                    <p>My first React and Redux based web application for learning purpose.</p>
+                    <a href="https://tiborsimon.io/apps/timer" target="_blank">Launch</a>
+                    <a href="https://github.com/tiborsimon/timer" target="_blank">See on GitHub</a>
+                  </div>
+                </div>
+              </div>
+              
             </div>
             <div id="content-5">
             </div>
@@ -288,10 +300,10 @@
                 make<span>1</span>
               </a>
               <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-                Matlab<span>1</span>
+                matlab<span>1</span>
               </a>
               <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-                matlab<span>1</span>
+                Matlab<span>1</span>
               </a>
               <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
                 metalsmith<span>1</span>
@@ -651,14 +663,6 @@
     tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
     Engineering with Passion
   </div>
-
-  <!-- Worklog import from github -->
-  <script>
-    var link = document.querySelector('link[rel="import"]');
-    var content = link.import;
-    var el = content.querySelector('.worklog');
-    document.getElementById("worklog").appendChild(el.cloneNode(true));
-  </script>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
   <script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
