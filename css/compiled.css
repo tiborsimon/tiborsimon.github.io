@@ -188,11 +188,10 @@ table {
   display: flex;
   flex-wrap: wrap; }
   .pypi .packages .package {
-    width: 246px;
-    height: 174px;
+    width: 240px;
     margin-right: 6px;
-    border-radius: 2px;
-    padding: 20px;
+    border-radius: 3px;
+    padding: 15px;
     background: rgba(0, 0, 0, 0.12);
     color: rgba(0, 0, 0, 0.87); }
     .pypi .packages .package h3 {
@@ -201,15 +200,21 @@ table {
       font-weight: 600; }
     .pypi .packages .package p {
       height: 63px; }
-    .pypi .packages .package a {
-      box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-      text-decoration: none;
-      color: white;
-      background: var(--main-color);
-      border-radius: 2px;
-      padding: 2px 7px; }
-      .pypi .packages .package a:hover {
-        background: var(--action-background); }
+    .pypi .packages .package .buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%; }
+      .pypi .packages .package .buttons a {
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        background: var(--main-color);
+        border-radius: 2px;
+        padding: 2px 7px;
+        margin-bottom: 3px; }
+        .pypi .packages .package .buttons a:hover {
+          background: var(--action-background); }
 
 .index-header {
   display: block;
