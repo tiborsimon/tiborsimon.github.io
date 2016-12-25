@@ -647,17 +647,18 @@ nav .navmenu {
     left: -30px; }
   .article .code-name {
     margin-bottom: -15px;
-    color: #aaa;
+    color: #5faec1;
     box-sizing: border-box;
-    background: #eee;
+    background: #0a2329;
     position: relative;
     width: var(--content-width);
     padding-left: 30px;
     left: -30px;
     font-family: monospace;
     font-size: 0.8em;
-    background: #F5F5F5;
-    border-bottom: 1px dashed #ccc; }
+    padding-top: 7px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #5faec1; }
   .article .divider {
     margin-top: 50px;
     font-weight: 300;
@@ -700,13 +701,13 @@ nav .navmenu {
     background: #F5F5F5;
     padding: 1px 3px; }
   .article pre code {
-    background: #545454;
+    background: #0a2329;
+    color: #5faec1;
     width: var(--content-width);
     display: block;
     position: relative;
     left: -30px;
     overflow-x: auto;
-    color: #bbb;
     font-size: 0.8em;
     line-height: 1.4em;
     padding: 17px 30px; }
