@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Home - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="Tibor Simon&#x27;s personal site mostly with electronics, programming and guitar related contents.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -30,17 +29,21 @@
   <div id="about" class="flexwrap">
     <section class="card avatar">
       <div class="fade-in">
-        <img src="https://tiborsimon.io/assets/images/tibor.jpg" width=300 height=300 alt="Tibor Simon">
+        <img src="https://tiborsimon.io/assets/images/tibor.jpg" width=270 height=270 alt="Tibor Simon">
       </div>
     </section>
-    <section class="card">
-      <div class="fade-in about">
-        <div class="text">
-          My name is <strong>Tibor Simon.</strong>
-          <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
-          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+    <section class="about-section">
+      <section class="card">
+        <div class="fade-in about">
+          <div class="text">
+            My name is <strong>Tibor Simon.</strong>
+            <p>I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.</p>
+            As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+          </div>
         </div>
-        <div class="icons-row">
+      </section>
+      <div class="card">
+        <div class="icons-row fade-in">
           <a href="https://twitter.com/tiborsimonio" target="_blank"><span class="icon-twitter"></span></a>
           <a href="https://github.com/tiborsimon" target="_blank"><span class="icon-github"></span></a>
           <a href="https://www.instagram.com/tiborsimon/" target="_blank"><span class="icon-instagram"></span></a>
@@ -52,8 +55,8 @@
           <a href="https://hu.linkedin.com/in/tibor-simon-258850a3" target="_blank"><span class="icon-linkedin"></span></a>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
   <div class="flexwrap">
     <div class="vertflexwrap">
       <section class="calendar-wrapper card padded">
@@ -140,77 +143,9 @@
   </div>
 
   <section id="articles">
-    <h1 class="fade-in">Latest articles</h1>
     <div class="articles-wrapper">
-      <div class="articles">
-        <article class="card padded">
-          <div class="fade-in">
-              <div class="details">
-                <header>
-                  <h2>
-                    <a href="https://tiborsimon.io/articles/web/chart-multitab">Chart.js with subtabbed tabs</a>
-                  </h2>
-                  <span class="timestamp">2015. 10. 30.</span>
-                </header>
-                <hr>
-                <div class="snippet">Chart.js is a bit tricky to use if you have dynamic tabs on your site. How about having multiple tabs with multiple tabs in them? Things get serious.</div>
-                <div class="tag-list">
-                  <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
-                  <a href="https://tiborsimon.io/tag/web/">web</a>
-                </div>
-              </div>
-          </div>
-        </article>
-        <article class="card padded">
-          <div class="fade-in">
-              <div class="details">
-                <header>
-                  <h2>
-                    <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary">Mandatory + arbitrary order</a>
-                  </h2>
-                  <span class="timestamp">2015. 10. 29.</span>
-                </header>
-                <hr>
-                <div class="snippet">What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?</div>
-                <div class="tag-list">
-                  <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
-                  <a href="https://tiborsimon.io/tag/python/">python</a>
-                  <a href="https://tiborsimon.io/tag/hack/">hack</a>
-                </div>
-              </div>
-          </div>
-        </article>
-        <article class="card padded">
-          <div class="fade-in">
-              <div class="details">
-                <header>
-                  <h2>
-                    <a href="https://tiborsimon.io/articles/programming/fuzzy-search">Fuzzy search and sort algorithm</a>
-                  </h2>
-                  <span class="timestamp">2015. 10. 25.</span>
-                </header>
-                <hr>
-                <div class="snippet">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
-                <div class="tag-list">
-                  <a href="https://tiborsimon.io/tag/search/">search</a>
-                  <a href="https://tiborsimon.io/tag/python/">python</a>
-                  <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
-                </div>
-              </div>
-          </div>
-        </article>
-      
-        <div class="card">
-          <div class="fade-in">
-            <nav class="pagination-nav">
-                <a href="https://tiborsimon.io/page/3#articles">Previous</a>
-                <a href="https://tiborsimon.io/page/5#articles">Older</a>
-            </nav>
-          </div>
-        </div>
-      
-      </div>
       <div class="sidebar">
+        <div class="card padded"><h2 class="fade-in articles-title">Latest articles</h2></div>
         <div class="card padded">
           <div class="fade-in tags">
             <h2>Tags</h2>
@@ -327,11 +262,79 @@
           </div>
         </div>
       </div>
+      <div class="articles">
+        <article class="card padded">
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/web/chart-multitab">Chart.js with subtabbed tabs</a>
+                  </h2>
+                  <span class="timestamp">2015. 10. 30.</span>
+                </header>
+                <hr>
+                <div class="snippet">Chart.js is a bit tricky to use if you have dynamic tabs on your site. How about having multiple tabs with multiple tabs in them? Things get serious.</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                  <a href="https://tiborsimon.io/tag/web/">web</a>
+                </div>
+              </div>
+          </div>
+        </article>
+        <article class="card padded">
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary">Mandatory + arbitrary order</a>
+                  </h2>
+                  <span class="timestamp">2015. 10. 29.</span>
+                </header>
+                <hr>
+                <div class="snippet">What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
+                  <a href="https://tiborsimon.io/tag/python/">python</a>
+                  <a href="https://tiborsimon.io/tag/hack/">hack</a>
+                </div>
+              </div>
+          </div>
+        </article>
+        <article class="card padded">
+          <div class="fade-in">
+              <div class="details">
+                <header>
+                  <h2>
+                    <a href="https://tiborsimon.io/articles/programming/fuzzy-search">Fuzzy search and sort algorithm</a>
+                  </h2>
+                  <span class="timestamp">2015. 10. 25.</span>
+                </header>
+                <hr>
+                <div class="snippet">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
+                <div class="tag-list">
+                  <a href="https://tiborsimon.io/tag/search/">search</a>
+                  <a href="https://tiborsimon.io/tag/python/">python</a>
+                  <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
+                </div>
+              </div>
+          </div>
+        </article>
+      
+        <div class="card">
+          <div class="fade-in">
+            <nav class="pagination-nav">
+                <a href="https://tiborsimon.io/page/3#articles">Previous</a>
+                <a href="https://tiborsimon.io/page/5#articles">Older</a>
+            </nav>
+          </div>
+        </div>
+      
+      </div>
     </div>
   </section>
 
   <section id="projects">
-    <h1 class="fade-in">Projects</h1>
+    <div class="card padded"><h2 class="projects-title fade-in">Projects</h2></div>
     <div class="card">
       <div class="fade-in">
         <div class="portfolio-list">

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirect external links to new tab - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="As Pelican can use Markdown to render it&#x27;s contents, and Markdown doesn&#x27;t support control over the hyperlink target attribute, you were forced to write your external links and references manually. Or not?">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -52,17 +51,17 @@ links to a new blank tab.</p>
 <p>All the credits go to <a href="http://stackoverflow.com/users/1504966/austin">Austin</a>
 and to his <a href="http://stackoverflow.com/a/11597448">stackoverflow post</a>. I am just
 a happy user of this method :)</p>
-<pre><code class="hljs javascript">$(<span class="hljs-string">'a'</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-   <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'/'</span> + <span class="hljs-built_in">window</span>.location.host + <span class="hljs-string">'/'</span>);
-   <span class="hljs-keyword">if</span>(!a.test(<span class="hljs-keyword">this</span>.href)) {
-       $(<span class="hljs-keyword">this</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+<pre><code class="lang-javascript">$(&#39;a&#39;).each(function() {
+   var a = new RegExp(&#39;/&#39; + window.location.host + &#39;/&#39;);
+   if(!a.test(this.href)) {
+       $(this).click(function(event) {
            event.preventDefault();
            event.stopPropagation();
-           <span class="hljs-built_in">window</span>.open(<span class="hljs-keyword">this</span>.href, <span class="hljs-string">'_blank'</span>);
+           window.open(this.href, &#39;_blank&#39;);
        });
    }
-});</code></pre>
-
+});
+</code></pre>
 <p>The method just works. Nothing fancy about it, it does what is supposed to do.
 Thank you Austin!</p>
 

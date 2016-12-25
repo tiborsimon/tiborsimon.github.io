@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Debugging metalsmith - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="Debugging Metalsmith is a bit tricky. You have to write a custom plugin to print out the intermediate data structures passed through the various plugins.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -58,26 +57,25 @@ variables you can look at during execution.</p>
 <h2 id="debug-plugin">Debug plugin</h2>
 <p>In order to peek into the data structure, you need to write a small plugin with the 
 required metalsmith plugin interface like so:</p>
-<pre><code class="hljs">let<span class="hljs-instruction"> monitor </span>=<span class="hljs-function"> (</span><span class="hljs-function">)</span> =&gt; {
- <span class="hljs-instruction"> return </span>(files, metalsmith, done<span class="hljs-function">)</span> =&gt; {
-    //<span class="hljs-function"> console.log(</span>metalsmith._metadata.enhancedTags<span class="hljs-function">)</span>
-   <span class="hljs-function"> done(</span><span class="hljs-function">)</span>
+<pre><code>let monitor = () =&gt; {
+  return (files, metalsmith, done) =&gt; {
+    // console.log(metalsmith._metadata.enhancedTags)
+    done()
   }
 }
 
-<span class="hljs-keyword">.</span>..
+...
 
-metalsmith(__dirname<span class="hljs-function">)</span>
-<span class="hljs-keyword">  .source</span>('contents'<span class="hljs-function">)</span>
-<span class="hljs-keyword">  .use</span>(monitor(<span class="hljs-function">)</span><span class="hljs-function">)</span>
-<span class="hljs-keyword">  .destination</span>('publish'<span class="hljs-function">)</span>
-<span class="hljs-keyword">  .build</span>(function<span class="hljs-function"> (</span>err<span class="hljs-function">)</span> {
-   <span class="hljs-instruction"> if </span>(err<span class="hljs-function">)</span> {
-     <span class="hljs-instruction"> throw </span>err;
+metalsmith(__dirname)
+  .source(&#39;contents&#39;)
+  .use(monitor())
+  .destination(&#39;publish&#39;)
+  .build(function (err) {
+    if (err) {
+      throw err;
     }
-  }<span class="hljs-function">)</span></code></pre>
-
-<p>With this small plugin, you are be able to log out any data structure you want by inserting it to the plugin chain.</p>
+  })
+</code></pre><p>With this small plugin, you are be able to log out any data structure you want by inserting it to the plugin chain.</p>
 
           </div>
         </article>

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Java Shooter Game - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -54,9 +53,9 @@
 
 <p>It uses some open source stuff, like the explosion animation and the music for the promo video. The game is open source, so you can go to GitHub to see how the game functionalities were implemented.</p>
 <p>If the game won’t open by clicking on it (like on OSX Moutain Lion), you have to open it from command line. If the command line returns an error like pixel format not accelerated, you should check out these sites for the solution.</p>
-<pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> &lt;path to the the jar file&gt;
-$ java -jar JavaShooter.jar</code></pre>
-
+<pre><code class="lang-bash">$ cd &lt;path to the the jar file&gt;
+$ java -jar JavaShooter.jar
+</code></pre>
 <h1 id="main-menu">Main menu</h1>
 <p>In the Main Menu you have 4 options but in reality 3 of them is working right now.</p>
 <ul>
@@ -150,13 +149,13 @@ $ java -jar JavaShooter.jar</code></pre>
 </tbody>
 </table>
 <p>The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces. The default settings are the following:</p>
-<pre><code>fullscreen <span class="hljs-literal">false</span> overclock <span class="hljs-number">60</span> showfPS <span class="hljs-literal">false</span> explosionpoollimit <span class="hljs-number">10</span> sparkpoollimit <span class="hljs-number">10</span></code></pre>
-
+<pre><code class="lang-txt">fullscreen false overclock 60 showfPS false explosionpoollimit 10 sparkpoollimit 10
+</code></pre>
 <p><strong>If the game crashes, make sure you set the pool limits higher than 10!</strong></p>
 <p>For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
 The content of the text file in this case should be like this:</p>
-<pre><code>overclock <span class="hljs-number">75</span> fullscreen <span class="hljs-literal">true</span> showfPS <span class="hljs-literal">true</span></code></pre>
-
+<pre><code class="lang-txt">overclock 75 fullscreen true showfPS true
+</code></pre>
 <p>Example video about how to overclock the game a bit.</p>
 <iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
 

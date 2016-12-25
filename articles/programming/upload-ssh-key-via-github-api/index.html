@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Upload ssh key via Github API - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="In this article I will show you a way to upload your ssh key to GitHub via the GitHub API. This could be useful for you if you don&#x27;t like the traditional way of uploading ssh keys.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -60,36 +59,36 @@
 </ul>
 <p>You can copy and paste this script to your machine, modify the <code>GITHUB_USERNAME</code> variable, and you are ready to go.</p>
 <p>This is the exact method what I used in my <strong>dotfiles</strong> deployment system. To learn more about that, read the <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/">corresponding article</a>.</p>
-<pre><code class="hljs bash">GITHUB_USERNAME=tiborsimon
-SSH_KEY=<span class="hljs-variable">$HOME</span>/.ssh/id_rsa
+<pre><code class="lang-bash">GITHUB_USERNAME=tiborsimon
+SSH_KEY=$HOME/.ssh/id_rsa
 
-<span class="hljs-keyword">if</span> [ ! <span class="hljs-operator">-f</span> <span class="hljs-variable">$SSH_KEY</span> ] || [ ! <span class="hljs-operator">-f</span> <span class="hljs-variable">$SSH_KEY</span>.pub ]; <span class="hljs-keyword">then</span>
-  <span class="hljs-built_in">echo</span> <span class="hljs-string">'Generate your ssh key first!'</span>
-  <span class="hljs-built_in">exit</span>
-<span class="hljs-keyword">fi</span>
+if [ ! -f $SSH_KEY ] || [ ! -f $SSH_KEY.pub ]; then
+  echo &#39;Generate your ssh key first!&#39;
+  exit
+fi
 
-github_result=<span class="hljs-number">0</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">'How do you want to name the key?'</span>
-<span class="hljs-built_in">read</span> <span class="hljs-operator">-e</span> KEY_NAME
-until [ <span class="hljs-variable">$github_result</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">1</span> ]; <span class="hljs-keyword">do</span>
-  curl --silent -u <span class="hljs-string">"<span class="hljs-variable">$GITHUB_USERNAME</span>"</span> --data <span class="hljs-string">"{\"title\":\"<span class="hljs-variable">$KEY_NAME</span>\",\"key\":\"<span class="hljs-variable">$(cat $SSH_KEY.pub)</span>\"}"</span> https://api.github.com/user/keys &gt; gh-result
-  <span class="hljs-keyword">if</span> grep -q <span class="hljs-string">'key is already in use'</span> gh-result; <span class="hljs-keyword">then</span>
-    github_result=<span class="hljs-number">1</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Key is already in use.'</span>
-  <span class="hljs-keyword">elif</span> grep -q <span class="hljs-string">'"verified": true'</span> gh-result; <span class="hljs-keyword">then</span>
-    github_result=<span class="hljs-number">1</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Key (<span class="hljs-variable">$KEY_NAME</span>) has been added successfully."</span>
-  <span class="hljs-keyword">elif</span> grep -q <span class="hljs-string">'Bad credentials'</span> gh-result; <span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Error during login: invalid username or password!'</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Try again!'</span>
-  <span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">'A problem occured during the upload!'</span>
+github_result=0
+echo &#39;How do you want to name the key?&#39;
+read -e KEY_NAME
+until [ $github_result -eq 1 ]; do
+  curl --silent -u &quot;$GITHUB_USERNAME&quot; --data &quot;{\&quot;title\&quot;:\&quot;$KEY_NAME\&quot;,\&quot;key\&quot;:\&quot;$(cat $SSH_KEY.pub)\&quot;}&quot; https://api.github.com/user/keys &gt; gh-result
+  if grep -q &#39;key is already in use&#39; gh-result; then
+    github_result=1
+    echo &#39;Key is already in use.&#39;
+  elif grep -q &#39;&quot;verified&quot;: true&#39; gh-result; then
+    github_result=1
+    echo &quot;Key ($KEY_NAME) has been added successfully.&quot;
+  elif grep -q &#39;Bad credentials&#39; gh-result; then
+    echo &#39;Error during login: invalid username or password!&#39;
+    echo &#39;Try again!&#39;
+  else
+    echo &#39;A problem occured during the upload!&#39;
     cat gh-result
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">'Try again!'</span>
-  <span class="hljs-keyword">fi</span>
+    echo &#39;Try again!&#39;
+  fi
   rm gh-result
-<span class="hljs-keyword">done</span></code></pre>
-
+done
+</code></pre>
 <h1 id="summary">Summary</h1>
 <p>You were presented to a method that allows you to upload ssh keys to your GitHub account via the command line.</p>
 
@@ -138,10 +137,10 @@ until [ <span class="hljs-variable">$github_result</span> <span class="hljs-oper
       <div class="card">
         <div class="fade-in">
           <nav class="sidebar-nav">
-            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">Previous</a>
-            <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a">Next</a>
-            <span class="neighbour-title next-title">Minimal MathJax package</span>
-            <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
+            <a href="https://tiborsimon.io/articles/tools/url-deployment" class="next-a">Previous</a>
+            <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a">Next</a>
+            <span class="neighbour-title next-title">Dotfiles with URL deployment</span>
+            <span class="neighbour-title previous-title">My dotfile system</span>
           </nav>
         </div>
       </div>

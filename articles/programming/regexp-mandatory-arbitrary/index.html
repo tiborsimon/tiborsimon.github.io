@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Mandatory + arbitrary order - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -52,58 +51,55 @@ handle arbitrary order with the mandatory constraint. You have to do it yourself
 <p>You have to tell the regexp engine that you want allow all the possible permutation of a character list, with optional
 charachters between them. You can do it with options.</p>
 <p>For example, if you want to match words that has <code>a</code> and <code>b</code> in them in arbitrary order, you can write:</p>
-<pre><code class="hljs"><span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">.*a.*b.*</span>)</span>|<span class="hljs-list">(<span class="hljs-keyword">.*b.*a.*</span>)</span>)</span></code></pre>
-
-<p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
-<pre><code class="hljs">((.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*a.*c.*b.*)</span>|
- (.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*b.*c.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*c.*b.*a.*))</span></code></pre>
-
-<p>For 4 characters, it reaches the 409 charachters length:</p>
-<pre><code class="hljs">((.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*a.*b.*d.*c.*)</span>|
- (.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*a.*c.*d.*b.*)</span>|
- (.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*a.*d.*c.*b.*)</span>|
- (.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*b.*a.*d.*c.*)</span>|
- (.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*b.*c.*d.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*b.*d.*c.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*c.*a.*d.*b.*)</span>|
- (.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*c.*b.*d.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*c.*d.*b.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*d.*a.*c.*b.*)</span>|
- (.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*d.*b.*c.*a.*)</span>|
- (.<span class="hljs-keyword">*</span>d.<span class="hljs-keyword">*</span>c.<span class="hljs-keyword">*</span>a.<span class="hljs-keyword">*</span>b.<span class="hljs-keyword">*</span>)|<span class="hljs-string">
- (.*d.*c.*b.*a.*))</span></code></pre>
-
-<h1 id="generator-in-python">Generator in python</h1>
+<pre><code>((.*a.*b.*)|(.*b.*a.*))
+</code></pre><p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
+<pre><code>((.*a.*b.*c.*)|
+ (.*a.*c.*b.*)|
+ (.*b.*a.*c.*)|
+ (.*b.*c.*a.*)|
+ (.*c.*a.*b.*)|
+ (.*c.*b.*a.*))
+</code></pre><p>For 4 characters, it reaches the 409 charachters length:</p>
+<pre><code>((.*a.*b.*c.*d.*)|
+ (.*a.*b.*d.*c.*)|
+ (.*a.*c.*b.*d.*)|
+ (.*a.*c.*d.*b.*)|
+ (.*a.*d.*b.*c.*)|
+ (.*a.*d.*c.*b.*)|
+ (.*b.*a.*c.*d.*)|
+ (.*b.*a.*d.*c.*)|
+ (.*b.*c.*a.*d.*)|
+ (.*b.*c.*d.*a.*)|
+ (.*b.*d.*a.*c.*)|
+ (.*b.*d.*c.*a.*)|
+ (.*c.*a.*b.*d.*)|
+ (.*c.*a.*d.*b.*)|
+ (.*c.*b.*a.*d.*)|
+ (.*c.*b.*d.*a.*)|
+ (.*c.*d.*a.*b.*)|
+ (.*c.*d.*b.*a.*)|
+ (.*d.*a.*b.*c.*)|
+ (.*d.*a.*c.*b.*)|
+ (.*d.*b.*a.*c.*)|
+ (.*d.*b.*c.*a.*)|
+ (.*d.*c.*a.*b.*)|
+ (.*d.*c.*b.*a.*))
+</code></pre><h1 id="generator-in-python">Generator in python</h1>
 <p>You can write a generator for this regexp pattern easily in python:</p>
-<pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> permutations
-<span class="hljs-keyword">import</span> re
+<pre><code class="lang-python">from itertools import permutations
+import re
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_mandatory_arbitrary</span><span class="hljs-params">(content)</span>:</span>
-    pattern_string = <span class="hljs-string">'('</span>
-    <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> permutations(content):
-        pattern_string += <span class="hljs-string">'(.*'</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> p:
-            pattern_string += <span class="hljs-string">'{}.*'</span>.format(i)
-        pattern_string += <span class="hljs-string">')|'</span>
-    <span class="hljs-keyword">return</span> pattern_string[:-<span class="hljs-number">1</span>] + <span class="hljs-string">')'</span>
+def generate_mandatory_arbitrary(content):
+    pattern_string = &#39;(&#39;
+    for p in permutations(content):
+        pattern_string += &#39;(.*&#39;
+        for i in p:
+            pattern_string += &#39;{}.*&#39;.format(i)
+        pattern_string += &#39;)|&#39;
+    return pattern_string[:-1] + &#39;)&#39;
 
-print(generate_mandatory_arbitrary(<span class="hljs-string">'abc'</span>))</code></pre>
-
+print(generate_mandatory_arbitrary(&#39;abc&#39;))
+</code></pre>
 
           </div>
         </article>

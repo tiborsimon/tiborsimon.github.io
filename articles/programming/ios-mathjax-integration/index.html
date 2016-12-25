@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Local MathJax in iOS apps - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -73,29 +72,29 @@
 </table>
 <h1 id="prerequisite">Prerequisite</h1>
 <p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-title">math</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"2^(2/(sqrt(6))"</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">"http://www.w3.org/1998/Math/MathML"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">mstyle</span> <span class="hljs-attribute">mathcolor</span>=<span class="hljs-value">"blue"</span> <span class="hljs-attribute">fontfamily</span>=<span class="hljs-value">"sanserif"</span> <span class="hljs-attribute">displaystyle</span>=<span class="hljs-value">"true"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">msup</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">mfrac</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">msqrt</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">mrow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">mn</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-title">mn</span>&gt;</span>
-              <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">msqrt</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">mfrac</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">mrow</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">msup</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">mstyle</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">math</span>&gt;</span></code></pre>
-
+<pre><code class="lang-html">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+  &lt;mstyle mathcolor=&quot;blue&quot; fontfamily=&quot;sanserif&quot; displaystyle=&quot;true&quot;&gt;
+    &lt;msup&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+      &lt;mrow&gt;
+        &lt;mfrac&gt;
+          &lt;mn&gt;2&lt;/mn&gt;
+          &lt;mrow&gt;
+            &lt;msqrt&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;6&lt;/mn&gt;
+              &lt;/mrow&gt;
+            &lt;/msqrt&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+  &lt;/mstyle&gt;
+&lt;/math&gt;
+</code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><code><span class="hljs-number">2</span>^{\frac{<span class="hljs-number">2</span>}{\<span class="hljs-built_in">sqrt</span>{<span class="hljs-number">6</span>}}}</code></pre>
-
+<pre><code class="lang-latex">2^{\frac{2}{\sqrt{6}}}
+</code></pre>
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
 <h1 id="downloading-mathjax">Downloading MathJax</h1>
 <p>Download the sources from <a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank">MathJax’s Github page</a>. At the time I wrote this article, the latest version was <em>2.6.1</em>. It could take quite a bit of time to download the whole zip file.</p>
@@ -128,16 +127,16 @@
 
 <h1 id="using-the-mathjax-package">Using the MathJax package</h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><code class="hljs html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>MathJax TeX Test Page<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">async</span>
-            <span class="hljs-attribute">src</span>=<span class="hljs-value">"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML"</span>&gt;</span><span class="undefined">
-            </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"font-size: 30pt; color: #eee;"</span>&gt;</span>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; async
+            src=&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;&gt;
+            &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div style=&quot;font-size: 30pt; color: #eee;&quot;&gt;
             $$    
             \begin{equation}
               \prod_{\substack{
@@ -146,44 +145,44 @@
                  M_{i,j}
             \end{equation}
             $$
-        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
-... so I used its `loadHTMLString` method to do that:
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>… so I used its <code>loadHTMLString</code> method to do that:</p>
+<pre><code class="lang-swift">//
+//  ViewController.swift
+//  MathJaxTest01
+//
+//  Created by Tibor Simon on 20/02/16.
+//  Copyright © 2016 Tibor Simon. All rights reserved.
+//
 
-<pre><code class="hljs swift"><span class="hljs-comment">//</span>
-<span class="hljs-comment">//  ViewController.swift</span>
-<span class="hljs-comment">//  MathJaxTest01</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">//  Created by Tibor Simon on 20/02/16.</span>
-<span class="hljs-comment">//  Copyright © 2016 Tibor Simon. All rights reserved.</span>
-<span class="hljs-comment">//</span>
+import UIKit
 
-<span class="hljs-keyword">import</span> UIKit
+class ViewController: UIViewController {
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewController</span>: <span class="hljs-title">UIViewController</span> </span>{
+    @IBOutlet weak var myWebView: UIWebView!
 
-    <span class="hljs-preprocessor">@IBOutlet</span> <span class="hljs-keyword">weak</span> <span class="hljs-keyword">var</span> myWebView: <span class="hljs-type">UIWebView</span>!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
 
-    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">viewDidLoad</span><span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">super</span>.viewDidLoad()
-        <span class="hljs-comment">// Do any additional setup after loading the view, typically from a nib.</span>
+        let path = NSBundle.mainBundle().bundlePath
+        let baseURL = NSURL.fileURLWithPath(path)
 
-        <span class="hljs-keyword">let</span> path = <span class="hljs-type">NSBundle</span>.mainBundle().bundlePath
-        <span class="hljs-keyword">let</span> baseURL = <span class="hljs-type">NSURL</span>.fileURLWithPath(path)
-
-        <span class="hljs-keyword">let</span> myHTML = <span class="hljs-string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=\"text/javascript\" async  src=\"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=\"font-size: 30pt; color: #eee;\"&gt;$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</span>
+        let myHTML = &quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=\&quot;text/javascript\&quot; async  src=\&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=\&quot;font-size: 30pt; color: #eee;\&quot;&gt;$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;
         myWebView.loadHTMLString(myHTML, baseURL:baseURL)
 
     }
 
-    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">didReceiveMemoryWarning</span><span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">super</span>.didReceiveMemoryWarning()
-        <span class="hljs-comment">// Dispose of any resources that can be recreated.</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
-}</code></pre>
-
+}
+</code></pre>
 <h1 id="testing-with-the-simulator">Testing with the simulator</h1>
 <p>The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the <em>UIWebView</em> in 8 phases:</p>
 <div class="figures">

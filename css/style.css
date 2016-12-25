@@ -579,14 +579,13 @@ template {
 * {
   box-sizing: border-box; }
 
-html {
-  font-size: 15px; }
-
 body {
+  font-size: 15px;
+  color: #404040;
   overflow-y: scroll;
-  background: #EEEEEE;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.4em; }
+  background: radial-gradient(circle at top, #3f5365, #1a373e 700px);
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  line-height: 1.3em; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
@@ -626,18 +625,18 @@ table {
   flex-direction: column; }
 
 .card {
-  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.06), 0 1.5px 6px rgba(0, 0, 0, 0.07);
-  background: white;
+  box-shadow: 0 17px 16px -14px rgba(0, 0, 0, 0.82);
+  background: #fcfcfc;
   margin-bottom: 20px;
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden; }
   .card h2 {
     margin: 0 0 13px;
     color: rgba(0, 0, 0, 0.54); }
 
 .avatar {
-  width: 300px;
-  height: 300px; }
+  width: 270px;
+  height: 270px; }
 
 .padded {
   padding: var(--content-padding); }
@@ -755,7 +754,7 @@ table {
       padding: 0;
       font-weight: 600; }
     .pypi .packages .package p {
-      height: 63px; }
+      height: 45px; }
     .pypi .packages .package .buttons {
       display: flex;
       flex-direction: column;
@@ -799,7 +798,7 @@ section {
 
 .about {
   padding: var(--content-padding);
-  height: 300px; }
+  height: 194px; }
   .about h1 {
     margin: 0; }
   .about .text {
@@ -808,8 +807,8 @@ section {
       color: white;
       text-align: left; }
   .about img {
-    width: 300px;
-    height: 300px; }
+    width: 270px;
+    height: 270px; }
 
 .calendar-wrapper {
   height: 153px;
@@ -826,6 +825,10 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start; }
+  .articles-wrapper .articles-title {
+    font-size: 2em;
+    line-height: 1em;
+    margin: 0; }
   .articles-wrapper .articles {
     width: 800px; }
     .articles-wrapper .articles article {
@@ -951,22 +954,23 @@ section {
   width: 800px;
   margin: 40px auto 20px auto;
   text-align: center;
-  color: rgba(0, 0, 0, 0.26);
+  color: #556a6f;
   font-size: 0.8em; }
 
 .icons-row {
   display: flex;
-  width: 70%;
+  width: 50%;
   justify-content: space-between;
   font-size: 1.3em;
   padding-bottom: 4px;
-  margin-top: 12px; }
+  margin: 12px 0 7px 19px; }
   .icons-row a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
     border-radius: 50%;
     text-decoration: none;
     background: rgba(0, 0, 0, 0.12);
@@ -1087,7 +1091,8 @@ section {
  * https://github.com/danlevan/google-material-color
  */
 nav .navmenu-wrapper {
-  width: 100%; }
+  width: 100%;
+  margin-top: 10px; }
 
 nav .navmenu {
   display: flex;
@@ -1146,6 +1151,9 @@ nav .navmenu {
     .article-links .button:hover {
       background: var(--action-background); }
 
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  margin-top: 32px; }
+
 .article {
   max-width: var(--content-width); }
   .article header .article-title {
@@ -1179,11 +1187,10 @@ nav .navmenu {
   .article article {
     padding: 30px; }
     .article article .summary {
-      display: flex;
-      display-direction: row;
       padding-bottom: 15px;
       font-size: 1.3em;
-      color: rgba(0, 0, 0, 0.54); }
+      color: rgba(0, 0, 0, 0.54);
+      line-height: 1.3em; }
   .article a {
     color: var(--main-color); }
   .article hr {
@@ -1249,16 +1256,16 @@ nav .navmenu {
     background: #F5F5F5;
     padding: 1px 3px; }
   .article pre code {
-    background: #F5F5F5;
+    background: #545454;
     width: var(--content-width);
     display: block;
     position: relative;
     left: -30px;
     overflow-x: auto;
-    color: #999;
+    color: #bbb;
     font-size: 0.8em;
     line-height: 1.4em;
-    padding: 10px 30px; }
+    padding: 17px 30px; }
 
 .discussion {
   padding: 10px 30px 30px 30px; }
@@ -1326,6 +1333,11 @@ nav .navmenu {
  * google-material-color v1.2.6
  * https://github.com/danlevan/google-material-color
  */
+.projects-title {
+  font-size: 2em;
+  line-height: 1em;
+  margin: 0 !important; }
+
 .portfolio-list {
   --portfolio-item-width: calc(var(--wrapper-width) / 4);
   display: flex;

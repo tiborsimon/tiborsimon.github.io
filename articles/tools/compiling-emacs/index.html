@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Compiling Emacs on CentOS - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="Let&#x27;s compile Emacs 24.5 for my CentOS based virtual machine that has an older version of it.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -49,15 +48,15 @@
             <p>As I started to use Emacs as my primary text editor (I was a vimmer in the past), I noticed that my common config I created on my OSX machine for Emacs 24.5 doesn’t work on one of my Vagrant based virtual machines running CentOS. If I tried to bring up the Helm buffer menu, it brings up an error that the <em>nesting exceeds</em> <code>max-lisp-eval-depth</code>.</p>
 <p>I figured out that the problem was that CentOS only has Emacs 23.1 available via yum, so I needed to compile it from the sources:</p>
 <p>First of all, I have downloaded the emacs repository mirror from GitHub, and I checked out to the <code>emacs-24.5</code> tag:</p>
-<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/emacs-mirror/emacs.git
-<span class="hljs-built_in">cd</span> emacs
-git checkout emacs-<span class="hljs-number">24.5</span></code></pre>
-
+<pre><code class="lang-bash">git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
+</code></pre>
 <p>Then I run <code>autogen.sh</code> which has created the <code>configure</code> script.</p>
-<pre><code class="hljs bash">./autogen.sh</code></pre>
-
+<pre><code class="lang-bash">./autogen.sh
+</code></pre>
 <p>I run the created <code>configure</code> script. As it could have been expected, there was some errors, so I installed the missing packages on demand:</p>
-<pre><code class="hljs bash">./configure
+<pre><code class="lang-bash">./configure
 [error] no makeinfo
 sudo yum install texinfo
 
@@ -77,10 +76,10 @@ sudo yum install libjpeg-devel libpng-devel libungif-devel libtiff-devel
 [error] no tputs
 sudo yum install ncurses-devel
 
-Where should the build process find the <span class="hljs-built_in">source</span> code?    .
+Where should the build process find the source code?    .
   What compiler should emacs be built with?               gcc -std=gnu99 -g3 -O2
   Should Emacs use the GNU version of malloc?             yes
-      (Using Doug Lea<span class="hljs-string">'s new malloc from the GNU C Library.)
+      (Using Doug Lea&#39;s new malloc from the GNU C Library.)
   Should Emacs use a relocating allocator for buffers?    no
   Should Emacs use mmap(2) for buffer allocation?         no
   What window system should Emacs use?                    x11
@@ -110,24 +109,24 @@ Where should the build process find the <span class="hljs-built_in">source</span
   Does Emacs use -lotf?                                   no
   Does Emacs use -lxft?                                   no
   Does Emacs directly use zlib?                           yes
-  Does Emacs use toolkit scroll bars?                     yes</span></code></pre>
-
+  Does Emacs use toolkit scroll bars?                     yes
+</code></pre>
 <p>Finally as the <code>configure</code> script finished, I compiled the whole software package:</p>
-<pre><code class="hljs bash">make
-sudo make install</code></pre>
-
+<pre><code class="lang-bash">make
+sudo make install
+</code></pre>
 <p>After that, I had a fully functioning Emacs installation, that worked flawlesly with my configuration.</p>
 <h1 id="summary">Summary</h1>
 <p>You can compile Emacs from sources with the following commands:</p>
-<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/emacs-mirror/emacs.git
-<span class="hljs-built_in">cd</span> emacs
-git checkout emacs-<span class="hljs-number">24.5</span>
+<pre><code class="lang-bash">git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
 sudo yum install texinfo libX11-devel Xaw3d-devel libjpeg-devel libpng-devel libungif-devel libtiff-devel ncurses-devel
 ./autogen.sh
 ./configure
 make
-sudo make install</code></pre>
-
+sudo make install
+</code></pre>
 
           </div>
         </article>

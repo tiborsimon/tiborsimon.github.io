@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Minimal MathJax package - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -68,30 +67,30 @@
 <h1 id="the-reducing-method">The reducing method</h1>
 <p>The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn’t present. In this way you will end up a package that contains just the right resources to render your equations.</p>
 <p>I started with a simple html page containing a basic MathJax setup:</p>
-<pre><code class="hljs html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>MathJax TeX Test Page<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">async</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; async  src=&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
       $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
-      $$\begin{equation}L' = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
-      $$\begin{align} B'&amp;=-\nabla \times E,\\E'&amp;=\nabla \times B - 4\pi j,\end{align} $$
+      $$\begin{equation}L&#39; = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
+      $$\begin{align} B&#39;&amp;=-\nabla \times E,\\E&#39;&amp;=\nabla \times B - 4\pi j,\end{align} $$
       $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/x-mathjax-config"</span>&gt;</span><span class="actionscript">
+    &lt;/div&gt;
+    &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
     MathJax.Hub.Config({
-      <span class="hljs-string">"CommonHTML"</span>: {
-        scale: <span class="hljs-number">200</span>
+      &quot;CommonHTML&quot;: {
+        scale: 200
       }
       });
-    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
-The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser's inspector view to find out what is missing.
-
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser’s inspector view to find out what is missing.</p>
 <div class="figures">
 <figure>
 <img src="/assets/images/articles/minimal-mathjax/reducer-atom-project.png" alt="Editing the html file while putting back the necessary resources.">
@@ -99,12 +98,11 @@ The easiest way I find to put back the necessary resources to the package is to 
 </figure>
 <figure>
 <img width=400 src="/assets/images/articles/minimal-mathjax/missing-resources.png" alt="Discovering missing resources in the browser's inspector.">
-<figcaption>Fig 2: Discovering missing resources in the browser's inspector.</figcaption>
+<figcaption>Fig 2: Discovering missing resources in the browser’s inspector.</figcaption>
 </figure>
 </div>
 
-This html test page renders the following equations:
-
+<p>This html test page renders the following equations:</p>
 <div class="figures">
 <figure>
   <img src="/assets/images/articles/minimal-mathjax/test-html.png" alt="Testing the MathJax package with a small html file.">
@@ -112,9 +110,8 @@ This html test page renders the following equations:
 </figure>
 </div>
 
-If my reduced MathJax package can render this equations, it shouldn't be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up __623KB__ on disk.
-
-<pre><code class="hljs bash">MathJax-<span class="hljs-number">2.6</span>.<span class="hljs-number">1</span>
+<p>If my reduced MathJax package can render this equations, it shouldn’t be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up <strong>623KB</strong> on disk.</p>
+<pre><code class="lang-bash">MathJax-2.6.1
 ├── MathJax.js
 ├── config
 │   └── TeX-AMS_CHTML.js
@@ -130,14 +127,14 @@ If my reduced MathJax package can render this equations, it shouldn't be in trou
 └── jax
     └── output
         └── CommonHTML
-            ├── <span class="hljs-built_in">autoload</span>
+            ├── autoload
             │   └── mtable.js
             ├── fonts
             │   └── TeX
             │       ├── AMS-Regular.js
             │       └── fontdata.js
-            └── jax.js</code></pre>
-
+            └── jax.js
+</code></pre>
 <p>Once again: I used <strong>LaTEX</strong> with <strong>Common HTML</strong> output rendering. This setup heavily depends on your input and output method.</p>
 <p>Hope you find this article series useful ;)</p>
 
@@ -187,9 +184,9 @@ If my reduced MathJax package can render this equations, it shouldn't be in trou
         <div class="fade-in">
           <nav class="sidebar-nav">
             <a href="https://tiborsimon.io/articles/programming/ios-mathjax-integration" class="next-a">Previous</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a">Next</a>
+            <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a">Next</a>
             <span class="neighbour-title next-title">Local MathJax in iOS apps</span>
-            <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
+            <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
           </nav>
         </div>
       </div>

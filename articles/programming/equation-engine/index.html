@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Writing an equation engine - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -151,8 +150,8 @@
 <p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
 calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
 that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
-<pre><code class="hljs matlab"><span class="hljs-matrix">[data, flags]</span> = simple_input_parser(data, raw_varargin, validators);</code></pre>
-
+<pre><code class="lang-matlab">[data, flags] = simple_input_parser(data, raw_varargin, validators);
+</code></pre>
 <p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
 zero if not.</p>
 <h2 id="calculating-the-parameters">Calculating the parameters</h2>
@@ -230,184 +229,184 @@ to do that. In case if wo do not have all the ones, we have to try to calculate 
 </table>
 <p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
 others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
-<pre><code class="hljs matlab"><span class="hljs-comment">%% Parameter construction</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span> = <span class="hljs-title">get_f</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.f
+<pre><code class="lang-matlab">%% Parameter construction
+function f = get_f()
+    if flags.f
         f = data.f;
-    <span class="hljs-keyword">elseif</span> flags.T
-        f = <span class="hljs-number">1</span> / data.T;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.L
+    elseif flags.T
+        f = 1 / data.T;
+    elseif flags.N &amp;&amp; flags.L
         f = data.N / data.L;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.L &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.L &amp;&amp; flags.T
         f = data.n * data.dt / data.L / data.T;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs &amp;&amp; flags.L &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.fs &amp;&amp; flags.L &amp;&amp; flags.T
         f = data.n / data.fs / data.L / data.T;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>);
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;);
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">T</span> = <span class="hljs-title">get_T</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.T
+function T = get_T()
+    if flags.T
         T = data.T;
-    <span class="hljs-keyword">elseif</span> flags.f
-        T = <span class="hljs-number">1</span> / data.f;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.N
+    elseif flags.f
+        T = 1 / data.f;
+    elseif flags.L &amp;&amp; flags.N
         T = data.L / data.N;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
+    elseif flags.L &amp;&amp; flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
         T = data.L / data.n / data.dt / data.f;
-    <span class="hljs-keyword">elseif</span> falgs.L &amp;&amp; flags.n &amp;&amp; flags.fs &amp;&amp; flags.f
+    elseif falgs.L &amp;&amp; flags.n &amp;&amp; flags.fs &amp;&amp; flags.f
         T = data.L * data.fs / data.n / data.f;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>);
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;);
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">n</span> = <span class="hljs-title">get_n</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.n
+function n = get_n()
+    if flags.n
         n = data.n;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.fs
+    elseif flags.L &amp;&amp; flags.fs
         n = data.L * data.fs;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.dt
+    elseif flags.L &amp;&amp; flags.dt
         n = data.L / data.dt;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.dt
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.dt
         n = data.N * data.T / data.dt;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.fs
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.fs
         n = data.N * data.T * data.fs;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>)
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;)
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">N</span> = <span class="hljs-title">get_N</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.N
+function N = get_N()
+    if flags.N
         N = data.N;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.T
+    elseif flags.L &amp;&amp; flags.T
         N = data.L / data.T;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.f
+    elseif flags.L &amp;&amp; flags.f
         N = data.L * data.f;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.T
         N = data.n * data.dt / data.T;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
         N = data.n * data.dt * data.f;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.fs &amp;&amp; flags.T
         N = data.n / data.fs / data.T;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.f &amp;&amp; flags.fs
+    elseif flags.n &amp;&amp; flags.f &amp;&amp; flags.fs
         N = data.n * data.f / data.fs;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>)
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;)
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fs</span> = <span class="hljs-title">get_fs</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.fs
+function fs = get_fs()
+    if flags.fs
         fs = data.fs;
-    <span class="hljs-keyword">elseif</span> flags.dt
-        fs = <span class="hljs-number">1</span> / data.dt;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.L
+    elseif flags.dt
+        fs = 1 / data.dt;
+    elseif flags.n &amp;&amp; flags.L
         fs = data.n / data.L;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.N &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.N &amp;&amp; flags.T
         fs = data.n / data.N / data.T;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.L &amp;&amp; flags.f &amp;&amp; flags.T
+    elseif flags.n &amp;&amp; flags.L &amp;&amp; flags.f &amp;&amp; flags.T
         fs = data.n / data.L / data.f / data.T;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>);
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;);
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dt</span> = <span class="hljs-title">get_dt</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.dt
+function dt = get_dt()
+    if flags.dt
         dt = data.dt;
-    <span class="hljs-keyword">elseif</span> flags.fs
-        dt = <span class="hljs-number">1</span> / data.fs;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.n
+    elseif flags.fs
+        dt = 1 / data.fs;
+    elseif flags.L &amp;&amp; flags.n
         dt = data.L / data.n;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T &amp;&amp; flags.n
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.n
         dt = data.N * data.T / data.n;
-    <span class="hljs-keyword">elseif</span> flags.L &amp;&amp; flags.f &amp;&amp; flags.T &amp;&amp; flags.n
+    elseif flags.L &amp;&amp; flags.f &amp;&amp; flags.T &amp;&amp; flags.n
         dt = data.L * data.f * data.T / data.n;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>);
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
+    else
+        throw(&#39;.&#39;);
+    end
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">L</span> = <span class="hljs-title">get_L</span><span class="hljs-params">()</span></span>
-    <span class="hljs-keyword">if</span> flags.L
+function L = get_L()
+    if flags.L
         L = data.L;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.T
+    elseif flags.N &amp;&amp; flags.T
         L = data.N * data.T;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.dt
+    elseif flags.n &amp;&amp; flags.dt
         L = data.n * data.dt;
-    <span class="hljs-keyword">elseif</span> flags.N &amp;&amp; flags.f
+    elseif flags.N &amp;&amp; flags.f
         L = data.N / data.f;
-    <span class="hljs-keyword">elseif</span> flags.n &amp;&amp; flags.fs
+    elseif flags.n &amp;&amp; flags.fs
         L = data.n / data.fs;
-    <span class="hljs-keyword">else</span>
-        throw(<span class="hljs-string">'.'</span>);
-    <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span></code></pre>
-
+    else
+        throw(&#39;.&#39;);
+    end
+end
+</code></pre>
 <h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations</h2>
 <p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
 sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
-<pre><code class="hljs matlab"><span class="hljs-comment">%% Signal synthesizer functions</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_n_N</span><span class="hljs-params">()</span></span>
+<pre><code class="lang-matlab">%% Signal synthesizer functions
+function s = construct_with_n_N()
     n = get_n();
     N = get_N();
     phi = data.phi;
 
-    k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
+    k = 0:n-1;
     k = k/n;
-    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
-    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k + phi);
-<span class="hljs-keyword">end</span>
+    phi = phi*pi/180;
+    s = trigfun(2*pi*N*k + phi);
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_L_N_fs</span><span class="hljs-params">()</span></span>
+function s = construct_with_L_N_fs()
     L = get_L();
     N = get_N();
     fs = get_fs();
     phi = data.phi;
 
-    k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
+    k = 0:1/fs:L-1/fs;
     k=k/L;
-    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
-    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*N*k + phi);
-<span class="hljs-keyword">end</span>
+    phi = phi*pi/180;
+    s = trigfun(2*pi*N*k + phi);
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_f_N_fs</span><span class="hljs-params">()</span></span>
+function s = construct_with_f_N_fs()
     f = get_f();
     N = get_N();
     fs = get_fs();
     phi = data.phi;
 
-    k = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:(N/f)-<span class="hljs-number">1</span>/fs;
-    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
-    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k + phi);
-<span class="hljs-keyword">end</span>
+    k = 0:1/fs:(N/f)-1/fs;
+    phi = phi*pi/180;
+    s = trigfun(2*pi*f*k + phi);
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_n_f_fs</span><span class="hljs-params">()</span></span>
+function s = construct_with_n_f_fs()
     n = get_n();
     f = get_f();
     fs = get_fs();
     phi = data.phi;
 
-    k = <span class="hljs-number">0</span>:n-<span class="hljs-number">1</span>;
-    k = k*(<span class="hljs-number">1</span>/fs);
-    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
-    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*k + phi);
-<span class="hljs-keyword">end</span>
+    k = 0:n-1;
+    k = k*(1/fs);
+    phi = phi*pi/180;
+    s = trigfun(2*pi*f*k + phi);
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span> = <span class="hljs-title">construct_with_L_f_fs</span><span class="hljs-params">()</span></span>
+function s = construct_with_L_f_fs()
     L = get_L();
     f = get_f();
     fs = get_fs();
     phi = data.phi;
 
-    n = <span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:L-<span class="hljs-number">1</span>/fs;
-    phi = phi*<span class="hljs-built_in">pi</span>/<span class="hljs-number">180</span>;
-    s = trigfun(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f*n + phi);
-<span class="hljs-keyword">end</span></code></pre>
-
+    n = 0:1/fs:L-1/fs;
+    phi = phi*pi/180;
+    s = trigfun(2*pi*f*n + phi);
+end
+</code></pre>
 <h1 id="putting-everything-together">Putting everything together</h1>
 <p>The last step is to put everything together.</p>
 <ol>
@@ -420,30 +419,30 @@ calculated, an exception will be raised.</li>
 <p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
 If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
 the given parameter set, there is no way to generate a sinusoud signal.</p>
-<pre><code class="hljs matlab"><span class="hljs-comment">%% Mode Selection</span>
-<span class="hljs-keyword">try</span>
+<pre><code class="lang-matlab">%% Mode Selection
+try
     s = construct_with_n_N();
-<span class="hljs-keyword">catch</span>
-   <span class="hljs-keyword">try</span>
+catch
+   try
        s = construct_with_L_N_fs();
-   <span class="hljs-keyword">catch</span>
-      <span class="hljs-keyword">try</span>
+   catch
+      try
           s = construct_with_f_N_fs();
-      <span class="hljs-keyword">catch</span>
-          <span class="hljs-keyword">try</span>
+      catch
+          try
               s = construct_with_n_f_fs();
-          <span class="hljs-keyword">catch</span>
-              <span class="hljs-keyword">try</span>
+          catch
+              try
                   s = construct_with_L_f_fs();
-              <span class="hljs-keyword">catch</span>
-                  throw_exception(<span class="hljs-string">'parameterError'</span>,<span class="hljs-string">'With the given parameters there is no way to construct a sinusoid signal!'</span>);
-              <span class="hljs-keyword">end</span>
-          <span class="hljs-keyword">end</span>
+              catch
+                  throw_exception(&#39;parameterError&#39;,&#39;With the given parameters there is no way to construct a sinusoid signal!&#39;);
+              end
+          end
 
-      <span class="hljs-keyword">end</span>
-   <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span></code></pre>
-
+      end
+   end
+end
+</code></pre>
 <h1 id="summary">Summary</h1>
 <p>And that’s it. This method was used in <a href="http://tiborsimon.io/projects/TSPR0003/" target="_blank">Smart Sinusoids</a> to generate
 the sinusoid signals.</p>

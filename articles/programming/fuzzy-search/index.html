@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Fuzzy search and sort algorithm - Tibor's Lab</title>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto:300,400" rel="stylesheet">
   <meta name="description" content="What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
@@ -56,12 +55,12 @@ the search query, but you have to sort the result in the relevance order.</p>
 given search query.</p>
 <p>You need to make sure, that between the given query’s characters there might be another characters.
 This can be achieved by inserting <code>.*</code> tokens:</p>
-<pre><code class="hljs bash">foo -&gt; .*f.*o.*o.*</code></pre>
-
+<pre><code class="lang-bash">foo -&gt; .*f.*o.*o.*
+</code></pre>
 <p>You may also want to capture each provided search characters in order to know it’s positions for later use.
 The regexp engine can provide the positions for the matched groups.</p>
-<pre><code class="hljs bash">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*</code></pre>
-
+<pre><code class="lang-bash">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
+</code></pre>
 <p>But be aware. This capturing may result you an unexpected result when you want to use the provided group
 positions by the regexp engine. Consider the following scenario: you want to find matches for ‘x’. The
 search query will be transformed into <code>.*(x).*</code>. Everything seems to be good, until your database contains
@@ -70,8 +69,8 @@ capture the last <code>x</code> character in the key[^1]. If your sorting mechan
 positions, this will be misleading for you.</p>
 <p>To solve this issue, you have to force the regexp engine to match every character but to next captured character in the pattern.
 You need to generate a more complex regular expression:</p>
-<pre><code class="hljs bash">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*</code></pre>
-
+<pre><code class="lang-bash">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
+</code></pre>
 <p>This is the final regular expression we are going to use in this article. We can now produce the match
 results, it’s time to sort them.</p>
 <h1 id="sorting">Sorting</h1>
@@ -85,110 +84,108 @@ more relevant it is, so it will be present earlier in the provided search result
 multiplying them by a weighting factor. After each iteration you increase this weighting factor. And that’s is.</p>
 <h1 id="summary">Summary</h1>
 <p>We have reviewed the fuzzy search and sort algorithm. You can find the usage example and the implementation in the following code snippets:</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> fuzzy
-<span class="hljs-keyword">from</span> pprint <span class="hljs-keyword">import</span> pprint
+<pre><code class="lang-python">import fuzzy
+from pprint import pprint
 
 data_list = [
-    <span class="hljs-string">'efo'</span>,
-    <span class="hljs-string">'efoo'</span>,
-    <span class="hljs-string">'dfsfoo'</span>,
-    <span class="hljs-string">'efiofo'</span>,
-    <span class="hljs-string">'abc'</span>,
-    <span class="hljs-string">'cba'</span>,
-    <span class="hljs-string">'foo'</span>,
-    <span class="hljs-string">'ertfo'</span>,
-    <span class="hljs-string">'fefefofefioiio'</span>
+    &#39;efo&#39;,
+    &#39;efoo&#39;,
+    &#39;dfsfoo&#39;,
+    &#39;efiofo&#39;,
+    &#39;abc&#39;,
+    &#39;cba&#39;,
+    &#39;foo&#39;,
+    &#39;ertfo&#39;,
+    &#39;fefefofefioiio&#39;
 ]
 
-result = fuzzy.search(data_list, <span class="hljs-string">'foo'</span>)
+result = fuzzy.search(data_list, &#39;foo&#39;)
 
 pprint(result)
 
-<span class="hljs-comment"># &gt;&gt; ['foo', 'efoo', 'efiofo', 'dfsfoo', 'fefefofefioiio']</span></code></pre>
-
+# &gt;&gt; [&#39;foo&#39;, &#39;efoo&#39;, &#39;efiofo&#39;, &#39;dfsfoo&#39;, &#39;fefefofefioiio&#39;]
+</code></pre>
 <p>The previous example had the following internal data structure.</p>
-<pre><code class="hljs"><span class="hljs-list">[{<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">0</span>, <span class="hljs-number">1</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">2</span>, <span class="hljs-number">3</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'foo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">0</span>},
- {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">2</span>, <span class="hljs-number">3</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">3</span>, <span class="hljs-number">4</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'efoo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">4</span>},
- {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">3</span>, <span class="hljs-number">4</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'efiofo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">7</span>},
- {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">1</span>, <span class="hljs-number">2</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">4</span>, <span class="hljs-number">5</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'dfsfoo</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">8</span>},
- {<span class="hljs-variable">'spans</span><span class="hljs-variable">':</span> <span class="hljs-list">(<span class="hljs-list">(<span class="hljs-keyword">0</span>, <span class="hljs-number">1</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">5</span>, <span class="hljs-number">6</span>)</span>, <span class="hljs-list">(<span class="hljs-keyword">10</span>, <span class="hljs-number">11</span>)</span>)</span>, <span class="hljs-variable">'string</span><span class="hljs-variable">':</span> <span class="hljs-variable">'fefefofefioiio</span>', <span class="hljs-variable">'weight</span><span class="hljs-variable">':</span> <span class="hljs-number">12</span>}]</span></code></pre>
+<pre><code>[{&#39;spans&#39;: ((0, 1), (1, 2), (2, 3)), &#39;string&#39;: &#39;foo&#39;, &#39;weight&#39;: 0},
+ {&#39;spans&#39;: ((1, 2), (2, 3), (3, 4)), &#39;string&#39;: &#39;efoo&#39;, &#39;weight&#39;: 4},
+ {&#39;spans&#39;: ((1, 2), (3, 4), (5, 6)), &#39;string&#39;: &#39;efiofo&#39;, &#39;weight&#39;: 7},
+ {&#39;spans&#39;: ((1, 2), (4, 5), (5, 6)), &#39;string&#39;: &#39;dfsfoo&#39;, &#39;weight&#39;: 8},
+ {&#39;spans&#39;: ((0, 1), (5, 6), (10, 11)), &#39;string&#39;: &#39;fefefofefioiio&#39;, &#39;weight&#39;: 12}]
+</code></pre><p>And here is the implementation available as a gist.</p>
+<pre><code># F U Z Z Y   S E A R C H   S Y S T E M
+# Created by Tibor Simon
+#
+# The MIT License (MIT)
+#
+# Copyright (c) 2015 Tibor Simon
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the &quot;Software&quot;), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
-<p>And here is the implementation available as a gist.</p>
-<pre><code class="hljs"><span class="hljs-comment"># F U Z Z Y   S E A R C H   S Y S T E M</span>
-<span class="hljs-comment"># Created by Tibor Simon</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># The MIT License (MIT)</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># Copyright (c) 2015 Tibor Simon</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
-<span class="hljs-comment"># of this software and associated documentation files (the "Software"), to deal</span>
-<span class="hljs-comment"># in the Software without restriction, including without limitation the rights</span>
-<span class="hljs-comment"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
-<span class="hljs-comment"># copies of the Software, and to permit persons to whom the Software is</span>
-<span class="hljs-comment"># furnished to do so, subject to the following conditions:</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># The above copyright notice and this permission notice shall be included in all</span>
-<span class="hljs-comment"># copies or substantial portions of the Software.</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
-<span class="hljs-comment"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
-<span class="hljs-comment"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
-<span class="hljs-comment"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
-<span class="hljs-comment"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
-<span class="hljs-comment"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
-<span class="hljs-comment"># SOFTWARE.</span>
-
-<span class="hljs-keyword">import</span> re
+import re
 
 
-def search(raw_list, search_string, ignore_case=<span class="hljs-type">True</span>):
-    <span class="hljs-keyword">if</span> search_string == '':
-        <span class="hljs-keyword">return</span> raw_list
-    <span class="hljs-keyword">else</span>:
+def search(raw_list, search_string, ignore_case=True):
+    if search_string == &#39;&#39;:
+        return raw_list
+    else:
         search_pattern = _create_search_pattern_from(search_string)
-        <span class="hljs-literal">result</span> = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
-        <span class="hljs-literal">result</span> = _sort_result_list(<span class="hljs-literal">result</span>)
-        <span class="hljs-keyword">return</span> [r['<span class="hljs-type">string</span>'] <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-literal">result</span>]
+        result = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
+        result = _sort_result_list(result)
+        return [r[&#39;string&#39;] for r in result]
 
 
 def _create_search_pattern_from(pattern):
-    grouped = '[^{}]*'.format(pattern[<span class="hljs-number">0</span>])
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-type">range</span>(len(pattern)):
-        <span class="hljs-keyword">if</span> i &lt; len(pattern) - <span class="hljs-number">1</span>:
-            grouped += '({})[^{}]*'.format(pattern[i], pattern[i + <span class="hljs-number">1</span>])
-        <span class="hljs-keyword">else</span>:
-            grouped += '({})'.format(pattern[i])
-    grouped += '.*'
-    <span class="hljs-keyword">return</span> grouped
+    grouped = &#39;[^{}]*&#39;.format(pattern[0])
+    for i in range(len(pattern)):
+        if i &lt; len(pattern) - 1:
+            grouped += &#39;({})[^{}]*&#39;.format(pattern[i], pattern[i + 1])
+        else:
+            grouped += &#39;({})&#39;.format(pattern[i])
+    grouped += &#39;.*&#39;
+    return grouped
 
 
 def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
-    <span class="hljs-keyword">if</span> ignore_case:
-        p = re.compile(search_pattern, re.<span class="hljs-type">IGNORECASE</span>)
-    <span class="hljs-keyword">else</span>:
+    if ignore_case:
+        p = re.compile(search_pattern, re.IGNORECASE)
+    else:
         p = re.compile(search_pattern)
-    <span class="hljs-literal">result</span> = [{'<span class="hljs-type">string</span>': link, 'spans': p.search(link).regs[<span class="hljs-number">1</span>:]} <span class="hljs-keyword">for</span> link <span class="hljs-keyword">in</span> raw_list <span class="hljs-keyword">if</span> p.match(link)]
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">result</span>
+    result = [{&#39;string&#39;: link, &#39;spans&#39;: p.search(link).regs[1:]} for link in raw_list if p.match(link)]
+    return result
 
 
 def _calculate_weight_for_match(spans):
-    mult = <span class="hljs-number">1</span>
-    weight = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> reversed(<span class="hljs-type">range</span>(len(spans))):
-        prev = <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> spans[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]
-        weight += (spans[i][<span class="hljs-number">0</span>] - prev) * mult
-        mult *= <span class="hljs-number">2</span>
-    <span class="hljs-keyword">return</span> weight
+    mult = 1
+    weight = 0
+    for i in reversed(range(len(spans))):
+        prev = 0 if i == 0 else spans[i-1][1]
+        weight += (spans[i][0] - prev) * mult
+        mult *= 2
+    return weight
 
 
-def _sort_result_list(<span class="hljs-literal">result</span>):
-    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-literal">result</span>:
-        r['weight'] = _calculate_weight_for_match(r['spans'])
-    <span class="hljs-literal">result</span> = sorted(<span class="hljs-literal">result</span>, key=lambda k: k['weight'])
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">result</span></code></pre>
-
-<p>[^1]: At least that was the case using the regexp engine shipped with Python 3.4 on OSX.</p>
+def _sort_result_list(result):
+    for r in result:
+        r[&#39;weight&#39;] = _calculate_weight_for_match(r[&#39;spans&#39;])
+    result = sorted(result, key=lambda k: k[&#39;weight&#39;])
+    return result
+</code></pre><p>[^1]: At least that was the case using the regexp engine shipped with Python 3.4 on OSX.</p>
 
           </div>
         </article>
