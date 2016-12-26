@@ -112,32 +112,7 @@ pprint(result)
  {&#39;spans&#39;: ((1, 2), (4, 5), (5, 6)), &#39;string&#39;: &#39;dfsfoo&#39;, &#39;weight&#39;: 8},
  {&#39;spans&#39;: ((0, 1), (5, 6), (10, 11)), &#39;string&#39;: &#39;fefefofefioiio&#39;, &#39;weight&#39;: 12}]
 </code></pre><p>And here is the implementation available as a gist.</p>
-<pre><code># F U Z Z Y   S E A R C H   S Y S T E M
-# Created by Tibor Simon
-#
-# The MIT License (MIT)
-#
-# Copyright (c) 2015 Tibor Simon
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the &quot;Software&quot;), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
-import re
+<pre><code>import re
 
 
 def search(raw_list, search_string, ignore_case=True):
@@ -334,10 +309,10 @@ def _sort_result_list(result):
               make<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              Matlab<span>1</span>
+              matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              matlab<span>1</span>
+              Matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>1</span>
