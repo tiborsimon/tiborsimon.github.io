@@ -55,10 +55,12 @@
 <pre><code class="lang-bash">curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
 </code></pre>
 <p>I can take care of this problem by having a custom domain, and creating a redirect, I am using <strong>CloudFlare</strong> as a nameserver and <em>ssl</em> provider, so I can set up a custom <strong>Page Rule</strong> to redirect the <code>tiborsimon.io/dotfiles</code> to the raw script listing.</p>
+<div class="figures">
 <figure>
   <img src="/assets/images/articles/dotfiles/custom-page-forward-rule.png" alt="CloudFlare custom Page Rule">
   <figcaption>Fig 1: CloudFlare custom Page Rule</figcaption>
 </figure>
+</div>
 
 <p>In this way, I can type:</p>
 <pre><code class="lang-bash">curl tiborsimon.io/dotfiles
