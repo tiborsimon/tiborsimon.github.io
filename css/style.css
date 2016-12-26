@@ -591,25 +591,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   line-height: 1em; }
 
-table {
-  background-color: #fff;
-  font-size: 13px;
-  table-layout: auto;
-  width: 100%;
-  margin-bottom: 40px;
-  border-collapse: collapse;
-  border-spacing: 0;
-  font-size: 1em; }
-  table thead {
-    background-color: #FAFAFA;
-    font-weight: 500; }
-  table td, table th {
-    border: 1px solid #EEEEEE;
-    line-height: 24px;
-    padding: 12px 12px 12px 24px;
-    color: #212121;
-    vertical-align: middle; }
-
 .flexwrap {
   margin: 0 auto;
   width: var(--wrapper-width);
@@ -1267,6 +1248,31 @@ nav .navmenu {
     font-size: 0.8em;
     line-height: 1.4em;
     padding: 17px 30px; }
+
+table {
+  position: relative;
+  width: var(--content-width) !important;
+  padding-left: 30px;
+  left: -30px;
+  font-size: 13px;
+  table-layout: auto;
+  width: 100%;
+  margin-bottom: 40px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1em; }
+  table thead {
+    background-color: #e8e8e8;
+    font-weight: 500; }
+  table td, table th {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    line-height: 24px;
+    padding: 6px;
+    vertical-align: middle; }
+    table td:first-child, table th:first-child {
+      border-left: none; }
+    table td:last-child, table th:last-child {
+      border-right: none; }
 
 .discussion {
   padding: 10px 30px 30px 30px; }
