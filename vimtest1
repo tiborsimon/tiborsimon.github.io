@@ -1,12 +1,12 @@
-# This is the first vim-training test.
+This is the first vim-training test.
 
-## Exercise 1
+Exercise 1
 Copy and paste this whole line 20 times.
 
-## Exercise 2
+Exercise 2
 Write the word "vim" 200 times with a space between them. The first one is waiting for you down below:
 vim 
 
-## Exercise 3 (bonus)
+Exercise 3 (bonus)
 Check Exercise 2 with the following colon command:
 :%s/vim //gn
