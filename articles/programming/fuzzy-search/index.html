@@ -45,45 +45,58 @@
           <div class="fade-in">
             <div class="summary">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
             <hr>
-            <p>A good example for this is Sublime Text’s search mechanism. You start to type in your query, and apart from
-the exact matches you will get the matches containing the letters you gave but not in the exact order. In this
-way you will find what you are looking for with a good chance even if you don’t know the exact name.</p>
-<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to provide all the relevant results that matched to
-the search query, but you have to sort the result in the relevance order.</p>
+            <p>A good example for this is Sublime Text’s search mechanism. You start to type in
+your query, and apart from the exact matches you will get the matches containing
+the letters you gave but not in the exact order. In this way you will find what
+you are looking for with a good chance even if you don’t know the exact name.</p>
+<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to
+provide all the relevant results that matched to the search query, but you have
+to sort the result in the relevance order.</p>
 <h1 id="searching">Searching</h1>
-<p>The first part is the easier part. You only have to generate a clever regular expression from the
-given search query.</p>
-<p>You need to make sure, that between the given query’s characters there might be another characters.
-This can be achieved by inserting <code>.*</code> tokens:</p>
+<p>The first part is the easier part. You only have to generate a clever regular
+expression from the given search query.</p>
+<p>You need to make sure, that between the given query’s characters there might be
+another characters. This can be achieved by inserting <code>.*</code> tokens:</p>
 <pre><code class="lang-bash">foo -&gt; .*f.*o.*o.*
 </code></pre>
-<p>You may also want to capture each provided search characters in order to know it’s positions for later use.
-The regexp engine can provide the positions for the matched groups.</p>
+<p>You may also want to capture each provided search characters in order to know
+it’s positions for later use. The regexp engine can provide the positions for
+the matched groups.</p>
 <pre><code class="lang-bash">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
 </code></pre>
-<p>But be aware. This capturing may result you an unexpected result when you want to use the provided group
-positions by the regexp engine. Consider the following scenario: you want to find matches for ‘x’. The
-search query will be transformed into <code>.*(x).*</code>. Everything seems to be good, until your database contains
- a key that has more than one <code>x</code> characters in it. The regexp engine will match this key, but it will
-capture the last <code>x</code> character in the key[^1]. If your sorting mechanism is based on the captured group
-positions, this will be misleading for you.</p>
-<p>To solve this issue, you have to force the regexp engine to match every character but to next captured character in the pattern.
-You need to generate a more complex regular expression:</p>
+<p>But be aware. This capturing may result you an unexpected result when you want
+to use the provided group positions by the regexp engine. Consider the following
+scenario: you want to find matches for ‘x’. The search query will be transformed
+into <code>.*(x).*</code>. Everything seems to be good, until your database contains a key
+that has more than one <code>x</code> characters in it. The regexp engine will match this
+key, but it will capture the last <code>x</code> character in the key[^1]. If your sorting
+mechanism is based on the captured group positions, this will be misleading for
+you.</p>
+<p>To solve this issue, you have to force the regexp engine to match every
+character but to next captured character in the pattern. You need to generate a
+more complex regular expression:</p>
 <pre><code class="lang-bash">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
 </code></pre>
-<p>This is the final regular expression we are going to use in this article. We can now produce the match
-results, it’s time to sort them.</p>
+<p>This is the final regular expression we are going to use in this article. We can
+now produce the match results, it’s time to sort them.</p>
 <h1 id="sorting">Sorting</h1>
-<p>As I mentioned earlier, we are going to use the captured group’s positions to sort the matched results.
-The sorting algorithm will weight every match result, and based on that weight, the soring can be executed.</p>
-<p>The weighting is based on the distance between the captured groups in a weighted manner. The distance between the first
-characters is punished by more weight that the distance between the last characters. In this way if you know partly the first few characters
-you want to search, this weighting method will provide the results matched in the first characters first. The lightest the matched result, the
-more relevant it is, so it will be present earlier in the provided search result.</p>
-<p>You can implement this behavior by iterating through the captured groups position list from back to front, calculating the distance between the matches and
-multiplying them by a weighting factor. After each iteration you increase this weighting factor. And that’s is.</p>
+<p>As I mentioned earlier, we are going to use the captured group’s positions to
+sort the matched results. The sorting algorithm will weight every match result,
+and based on that weight, the soring can be executed.</p>
+<p>The weighting is based on the distance between the captured groups in a weighted
+manner. The distance between the first characters is punished by more weight
+that the distance between the last characters. In this way if you know partly
+the first few characters you want to search, this weighting method will provide
+the results matched in the first characters first. The lightest the matched
+result, the more relevant it is, so it will be present earlier in the provided
+search result.</p>
+<p>You can implement this behavior by iterating through the captured groups
+position list from back to front, calculating the distance between the matches
+and multiplying them by a weighting factor. After each iteration you increase
+this weighting factor. And that’s is.</p>
 <h1 id="summary">Summary</h1>
-<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage example and the implementation in the following code snippets:</p>
+<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage
+example and the implementation in the following code snippets:</p>
 <pre><code class="lang-python">import fuzzy
 from pprint import pprint
 
