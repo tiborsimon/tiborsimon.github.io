@@ -1,0 +1,13 @@
+This is the first vim-training test.
+
+Exercise 1
+Copy and paste this line 20 times.
+
+Exercise 2
+Write the word "vim" 200 times with a space between them in one line. The first one is waiting for you down below:
+vim 
+
+Exercise 3 (bonus)
+Check Exercise 2 with the following colon command:
+:%s/vim //gn
+The result should be: 201 matches on 2 lines
