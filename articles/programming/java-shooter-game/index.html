@@ -10,6 +10,7 @@
 <body>
   <nav class="flexwrap">
     <div class="navmenu-wrapper card padded">
+      <div class="fade-loader"></div>
       <div class="fade-in">
         <div class="navmenu">
           <a class="logo" href="https://tiborsimon.io">
@@ -28,6 +29,7 @@
     <div class="content-colon">
       <div class="article">
         <header class="card">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
             <div class="article-title">Java Shooter Game</div>
@@ -41,11 +43,13 @@
           </div>
         </header>
         <div class="article-links card">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <a class="button" href="https://github.com/tiborsimon/java-shooter-game" target="_blank"><span class="icon-github"></span> GitHub Repository</a>
           </div>
         </div>
         <article class="content card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="summary">During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</div>
             <hr>
@@ -167,6 +171,7 @@ The content of the text file in this case should be like this:</p>
         </article>
       </div>
       <div class="discussion card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h1>Discussion</h1>
           <div id="disqus_thread"></div>
@@ -200,12 +205,14 @@ The content of the text file in this case should be like this:</p>
     <div class="sidebar">
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <img src="/assets/images/tibor.jpg" class="avatar"></img>
         </div>
       </div>
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
             <a href="https://tiborsimon.io/articles/embedded/slot-car-race" class="next-a">Previous</a>
@@ -217,6 +224,7 @@ The content of the text file in this case should be like this:</p>
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
           I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
@@ -225,6 +233,7 @@ The content of the text file in this case should be like this:</p>
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
@@ -310,10 +319,10 @@ The content of the text file in this case should be like this:</p>
               make<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              Matlab<span>1</span>
+              matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              matlab<span>1</span>
+              Matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>1</span>
@@ -347,6 +356,10 @@ The content of the text file in this case should be like this:</p>
       let myElements = document.querySelectorAll(".fade-in");
       for (let i = 0; i < myElements.length; i++) {
         myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
       }
     }
     document.onreadystatechange = function () {

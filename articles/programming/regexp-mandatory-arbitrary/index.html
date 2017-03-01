@@ -10,6 +10,7 @@
 <body>
   <nav class="flexwrap">
     <div class="navmenu-wrapper card padded">
+      <div class="fade-loader"></div>
       <div class="fade-in">
         <div class="navmenu">
           <a class="logo" href="https://tiborsimon.io">
@@ -28,6 +29,7 @@
     <div class="content-colon">
       <div class="article">
         <header class="card">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
             <div class="article-title">Mandatory + arbitrary order</div>
@@ -42,6 +44,7 @@
           </div>
         </header>
         <article class="content card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="summary">What regular expression pattern would you use if you want to match a word with mandatory characters in it but in arbitrary order?</div>
             <hr>
@@ -105,6 +108,7 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
         </article>
       </div>
       <div class="discussion card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h1>Discussion</h1>
           <div id="disqus_thread"></div>
@@ -138,12 +142,14 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
     <div class="sidebar">
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <img src="/assets/images/tibor.jpg" class="avatar"></img>
         </div>
       </div>
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
             <a href="https://tiborsimon.io/articles/programming/fuzzy-search" class="next-a">Previous</a>
@@ -155,6 +161,7 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
           I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
@@ -163,6 +170,7 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
@@ -248,10 +256,10 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
               make<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              Matlab<span>1</span>
+              matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              matlab<span>1</span>
+              Matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>1</span>
@@ -285,6 +293,10 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
       let myElements = document.querySelectorAll(".fade-in");
       for (let i = 0; i < myElements.length; i++) {
         myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
       }
     }
     document.onreadystatechange = function () {

@@ -614,10 +614,41 @@ h1, h2, h3, h4, h5, h6 {
   background: #fcfcfc;
   margin-bottom: var(--margin-between-cards);
   border-radius: 4px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   .card h2 {
     margin: 0 0 13px;
     color: rgba(0, 0, 0, 0.54); }
+  .card .fade-loader {
+    top: 0px;
+    position: absolute;
+    width: 10px;
+    top: -1px;
+    height: 1px;
+    background: var(--main-color);
+    box-shadow: 0 -2px 7px 3px var(--main-color);
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: fade-loader-animation;
+    animation-name: fade-loader-animation;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear; }
+
+@-webkit-keyframes fade-loader-animation {
+  0% {
+    left: -10px; }
+  100% {
+    left: 100%; } }
+
+@keyframes fade-loader-animation {
+  0% {
+    left: -10px; }
+  100% {
+    left: 100%; } }
 
 .avatar {
   width: 264px;

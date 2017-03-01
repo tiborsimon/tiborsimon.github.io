@@ -11,6 +11,7 @@
 
   <nav class="flexwrap">
     <div class="navmenu-wrapper card padded">
+      <div class="fade-loader"></div>
       <div class="fade-in">
         <div class="navmenu">
           <a class="logo" href="https://tiborsimon.io">
@@ -28,12 +29,14 @@
 
   <div id="about" class="flexwrap">
     <section class="card avatar">
+      <div class="fade-loader"></div>
       <div class="fade-in">
         <img src="https://tiborsimon.io/assets/images/tibor.jpg" width=270 height=270 alt="Tibor Simon">
       </div>
     </section>
     <section class="about-section">
       <section class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in about">
           <div class="text">
             <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
@@ -43,6 +46,7 @@
         </div>
       </section>
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="icons-row fade-in">
           <a href="https://twitter.com/tiborsimonio" target="_blank"><span class="icon-twitter"></span></a>
           <a href="https://github.com/tiborsimon" target="_blank"><span class="icon-github"></span></a>
@@ -59,10 +63,14 @@
   </div>
 
   <section>
-    <div class="card padded"><h2 class="fade-in projects-title">Articles for <strong>config</strong></h2></div>
+    <div class="card padded">
+      <div class="fade-loader"></div>
+      <h2 class="fade-in projects-title">Articles for <strong>config</strong></h2>
+    </div>
     <div class="articles-wrapper">
       <div class="articles">
         <article class="card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
               <div class="details">
                 <header>
@@ -85,6 +93,7 @@
           </div>
         </article>
         <article class="card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
               <div class="details">
                 <header>
@@ -111,6 +120,7 @@
       </div>
       <div class="sidebar">
         <div class="card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="tags">
               <h2>Tags</h2>
@@ -197,10 +207,10 @@
                   make<span>1</span>
                 </a>
                 <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-                  Matlab<span>1</span>
+                  matlab<span>1</span>
                 </a>
                 <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-                  matlab<span>1</span>
+                  Matlab<span>1</span>
                 </a>
                 <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
                   metalsmith<span>1</span>
@@ -243,6 +253,10 @@
       let myElements = document.querySelectorAll(".fade-in");
       for (let i = 0; i < myElements.length; i++) {
         myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
       }
     }
     document.onreadystatechange = function () {

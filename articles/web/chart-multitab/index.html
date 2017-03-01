@@ -10,6 +10,7 @@
 <body>
   <nav class="flexwrap">
     <div class="navmenu-wrapper card padded">
+      <div class="fade-loader"></div>
       <div class="fade-in">
         <div class="navmenu">
           <a class="logo" href="https://tiborsimon.io">
@@ -28,6 +29,7 @@
     <div class="content-colon">
       <div class="article">
         <header class="card">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
             <div class="article-title">Chart.js with subtabbed tabs</div>
@@ -41,6 +43,7 @@
           </div>
         </header>
         <article class="content card padded">
+          <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="summary">Chart.js is a bit tricky to use if you have dynamic tabs on your site. How about having multiple tabs with multiple tabs in them? Things get serious.</div>
             <hr>
@@ -59,6 +62,7 @@ have left a tab, and it will be able to resume there.</p>
         </article>
       </div>
       <div class="discussion card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h1>Discussion</h1>
           <div id="disqus_thread"></div>
@@ -92,12 +96,14 @@ have left a tab, and it will be able to resume there.</p>
     <div class="sidebar">
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <img src="/assets/images/tibor.jpg" class="avatar"></img>
         </div>
       </div>
     
       <div class="card">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
             <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary" class="next-a">Previous</a>
@@ -109,6 +115,7 @@ have left a tab, and it will be able to resume there.</p>
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
           I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
@@ -117,6 +124,7 @@ have left a tab, and it will be able to resume there.</p>
       </div>
     
       <div class="card padded">
+        <div class="fade-loader"></div>
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
@@ -202,10 +210,10 @@ have left a tab, and it will be able to resume there.</p>
               make<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              Matlab<span>1</span>
+              matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
-              matlab<span>1</span>
+              Matlab<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>1</span>
@@ -239,6 +247,10 @@ have left a tab, and it will be able to resume there.</p>
       let myElements = document.querySelectorAll(".fade-in");
       for (let i = 0; i < myElements.length; i++) {
         myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
       }
     }
     document.onreadystatechange = function () {
