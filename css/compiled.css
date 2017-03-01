@@ -757,7 +757,7 @@ table {
   padding: 10px 30px 30px 30px; }
 
 .sidebar {
-  --width: 300px;
+  --width: 306px;
   width: var(--width); }
   .sidebar .avatar {
     display: block;
