@@ -650,9 +650,17 @@ h1, h2, h3, h4, h5, h6 {
   100% {
     left: 100%; } }
 
+.index-avatar {
+  width: 270px;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 4px; }
+
 .avatar {
   width: 264px;
-  height: 264px; }
+  height: 264px;
+  overflow: hidden;
+  border-radius: 4px; }
 
 .padded {
   padding: var(--content-padding); }
@@ -943,7 +951,8 @@ section {
 
 .fade-in {
   transition: all 0.8s ease;
-  opacity: 0; }
+  opacity: 0;
+  overflow: hidden; }
 
 .twitter-timeline {
   height: 380px !important; }
