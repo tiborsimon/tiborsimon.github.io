@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative; }
   .card h2 {
     margin: 0 0 13px;
-    color: rgba(0, 0, 0, 0.54); }
+    font-size: 1.8em; }
   .card .fade-loader {
     top: 0px;
     position: absolute;
@@ -721,13 +721,15 @@ nav .navmenu {
       font-style: italic;
       margin-bottom: 10px; }
   .article p code {
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 0.8em;
-    background: #F5F5F5;
-    padding: 1px 3px; }
+    color: #59727b;
+    background-color: #efefef;
+    padding: 0px 6px;
+    border-radius: 3px;
+    border: 1px solid #e1dede;
+    font-size: 90%; }
   .article pre code {
-    background: #0a2329;
-    color: #5faec1;
+    background: radial-gradient(circle at top right, #5b747e, #0d1a1e 1200px);
+    color: #e9e8e8;
     width: var(--content-width);
     display: block;
     position: relative;
@@ -735,7 +737,8 @@ nav .navmenu {
     overflow-x: auto;
     font-size: 0.8em;
     line-height: 1.4em;
-    padding: 17px 30px; }
+    padding: 17px 30px;
+    box-shadow: inset 0px 7px 11px -7px rgba(35, 30, 30, 0.8); }
 
 table {
   position: relative;
@@ -758,9 +761,18 @@ table {
     padding: 6px;
     vertical-align: middle; }
     table td:first-child, table th:first-child {
-      border-left: none; }
+      border-left: none;
+      padding-left: 30px; }
     table td:last-child, table th:last-child {
-      border-right: none; }
+      border-right: none;
+      padding-right: 30px; }
+    table td code, table th code {
+      color: #59727b;
+      background-color: #efefef;
+      padding: 1px 6px;
+      border-radius: 3px;
+      border: 1px solid #e1dede;
+      font-size: 90%; }
 
 .discussion {
   padding: 10px 30px 30px 30px; }

@@ -58,9 +58,8 @@
 <p>You can speed up the initial configuration if you have a previously saved config file set in a machine independent storage, say Dropbox or a USB drive.</p>
 <p>These files are generally called <strong>dotfiles</strong>, as command line tools often expect their configuration files to start with a dot indicating the file is hidden for normal use. Dotfiles are generally located in the current user’s <em>home</em> directory. When you start using a new machine, you simply  copy your saved config files to your home directory and you are home.</p>
 <p>Besides the custom configuration files, you can also save out a list of installable programs and tools that you want to have by default on a machine. Some package manager tools supports installing from files, but if not, you can write a small script that will install your tools one by one. You can create a <code>packages.txt</code> file for this purpose:</p>
-<div class="code-name">$ cat packages.txt</div>
-
-<pre><code class="lang-bash">git
+<pre><code class="lang-bash">$ cat packages.txt
+git
 mc
 vim
 </code></pre>
