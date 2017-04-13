@@ -570,7 +570,8 @@ template {
   --action-color: white;
   --action-background: #00B0FF;
   --header-color: #424242;
-  --button-hover: Light Blue; }
+  --button-hover: Light Blue;
+  --card-bg-color: #fcfcfc; }
 
 /**
  * google-material-color v1.2.6
@@ -611,7 +612,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card {
   box-shadow: 0 17px 12px -14px rgba(0, 0, 0, 0.82);
-  background: #fcfcfc;
+  background: var(--card-bg-color);
   margin-bottom: var(--margin-between-cards);
   border-radius: 4px;
   overflow: hidden;
@@ -684,7 +685,6 @@ h1, h2, h3, h4, h5, h6 {
       height: 0;
       width: 0; }
     .multibox-card .multibox label {
-      background: white;
       color: rgba(0, 0, 0, 0.87);
       cursor: pointer;
       display: block;
@@ -713,7 +713,7 @@ h1, h2, h3, h4, h5, h6 {
       height: 239px;
       overflow-y: auto;
       z-index: 1;
-      background: white; }
+      background: var(--card-bg-color); }
     .multibox-card .multibox #tab-1:checked ~ .contents #content-1,
     .multibox-card .multibox #tab-2:checked ~ .contents #content-2,
     .multibox-card .multibox #tab-3:checked ~ .contents #content-3,
@@ -1021,7 +1021,8 @@ section {
   --action-color: white;
   --action-background: #00B0FF;
   --header-color: #424242;
-  --button-hover: Light Blue; }
+  --button-hover: Light Blue;
+  --card-bg-color: #fcfcfc; }
 
 /**
  * google-material-color v1.2.6
