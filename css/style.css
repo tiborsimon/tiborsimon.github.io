@@ -1341,56 +1341,58 @@ table {
     width: var(--width);
     height: var(--width);
     background: #2196F3; }
-  .sidebar .sidebar-nav {
+
+.sidebar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+  .sidebar-nav a {
+    width: 50%;
     display: flex;
-    flex-wrap: wrap; }
-    .sidebar .sidebar-nav a {
-      width: calc(var(--width) / 2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(0, 0, 0, 0.54); }
-      .sidebar .sidebar-nav a:hover {
-        background: var(--main-color);
-        color: white;
-        font-weight: 400;
-        transition: all 0.2s ease; }
-      .sidebar .sidebar-nav a:first-child {
-        border-right: 1px solid rgba(0, 0, 0, 0.12); }
-    .sidebar .sidebar-nav span {
-      width: calc(var(--width) / 2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(0, 0, 0, 0.12); }
-      .sidebar .sidebar-nav span:first-child {
-        border-right: 1px solid rgba(0, 0, 0, 0.12); }
-    .sidebar .sidebar-nav .neighbour-title {
-      width: var(--width);
-      display: flex;
-      height: 0px;
-      overflow: hidden;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      text-transform: uppercase;
-      text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.54); }
+    .sidebar-nav a:hover {
       background: var(--main-color);
       color: white;
-      transition: all 0.2s ease;
-      font-size: 0.9em; }
-    .sidebar .sidebar-nav .previous-a:hover ~ .previous-title {
-      height: 41px;
-      padding: 10px; }
-    .sidebar .sidebar-nav .next-a:hover ~ .next-title {
-      height: 41px;
-      padding: 10px; }
+      font-weight: 400;
+      transition: all 0.2s ease; }
+    .sidebar-nav a:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+  .sidebar-nav span {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.12); }
+    .sidebar-nav span:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+  .sidebar-nav .neighbour-title {
+    width: 100%;
+    display: flex;
+    height: 0px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--main-color);
+    color: white;
+    transition: all 0.2s ease;
+    font-size: 0.9em; }
+  .sidebar-nav .previous-a:hover ~ .previous-title {
+    height: 41px;
+    padding: 10px; }
+  .sidebar-nav .next-a:hover ~ .next-title {
+    height: 41px;
+    padding: 10px; }
 
 /**
  * google-material-color v1.2.6
