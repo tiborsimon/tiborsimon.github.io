@@ -951,8 +951,7 @@ section {
 
 .fade-in {
   transition: all 0.8s ease;
-  opacity: 0;
-  overflow: hidden; }
+  opacity: 0; }
 
 .twitter-timeline {
   height: 380px !important; }
