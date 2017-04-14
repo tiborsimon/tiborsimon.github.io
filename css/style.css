@@ -1398,6 +1398,19 @@ table {
  * google-material-color v1.2.6
  * https://github.com/danlevan/google-material-color
  */
+.project-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .project-list .project {
+    display: flex;
+    flex-direction: row;
+    height: 180px;
+    width: 553px; }
+    .project-list .project .project-description {
+      padding: 14px; }
+
 .projects-title {
   font-size: 2em;
   line-height: 1em;
