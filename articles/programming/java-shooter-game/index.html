@@ -54,13 +54,12 @@
             <div class="summary">During the last semester I had a subject that required to create a java program. I decided to write a small game similar to Minigore. The game is written in java with LWJGL and Slick2D game libraries.</div>
             <hr>
             <iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/dUKqIYJZlOk" frameborder="0" allowfullscreen></iframe>
-
 <p>It uses some open source stuff, like the explosion animation and the music for the promo video. The game is open source, so you can go to GitHub to see how the game functionalities were implemented.</p>
 <p>If the game won’t open by clicking on it (like on OSX Moutain Lion), you have to open it from command line. If the command line returns an error like pixel format not accelerated, you should check out these sites for the solution.</p>
-<pre><code class="lang-bash">$ cd &lt;path to the the jar file&gt;
+<pre><code class="language-bash">$ cd &lt;path to the the jar file&gt;
 $ java -jar JavaShooter.jar
 </code></pre>
-<h1 id="main-menu">Main menu</h1>
+<h1 id="main-menu">Main menu <a class="header-anchor" href="#main-menu" aria-hidden="true">¶</a></h1>
 <p>In the Main Menu you have 4 options but in reality 3 of them is working right now.</p>
 <ul>
 <li>Play – it goes t the new game menu</li>
@@ -74,9 +73,7 @@ $ java -jar JavaShooter.jar
 <figcaption>Fig 1: Java Shooter Game: main menu</figcaption>
 </figure>
 </div>
-
-
-<h1 id="game-menu">Game menu</h1>
+<h1 id="game-menu">Game menu <a class="header-anchor" href="#game-menu" aria-hidden="true">¶</a></h1>
 <p>In the New Game Menu you can start Easy, Normal and Expert game.</p>
 <ul>
 <li>Easy – slow enemies with slow spawning time + auto aiming</li>
@@ -89,9 +86,7 @@ $ java -jar JavaShooter.jar
 <figcaption>Fig 2: Java Shooter Game: game menu</figcaption>
 </figure>
 </div>
-
-
-<h1 id="player-menu">Player menu</h1>
+<h1 id="player-menu">Player menu <a class="header-anchor" href="#player-menu" aria-hidden="true">¶</a></h1>
 <p>In the Player Menu you can view the stats of the current player, export your player data, and create new player.</p>
 <ul>
 <li>Export – it exports the current player stats to transfer them another computer.</li>
@@ -103,13 +98,12 @@ $ java -jar JavaShooter.jar
 <figcaption>Fig 3: Java Shooter Game: player menu</figcaption>
 </figure>
 </div>
-
-<h1 id="controlling-the-game">Controlling the game</h1>
+<h1 id="controlling-the-game">Controlling the game <a class="header-anchor" href="#controlling-the-game" aria-hidden="true">¶</a></h1>
 <p>The game follows the conventions: you can move with the arrow keys, and fire with the <code>space bar</code>. In <em>Easy</em> and <em>Normal</em> mode the game aims for you, but in <em>Expert</em> mode aiming is your task with <code>T</code> and <code>H</code> keys.</p>
 <p>During the game the mouse pointer disappears (in mac you have to move the pointer a bit unless it won’t disappear). With the <code>ESC</code> key you can bring up the Pause Menu, and the mouse pointer will show up again.</p>
-<h1 id="modding-the-gameplay">Modding the gameplay</h1>
+<h1 id="modding-the-gameplay">Modding the gameplay <a class="header-anchor" href="#modding-the-gameplay" aria-hidden="true">¶</a></h1>
 <p>I have built in the possibility to mack around with the main game parameters. To do this you have to create a text file called mods_for_the_game.txt into the same folder where the jar file located.</p>
-<h2 id="hackable-parameters">Hackable parameters</h2>
+<h2 id="hackable-parameters">Hackable parameters <a class="header-anchor" href="#hackable-parameters" aria-hidden="true">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -153,18 +147,16 @@ $ java -jar JavaShooter.jar
 </tbody>
 </table>
 <p>The syntax is very simple. First you type the keyword you want to modify (not case sensitive), space, then the value. This is a modifying block. You can use more blocks at once separated them with spaces. The default settings are the following:</p>
-<pre><code class="lang-txt">fullscreen false overclock 60 showfPS false explosionpoollimit 10 sparkpoollimit 10
+<pre><code class="language-txt">fullscreen false overclock 60 showfPS false explosionpoollimit 10 sparkpoollimit 10
 </code></pre>
 <p><strong>If the game crashes, make sure you set the pool limits higher than 10!</strong></p>
 <p>For example lets say you want to set higher FPS rate than the default 60 fps, and you want to play the game in full window mode with the FPS counter displayed. You have to create the mods_for_the_game.txt file next to the jar file.
 The content of the text file in this case should be like this:</p>
-<pre><code class="lang-txt">overclock 75 fullscreen true showfPS true
+<pre><code class="language-txt">overclock 75 fullscreen true showfPS true
 </code></pre>
 <p>Example video about how to overclock the game a bit.</p>
 <iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/L5NhA_ajQ_w" frameborder="0" allowfullscreen></iframe>
-
-
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>The developed program isn’t a full featured game but a skeleton, which you can develop further.</p>
 
           </div>
@@ -218,7 +210,7 @@ The content of the text file in this case should be like this:</p>
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -252,13 +244,13 @@ The content of the text file in this case should be like this:</p>
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -289,6 +281,12 @@ The content of the text file in this case should be like this:</p>
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -335,14 +333,8 @@ The content of the text file in this case should be like this:</p>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

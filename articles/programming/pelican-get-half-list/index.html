@@ -1,5 +1,5 @@
 <p>I wanted to display a list of articles in a two columns. If there are even number of articles, the two columns will have the same number articles. If there are odd number of articles, the first column will contain more articles then the second. This behavior can be achieved with a ceil-like function, which returns the smallest integer greater than or equal to a given number.</p>
-<h1 id="using-built-in-jinja2-filters">Using built in Jinja2 filters</h1>
+<h1 id="using-built-in-jinja2-filters">Using built in Jinja2 filters <a class="header-anchor" href="#using-built-in-jinja2-filters" aria-hidden="true">¶</a></h1>
 <p>In the <strong>first</strong> solution <em>we are using</em> only the built in Jinja filters. Because of the lack of mathematical functions in the built in filters, we need to hack the only available rounding filter (<code>round</code>) to be able to use it as a <code>ceil</code> like function.</p>
 <p>The steps are the followings:</p>
 <ol>
@@ -8,36 +8,36 @@
 <li>Use the round filter</li>
 <li>Cast the result to <em>integer</em></li>
 </ol>
-<pre><code class="lang-ninja">{% set article_middle_index = articles|length / 2 %}
+<pre><code class="language-ninja">{% set article_middle_index = articles|length / 2 %}
 {% set article_middle_index = article_middle_index + 0.2 %}
 {% set article_middle_index = article_middle_index|round %}
 {% set article_middle_index = article_middle_index|int %}
 </code></pre>
 <p>Since <code>{ 0.5|round }</code> is <code>0.0</code> according to Jinja2, we need to add a small number to the halfed number, to achieve the ceil-like behavior.</p>
-<h1 id="writing-a-custom-jinja-filter">Writing a custom Jinja filter</h1>
+<h1 id="writing-a-custom-jinja-filter">Writing a custom Jinja filter <a class="header-anchor" href="#writing-a-custom-jinja-filter" aria-hidden="true">¶</a></h1>
 <p>We can also write a custom Jinja filter that calculates the middle index of a list, by appending a small function definition and a special dictionary that tells Pelican to use the function definition as a Jinja filter to the <code>pelicanconf.py</code> file:</p>
-<pre><code class="lang-ninja">def list_half_index(content, *args):
+<pre><code class="language-ninja">def list_half_index(content, *args):
     return ceil(len(content))
 
 JINJA_FILTERS = {
-    &#39;list_half_index&#39;: list_half_index,
+    'list_half_index': list_half_index,
 }
 </code></pre>
 <p>In the Pelican template files, we can use our custom filter as follows:</p>
-<pre><code class="lang-ninja">{% set article_middle_index = articles|middle_index %}
+<pre><code class="language-ninja">{% set article_middle_index = articles|middle_index %}
 </code></pre>
-<h1 id="using-the-middle-index">Using the middle index</h1>
+<h1 id="using-the-middle-index">Using the middle index <a class="header-anchor" href="#using-the-middle-index" aria-hidden="true">¶</a></h1>
 <p>We have now the middle index of an article list, so we can use it to split the list to half:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
   &lt;div class=&quot;6u 6u(tablet) 12u(mobile)&quot;&gt;
     {% for article in articles[:article_middle_index] %}
-      {% include &#39;includes/article-card.html&#39; %}
+      {% include 'includes/article-card.html' %}
     {% endfor %}
   &lt;/div&gt;
 
   &lt;div class=&quot;6u 6u(tablet) 12u(mobile)&quot;&gt;
     {% for article in articles[article_middle_index:] %}
-      {% include &#39;includes/article-card.html&#39; %}
+      {% include 'includes/article-card.html' %}
     {% endfor %}
   &lt;/div&gt;
 &lt;/div&gt;

@@ -64,32 +64,23 @@
 <img width=280 src="/assets/images/articles/slotcar/promo2.jpg" alt="The first corner.">
 <figcaption>Fig 2: The first corner.</figcaption>
 </figure>
-
-
-
 <h2>About the competition</h2>
-
-
-However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.
-
-The rules of the competition
-
-- Run the fastest 5 lap without sliding off the track.
-- No physical modification were allowed.
-- You have 3 attempts.
-
-# The track
-
-The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.
-
+<p>However. The acceleration data was very noisy, it needed a strong filtering, therefore it had serious amount of delay. We had to cope with this delay and we had to run the fastest lap among the other teams who participated this challenge without sliding off the track.</p>
+<p>The rules of the competition</p>
+<ul>
+<li>Run the fastest 5 lap without sliding off the track.</li>
+<li>No physical modification were allowed.</li>
+<li>You have 3 attempts.</li>
+</ul>
+<h1 id="the-track">The track <a class="header-anchor" href="#the-track" aria-hidden="true">¶</a></h1>
+<p>The track was a casual slot car track with two corners and a cross over section. The power for the car comes from the two pair of rails. There is a room for two cars on the track at once.</p>
 <div class="figures">
 <figure>
 <img width=400 src="/assets/images/articles/slotcar/track.jpg" alt="The track.">
 <figcaption>Fig 3: The track.</figcaption>
 </figure>
 </div>
-
-<h1 id="the-car">The car</h1>
+<h1 id="the-car">The car <a class="header-anchor" href="#the-car" aria-hidden="true">¶</a></h1>
 <p>Audi R8 body with an embedded Freescale processor in it. In between the front wheels there is a guider with the brushes to collect the electricity from the rails. There are two IO interface on the car: the mini USB connector for programming and a mini SD card slot to get the accelerometer data for developing. One car had a led on the top of it that we could use for debugging the algorithm.</p>
 <div class="figures">
 <figure>
@@ -97,8 +88,7 @@ The track was a casual slot car track with two corners and a cross over section.
 <figcaption>Fig 4: The car.</figcaption>
 </figure>
 </div>
-
-<h1 id="solving-the-problem">Solving the problem</h1>
+<h1 id="solving-the-problem">Solving the problem <a class="header-anchor" href="#solving-the-problem" aria-hidden="true">¶</a></h1>
 <p>There is a trivial solution for the problem: drive fast in the straight parts, brake before the corners, drive slow in the corners.
 But there are a few questions.</p>
 <ul>
@@ -112,8 +102,7 @@ The second question was a tougher one. The car only knew the acceleration data m
 <p>The third question was easier after the second one. We knew that the acceleration data had a delay in it. We had the knowledge about where we are on the track with a delay. So instead we make our decisions about braking or accelerating after we reached a straight line or a corner, we make a prediction before.</p>
 <p>Let’s see how the car performs with the final algorithm before we dive into the details.</p>
 <iframe class="video" width="800" height="450" src="https://www.youtube.com/embed/Aj9IzfBdFBo" frameborder="0" allowfullscreen></iframe>
-
-<h1 id="what-is-happening-on-the-video-">What is happening on the video?</h1>
+<h1 id="what-is-happening-on-the-video">What is happening on the video? <a class="header-anchor" href="#what-is-happening-on-the-video" aria-hidden="true">¶</a></h1>
 <p>You will learn later from the source code listed below, that the whole program stands from three main states:</p>
 <ul>
 <li>Normalization state – we are waiting the car to speed up to the maximum safe speed, and to run in a straight section of the road.</li>
@@ -124,15 +113,13 @@ The second question was a tougher one. The car only knew the acceleration data m
 <p>The car was put down on the track. It accelerated to the maximum safe speed. It reached this speed a bit before the first corner, so it was on a straight section when the acceleration finished, therefore it entered state two, which is the period finder algorithm. The small blue led on the top of the car flashed when the car’s state changed, but the led flashed in the middle of the corner because the delay of the acceleration filtering.
 In state two the car run at least two full lap (because it collects at least two of every kind of event), collected informations, and after the second lap, when there was enough information, the period finder algorithm kicked in, and successfully found the period of the track.
 Right at this moment, the car was switched to state three, in which the algorithm takes care of the car’s speed according to the information collected in state two. The led blinked in every lap.</p>
-<h1 id="period-finder-algorithm">Period finder algorithm</h1>
+<h1 id="period-finder-algorithm">Period finder algorithm <a class="header-anchor" href="#period-finder-algorithm" aria-hidden="true">¶</a></h1>
 <div class="figures">
 <figure>
 <img width=400 src="/assets/images/articles/slotcar/raw-data.png" alt="Raw accelerometer data.">
 <figcaption>Fig 5: Raw accelerometer data.</figcaption>
 </figure>
 </div>
-
-
 <p>The period finder algorithm is a very simple thus a very specific algorithm that was developed only for this competition. It may work in other situations, but don’t bet your money there :)</p>
 <div class="figures">
 <figure>
@@ -140,10 +127,9 @@ Right at this moment, the car was switched to state three, in which the algorith
 <figcaption>Fig 6: Algorithm output signals.</figcaption>
 </figure>
 </div>
-
 <p>As you can see, the final output of the algorithm was shown above.</p>
 <p>Below you can find the repository for the nicely commented source code of the period finder algorithm. The final code that runs on the car itself is not showed, it is up to you to implement it in the target platform.</p>
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>With this algoritm you will be able to have a strong foundtation for your own algorithm if you are faceing a similar contest. Feel free to contribute to the algorithm, to make it more durable.</p>
 
           </div>
@@ -196,7 +182,7 @@ Right at this moment, the car was switched to state three, in which the algorith
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -229,13 +215,13 @@ Right at this moment, the car was switched to state three, in which the algorith
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -266,6 +252,12 @@ Right at this moment, the car was switched to state three, in which the algorith
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -312,14 +304,8 @@ Right at this moment, the car was switched to state three, in which the algorith
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

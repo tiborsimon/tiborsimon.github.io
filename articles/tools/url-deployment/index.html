@@ -52,10 +52,10 @@
             <div class="summary">You can curl down a file and run it as a setup script. Some tech companies use this approach too.</div>
             <hr>
             <p>I started to improve my <strong>dotfiles</strong> system with <strong>one command URL deployment</strong>. In this way I can run a single command on a virgin system to deploy my configuration. This method works on OS X as well as any Linux system.</p>
-<h1 id="how-does-it-work-">How does it work?</h1>
+<h1 id="how-does-it-work">How does it work? <a class="header-anchor" href="#how-does-it-work" aria-hidden="true">¶</a></h1>
 <p>I use <code>curl</code> to download the <strong>bootstrap</strong> script which will prepare the machine to be able to clone my dotfiles repo, and then it runs the <strong>deploy</strong> script.</p>
-<p>To download a script stored on <strong>GitHub</strong> you can use the raw file listing. My <strong>bootstrap</strong> script can be reached via the <a href="https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap" target="_blank">https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap</a> link. Notice, that this is not a convenient link to type..</p>
-<pre><code class="lang-bash">curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
+<p>To download a script stored on <strong>GitHub</strong> you can use the raw file listing. My <strong>bootstrap</strong> script can be reached via the <a href="https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap" target="_blank">https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap</a> link. Notice, that this is not a convenient link to type…</p>
+<pre><code class="language-bash">curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
 </code></pre>
 <p>I can take care of this problem by having a custom domain, and creating a redirect, I am using <strong>CloudFlare</strong> as a nameserver and <em>ssl</em> provider, so I can set up a custom <strong>Page Rule</strong> to redirect the <code>tiborsimon.io/dotfiles</code> to the raw script listing.</p>
 <div class="figures">
@@ -64,23 +64,22 @@
   <figcaption>Fig 1: CloudFlare custom Page Rule</figcaption>
 </figure>
 </div>
-
 <p>In this way, I can type:</p>
-<pre><code class="lang-bash">curl tiborsimon.io/dotfiles
+<pre><code class="language-bash">curl tiborsimon.io/dotfiles
 </code></pre>
-<h1 id="downloading-and-executing-the-script">Downloading and executing the script</h1>
+<h1 id="downloading-and-executing-the-script">Downloading and executing the script <a class="header-anchor" href="#downloading-and-executing-the-script" aria-hidden="true">¶</a></h1>
 <p>The script is available for execution. The next step is to use it.</p>
-<pre><code class="lang-bash">sh &lt;(curl -fsSL tiborsimon.io/dotfiles)
+<pre><code class="language-bash">sh &lt;(curl -fsSL tiborsimon.io/dotfiles)
 </code></pre>
 <p>We can feed the raw sript to <code>sh</code>, <code>bash</code> or <code>zsh</code>. Curl will download the script in a subshell, then it will return the downloaded script, which we will feed to the <code>sh</code> in this example.</p>
 <p>The flags make sure, curl not corrupt the script during download:</p>
-<pre><code class="lang-bash">-f, --fail          Fail silently (no output at all) on HTTP errors (H)
--s, --silent        Silent mode (don&#39;t output anything)
+<pre><code class="language-bash">-f, --fail          Fail silently (no output at all) on HTTP errors (H)
+-s, --silent        Silent mode (don't output anything)
 -S, --show-error    Show error. With -s, make curl show errors when they occur
 -L, --location      Follow redirects (H)
 </code></pre>
 <p>Make sure you have the latest curl on your system, because older curl versions tend to act weird with the <em>HTTPS</em> protocol, and wont be able to connect.</p>
-<pre><code class="lang-bash">[vagrant@localhost ~]$ bash &lt;(curl -fsSLv https://tiborsimon.io/dotfiles)
+<pre><code class="language-bash">[vagrant@localhost ~]$ bash &lt;(curl -fsSLv https://tiborsimon.io/dotfiles)
 * About to connect() to tiborsimon.io port 443 (#0)
 *   Trying 104.18.43.82... connected
 * Connected to tiborsimon.io (104.18.43.82) port 443 (#0)
@@ -92,7 +91,7 @@
 * SSL connect error
 curl: (35) SSL connect error
 </code></pre>
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>We can now use our scripts via URL deployment. You can install <strong>Docker</strong> in this way for example.</p>
 
           </div>
@@ -102,10 +101,10 @@ curl: (35) SSL connect error
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
-              <span class="neighbour-title previous-title">My dotfile system</span>
+              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
+              <span class="neighbour-title next-title">Minimal MathJax package</span>
+              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
           </nav>
         </div>
       </div>
@@ -146,7 +145,7 @@ curl: (35) SSL connect error
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -154,10 +153,10 @@ curl: (35) SSL connect error
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
-              <span class="neighbour-title previous-title">My dotfile system</span>
+              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
+              <span class="neighbour-title next-title">Minimal MathJax package</span>
+              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
           </nav>
         </div>
       </div>
@@ -180,13 +179,13 @@ curl: (35) SSL connect error
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -217,6 +216,12 @@ curl: (35) SSL connect error
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -263,14 +268,8 @@ curl: (35) SSL connect error
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

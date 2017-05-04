@@ -48,40 +48,39 @@
           <div class="fade-in">
             <div class="summary">Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.</div>
             <hr>
-            <h1 id="the-problem">The problem</h1>
+            <h1 id="the-problem">The problem <a class="header-anchor" href="#the-problem" aria-hidden="true">¶</a></h1>
 <p>The equation of a sinusoid signal is a known fact:</p>
 <p class="equation">
   $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
 </p>
-
 <p>However. This equation is only valid in the <strong>continuous time</strong> domain, therefore without any modification it is useless in the <strong>discrete time</strong> domain used by every digital machine. You won’t be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.</p>
 <p>Machines work with <em>discrete time series</em> that has a property called <strong>resolution</strong>. Resolution is the link between <em>continous</em> and <em>discrete</em> time domain. This property is implemented with <strong>sampling</strong>. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points[^1].</p>
 <p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
 <p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong>[^2] of continuous time.</p>
 <p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
 <pre><code>s = sin(2*pi*1*t1);
-</code></pre><p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
+</code></pre>
+<p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
 <div class="figures">
 <figure>
 <img src="/assets/images/articles/generating-sinusoids/signal001.png" alt="Discrete vs continous time sine signal.">
 <figcaption>Fig 1: Discrete vs continous time sine signal.</figcaption>
 </figure>
 </div>
-
 <p>This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer’s <em>digital to analog converter</em>.</p>
 <p>However. There are other use cases when we don’t want to link the <strong>discrete time</strong> to the <strong>continuous time</strong>, so we don’t have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:</p>
 <pre><code>t = linspace(0,1,100);
 s = sin(2*pi*3*t);
-</code></pre><p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
+</code></pre>
+<p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
 <div class="figures">
 <figure>
 <img src="/assets/images/articles/generating-sinusoids/signal002.png" alt="100 samples long sinusoid without discrete/continous time lock.">
 <figcaption>Fig 2: 100 samples long sinusoid without discrete/continous time lock.</figcaption>
 </figure>
 </div>
-
-<p>As you can see, generating sinusoids with these basic methods isn’t hard at all. But you <strong>have to think</strong> about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal..</p>
-<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters</h1>
+<p>As you can see, generating sinusoids with these basic methods isn’t hard at all. But you <strong>have to think</strong> about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal…</p>
+<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters <a class="header-anchor" href="#sinusoid-signal-parameters" aria-hidden="true">¶</a></h1>
 <p>There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.</p>
 <div class="figures">
 <figure>
@@ -89,7 +88,6 @@ s = sin(2*pi*3*t);
 <figcaption>Fig 3: Sinusoid signal parameters.</figcaption>
 </figure>
 </div>
-
 <table>
 <thead>
 <tr>
@@ -196,11 +194,10 @@ s = sin(2*pi*3*t);
 <figcaption>Fig 4: Reference signal for all the following generation methods.</figcaption>
 </figure>
 </div>
-
 <p>The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.</p>
-<h2 id="method-1-n-n-">Method 1 - [n,N]</h2>
+<h2 id="method-1-nn">Method 1 - [n,N] <a class="header-anchor" href="#method-1-nn" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal with <code>n</code> data points with <code>N</code> periods in it.</p>
-<pre><code class="lang-matlab">n = 60;
+<pre><code class="language-matlab">n = 60;
 N = 2.5;
 
 k = 0:n-1;
@@ -209,9 +206,9 @@ s = sin(2*pi*N*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-2-l-n-fs-">Method 2 - [L,N,fs]</h2>
+<h2 id="method-2-lnfs">Method 2 - [L,N,fs] <a class="header-anchor" href="#method-2-lnfs" aria-hidden="true">¶</a></h2>
 <p>Generating <code>L</code> seconds long signal sampled at <code>fs</code> consisting of <code>N</code> periods in it.</p>
-<pre><code class="lang-matlab">fs = 10;
+<pre><code class="language-matlab">fs = 10;
 N = 2.5;
 L = 60/fs;
 
@@ -221,9 +218,9 @@ s = sin(2*pi*N*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-3-f-n-fs-">Method 3 - [f,N,fs]</h2>
+<h2 id="method-3-fnfs">Method 3 - [f,N,fs] <a class="header-anchor" href="#method-3-fnfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with <code>N</code> periods in it with the frequency <code>f</code>.</p>
-<pre><code class="lang-matlab">fs = 10;
+<pre><code class="language-matlab">fs = 10;
 N = 2.5;
 f = N*fs/60;
 
@@ -232,9 +229,9 @@ s = sin(2*pi*f*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-4-n-f-fs-">Method 4 - [n,f,fs]</h2>
+<h2 id="method-4-nffs">Method 4 - [n,f,fs] <a class="header-anchor" href="#method-4-nffs" aria-hidden="true">¶</a></h2>
 <p>Generating a signal consisting of <code>n</code> data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code>.</p>
-<pre><code class="lang-matlab">fs = 10;
+<pre><code class="language-matlab">fs = 10;
 n = 60;
 f = 2.5*fs/n;
 
@@ -244,9 +241,9 @@ s = sin(2*pi*f*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-5-f-l-fs-">Method 5 - [f,L,fs]</h2>
+<h2 id="method-5-flfs">Method 5 - [f,L,fs] <a class="header-anchor" href="#method-5-flfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with the duration of <code>L</code> seconds with the frequency <code>f</code>.</p>
-<pre><code class="lang-matlab">L = 60/fs;
+<pre><code class="language-matlab">L = 60/fs;
 f = 2.5/L;
 
 n = 0:1/fs:L-1/fs;
@@ -254,7 +251,7 @@ s = sin(2*pi*f*n);
 
 stem(s)
 </code></pre>
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>That’s it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you <em>study</em> them? Will you <em>derive</em> them over and over again?</p>
 <p>If your answers for the last two questions were both <em>nope</em>, then the go ahead and meet <b><a href="http://tiborsimon.io/projects/#TSPR0003">Smart Sinusoids</a></b>.</p>
 <p>[^1]: Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem">sampling theorem</a>. There are much more detail how these things really work.</p>
@@ -312,7 +309,7 @@ stem(s)
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -346,13 +343,13 @@ stem(s)
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -383,6 +380,12 @@ stem(s)
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -429,14 +432,8 @@ stem(s)
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

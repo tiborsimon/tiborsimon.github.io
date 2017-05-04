@@ -47,7 +47,7 @@
           <div class="fade-in">
             <div class="summary">In the previous article we have discussed the 5 ways you can generate a sinusoid signal. In this article we are going to develop a method that tries to generate a sinusoid signal with a given parameter set.</div>
             <hr>
-            <h1 id="sinusoid-generation-summary">Sinusoid generation summary</h1>
+            <h1 id="sinusoid-generation-summary">Sinusoid generation summary <a class="header-anchor" href="#sinusoid-generation-summary" aria-hidden="true">¶</a></h1>
 <p>Let’s sum up the previous article. If you want to generate a sinusoid signal you have 5 possibble ways to do that.</p>
 <table>
 <thead>
@@ -142,22 +142,22 @@
 </tr>
 </tbody>
 </table>
-<h1 id="required-parts">Required parts</h1>
+<h1 id="required-parts">Required parts <a class="header-anchor" href="#required-parts" aria-hidden="true">¶</a></h1>
 <p>To create an equation engine we have to solve the following problems:</p>
 <ol>
 <li>Identify the passed parameters</li>
 <li>Calculate the necessary parameters from the available ones</li>
 <li>Use the parameters in the equations</li>
 </ol>
-<h1 id="identifying-the-passed-parameters">Identifying the passed parameters</h1>
+<h1 id="identifying-the-passed-parameters">Identifying the passed parameters <a class="header-anchor" href="#identifying-the-passed-parameters" aria-hidden="true">¶</a></h1>
 <p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
 calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
 that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
-<pre><code class="lang-matlab">[data, flags] = simple_input_parser(data, raw_varargin, validators);
+<pre><code class="language-matlab">[data, flags] = simple_input_parser(data, raw_varargin, validators);
 </code></pre>
 <p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
 zero if not.</p>
-<h2 id="calculating-the-parameters">Calculating the parameters</h2>
+<h2 id="calculating-the-parameters">Calculating the parameters <a class="header-anchor" href="#calculating-the-parameters" aria-hidden="true">¶</a></h2>
 <p>To be able to substitute to the generator equations, we need to make sure to have all the necessary parameters
 to do that. In case if wo do not have all the ones, we have to try to calculate them from the given ones.</p>
 <p>The following table contains all possible way to get a parameter from the others.</p>
@@ -232,7 +232,7 @@ to do that. In case if wo do not have all the ones, we have to try to calculate 
 </table>
 <p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
 others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
-<pre><code class="lang-matlab">%% Parameter construction
+<pre><code class="language-matlab">%% Parameter construction
 function f = get_f()
     if flags.f
         f = data.f;
@@ -245,7 +245,7 @@ function f = get_f()
     elseif flags.n &amp;&amp; flags.fs &amp;&amp; flags.L &amp;&amp; flags.T
         f = data.n / data.fs / data.L / data.T;
     else
-        throw(&#39;.&#39;);
+        throw('.');
     end
 end
 
@@ -261,7 +261,7 @@ function T = get_T()
     elseif falgs.L &amp;&amp; flags.n &amp;&amp; flags.fs &amp;&amp; flags.f
         T = data.L * data.fs / data.n / data.f;
     else
-        throw(&#39;.&#39;);
+        throw('.');
     end
 end
 
@@ -277,7 +277,7 @@ function n = get_n()
     elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.fs
         n = data.N * data.T * data.fs;
     else
-        throw(&#39;.&#39;)
+        throw('.')
     end
 end
 
@@ -297,7 +297,7 @@ function N = get_N()
     elseif flags.n &amp;&amp; flags.f &amp;&amp; flags.fs
         N = data.n * data.f / data.fs;
     else
-        throw(&#39;.&#39;)
+        throw('.')
     end
 end
 
@@ -313,7 +313,7 @@ function fs = get_fs()
     elseif flags.n &amp;&amp; flags.L &amp;&amp; flags.f &amp;&amp; flags.T
         fs = data.n / data.L / data.f / data.T;
     else
-        throw(&#39;.&#39;);
+        throw('.');
     end
 end
 
@@ -329,7 +329,7 @@ function dt = get_dt()
     elseif flags.L &amp;&amp; flags.f &amp;&amp; flags.T &amp;&amp; flags.n
         dt = data.L * data.f * data.T / data.n;
     else
-        throw(&#39;.&#39;);
+        throw('.');
     end
 end
 
@@ -345,14 +345,14 @@ function L = get_L()
     elseif flags.n &amp;&amp; flags.fs
         L = data.n / data.fs;
     else
-        throw(&#39;.&#39;);
+        throw('.');
     end
 end
 </code></pre>
-<h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations</h2>
+<h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations <a class="header-anchor" href="#using-the-parameters-in-the-equations" aria-hidden="true">¶</a></h2>
 <p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
 sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
-<pre><code class="lang-matlab">%% Signal synthesizer functions
+<pre><code class="language-matlab">%% Signal synthesizer functions
 function s = construct_with_n_N()
     n = get_n();
     N = get_N();
@@ -410,7 +410,7 @@ function s = construct_with_L_f_fs()
     s = trigfun(2*pi*f*n + phi);
 end
 </code></pre>
-<h1 id="putting-everything-together">Putting everything together</h1>
+<h1 id="putting-everything-together">Putting everything together <a class="header-anchor" href="#putting-everything-together" aria-hidden="true">¶</a></h1>
 <p>The last step is to put everything together.</p>
 <ol>
 <li>We have the flag structure that indicates what parameters were passed. This structure can be used by the <em>calculator functions</em> to
@@ -422,7 +422,7 @@ calculated, an exception will be raised.</li>
 <p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
 If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
 the given parameter set, there is no way to generate a sinusoud signal.</p>
-<pre><code class="lang-matlab">%% Mode Selection
+<pre><code class="language-matlab">%% Mode Selection
 try
     s = construct_with_n_N();
 catch
@@ -438,7 +438,7 @@ catch
               try
                   s = construct_with_L_f_fs();
               catch
-                  throw_exception(&#39;parameterError&#39;,&#39;With the given parameters there is no way to construct a sinusoid signal!&#39;);
+                  throw_exception('parameterError','With the given parameters there is no way to construct a sinusoid signal!');
               end
           end
 
@@ -446,7 +446,7 @@ catch
    end
 end
 </code></pre>
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>And that’s it. This method was used in <a href="http://tiborsimon.io/projects/TSPR0003/" target="_blank">Smart Sinusoids</a> to generate
 the sinusoid signals.</p>
 
@@ -501,7 +501,7 @@ the sinusoid signals.</p>
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -535,13 +535,13 @@ the sinusoid signals.</p>
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -572,6 +572,12 @@ the sinusoid signals.</p>
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -618,14 +624,8 @@ the sinusoid signals.</p>
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

@@ -55,14 +55,16 @@ handle arbitrary order with the mandatory constraint. You have to do it yourself
 charachters between them. You can do it with options.</p>
 <p>For example, if you want to match words that has <code>a</code> and <code>b</code> in them in arbitrary order, you can write:</p>
 <pre><code>((.*a.*b.*)|(.*b.*a.*))
-</code></pre><p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
+</code></pre>
+<p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
 <pre><code>((.*a.*b.*c.*)|
  (.*a.*c.*b.*)|
  (.*b.*a.*c.*)|
  (.*b.*c.*a.*)|
  (.*c.*a.*b.*)|
  (.*c.*b.*a.*))
-</code></pre><p>For 4 characters, it reaches the 409 charachters length:</p>
+</code></pre>
+<p>For 4 characters, it reaches the 409 charachters length:</p>
 <pre><code>((.*a.*b.*c.*d.*)|
  (.*a.*b.*d.*c.*)|
  (.*a.*c.*b.*d.*)|
@@ -87,21 +89,22 @@ charachters between them. You can do it with options.</p>
  (.*d.*b.*c.*a.*)|
  (.*d.*c.*a.*b.*)|
  (.*d.*c.*b.*a.*))
-</code></pre><h1 id="generator-in-python">Generator in python</h1>
+</code></pre>
+<h1 id="generator-in-python">Generator in python <a class="header-anchor" href="#generator-in-python" aria-hidden="true">¶</a></h1>
 <p>You can write a generator for this regexp pattern easily in python:</p>
-<pre><code class="lang-python">from itertools import permutations
+<pre><code class="language-python">from itertools import permutations
 import re
 
 def generate_mandatory_arbitrary(content):
-    pattern_string = &#39;(&#39;
+    pattern_string = '('
     for p in permutations(content):
-        pattern_string += &#39;(.*&#39;
+        pattern_string += '(.*'
         for i in p:
-            pattern_string += &#39;{}.*&#39;.format(i)
-        pattern_string += &#39;)|&#39;
-    return pattern_string[:-1] + &#39;)&#39;
+            pattern_string += '{}.*'.format(i)
+        pattern_string += ')|'
+    return pattern_string[:-1] + ')'
 
-print(generate_mandatory_arbitrary(&#39;abc&#39;))
+print(generate_mandatory_arbitrary('abc'))
 </code></pre>
 
           </div>
@@ -155,7 +158,7 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -189,13 +192,13 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -226,6 +229,12 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -272,14 +281,8 @@ print(generate_mandatory_arbitrary(&#39;abc&#39;))
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

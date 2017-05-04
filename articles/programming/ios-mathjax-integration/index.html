@@ -73,9 +73,9 @@
 </tr>
 </tbody>
 </table>
-<h1 id="prerequisite">Prerequisite</h1>
+<h1 id="prerequisite">Prerequisite <a class="header-anchor" href="#prerequisite" aria-hidden="true">¶</a></h1>
 <p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><code class="lang-html">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<pre><code class="language-html">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
   &lt;mstyle mathcolor=&quot;blue&quot; fontfamily=&quot;sanserif&quot; displaystyle=&quot;true&quot;&gt;
     &lt;msup&gt;
       &lt;mn&gt;2&lt;/mn&gt;
@@ -96,10 +96,10 @@
 &lt;/math&gt;
 </code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><code class="lang-latex">2^{\frac{2}{\sqrt{6}}}
+<pre><code class="language-latex">2^{\frac{2}{\sqrt{6}}}
 </code></pre>
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
-<h1 id="downloading-mathjax">Downloading MathJax</h1>
+<h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
 <p>Download the sources from <a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank">MathJax’s Github page</a>. At the time I wrote this article, the latest version was <em>2.6.1</em>. It could take quite a bit of time to download the whole zip file.</p>
 <p>I put the downloaded files into the Xcode project’s Vendor folder:</p>
 <p>Simply unboxed the zip, the package takes up <strong>180 MB</strong> space <em>(that’s a lot!)</em>. In a future article I will show you the minimal needed content of this package that is be able to render the expressions.</p>
@@ -113,8 +113,7 @@
 <figcaption>Fig 2: Size of the freshly downloaded package.</figcaption>
 </figure>
 </div>
-
-<h1 id="adding-the-mathjax-package-to-the-project">Adding the MathJax package to the project</h1>
+<h1 id="adding-the-mathjax-package-to-the-project">Adding the MathJax package to the project <a class="header-anchor" href="#adding-the-mathjax-package-to-the-project" aria-hidden="true">¶</a></h1>
 <p>I added the downloaded and extracted MathJax sources to a single view based Xcode project, by dragging the folder into the project navigator. I unchecked the copy sources option.</p>
 <div class="figures">
 <figure>
@@ -126,11 +125,9 @@
 <figcaption>Fig 4: Unchecking the copy items if needed option.</figcaption>
 </figure>
 </div>
-
-
-<h1 id="using-the-mathjax-package">Using the MathJax package</h1>
+<h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
@@ -153,7 +150,7 @@
 &lt;/html&gt;
 </code></pre>
 <p>… so I used its <code>loadHTMLString</code> method to do that:</p>
-<pre><code class="lang-swift">//
+<pre><code class="language-swift">//
 //  ViewController.swift
 //  MathJaxTest01
 //
@@ -185,8 +182,9 @@ class ViewController: UIViewController {
     }
 
 }
+
 </code></pre>
-<h1 id="testing-with-the-simulator">Testing with the simulator</h1>
+<h1 id="testing-with-the-simulator">Testing with the simulator <a class="header-anchor" href="#testing-with-the-simulator" aria-hidden="true">¶</a></h1>
 <p>The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the <em>UIWebView</em> in 8 phases:</p>
 <div class="figures">
 <figure>
@@ -222,11 +220,10 @@ class ViewController: UIViewController {
 <figcaption>Fig 12: Rendering phase 8: Render finished.</figcaption>
 </figure>
 </div>
-
 <p>The whole rendering happens in less then half a second, but it is noticeable. If you want to use this method to render mathematical expresions in your app, you have to make sure, you only show your <em>UIWebView</em>, when it fulli loaded.</p>
-<h1 id="try-it-out-yourself-">Try it out yourself!</h1>
+<h1 id="try-it-out-yourself">Try it out yourself! <a class="header-anchor" href="#try-it-out-yourself" aria-hidden="true">¶</a></h1>
 <p>You can download the whole Xcode project with the added MathJax sources from <a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">the project’s Github repository</a>.</p>
-<h1 id="acknowledgement">Acknowledgement</h1>
+<h1 id="acknowledgement">Acknowledgement <a class="header-anchor" href="#acknowledgement" aria-hidden="true">¶</a></h1>
 <p>For this project, I get a lot of ideas from <a href="http://new2objectivec.blogspot.hu/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1" target="_blank">New 2 Objective-C</a> blog. His implementation is based on a local file writing and reading, which is pretty slow, but it works :)</p>
 <p>I also used some ideas from Stack Overflow to <a href="http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview" target="_blank">make my UIWebView transparent</a></p>
 
@@ -281,7 +278,7 @@ class ViewController: UIViewController {
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -315,13 +312,13 @@ class ViewController: UIViewController {
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -352,6 +349,12 @@ class ViewController: UIViewController {
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -398,14 +401,8 @@ class ViewController: UIViewController {
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

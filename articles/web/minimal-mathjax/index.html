@@ -49,7 +49,7 @@
           <div class="fade-in">
             <div class="summary">MathJax is a pretty big javascript package, but you can make it work after you stripped off most of the files. The final package size could be around 623KB.</div>
             <hr>
-            <p>In the <a href="/articles/programming/ios-mathjax-integration">previous article</a> we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.</p>
+            <p>In the [previous article](/articles/programming/ios-mathjax-integration) we have created a working MathJax based math rendering iOS app. In this article I will show you how you can shrink down the original 180MB MathJax package into an about 623KB package. This is 99.6% size reduction.</p>
 <table>
 <thead>
 <tr>
@@ -64,13 +64,13 @@
 </tr>
 </tbody>
 </table>
-<h1 id="choose-your-configuration">Choose your configuration</h1>
+<h1 id="choose-your-configuration">Choose your configuration <a class="header-anchor" href="#choose-your-configuration" aria-hidden="true">¶</a></h1>
 <p>MathJax supports a very wide range of input and output methods. That is the reason that it is big package. Therefore the most important thing in MathJax size reduction is to decide what input and output method you want to support. In this way you only need to have those sources that implement that methods by throwing away the rest of the package.</p>
 <p>In my example, I wanted to have <strong>LaTEX</strong> input and <strong>Common HTML</strong> output.</p>
-<h1 id="the-reducing-method">The reducing method</h1>
+<h1 id="the-reducing-method">The reducing method <a class="header-anchor" href="#the-reducing-method" aria-hidden="true">¶</a></h1>
 <p>The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn’t present. In this way you will end up a package that contains just the right resources to render your equations.</p>
 <p>I started with a simple html page containing a basic MathJax setup:</p>
-<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
@@ -79,8 +79,8 @@
   &lt;body&gt;
     &lt;div&gt;
       $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
-      $$\begin{equation}L&#39; = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
-      $$\begin{align} B&#39;&amp;=-\nabla \times E,\\E&#39;&amp;=\nabla \times B - 4\pi j,\end{align} $$
+      $$\begin{equation}L' = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
+      $$\begin{align} B'&amp;=-\nabla \times E,\\E'&amp;=\nabla \times B - 4\pi j,\end{align} $$
       $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
     &lt;/div&gt;
     &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
@@ -101,10 +101,9 @@
 </figure>
 <figure>
 <img width=400 src="/assets/images/articles/minimal-mathjax/missing-resources.png" alt="Discovering missing resources in the browser's inspector.">
-<figcaption>Fig 2: Discovering missing resources in the browser’s inspector.</figcaption>
+<figcaption>Fig 2: Discovering missing resources in the browser's inspector.</figcaption>
 </figure>
 </div>
-
 <p>This html test page renders the following equations:</p>
 <div class="figures">
 <figure>
@@ -112,30 +111,29 @@
   <figcaption>Fig 3: Testing the MathJax package with a small html file.</figcaption>
 </figure>
 </div>
-
 <p>If my reduced MathJax package can render this equations, it shouldn’t be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up <strong>623KB</strong> on disk.</p>
-<pre><code class="lang-bash">MathJax-2.6.1
+<pre><code class="language-bash">MathJax-2.6.1
 ├── MathJax.js
 ├── config
-│   └── TeX-AMS_CHTML.js
+│   └── TeX-AMS_CHTML.js
 ├── fonts
-│   └── HTML-CSS
-│       └── TeX
-│           └── woff
-│               ├── MathJax_AMS-Regular.woff
-│               ├── MathJax_Math-Italic.woff
-│               ├── MathJax_Size2-Regular.woff
-│               ├── MathJax_Size3-Regular.woff
-│               └── MathJax_Size4-Regular.woff
+│   └── HTML-CSS
+│       └── TeX
+│           └── woff
+│               ├── MathJax_AMS-Regular.woff
+│               ├── MathJax_Math-Italic.woff
+│               ├── MathJax_Size2-Regular.woff
+│               ├── MathJax_Size3-Regular.woff
+│               └── MathJax_Size4-Regular.woff
 └── jax
     └── output
         └── CommonHTML
             ├── autoload
-            │   └── mtable.js
+            │   └── mtable.js
             ├── fonts
-            │   └── TeX
-            │       ├── AMS-Regular.js
-            │       └── fontdata.js
+            │   └── TeX
+            │       ├── AMS-Regular.js
+            │       └── fontdata.js
             └── jax.js
 </code></pre>
 <p>Once again: I used <strong>LaTEX</strong> with <strong>Common HTML</strong> output rendering. This setup heavily depends on your input and output method.</p>
@@ -148,10 +146,10 @@
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+              <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a"><</a>
             <a href="https://tiborsimon.io/articles/programming/ios-mathjax-integration" class="next-a">></a>
               <span class="neighbour-title next-title">Local MathJax in iOS apps</span>
-              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
+              <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
           </nav>
         </div>
       </div>
@@ -192,7 +190,7 @@
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -200,10 +198,10 @@
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+              <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a"><</a>
             <a href="https://tiborsimon.io/articles/programming/ios-mathjax-integration" class="next-a">></a>
               <span class="neighbour-title next-title">Local MathJax in iOS apps</span>
-              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
+              <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
           </nav>
         </div>
       </div>
@@ -226,13 +224,13 @@
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -263,6 +261,12 @@
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -309,14 +313,8 @@
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

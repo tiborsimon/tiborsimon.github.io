@@ -52,7 +52,7 @@
             <hr>
             <p>Don’t you hate the way you used to upload your ssh keys to GitHub? Generate the key. Copy the public key in somehow. You have to use the mouse. You have to click. :D</p>
 <p>Anyway. If you are working on a remote machine, for example one you’ve just spun up with <strong>vagrant</strong>, tricks with the mouse might not an option for you. Of course, you can copy your already generated and used ssh key to your machine, but this is not the best approach.</p>
-<h1 id="using-the-github-api">Using the GitHub API</h1>
+<h1 id="using-the-github-api">Using the GitHub API <a class="header-anchor" href="#using-the-github-api" aria-hidden="true">¶</a></h1>
 <p>Using the <a href="https://developer.github.com/v3/">GitHub v3 API</a>, we are able to upload our ssh keys via a <a href="https://developer.github.com/v3/users/keys/">HTTP request</a> by <a href="https://developer.github.com/v3/users/keys/#create-a-public-key">creating a public key</a>.</p>
 <p>The following code snippets will use the GitHub API call to upload the named public key to the predefined GitHub account. It also handles the possible error cases:</p>
 <ul>
@@ -62,37 +62,37 @@
 </ul>
 <p>You can copy and paste this script to your machine, modify the <code>GITHUB_USERNAME</code> variable, and you are ready to go.</p>
 <p>This is the exact method what I used in my <strong>dotfiles</strong> deployment system. To learn more about that, read the <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/">corresponding article</a>.</p>
-<pre><code class="lang-bash">GITHUB_USERNAME=tiborsimon
+<pre><code class="language-bash">GITHUB_USERNAME=tiborsimon
 SSH_KEY=$HOME/.ssh/id_rsa
 
 if [ ! -f $SSH_KEY ] || [ ! -f $SSH_KEY.pub ]; then
-  echo &#39;Generate your ssh key first!&#39;
+  echo 'Generate your ssh key first!'
   exit
 fi
 
 github_result=0
-echo &#39;How do you want to name the key?&#39;
+echo 'How do you want to name the key?'
 read -e KEY_NAME
 until [ $github_result -eq 1 ]; do
   curl --silent -u &quot;$GITHUB_USERNAME&quot; --data &quot;{\&quot;title\&quot;:\&quot;$KEY_NAME\&quot;,\&quot;key\&quot;:\&quot;$(cat $SSH_KEY.pub)\&quot;}&quot; https://api.github.com/user/keys &gt; gh-result
-  if grep -q &#39;key is already in use&#39; gh-result; then
+  if grep -q 'key is already in use' gh-result; then
     github_result=1
-    echo &#39;Key is already in use.&#39;
-  elif grep -q &#39;&quot;verified&quot;: true&#39; gh-result; then
+    echo 'Key is already in use.'
+  elif grep -q '&quot;verified&quot;: true' gh-result; then
     github_result=1
     echo &quot;Key ($KEY_NAME) has been added successfully.&quot;
-  elif grep -q &#39;Bad credentials&#39; gh-result; then
-    echo &#39;Error during login: invalid username or password!&#39;
-    echo &#39;Try again!&#39;
+  elif grep -q 'Bad credentials' gh-result; then
+    echo 'Error during login: invalid username or password!'
+    echo 'Try again!'
   else
-    echo &#39;A problem occured during the upload!&#39;
+    echo 'A problem occured during the upload!'
     cat gh-result
-    echo &#39;Try again!&#39;
+    echo 'Try again!'
   fi
   rm gh-result
 done
 </code></pre>
-<h1 id="summary">Summary</h1>
+<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>You were presented to a method that allows you to upload ssh keys to your GitHub account via the command line.</p>
 
           </div>
@@ -102,10 +102,10 @@ done
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
-              <span class="neighbour-title next-title">Minimal MathJax package</span>
-              <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
+              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/url-deployment" class="next-a">></a>
+              <span class="neighbour-title next-title">Dotfiles with URL deployment</span>
+              <span class="neighbour-title previous-title">My dotfile system</span>
           </nav>
         </div>
       </div>
@@ -146,7 +146,7 @@ done
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -154,10 +154,10 @@ done
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/url-deployment" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
-              <span class="neighbour-title next-title">Minimal MathJax package</span>
-              <span class="neighbour-title previous-title">Dotfiles with URL deployment</span>
+              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/url-deployment" class="next-a">></a>
+              <span class="neighbour-title next-title">Dotfiles with URL deployment</span>
+              <span class="neighbour-title previous-title">My dotfile system</span>
           </nav>
         </div>
       </div>
@@ -180,13 +180,13 @@ done
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -217,6 +217,12 @@ done
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -263,14 +269,8 @@ done
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>

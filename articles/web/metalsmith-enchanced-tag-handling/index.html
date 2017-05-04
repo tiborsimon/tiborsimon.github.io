@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fuzzy search and sort algorithm - Tibor's Lab</title>
-  <meta name="description" content="What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.">
+  <title>Metalsmith enchanced tag handling - Tibor's Lab</title>
+  <meta name="description" content="The existing tag management plugins are not the bests..">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
 </head>
@@ -32,13 +32,14 @@
           <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
-            <div class="article-title">Fuzzy search and sort algorithm</div>
+            <div class="article-title">Metalsmith enchanced tag handling</div>
             <div class="details">
-              <div class="timestamp">2015. 10. 25.</div>
+              <div class="timestamp">2017. 04. 27.</div>
               <div class="tag-list">
-                <a href="https://tiborsimon.io/tag/search/">search</a>
-                <a href="https://tiborsimon.io/tag/python/">python</a>
-                <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
+                <a href="https://tiborsimon.io/tag/metalsmith/">metalsmith</a>
+                <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                <a href="https://tiborsimon.io/tag/plugin/">plugin</a>
+                <a href="https://tiborsimon.io/tag/web/">web</a>
               </div>
             </div>
           </div>
@@ -46,139 +47,60 @@
         <article class="content card padded">
           <div class="fade-loader"></div>
           <div class="fade-in">
-            <div class="summary">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
+            <div class="summary">The existing tag management plugins are not the bests..</div>
             <hr>
-            <p>A good example for this is Sublime Text’s search mechanism. You start to type in
-your query, and apart from the exact matches you will get the matches containing
-the letters you gave but not in the exact order. In this way you will find what
-you are looking for with a good chance even if you don’t know the exact name.</p>
-<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to
-provide all the relevant results that matched to the search query, but you have
-to sort the result in the relevance order.</p>
-<h1 id="searching">Searching <a class="header-anchor" href="#searching" aria-hidden="true">¶</a></h1>
-<p>The first part is the easier part. You only have to generate a clever regular
-expression from the given search query.</p>
-<p>You need to make sure, that between the given query’s characters there might be
-another characters. This can be achieved by inserting <code>.*</code> tokens:</p>
-<pre><code class="language-bash">foo -&gt; .*f.*o.*o.*
+            <pre><code>let enhanceTags = () =&gt; {
+  return (files, metalsmith, done) =&gt; {
+    let metadata = metalsmith.metadata()
+
+    // Adding url to the tag list of files..
+    for (let file in files) {
+      let target = files[file]
+      if (target.tags) {
+        for (let tag in target.tags) {
+          let data = target.tags[tag]
+          data.url = metadata.baseUrl + '/tag/' + data.slug + '/'
+        }
+      }
+    }
+
+    // Restructuring tags metadata field..
+    let enhancedTags = {
+      tagsByName: [],
+      tagsByCount: []
+    }
+    for (tag in metadata.tags) {
+      let urlSafe = metadata.tags[tag].urlSafe
+      let files = []
+      for (let item of metadata.tags[tag]) {
+        files.push(item)
+      }
+      enhancedTags.tagsByName.push({
+        tag,
+        urlSafe,
+        files,
+        count: files.length,
+        url: metadata.baseUrl + '/tag/' + urlSafe + '/'
+      })
+      enhancedTags.tagsByCount.push({
+        tag,
+        urlSafe,
+        files,
+        count: files.length,
+        url: metadata.baseUrl + '/tag/' + urlSafe + '/'
+      })
+    }
+    enhancedTags.tagsByCount.sort((a, b) =&gt; {
+      return b.count == a.count ? ((a.urlSafe &lt; b.urlSafe) ? -1 : (a.urlSafe &gt; b.urlSafe) ? 1 : 0) : b.count - a.count
+    })
+    enhancedTags.tagsByName.sort((a, b) =&gt; {
+      return (a.urlSafe &lt; b.urlSafe) ? -1 : (a.urlSafe &gt; b.urlSafe) ? 1 : 0
+    })
+    metadata.enhancedTags = enhancedTags
+    done()
+  }
+}
 </code></pre>
-<p>You may also want to capture each provided search characters in order to know
-it’s positions for later use. The regexp engine can provide the positions for
-the matched groups.</p>
-<pre><code class="language-bash">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
-</code></pre>
-<p>But be aware. This capturing may result you an unexpected result when you want
-to use the provided group positions by the regexp engine. Consider the following
-scenario: you want to find matches for ‘x’. The search query will be transformed
-into <code>.*(x).*</code>. Everything seems to be good, until your database contains a key
-that has more than one <code>x</code> characters in it. The regexp engine will match this
-key, but it will capture the last <code>x</code> character in the key[^1]. If your sorting
-mechanism is based on the captured group positions, this will be misleading for
-you.</p>
-<p>To solve this issue, you have to force the regexp engine to match every
-character but to next captured character in the pattern. You need to generate a
-more complex regular expression:</p>
-<pre><code class="language-bash">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
-</code></pre>
-<p>This is the final regular expression we are going to use in this article. We can
-now produce the match results, it’s time to sort them.</p>
-<h1 id="sorting">Sorting <a class="header-anchor" href="#sorting" aria-hidden="true">¶</a></h1>
-<p>As I mentioned earlier, we are going to use the captured group’s positions to
-sort the matched results. The sorting algorithm will weight every match result,
-and based on that weight, the soring can be executed.</p>
-<p>The weighting is based on the distance between the captured groups in a weighted
-manner. The distance between the first characters is punished by more weight
-that the distance between the last characters. In this way if you know partly
-the first few characters you want to search, this weighting method will provide
-the results matched in the first characters first. The lightest the matched
-result, the more relevant it is, so it will be present earlier in the provided
-search result.</p>
-<p>You can implement this behavior by iterating through the captured groups
-position list from back to front, calculating the distance between the matches
-and multiplying them by a weighting factor. After each iteration you increase
-this weighting factor. And that’s is.</p>
-<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
-<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage
-example and the implementation in the following code snippets:</p>
-<pre><code class="language-python">import fuzzy
-from pprint import pprint
-
-data_list = [
-    'efo',
-    'efoo',
-    'dfsfoo',
-    'efiofo',
-    'abc',
-    'cba',
-    'foo',
-    'ertfo',
-    'fefefofefioiio'
-]
-
-result = fuzzy.search(data_list, 'foo')
-
-pprint(result)
-
-# &gt;&gt; ['foo', 'efoo', 'efiofo', 'dfsfoo', 'fefefofefioiio']
-</code></pre>
-<p>The previous example had the following internal data structure.</p>
-<pre><code>[{'spans': ((0, 1), (1, 2), (2, 3)), 'string': 'foo', 'weight': 0},
- {'spans': ((1, 2), (2, 3), (3, 4)), 'string': 'efoo', 'weight': 4},
- {'spans': ((1, 2), (3, 4), (5, 6)), 'string': 'efiofo', 'weight': 7},
- {'spans': ((1, 2), (4, 5), (5, 6)), 'string': 'dfsfoo', 'weight': 8},
- {'spans': ((0, 1), (5, 6), (10, 11)), 'string': 'fefefofefioiio', 'weight': 12}]
-</code></pre>
-<p>And here is the implementation available as a gist.</p>
-<pre><code>import re
-
-
-def search(raw_list, search_string, ignore_case=True):
-    if search_string == '':
-        return raw_list
-    else:
-        search_pattern = _create_search_pattern_from(search_string)
-        result = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
-        result = _sort_result_list(result)
-        return [r['string'] for r in result]
-
-
-def _create_search_pattern_from(pattern):
-    grouped = '[^{}]*'.format(pattern[0])
-    for i in range(len(pattern)):
-        if i &lt; len(pattern) - 1:
-            grouped += '({})[^{}]*'.format(pattern[i], pattern[i + 1])
-        else:
-            grouped += '({})'.format(pattern[i])
-    grouped += '.*'
-    return grouped
-
-
-def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
-    if ignore_case:
-        p = re.compile(search_pattern, re.IGNORECASE)
-    else:
-        p = re.compile(search_pattern)
-    result = [{'string': link, 'spans': p.search(link).regs[1:]} for link in raw_list if p.match(link)]
-    return result
-
-
-def _calculate_weight_for_match(spans):
-    mult = 1
-    weight = 0
-    for i in reversed(range(len(spans))):
-        prev = 0 if i == 0 else spans[i-1][1]
-        weight += (spans[i][0] - prev) * mult
-        mult *= 2
-    return weight
-
-
-def _sort_result_list(result):
-    for r in result:
-        r['weight'] = _calculate_weight_for_match(r['spans'])
-    result = sorted(result, key=lambda k: k['weight'])
-    return result
-</code></pre>
-<p>[^1]: At least that was the case using the regexp engine shipped with Python 3.4 on OSX.</p>
 
           </div>
         </article>
@@ -187,10 +109,9 @@ def _sort_result_list(result):
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="next-a">></a>
-              <span class="neighbour-title next-title">Collect all nouns in hungarian</span>
-              <span class="neighbour-title previous-title">Mandatory + arbitrary order</span>
+              <span><</span>
+            <a href="https://tiborsimon.io/articles/programming/command-line-tool-with-python" class="next-a">></a>
+              <span class="neighbour-title next-title">Command line tool with Python</span>
           </nav>
         </div>
       </div>
@@ -239,10 +160,9 @@ def _sort_result_list(result):
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="next-a">></a>
-              <span class="neighbour-title next-title">Collect all nouns in hungarian</span>
-              <span class="neighbour-title previous-title">Mandatory + arbitrary order</span>
+              <span><</span>
+            <a href="https://tiborsimon.io/articles/programming/command-line-tool-with-python" class="next-a">></a>
+              <span class="neighbour-title next-title">Command line tool with Python</span>
           </nav>
         </div>
       </div>

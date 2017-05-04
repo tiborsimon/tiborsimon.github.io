@@ -57,50 +57,50 @@ python library: <em>BeautifulSoup4</em> and <em>Requests</em>.</p>
 tags from the html file, downloaded via a web request using the <em>Requests</em> library and created a soup
 from it with <em>BeautifulSoup4</em>.</p>
 <p>The whole process was arranged into an infinite while loop. It will run until a valid next page link
- can be found. Not the best solution, but hey, it was just a scipt :) Inside this while loop, there is a
- loop that will collect the words into a list. The delimiter for this inner loop was a common
- word (magyar szótár), that was present on every page after the last listed noun.</p>
-<pre><code class="lang-python">import requests
+can be found. Not the best solution, but hey, it was just a scipt :) Inside this while loop, there is a
+loop that will collect the words into a list. The delimiter for this inner loop was a common
+word (magyar szótár), that was present on every page after the last listed noun.</p>
+<pre><code class="language-python">import requests
 from bs4 import BeautifulSoup
 import json
 
 words = []
 
 def main():
-    next_link = &#39;https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek&#39;
+    next_link = 'https://hu.wiktionary.org/wiki/Kategória:magyar_főnevek'
     try:
         while(1):
             r = requests.get(next_link)
             if r.status_code != 200:
                 break
-            soup = BeautifulSoup(r.text, &#39;html.parser&#39;)
+            soup = BeautifulSoup(r.text, 'html.parser')
             extract_words_from_soup(soup)
-            with open(&#39;words.json&#39;, &#39;w&#39;) as outfile:
+            with open('words.json', 'w') as outfile:
                 json.dump(words, outfile)
-            next_link = &#39;https://hu.wiktionary.org&#39; + \
-                        soup.find(&#39;a&#39;, string=&#39;következő oldal&#39;)[&#39;href&#39;]
-            print(&#39;Word count: {} next_link: {}&#39;.format(len(words), next_link))
+            next_link = 'https://hu.wiktionary.org' + \
+                        soup.find('a', string='következő oldal')['href']
+            print('Word count: {} next_link: {}'.format(len(words), next_link))
     except TypeError:
-        print(&#39;\nFinished with {} words&#39;.format(len(words)))
+        print('\nFinished with {} words'.format(len(words)))
 
 def extract_words_from_soup(soup):
-    for li in soup.find_all(&#39;li&#39;):
+    for li in soup.find_all('li'):
         try:
             word = li.a.string
-            if word == &#39;magyar szótár&#39;:
+            if word == 'magyar szótár':
                 break
-            if word != &#39;magyar főnévi alakok&#39;:
+            if word != 'magyar főnévi alakok':
                 words.append(word)
         except:
             pass
 
-if __name__ == &#39;__main__&#39;:
+if __name__ == '__main__':
     main()
 </code></pre>
 <p>During the process, I printed out every next link the script was found, so I had a feedback where the script
 was in the alphabet. As you can see, the last log was an exception printout, indicating that the script could
 not parse the next link from the html file.</p>
-<pre><code class="lang-bash">Word count: 200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=adenokarcin%C3%B3ma#mw-pages
+<pre><code class="language-bash">Word count: 200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=adenokarcin%C3%B3ma#mw-pages
 Word count: 400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=agr%C3%A1rt%C3%B6rv%C3%A9ny#mw-pages
 Word count: 600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=akaszt%C3%B3fahumor#mw-pages
 Word count: 800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&amp;pagefrom=alapilletm%C3%A9ny#mw-pages
@@ -306,7 +306,7 @@ Finished with 30248 words
       <div class="card">
         <div class="fade-loader"></div>
         <div class="fade-in">
-          <img src="/assets/images/tibor.jpg" class="avatar"></img>
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
         </div>
       </div>
     
@@ -340,13 +340,13 @@ Finished with 30248 words
               hack<span>7</span>
             </a>
             <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>5</span>
+              javascript<span>6</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
-              web<span>4</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
@@ -377,6 +377,12 @@ Finished with 30248 words
             </a>
             <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
             </a>
             <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
@@ -423,14 +429,8 @@ Finished with 30248 words
             <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>1</span>
-            </a>
             <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
-              plugin<span>1</span>
             </a>
             <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>
