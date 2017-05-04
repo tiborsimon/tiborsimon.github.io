@@ -8,6 +8,7 @@
   --content-width: 800px;
   --content-padding: 19px;
   --margin-between-cards: 14px;
+  --card-radius: 0px;
   --main-color: #1565C0;
   --hover-color: #039BE5;
   --active-color: #03A9F4;
@@ -58,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 17px 12px -14px rgba(0, 0, 0, 0.82);
   background: var(--card-bg-color);
   margin-bottom: var(--margin-between-cards);
-  border-radius: 4px;
+  border-radius: var(--card-radius);
   overflow: hidden;
   position: relative; }
   .card h2 {
@@ -99,13 +100,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 270px;
   height: 270px;
   overflow: hidden;
-  border-radius: 4px; }
+  border-radius: var(--card-radius); }
 
 .avatar {
   width: 264px;
   height: 264px;
   overflow: hidden;
-  border-radius: 4px; }
+  border-radius: var(--card-radius); }
 
 .padded {
   padding: var(--content-padding); }
@@ -458,6 +459,7 @@ section {
   --content-width: 800px;
   --content-padding: 19px;
   --margin-between-cards: 14px;
+  --card-radius: 0px;
   --main-color: #1565C0;
   --hover-color: #039BE5;
   --active-color: #03A9F4;
@@ -487,10 +489,8 @@ section {
     align-items: center;
     background: #E0E0E0;
     vertical-align: middle;
-    height: var(--height);
-    padding: 0 15px;
+    padding: 0 10px;
     margin-bottom: 6px;
-    border-radius: calc(var(--height) / 2);
     margin-right: 6px;
     transition: all 0.2s ease; }
     .tag-list a.count {
@@ -506,7 +506,6 @@ section {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: calc(var(--height) / 2);
       transition: all 0.2s ease; }
     .tag-list a:hover {
       color: var(--color); }
@@ -559,29 +558,32 @@ section {
  * google-material-color v1.2.6
  * https://github.com/danlevan/google-material-color
  */
-nav .navmenu-wrapper {
+.navmenu-wrapper {
   width: 100%;
-  margin-top: 10px; }
+  padding: 20px;
+  color: white;
+  background: #3d7287;
+  margin-bottom: 14px;
+  box-shadow: 0 3px 31px 0px rgba(0, 0, 0, 0.6); }
 
-nav .navmenu {
+.navmenu {
   display: flex;
-  justify-content: space-between;
-  color: rgba(0, 0, 0, 0.87); }
-  nav .navmenu .logo {
+  justify-content: space-between; }
+  .navmenu .logo {
     font-size: 1.4em;
     color: var(--color);
     text-decoration: none;
     transition: all 0.2s ease; }
-    nav .navmenu .logo:hover {
+    .navmenu .logo:hover {
       color: var(--hover-color); }
-  nav .navmenu .group {
+  .navmenu .group {
     display: flex;
     align-items: center; }
-    nav .navmenu .group:first-child {
+    .navmenu .group:first-child {
       padding-left: 16px; }
-    nav .navmenu .group:last-child {
+    .navmenu .group:last-child {
       margin-right: 16px; }
-    nav .navmenu .group a {
+    .navmenu .group a {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -593,9 +595,9 @@ nav .navmenu {
       color: var(--color);
       text-decoration: none;
       transition: all 0.2s ease; }
-      nav .navmenu .group a:hover {
+      .navmenu .group a:hover {
         color: var(--hover-color); }
-      nav .navmenu .group a:active {
+      .navmenu .group a:active {
         color: var(--active-color); }
 
 /**
@@ -646,7 +648,6 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
     color: rgba(0, 0, 0, 0.54);
     padding: 0 30px 0; }
     .article header .details .timestamp {
-      font-size: 1.4em;
       display: flex;
       padding: 12px 0;
       align-items: center; }
@@ -657,8 +658,8 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
       .article header .details .tag-list a {
         color: #757575;
         background: #E0E0E0;
-        margin-right: 0;
-        margin-left: 6px !important;
+        margin-left: 0;
+        margin-right: 6px !important;
         margin-top: 2px; }
         .article header .details .tag-list a:hover {
           color: var(--main-color); }
