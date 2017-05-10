@@ -73,7 +73,7 @@ done
 </code></pre>
 <p>You might need to have administrator privileges to install packages on your machine. You have to replace the path to your <em>packages.txt</em> file and your system’s package manager.</p>
 <h2 id="conclusion">Conclusion <a class="header-anchor" href="#conclusion" aria-hidden="true">¶</a></h2>
-<p>This method is semi-manual, as you have to copy the files, and run the commands yourself. It would be much more elegant if you would have a <em>one-command deployment</em> solution. An another big drawback is the lack of version control (unless you have a local git repo on you USB drive). It is always a good idea to use versioning for <strong>anything</strong> you do in you machine in case of an accident[^1].</p>
+<p>This method is semi-manual, as you have to copy the files, and run the commands yourself. It would be much more elegant if you would have a <em>one-command deployment</em> solution. An another big drawback is the lack of version control (unless you have a local git repo on you USB drive). It is always a good idea to use versioning for <strong>anything</strong> you do in you machine in case of an accident<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
 <div class="divider">Solution two</div>
 <h1 id="hosted-and-versioned-configuration">Hosted and versioned configuration <a class="header-anchor" href="#hosted-and-versioned-configuration" aria-hidden="true">¶</a></h1>
 <p>The next improvement step is to put your config files in a version control system, and host it on the internet. If you want a public configuration, you can’t find better place than <strong>GitHub</strong>. However, if you want your config to be in a private place, I can suggest using <strong>BitBucket</strong>, as it offers free private repositories. Eihter versioning provider you choose, you will end up having an easy-to-deploy config system. You can clone your setup on a new machine, and you will have your setup ready to use.</p>
@@ -107,7 +107,13 @@ done
 <li><a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/">Upload ssh key via Github API</a></li>
 </ul>
 <p>If you want to take a look at the system itself, you can go to my <a href="https://github.com/tiborsimon/dotfiles">dotfiles GitHub repo</a>.</p>
-<p>[^1]: Oh the irony… Exactly after I typed this sentence my machine froze while traveling home on a bus… :D Commit often, people! Espacially when you turned off swap file generation in vim :D</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Oh the irony… Exactly after I typed this sentence my machine froze while traveling home on a bus… :D Commit often, people! Espacially when you turned off swap file generation in vim :D <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
           </div>
         </article>

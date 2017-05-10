@@ -70,7 +70,7 @@ to use the provided group positions by the regexp engine. Consider the following
 scenario: you want to find matches for ‘x’. The search query will be transformed
 into <code>.*(x).*</code>. Everything seems to be good, until your database contains a key
 that has more than one <code>x</code> characters in it. The regexp engine will match this
-key, but it will capture the last <code>x</code> character in the key[^1]. If your sorting
+key, but it will capture the last <code>x</code> character in the key<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. If your sorting
 mechanism is based on the captured group positions, this will be misleading for
 you.</p>
 <p>To solve this issue, you have to force the regexp engine to match every
@@ -176,7 +176,13 @@ def _sort_result_list(result):
     result = sorted(result, key=lambda k: k['weight'])
     return result
 </code></pre>
-<p>[^1]: At least that was the case using the regexp engine shipped with Python 3.4 on OSX.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>At least that was the case using the regexp engine shipped with Python 3.4 on OSX. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
           </div>
         </article>

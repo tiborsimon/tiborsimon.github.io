@@ -52,9 +52,9 @@
   $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
 </p>
 <p>However. This equation is only valid in the <strong>continuous time</strong> domain, therefore without any modification it is useless in the <strong>discrete time</strong> domain used by every digital machine. You won’t be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.</p>
-<p>Machines work with <em>discrete time series</em> that has a property called <strong>resolution</strong>. Resolution is the link between <em>continous</em> and <em>discrete</em> time domain. This property is implemented with <strong>sampling</strong>. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points[^1].</p>
+<p>Machines work with <em>discrete time series</em> that has a property called <strong>resolution</strong>. Resolution is the link between <em>continous</em> and <em>discrete</em> time domain. This property is implemented with <strong>sampling</strong>. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
 <p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
-<p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong>[^2] of continuous time.</p>
+<p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> of continuous time.</p>
 <p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
 <pre><code>s = sin(2*pi*1*t1);
 </code></pre>
@@ -103,7 +103,7 @@ s = sin(2*pi*3*t);
 <tr>
 <td style="text-align:left"><code>A</code></td>
 <td style="text-align:left">[full scale]</td>
-<td style="text-align:left">amplitude[^3]</td>
+<td style="text-align:left">amplitude<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>f</code></td>
@@ -252,9 +252,17 @@ stem(s)
 <h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
 <p>That’s it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you <em>study</em> them? Will you <em>derive</em> them over and over again?</p>
 <p>If your answers for the last two questions were both <em>nope</em>, then the go ahead and meet <b><a href="http://tiborsimon.io/projects/#TSPR0003">Smart Sinusoids</a></b>.</p>
-<p>[^1]: Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem">sampling theorem</a>. There are much more detail how these things really work.</p>
-<p>[^2]: Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds <em>(2s - 1/fs = 1.9s)</em>.</p>
-<p>[^3]: PC sound cards usually accept signals scaled -1 to 1.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem">sampling theorem</a>. There are much more detail how these things really work. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds <em>(2s - 1/fs = 1.9s)</em>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>PC sound cards usually accept signals scaled -1 to 1. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
           </div>
         </article>
