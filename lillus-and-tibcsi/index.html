@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Lillus & Tibcsi</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+  <style>
+    html {
+      height: 100%;
+      background: radial-gradient(circle at center 120px, #7C4D4D, #4F3031 500px);
+      background-color: ;
+      color: #BC8787;
+      text-shadow: 0px 1px 3px black;
+      font-size: 2em;
+      font-family: 'Josefin Slab', serif;
+    }
+
+    .wrapper {
+      width: 500px;
+      margin: 100px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    hr {
+      margin-top: 0;
+      margin-bottom: 36px;
+      width: 100%;
+      border: none;
+      border-top: 2px solid #BC8787;
+      box-shadow: 0px 1px 3px black;
+    }
+
+    .item {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .highlight {
+      font-weight: 600;
+      <!-- font-size: 120%; -->
+      margin-right: -1px;
+      margin-left: 4px;
+    }
+    .group {
+      margin-left: 5px;
+    }
+    .group:first-child {
+      margin-left: 0px;
+    }
+
+    td:first-child {
+      text-align: right;
+    }
+
+    td {
+      text-align: left;
+      padding: 0 2px;
+      vertical-align: bottom;
+    }
+
+#stats {
+      font-size: 90%;
+    }
+
+    @keyframes heartbeat {
+      0%   {transform: scale( 0.75 );}
+      15%  {transform: scale( 1.00 );}
+      40%  {transform: scale( 0.75 );}
+      70%  {transform: scale( 0.75 );}
+      85%  {transform: scale( 0.90 );}
+      100% {transform: scale( 0.75 );}
+    }
+
+    .beating {
+      position: relative;
+      top: 8px;
+      display: inline-block;
+      font-size: 150%;
+      animation: heartbeat 1s infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Lillus <span class="beating">&hearts;</span> Tibcsi</h1>
+    <hr />
+    <div class="item" id="from"><span class="highlight">2013. 12. 12. 21:45</span><br>ota vagyunk <b>Egyutt</b>, ami</div>
+    <hr />
+    <div class="item" id="since"></div>
+    <hr />
+    <div class="item" id="stats"></div>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/momentjs/2.10.6/moment-with-locales.min.js'></script>
+
+  <script>
+    "use strict";
+
+    var sinceDiv = document.getElementById("since");
+    var statsDiv = document.getElementById("stats");
+
+    var nowItem = document.getElementById("now");
+
+    var start = moment('2013.12.12. 21:45:00');
+
+    var formatNumber = function formatNumber(n) {
+      var s = n.toString().match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
+      var ret = '';
+      s.forEach(function (str) {
+        ret += "<span class=\"group\">" + str + "</span>";
+      });
+      return highlight(ret + '.');
+    };
+
+    var highlight = function highlight(p) {
+      return "<span class=\"highlight\">" + p + "</span>";
+    };
+
+    var updateTime = function updateTime() {
+      var diff = moment.duration(moment().diff(start));
+
+      var year = highlight(diff.get('years'));
+      var month = highlight(diff.get('months'));
+      var day = highlight(diff.get('days'));
+      var hour = highlight(diff.get('hours'));
+      var minute = highlight(diff.get('minutes'));
+      var second = highlight(diff.get('seconds'));
+
+      var years = formatNumber(Math.floor(diff.asYears()));
+      var months = formatNumber(Math.floor(diff.asMonths()));
+      var days = formatNumber(Math.floor(diff.asDays()));
+      var hours = formatNumber(Math.floor(diff.asHours()));
+      var minutes = formatNumber(Math.floor(diff.asMinutes()));
+      var seconds = formatNumber(Math.floor(diff.asSeconds()));
+
+      sinceDiv.innerHTML =
+        year + " ev " +
+        month + " honap " +
+        day + " nap<br>" +
+        hour + " ora " +
+        minute + " perc es " +
+        second + " masodperc.";
+
+      stats.innerHTML =
+        "Ez az <b>Egyutt</b> toltott" + years + " evunk,<br>" +
+        months + " honapunk," + days + " napunk,<br>" +
+        hours + " orank," + minutes + " percunk,<br>" +
+        seconds + " masodpercunk.";
+    };
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+
+</body>
+</html>
