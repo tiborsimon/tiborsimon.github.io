@@ -3,24 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Lillus & Tibcsi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
   <style>
     html {
       height: 100%;
-      background: radial-gradient(circle at center 120px, #7C4D4D, #4F3031 500px);
-      background-color: ;
+    }
+    body {
+      background: radial-gradient(circle at center 120px, #7C4D4D, #4F3031 800px);
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: #BC8787;
       text-shadow: 0px 1px 3px black;
       font-size: 2em;
       font-family: 'Josefin Slab', serif;
+      padding-top: 60px;
     }
 
     .wrapper {
       width: 500px;
-      margin: 100px auto;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        font-size: 1.6em;
+      }
+      .wrapper {
+        width: 100%;
+      }
     }
 
     h1 {
@@ -91,7 +107,7 @@
   <div class="wrapper">
     <h1>Lillus <span class="beating">&hearts;</span> Tibcsi</h1>
     <hr />
-    <div class="item" id="from"><span class="highlight">2013. 12. 12. 21:45</span><br>ota vagyunk <b>Egyutt</b>, ami</div>
+    <div class="item" id="from"><span class="highlight">2013. 12. 12. 21:45</span><br>óta vagyunk <b>Együtt</b>, ami</div>
     <hr />
     <div class="item" id="since"></div>
     <hr />
@@ -141,18 +157,18 @@
       var seconds = formatNumber(Math.floor(diff.asSeconds()));
 
       sinceDiv.innerHTML =
-        year + " ev " +
-        month + " honap " +
+        year + " év " +
+        month + " hónap " +
         day + " nap<br>" +
-        hour + " ora " +
-        minute + " perc es " +
-        second + " masodperc.";
+        hour + " óra " +
+        minute + " perc és " +
+        second + " másodperc.";
 
       stats.innerHTML =
-        "Ez az <b>Egyutt</b> toltott" + years + " evunk,<br>" +
-        months + " honapunk," + days + " napunk,<br>" +
-        hours + " orank," + minutes + " percunk,<br>" +
-        seconds + " masodpercunk.";
+        "Ez az <b>Együtt</b> töltött" + years + " évünk,<br>" +
+        months + " hónapunk," + days + " napunk,<br>" +
+        hours + " óránk," + minutes + " percünk,<br>" +
+        seconds + " másodpercünk.";
     };
 
     setInterval(updateTime, 1000);
