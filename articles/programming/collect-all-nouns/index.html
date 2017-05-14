@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <title>Collect all nouns in hungarian - Tibor's Lab</title>
   <meta name="description" content="I had to create a searchable noun list in hungarian without any publicly available word list that I can easily download.">
-  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
-  <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <nav class="navmenu-wrapper">
     <div class="fade-loader"></div>
     <div class="fade-in">
       <div class="navmenu">
-        <a class="logo" href="http://localhost:8000">
+        <a class="logo" href="https://tiborsimon.io">
           Tibor's Lab 
         </a>
         <div class="group">
-          <a href="http://localhost:8000#articles">Articles</a>
-          <a href="http://localhost:8000#projects">Projects</a>
-          <a href="http://localhost:8000#about">About</a>
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
         </div>
       </div>
     </div>
@@ -33,10 +33,10 @@
             <div class="article-title">Collect all nouns in hungarian</div>
             <div class="details">
               <div class="tag-list">
-                <a href="http://localhost:8000/tag/web/">web</a>
-                <a href="http://localhost:8000/tag/hack/">hack</a>
-                <a href="http://localhost:8000/tag/python/">python</a>
-                <a href="http://localhost:8000/tag/search/">search</a>
+                <a href="https://tiborsimon.io/tag/web/">web</a>
+                <a href="https://tiborsimon.io/tag/hack/">hack</a>
+                <a href="https://tiborsimon.io/tag/python/">python</a>
+                <a href="https://tiborsimon.io/tag/search/">search</a>
               </div>
               <div class="timestamp">2015. 10. 24.</div>
             </div>
@@ -58,7 +58,7 @@ from it with <em>BeautifulSoup4</em>.</p>
 can be found. Not the best solution, but hey, it was just a scipt :) Inside this while loop, there is a
 loop that will collect the words into a list. The delimiter for this inner loop was a common
 word (magyar szótár), that was present on every page after the last listed noun.</p>
-<pre><div class="code-title">python</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#aixohayxrprustkpwjhuvxyvyagekdsjkpqqdtuhhgvugkatxalypqqfgkrrmloijoqkrmvfqkvxbbyqfryoiwgrweihzksrdwmd">&#xe9b8;</button><code id="aixohayxrprustkpwjhuvxyvyagekdsjkpqqdtuhhgvugkatxalypqqfgkrrmloijoqkrmvfqkvxbbyqfryoiwgrweihzksrdwmd">import requests
+<pre><div class="code-title">python</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bbwrjqdzheumjisyyvusauzptjjcmuopedsjltfjkjgnsmjajlsazwnjoqyguvczbakqramooywvwljzgloxuxpvwiisfezpltzg">&#xe9b8;</button><code id="bbwrjqdzheumjisyyvusauzptjjcmuopedsjltfjkjgnsmjajlsazwnjoqyguvczbakqramooywvwljzgloxuxpvwiisfezpltzg">import requests
 from bs4 import BeautifulSoup
 import json
 
@@ -98,7 +98,7 @@ if __name__ == '__main__':
 <p>During the process, I printed out every next link the script was found, so I had a feedback where the script
 was in the alphabet. As you can see, the last log was an exception printout, indicating that the script could
 not parse the next link from the html file.</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#oqpabbtrarlkigvzocprbmxugczhkguqoitzovfcnichqcqfxqadltzmfhbzpviulaelkzxbqgbulecvncghbcijuaxgvngsjwiq">&#xe9b8;</button><code id="oqpabbtrarlkigvzocprbmxugczhkguqoitzovfcnichqcqfxqadltzmfhbzpviulaelkzxbqgbulecvncghbcijuaxgvngsjwiq">Word count: 200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&pagefrom=adenokarcin%C3%B3ma#mw-pages
+<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fyhiemnmssrzzrsumwitqpnrjlcvywrzgxshudtakwjydlkxznanoefhwwpyoqfywjovtybevaqbprqvgfsrfingrvfbimpxkwbh">&#xe9b8;</button><code id="fyhiemnmssrzzrsumwitqpnrjlcvywrzgxshudtakwjydlkxznanoefhwwpyoqfywjovtybevaqbprqvgfsrfingrvfbimpxkwbh">Word count: 200 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&pagefrom=adenokarcin%C3%B3ma#mw-pages
 Word count: 400 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&pagefrom=agr%C3%A1rt%C3%B6rv%C3%A9ny#mw-pages
 Word count: 600 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&pagefrom=akaszt%C3%B3fahumor#mw-pages
 Word count: 800 next_link: https://hu.wiktionary.org/w/index.php?title=Kateg%C3%B3ria:magyar_f%C5%91nevek&pagefrom=alapilletm%C3%A9ny#mw-pages
@@ -260,8 +260,8 @@ Finished with 30248 words
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="http://localhost:8000/articles/programming/fuzzy-search" class="previous-a"><</a>
-            <a href="http://localhost:8000/articles/dsp/generating-sinusoids" class="next-a">></a>
+              <a href="https://tiborsimon.io/articles/programming/fuzzy-search" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/dsp/generating-sinusoids" class="next-a">></a>
               <span class="neighbour-title next-title">Generating sinusoid signals</span>
               <span class="neighbour-title previous-title">Fuzzy search and sort algorithm</span>
           </nav>
@@ -312,8 +312,8 @@ Finished with 30248 words
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="http://localhost:8000/articles/programming/fuzzy-search" class="previous-a"><</a>
-            <a href="http://localhost:8000/articles/dsp/generating-sinusoids" class="next-a">></a>
+              <a href="https://tiborsimon.io/articles/programming/fuzzy-search" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/dsp/generating-sinusoids" class="next-a">></a>
               <span class="neighbour-title next-title">Generating sinusoid signals</span>
               <span class="neighbour-title previous-title">Fuzzy search and sort algorithm</span>
           </nav>
@@ -334,115 +334,115 @@ Finished with 30248 words
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
-            <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
               javascript<span>7</span>
             </a>
-            <a href="http://localhost:8000/tag/web/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
-            <a href="http://localhost:8000/tag/python/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
             </a>
-            <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
               tools<span>4</span>
             </a>
-            <a href="http://localhost:8000/tag/config/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
               config<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/github/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
               GitHub<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
               dsp<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
               embedded<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
               LaTEX<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
               linux<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
               plugin<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/search/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
               search<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/api/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
               API<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
               bash<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
               CLI<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/control/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
               control<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
               debug<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
               emacs<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/game/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
               game<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
               hardware<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
               ios<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/java/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
               java<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/make/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
               make<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/markdown/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
               markdown<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               matlab<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
               signals<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
               ssh<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
               tool<span>1</span>
             </a>
           </div>

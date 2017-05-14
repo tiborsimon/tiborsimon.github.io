@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <title>Local MathJax in iOS apps - Tibor's Lab</title>
   <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.">
-  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
-  <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <nav class="navmenu-wrapper">
     <div class="fade-loader"></div>
     <div class="fade-in">
       <div class="navmenu">
-        <a class="logo" href="http://localhost:8000">
+        <a class="logo" href="https://tiborsimon.io">
           Tibor's Lab 
         </a>
         <div class="group">
-          <a href="http://localhost:8000#articles">Articles</a>
-          <a href="http://localhost:8000#projects">Projects</a>
-          <a href="http://localhost:8000#about">About</a>
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
         </div>
       </div>
     </div>
@@ -33,11 +33,11 @@
             <div class="article-title">Local MathJax in iOS apps</div>
             <div class="details">
               <div class="tag-list">
-                <a href="http://localhost:8000/tag/mathjax/">MathJax</a>
-                <a href="http://localhost:8000/tag/ios/">ios</a>
-                <a href="http://localhost:8000/tag/hack/">hack</a>
-                <a href="http://localhost:8000/tag/javascript/">javascript</a>
-                <a href="http://localhost:8000/tag/latex/">LaTEX</a>
+                <a href="https://tiborsimon.io/tag/mathjax/">MathJax</a>
+                <a href="https://tiborsimon.io/tag/ios/">ios</a>
+                <a href="https://tiborsimon.io/tag/hack/">hack</a>
+                <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                <a href="https://tiborsimon.io/tag/latex/">LaTEX</a>
               </div>
               <div class="timestamp">2016. 02. 20.</div>
             </div>
@@ -73,7 +73,7 @@
 </table>
 <h1 id="prerequisite">Prerequisite <a class="header-anchor internal-link" href="#prerequisite" aria-hidden="true">¶</a></h1>
 <p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611" class="external-link" target="_blank">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ldjmdrlvvcbttvrboshuvfzwlcliwsvqzmfucimellaqdtarswkxwtrjvgonpjqlmbmalfjkqwqouaabolalfvbmpuawvgitntcl">&#xe9b8;</button><code id="ldjmdrlvvcbttvrboshuvfzwlcliwsvqzmfucimellaqdtarswkxwtrjvgonpjqlmbmalfjkqwqouaabolalfvbmpuawvgitntcl"><math title="2^(2/(sqrt(6))" xmlns="http://www.w3.org/1998/Math/MathML">
+<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wlthhatqomufvrynyhyyoyvdxzoixwuubideqlynubpqdzrffsaynrnjbicvadncginklmwteguwabccqaiplniozevycxjxgnvq">&#xe9b8;</button><code id="wlthhatqomufvrynyhyyoyvdxzoixwuubideqlynubpqdzrffsaynrnjbicvadncginklmwteguwabccqaiplniozevycxjxgnvq"><math title="2^(2/(sqrt(6))" xmlns="http://www.w3.org/1998/Math/MathML">
   <mstyle mathcolor="blue" fontfamily="sanserif" displaystyle="true">
     <msup>
       <mn>2</mn>
@@ -94,7 +94,7 @@
 </math>
 </code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><div class="code-title">latex</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vpqavnxvbkepzzmnyrqehhyunazgktmkxopatkqrvhwfjdioqymbusnobwfmhtiuukmdayhxlgujqrijrhwyzkruvrigngwwrppf">&#xe9b8;</button><code id="vpqavnxvbkepzzmnyrqehhyunazgktmkxopatkqrvhwfjdioqymbusnobwfmhtiuukmdayhxlgujqrijrhwyzkruvrigngwwrppf">2^{\frac{2}{\sqrt{6}}}
+<pre><div class="code-title">latex</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bcdnjcswyhlflaqdyszwbvmkmpzrugzjujuyqmvcvqpeeuumuzqhocwjhjfvfvcwshkevdvnswexzaeflaxsqzjtkwvnwiekhybx">&#xe9b8;</button><code id="bcdnjcswyhlflaqdyszwbvmkmpzrugzjujuyqmvcvqpeeuumuzqhocwjhjfvfvcwshkevdvnswexzaeflaxsqzjtkwvnwiekhybx">2^{\frac{2}{\sqrt{6}}}
 </code></pre>
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org" class="external-link" target="_blank">MathJax</a> for this purpose.</p>
 <h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor internal-link" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
@@ -121,7 +121,7 @@
         </figure>
 <h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor internal-link" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pmawioogspxddowpxpmjclqgpdveijcbsxphvnjnoevqepqdygpxxbeoygxxdbnijiytccyouvgrpciegscaetfbgmjtwtyznppb">&#xe9b8;</button><code id="pmawioogspxddowpxpmjclqgpdveijcbsxphvnjnoevqepqdygpxxbeoygxxdbnijiytccyouvgrpciegscaetfbgmjtwtyznppb"><!DOCTYPE html>
+<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#uqzaiolxsojlfsongvltvhundpdlpvbmmruthnjhsvhujysrdhwhiogzshqutzeiuaxppqncahzfgjpaogchmlsurdaoeduhcjyy">&#xe9b8;</button><code id="uqzaiolxsojlfsongvltvhundpdlpvbmmruthnjhsvhujysrdhwhiogzshqutzeiuaxppqncahzfgjpaogchmlsurdaoeduhcjyy"><!DOCTYPE html>
 <html>
     <head>
         <title>MathJax TeX Test Page</title>
@@ -144,7 +144,7 @@
 </html>
 </code></pre>
 <p>… so I used its <code>loadHTMLString</code> method to do that:</p>
-<pre><div class="code-title">swift</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#icuafcabzckejvsxsxvytmbcoqrgmshkkpuetfobypmomurprfoelzrnlhubfdcfqxdtlzdsmawyadmrywkncfxhlcupnetetnwz">&#xe9b8;</button><code id="icuafcabzckejvsxsxvytmbcoqrgmshkkpuetfobypmomurprfoelzrnlhubfdcfqxdtlzdsmawyadmrywkncfxhlcupnetetnwz">//
+<pre><div class="code-title">swift</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wjehsbaxegmpdqgfgwrsewqnvwzmmjgihgtsbcwbhhhsmuyexrrlxjzonpeenddjethqvsrumafilsxoebownmvfjoehygsqrdnz">&#xe9b8;</button><code id="wjehsbaxegmpdqgfgwrsewqnvwzmmjgihgtsbcwbhhhsmuyexrrlxjzonpeenddjethqvsrumafilsxoebownmvfjoehygsqrdnz">//
 //  ViewController.swift
 //  MathJaxTest01
 //
@@ -226,8 +226,8 @@ class ViewController: UIViewController {
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="http://localhost:8000/articles/web/minimal-mathjax" class="previous-a"><</a>
-            <a href="http://localhost:8000/articles/programming/equation-engine" class="next-a">></a>
+              <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/programming/equation-engine" class="next-a">></a>
               <span class="neighbour-title next-title">Writing an equation engine</span>
               <span class="neighbour-title previous-title">Minimal MathJax package</span>
           </nav>
@@ -278,8 +278,8 @@ class ViewController: UIViewController {
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="http://localhost:8000/articles/web/minimal-mathjax" class="previous-a"><</a>
-            <a href="http://localhost:8000/articles/programming/equation-engine" class="next-a">></a>
+              <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/programming/equation-engine" class="next-a">></a>
               <span class="neighbour-title next-title">Writing an equation engine</span>
               <span class="neighbour-title previous-title">Minimal MathJax package</span>
           </nav>
@@ -300,115 +300,115 @@ class ViewController: UIViewController {
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
-            <a href="http://localhost:8000/tag/hack/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
               javascript<span>7</span>
             </a>
-            <a href="http://localhost:8000/tag/web/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
-            <a href="http://localhost:8000/tag/python/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
             </a>
-            <a href="http://localhost:8000/tag/tools/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
               tools<span>4</span>
             </a>
-            <a href="http://localhost:8000/tag/config/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
               config<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/deploy/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/github/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
               GitHub<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
               metalsmith<span>3</span>
             </a>
-            <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/dsp/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
               dsp<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/embedded/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
               embedded<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/latex/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
               LaTEX<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/linux/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
               linux<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/plugin/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
               plugin<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/regexp/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
               regexp<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/search/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
               search<span>2</span>
             </a>
-            <a href="http://localhost:8000/tag/api/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
               API<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/bash/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
               bash<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/cli/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
               CLI<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/control/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
               control<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/debug/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
               debug<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/emacs/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
               emacs<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/game/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
               game<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/hardware/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
               hardware<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/ios/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
               ios<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/java/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
               java<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/make/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
               make<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/markdown/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
               markdown<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               matlab<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/pelican/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
               pelican<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/serial/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
               serial<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/signals/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
               signals<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/ssh/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
               ssh<span>1</span>
             </a>
-            <a href="http://localhost:8000/tag/tool/#articles" class="count">
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
               tool<span>1</span>
             </a>
           </div>
