@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <title>Local MathJax in iOS apps - Tibor's Lab</title>
   <meta name="description" content="Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.">
-  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
-  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <nav class="navmenu-wrapper">
     <div class="fade-loader"></div>
     <div class="fade-in">
       <div class="navmenu">
-        <a class="logo" href="https://tiborsimon.io">
+        <a class="logo" href="http://localhost:8000">
           Tibor's Lab 
         </a>
         <div class="group">
-          <a href="https://tiborsimon.io#articles">Articles</a>
-          <a href="https://tiborsimon.io#projects">Projects</a>
-          <a href="https://tiborsimon.io#about">About</a>
+          <a href="http://localhost:8000#articles">Articles</a>
+          <a href="http://localhost:8000#projects">Projects</a>
+          <a href="http://localhost:8000#about">About</a>
         </div>
       </div>
     </div>
@@ -33,11 +33,11 @@
             <div class="article-title">Local MathJax in iOS apps</div>
             <div class="details">
               <div class="tag-list">
-                <a href="https://tiborsimon.io/tag/mathjax/">MathJax</a>
-                <a href="https://tiborsimon.io/tag/ios/">ios</a>
-                <a href="https://tiborsimon.io/tag/hack/">hack</a>
-                <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
-                <a href="https://tiborsimon.io/tag/latex/">LaTEX</a>
+                <a href="http://localhost:8000/tag/mathjax/">MathJax</a>
+                <a href="http://localhost:8000/tag/ios/">ios</a>
+                <a href="http://localhost:8000/tag/hack/">hack</a>
+                <a href="http://localhost:8000/tag/javascript/">javascript</a>
+                <a href="http://localhost:8000/tag/latex/">LaTEX</a>
               </div>
               <div class="timestamp">2016. 02. 20.</div>
             </div>
@@ -48,7 +48,7 @@
           <div class="fade-in">
             <div class="summary">Integrating MathJax locally in an iOS app to be able to use mathematical equations stored in LaTEX.</div>
             <hr>
-            <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
+            <p>In this article I am going to show you a method to integrate <a href="https://www.mathjax.org" class="external-link" target="_blank">MathJax</a> - <em>an external javascript display engine for mathematics</em> - in an iOS app. I used the following components:</p>
 <table>
 <thead>
 <tr>
@@ -71,37 +71,36 @@
 </tr>
 </tbody>
 </table>
-<h1 id="prerequisite">Prerequisite <a class="header-anchor" href="#prerequisite" aria-hidden="true">¶</a></h1>
-<p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><code class="language-html">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-  &lt;mstyle mathcolor=&quot;blue&quot; fontfamily=&quot;sanserif&quot; displaystyle=&quot;true&quot;&gt;
-    &lt;msup&gt;
-      &lt;mn&gt;2&lt;/mn&gt;
-      &lt;mrow&gt;
-        &lt;mfrac&gt;
-          &lt;mn&gt;2&lt;/mn&gt;
-          &lt;mrow&gt;
-            &lt;msqrt&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;6&lt;/mn&gt;
-              &lt;/mrow&gt;
-            &lt;/msqrt&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-  &lt;/mstyle&gt;
-&lt;/math&gt;
+<h1 id="prerequisite">Prerequisite <a class="header-anchor internal-link" href="#prerequisite" aria-hidden="true">¶</a></h1>
+<p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611" class="external-link" target="_blank">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
+<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ldjmdrlvvcbttvrboshuvfzwlcliwsvqzmfucimellaqdtarswkxwtrjvgonpjqlmbmalfjkqwqouaabolalfvbmpuawvgitntcl">&#xe9b8;</button><code id="ldjmdrlvvcbttvrboshuvfzwlcliwsvqzmfucimellaqdtarswkxwtrjvgonpjqlmbmalfjkqwqouaabolalfvbmpuawvgitntcl"><math title="2^(2/(sqrt(6))" xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle mathcolor="blue" fontfamily="sanserif" displaystyle="true">
+    <msup>
+      <mn>2</mn>
+      <mrow>
+        <mfrac>
+          <mn>2</mn>
+          <mrow>
+            <msqrt>
+              <mrow>
+                <mn>6</mn>
+              </mrow>
+            </msqrt>
+          </mrow>
+        </mfrac>
+      </mrow>
+    </msup>
+  </mstyle>
+</math>
 </code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><code class="language-latex">2^{\frac{2}{\sqrt{6}}}
+<pre><div class="code-title">latex</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vpqavnxvbkepzzmnyrqehhyunazgktmkxopatkqrvhwfjdioqymbusnobwfmhtiuukmdayhxlgujqrijrhwyzkruvrigngwwrppf">&#xe9b8;</button><code id="vpqavnxvbkepzzmnyrqehhyunazgktmkxopatkqrvhwfjdioqymbusnobwfmhtiuukmdayhxlgujqrijrhwyzkruvrigngwwrppf">2^{\frac{2}{\sqrt{6}}}
 </code></pre>
-<p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org">MathJax</a> for this purpose.</p>
-<h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
+<p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org" class="external-link" target="_blank">MathJax</a> for this purpose.</p>
+<h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor internal-link" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
 <p>Download the sources from <a href="https://github.com/mathjax/MathJax/releases/latest" target="_blank">MathJax’s Github page</a>. At the time I wrote this article, the latest version was <em>2.6.1</em>. It could take quite a bit of time to download the whole zip file.</p>
 <p>I put the downloaded files into the Xcode project’s Vendor folder:</p>
 <p>Simply unboxed the zip, the package takes up <strong>180 MB</strong> space <em>(that’s a lot!)</em>. In a future article I will show you the minimal needed content of this package that is be able to render the expressions.</p>
-<div class="figures">
 <figure id="fig1">
           <img width=400 src="/assets/images/articles/mathjax-ios/mathjax-ios-vendor-folder.png" alt="Location of the downloaded MathJax sources.">
           <figcaption>Fig 1: Location of the downloaded MathJax sources.</figcaption>
@@ -110,10 +109,8 @@
           <img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-raw-package-size.png" alt="Size of the freshly downloaded package.">
           <figcaption>Fig 2: Size of the freshly downloaded package.</figcaption>
         </figure>
-</div>
-<h1 id="adding-the-mathjax-package-to-the-project">Adding the MathJax package to the project <a class="header-anchor" href="#adding-the-mathjax-package-to-the-project" aria-hidden="true">¶</a></h1>
+<h1 id="adding-the-mathjax-package-to-the-project">Adding the MathJax package to the project <a class="header-anchor internal-link" href="#adding-the-mathjax-package-to-the-project" aria-hidden="true">¶</a></h1>
 <p>I added the downloaded and extracted MathJax sources to a single view based Xcode project, by dragging the folder into the project navigator. I unchecked the copy sources option.</p>
-<div class="figures">
 <figure id="fig3">
           <img width=280 src="/assets/images/articles/mathjax-ios/adding-the-sources.png" alt="Adding the sources to the project.">
           <figcaption>Fig 3: Adding the sources to the project.</figcaption>
@@ -122,19 +119,18 @@
           <img width=500 src="/assets/images/articles/mathjax-ios/copy-items.png" alt="Unchecking the copy items if needed option.">
           <figcaption>Fig 4: Unchecking the copy items if needed option.</figcaption>
         </figure>
-</div>
-<h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
+<h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor internal-link" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
-        &lt;script type=&quot;text/javascript&quot; async
-            src=&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;&gt;
-            &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div style=&quot;font-size: 30pt; color: #eee;&quot;&gt;
+<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pmawioogspxddowpxpmjclqgpdveijcbsxphvnjnoevqepqdygpxxbeoygxxdbnijiytccyouvgrpciegscaetfbgmjtwtyznppb">&#xe9b8;</button><code id="pmawioogspxddowpxpmjclqgpdveijcbsxphvnjnoevqepqdygpxxbeoygxxdbnijiytccyouvgrpciegscaetfbgmjtwtyznppb"><!DOCTYPE html>
+<html>
+    <head>
+        <title>MathJax TeX Test Page</title>
+        <script type="text/javascript" async
+            src="MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML">
+            </script>
+    </head>
+    <body>
+        <div style="font-size: 30pt; color: #eee;">
             $$    
             \begin{equation}
               \prod_{\substack{
@@ -143,12 +139,12 @@
                  M_{i,j}
             \end{equation}
             $$
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+        </div>
+    </body>
+</html>
 </code></pre>
 <p>… so I used its <code>loadHTMLString</code> method to do that:</p>
-<pre><code class="language-swift">//
+<pre><div class="code-title">swift</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#icuafcabzckejvsxsxvytmbcoqrgmshkkpuetfobypmomurprfoelzrnlhubfdcfqxdtlzdsmawyadmrywkncfxhlcupnetetnwz">&#xe9b8;</button><code id="icuafcabzckejvsxsxvytmbcoqrgmshkkpuetfobypmomurprfoelzrnlhubfdcfqxdtlzdsmawyadmrywkncfxhlcupnetetnwz">//
 //  ViewController.swift
 //  MathJaxTest01
 //
@@ -169,7 +165,7 @@ class ViewController: UIViewController {
         let path = NSBundle.mainBundle().bundlePath
         let baseURL = NSURL.fileURLWithPath(path)
 
-        let myHTML = &quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=\&quot;text/javascript\&quot; async  src=\&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=\&quot;font-size: 30pt; color: #eee;\&quot;&gt;$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;
+        let myHTML = "<!DOCTYPE html><html><head><title>MathJax TeX Test Page</title><script type=\"text/javascript\" async  src=\"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\"></script></head><body>  <div style=\"font-size: 30pt; color: #eee;\">$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$</div></body></html>"
         myWebView.loadHTMLString(myHTML, baseURL:baseURL)
 
     }
@@ -182,9 +178,8 @@ class ViewController: UIViewController {
 }
 
 </code></pre>
-<h1 id="testing-with-the-simulator">Testing with the simulator <a class="header-anchor" href="#testing-with-the-simulator" aria-hidden="true">¶</a></h1>
+<h1 id="testing-with-the-simulator">Testing with the simulator <a class="header-anchor internal-link" href="#testing-with-the-simulator" aria-hidden="true">¶</a></h1>
 <p>The project loads up to the simulator a bit slowly. After it loads, it renders the mathematical expression to the <em>UIWebView</em> in 8 phases:</p>
-<div class="figures">
 <figure id="fig5">
           <img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-00.png" alt="Rendering phase 1: It starts as a blank screen.">
           <figcaption>Fig 5: Rendering phase 1: It starts as a blank screen.</figcaption>
@@ -217,11 +212,10 @@ class ViewController: UIViewController {
           <img width=280 src="/assets/images/articles/mathjax-ios/mathjax-ios-07.png" alt="Rendering phase 8: Render finished.">
           <figcaption>Fig 12: Rendering phase 8: Render finished.</figcaption>
         </figure>
-</div>
 <p>The whole rendering happens in less then half a second, but it is noticeable. If you want to use this method to render mathematical expresions in your app, you have to make sure, you only show your <em>UIWebView</em>, when it fulli loaded.</p>
-<h1 id="try-it-out-yourself">Try it out yourself! <a class="header-anchor" href="#try-it-out-yourself" aria-hidden="true">¶</a></h1>
+<h1 id="try-it-out-yourself">Try it out yourself! <a class="header-anchor internal-link" href="#try-it-out-yourself" aria-hidden="true">¶</a></h1>
 <p>You can download the whole Xcode project with the added MathJax sources from <a href="https://github.com/tiborsimon/ios-local-mathjax-template" target="_blank">the project’s Github repository</a>.</p>
-<h1 id="acknowledgement">Acknowledgement <a class="header-anchor" href="#acknowledgement" aria-hidden="true">¶</a></h1>
+<h1 id="acknowledgement">Acknowledgement <a class="header-anchor internal-link" href="#acknowledgement" aria-hidden="true">¶</a></h1>
 <p>For this project, I get a lot of ideas from <a href="http://new2objectivec.blogspot.hu/2013/03/mathjax-v21-works-beautifully-on-ios-61.html?m=1" target="_blank">New 2 Objective-C</a> blog. His implementation is based on a local file writing and reading, which is pretty slow, but it works :)</p>
 <p>I also used some ideas from Stack Overflow to <a href="http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview" target="_blank">make my UIWebView transparent</a></p>
 
@@ -232,8 +226,8 @@ class ViewController: UIViewController {
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/equation-engine" class="next-a">></a>
+              <a href="http://localhost:8000/articles/web/minimal-mathjax" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/programming/equation-engine" class="next-a">></a>
               <span class="neighbour-title next-title">Writing an equation engine</span>
               <span class="neighbour-title previous-title">Minimal MathJax package</span>
           </nav>
@@ -284,8 +278,8 @@ class ViewController: UIViewController {
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/equation-engine" class="next-a">></a>
+              <a href="http://localhost:8000/articles/web/minimal-mathjax" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/programming/equation-engine" class="next-a">></a>
               <span class="neighbour-title next-title">Writing an equation engine</span>
               <span class="neighbour-title previous-title">Minimal MathJax package</span>
           </nav>
@@ -306,112 +300,115 @@ class ViewController: UIViewController {
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
-            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+            <a href="http://localhost:8000/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>6</span>
+            <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+              javascript<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+            <a href="http://localhost:8000/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
-            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+            <a href="http://localhost:8000/tag/python/#articles" class="count">
               python<span>4</span>
             </a>
-            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+            <a href="http://localhost:8000/tag/tools/#articles" class="count">
+              tools<span>4</span>
+            </a>
+            <a href="http://localhost:8000/tag/config/#articles" class="count">
+              config<span>3</span>
+            </a>
+            <a href="http://localhost:8000/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+            <a href="http://localhost:8000/tag/github/#articles" class="count">
               GitHub<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>3</span>
+            <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+              metalsmith<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+            <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+            <a href="http://localhost:8000/tag/dsp/#articles" class="count">
               dsp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+            <a href="http://localhost:8000/tag/embedded/#articles" class="count">
               embedded<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+            <a href="http://localhost:8000/tag/latex/#articles" class="count">
               LaTEX<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+            <a href="http://localhost:8000/tag/linux/#articles" class="count">
               linux<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+            <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+            <a href="http://localhost:8000/tag/plugin/#articles" class="count">
               plugin<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+            <a href="http://localhost:8000/tag/regexp/#articles" class="count">
               regexp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+            <a href="http://localhost:8000/tag/search/#articles" class="count">
               search<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+            <a href="http://localhost:8000/tag/api/#articles" class="count">
               API<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+            <a href="http://localhost:8000/tag/bash/#articles" class="count">
               bash<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+            <a href="http://localhost:8000/tag/cli/#articles" class="count">
               CLI<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+            <a href="http://localhost:8000/tag/control/#articles" class="count">
               control<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+            <a href="http://localhost:8000/tag/debug/#articles" class="count">
               debug<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+            <a href="http://localhost:8000/tag/emacs/#articles" class="count">
               emacs<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+            <a href="http://localhost:8000/tag/game/#articles" class="count">
               game<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+            <a href="http://localhost:8000/tag/hardware/#articles" class="count">
               hardware<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+            <a href="http://localhost:8000/tag/ios/#articles" class="count">
               ios<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+            <a href="http://localhost:8000/tag/java/#articles" class="count">
               java<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+            <a href="http://localhost:8000/tag/make/#articles" class="count">
               make<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+            <a href="http://localhost:8000/tag/pelican/#articles" class="count">
               pelican<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+            <a href="http://localhost:8000/tag/serial/#articles" class="count">
               serial<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+            <a href="http://localhost:8000/tag/signals/#articles" class="count">
               signals<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+            <a href="http://localhost:8000/tag/ssh/#articles" class="count">
               ssh<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+            <a href="http://localhost:8000/tag/tool/#articles" class="count">
               tool<span>1</span>
             </a>
           </div>
@@ -446,6 +443,16 @@ class ViewController: UIViewController {
   
     ga('create', 'UA-68408613-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    var clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
   </script>
 </body>
 </html>

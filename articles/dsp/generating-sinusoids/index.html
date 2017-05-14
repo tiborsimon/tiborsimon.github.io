@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <title>Generating sinusoid signals - Tibor's Lab</title>
   <meta name="description" content="Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn&#x27;t. Many people struggles with it.">
-  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
-  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <nav class="navmenu-wrapper">
     <div class="fade-loader"></div>
     <div class="fade-in">
       <div class="navmenu">
-        <a class="logo" href="https://tiborsimon.io">
+        <a class="logo" href="http://localhost:8000">
           Tibor's Lab 
         </a>
         <div class="group">
-          <a href="https://tiborsimon.io#articles">Articles</a>
-          <a href="https://tiborsimon.io#projects">Projects</a>
-          <a href="https://tiborsimon.io#about">About</a>
+          <a href="http://localhost:8000#articles">Articles</a>
+          <a href="http://localhost:8000#projects">Projects</a>
+          <a href="http://localhost:8000#about">About</a>
         </div>
       </div>
     </div>
@@ -33,9 +33,9 @@
             <div class="article-title">Generating sinusoid signals</div>
             <div class="details">
               <div class="tag-list">
-                <a href="https://tiborsimon.io/tag/signals/">signals</a>
-                <a href="https://tiborsimon.io/tag/dsp/">dsp</a>
-                <a href="https://tiborsimon.io/tag/matlab/">Matlab</a>
+                <a href="http://localhost:8000/tag/signals/">signals</a>
+                <a href="http://localhost:8000/tag/dsp/">dsp</a>
+                <a href="http://localhost:8000/tag/matlab/">Matlab</a>
               </div>
               <div class="timestamp">2015. 10. 17.</div>
             </div>
@@ -46,7 +46,7 @@
           <div class="fade-in">
             <div class="summary">Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.</div>
             <hr>
-            <h1 id="the-problem">The problem <a class="header-anchor" href="#the-problem" aria-hidden="true">¶</a></h1>
+            <h1 id="the-problem">The problem <a class="header-anchor internal-link" href="#the-problem" aria-hidden="true">¶</a></h1>
 <p>The equation of a sinusoid signal is a known fact:</p>
 <p class="equation">
   $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
@@ -56,36 +56,30 @@
 <p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
 <p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> of continuous time.</p>
 <p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
-<pre><code>s = sin(2*pi*1*t1);
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#eqhmwgsmqvikocbbbxymdopeynzmyxxhsprzjanhbvtwwbcaxktqwtrumenfmozuknxbjelvxwiluxrkuzcqwlpdvueqjxxdxrgd">&#xe9b8;</button><code id="eqhmwgsmqvikocbbbxymdopeynzmyxxhsprzjanhbvtwwbcaxktqwtrumenfmozuknxbjelvxwiluxrkuzcqwlpdvueqjxxdxrgd">s = sin(2*pi*1*t1);
 </code></pre>
 <p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
-<div class="figures">
 <figure id="fig1">
           <img width=740 src="/assets/images/articles/generating-sinusoids/signal001.png" alt="Discrete vs continous time sine signal.">
           <figcaption>Fig 1: Discrete vs continous time sine signal.</figcaption>
         </figure>
-</div>
 <p>This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer’s <em>digital to analog converter</em>.</p>
 <p>However. There are other use cases when we don’t want to link the <strong>discrete time</strong> to the <strong>continuous time</strong>, so we don’t have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:</p>
-<pre><code>t = linspace(0,1,100);
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#baqaaflskaymukjfchfserprmnetudnwoeqysxrnjyseqzduxdrnyqjhbazuagqqsmenkhitnidqpdikbektcmybmdihxwglikyt">&#xe9b8;</button><code id="baqaaflskaymukjfchfserprmnetudnwoeqysxrnjyseqzduxdrnyqjhbazuagqqsmenkhitnidqpdikbektcmybmdihxwglikyt">t = linspace(0,1,100);
 s = sin(2*pi*3*t);
 </code></pre>
 <p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
-<div class="figures">
 <figure id="fig2">
           <img width=740 src="/assets/images/articles/generating-sinusoids/signal002.png" alt="100 samples long sinusoid without discrete/continous time lock.">
           <figcaption>Fig 2: 100 samples long sinusoid without discrete/continous time lock.</figcaption>
         </figure>
-</div>
 <p>As you can see, generating sinusoids with these basic methods isn’t hard at all. But you <strong>have to think</strong> about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal…</p>
-<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters <a class="header-anchor" href="#sinusoid-signal-parameters" aria-hidden="true">¶</a></h1>
+<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters <a class="header-anchor internal-link" href="#sinusoid-signal-parameters" aria-hidden="true">¶</a></h1>
 <p>There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.</p>
-<div class="figures">
 <figure id="fig3">
           <img width=740 src="/assets/images/articles/generating-sinusoids/detailed.png" alt="Sinusoid signal parameters.">
           <figcaption>Fig 3: Sinusoid signal parameters.</figcaption>
         </figure>
-</div>
 <table>
 <thead>
 <tr>
@@ -186,16 +180,14 @@ s = sin(2*pi*3*t);
 </tbody>
 </table>
 <p>Let’s try out all methods, to see how you can use them in practice. Let’s generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:</p>
-<div class="figures">
 <figure id="fig4">
           <img width=740 src="/assets/images/articles/generating-sinusoids/demo_signal.png" alt="Reference signal for all the following generation methods.">
           <figcaption>Fig 4: Reference signal for all the following generation methods.</figcaption>
         </figure>
-</div>
 <p>The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.</p>
-<h2 id="method-1-nn">Method 1 - [n,N] <a class="header-anchor" href="#method-1-nn" aria-hidden="true">¶</a></h2>
+<h2 id="method-1-nn">Method 1 - [n,N] <a class="header-anchor internal-link" href="#method-1-nn" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal with <code>n</code> data points with <code>N</code> periods in it.</p>
-<pre><code class="language-matlab">n = 60;
+<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#gpvqududlccgaivqjuajgzeckmmdcizdutohzccltmpiniqkgxwbejvtsuoavprfofohqtwqeujpznqsqgoleuoqkbaevqcbaams">&#xe9b8;</button><code id="gpvqududlccgaivqjuajgzeckmmdcizdutohzccltmpiniqkgxwbejvtsuoavprfofohqtwqeujpznqsqgoleuoqkbaevqcbaams">n = 60;
 N = 2.5;
 
 k = 0:n-1;
@@ -204,9 +196,9 @@ s = sin(2*pi*N*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-2-lnfs">Method 2 - [L,N,fs] <a class="header-anchor" href="#method-2-lnfs" aria-hidden="true">¶</a></h2>
+<h2 id="method-2-lnfs">Method 2 - [L,N,fs] <a class="header-anchor internal-link" href="#method-2-lnfs" aria-hidden="true">¶</a></h2>
 <p>Generating <code>L</code> seconds long signal sampled at <code>fs</code> consisting of <code>N</code> periods in it.</p>
-<pre><code class="language-matlab">fs = 10;
+<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#agaohevkztxyjycvdwfvfokhwytnoivqcllmovtpvbfbykycfsflgbmqmtyiazsknyoiyapkabnjwhmuhvugpbcpcbuxcvcshcsy">&#xe9b8;</button><code id="agaohevkztxyjycvdwfvfokhwytnoivqcllmovtpvbfbykycfsflgbmqmtyiazsknyoiyapkabnjwhmuhvugpbcpcbuxcvcshcsy">fs = 10;
 N = 2.5;
 L = 60/fs;
 
@@ -216,9 +208,9 @@ s = sin(2*pi*N*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-3-fnfs">Method 3 - [f,N,fs] <a class="header-anchor" href="#method-3-fnfs" aria-hidden="true">¶</a></h2>
+<h2 id="method-3-fnfs">Method 3 - [f,N,fs] <a class="header-anchor internal-link" href="#method-3-fnfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with <code>N</code> periods in it with the frequency <code>f</code>.</p>
-<pre><code class="language-matlab">fs = 10;
+<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cktecolohqluylqsvzcmojnjxycgslswwqanrrzbescbrwwwgfakihlhnaaexthhdoacgwaldicgfmjqywekcirpkbrofcszblyp">&#xe9b8;</button><code id="cktecolohqluylqsvzcmojnjxycgslswwqanrrzbescbrwwwgfakihlhnaaexthhdoacgwaldicgfmjqywekcirpkbrofcszblyp">fs = 10;
 N = 2.5;
 f = N*fs/60;
 
@@ -227,9 +219,9 @@ s = sin(2*pi*f*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-4-nffs">Method 4 - [n,f,fs] <a class="header-anchor" href="#method-4-nffs" aria-hidden="true">¶</a></h2>
+<h2 id="method-4-nffs">Method 4 - [n,f,fs] <a class="header-anchor internal-link" href="#method-4-nffs" aria-hidden="true">¶</a></h2>
 <p>Generating a signal consisting of <code>n</code> data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code>.</p>
-<pre><code class="language-matlab">fs = 10;
+<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#esyaddetlbcarannornbsjbehlensonbmczjgcpcyqdlodvtofnnhbnxnrdhbthmquoiqamzrdwghlywrjsxveqfowdjaroezfqd">&#xe9b8;</button><code id="esyaddetlbcarannornbsjbehlensonbmczjgcpcyqdlodvtofnnhbnxnrdhbthmquoiqamzrdwghlywrjsxveqfowdjaroezfqd">fs = 10;
 n = 60;
 f = 2.5*fs/n;
 
@@ -239,9 +231,9 @@ s = sin(2*pi*f*k);
 
 stem(s)
 </code></pre>
-<h2 id="method-5-flfs">Method 5 - [f,L,fs] <a class="header-anchor" href="#method-5-flfs" aria-hidden="true">¶</a></h2>
+<h2 id="method-5-flfs">Method 5 - [f,L,fs] <a class="header-anchor internal-link" href="#method-5-flfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with the duration of <code>L</code> seconds with the frequency <code>f</code>.</p>
-<pre><code class="language-matlab">L = 60/fs;
+<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mcpzrbrkdbufpnwgkjyuobhhuqpydqiqtipokrjqarijornxcwcucmcmdozvirtztxmgxnwutjpjlpzcghkycbilgebmimejbhjo">&#xe9b8;</button><code id="mcpzrbrkdbufpnwgkjyuobhhuqpydqiqtipokrjqarijornxcwcucmcmdozvirtztxmgxnwutjpjlpzcghkycbilgebmimejbhjo">L = 60/fs;
 f = 2.5/L;
 
 n = 0:1/fs:L-1/fs;
@@ -249,13 +241,13 @@ s = sin(2*pi*f*n);
 
 stem(s)
 </code></pre>
-<h1 id="summary">Summary <a class="header-anchor" href="#summary" aria-hidden="true">¶</a></h1>
+<h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
 <p>That’s it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you <em>study</em> them? Will you <em>derive</em> them over and over again?</p>
 <p>If your answers for the last two questions were both <em>nope</em>, then the go ahead and meet <b><a href="http://tiborsimon.io/projects/#TSPR0003">Smart Sinusoids</a></b>.</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem">sampling theorem</a>. There are much more detail how these things really work. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem" class="external-link" target="_blank">sampling theorem</a>. There are much more detail how these things really work. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn2" class="footnote-item"><p>Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds <em>(2s - 1/fs = 1.9s)</em>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
@@ -271,8 +263,8 @@ stem(s)
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
+              <a href="http://localhost:8000/articles/programming/collect-all-nouns" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
               <span class="neighbour-title next-title">BusPirate setup for OSX</span>
               <span class="neighbour-title previous-title">Collect all nouns in hungarian</span>
           </nav>
@@ -323,8 +315,8 @@ stem(s)
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
+              <a href="http://localhost:8000/articles/programming/collect-all-nouns" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
               <span class="neighbour-title next-title">BusPirate setup for OSX</span>
               <span class="neighbour-title previous-title">Collect all nouns in hungarian</span>
           </nav>
@@ -345,112 +337,115 @@ stem(s)
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
-            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+            <a href="http://localhost:8000/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>6</span>
+            <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+              javascript<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+            <a href="http://localhost:8000/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
-            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+            <a href="http://localhost:8000/tag/python/#articles" class="count">
               python<span>4</span>
             </a>
-            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+            <a href="http://localhost:8000/tag/tools/#articles" class="count">
+              tools<span>4</span>
+            </a>
+            <a href="http://localhost:8000/tag/config/#articles" class="count">
+              config<span>3</span>
+            </a>
+            <a href="http://localhost:8000/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+            <a href="http://localhost:8000/tag/github/#articles" class="count">
               GitHub<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>3</span>
+            <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+              metalsmith<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+            <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+            <a href="http://localhost:8000/tag/dsp/#articles" class="count">
               dsp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+            <a href="http://localhost:8000/tag/embedded/#articles" class="count">
               embedded<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+            <a href="http://localhost:8000/tag/latex/#articles" class="count">
               LaTEX<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+            <a href="http://localhost:8000/tag/linux/#articles" class="count">
               linux<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+            <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+            <a href="http://localhost:8000/tag/plugin/#articles" class="count">
               plugin<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+            <a href="http://localhost:8000/tag/regexp/#articles" class="count">
               regexp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+            <a href="http://localhost:8000/tag/search/#articles" class="count">
               search<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+            <a href="http://localhost:8000/tag/api/#articles" class="count">
               API<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+            <a href="http://localhost:8000/tag/bash/#articles" class="count">
               bash<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+            <a href="http://localhost:8000/tag/cli/#articles" class="count">
               CLI<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+            <a href="http://localhost:8000/tag/control/#articles" class="count">
               control<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+            <a href="http://localhost:8000/tag/debug/#articles" class="count">
               debug<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+            <a href="http://localhost:8000/tag/emacs/#articles" class="count">
               emacs<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+            <a href="http://localhost:8000/tag/game/#articles" class="count">
               game<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+            <a href="http://localhost:8000/tag/hardware/#articles" class="count">
               hardware<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+            <a href="http://localhost:8000/tag/ios/#articles" class="count">
               ios<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+            <a href="http://localhost:8000/tag/java/#articles" class="count">
               java<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+            <a href="http://localhost:8000/tag/make/#articles" class="count">
               make<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+            <a href="http://localhost:8000/tag/pelican/#articles" class="count">
               pelican<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+            <a href="http://localhost:8000/tag/serial/#articles" class="count">
               serial<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+            <a href="http://localhost:8000/tag/signals/#articles" class="count">
               signals<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+            <a href="http://localhost:8000/tag/ssh/#articles" class="count">
               ssh<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+            <a href="http://localhost:8000/tag/tool/#articles" class="count">
               tool<span>1</span>
             </a>
           </div>
@@ -485,6 +480,16 @@ stem(s)
   
     ga('create', 'UA-68408613-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    var clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
   </script>
 </body>
 </html>

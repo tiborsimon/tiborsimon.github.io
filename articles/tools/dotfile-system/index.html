@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <title>My dotfile system - Tibor's Lab</title>
   <meta name="description" content="I hate to be machine dependent. For me a computer is just a tool to get things done. If one breaks down for various reasons or I switch machine I want to have my tools and setup without any manual configuration.">
-  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
-  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+  <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <nav class="navmenu-wrapper">
     <div class="fade-loader"></div>
     <div class="fade-in">
       <div class="navmenu">
-        <a class="logo" href="https://tiborsimon.io">
+        <a class="logo" href="http://localhost:8000">
           Tibor's Lab 
         </a>
         <div class="group">
-          <a href="https://tiborsimon.io#articles">Articles</a>
-          <a href="https://tiborsimon.io#projects">Projects</a>
-          <a href="https://tiborsimon.io#about">About</a>
+          <a href="http://localhost:8000#articles">Articles</a>
+          <a href="http://localhost:8000#projects">Projects</a>
+          <a href="http://localhost:8000#about">About</a>
         </div>
       </div>
     </div>
@@ -33,12 +33,12 @@
             <div class="article-title">My dotfile system</div>
             <div class="details">
               <div class="tag-list">
-                <a href="https://tiborsimon.io/tag/dotfiles/">dotfiles</a>
-                <a href="https://tiborsimon.io/tag/tools/">tools</a>
-                <a href="https://tiborsimon.io/tag/linux/">linux</a>
-                <a href="https://tiborsimon.io/tag/config/">config</a>
-                <a href="https://tiborsimon.io/tag/deploy/">deploy</a>
-                <a href="https://tiborsimon.io/tag/github/">GitHub</a>
+                <a href="http://localhost:8000/tag/dotfiles/">dotfiles</a>
+                <a href="http://localhost:8000/tag/tools/">tools</a>
+                <a href="http://localhost:8000/tag/linux/">linux</a>
+                <a href="http://localhost:8000/tag/config/">config</a>
+                <a href="http://localhost:8000/tag/deploy/">deploy</a>
+                <a href="http://localhost:8000/tag/github/">GitHub</a>
               </div>
               <div class="timestamp">2016. 04. 01.</div>
             </div>
@@ -51,40 +51,40 @@
             <hr>
             <p>Have you ever felt <em>crippled on a new machine</em> you’ve just logged in for the first time? Tools missing, and if not, they have weird default configurations. Before you can start to work, you need to move in that machine: download all your needed tools, configure them one by one by hand. You quickly realize this is not the best way you can do…</p>
 <div class="divider">Solution one</div>
-<h1 id="externally-saved-configuration">Externally saved configuration <a class="header-anchor" href="#externally-saved-configuration" aria-hidden="true">¶</a></h1>
+<h1 id="externally-saved-configuration">Externally saved configuration <a class="header-anchor internal-link" href="#externally-saved-configuration" aria-hidden="true">¶</a></h1>
 <p>You can speed up the initial configuration if you have a previously saved config file set in a machine independent storage, say Dropbox or a USB drive.</p>
 <p>These files are generally called <strong>dotfiles</strong>, as command line tools often expect their configuration files to start with a dot indicating the file is hidden for normal use. Dotfiles are generally located in the current user’s <em>home</em> directory. When you start using a new machine, you simply  copy your saved config files to your home directory and you are home.</p>
 <p>Besides the custom configuration files, you can also save out a list of installable programs and tools that you want to have by default on a machine. Some package manager tools supports installing from files, but if not, you can write a small script that will install your tools one by one. You can create a <code>packages.txt</code> file for this purpose:</p>
-<pre><code class="language-bash">$ cat packages.txt
+<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ncedjerlicqnydgbddhoruvuuvvnhjzmlugbeuvvoxalqfylhpjoasrcvweddpiwdxaqjpqrqjsjrtrsubnnmybxpltwymvfrlfp">&#xe9b8;</button><code id="ncedjerlicqnydgbddhoruvuuvvnhjzmlugbeuvvoxalqfylhpjoasrcvweddpiwdxaqjpqrqjsjrtrsubnnmybxpltwymvfrlfp">$ cat packages.txt
 git
 mc
 vim
 </code></pre>
 <p>The <em>one-by-one</em> installer script could be something like this:</p>
-<pre><code class="language-bash">for app in $(cat path/to/your/packages.txt); do
-  echo &quot;Installing $app..&quot;
-  if $YOUR_PACKAGE_MANAGER install -y $app&gt;temp_log_file 2&gt;&amp;1; then
-    echo &quot;$app installed.&quot;
+<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kkionhmstzxdivmazlwskiffefgiwijaekytxzzvxppetybbgxvftsrxassdqruikrrlwybwstqelzcjwokpqireueoysbwyjfoc">&#xe9b8;</button><code id="kkionhmstzxdivmazlwskiffefgiwijaekytxzzvxppetybbgxvftsrxassdqruikrrlwybwstqelzcjwokpqireueoysbwyjfoc">for app in $(cat path/to/your/packages.txt); do
+  echo "Installing $app.."
+  if $YOUR_PACKAGE_MANAGER install -y $app>temp_log_file 2>&1; then
+    echo "$app installed."
   else
-    echo &quot;$app installation failed! Error: \n$(cat temp_log_file)&quot;
+    echo "$app installation failed! Error: \n$(cat temp_log_file)"
   fi
   rm -f temp_log_file
 done
 </code></pre>
 <p>You might need to have administrator privileges to install packages on your machine. You have to replace the path to your <em>packages.txt</em> file and your system’s package manager.</p>
-<h2 id="conclusion">Conclusion <a class="header-anchor" href="#conclusion" aria-hidden="true">¶</a></h2>
+<h2 id="conclusion">Conclusion <a class="header-anchor internal-link" href="#conclusion" aria-hidden="true">¶</a></h2>
 <p>This method is semi-manual, as you have to copy the files, and run the commands yourself. It would be much more elegant if you would have a <em>one-command deployment</em> solution. An another big drawback is the lack of version control (unless you have a local git repo on you USB drive). It is always a good idea to use versioning for <strong>anything</strong> you do in you machine in case of an accident<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
 <div class="divider">Solution two</div>
-<h1 id="hosted-and-versioned-configuration">Hosted and versioned configuration <a class="header-anchor" href="#hosted-and-versioned-configuration" aria-hidden="true">¶</a></h1>
+<h1 id="hosted-and-versioned-configuration">Hosted and versioned configuration <a class="header-anchor internal-link" href="#hosted-and-versioned-configuration" aria-hidden="true">¶</a></h1>
 <p>The next improvement step is to put your config files in a version control system, and host it on the internet. If you want a public configuration, you can’t find better place than <strong>GitHub</strong>. However, if you want your config to be in a private place, I can suggest using <strong>BitBucket</strong>, as it offers free private repositories. Eihter versioning provider you choose, you will end up having an easy-to-deploy config system. You can clone your setup on a new machine, and you will have your setup ready to use.</p>
 <p>There is only one problem with this approach. If you clone your repository into your home directory, then your entire home directory will became a repository, but this is probably not what you want. You can solve this issue by cloning your repo into a separate directory, and then symlink your dotfiles into the expected place.</p>
 <p>This is the exact method I use for my dotfile system. I clone my dotfiles repository into the <code>~/.dotfiles</code> directory, and then I run my deploy script, that will symlink the dotfiles one-by-one into their dedicated place. Then I only have to modify the dotfiles located in the <code>~/dotfiles</code> directory, and my changes automatically appear in place.</p>
-<p>For deployment script, I use <a href="https://github.com/holman/dotfiles">Zach Holman’s dotfiles</a> project that has a separated structure that I further customized to meet my needs.</p>
-<h2 id="conclusion-2">Conclusion <a class="header-anchor" href="#conclusion-2" aria-hidden="true">¶</a></h2>
+<p>For deployment script, I use <a href="https://github.com/holman/dotfiles" class="external-link" target="_blank">Zach Holman’s dotfiles</a> project that has a separated structure that I further customized to meet my needs.</p>
+<h2 id="conclusion-2">Conclusion <a class="header-anchor internal-link" href="#conclusion-2" aria-hidden="true">¶</a></h2>
 <p>Putting your dotfiles into a versioned repository and hosting it online gives you amazing flexibility. You can have your own configuration in any machine in minutes while keeping it on a dedicated place. You only need to clone your repository into a dedicated directory, and run your deployment script.</p>
 <p>How about one more improvement that will allow you to not just have your configuration on your new machine, but have your your configuration and identity with only a single command?</p>
 <div class="divider">Final solution</div>
-<h1 id="ultimate-deployment">Ultimate deployment <a class="header-anchor" href="#ultimate-deployment" aria-hidden="true">¶</a></h1>
+<h1 id="ultimate-deployment">Ultimate deployment <a class="header-anchor internal-link" href="#ultimate-deployment" aria-hidden="true">¶</a></h1>
 <p>Since I have my custom domain name, I felt like there still more room for improvements. My final solution is for my machine independent setup is my <strong>deploy-over-url</strong> dotfiles system that will:</p>
 <ul>
 <li>recognizes the current system (os x or linux)</li>
@@ -96,17 +96,17 @@ done
 <li>and it does this through a convenient command line menu system</li>
 </ul>
 <p>All I have to do is type in the following command:</p>
-<pre><code class="language-bash">bash &lt;(curl -fsSL tiborsimon.io/dotfiles)
+<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ianhitqrbybrszyfmvwiwwxrjkmfbqerfpyoxhxyojhukrlbyneqgaoidpejpjbyordzclsnchfrogjjyublacofwnszwkzjhuks">&#xe9b8;</button><code id="ianhitqrbybrszyfmvwiwwxrjkmfbqerfpyoxhxyojhukrlbyneqgaoidpejpjbyordzclsnchfrogjjyublacofwnszwkzjhuks">bash <(curl -fsSL tiborsimon.io/dotfiles)
 </code></pre>
 <p>I can choose what protocol do I want to use for downloading the configuration. If I choose <strong>https</strong> the configuration will download instantly, and the ssh key generation will be skipped, since I only need my user name and password for GitHub to push back the config modification I will make later. If I choose <strong>ssh</strong> for the download protocol, I will be prompted if to create a new ssh key, and optionally upload it ti GitHub or BitBucket.</p>
-<h2 id="conclusion-3">Conclusion <a class="header-anchor" href="#conclusion-3" aria-hidden="true">¶</a></h2>
+<h2 id="conclusion-3">Conclusion <a class="header-anchor internal-link" href="#conclusion-3" aria-hidden="true">¶</a></h2>
 <p>In this way I automated all of the critical stepts I do not want to repeate every time on a new machine.</p>
 <p>You can find detailed informations about my URL deployment and automated ssh key upload in my dedicated articles:</p>
 <ul>
-<li><a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/">Dotfiles with URL deployment</a></li>
-<li><a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/">Upload ssh key via Github API</a></li>
+<li><a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/" class="external-link" target="_blank">Dotfiles with URL deployment</a></li>
+<li><a href="https://tiborsimon.io/programming/upload-ssh-key-via-github-api/" class="external-link" target="_blank">Upload ssh key via Github API</a></li>
 </ul>
-<p>If you want to take a look at the system itself, you can go to my <a href="https://github.com/tiborsimon/dotfiles">dotfiles GitHub repo</a>.</p>
+<p>If you want to take a look at the system itself, you can go to my <a href="https://github.com/tiborsimon/dotfiles" class="external-link" target="_blank">dotfiles GitHub repo</a>.</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -122,9 +122,9 @@ done
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/compiling-emacs" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
+              <a href="http://localhost:8000/articles/tools/compiling-emacs" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/tools/url-deployment" class="next-a">></a>
+              <span class="neighbour-title next-title">Dotfiles with URL deployment</span>
               <span class="neighbour-title previous-title">Compiling Emacs on CentOS</span>
           </nav>
         </div>
@@ -174,9 +174,9 @@ done
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/compiling-emacs" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
+              <a href="http://localhost:8000/articles/tools/compiling-emacs" class="previous-a"><</a>
+            <a href="http://localhost:8000/articles/tools/url-deployment" class="next-a">></a>
+              <span class="neighbour-title next-title">Dotfiles with URL deployment</span>
               <span class="neighbour-title previous-title">Compiling Emacs on CentOS</span>
           </nav>
         </div>
@@ -196,112 +196,115 @@ done
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
-            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+            <a href="http://localhost:8000/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>6</span>
+            <a href="http://localhost:8000/tag/javascript/#articles" class="count">
+              javascript<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+            <a href="http://localhost:8000/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
-            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+            <a href="http://localhost:8000/tag/python/#articles" class="count">
               python<span>4</span>
             </a>
-            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+            <a href="http://localhost:8000/tag/tools/#articles" class="count">
+              tools<span>4</span>
+            </a>
+            <a href="http://localhost:8000/tag/config/#articles" class="count">
+              config<span>3</span>
+            </a>
+            <a href="http://localhost:8000/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+            <a href="http://localhost:8000/tag/github/#articles" class="count">
               GitHub<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>3</span>
+            <a href="http://localhost:8000/tag/metalsmith/#articles" class="count">
+              metalsmith<span>3</span>
             </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+            <a href="http://localhost:8000/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+            <a href="http://localhost:8000/tag/dsp/#articles" class="count">
               dsp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+            <a href="http://localhost:8000/tag/embedded/#articles" class="count">
               embedded<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+            <a href="http://localhost:8000/tag/latex/#articles" class="count">
               LaTEX<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+            <a href="http://localhost:8000/tag/linux/#articles" class="count">
               linux<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+            <a href="http://localhost:8000/tag/mathjax/#articles" class="count">
               MathJax<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>2</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+            <a href="http://localhost:8000/tag/plugin/#articles" class="count">
               plugin<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+            <a href="http://localhost:8000/tag/regexp/#articles" class="count">
               regexp<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+            <a href="http://localhost:8000/tag/search/#articles" class="count">
               search<span>2</span>
             </a>
-            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+            <a href="http://localhost:8000/tag/api/#articles" class="count">
               API<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+            <a href="http://localhost:8000/tag/bash/#articles" class="count">
               bash<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+            <a href="http://localhost:8000/tag/cli/#articles" class="count">
               CLI<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+            <a href="http://localhost:8000/tag/control/#articles" class="count">
               control<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+            <a href="http://localhost:8000/tag/debug/#articles" class="count">
               debug<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+            <a href="http://localhost:8000/tag/emacs/#articles" class="count">
               emacs<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+            <a href="http://localhost:8000/tag/game/#articles" class="count">
               game<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+            <a href="http://localhost:8000/tag/hardware/#articles" class="count">
               hardware<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+            <a href="http://localhost:8000/tag/ios/#articles" class="count">
               ios<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+            <a href="http://localhost:8000/tag/java/#articles" class="count">
               java<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+            <a href="http://localhost:8000/tag/make/#articles" class="count">
               make<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+            <a href="http://localhost:8000/tag/matlab/#articles" class="count">
               Matlab<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+            <a href="http://localhost:8000/tag/pelican/#articles" class="count">
               pelican<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+            <a href="http://localhost:8000/tag/serial/#articles" class="count">
               serial<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+            <a href="http://localhost:8000/tag/signals/#articles" class="count">
               signals<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+            <a href="http://localhost:8000/tag/ssh/#articles" class="count">
               ssh<span>1</span>
             </a>
-            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+            <a href="http://localhost:8000/tag/tool/#articles" class="count">
               tool<span>1</span>
             </a>
           </div>
@@ -336,6 +339,16 @@ done
   
     ga('create', 'UA-68408613-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    var clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
   </script>
 </body>
 </html>

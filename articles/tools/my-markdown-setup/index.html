@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Regart - Tibor's Lab</title>
-  <meta name="description" content="REGART!! This is regart! ">
+  <title>My Markdown setup - Tibor's Lab</title>
+  <meta name="description" content="For my site I use a highly customised Markdown configuration for the articles. Let me show you the details.">
   <link rel="stylesheet" href="http://localhost:8000/css/style.css">
   <link rel="shortcut icon" href="http://localhost:8000/favicon.ico" type="image/x-icon" />
 </head>
@@ -30,57 +30,84 @@
           <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
-            <div class="article-title">Regart</div>
+            <div class="article-title">My Markdown setup</div>
             <div class="details">
               <div class="tag-list">
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
-                <a href=""></a>
+                <a href="http://localhost:8000/tag/markdown/">markdown</a>
+                <a href="http://localhost:8000/tag/tools/">tools</a>
+                <a href="http://localhost:8000/tag/javascript/">javascript</a>
+                <a href="http://localhost:8000/tag/metalsmith/">metalsmith</a>
+                <a href="http://localhost:8000/tag/config/">config</a>
               </div>
-              <div class="timestamp">2016. 07. 23.</div>
+              <div class="timestamp">2017. 05. 14.</div>
             </div>
           </div>
         </header>
         <article class="content card padded">
           <div class="fade-loader"></div>
           <div class="fade-in">
-            <div class="summary">REGART!! This is regart! </div>
+            <div class="summary">For my site I use a highly customised Markdown configuration for the articles. Let me show you the details.</div>
             <hr>
-            <p>REGART!! This is regart!</p>
+            <p>This will be an <a href="https://google.com" class="external-link" target="_blank">external-link</a> and this will be an <a href="/#about" class="internal-link">internal-link</a>. Thats is.</p>
+<h1 id="figure-system">Figure system <a class="header-anchor internal-link" href="#figure-system" aria-hidden="true">¶</a></h1>
+<figure id="fig1">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 1.">
+          <figcaption>Fig 1: Test figure 1.</figcaption>
+        </figure>
+<figure id="fig2">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 2.">
+          <figcaption>Fig 2: Test figure 2.</figcaption>
+        </figure>
+<figure id="fig3">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 3.">
+          <figcaption>Fig 3: Test figure 3.</figcaption>
+        </figure>
+<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#dqqqngfzwjpqmuhpojtgmipmpnlpxiwaeubcoirylbyeaflpyuikpwndafbxmhhxjpklrskjuctccvqleetssnioemaprstnneaz">&#xe9b8;</button><code id="dqqqngfzwjpqmuhpojtgmipmpnlpxiwaeubcoirylbyeaflpyuikpwndafbxmhhxjpklrskjuctccvqleetssnioemaprstnneaz">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
+
+@[img](2#Test figure 2.#160#tibor2017-600.jpg)
+
+@[img](3#Test figure 3.#160#tibor2017-600.jpg)
+</code></pre>
+<h1 id="divider">Divider <a class="header-anchor internal-link" href="#divider" aria-hidden="true">¶</a></h1>
+<div class="divider">My first divider</div>
+<div class="divider">My second divider</div>
+<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#qiyvkfoserluvfjquzxqhdwwvxgvfrqaabbdnrcyeaosatsgxkakwcnyjfatyjqrwuytxjiomcqximkhrqbnexzwzygbnptxbdlt">&#xe9b8;</button><code id="qiyvkfoserluvfjquzxqhdwwvxgvfrqaabbdnrcyeaosatsgxkakwcnyjfatyjqrwuytxjiomcqximkhrqbnexzwzygbnptxbdlt">@[divider](My first divider)
+
+@[divider](My second divider)
+</code></pre>
+<h1 id="message-boxes">Message boxes <a class="header-anchor internal-link" href="#message-boxes" aria-hidden="true">¶</a></h1>
+<h2 id="success-box">Success box <a class="header-anchor internal-link" href="#success-box" aria-hidden="true">¶</a></h2>
+<div class="success">
+<p>This is a success message.</p>
+</div>
+<pre><div class="code-title">Success box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jpizufxddihbovrttjtusfvikbooshvjccysvboodwubsurpkwcqvbdjkvllihrsncvogssnthdjnafsqfohsxuqnmtudkbczcfu">&#xe9b8;</button><code id="jpizufxddihbovrttjtusfvikbooshvjccysvboodwubsurpkwcqvbdjkvllihrsncvogssnthdjnafsqfohsxuqnmtudkbczcfu">::: success
+This is a success message.
+:::
+</code></pre>
+<h2 id="info-box">Info box <a class="header-anchor internal-link" href="#info-box" aria-hidden="true">¶</a></h2>
+<div class="info">
+<p>This is a info message.</p>
+</div>
+<pre><div class="code-title">Info box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pwfyysuhxtubaxwcbwlnckwyvwmjrdjmmjqabaskbcmmpmpvackaklptpyzmauptzgtxeftdihlwbonugzjykhgjjpixvjblhyjh">&#xe9b8;</button><code id="pwfyysuhxtubaxwcbwlnckwyvwmjrdjmmjqabaskbcmmpmpvackaklptpyzmauptzgtxeftdihlwbonugzjykhgjjpixvjblhyjh">::: info
+This is a info message.
+:::
+</code></pre>
+<h2 id="warning-box">Warning box <a class="header-anchor internal-link" href="#warning-box" aria-hidden="true">¶</a></h2>
+<div class="warning">
+<p>This is a warning message.</p>
+</div>
+<pre><div class="code-title">Warning box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vhxjgriusrtuvwmdruinvfpnlfwmokefxtguaudicwaasxrrhpvquvqtfesisqrkibpvuceintlvyipgkkdylvryxkxefyhprblj">&#xe9b8;</button><code id="vhxjgriusrtuvwmdruinvfpnlfwmokefxtguaudicwaasxrrhpvquvqtfesisqrkibpvuceintlvyipgkkdylvryxkxefyhprblj">::: warning
+This is a warning message.
+:::
+</code></pre>
+<h2 id="danger-box">Danger box <a class="header-anchor internal-link" href="#danger-box" aria-hidden="true">¶</a></h2>
+<div class="danger">
+<p>This is a danger message.</p>
+</div>
+<pre><div class="code-title">Danger box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#dxrrrgrjiujyuclpalxffhmybepwfspbnjujiobxgtgqlnurcimnfiukrhwavqrdabeaeknewrpqcvecwtwmtjihhfdbuuhdqqus">&#xe9b8;</button><code id="dxrrrgrjiujyuclpalxffhmybepwfspbnjujiobxgtgqlnurcimnfiukrhwavqrdabeaeknewrpqcvecwtwmtjihhfdbuuhdqqus">::: danger
+This is a danger message.
+:::
+</code></pre>
 
           </div>
         </article>
@@ -90,8 +117,8 @@
         <div class="fade-in">
           <nav class="sidebar-nav">
               <span><</span>
-            <a href="http://localhost:8000/projects/projects" class="next-a">></a>
-              <span class="neighbour-title next-title">Projects</span>
+            <a href="http://localhost:8000/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
+              <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
           </nav>
         </div>
       </div>
@@ -141,8 +168,8 @@
         <div class="fade-in">
           <nav class="sidebar-nav">
               <span><</span>
-            <a href="http://localhost:8000/projects/projects" class="next-a">></a>
-              <span class="neighbour-title next-title">Projects</span>
+            <a href="http://localhost:8000/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
+              <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
           </nav>
         </div>
       </div>

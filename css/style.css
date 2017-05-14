@@ -565,13 +565,8 @@ template {
   --content-padding: 19px;
   --margin-between-cards: 14px;
   --card-radius: 0px;
-  --main-color: #1565C0;
-  --hover-color: #039BE5;
-  --active-color: #03A9F4;
-  --action-color: white;
-  --action-background: #00B0FF;
-  --header-color: #424242;
-  --button-hover: Light Blue;
+  --main-color: #3d7287;
+  --hover-color: #92bccc;
   --card-bg-color: #fcfcfc; }
 
 /**
@@ -794,7 +789,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2px 7px;
         margin-bottom: 3px; }
         .pypi .packages .package .buttons a:hover {
-          background: var(--action-background); }
+          background: var(--hover-color); }
 
 .index-header {
   display: block;
@@ -1016,13 +1011,8 @@ section {
   --content-padding: 19px;
   --margin-between-cards: 14px;
   --card-radius: 0px;
-  --main-color: #1565C0;
-  --hover-color: #039BE5;
-  --active-color: #03A9F4;
-  --action-color: white;
-  --action-background: #00B0FF;
-  --header-color: #424242;
-  --button-hover: Light Blue;
+  --main-color: #3d7287;
+  --hover-color: #92bccc;
   --card-bg-color: #fcfcfc; }
 
 /**
@@ -1050,7 +1040,7 @@ section {
     margin-right: 6px;
     transition: all 0.2s ease; }
     .tag-list a.count {
-      padding: 0 0 0 15px; }
+      padding: 0 0 0 6px; }
       .tag-list a.count span {
         margin-left: 4px; }
     .tag-list a span {
@@ -1067,48 +1057,6 @@ section {
       color: var(--color); }
       .tag-list a:hover span {
         background: var(--color); }
-
-/**
- * google-material-color v1.2.6
- * https://github.com/danlevan/google-material-color
- */
-#action-button {
-  --top: 344px;
-  outline: none;
-  background: var(--action-background);
-  font-size: 40px;
-  font-weight: 300;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  border-radius: 50%;
-  right: 138px;
-  top: var(--top);
-  border: none;
-  z-index: 2;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16); }
-  #action-button:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19); }
-    #action-button:hover .icon-bars {
-      transform: rotate(45deg); }
-  #action-button .icon-bars {
-    background: var(--action-color);
-    height: 2px;
-    width: 18px;
-    margin: auto;
-    display: block;
-    position: relative;
-    transition: all 0.2s ease; }
-    #action-button .icon-bars:after {
-      content: '';
-      position: absolute;
-      height: 18px;
-      width: 2px;
-      background: var(--action-color);
-      right: 8px;
-      top: -8px; }
 
 /**
  * google-material-color v1.2.6
@@ -1153,8 +1101,6 @@ section {
       transition: all 0.2s ease; }
       .navmenu .group a:hover {
         color: var(--hover-color); }
-      .navmenu .group a:active {
-        color: var(--active-color); }
 
 /**
  * google-material-color v1.2.6
@@ -1263,7 +1209,7 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
   .article iframe.video {
     position: relative;
     left: -30px; }
-  .article .figures figure {
+  .article figure {
     position: relative;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -1271,21 +1217,17 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
     left: -30px;
     margin: 0;
     display: flex;
-    flex-direction: column; }
-    .article .figures figure:first-child {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      margin-top: 30px; }
-    .article .figures figure:last-child {
-      margin-bottom: 30px; }
-    .article .figures figure img {
-      margin: 19px auto 10px;
+    flex-direction: column;
+    align-items: center; }
+    .article figure img {
       max-width: 740px;
-      margin-bottom: 10px; }
-    .article .figures figure figcaption {
-      text-align: center;
+      margin: 20px 0px 8px; }
+    .article figure figcaption {
       font-size: 0.9em;
       font-style: italic;
       margin-bottom: 10px; }
+  .article :not(figure) + figure {
+    border-top: 1px solid rgba(0, 0, 0, 0.12); }
   .article p code {
     color: #59727b;
     background-color: #efefef;
@@ -1303,7 +1245,7 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
     overflow-x: auto;
     font-size: 0.8em;
     line-height: 1.4em;
-    padding: 17px 25px;
+    padding: 12px 25px;
     box-shadow: inset 0px 7px 11px -7px rgba(35, 30, 30, 0.8);
     border-left: solid 5px #3d7287; }
 
@@ -1326,7 +1268,7 @@ table {
     border: 1px solid rgba(0, 0, 0, 0.12);
     line-height: 24px;
     padding: 6px;
-    vertical-align: middle; }
+    vertical-align: top; }
     table td:first-child, table th:first-child {
       border-left: none;
       padding-left: 30px; }
@@ -1340,6 +1282,8 @@ table {
       border-radius: 3px;
       border: 1px solid #e1dede;
       font-size: 90%; }
+  table th {
+    vertical-align: middle; }
 
 .discussion {
   padding: 10px 30px 30px 30px; }
@@ -1404,6 +1348,100 @@ table {
   .sidebar-nav .next-a:hover ~ .next-title {
     height: 41px;
     padding: 10px; }
+
+.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .success p {
+    margin: 0;
+    padding: 0; }
+
+.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .info p {
+    margin: 0;
+    padding: 0; }
+
+.warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .warning p {
+    margin: 0;
+    padding: 0; }
+
+.danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .danger p {
+    margin: 0;
+    padding: 0; }
+
+.code-title {
+  background-color: var(--main-color);
+  color: white;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 1px;
+  padding-left: 30px;
+  font-size: 90%; }
+
+.external-link:after {
+  font-family: 'icomoon';
+  content: "\ea7e";
+  margin: 0 0 0 2px;
+  display: inline-block;
+  text-decoration: none !important; }
+
+.copy-btn {
+  font-family: 'icomoon';
+  position: relative;
+  float: right;
+  margin: -12px;
+  z-index: 3;
+  top: 24px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: none;
+  color: #e9e8e8;
+  cursor: pointer; }
+
+pre:hover .copy-btn {
+  opacity: 1; }
 
 /**
  * google-material-color v1.2.6
@@ -1486,8 +1524,8 @@ table {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("/assets/fonts/icomoon.eot?9x9lhe");
-  src: url("/assets/fonts/icomoon.eot?9x9lhe#iefix") format("embedded-opentype"), url("/assets/fonts/icomoon.ttf?9x9lhe") format("truetype"), url("/assets/fonts/icomoon.woff?9x9lhe") format("woff"), url("/assets/fonts/icomoon.svg?9x9lhe#icomoon") format("svg");
+  src: url("/assets/fonts/icomoon.eot?ni7780");
+  src: url("/assets/fonts/icomoon.eot?ni7780#iefix") format("embedded-opentype"), url("/assets/fonts/icomoon.ttf?ni7780") format("truetype"), url("/assets/fonts/icomoon.woff?ni7780") format("woff"), url("/assets/fonts/icomoon.svg?ni7780#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1504,17 +1542,92 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-book:before {
-  content: "\e91f"; }
+.icon-home:before {
+  content: "\e900"; }
+
+.icon-image:before {
+  content: "\e90d"; }
+
+.icon-images:before {
+  content: "\e90e"; }
+
+.icon-camera:before {
+  content: "\e90f"; }
+
+.icon-books:before {
+  content: "\e920"; }
+
+.icon-file-text:before {
+  content: "\e922"; }
+
+.icon-file-empty:before {
+  content: "\e924"; }
+
+.icon-files-empty:before {
+  content: "\e925"; }
+
+.icon-file-text2:before {
+  content: "\e926"; }
+
+.icon-file-zip:before {
+  content: "\e92b"; }
+
+.icon-copy:before {
+  content: "\e92c"; }
+
+.icon-paste:before {
+  content: "\e92d"; }
+
+.icon-folder:before {
+  content: "\e92f"; }
+
+.icon-folder-open:before {
+  content: "\e930"; }
+
+.icon-price-tag:before {
+  content: "\e935"; }
+
+.icon-price-tags:before {
+  content: "\e936"; }
+
+.icon-qrcode:before {
+  content: "\e938"; }
+
+.icon-calendar:before {
+  content: "\e953"; }
 
 .icon-box-add:before {
   content: "\e95e"; }
 
-.icon-leaf:before {
-  content: "\e9a4"; }
+.icon-clipboard:before {
+  content: "\e9b8"; }
 
 .icon-link:before {
   content: "\e9cb"; }
+
+.icon-bookmark:before {
+  content: "\e9d2"; }
+
+.icon-bookmarks:before {
+  content: "\e9d3"; }
+
+.icon-plus:before {
+  content: "\ea0a"; }
+
+.icon-minus:before {
+  content: "\ea0b"; }
+
+.icon-checkmark:before {
+  content: "\ea10"; }
+
+.icon-checkmark2:before {
+  content: "\ea11"; }
+
+.icon-checkbox-checked:before {
+  content: "\ea52"; }
+
+.icon-checkbox-unchecked:before {
+  content: "\ea53"; }
 
 .icon-share:before {
   content: "\ea7d"; }
@@ -1522,14 +1635,17 @@ table {
 .icon-new-tab:before {
   content: "\ea7e"; }
 
-.icon-share:before {
+.icon-embed:before {
+  content: "\ea7f"; }
+
+.icon-embed2:before {
+  content: "\ea80"; }
+
+.icon-terminal:before {
+  content: "\ea81"; }
+
+.icon-share2:before {
   content: "\ea82"; }
-
-.icon-google:before {
-  content: "\ea8c"; }
-
-.icon-facebook:before {
-  content: "\ea91"; }
 
 .icon-instagram:before {
   content: "\ea92"; }
@@ -1541,10 +1657,10 @@ table {
   content: "\ea9d"; }
 
 .icon-vimeo:before {
-  content: "\eaa1"; }
+  content: "\eaa0"; }
 
-.icon-flickr:before {
-  content: "\eaa5"; }
+.icon-flickr2:before {
+  content: "\eaa4"; }
 
 .icon-github:before {
   content: "\eab0"; }
@@ -1553,10 +1669,10 @@ table {
   content: "\eab1"; }
 
 .icon-soundcloud:before {
-  content: "\eac4"; }
+  content: "\eac3"; }
 
-.icon-linkedin:before {
-  content: "\eac9"; }
+.icon-linkedin2:before {
+  content: "\eaca"; }
 
 .icon-stackoverflow:before {
   content: "\ead0"; }
