@@ -58,12 +58,12 @@ to sort the result in the relevance order.</p>
 expression from the given search query.</p>
 <p>You need to make sure, that between the given query’s characters there might be
 another characters. This can be achieved by inserting <code>.*</code> tokens:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ymejzlskbfmmvocgunkqagpnftbnijmnxzvxszkiqsvzentzzwwbxgwtzgubonxnsfpcaqmxrogkkbjgyazywbgydyksxcyobnut">&#xe9b8;</button><code id="ymejzlskbfmmvocgunkqagpnftbnijmnxzvxszkiqsvzentzzwwbxgwtzgubonxnsfpcaqmxrogkkbjgyazywbgydyksxcyobnut">foo -&gt; .*f.*o.*o.*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#iqecqknerdaymvldmidzczxinfjzwffbrotxtcuzabjrotrepjtrrdhkupttxjgxvpmmlhzfilqbnlmemuwuuraybtecyzfirgul">&#xe9b8;</button><code id="iqecqknerdaymvldmidzczxinfjzwffbrotxtcuzabjrotrepjtrrdhkupttxjgxvpmmlhzfilqbnlmemuwuuraybtecyzfirgul">foo -&gt; .*f.*o.*o.*
 </code></pre>
 <p>You may also want to capture each provided search characters in order to know
 it’s positions for later use. The regexp engine can provide the positions for
 the matched groups.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ujfdrggtgsudhfavvgzindvxtlsccpjthwisqboxrwxsfubbbmufbxndppkcsgkwvafzqolkimuddeeprhwwkljbzreugnguffzs">&#xe9b8;</button><code id="ujfdrggtgsudhfavvgzindvxtlsccpjthwisqboxrwxsfubbbmufbxndppkcsgkwvafzqolkimuddeeprhwwkljbzreugnguffzs">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ijmejscawghqgqxqknuisjypxkmkpdghfldsuncyqchitttwfibcynyknzjmbwtpkltrjndjwqfeikpvcqwyuuuciospqohyzxcs">&#xe9b8;</button><code id="ijmejscawghqgqxqknuisjypxkmkpdghfldsuncyqchitttwfibcynyknzjmbwtpkltrjndjwqfeikpvcqwyuuuciospqohyzxcs">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
 </code></pre>
 <p>But be aware. This capturing may result you an unexpected result when you want
 to use the provided group positions by the regexp engine. Consider the following
@@ -76,7 +76,7 @@ you.</p>
 <p>To solve this issue, you have to force the regexp engine to match every
 character but to next captured character in the pattern. You need to generate a
 more complex regular expression:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#vmqfmdknzkkiogvedrxusuvxnrzzweurcjdrevlaiuyeitjbgfhtisntygwioxdydblyxlwnczsyjodwrfasgpifnoeayfnquvbl">&#xe9b8;</button><code id="vmqfmdknzkkiogvedrxusuvxnrzzweurcjdrevlaiuyeitjbgfhtisntygwioxdydblyxlwnczsyjodwrfasgpifnoeayfnquvbl">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#haayexzhznkholcehyslwivuupzjinkcthdchfrpnkacvuiqpbjxayjchexncfiustabjtnnuzuykxbpqsfiwjcsecwxcrrtcwcc">&#xe9b8;</button><code id="haayexzhznkholcehyslwivuupzjinkcthdchfrpnkacvuiqpbjxayjchexncfiustabjtnnuzuykxbpqsfiwjcsecwxcrrtcwcc">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
 </code></pre>
 <p>This is the final regular expression we are going to use in this article. We can
 now produce the match results, it’s time to sort them.</p>
@@ -98,7 +98,7 @@ this weighting factor. And that’s is.</p>
 <h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
 <p>We have reviewed the fuzzy search and sort algorithm. You can find the usage
 example and the implementation in the following code snippets:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#fffklzlugpedwmjnvduhzdavfmdgrxzjmvlyeftxdeipqnqrnrdvusunvgcjmfmmiaghnipvybxdgnnaqonoimrupqxbuxltalnr">&#xe9b8;</button><code id="fffklzlugpedwmjnvduhzdavfmdgrxzjmvlyeftxdeipqnqrnrdvusunvgcjmfmmiaghnipvybxdgnnaqonoimrupqxbuxltalnr">import fuzzy
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qukugxjisldjwznolqspywdtlajqdakzumlcjfdehkphbusewhdaoonszdwbchvsnpuyyreoywlqfopfaammqzfrgknfmbqafwff">&#xe9b8;</button><code id="qukugxjisldjwznolqspywdtlajqdakzumlcjfdehkphbusewhdaoonszdwbchvsnpuyyreoywlqfopfaammqzfrgknfmbqafwff">import fuzzy
 from pprint import pprint
 
 data_list = [
@@ -120,14 +120,14 @@ pprint(result)
 # &gt;&gt; [&#039;foo&#039;, &#039;efoo&#039;, &#039;efiofo&#039;, &#039;dfsfoo&#039;, &#039;fefefofefioiio&#039;]
 </code></pre>
 <p>The previous example had the following internal data structure.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#tejaignnvhahwocvhfuazhpdsbuzxerzkuhpjpfbmcykhgwattgruzxqslcoziitdouotkvpsdehqzdynmesvpxzowixjwapsrxa">&#xe9b8;</button><code id="tejaignnvhahwocvhfuazhpdsbuzxerzkuhpjpfbmcykhgwattgruzxqslcoziitdouotkvpsdehqzdynmesvpxzowixjwapsrxa">[{&#039;spans&#039;: ((0, 1), (1, 2), (2, 3)), &#039;string&#039;: &#039;foo&#039;, &#039;weight&#039;: 0},
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#sjpwoznmoqbjxkiawqgwfgdgxvbfwzzjyhnrukbzacmexhywnezcloprwqxeoqeixxrbvjydnosdazfiqvvntaakhquhykvauezy">&#xe9b8;</button><code id="sjpwoznmoqbjxkiawqgwfgdgxvbfwzzjyhnrukbzacmexhywnezcloprwqxeoqeixxrbvjydnosdazfiqvvntaakhquhykvauezy">[{&#039;spans&#039;: ((0, 1), (1, 2), (2, 3)), &#039;string&#039;: &#039;foo&#039;, &#039;weight&#039;: 0},
  {&#039;spans&#039;: ((1, 2), (2, 3), (3, 4)), &#039;string&#039;: &#039;efoo&#039;, &#039;weight&#039;: 4},
  {&#039;spans&#039;: ((1, 2), (3, 4), (5, 6)), &#039;string&#039;: &#039;efiofo&#039;, &#039;weight&#039;: 7},
  {&#039;spans&#039;: ((1, 2), (4, 5), (5, 6)), &#039;string&#039;: &#039;dfsfoo&#039;, &#039;weight&#039;: 8},
  {&#039;spans&#039;: ((0, 1), (5, 6), (10, 11)), &#039;string&#039;: &#039;fefefofefioiio&#039;, &#039;weight&#039;: 12}]
 </code></pre>
 <p>And here is the implementation available as a gist.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#okstapwyidonpgonuadaxwjackurvqwxrfatpyajtcxpazvqaqmoggfnncccskvqoghlozpakxosbvujkgkiwicqjyjpmvwqgeng">&#xe9b8;</button><code id="okstapwyidonpgonuadaxwjackurvqwxrfatpyajtcxpazvqaqmoggfnncccskvqoghlozpakxosbvujkgkiwicqjyjpmvwqgeng">import re
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#aouqddvpbpczmhpvpgtkjrpjygiehrmcaujdmqqtcouuucwjtncstbdexaqzohmvjgfezbcrhtyeiipnnihgrvtzddpeufyapwgo">&#xe9b8;</button><code id="aouqddvpbpczmhpvpgtkjrpjygiehrmcaujdmqqtcouuucwjtncstbdexaqzohmvjgfezbcrhtyeiipnnihgrvtzddpeufyapwgo">import re
 
 
 def search(raw_list, search_string, ignore_case=True):
