@@ -55,7 +55,7 @@ workflow is the following:</p>
 <p>To be able to communicate your BusPirate you have to know it’s serial number.
 List the connected devices before you connect your Buspirate with the following
 command:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#zkbcjitrochrmqjqtcdostwhjfpcvhcldctrkwqseuhamwggmwgysynusxgpvklcjgsxbgcjmajtpyqaayysfobxlonzzdcedhsk">&#xe9b8;</button><code id="zkbcjitrochrmqjqtcdostwhjfpcvhcldctrkwqseuhamwggmwgysynusxgpvklcjgsxbgcjmajtpyqaayysfobxlonzzdcedhsk">$ ls /dev
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#pugdmtxxkduwfywzxcviqbifodmtapeskhglrkuiuhfzquporhxiqjnohydstlbexdiagicykzrnbmzigkrbooymohjgdtcqbhor">&#xe9b8;</button><code id="pugdmtxxkduwfywzxcviqbifodmtapeskhglrkuiuhfzquporhxiqjnohydstlbexdiagicykzrnbmzigkrbooymohjgdtcqbhor">$ ls /dev
 </code></pre>
 <p>This command will list all the connected devices. Save them somewhere, and then
 connect your BusPirate and list the devices again. Find the one that is only
@@ -63,7 +63,7 @@ present when you connect your BusPirate to your machine.</p>
 <p>There you go, mine was: <code>tty.usbserial-AD01W63E</code></p>
 <h1 id="2-connect-to-your-device">2. Connect to your device <a class="header-anchor internal-link" href="#2-connect-to-your-device" aria-hidden="true">¶</a></h1>
 <p>Use <strong>screen</strong> to connect to your BusPirate:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#yukgxecchycpouvzgkxhtpmwyhnaeoejyxaarwtuznyqazivejfanowkvlqeirzuorvnfxkpsflqipusduecoldxequmpajzvppq">&#xe9b8;</button><code id="yukgxecchycpouvzgkxhtpmwyhnaeoejyxaarwtuznyqazivejfanowkvlqeirzuorvnfxkpsflqipusduecoldxequmpajzvppq">$ screen /dev/tty.usbserial-AD01W63E 115200 8N1
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qzdojmzetbknuwcfuqehfkvtkwtxvxzctwinexwwucqfytvemufchkvvsuvtrrtwdqjqnlcrqwisehwkhsbeckyfvwpgyrlfwxnv">&#xe9b8;</button><code id="qzdojmzetbknuwcfuqehfkvtkwtxvxzctwinexwwucqfytvemufchkvvsuvtrrtwdqjqnlcrqwisehwkhsbeckyfvwpgyrlfwxnv">$ screen /dev/tty.usbserial-AD01W63E 115200 8N1
 </code></pre>
 <p>The BusPirate console should appear on your terminal. To exit the session press
 <kbd>control</kbd>+<kbd>a</kbd> then <kbd>k</kbd> and after the prompt press
@@ -73,7 +73,7 @@ help you. <a href="http://ss64.com/osx/screen.html" class="external-link" target
 <h1 id="3-make-your-life-easier">3. Make your life easier <a class="header-anchor internal-link" href="#3-make-your-life-easier" aria-hidden="true">¶</a></h1>
 <p>Create an alias for the connection by writing into your <em>~/.bashrc</em>
 file.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#bwnmzofjrdtedtkmxlnnlmdwgaztubbzpgsjotezrnxgzdbthssgnxiznuwudtpbokuetuzjngtflmgsdfvbzykaykmnnifbflzd">&#xe9b8;</button><code id="bwnmzofjrdtedtkmxlnnlmdwgaztubbzpgsjotezrnxgzdbthssgnxiznuwudtpbokuetuzjngtflmgsdfvbzykaykmnnifbflzd">alias buspirate=&#039;screen /dev/tty.usbserial-AD01W63E 115200 8N1&#039;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#tcenvqtjcspxawlkebqjfiuroycazxoddziluqxlzifxlissunukflaxysozfodxptjduiqixyyawzcowcujszpprkywklaigvjx">&#xe9b8;</button><code id="tcenvqtjcspxawlkebqjfiuroycazxoddziluqxlzifxlissunukflaxysozfodxptjduiqixyyawzcowcujszpprkywklaigvjx">alias buspirate=&#039;screen /dev/tty.usbserial-AD01W63E 115200 8N1&#039;
 </code></pre>
 <p>Source the modified file or restart the terminal, and type in <code>buspirate</code>, and
 the BusPirate terminal should open.</p>

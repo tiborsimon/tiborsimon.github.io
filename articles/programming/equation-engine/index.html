@@ -151,7 +151,7 @@
 <p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
 calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
 that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qwszsyybqzjkhkhacboeezxkgdkupjogkgmtwmsbftjivasrkbrdeoaaabpojutjjdzzzmyjuuvolcuyljjvjbhegndsffazmlmm">&#xe9b8;</button><code id="qwszsyybqzjkhkhacboeezxkgdkupjogkgmtwmsbftjivasrkbrdeoaaabpojutjjdzzzmyjuuvolcuyljjvjbhegndsffazmlmm">[data, flags] = simple_input_parser(data, raw_varargin, validators);
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#murzbwmgljvryyugpwvrjvrkmtjnbjhyakgjlbyhfvqhlulhcpamhoklnvqwexhlekyfiwbqnhsmihlwqazaslxjlgkyukcsarrh">&#xe9b8;</button><code id="murzbwmgljvryyugpwvrjvrkmtjnbjhyakgjlbyhfvqhlulhcpamhoklnvqwexhlekyfiwbqnhsmihlwqazaslxjlgkyukcsarrh">[data, flags] = simple_input_parser(data, raw_varargin, validators);
 </code></pre>
 <p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
 zero if not.</p>
@@ -230,7 +230,7 @@ to do that. In case if wo do not have all the ones, we have to try to calculate 
 </table>
 <p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
 others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#vwqdphsveulcubvsylzqpkzqqzjwwndntgadiwkhanagvoqvlrxqlvdaikzoutlairtnlvgihcscatjddptkcobmhnaqvwrtdusy">&#xe9b8;</button><code id="vwqdphsveulcubvsylzqpkzqqzjwwndntgadiwkhanagvoqvlrxqlvdaikzoutlairtnlvgihcscatjddptkcobmhnaqvwrtdusy">%% Parameter construction
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#xjkzbonftvtkhiunmraadhsphtpculjvmjggwwunvxnomurlbeaqmupryyatvjyvhdzmfseefjkkumkwlsnimixesdvpxuumadit">&#xe9b8;</button><code id="xjkzbonftvtkhiunmraadhsphtpculjvmjggwwunvxnomurlbeaqmupryyatvjyvhdzmfseefjkkumkwlsnimixesdvpxuumadit">%% Parameter construction
 function f = get_f()
     if flags.f
         f = data.f;
@@ -350,7 +350,7 @@ end
 <h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations <a class="header-anchor internal-link" href="#using-the-parameters-in-the-equations" aria-hidden="true">¶</a></h2>
 <p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
 sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#gongcnrlsekbqbmxgpzfjefyzbedmprlozvedbxxbfpppddzwpmytkmcqxvrlcuepcjicygztewjonlftdumsqwrtseietxgptuw">&#xe9b8;</button><code id="gongcnrlsekbqbmxgpzfjefyzbedmprlozvedbxxbfpppddzwpmytkmcqxvrlcuepcjicygztewjonlftdumsqwrtseietxgptuw">%% Signal synthesizer functions
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ukkwsfdzuyqpodbcjiggsojgimabzqbuumwhetbkmoipxlkfouqvrugfozskbadtdsxtpzsowwskzfhwwffipqhpjcamuiubjaiq">&#xe9b8;</button><code id="ukkwsfdzuyqpodbcjiggsojgimabzqbuumwhetbkmoipxlkfouqvrugfozskbadtdsxtpzsowwskzfhwwffipqhpjcamuiubjaiq">%% Signal synthesizer functions
 function s = construct_with_n_N()
     n = get_n();
     N = get_N();
@@ -420,7 +420,7 @@ calculated, an exception will be raised.</li>
 <p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
 If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
 the given parameter set, there is no way to generate a sinusoud signal.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#fitvrcmjfzeobssewtrnqwedoztqlptpwqmivecnqklgucwsdqmtwlqposjbbaaafczfjggpdlzjfexdlkpjodegqdjkuzmplzwb">&#xe9b8;</button><code id="fitvrcmjfzeobssewtrnqwedoztqlptpwqmivecnqklgucwsdqmtwlqposjbbaaafczfjggpdlzjfexdlkpjodegqdjkuzmplzwb">%% Mode Selection
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ngjdwjquvhdxgdeworfamnakozlnyuwcyjogpxsmgejggkgpkxsgiweqrhlexaybxpijioowgjbhabgamcggaefbsxrzmncizjgi">&#xe9b8;</button><code id="ngjdwjquvhdxgdeworfamnakozlnyuwcyjogpxsmgejggkgpkxsgiweqrhlexaybxpijioowgjbhabgamcggaefbsxrzmncizjgi">%% Mode Selection
 try
     s = construct_with_n_N();
 catch
