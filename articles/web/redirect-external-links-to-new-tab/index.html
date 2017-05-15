@@ -52,13 +52,13 @@ links to a new blank tab.</p>
 <p>All the credits go to <a href="http://stackoverflow.com/users/1504966/austin" class="external-link" target="_blank">Austin</a>
 and to his <a href="http://stackoverflow.com/a/11597448" class="external-link" target="_blank">stackoverflow post</a>. I am just
 a happy user of this method :)</p>
-<pre><div class="code-title">javascript</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rtmxhvapabwblsedskhmwfesmikbvmdksyabrwvzpbnqzyrjpfknjiqlqgfqpanovuinzfkxgqcvrlqfikaliulwgjncvjoiejco">&#xe9b8;</button><code id="rtmxhvapabwblsedskhmwfesmikbvmdksyabrwvzpbnqzyrjpfknjiqlqgfqpanovuinzfkxgqcvrlqfikaliulwgjncvjoiejco">$('a').each(function() {
-   var a = new RegExp('/' + window.location.host + '/');
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#dfbgjjkzbxvacqlftfnfoepgxoosiglgdjuyqhiiowiqhuonaryxjvtrojpbxfkydmkwyadjklyuprqbxqtdcjjtjwkmedwdligm">&#xe9b8;</button><code id="dfbgjjkzbxvacqlftfnfoepgxoosiglgdjuyqhiiowiqhuonaryxjvtrojpbxfkydmkwyadjklyuprqbxqtdcjjtjwkmedwdligm">$(&#039;a&#039;).each(function() {
+   var a = new RegExp(&#039;/&#039; + window.location.host + &#039;/&#039;);
    if(!a.test(this.href)) {
        $(this).click(function(event) {
            event.preventDefault();
            event.stopPropagation();
-           window.open(this.href, '_blank');
+           window.open(this.href, &#039;_blank&#039;);
        });
    }
 });
@@ -293,11 +293,17 @@ Thank you Austin!</p>
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

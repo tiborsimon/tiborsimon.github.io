@@ -73,28 +73,28 @@
 </table>
 <h1 id="prerequisite">Prerequisite <a class="header-anchor internal-link" href="#prerequisite" aria-hidden="true">¶</a></h1>
 <p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611" class="external-link" target="_blank">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wlthhatqomufvrynyhyyoyvdxzoixwuubideqlynubpqdzrffsaynrnjbicvadncginklmwteguwabccqaiplniozevycxjxgnvq">&#xe9b8;</button><code id="wlthhatqomufvrynyhyyoyvdxzoixwuubideqlynubpqdzrffsaynrnjbicvadncginklmwteguwabccqaiplniozevycxjxgnvq"><math title="2^(2/(sqrt(6))" xmlns="http://www.w3.org/1998/Math/MathML">
-  <mstyle mathcolor="blue" fontfamily="sanserif" displaystyle="true">
-    <msup>
-      <mn>2</mn>
-      <mrow>
-        <mfrac>
-          <mn>2</mn>
-          <mrow>
-            <msqrt>
-              <mrow>
-                <mn>6</mn>
-              </mrow>
-            </msqrt>
-          </mrow>
-        </mfrac>
-      </mrow>
-    </msup>
-  </mstyle>
-</math>
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#pjcctynieubuxflpgprnnfdhbynprmxjoiskszsbrrvyaunhoddgukqoqacccvostcodebosmtnoxnrdaicyuhcocapxgsdjrand">&#xe9b8;</button><code id="pjcctynieubuxflpgprnnfdhbynprmxjoiskszsbrrvyaunhoddgukqoqacccvostcodebosmtnoxnrdaicyuhcocapxgsdjrand">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+  &lt;mstyle mathcolor=&quot;blue&quot; fontfamily=&quot;sanserif&quot; displaystyle=&quot;true&quot;&gt;
+    &lt;msup&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+      &lt;mrow&gt;
+        &lt;mfrac&gt;
+          &lt;mn&gt;2&lt;/mn&gt;
+          &lt;mrow&gt;
+            &lt;msqrt&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;6&lt;/mn&gt;
+              &lt;/mrow&gt;
+            &lt;/msqrt&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+  &lt;/mstyle&gt;
+&lt;/math&gt;
 </code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><div class="code-title">latex</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bcdnjcswyhlflaqdyszwbvmkmpzrugzjujuyqmvcvqpeeuumuzqhocwjhjfvfvcwshkevdvnswexzaeflaxsqzjtkwvnwiekhybx">&#xe9b8;</button><code id="bcdnjcswyhlflaqdyszwbvmkmpzrugzjujuyqmvcvqpeeuumuzqhocwjhjfvfvcwshkevdvnswexzaeflaxsqzjtkwvnwiekhybx">2^{\frac{2}{\sqrt{6}}}
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#yuvausghspavgooxquxznlbsqddcnqoxsxiqgiexqotvarriiffabudpqjclctdpwiynxtcsiaafttgotqywvylerrweakevnwjq">&#xe9b8;</button><code id="yuvausghspavgooxquxznlbsqddcnqoxsxiqgiexqotvarriiffabudpqjclctdpwiynxtcsiaafttgotqywvylerrweakevnwjq">2^{\frac{2}{\sqrt{6}}}
 </code></pre>
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org" class="external-link" target="_blank">MathJax</a> for this purpose.</p>
 <h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor internal-link" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
@@ -121,16 +121,16 @@
         </figure>
 <h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor internal-link" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#uqzaiolxsojlfsongvltvhundpdlpvbmmruthnjhsvhujysrdhwhiogzshqutzeiuaxppqncahzfgjpaogchmlsurdaoeduhcjyy">&#xe9b8;</button><code id="uqzaiolxsojlfsongvltvhundpdlpvbmmruthnjhsvhujysrdhwhiogzshqutzeiuaxppqncahzfgjpaogchmlsurdaoeduhcjyy"><!DOCTYPE html>
-<html>
-    <head>
-        <title>MathJax TeX Test Page</title>
-        <script type="text/javascript" async
-            src="MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML">
-            </script>
-    </head>
-    <body>
-        <div style="font-size: 30pt; color: #eee;">
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#mhaxfyerrxpqocezotcqonlgvahzolhmwthquepiskllokufswoevuwfalypboqocuuukygnrtooegnezdezzszfsgckkrzpjmie">&#xe9b8;</button><code id="mhaxfyerrxpqocezotcqonlgvahzolhmwthquepiskllokufswoevuwfalypboqocuuukygnrtooegnezdezzszfsgckkrzpjmie">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; async
+            src=&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;&gt;
+            &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div style=&quot;font-size: 30pt; color: #eee;&quot;&gt;
             $$    
             \begin{equation}
               \prod_{\substack{
@@ -139,12 +139,12 @@
                  M_{i,j}
             \end{equation}
             $$
-        </div>
-    </body>
-</html>
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 <p>… so I used its <code>loadHTMLString</code> method to do that:</p>
-<pre><div class="code-title">swift</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wjehsbaxegmpdqgfgwrsewqnvwzmmjgihgtsbcwbhhhsmuyexrrlxjzonpeenddjethqvsrumafilsxoebownmvfjoehygsqrdnz">&#xe9b8;</button><code id="wjehsbaxegmpdqgfgwrsewqnvwzmmjgihgtsbcwbhhhsmuyexrrlxjzonpeenddjethqvsrumafilsxoebownmvfjoehygsqrdnz">//
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#xkyljvywucqyvjkynfpitgswrbvxtfaawofaqzcqdccrewpvjuhdyezofokmtoereiimkibzffoomzqhtzzerpgljtgrorpsnuty">&#xe9b8;</button><code id="xkyljvywucqyvjkynfpitgswrbvxtfaawofaqzcqdccrewpvjuhdyezofokmtoereiimkibzffoomzqhtzzerpgljtgrorpsnuty">//
 //  ViewController.swift
 //  MathJaxTest01
 //
@@ -165,7 +165,7 @@ class ViewController: UIViewController {
         let path = NSBundle.mainBundle().bundlePath
         let baseURL = NSURL.fileURLWithPath(path)
 
-        let myHTML = "<!DOCTYPE html><html><head><title>MathJax TeX Test Page</title><script type=\"text/javascript\" async  src=\"MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\"></script></head><body>  <div style=\"font-size: 30pt; color: #eee;\">$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$</div></body></html>"
+        let myHTML = &quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;MathJax TeX Test Page&lt;/title&gt;&lt;script type=\&quot;text/javascript\&quot; async  src=\&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML\&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;  &lt;div style=\&quot;font-size: 30pt; color: #eee;\&quot;&gt;$$\\begin{equation}\\prod_{\\substack{1\\le i \\le n\\\\ 1\\le j \\le m}}M_{i,j} \\end{equation}$$&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;
         myWebView.loadHTMLString(myHTML, baseURL:baseURL)
 
     }
@@ -446,11 +446,17 @@ class ViewController: UIViewController {
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

@@ -60,32 +60,32 @@
 </ul>
 <p>You can copy and paste this script to your machine, modify the <code>GITHUB_USERNAME</code> variable, and you are ready to go.</p>
 <p>This is the exact method what I used in my <strong>dotfiles</strong> deployment system. To learn more about that, read the <a href="https://tiborsimon.io/tools/dotfiles-with-url-deployment/" class="external-link" target="_blank">corresponding article</a>.</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xxpqllucloqgnwwxpbnqfdcocbxtowqacswibbxktmmhargzgfgksxronpcjhjwaxjpjnamdpqsgcxsxahjpcxiqveinvwzyfojo">&#xe9b8;</button><code id="xxpqllucloqgnwwxpbnqfdcocbxtowqacswibbxktmmhargzgfgksxronpcjhjwaxjpjnamdpqsgcxsxahjpcxiqveinvwzyfojo">GITHUB_USERNAME=tiborsimon
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#hqbaazbkvqxamlljzrpqxrluqnjkhlgihgxeccervewzaihyfomzzbksaypehqwzrngpdkgqxwbffbojypqujflultvqpkviiwed">&#xe9b8;</button><code id="hqbaazbkvqxamlljzrpqxrluqnjkhlgihgxeccervewzaihyfomzzbksaypehqwzrngpdkgqxwbffbojypqujflultvqpkviiwed">GITHUB_USERNAME=tiborsimon
 SSH_KEY=$HOME/.ssh/id_rsa
 
 if [ ! -f $SSH_KEY ] || [ ! -f $SSH_KEY.pub ]; then
-  echo 'Generate your ssh key first!'
+  echo &#039;Generate your ssh key first!&#039;
   exit
 fi
 
 github_result=0
-echo 'How do you want to name the key?'
+echo &#039;How do you want to name the key?&#039;
 read -e KEY_NAME
 until [ $github_result -eq 1 ]; do
-  curl --silent -u "$GITHUB_USERNAME" --data "{\"title\":\"$KEY_NAME\",\"key\":\"$(cat $SSH_KEY.pub)\"}" https://api.github.com/user/keys > gh-result
-  if grep -q 'key is already in use' gh-result; then
+  curl --silent -u &quot;$GITHUB_USERNAME&quot; --data &quot;{\&quot;title\&quot;:\&quot;$KEY_NAME\&quot;,\&quot;key\&quot;:\&quot;$(cat $SSH_KEY.pub)\&quot;}&quot; https://api.github.com/user/keys &gt; gh-result
+  if grep -q &#039;key is already in use&#039; gh-result; then
     github_result=1
-    echo 'Key is already in use.'
-  elif grep -q '"verified": true' gh-result; then
+    echo &#039;Key is already in use.&#039;
+  elif grep -q &#039;&quot;verified&quot;: true&#039; gh-result; then
     github_result=1
-    echo "Key ($KEY_NAME) has been added successfully."
-  elif grep -q 'Bad credentials' gh-result; then
-    echo 'Error during login: invalid username or password!'
-    echo 'Try again!'
+    echo &quot;Key ($KEY_NAME) has been added successfully.&quot;
+  elif grep -q &#039;Bad credentials&#039; gh-result; then
+    echo &#039;Error during login: invalid username or password!&#039;
+    echo &#039;Try again!&#039;
   else
-    echo 'A problem occured during the upload!'
+    echo &#039;A problem occured during the upload!&#039;
     cat gh-result
-    echo 'Try again!'
+    echo &#039;Try again!&#039;
   fi
   rm gh-result
 done
@@ -320,11 +320,17 @@ done
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

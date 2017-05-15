@@ -55,18 +55,18 @@
 <p>You can speed up the initial configuration if you have a previously saved config file set in a machine independent storage, say Dropbox or a USB drive.</p>
 <p>These files are generally called <strong>dotfiles</strong>, as command line tools often expect their configuration files to start with a dot indicating the file is hidden for normal use. Dotfiles are generally located in the current user’s <em>home</em> directory. When you start using a new machine, you simply  copy your saved config files to your home directory and you are home.</p>
 <p>Besides the custom configuration files, you can also save out a list of installable programs and tools that you want to have by default on a machine. Some package manager tools supports installing from files, but if not, you can write a small script that will install your tools one by one. You can create a <code>packages.txt</code> file for this purpose:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sfqbvlucbzleubjzkgvlvornjhpcjqqlbzprgwyevgaojgkbmqsauvoafehahckqbgxjhztxgrsdhkceozptuobioxcxojpricmv">&#xe9b8;</button><code id="sfqbvlucbzleubjzkgvlvornjhpcjqqlbzprgwyevgaojgkbmqsauvoafehahckqbgxjhztxgrsdhkceozptuobioxcxojpricmv">$ cat packages.txt
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#eyebafmoqoqngdfjsrqhvqblcxcacnceweoyhsfkhxooyocjzhdiwxnhrtrhzmxbqulpgjhovmxgaarovypetrtdmgetpnempzly">&#xe9b8;</button><code id="eyebafmoqoqngdfjsrqhvqblcxcacnceweoyhsfkhxooyocjzhdiwxnhrtrhzmxbqulpgjhovmxgaarovypetrtdmgetpnempzly">$ cat packages.txt
 git
 mc
 vim
 </code></pre>
 <p>The <em>one-by-one</em> installer script could be something like this:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#caipahvqfvjjnrmznizvjtxhhdyfxoffbguavfxhsmvnjunmxchvwqfxuqxczjrrujjebbipgjovcjslzlwhzebfesxztdhteybo">&#xe9b8;</button><code id="caipahvqfvjjnrmznizvjtxhhdyfxoffbguavfxhsmvnjunmxchvwqfxuqxczjrrujjebbipgjovcjslzlwhzebfesxztdhteybo">for app in $(cat path/to/your/packages.txt); do
-  echo "Installing $app.."
-  if $YOUR_PACKAGE_MANAGER install -y $app>temp_log_file 2>&1; then
-    echo "$app installed."
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#xdnmeiavzrbzcjzztdnunoopchojolmeapbzddyizwphqhrudsnsbnfpzildlgwpimflyaphgujctirpshzdzdqqiknwuzqifiyf">&#xe9b8;</button><code id="xdnmeiavzrbzcjzztdnunoopchojolmeapbzddyizwphqhrudsnsbnfpzildlgwpimflyaphgujctirpshzdzdqqiknwuzqifiyf">for app in $(cat path/to/your/packages.txt); do
+  echo &quot;Installing $app..&quot;
+  if $YOUR_PACKAGE_MANAGER install -y $app&gt;temp_log_file 2&gt;&amp;1; then
+    echo &quot;$app installed.&quot;
   else
-    echo "$app installation failed! Error: \n$(cat temp_log_file)"
+    echo &quot;$app installation failed! Error: \n$(cat temp_log_file)&quot;
   fi
   rm -f temp_log_file
 done
@@ -96,7 +96,7 @@ done
 <li>and it does this through a convenient command line menu system</li>
 </ul>
 <p>All I have to do is type in the following command:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xacfkecvpaogawjrigbnzrxiqucgjjwwfmzhppcwghuhimaivouuwlsdrdzexjvolfikfgwkuzcimhhohkspeucmhewugdkzvmsm">&#xe9b8;</button><code id="xacfkecvpaogawjrigbnzrxiqucgjjwwfmzhppcwghuhimaivouuwlsdrdzexjvolfikfgwkuzcimhhohkspeucmhewugdkzvmsm">bash <(curl -fsSL tiborsimon.io/dotfiles)
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#nadojmskupuhubvyvmmqzzbodflxihvsvvmapscagrxzjydpnlxubstxtibdrviersfrkombzgmiclskwklgoqbhzrfelgxfvrwj">&#xe9b8;</button><code id="nadojmskupuhubvyvmmqzzbodflxihvsvvmapscagrxzjydpnlxubstxtibdrviersfrkombzgmiclskwklgoqbhzrfelgxfvrwj">bash &lt;(curl -fsSL tiborsimon.io/dotfiles)
 </code></pre>
 <p>I can choose what protocol do I want to use for downloading the configuration. If I choose <strong>https</strong> the configuration will download instantly, and the ssh key generation will be skipped, since I only need my user name and password for GitHub to push back the config modification I will make later. If I choose <strong>ssh</strong> for the download protocol, I will be prompted if to create a new ssh key, and optionally upload it ti GitHub or BitBucket.</p>
 <h2 id="conclusion-3">Conclusion <a class="header-anchor internal-link" href="#conclusion-3" aria-hidden="true">¶</a></h2>
@@ -342,11 +342,17 @@ done
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

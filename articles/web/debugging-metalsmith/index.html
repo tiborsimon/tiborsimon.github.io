@@ -58,8 +58,8 @@ variables you can look at during execution.</p>
 <h2 id="debug-plugin">Debug plugin <a class="header-anchor internal-link" href="#debug-plugin" aria-hidden="true">¶</a></h2>
 <p>In order to peek into the data structure, you need to write a small plugin with the
 required metalsmith plugin interface like so:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#grdfuoxmpbcvqyyrjfqkueauhoujnawbrrmwmrjwsrlxhqxkcvqzmzdxzyggidbadhlhhvinojsxpozwwyqzhxaqmsmwxzytndhc">&#xe9b8;</button><code id="grdfuoxmpbcvqyyrjfqkueauhoujnawbrrmwmrjwsrlxhqxkcvqzmzdxzyggidbadhlhhvinojsxpozwwyqzhxaqmsmwxzytndhc">let monitor = () => {
-  return (files, metalsmith, done) => {
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ynnzqbfrzjkzlydzxwvnztaqutztlmnzvekubasqnyfsjixqjvwrjytlfaigrafgpidjffohckzpjwkxozqtrfaezskvidjefkle">&#xe9b8;</button><code id="ynnzqbfrzjkzlydzxwvnztaqutztlmnzvekubasqnyfsjixqjvwrjytlfaigrafgpidjffohckzpjwkxozqtrfaezskvidjefkle">let monitor = () =&gt; {
+  return (files, metalsmith, done) =&gt; {
     // console.log(metalsmith._metadata.enhancedTags)
     done()
   }
@@ -68,9 +68,9 @@ required metalsmith plugin interface like so:</p>
 ...
 
 metalsmith(__dirname)
-  .source('contents')
+  .source(&#039;contents&#039;)
   .use(monitor())
-  .destination('publish')
+  .destination(&#039;publish&#039;)
   .build(function (err) {
     if (err) {
       throw err;
@@ -306,11 +306,17 @@ metalsmith(__dirname)
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

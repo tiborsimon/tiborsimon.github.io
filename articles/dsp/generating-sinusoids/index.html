@@ -56,7 +56,7 @@
 <p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
 <p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> of continuous time.</p>
 <p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vturqfwyfewwoijwgosvkxenioalbgckvprwrkubmpleyavpnsygfwzbhxemtserlbxqggtxujumaombwduwzkgkeayyjftbbaoo">&#xe9b8;</button><code id="vturqfwyfewwoijwgosvkxenioalbgckvprwrkubmpleyavpnsygfwzbhxemtserlbxqggtxujumaombwduwzkgkeayyjftbbaoo">s = sin(2*pi*1*t1);
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#peoiacuupptlvacsymuoopmperibauerboylesbrruqkyscapftecwopzffyfimkojisdvlptgbuhgsialcnrcjdbapihgyfcmeg">&#xe9b8;</button><code id="peoiacuupptlvacsymuoopmperibauerboylesbrruqkyscapftecwopzffyfimkojisdvlptgbuhgsialcnrcjdbapihgyfcmeg">s = sin(2*pi*1*t1);
 </code></pre>
 <p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
 <figure id="fig1">
@@ -65,7 +65,7 @@
         </figure>
 <p>This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer’s <em>digital to analog converter</em>.</p>
 <p>However. There are other use cases when we don’t want to link the <strong>discrete time</strong> to the <strong>continuous time</strong>, so we don’t have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#dqrcmmvmyewfonclyaofmfuqnpcclslxmjpztjwsknqbbhcihzfihjnachqthsebrcaqnyvdqhwertxjlkadjxxgndbkborxgaxk">&#xe9b8;</button><code id="dqrcmmvmyewfonclyaofmfuqnpcclslxmjpztjwsknqbbhcihzfihjnachqthsebrcaqnyvdqhwertxjlkadjxxgndbkborxgaxk">t = linspace(0,1,100);
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#umtghhgwolezfcmfatmdkrqcxbfwhrwvizvbqgqcllrhyqobsplgxwgwzcawbfgplibdtyngimqyujpfvqxgzyhtqeqaqrdpkjph">&#xe9b8;</button><code id="umtghhgwolezfcmfatmdkrqcxbfwhrwvizvbqgqcllrhyqobsplgxwgwzcawbfgplibdtyngimqyujpfvqxgzyhtqeqaqrdpkjph">t = linspace(0,1,100);
 s = sin(2*pi*3*t);
 </code></pre>
 <p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
@@ -187,7 +187,7 @@ s = sin(2*pi*3*t);
 <p>The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.</p>
 <h2 id="method-1-nn">Method 1 - [n,N] <a class="header-anchor internal-link" href="#method-1-nn" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal with <code>n</code> data points with <code>N</code> periods in it.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kensvtgmheqtqrmvfotlumgbqlmbhzaizqbujuaobpujwqyaqgiyafoamtlonrvlzjgzusgzaafwzyxlzuldfzqzbuyqvmumkzqw">&#xe9b8;</button><code id="kensvtgmheqtqrmvfotlumgbqlmbhzaizqbujuaobpujwqyaqgiyafoamtlonrvlzjgzusgzaafwzyxlzuldfzqzbuyqvmumkzqw">n = 60;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#uezvylktpgrseufkdrkvixtyzgcdbtebwhykgrtggupcowfkwzvtznuljhtweygvequovjlltkvqfjxanttecsydrycgkxmgywzy">&#xe9b8;</button><code id="uezvylktpgrseufkdrkvixtyzgcdbtebwhykgrtggupcowfkwzvtznuljhtweygvequovjlltkvqfjxanttecsydrycgkxmgywzy">n = 60;
 N = 2.5;
 
 k = 0:n-1;
@@ -198,7 +198,7 @@ stem(s)
 </code></pre>
 <h2 id="method-2-lnfs">Method 2 - [L,N,fs] <a class="header-anchor internal-link" href="#method-2-lnfs" aria-hidden="true">¶</a></h2>
 <p>Generating <code>L</code> seconds long signal sampled at <code>fs</code> consisting of <code>N</code> periods in it.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nunzapasgfdjqusnloysazqtlaghvmgviwzeqqjwxewyxixzjojzabtuqikadbwughkcnqbgtanxvmkmjbkhagcqgivqpakxgeqh">&#xe9b8;</button><code id="nunzapasgfdjqusnloysazqtlaghvmgviwzeqqjwxewyxixzjojzabtuqikadbwughkcnqbgtanxvmkmjbkhagcqgivqpakxgeqh">fs = 10;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#lzhqorrssbfvllwuelkweirpgsuegrzqdyzfedkkrhmydwihhikeefdwmirfehmfavfoclzmdefcacgegmclpbvmvjuqyzvgrars">&#xe9b8;</button><code id="lzhqorrssbfvllwuelkweirpgsuegrzqdyzfedkkrhmydwihhikeefdwmirfehmfavfoclzmdefcacgegmclpbvmvjuqyzvgrars">fs = 10;
 N = 2.5;
 L = 60/fs;
 
@@ -210,7 +210,7 @@ stem(s)
 </code></pre>
 <h2 id="method-3-fnfs">Method 3 - [f,N,fs] <a class="header-anchor internal-link" href="#method-3-fnfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with <code>N</code> periods in it with the frequency <code>f</code>.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kcevscbhypindytofvqykeuncvrwugdqrozzbqsimbreqttardchvhbtnwnlzcjysgzirscnoulizudolqgsizwpswyesbckxfqu">&#xe9b8;</button><code id="kcevscbhypindytofvqykeuncvrwugdqrozzbqsimbreqttardchvhbtnwnlzcjysgzirscnoulizudolqgsizwpswyesbckxfqu">fs = 10;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qmcvgowtqtjluspmmcegbwnuqwluhfdwneydvrtlytkucbcmhfoxybbemgxxclqndzaxpimmvodtljbftguvomstkonzpxudakeu">&#xe9b8;</button><code id="qmcvgowtqtjluspmmcegbwnuqwluhfdwneydvrtlytkucbcmhfoxybbemgxxclqndzaxpimmvodtljbftguvomstkonzpxudakeu">fs = 10;
 N = 2.5;
 f = N*fs/60;
 
@@ -221,7 +221,7 @@ stem(s)
 </code></pre>
 <h2 id="method-4-nffs">Method 4 - [n,f,fs] <a class="header-anchor internal-link" href="#method-4-nffs" aria-hidden="true">¶</a></h2>
 <p>Generating a signal consisting of <code>n</code> data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code>.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#suucceqfnsbyardpodeeotachqtzddlspsnepcxvzahuxhkpxnscsbokpeibwngvjmpurblnlykqsxldqlqysogyowokbeppfckf">&#xe9b8;</button><code id="suucceqfnsbyardpodeeotachqtzddlspsnepcxvzahuxhkpxnscsbokpeibwngvjmpurblnlykqsxldqlqysogyowokbeppfckf">fs = 10;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#atvwdkrfqwskaommqoxnwkvbthgtdawstngzcngwnwcipnrotciacczeuzmuwyklwnvzqygetcwnrizkihwpnhzerygjcckhmvsn">&#xe9b8;</button><code id="atvwdkrfqwskaommqoxnwkvbthgtdawstngzcngwnwcipnrotciacczeuzmuwyklwnvzqygetcwnrizkihwpnhzerygjcckhmvsn">fs = 10;
 n = 60;
 f = 2.5*fs/n;
 
@@ -233,7 +233,7 @@ stem(s)
 </code></pre>
 <h2 id="method-5-flfs">Method 5 - [f,L,fs] <a class="header-anchor internal-link" href="#method-5-flfs" aria-hidden="true">¶</a></h2>
 <p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with the duration of <code>L</code> seconds with the frequency <code>f</code>.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ujsjkczeuhknoyybmupunpvxfwryjhssurhkjqtuvfxnqzkgjfzsuvgwwqsxdvhztxwdokitleacotcenquexhysiktygfporjrb">&#xe9b8;</button><code id="ujsjkczeuhknoyybmupunpvxfwryjhssurhkjqtuvfxnqzkgjfzsuvgwwqsxdvhztxwdokitleacotcenquexhysiktygfporjrb">L = 60/fs;
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#dqxkqtcwafxgqjrurwcrsbojebahtnrzksmqpozeyubzvwjymixosgvketncaxvwnpkhertriyevoxwzlgnrbkcdepnhhjiwxakh">&#xe9b8;</button><code id="dqxkqtcwafxgqjrurwcrsbojebahtnrzksmqpozeyubzvwjymixosgvketncaxvwnpkhertriyevoxwzlgnrbkcdepnhhjiwxakh">L = 60/fs;
 f = 2.5/L;
 
 n = 0:1/fs:L-1/fs;
@@ -483,11 +483,17 @@ stem(s)
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

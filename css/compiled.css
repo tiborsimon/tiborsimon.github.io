@@ -859,7 +859,7 @@ table {
   position: relative;
   width: var(--content-width);
   left: -30px;
-  padding: 1px;
+  padding: 4px 0 1px;
   padding-left: 30px;
   font-size: 90%; }
 
@@ -883,6 +883,25 @@ table {
   border: none;
   color: #e9e8e8;
   cursor: pointer; }
+
+.copy-btn::before {
+  content: "Copied!";
+  padding-right: 6px;
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  font-size: 90%;
+  opacity: 0;
+  transition: all 0.2s ease; }
+
+button:focus {
+  outline: 0; }
+
+.copy-success::before {
+  content: "Copied!";
+  padding-right: 6px;
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  font-size: 90%;
+  opacity: 1;
+  transition: all 0.2s ease; }
 
 pre:hover .copy-btn {
   opacity: 1; }

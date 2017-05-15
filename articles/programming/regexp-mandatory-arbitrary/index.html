@@ -52,10 +52,10 @@ handle arbitrary order with the mandatory constraint. You have to do it yourself
 <p>You have to tell the regexp engine that you want allow all the possible permutation of a character list, with optional
 charachters between them. You can do it with options.</p>
 <p>For example, if you want to match words that has <code>a</code> and <code>b</code> in them in arbitrary order, you can write:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#okiiowbhdxppjhefjpcgkstqsfkcyftztsxwplcutrogwymqmggmxuzdcxajglplmsliudnynwsmqmdqhihdbiaowzmfwxfpacwe">&#xe9b8;</button><code id="okiiowbhdxppjhefjpcgkstqsfkcyftztsxwplcutrogwymqmggmxuzdcxajglplmsliudnynwsmqmdqhihdbiaowzmfwxfpacwe">((.*a.*b.*)|(.*b.*a.*))
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#mezoucvxaswsrtkqgwfbepehywiylwztvhpfmwrqgcdcxxcckaalehbogygaxdkpwuptrlixzviytnyvpqawtirkzwxupezmotrh">&#xe9b8;</button><code id="mezoucvxaswsrtkqgwfbepehywiylwztvhpfmwrqgcdcxxcckaalehbogygaxdkpwuptrlixzviytnyvpqawtirkzwxupezmotrh">((.*a.*b.*)|(.*b.*a.*))
 </code></pre>
 <p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ztuzqmoevqwfzauzgsuehxwusxhezmcexlniejsdjfyysgdtgxveipiatpilkyrjywmwtqzhoqillgfdnnfjmsxenfifdyswzaul">&#xe9b8;</button><code id="ztuzqmoevqwfzauzgsuehxwusxhezmcexlniejsdjfyysgdtgxveipiatpilkyrjywmwtqzhoqillgfdnnfjmsxenfifdyswzaul">((.*a.*b.*c.*)|
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ongsrucknybdbxcakrymmzjciltootlzotexkoktitvbwjglwjyjyvvxmbduyjcvvlyrkbkvmixqgfwgwgnquktztnrdlsmqbyvg">&#xe9b8;</button><code id="ongsrucknybdbxcakrymmzjciltootlzotexkoktitvbwjglwjyjyvvxmbduyjcvvlyrkbkvmixqgfwgwgnquktztnrdlsmqbyvg">((.*a.*b.*c.*)|
  (.*a.*c.*b.*)|
  (.*b.*a.*c.*)|
  (.*b.*c.*a.*)|
@@ -63,7 +63,7 @@ charachters between them. You can do it with options.</p>
  (.*c.*b.*a.*))
 </code></pre>
 <p>For 4 characters, it reaches the 409 charachters length:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#qgfcadwaieefniogtmnlopqpzkfmviregkkmuuxgriafllkklgpilzrjnclcpurtfxkgreqgtsyhkuslvijbapwgndyfdcltsczc">&#xe9b8;</button><code id="qgfcadwaieefniogtmnlopqpzkfmviregkkmuuxgriafllkklgpilzrjnclcpurtfxkgreqgtsyhkuslvijbapwgndyfdcltsczc">((.*a.*b.*c.*d.*)|
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#fdwghpaujggpqjrjbzqgibvtpoylwivsxvmfxfciqkbdefniivzvoecwtnjafakuveiztjavvatrqxdvrnwukvqfhzkogvqzkcdn">&#xe9b8;</button><code id="fdwghpaujggpqjrjbzqgibvtpoylwivsxvmfxfciqkbdefniivzvoecwtnjafakuveiztjavvatrqxdvrnwukvqfhzkogvqzkcdn">((.*a.*b.*c.*d.*)|
  (.*a.*b.*d.*c.*)|
  (.*a.*c.*b.*d.*)|
  (.*a.*c.*d.*b.*)|
@@ -90,19 +90,19 @@ charachters between them. You can do it with options.</p>
 </code></pre>
 <h1 id="generator-in-python">Generator in python <a class="header-anchor internal-link" href="#generator-in-python" aria-hidden="true">¶</a></h1>
 <p>You can write a generator for this regexp pattern easily in python:</p>
-<pre><div class="code-title">python</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#hcrbdshtawexurgtafrsnncrmeljbunjxfbpwsebxwtlpbavtqwrqzhsxogzvbufooodvcyixfhmlvmolbigwecdgnargkcrhruu">&#xe9b8;</button><code id="hcrbdshtawexurgtafrsnncrmeljbunjxfbpwsebxwtlpbavtqwrqzhsxogzvbufooodvcyixfhmlvmolbigwecdgnargkcrhruu">from itertools import permutations
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#nlqacvonxuhokyibjqphmyycqjfysuiqwmqmzxfhiikqplnstjrihfwfrhdewhibkxueasvipfoopbfjtyegynpyisjgmqhlpteg">&#xe9b8;</button><code id="nlqacvonxuhokyibjqphmyycqjfysuiqwmqmzxfhiikqplnstjrihfwfrhdewhibkxueasvipfoopbfjtyegynpyisjgmqhlpteg">from itertools import permutations
 import re
 
 def generate_mandatory_arbitrary(content):
-    pattern_string = '('
+    pattern_string = &#039;(&#039;
     for p in permutations(content):
-        pattern_string += '(.*'
+        pattern_string += &#039;(.*&#039;
         for i in p:
-            pattern_string += '{}.*'.format(i)
-        pattern_string += ')|'
-    return pattern_string[:-1] + ')'
+            pattern_string += &#039;{}.*&#039;.format(i)
+        pattern_string += &#039;)|&#039;
+    return pattern_string[:-1] + &#039;)&#039;
 
-print(generate_mandatory_arbitrary('abc'))
+print(generate_mandatory_arbitrary(&#039;abc&#039;))
 </code></pre>
 
           </div>
@@ -332,11 +332,17 @@ print(generate_mandatory_arbitrary('abc'))
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

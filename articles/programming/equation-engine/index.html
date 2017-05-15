@@ -151,7 +151,7 @@
 <p>We need to identify what parameters were passed to the generator function to be able to decide what parameters can we
 calculate with the passed ones. Hopefully we can use <a href="http://tiborsimon.io/projects/TSPR0002/" target="_blank">Simple Input Parser</a>
 that can provide the passed parameter flags in its <em>extra flag</em> mode.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vigxzpcuqzlxrwjhchjaitrnxxpmrkzmtphzajbhezbrzhiuodpzbhuneemsottchslxenzalgwkebrowiyrvnqekyxvxlbfvzbk">&#xe9b8;</button><code id="vigxzpcuqzlxrwjhchjaitrnxxpmrkzmtphzajbhezbrzhiuodpzbhuneemsottchslxenzalgwkebrowiyrvnqekyxvxlbfvzbk">[data, flags] = simple_input_parser(data, raw_varargin, validators);
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qwszsyybqzjkhkhacboeezxkgdkupjogkgmtwmsbftjivasrkbrdeoaaabpojutjjdzzzmyjuuvolcuyljjvjbhegndsffazmlmm">&#xe9b8;</button><code id="qwszsyybqzjkhkhacboeezxkgdkupjogkgmtwmsbftjivasrkbrdeoaaabpojutjjdzzzmyjuuvolcuyljjvjbhegndsffazmlmm">[data, flags] = simple_input_parser(data, raw_varargin, validators);
 </code></pre>
 <p>The flags variable will be the structure that will contain the parameter flags. One if the parameter was parsed and
 zero if not.</p>
@@ -230,20 +230,20 @@ to do that. In case if wo do not have all the ones, we have to try to calculate 
 </table>
 <p>This table can be programmed into <strong>calculator functions</strong> which are going to try to calculate a parameter from the
 others. If a <em>calculator function</em> is unable to calculate a parameter it throws an exception.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rcooldgvwwqhgssjzmiuptazgaeietazphmivsezxltxxkftjvufztddruzgljqcfhzdhkxqyxnrftyuwzngnnfgxouxfgpnuylc">&#xe9b8;</button><code id="rcooldgvwwqhgssjzmiuptazgaeietazphmivsezxltxxkftjvufztddruzgljqcfhzdhkxqyxnrftyuwzngnnfgxouxfgpnuylc">%% Parameter construction
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#vwqdphsveulcubvsylzqpkzqqzjwwndntgadiwkhanagvoqvlrxqlvdaikzoutlairtnlvgihcscatjddptkcobmhnaqvwrtdusy">&#xe9b8;</button><code id="vwqdphsveulcubvsylzqpkzqqzjwwndntgadiwkhanagvoqvlrxqlvdaikzoutlairtnlvgihcscatjddptkcobmhnaqvwrtdusy">%% Parameter construction
 function f = get_f()
     if flags.f
         f = data.f;
     elseif flags.T
         f = 1 / data.T;
-    elseif flags.N && flags.L
+    elseif flags.N &amp;&amp; flags.L
         f = data.N / data.L;
-    elseif flags.n && flags.dt && flags.L && flags.T
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.L &amp;&amp; flags.T
         f = data.n * data.dt / data.L / data.T;
-    elseif flags.n && flags.fs && flags.L && flags.T
+    elseif flags.n &amp;&amp; flags.fs &amp;&amp; flags.L &amp;&amp; flags.T
         f = data.n / data.fs / data.L / data.T;
     else
-        throw('.');
+        throw(&#039;.&#039;);
     end
 end
 
@@ -252,50 +252,50 @@ function T = get_T()
         T = data.T;
     elseif flags.f
         T = 1 / data.f;
-    elseif flags.L && flags.N
+    elseif flags.L &amp;&amp; flags.N
         T = data.L / data.N;
-    elseif flags.L && flags.n && flags.dt && flags.f
+    elseif flags.L &amp;&amp; flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
         T = data.L / data.n / data.dt / data.f;
-    elseif falgs.L && flags.n && flags.fs && flags.f
+    elseif falgs.L &amp;&amp; flags.n &amp;&amp; flags.fs &amp;&amp; flags.f
         T = data.L * data.fs / data.n / data.f;
     else
-        throw('.');
+        throw(&#039;.&#039;);
     end
 end
 
 function n = get_n()
     if flags.n
         n = data.n;
-    elseif flags.L && flags.fs
+    elseif flags.L &amp;&amp; flags.fs
         n = data.L * data.fs;
-    elseif flags.L && flags.dt
+    elseif flags.L &amp;&amp; flags.dt
         n = data.L / data.dt;
-    elseif flags.N && flags.T && flags.dt
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.dt
         n = data.N * data.T / data.dt;
-    elseif flags.N && flags.T && flags.fs
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.fs
         n = data.N * data.T * data.fs;
     else
-        throw('.')
+        throw(&#039;.&#039;)
     end
 end
 
 function N = get_N()
     if flags.N
         N = data.N;
-    elseif flags.L && flags.T
+    elseif flags.L &amp;&amp; flags.T
         N = data.L / data.T;
-    elseif flags.L && flags.f
+    elseif flags.L &amp;&amp; flags.f
         N = data.L * data.f;
-    elseif flags.n && flags.dt && flags.T
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.T
         N = data.n * data.dt / data.T;
-    elseif flags.n && flags.dt && flags.f
+    elseif flags.n &amp;&amp; flags.dt &amp;&amp; flags.f
         N = data.n * data.dt * data.f;
-    elseif flags.n && flags.fs && flags.T
+    elseif flags.n &amp;&amp; flags.fs &amp;&amp; flags.T
         N = data.n / data.fs / data.T;
-    elseif flags.n && flags.f && flags.fs
+    elseif flags.n &amp;&amp; flags.f &amp;&amp; flags.fs
         N = data.n * data.f / data.fs;
     else
-        throw('.')
+        throw(&#039;.&#039;)
     end
 end
 
@@ -304,14 +304,14 @@ function fs = get_fs()
         fs = data.fs;
     elseif flags.dt
         fs = 1 / data.dt;
-    elseif flags.n && flags.L
+    elseif flags.n &amp;&amp; flags.L
         fs = data.n / data.L;
-    elseif flags.n && flags.N && flags.T
+    elseif flags.n &amp;&amp; flags.N &amp;&amp; flags.T
         fs = data.n / data.N / data.T;
-    elseif flags.n && flags.L && flags.f && flags.T
+    elseif flags.n &amp;&amp; flags.L &amp;&amp; flags.f &amp;&amp; flags.T
         fs = data.n / data.L / data.f / data.T;
     else
-        throw('.');
+        throw(&#039;.&#039;);
     end
 end
 
@@ -320,37 +320,37 @@ function dt = get_dt()
         dt = data.dt;
     elseif flags.fs
         dt = 1 / data.fs;
-    elseif flags.L && flags.n
+    elseif flags.L &amp;&amp; flags.n
         dt = data.L / data.n;
-    elseif flags.N && flags.T && flags.n
+    elseif flags.N &amp;&amp; flags.T &amp;&amp; flags.n
         dt = data.N * data.T / data.n;
-    elseif flags.L && flags.f && flags.T && flags.n
+    elseif flags.L &amp;&amp; flags.f &amp;&amp; flags.T &amp;&amp; flags.n
         dt = data.L * data.f * data.T / data.n;
     else
-        throw('.');
+        throw(&#039;.&#039;);
     end
 end
 
 function L = get_L()
     if flags.L
         L = data.L;
-    elseif flags.N && flags.T
+    elseif flags.N &amp;&amp; flags.T
         L = data.N * data.T;
-    elseif flags.n && flags.dt
+    elseif flags.n &amp;&amp; flags.dt
         L = data.n * data.dt;
-    elseif flags.N && flags.f
+    elseif flags.N &amp;&amp; flags.f
         L = data.N / data.f;
-    elseif flags.n && flags.fs
+    elseif flags.n &amp;&amp; flags.fs
         L = data.n / data.fs;
     else
-        throw('.');
+        throw(&#039;.&#039;);
     end
 end
 </code></pre>
 <h2 id="using-the-parameters-in-the-equations">Using the parameters in the equations <a class="header-anchor internal-link" href="#using-the-parameters-in-the-equations" aria-hidden="true">¶</a></h2>
 <p>Lastly we have to implement the <strong>generator functions</strong> for all 5 cases. These functions implement the
 sinusoid signal generation with a given parameter set. For more details see the first episode of this article series.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#lbspkluisljzphckwimvizsvqswyhevpxfafcmdsjlfolyxtrezyaylouonzwkovwkkdnmtzyqyvbgofixeivfjktvvfldubfifh">&#xe9b8;</button><code id="lbspkluisljzphckwimvizsvqswyhevpxfafcmdsjlfolyxtrezyaylouonzwkovwkkdnmtzyqyvbgofixeivfjktvvfldubfifh">%% Signal synthesizer functions
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#gongcnrlsekbqbmxgpzfjefyzbedmprlozvedbxxbfpppddzwpmytkmcqxvrlcuepcjicygztewjonlftdumsqwrtseietxgptuw">&#xe9b8;</button><code id="gongcnrlsekbqbmxgpzfjefyzbedmprlozvedbxxbfpppddzwpmytkmcqxvrlcuepcjicygztewjonlftdumsqwrtseietxgptuw">%% Signal synthesizer functions
 function s = construct_with_n_N()
     n = get_n();
     N = get_N();
@@ -420,7 +420,7 @@ calculated, an exception will be raised.</li>
 <p>The only thing what we have to do is to use the <em>generator functions</em> to try to generate the sinusoid signal in <strong>every possible way</strong>.
 If one <em>generator function</em> fails, we try another until there is no more <em>generator function</em> left. In that case we can determine, that
 the given parameter set, there is no way to generate a sinusoud signal.</p>
-<pre><div class="code-title">matlab</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#gdjkoqvwbcqvjsemsyowgwaiuticdyjjitlsdceqsbeqjyympejdsncsuomhkbzqxfxofybksiqiihvdwiscllkbewpfhahzwtnp">&#xe9b8;</button><code id="gdjkoqvwbcqvjsemsyowgwaiuticdyjjitlsdceqsbeqjyympejdsncsuomhkbzqxfxofybksiqiihvdwiscllkbewpfhahzwtnp">%% Mode Selection
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#fitvrcmjfzeobssewtrnqwedoztqlptpwqmivecnqklgucwsdqmtwlqposjbbaaafczfjggpdlzjfexdlkpjodegqdjkuzmplzwb">&#xe9b8;</button><code id="fitvrcmjfzeobssewtrnqwedoztqlptpwqmivecnqklgucwsdqmtwlqposjbbaaafczfjggpdlzjfexdlkpjodegqdjkuzmplzwb">%% Mode Selection
 try
     s = construct_with_n_N();
 catch
@@ -436,7 +436,7 @@ catch
               try
                   s = construct_with_L_f_fs();
               catch
-                  throw_exception('parameterError','With the given parameters there is no way to construct a sinusoid signal!');
+                  throw_exception(&#039;parameterError&#039;,&#039;With the given parameters there is no way to construct a sinusoid signal!&#039;);
               end
           end
 
@@ -675,11 +675,17 @@ the sinusoid signals.</p>
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

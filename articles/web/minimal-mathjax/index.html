@@ -68,28 +68,28 @@
 <h1 id="the-reducing-method">The reducing method <a class="header-anchor internal-link" href="#the-reducing-method" aria-hidden="true">¶</a></h1>
 <p>The best way to reduce your MathJax package is to create a simple template page, that uses MathJax as you would use it anyway, then remove almost every package content, and then add the ones that it tries to load but fails because the file isn’t present. In this way you will end up a package that contains just the right resources to render your equations.</p>
 <p>I started with a simple html page containing a basic MathJax setup:</p>
-<pre><div class="code-title">html</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fycsxzmgkspsmocfkkvjsbvhuijkvoorfiaspqfshmowaczjkkxogiphwonsqwltekluseltiishyayjzsyfmpchfhhynfwhdjvb">&#xe9b8;</button><code id="fycsxzmgkspsmocfkkvjsbvhuijkvoorfiaspqfshmowaczjkkxogiphwonsqwltekluseltiishyayjzsyfmpchfhhynfwhdjvb"><!DOCTYPE html>
-<html>
-  <head>
-    <title>MathJax TeX Test Page</title>
-    <script type="text/javascript" async  src="MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-  </head>
-  <body>
-    <div>
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#mjaxmgvxkbmmijtxjvbwgnvnmlsntzqmkngivjakutxuhyriyyqakszbmwwrwtugjmolnvjuibnfnbvemfzrzpkexdsdrpfrupzf">&#xe9b8;</button><code id="mjaxmgvxkbmmijtxjvbwgnvnmlsntzqmkngivjakutxuhyriyyqakszbmwwrwtugjmolnvjuibnfnbvemfzrzpkexdsdrpfrupzf">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; async  src=&quot;MathJax-2.6.1/MathJax.js?config=TeX-AMS_CHTML&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
       $$\begin{equation}\prod_{\substack{1\le i \le n\\ 1\le j \le m}}M_{i,j} \end{equation}$$
-      $$\begin{equation}L' = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
-      $$\begin{align} B'&=-\nabla \times E,\\E'&=\nabla \times B - 4\pi j,\end{align} $$
+      $$\begin{equation}L&#039; = {L}{\sqrt{1-\frac{v^2}{c^2}}}\end{equation} $$
+      $$\begin{align} B&#039;&amp;=-\nabla \times E,\\E&#039;&amp;=\nabla \times B - 4\pi j,\end{align} $$
       $$\begin{equation}x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\end{equation} $$
-    </div>
-    <script type="text/x-mathjax-config">
+    &lt;/div&gt;
+    &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
     MathJax.Hub.Config({
-      "CommonHTML": {
+      &quot;CommonHTML&quot;: {
         scale: 200
       }
       });
-    </script>
-  </body>
-</html>
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 <p>The easiest way I find to put back the necessary resources to the package is to copy the full package into a separated directory, then in a two pane file manager, put back the requested files. You can use your browser’s inspector view to find out what is missing.</p>
 <figure id="fig1">
@@ -106,7 +106,7 @@
           <figcaption>Fig 3: Testing the MathJax package with a small html file.</figcaption>
         </figure>
 <p>If my reduced MathJax package can render this equations, it shouldn’t be in trouble render all of my possible further equations. The html page above runs fine with teh following resource tree lising. This reduced package takes up <strong>623KB</strong> on disk.</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ljttcmilfyzempaubuuzpflrteaoufmddstqjsompixthkrqdhjjhgtwazpxzwtovwapogbqctvgijqwrltuilvbqgpbmgjcnpuh">&#xe9b8;</button><code id="ljttcmilfyzempaubuuzpflrteaoufmddstqjsompixthkrqdhjjhgtwazpxzwtovwapogbqctvgijqwrltuilvbqgpbmgjcnpuh">MathJax-2.6.1
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#gmlvexfijrudrojdxzcjjvuxorvbbyqmjjflhbovyvntpuryhpfvuemgrugkspxcmsmugakhgelwtogwmxdnyllttnejcneaxvwj">&#xe9b8;</button><code id="gmlvexfijrudrojdxzcjjvuxorvbbyqmjjflhbovyvntpuryhpfvuemgrugkspxcmsmugakhgelwtogwmxdnyllttnejcneaxvwj">MathJax-2.6.1
 ├── MathJax.js
 ├── config
 │   └── TeX-AMS_CHTML.js
@@ -360,11 +360,17 @@
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

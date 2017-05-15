@@ -47,8 +47,8 @@
           <div class="fade-in">
             <div class="summary">The existing tag management plugins are not the bests..</div>
             <hr>
-            <pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#aaxrhxcihzzfuqoxhxqvsxpasvbrvqbltchrplsxstlkjarrneslldezkdmexosodqbesyjzxzcezwoeyhrvvkjunfszwchhuvvt">&#xe9b8;</button><code id="aaxrhxcihzzfuqoxhxqvsxpasvbrvqbltchrplsxstlkjarrneslldezkdmexosodqbesyjzxzcezwoeyhrvvkjunfszwchhuvvt">let enhanceTags = () => {
-  return (files, metalsmith, done) => {
+            <pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#pkkaeoogrexhnavszqyxbshuykiibopuczzdwcitnwbnggwkleibzdysdjvhbqxjghugeagiqofsakiaioibmsnsyjbeuelxdzrp">&#xe9b8;</button><code id="pkkaeoogrexhnavszqyxbshuykiibopuczzdwcitnwbnggwkleibzdysdjvhbqxjghugeagiqofsakiaioibmsnsyjbeuelxdzrp">let enhanceTags = () =&gt; {
+  return (files, metalsmith, done) =&gt; {
     let metadata = metalsmith.metadata()
 
     // Adding url to the tag list of files..
@@ -57,7 +57,7 @@
       if (target.tags) {
         for (let tag in target.tags) {
           let data = target.tags[tag]
-          data.url = metadata.baseUrl + '/tag/' + data.slug + '/'
+          data.url = metadata.baseUrl + &#039;/tag/&#039; + data.slug + &#039;/&#039;
         }
       }
     }
@@ -78,21 +78,21 @@
         urlSafe,
         files,
         count: files.length,
-        url: metadata.baseUrl + '/tag/' + urlSafe + '/'
+        url: metadata.baseUrl + &#039;/tag/&#039; + urlSafe + &#039;/&#039;
       })
       enhancedTags.tagsByCount.push({
         tag,
         urlSafe,
         files,
         count: files.length,
-        url: metadata.baseUrl + '/tag/' + urlSafe + '/'
+        url: metadata.baseUrl + &#039;/tag/&#039; + urlSafe + &#039;/&#039;
       })
     }
-    enhancedTags.tagsByCount.sort((a, b) => {
-      return b.count == a.count ? ((a.urlSafe < b.urlSafe) ? -1 : (a.urlSafe > b.urlSafe) ? 1 : 0) : b.count - a.count
+    enhancedTags.tagsByCount.sort((a, b) =&gt; {
+      return b.count == a.count ? ((a.urlSafe &lt; b.urlSafe) ? -1 : (a.urlSafe &gt; b.urlSafe) ? 1 : 0) : b.count - a.count
     })
-    enhancedTags.tagsByName.sort((a, b) => {
-      return (a.urlSafe < b.urlSafe) ? -1 : (a.urlSafe > b.urlSafe) ? 1 : 0
+    enhancedTags.tagsByName.sort((a, b) =&gt; {
+      return (a.urlSafe &lt; b.urlSafe) ? -1 : (a.urlSafe &gt; b.urlSafe) ? 1 : 0
     })
     metadata.enhancedTags = enhancedTags
     done()
@@ -327,11 +327,17 @@
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

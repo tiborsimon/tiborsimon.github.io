@@ -49,15 +49,15 @@
             <p>As I started to use Emacs as my primary text editor (I was a vimmer in the past), I noticed that my common config I created on my OSX machine for Emacs 24.5 doesn’t work on one of my Vagrant based virtual machines running CentOS. If I tried to bring up the Helm buffer menu, it brings up an error that the <em>nesting exceeds</em> <code>max-lisp-eval-depth</code>.</p>
 <p>I figured out that the problem was that CentOS only has Emacs 23.1 available via yum, so I needed to compile it from the sources:</p>
 <p>First of all, I have downloaded the emacs repository mirror from GitHub, and I checked out to the <code>emacs-24.5</code> tag:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#suleqzcudufoaqxoybztoclguuatklyzxdctphgiczajguwjeedpetscnkfsdfuxddqsmmaipvwguezrlfxxasqacjgapxxlaasy">&#xe9b8;</button><code id="suleqzcudufoaqxoybztoclguuatklyzxdctphgiczajguwjeedpetscnkfsdfuxddqsmmaipvwguezrlfxxasqacjgapxxlaasy">git clone https://github.com/emacs-mirror/emacs.git
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ezmgdlkuodqwkcgfacqkqxuaytrzaogcsyzqhdlbrtegcfewzstfgfkfnetjiqthkhoqqaufezfbtgjkjebdxwtpxxpcivqbjwjd">&#xe9b8;</button><code id="ezmgdlkuodqwkcgfacqkqxuaytrzaogcsyzqhdlbrtegcfewzstfgfkfnetjiqthkhoqqaufezfbtgjkjebdxwtpxxpcivqbjwjd">git clone https://github.com/emacs-mirror/emacs.git
 cd emacs
 git checkout emacs-24.5
 </code></pre>
 <p>Then I run <code>autogen.sh</code> which has created the <code>configure</code> script.</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#zehxynubaycvhulivcxiywlhhxdqfhypigkzfvqxbxbbjxrgtitsebnkczmjuwyrujnzomyiqkosvsnyewvhceozdcfguazqgpcq">&#xe9b8;</button><code id="zehxynubaycvhulivcxiywlhhxdqfhypigkzfvqxbxbbjxrgtitsebnkczmjuwyrujnzomyiqkosvsnyewvhceozdcfguazqgpcq">./autogen.sh
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#yzdeukmgruwovptzqznbmbfubcdodmlotmhoghrrttnkfzijbeggibjmjlfcesfwnpwffenlzndjdhgqsezfvxjsavbbikstxora">&#xe9b8;</button><code id="yzdeukmgruwovptzqznbmbfubcdodmlotmhoghrrttnkfzijbeggibjmjlfcesfwnpwffenlzndjdhgqsezfvxjsavbbikstxora">./autogen.sh
 </code></pre>
 <p>I run the created <code>configure</code> script. As it could have been expected, there was some errors, so I installed the missing packages on demand:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#awrulgswhkkiisrqcoaaviioejtrtjburwlngtjzjqdgvbnyxjqowgcmymvwhobepifjbnrgpmvkmrjmtaqjhzzphvukcwgosyly">&#xe9b8;</button><code id="awrulgswhkkiisrqcoaaviioejtrtjburwlngtjzjqdgvbnyxjqowgcmymvwhobepifjbnrgpmvkmrjmtaqjhzzphvukcwgosyly">./configure
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#zvwlzqdefadfconzcfstbadjekqnjatvflojgoalquasrejmtiewetjakjubgnijwdvqhvnbcgsqdtulwterbzkujdtoktilvmng">&#xe9b8;</button><code id="zvwlzqdefadfconzcfstbadjekqnjatvflojgoalquasrejmtiewetjakjubgnijwdvqhvnbcgsqdtulwterbzkujdtoktilvmng">./configure
 [error] no makeinfo
 sudo yum install texinfo
 
@@ -80,7 +80,7 @@ sudo yum install ncurses-devel
 Where should the build process find the source code?    .
   What compiler should emacs be built with?               gcc -std=gnu99 -g3 -O2
   Should Emacs use the GNU version of malloc?             yes
-      (Using Doug Lea's new malloc from the GNU C Library.)
+      (Using Doug Lea&#039;s new malloc from the GNU C Library.)
   Should Emacs use a relocating allocator for buffers?    no
   Should Emacs use mmap(2) for buffer allocation?         no
   What window system should Emacs use?                    x11
@@ -113,13 +113,13 @@ Where should the build process find the source code?    .
   Does Emacs use toolkit scroll bars?                     yes
 </code></pre>
 <p>Finally as the <code>configure</code> script finished, I compiled the whole software package:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vamqoadluzycrqwpotxilbqurvrnhqtzbwucqddvfqhccxccmqqnbqjtjvgudlcymciwsfxcwqrkxpioluzwwdffgmqmywonmhhy">&#xe9b8;</button><code id="vamqoadluzycrqwpotxilbqurvrnhqtzbwucqddvfqhccxccmqqnbqjtjvgudlcymciwsfxcwqrkxpioluzwwdffgmqmywonmhhy">make
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#nevjqkuqjuyhbawqfqokrnxefaikqmnglimvhjwzuynlmpbrtrkrwyzgxmswabklknkmajhmoykghxfbqfkuzqrmbhoprgatdgtk">&#xe9b8;</button><code id="nevjqkuqjuyhbawqfqokrnxefaikqmnglimvhjwzuynlmpbrtrkrwyzgxmswabklknkmajhmoykghxfbqfkuzqrmbhoprgatdgtk">make
 sudo make install
 </code></pre>
 <p>After that, I had a fully functioning Emacs installation, that worked flawlesly with my configuration.</p>
 <h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
 <p>You can compile Emacs from sources with the following commands:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rcslptveepchsrxwdzqlnqmxthmlwzzdkjbhxvdpeffsmzewaaopphkoxlsvwlutlajxlrclmjycunahegqttghjcgkdqsiwsaxs">&#xe9b8;</button><code id="rcslptveepchsrxwdzqlnqmxthmlwzzdkjbhxvdpeffsmzewaaopphkoxlsvwlutlajxlrclmjycunahegqttghjcgkdqsiwsaxs">git clone https://github.com/emacs-mirror/emacs.git
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#affgubvoavddxzcevzicivpgtpyefeaovokegmarltcxxcqrqjfqnimcmoxaedypvnoyycedseephefomhbdznnxwtskoviumpif">&#xe9b8;</button><code id="affgubvoavddxzcevzicivpgtpyefeaovokegmarltcxxcqrqjfqnimcmoxaedypvnoyycedseephefomhbdznnxwtskoviumpif">git clone https://github.com/emacs-mirror/emacs.git
 cd emacs
 git checkout emacs-24.5
 sudo yum install texinfo libX11-devel Xaw3d-devel libjpeg-devel libpng-devel libungif-devel libtiff-devel ncurses-devel
@@ -356,11 +356,17 @@ sudo make install
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>

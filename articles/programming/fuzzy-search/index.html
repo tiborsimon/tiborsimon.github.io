@@ -58,12 +58,12 @@ to sort the result in the relevance order.</p>
 expression from the given search query.</p>
 <p>You need to make sure, that between the given query’s characters there might be
 another characters. This can be achieved by inserting <code>.*</code> tokens:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vueopbrlmxqhuagahnazunokihlbnlkoraqpcvsuctattzpjiaphltheivtsseoeglnpmmslbficxoucqerqyeqbtvsyfjogvtyl">&#xe9b8;</button><code id="vueopbrlmxqhuagahnazunokihlbnlkoraqpcvsuctattzpjiaphltheivtsseoeglnpmmslbficxoucqerqyeqbtvsyfjogvtyl">foo -> .*f.*o.*o.*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#rbjdrbjhagscuqqjufnegwbgiuwdczzmjndybdamdqosmlaucldrliemxyhnogdlncwdhlawrdvfsicrqrvipdtbkxqqhldfpjhd">&#xe9b8;</button><code id="rbjdrbjhagscuqqjufnegwbgiuwdczzmjndybdamdqosmlaucldrliemxyhnogdlncwdhlawrdvfsicrqrvipdtbkxqqhldfpjhd">foo -&gt; .*f.*o.*o.*
 </code></pre>
 <p>You may also want to capture each provided search characters in order to know
 it’s positions for later use. The regexp engine can provide the positions for
 the matched groups.</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pqcxwikxzwrjeakvxgaxiblkehaswplkxjnrqbwptpfazhtvtukvnkdkvkpolgeitkddyqpjzkkwgwvpzlmljamyqbucwggobtwv">&#xe9b8;</button><code id="pqcxwikxzwrjeakvxgaxiblkehaswplkxjnrqbwptpfazhtvtukvnkdkvkpolgeitkddyqpjzkkwgwvpzlmljamyqbucwggobtwv">.*f.*o.*o.* -> .*(f).*(o).*(o).*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#wqvsckpvkeukfvwpahbtvauvtmjclljhxbhfgivhunzaxdwbgtrrbmrvdqowbltevhotkqlfveqshwdmxgcigveqtcaefuuybxel">&#xe9b8;</button><code id="wqvsckpvkeukfvwpahbtvauvtmjclljhxbhfgivhunzaxdwbgtrrbmrvdqowbltevhotkqlfveqshwdmxgcigveqtcaefuuybxel">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
 </code></pre>
 <p>But be aware. This capturing may result you an unexpected result when you want
 to use the provided group positions by the regexp engine. Consider the following
@@ -76,7 +76,7 @@ you.</p>
 <p>To solve this issue, you have to force the regexp engine to match every
 character but to next captured character in the pattern. You need to generate a
 more complex regular expression:</p>
-<pre><div class="code-title">bash</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#uwiursganzjdkvgkypctzfbczvxesgugmogwycbwzsngxwmxmtbemyvwqaijedfgizpwconbdzblhivlnncqstlifoekknailcog">&#xe9b8;</button><code id="uwiursganzjdkvgkypctzfbczvxesgugmogwycbwzsngxwmxmtbemyvwqaijedfgizpwconbdzblhivlnncqstlifoekknailcog">.*(f).*(o).*(o).* -> [^f]*(f)[^o]*(o)[^o]*(o).*
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#mgnztmgczmxmyfkwtgpqwgkagkpnelvklufvptwqilmnvtgbthwoaqfxqfqmtmsvxiceuspfipdarstokduzdpruhtivjjqggwqj">&#xe9b8;</button><code id="mgnztmgczmxmyfkwtgpqwgkagkpnelvklufvptwqilmnvtgbthwoaqfxqfqmtmsvxiceuspfipdarstokduzdpruhtivjjqggwqj">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
 </code></pre>
 <p>This is the final regular expression we are going to use in this article. We can
 now produce the match results, it’s time to sort them.</p>
@@ -98,56 +98,56 @@ this weighting factor. And that’s is.</p>
 <h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
 <p>We have reviewed the fuzzy search and sort algorithm. You can find the usage
 example and the implementation in the following code snippets:</p>
-<pre><div class="code-title">python</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#otsorwakpnokckuycbdjqyxzsknmlabblweqwtuemckkaceauhbjzadxxmqzzxynqfsonmgvtrliibczpxmcpmeptcqryswaqitl">&#xe9b8;</button><code id="otsorwakpnokckuycbdjqyxzsknmlabblweqwtuemckkaceauhbjzadxxmqzzxynqfsonmgvtrliibczpxmcpmeptcqryswaqitl">import fuzzy
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#mgepuhdwuyrxpoxvdguflysqqlkcmmptzoroiglrekopfhkfetuohobmxfwyapowqlvyxvcfaugyfcgalbjzblrdgznvxihsenel">&#xe9b8;</button><code id="mgepuhdwuyrxpoxvdguflysqqlkcmmptzoroiglrekopfhkfetuohobmxfwyapowqlvyxvcfaugyfcgalbjzblrdgznvxihsenel">import fuzzy
 from pprint import pprint
 
 data_list = [
-    'efo',
-    'efoo',
-    'dfsfoo',
-    'efiofo',
-    'abc',
-    'cba',
-    'foo',
-    'ertfo',
-    'fefefofefioiio'
+    &#039;efo&#039;,
+    &#039;efoo&#039;,
+    &#039;dfsfoo&#039;,
+    &#039;efiofo&#039;,
+    &#039;abc&#039;,
+    &#039;cba&#039;,
+    &#039;foo&#039;,
+    &#039;ertfo&#039;,
+    &#039;fefefofefioiio&#039;
 ]
 
-result = fuzzy.search(data_list, 'foo')
+result = fuzzy.search(data_list, &#039;foo&#039;)
 
 pprint(result)
 
-# >> ['foo', 'efoo', 'efiofo', 'dfsfoo', 'fefefofefioiio']
+# &gt;&gt; [&#039;foo&#039;, &#039;efoo&#039;, &#039;efiofo&#039;, &#039;dfsfoo&#039;, &#039;fefefofefioiio&#039;]
 </code></pre>
 <p>The previous example had the following internal data structure.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kaaucymyngoiiodupfqhudskzordkcphrvzibofdvaxsicpuutgevehbtoxzvlxfdqagkihnqdxvdwfovwjtgudijipcvonwvuol">&#xe9b8;</button><code id="kaaucymyngoiiodupfqhudskzordkcphrvzibofdvaxsicpuutgevehbtoxzvlxfdqagkihnqdxvdwfovwjtgudijipcvonwvuol">[{'spans': ((0, 1), (1, 2), (2, 3)), 'string': 'foo', 'weight': 0},
- {'spans': ((1, 2), (2, 3), (3, 4)), 'string': 'efoo', 'weight': 4},
- {'spans': ((1, 2), (3, 4), (5, 6)), 'string': 'efiofo', 'weight': 7},
- {'spans': ((1, 2), (4, 5), (5, 6)), 'string': 'dfsfoo', 'weight': 8},
- {'spans': ((0, 1), (5, 6), (10, 11)), 'string': 'fefefofefioiio', 'weight': 12}]
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#saqeqdzgrdnvrhiykjejppddchcyhewkqrysytkrzfsfglnfvhmawssgljmeebnwtujvqkpxzfmlwjpioecdbigprwmfwrkyzoih">&#xe9b8;</button><code id="saqeqdzgrdnvrhiykjejppddchcyhewkqrysytkrzfsfglnfvhmawssgljmeebnwtujvqkpxzfmlwjpioecdbigprwmfwrkyzoih">[{&#039;spans&#039;: ((0, 1), (1, 2), (2, 3)), &#039;string&#039;: &#039;foo&#039;, &#039;weight&#039;: 0},
+ {&#039;spans&#039;: ((1, 2), (2, 3), (3, 4)), &#039;string&#039;: &#039;efoo&#039;, &#039;weight&#039;: 4},
+ {&#039;spans&#039;: ((1, 2), (3, 4), (5, 6)), &#039;string&#039;: &#039;efiofo&#039;, &#039;weight&#039;: 7},
+ {&#039;spans&#039;: ((1, 2), (4, 5), (5, 6)), &#039;string&#039;: &#039;dfsfoo&#039;, &#039;weight&#039;: 8},
+ {&#039;spans&#039;: ((0, 1), (5, 6), (10, 11)), &#039;string&#039;: &#039;fefefofefioiio&#039;, &#039;weight&#039;: 12}]
 </code></pre>
 <p>And here is the implementation available as a gist.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#iqjibyvtlwfvdlzqhclzhwklqkmvdoiapldkspyhqwstptglhwbcbmcawamhghtglpkdoaazkxxtikyxvidmmlyeacymkxrpqxye">&#xe9b8;</button><code id="iqjibyvtlwfvdlzqhclzhwklqkmvdoiapldkspyhqwstptglhwbcbmcawamhghtglpkdoaazkxxtikyxvidmmlyeacymkxrpqxye">import re
+<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#vtksswvkkehjpjizejkugzkujstrqswmesemgychgazexolcbbryuodnouqjiepiylmbbsnbbopbvieuudfacmhskuqhxriiyhgr">&#xe9b8;</button><code id="vtksswvkkehjpjizejkugzkujstrqswmesemgychgazexolcbbryuodnouqjiepiylmbbsnbbopbvieuudfacmhskuqhxriiyhgr">import re
 
 
 def search(raw_list, search_string, ignore_case=True):
-    if search_string == '':
+    if search_string == &#039;&#039;:
         return raw_list
     else:
         search_pattern = _create_search_pattern_from(search_string)
         result = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
         result = _sort_result_list(result)
-        return [r['string'] for r in result]
+        return [r[&#039;string&#039;] for r in result]
 
 
 def _create_search_pattern_from(pattern):
-    grouped = '[^{}]*'.format(pattern[0])
+    grouped = &#039;[^{}]*&#039;.format(pattern[0])
     for i in range(len(pattern)):
-        if i < len(pattern) - 1:
-            grouped += '({})[^{}]*'.format(pattern[i], pattern[i + 1])
+        if i &lt; len(pattern) - 1:
+            grouped += &#039;({})[^{}]*&#039;.format(pattern[i], pattern[i + 1])
         else:
-            grouped += '({})'.format(pattern[i])
-    grouped += '.*'
+            grouped += &#039;({})&#039;.format(pattern[i])
+    grouped += &#039;.*&#039;
     return grouped
 
 
@@ -156,7 +156,7 @@ def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
         p = re.compile(search_pattern, re.IGNORECASE)
     else:
         p = re.compile(search_pattern)
-    result = [{'string': link, 'spans': p.search(link).regs[1:]} for link in raw_list if p.match(link)]
+    result = [{&#039;string&#039;: link, &#039;spans&#039;: p.search(link).regs[1:]} for link in raw_list if p.match(link)]
     return result
 
 
@@ -172,8 +172,8 @@ def _calculate_weight_for_match(spans):
 
 def _sort_result_list(result):
     for r in result:
-        r['weight'] = _calculate_weight_for_match(r['spans'])
-    result = sorted(result, key=lambda k: k['weight'])
+        r[&#039;weight&#039;] = _calculate_weight_for_match(r[&#039;spans&#039;])
+    result = sorted(result, key=lambda k: k[&#039;weight&#039;])
     return result
 </code></pre>
 <hr class="footnotes-sep">
@@ -411,11 +411,17 @@ def _sort_result_list(result):
   </script>
   <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
   <script>
-    var clipboard = new Clipboard('.copy-btn');
+    const clipboard = new Clipboard('.copy-btn');
     clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
         console.log(e);
     });
     clipboard.on('error', function(e) {
+        alert('Copy failed :(')
         console.log(e);
     });
   </script>
