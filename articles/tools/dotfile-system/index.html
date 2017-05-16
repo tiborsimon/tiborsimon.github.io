@@ -55,13 +55,13 @@
 <p>You can speed up the initial configuration if you have a previously saved config file set in a machine independent storage, say Dropbox or a USB drive.</p>
 <p>These files are generally called <strong>dotfiles</strong>, as command line tools often expect their configuration files to start with a dot indicating the file is hidden for normal use. Dotfiles are generally located in the current user’s <em>home</em> directory. When you start using a new machine, you simply  copy your saved config files to your home directory and you are home.</p>
 <p>Besides the custom configuration files, you can also save out a list of installable programs and tools that you want to have by default on a machine. Some package manager tools supports installing from files, but if not, you can write a small script that will install your tools one by one. You can create a <code>packages.txt</code> file for this purpose:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#uepbomyjuubccnbdzrbmqhwvfcwqdzrlstbpowbrufwkrznmctjpyxoubkbjzqsyqqcanmsbthquwdgjhcxszjycqhtnlflrmqly">&#xe9b8;</button><code id="uepbomyjuubccnbdzrbmqhwvfcwqdzrlstbpowbrufwkrznmctjpyxoubkbjzqsyqqcanmsbthquwdgjhcxszjycqhtnlflrmqly">$ cat packages.txt
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fghpqaosbvulyndzmjdywskvjccofaltnlstfshtfnuzyfqzfvvfxatwxezlubfhskwstdemftfnyghmfpsprfpnynyxoceegpih">&#xe9b8;</button><code id="fghpqaosbvulyndzmjdywskvjccofaltnlstfshtfnuzyfqzfvvfxatwxezlubfhskwstdemftfnyghmfpsprfpnynyxoceegpih">$ cat packages.txt
 git
 mc
 vim
 </code></pre>
 <p>The <em>one-by-one</em> installer script could be something like this:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mgbhpikhcrfxsceibbvixwlnrcfkobrdsvsfblllegeumaiphnuuxkfrqcegvljovtsdqohjepfoozqgqrxqvqdvqnftdgpkhnoj">&#xe9b8;</button><code id="mgbhpikhcrfxsceibbvixwlnrcfkobrdsvsfblllegeumaiphnuuxkfrqcegvljovtsdqohjepfoozqgqrxqvqdvqnftdgpkhnoj">for app in $(cat path/to/your/packages.txt); do
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mysobsgrhuciarwillldymfidhogvpscinralyghrucuckkowtghsagqpjosisrueuuagxvhkzuovgolhioanzsxdqudfmoyyxpi">&#xe9b8;</button><code id="mysobsgrhuciarwillldymfidhogvpscinralyghrucuckkowtghsagqpjosisrueuuagxvhkzuovgolhioanzsxdqudfmoyyxpi">for app in $(cat path/to/your/packages.txt); do
   echo &quot;Installing $app..&quot;
   if $YOUR_PACKAGE_MANAGER install -y $app&gt;temp_log_file 2&gt;&amp;1; then
     echo &quot;$app installed.&quot;
@@ -96,7 +96,7 @@ done
 <li>and it does this through a convenient command line menu system</li>
 </ul>
 <p>All I have to do is type in the following command:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mmhrpbngzkfzjchsqzaveokfxrdsfvdyxikwbmexqplpdtbrqusmkcduczwjbgdhxkufmpuhlesywdgwmxnpstsgvfnkqfxjnwvr">&#xe9b8;</button><code id="mmhrpbngzkfzjchsqzaveokfxrdsfvdyxikwbmexqplpdtbrqusmkcduczwjbgdhxkufmpuhlesywdgwmxnpstsgvfnkqfxjnwvr">bash &lt;(curl -fsSL tiborsimon.io/dotfiles)
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kqhqkommjpmvrdljcuejkfcmyedbqvwuavuzilkwfwqazhdxiloysadmcbibjkqhveyulyuxbnrsmmbfstbfajncomezzfuakijv">&#xe9b8;</button><code id="kqhqkommjpmvrdljcuejkfcmyedbqvwuavuzilkwfwqazhdxiloysadmcbibjkqhveyulyuxbnrsmmbfstbfajncomezzfuakijv">bash &lt;(curl -fsSL tiborsimon.io/dotfiles)
 </code></pre>
 <p>I can choose what protocol do I want to use for downloading the configuration. If I choose <strong>https</strong> the configuration will download instantly, and the ssh key generation will be skipped, since I only need my user name and password for GitHub to push back the config modification I will make later. If I choose <strong>ssh</strong> for the download protocol, I will be prompted if to create a new ssh key, and optionally upload it ti GitHub or BitBucket.</p>
 <h2 id="conclusion-3">Conclusion <a class="header-anchor internal-link" href="#conclusion-3" aria-hidden="true">¶</a></h2>

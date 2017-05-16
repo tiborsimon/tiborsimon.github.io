@@ -73,7 +73,7 @@
 </table>
 <h1 id="prerequisite">Prerequisite <a class="header-anchor internal-link" href="#prerequisite" aria-hidden="true">¶</a></h1>
 <p>I wanted to display <em>mathematical equations</em> inside an iOS app using existing math render packages. According to <a href="http://stackoverflow.com/a/16002611" class="external-link" target="_blank">this Stack overflow answer</a>, <em>mathML</em> is supported by UIWebView since iOS 5. The downside of this solution, is that you have to use another packages to convert a convenient math equation reprsentation (like LaTEX) to mahtML which is very unconvenient:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wzvhbagkqrzwcmcalcrxrlhagqqmqdvnwrdoauujvpbtkzjsapwpircvoldukjbzcyoqmtipjryposabherngwfmmvxkyaugcmln">&#xe9b8;</button><code id="wzvhbagkqrzwcmcalcrxrlhagqqmqdvnwrdoauujvpbtkzjsapwpircvoldukjbzcyoqmtipjryposabherngwfmmvxkyaugcmln">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#utmthtijkodiscuzecsopxeopxskuyqcmvfvclbciozdtanrafxgdktbexcshpwsmclpzbzazxbupuecktiedicllelvmcgjhslv">&#xe9b8;</button><code id="utmthtijkodiscuzecsopxeopxskuyqcmvfvclbciozdtanrafxgdktbexcshpwsmclpzbzazxbupuecktiedicllelvmcgjhslv">&lt;math title=&quot;2^(2/(sqrt(6))&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
   &lt;mstyle mathcolor=&quot;blue&quot; fontfamily=&quot;sanserif&quot; displaystyle=&quot;true&quot;&gt;
     &lt;msup&gt;
       &lt;mn&gt;2&lt;/mn&gt;
@@ -94,7 +94,7 @@
 &lt;/math&gt;
 </code></pre>
 <p>The equivalent <strong>LaTEX</strong> representation is:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#oumanszefqkqgcpgwukwomwhpiwwdpyzbiwhyrdapapxvokdxtoazafeprqrstmfswycdqkhjcfoxcryaerktrpzfuublwztxllr">&#xe9b8;</button><code id="oumanszefqkqgcpgwukwomwhpiwwdpyzbiwhyrdapapxvokdxtoazafeprqrstmfswycdqkhjcfoxcryaerktrpzfuublwztxllr">2^{\frac{2}{\sqrt{6}}}
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ewxbvryikszcsvwnkhjffxteopgoqsqwkrxitlhysbcfrubucmvakjsqcixwqhesaoxhjmyjwbjjszotyfhemonczqlusaxpduei">&#xe9b8;</button><code id="ewxbvryikszcsvwnkhjffxteopgoqsqwkrxitlhysbcfrubucmvakjsqcixwqhesaoxhjmyjwbjjszotyfhemonczqlusaxpduei">2^{\frac{2}{\sqrt{6}}}
 </code></pre>
 <p>To be able to use LaTEX, a third party engine is needed to produce renderable html from it. I chose <a href="https://www.mathjax.org" class="external-link" target="_blank">MathJax</a> for this purpose.</p>
 <h1 id="downloading-mathjax">Downloading MathJax <a class="header-anchor internal-link" href="#downloading-mathjax" aria-hidden="true">¶</a></h1>
@@ -121,7 +121,7 @@
         </figure>
 <h1 id="using-the-mathjax-package">Using the MathJax package <a class="header-anchor internal-link" href="#using-the-mathjax-package" aria-hidden="true">¶</a></h1>
 <p>After the sources are placed to the right place, it’s time to use them. I draged a <em>UIWebView</em> to the Storyboard, and created a connection to the ViewController class (<code>@IBOutlet weak var myWebView: UIWebView!</code>). I wanted to display the following simple html page in the UIWebView…</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#trhiddhputmmrvtwddcgikvygirscxsrzmsottviwupwphftazdmxvmsxngjcqnqffcdgjlruhgqrxgtcaduwrgyjzzwnuuasdij">&#xe9b8;</button><code id="trhiddhputmmrvtwddcgikvygirscxsrzmsottviwupwphftazdmxvmsxngjcqnqffcdgjlruhgqrxgtcaduwrgyjzzwnuuasdij">&lt;!DOCTYPE html&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bmuokeyonrsurcnxhwnnutikmafnrvsipqllrbzqqranpvnezzbpnheyicbhbulryalvgdxgnixlltbvfzkrapkhpqddmnyrgsda">&#xe9b8;</button><code id="bmuokeyonrsurcnxhwnnutikmafnrvsipqllrbzqqranpvnezzbpnheyicbhbulryalvgdxgnixlltbvfzkrapkhpqddmnyrgsda">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;MathJax TeX Test Page&lt;/title&gt;
@@ -144,7 +144,7 @@
 &lt;/html&gt;
 </code></pre>
 <p>… so I used its <code>loadHTMLString</code> method to do that:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rsajfhdwkpjfivohpmetcybpwwmiboaurdukybaqjqoouccfjjambrtvlhghrrtgrhaqjvcpafuqqygpuvynjfokdwgokcywcjap">&#xe9b8;</button><code id="rsajfhdwkpjfivohpmetcybpwwmiboaurdukybaqjqoouccfjjambrtvlhghrrtgrhaqjvcpafuqqygpuvynjfokdwgokcywcjap">//
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#psmkxhnsrqafjhnyreikgbwhcblzhyzegtevwlaewbhnxtmeeuwhdxnuwhxcxshvbdzrsiqjkdtjsmqrecxyrjpmvzxecpnbcraf">&#xe9b8;</button><code id="psmkxhnsrqafjhnyreikgbwhcblzhyzegtevwlaewbhnxtmeeuwhdxnuwhxcxshvbdzrsiqjkdtjsmqrecxyrjpmvzxecpnbcraf">//
 //  ViewController.swift
 //  MathJaxTest01
 //

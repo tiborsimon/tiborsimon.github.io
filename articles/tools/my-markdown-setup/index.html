@@ -103,7 +103,7 @@
 <hr>
 <h1 id="figure-system">Figure system <a class="header-anchor internal-link" href="#figure-system" aria-hidden="true">¶</a></h1>
 <p>My <strong>figure system</strong> uses the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin to define the necessary custom renderer function as follows:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bhigupstuhrsbbytvogifkobxgsmvsmssklaghbctieqgdvwokbucddtwcvwjwijhbolzcwrxmxkyynsezefufscncdiqhwpwfhe">&#xe9b8;</button><code id="bhigupstuhrsbbytvogifkobxgsmvsmssklaghbctieqgdvwokbucddtwcvwjwijhbolzcwrxmxkyynsezefufscncdiqhwpwfhe">const md = new MarkdownIt()
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nqypazymjmezcxndqhcjjkomtqlmwwserjzazicyrfhasjneezwemolqldvmebxsjlbbhjypkhdauojljnvgzjvicopcabniuwng">&#xe9b8;</button><code id="nqypazymjmezcxndqhcjjkomtqlmwwserjzazicyrfhasjneezwemolqldvmebxsjlbbhjypkhdauojljnvgzjvicopcabniuwng">const md = new MarkdownIt()
 md.use(mdCustomBlock, {
   img (raw) {
     const [index, alt, width, url] = raw.split(&#039;#&#039;)
@@ -115,13 +115,13 @@ md.use(mdCustomBlock, {
 })
 </code></pre>
 <p>That code snippet will define a custom <code>@[img](index#title#width#image_url)</code> block that can be used to insert figures. This one-liner will result the following html code:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#doeicprlctarhowtgsbdqnaywqshkahkzcvgyjnqldsuopctbvakstxrrkevkbzpzmitwykgeznmnzqoexenaamdzmroiownnaam">&#xe9b8;</button><code id="doeicprlctarhowtgsbdqnaywqshkahkzcvgyjnqldsuopctbvakstxrrkevkbzpzmitwykgeznmnzqoexenaamdzmroiownnaam">&lt;figure id=&quot;fig${index}&quot;&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sbephvolxgtlzslcipmhlgowqiaawkkcyonjfylhttckybpulklmannyapqsccajkghntrngckirolvkgudwpigfheiioqxifmds">&#xe9b8;</button><code id="sbephvolxgtlzslcipmhlgowqiaawkkcyonjfylhttckybpulklmannyapqsccajkghntrngckirolvkgudwpigfheiioqxifmds">&lt;figure id=&quot;fig${index}&quot;&gt;
   &lt;img width=${width} src=&quot;/assets/images/${image_url}&quot; alt=&quot;${title}&quot;&gt;
   &lt;figcaption&gt;Fig ${index}: ${title}&lt;/figcaption&gt;
 &lt;/figure&gt;
 </code></pre>
 <p>Using a bit of CSS wizardry will create automatic wrapper-less borders around the image blocks:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pttneioxiizkdtfqmdpksthqkkieurqbizhcnslscqpbojwzulmnsjmljjflikfmyoxjfopclaqbbesnkglfggxvtksnszilfsca">&#xe9b8;</button><code id="pttneioxiizkdtfqmdpksthqkkieurqbizhcnslscqpbojwzulmnsjmljjflikfmyoxjfopclaqbbesnkglfggxvtksnszilfsca">figure {
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#idenwrebxxqbkpfxryohkcvlatzqqiftahdgmayveaqvppvhframalxiufnndbtjtismkwnwxrcsmlhybstrlqzihxelphwsegwd">&#xe9b8;</button><code id="idenwrebxxqbkpfxryohkcvlatzqqiftahdgmayveaqvppvhframalxiufnndbtjtismkwnwxrcsmlhybstrlqzihxelphwsegwd">figure {
   position: relative;
   border: none;
   border-bottom: 1px solid palette(Black, Dividers);
@@ -159,7 +159,7 @@ md.use(mdCustomBlock, {
           <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 3.">
           <figcaption>Fig 3: Test figure 3.</figcaption>
         </figure>
-<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bazvpypztnnpldskgoayykhqtvteiknjxgegjkluxqyrufcwqkwgqdrtokvceaoiqcozwlfdgjowaxcmgtpjmpkoqdzyvxntedgy">&#xe9b8;</button><code id="bazvpypztnnpldskgoayykhqtvteiknjxgegjkluxqyrufcwqkwgqdrtokvceaoiqcozwlfdgjowaxcmgtpjmpkoqdzyvxntedgy">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
+<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#idulchoiaiatalvomjjbartlbrjpzhooittwjcrcwqgdwdfkrhdzrwupaplqckozmqojwvhbfsgxlhuizutomoefgmwtzcrledll">&#xe9b8;</button><code id="idulchoiaiatalvomjjbartlbrjpzhooittwjcrcwqgdwdfkrhdzrwupaplqckozmqojwvhbfsgxlhuizutomoefgmwtzcrledll">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
 
 @[img](2#Test figure 2.#160#tibor2017-600.jpg)
 
@@ -168,7 +168,7 @@ md.use(mdCustomBlock, {
 <hr>
 <h1 id="divider">Divider <a class="header-anchor internal-link" href="#divider" aria-hidden="true">¶</a></h1>
 <p>Similarly to the figures, the dividers also implemented with the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#tgpgymptxlwekijbapnezyhxekqvaolfqocbetgczfcroewayoaweinevrwspgsvylpfwwzdgeaqnpleztlukzqnmixqfxygaopt">&#xe9b8;</button><code id="tgpgymptxlwekijbapnezyhxekqvaolfqocbetgczfcroewayoaweinevrwspgsvylpfwwzdgeaqnpleztlukzqnmixqfxygaopt">const md = new MarkdownIt()
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jsnsgvpdnbqgsikxghahegbtzgkqftsdcgumsfthbkhzwlmurriylpxmtrhtzodyxszaqukwkstlnpnpexsiwazrpjdxsfgxfyut">&#xe9b8;</button><code id="jsnsgvpdnbqgsikxghahegbtzgkqftsdcgumsfthbkhzwlmurriylpxmtrhtzodyxszaqukwkstlnpnpexsiwazrpjdxsfgxfyut">const md = new MarkdownIt()
 md.use(mdCustomBlock, {
   divider (text) {
     return `&lt;div class=&quot;divider&quot;&gt;${text}&lt;/div&gt;`
@@ -178,7 +178,7 @@ md.use(mdCustomBlock, {
 <h2 id="divider-example">Divider example <a class="header-anchor internal-link" href="#divider-example" aria-hidden="true">¶</a></h2>
 <div class="divider">My first divider</div>
 <div class="divider">My second divider</div>
-<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wcbpnbcjmueypfjyodqmuxmaaefimvzekglyemkzsyzewpszrzbrzblqsskfxbtnpfqztqsgiwdxochuymrtuftkauranrufkfjk">&#xe9b8;</button><code id="wcbpnbcjmueypfjyodqmuxmaaefimvzekglyemkzsyzewpszrzbrzblqsskfxbtnpfqztqsgiwdxochuymrtuftkauranrufkfjk">@[divider](My first divider)
+<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#hxbhqyrphmuircssxilfbuenqwcomnczgvfpnuffdsjyhkuvvjrieremtplsglikcluureohpzlqtqpytjnxaknmsbpukmlflxom">&#xe9b8;</button><code id="hxbhqyrphmuircssxilfbuenqwcomnczgvfpnuffdsjyhkuvvjrieremtplsglikcluureohpzlqtqpytjnxaknmsbpukmlflxom">@[divider](My first divider)
 
 @[divider](My second divider)
 </code></pre>
@@ -197,7 +197,7 @@ md.use(mdCustomBlock, {
 <div class="danger">
 <p>This is a danger message.</p>
 </div>
-<pre><div class="code-title">Message box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rjanhrtzkdgrgahegwhzsjemsenotzheahdrrcrovzxxcxfpntnqvimrirzhpaxrxqzohwoifoqfieoqkctswjjzcjlommmwzdwm">&#xe9b8;</button><code id="rjanhrtzkdgrgahegwhzsjemsenotzheahdrrcrovzxxcxfpntnqvimrirzhpaxrxqzohwoifoqfieoqkctswjjzcjlommmwzdwm">::: success
+<pre><div class="code-title">Message box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#qplondoszxrpzsgktkzormvsaycmgcsvputdtntslyeisdpvbjheipghukkdkiwxxfryfpbvgtouyiwghewakwyplxjliamqltlj">&#xe9b8;</button><code id="qplondoszxrpzsgktkzormvsaycmgcsvputdtntslyeisdpvbjheipghukkdkiwxxfryfpbvgtouyiwghewakwyplxjliamqltlj">::: success
 This is a success message.
 :::
 
