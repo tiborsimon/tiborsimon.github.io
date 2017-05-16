@@ -53,7 +53,7 @@
 <h1 id="how-does-it-work">How does it work? <a class="header-anchor internal-link" href="#how-does-it-work" aria-hidden="true">¶</a></h1>
 <p>I use <code>curl</code> to download the <strong>bootstrap</strong> script which will prepare the machine to be able to clone my dotfiles repo, and then it runs the <strong>deploy</strong> script.</p>
 <p>To download a script stored on <strong>GitHub</strong> you can use the raw file listing. My <strong>bootstrap</strong> script can be reached via the <a href="https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap" target="_blank">https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap</a> link. Notice, that this is not a convenient link to type…</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#bkqhisujtlzwyaadglviypffbashwmzluecpnhsevsbtmexdtolepauxgkzyvooibhbyobnbvexmqdikphfvtydacujkezvboqsm">&#xe9b8;</button><code id="bkqhisujtlzwyaadglviypffbashwmzluecpnhsevsbtmexdtolepauxgkzyvooibhbyobnbvexmqdikphfvtydacujkezvboqsm">curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nhvveqbjpwxwlokdvyhnvsigqwazvbkxvouttgiygovzdjhwxpmgkunefvdkbhteamvbtmxggmbawigddssceohhanreylsqqeqs">&#xe9b8;</button><code id="nhvveqbjpwxwlokdvyhnvsigqwazvbkxvouttgiygovzdjhwxpmgkunefvdkbhteamvbtmxggmbawigddssceohhanreylsqqeqs">curl https://raw.githubusercontent.com/tiborsimon/dotfiles/master/bootstrap
 </code></pre>
 <p>I can take care of this problem by having a custom domain, and creating a redirect, I am using <strong>CloudFlare</strong> as a nameserver and <em>ssl</em> provider, so I can set up a custom <strong>Page Rule</strong> to redirect the <code>tiborsimon.io/dotfiles</code> to the raw script listing.</p>
 <figure id="fig1">
@@ -61,21 +61,21 @@
           <figcaption>Fig 1: CloudFlare custom page rule</figcaption>
         </figure>
 <p>In this way, I can type:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#jmnjdetrhklumahwghvscggjvvnxjrpanatjikkhcjnznzikrocvxnptyunazeyigcnzkrbtqelvhhacqqgkrzdqpfnuiealbadh">&#xe9b8;</button><code id="jmnjdetrhklumahwghvscggjvvnxjrpanatjikkhcjnznzikrocvxnptyunazeyigcnzkrbtqelvhhacqqgkrzdqpfnuiealbadh">curl tiborsimon.io/dotfiles
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fptjcscksamjsxjexewgidfgjujtwhhwzxuvhlomaovzynabxtbstzzydogkvylsshoxzqfkxlaldslfqpgeuafkfeotowxqydlh">&#xe9b8;</button><code id="fptjcscksamjsxjexewgidfgjujtwhhwzxuvhlomaovzynabxtbstzzydogkvylsshoxzqfkxlaldslfqpgeuafkfeotowxqydlh">curl tiborsimon.io/dotfiles
 </code></pre>
 <h1 id="downloading-and-executing-the-script">Downloading and executing the script <a class="header-anchor internal-link" href="#downloading-and-executing-the-script" aria-hidden="true">¶</a></h1>
 <p>The script is available for execution. The next step is to use it.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#ibhwdqvkejhkxbjjkwvmcnzvcdxasncoimkpfblseingznamqdbrevwqiiusxqfygfniznxbfktkrtedmpuaepklzkxpiuhljdwu">&#xe9b8;</button><code id="ibhwdqvkejhkxbjjkwvmcnzvcdxasncoimkpfblseingznamqdbrevwqiiusxqfygfniznxbfktkrtedmpuaepklzkxpiuhljdwu">sh &lt;(curl -fsSL tiborsimon.io/dotfiles)
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wikubdjegytsnufqnfgxmbkljgvdkidyucawfpoasqvqmaatpwihqoaqxessjatvarnooohghgdmxdzurfnnrrihklkxmsltmsjh">&#xe9b8;</button><code id="wikubdjegytsnufqnfgxmbkljgvdkidyucawfpoasqvqmaatpwihqoaqxessjatvarnooohghgdmxdzurfnnrrihklkxmsltmsjh">sh &lt;(curl -fsSL tiborsimon.io/dotfiles)
 </code></pre>
 <p>We can feed the raw sript to <code>sh</code>, <code>bash</code> or <code>zsh</code>. Curl will download the script in a subshell, then it will return the downloaded script, which we will feed to the <code>sh</code> in this example.</p>
 <p>The flags make sure, curl not corrupt the script during download:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#leillpvgzijqjlrestfeeafytvyiiuwfkhsklxjvsaeuwoqyeauxyvsctuaenznkoqqeamcaqgexplekaykflbjlnjfheuiqxijs">&#xe9b8;</button><code id="leillpvgzijqjlrestfeeafytvyiiuwfkhsklxjvsaeuwoqyeauxyvsctuaenznkoqqeamcaqgexplekaykflbjlnjfheuiqxijs">-f, --fail          Fail silently (no output at all) on HTTP errors (H)
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ovmivddmdizsmtkzdsfdjnalafiirxlxnodnmvwwgkyzrhinywldalghixupxzmxameeqjdoycrdqtsuaphryrdzasafqwldxysd">&#xe9b8;</button><code id="ovmivddmdizsmtkzdsfdjnalafiirxlxnodnmvwwgkyzrhinywldalghixupxzmxameeqjdoycrdqtsuaphryrdzasafqwldxysd">-f, --fail          Fail silently (no output at all) on HTTP errors (H)
 -s, --silent        Silent mode (don&#039;t output anything)
 -S, --show-error    Show error. With -s, make curl show errors when they occur
 -L, --location      Follow redirects (H)
 </code></pre>
 <p>Make sure you have the latest curl on your system, because older curl versions tend to act weird with the <em>HTTPS</em> protocol, and wont be able to connect.</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#knmehtugrftfbhtqeixfwvapxsvajdvmfhsaombiebadsbscrdrcmclolhnxcyrnqvazsbudsdsbpqvstutvomhdezjcvhhcdith">&#xe9b8;</button><code id="knmehtugrftfbhtqeixfwvapxsvajdvmfhsaombiebadsbscrdrcmclolhnxcyrnqvazsbudsdsbpqvstutvomhdezjcvhhcdith">[vagrant@localhost ~]$ bash &lt;(curl -fsSLv https://tiborsimon.io/dotfiles)
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cdkctrjvgojxkfcevopzmytgbcwxyomlgqgqdnidcpxmsicyiapmpmofzoyfsipfkcxtxzultxwrrcoxbdaffwhiipyxrwikywtw">&#xe9b8;</button><code id="cdkctrjvgojxkfcevopzmytgbcwxyomlgqgqdnidcpxmsicyiapmpmofzoyfsipfkcxtxzultxwrrcoxbdaffwhiipyxrwikywtw">[vagrant@localhost ~]$ bash &lt;(curl -fsSLv https://tiborsimon.io/dotfiles)
 * About to connect() to tiborsimon.io port 443 (#0)
 *   Trying 104.18.43.82... connected
 * Connected to tiborsimon.io (104.18.43.82) port 443 (#0)
@@ -97,10 +97,10 @@ curl: (35) SSL connect error
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
-              <span class="neighbour-title previous-title">My dotfile system</span>
+              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
+              <span class="neighbour-title next-title">Minimal MathJax package</span>
+              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
           </nav>
         </div>
       </div>
@@ -149,10 +149,10 @@ curl: (35) SSL connect error
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="next-a">></a>
-              <span class="neighbour-title next-title">Upload ssh key via Github API</span>
-              <span class="neighbour-title previous-title">My dotfile system</span>
+              <a href="https://tiborsimon.io/articles/programming/upload-ssh-key-via-github-api" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/minimal-mathjax" class="next-a">></a>
+              <span class="neighbour-title next-title">Minimal MathJax package</span>
+              <span class="neighbour-title previous-title">Upload ssh key via Github API</span>
           </nav>
         </div>
       </div>
@@ -171,32 +171,32 @@ curl: (35) SSL connect error
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
             <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>7</span>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/github/#articles" class="count">
               GitHub<span>3</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>

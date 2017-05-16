@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copying the content of code blocks - Tibor's Lab</title>
+  <meta name="description" content="Many code highlighter plugins offers the feature of copying the highlighted text from them to help out the readers. In this article I am going to show you how I implemented the same feature in my static Metalsmith-based blog.">
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navmenu-wrapper">
+    <div class="fade-loader"></div>
+    <div class="fade-in">
+      <div class="navmenu">
+        <a class="logo" href="https://tiborsimon.io">
+          Tibor's Lab 
+        </a>
+        <div class="group">
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="banner"></div>
+            <div class="article-title">Copying the content of code blocks</div>
+            <div class="details">
+              <div class="tag-list">
+                <a href="https://tiborsimon.io/tag/tools/">tools</a>
+                <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                <a href="https://tiborsimon.io/tag/metalsmith/">metalsmith</a>
+                <a href="https://tiborsimon.io/tag/config/">config</a>
+              </div>
+              <div class="timestamp">2017. 05. 16.</div>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="summary">Many code highlighter plugins offers the feature of copying the highlighted text from them to help out the readers. In this article I am going to show you how I implemented the same feature in my static Metalsmith-based blog.</div>
+            <hr>
+            <p>First thing first, we are going to need a way to access the visitors clipboard. I find a pure javascript library <a href="https://clipboardjs.com/" class="external-link" target="_blank">clipboard.js</a> for the purpose.</p>
+<p>Integrating <em>clipboard.js</em> is easy. You can put your code in a html tag, name it with and id, then pass that id to a button that has the class that the library is expecting for, and thats it.</p>
+<pre><div class="code-title">Basic example copied from the documentation</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xrhhbbqiylihdoxdkluelyfehfsayjulifjfxnhcmieycmsuxmauvxjkqvqhwelsuvalciwxtdginqwxkiolrmchmbupixbnpglf">&#xe9b8;</button><code id="xrhhbbqiylihdoxdkluelyfehfsayjulifjfxnhcmieycmsuxmauvxjkqvqhwelsuvalciwxtdginqwxkiolrmchmbupixbnpglf">&lt;!-- Target --&gt;
+&lt;textarea id=&quot;bar&quot;&gt;Mussum ipsum cacilds...&lt;/textarea&gt;
+
+&lt;!-- Trigger --&gt;
+&lt;button class=&quot;btn&quot; data-clipboard-action=&quot;cut&quot; data-clipboard-target=&quot;#bar&quot;&gt;
+    Cut to clipboard
+&lt;/button&gt;
+</code></pre>
+<p>I initialized the library to look for elements with the <code>copy-btn</code> class on them. This can be configured with the initialization code.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fqgdptcsfztxaficfkvhrdbwjtcbbqrrwyliovgmlfaknnzffisrewgnkqimzndqkunuarovyhrdenchqnjurssfknxzcbyydbig">&#xe9b8;</button><code id="fqgdptcsfztxaficfkvhrdbwjtcbbqrrwyliovgmlfaknnzffisrewgnkqimzndqkunuarovyhrdenchqnjurssfknxzcbyydbig">&lt;script&gt;
+  const clipboard = new Clipboard(&#039;.copy-btn&#039;);
+&lt;/script&gt;
+</code></pre>
+<p>In case of a static website that is generated from a Markdown file there is a bit of an issue. You don’t want to bother naming each code snippet with a unique name, and to create the necessary button for them. You want all of these task happen automatically in compile time.</p>
+<h2 id="generating-the-code-blocks">Generating the code blocks <a class="header-anchor internal-link" href="#generating-the-code-blocks" aria-hidden="true">¶</a></h2>
+<p>Since I use <a href="https://github.com/markdown-it/markdown-it" class="external-link" target="_blank">Markdown-it</a> as a Markdown engine for my site, I integrated the code block generator code in to the exposed highlighter API of the library. You can give the library a function that will be called with the raw string and the optional language identifier on code block render request. You can generate your own version of html embedded code, and you can simply return it as a string. The html escaping has to be done manually.</p>
+<pre><div class="code-title">Integrating the code block renderer to</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ozdaevdswsaiyivcqkkzfivxoklgrbizqtzoiiyfspeknydngdhmgrvjenznwhkhxxgqcvxytmcxjrcqaqbpdlhrzctfijtaghcd">&#xe9b8;</button><code id="ozdaevdswsaiyivcqkkzfivxoklgrbizqtzoiiyfspeknydngdhmgrvjenznwhkhxxgqcvxytmcxjrcqaqbpdlhrzctfijtaghcd">const md = new MarkdownIt({
+  highlight: renderCode
+})
+</code></pre>
+<p>The <code>renderCode</code> function will be used as a code block renderer.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#utaxmznppngusemfwaghpieihsqocowblngzjtszmafelrvifcacbiwddodjmwqomhckbjuircgqplbdvufwhatijuxichxyufqj">&#xe9b8;</button><code id="utaxmznppngusemfwaghpieihsqocowblngzjtszmafelrvifcacbiwddodjmwqomhckbjuircgqplbdvufwhatijuxichxyufqj">let renderCode = function(str, info) {
+  const id = getId()
+  const title = info.replace(/_/g, &quot; &quot;)
+  let front = &#039;&lt;pre&gt;&#039;
+  const back = `&lt;button class=&quot;copy-btn&quot; title=&quot;Copy code to clipboard&quot; data-clipboard-target=&quot;#${id}&quot;&gt;&amp;#xe9b8;&lt;/button&gt;&lt;code id=&quot;${id}&quot;&gt;${escapeHtml(str)}&lt;/code&gt;&lt;/pre&gt;`
+  if (title.length &gt; 0)
+    front += `&lt;div class=&quot;code-title&quot;&gt;${title}&lt;/div&gt;`
+  return front + back
+}
+</code></pre>
+<p>There are two issues we have to solve:</p>
+<ol>
+<li>The language keyword can only be a single word as <strong>markdown-it</strong> parses it.</li>
+<li>We have to generate unique identifiers for all of the code blocks.</li>
+</ol>
+<p>The fisrt isse is solved by the third line. We simply use <em>underscore</em> separated titles in the language keyword field, and then we replace the <em>underscores</em> with spaces. This is a simple but effective hack though.</p>
+<p>The second issue is a bit more harder. We need a semi unique identifier to solve it. The identifier only has to be unique for an article. I solved this issue by generating a 100 character long random hash for each code.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#drbdnzaviaelpwwiftalatzsbjlgigrpqtpbtcwpkztjzyzabmcfokobcsvefegatuqgciflibriexxkobostpnvsftqhdsqnkst">&#xe9b8;</button><code id="drbdnzaviaelpwwiftalatzsbjlgigrpqtpbtcwpkztjzyzabmcfokobcsvefegatuqgciflibriexxkobostpnvsftqhdsqnkst">let getId = function() {
+  let text = &quot;&quot;;
+  const possible = &quot;abcdefghijklmnopqrstuvwxyz&quot;;
+  for( let i=0; i &lt; 100; i++ )
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+</code></pre>
+<p>The 100 characters will ensure that I will be able to write pretty long articles and having a pretty good confidence that there will be no interference with the generated identifiers.</p>
+<p>The rest of the <code>renderCode</code> function is self explanatory. If there was a language keyword in the code block, we will add that too to the generated code. Of course, I am using a standard escape function to escape unwanted characters.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#zivhmsiuekigxicttxluzbtxxiizxaizftswpmcwcajgwbqyvxbrgjupnsiohxhxwystvovpwwfuwamxlyflmfupzhsayymbfgsr">&#xe9b8;</button><code id="zivhmsiuekigxicttxluzbtxxiizxaizftswpmcwcajgwbqyvxbrgjupnsiohxhxwystvovpwwfuwamxlyflmfupzhsayymbfgsr">let escapeHtml = function(unsafe) {
+  return unsafe
+   .replace(/&amp;/g, &quot;&amp;amp;&quot;)
+   .replace(/&lt;/g, &quot;&amp;lt;&quot;)
+   .replace(/&gt;/g, &quot;&amp;gt;&quot;)
+   .replace(/&quot;/g, &quot;&amp;quot;&quot;)
+   .replace(/&#039;/g, &quot;&amp;#039;&quot;)
+}
+</code></pre>
+<p>With a little bit of CSS, the embedded code block is looking good:</p>
+<pre><div class="code-title">Style for the code blocks</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ylvphyobhkpfvdjyaxrjtmckpnxxdytrwblowfrvpjopztnrawexskdattklnezrkbveldbtkblrmzdrojbhsvcnfuawylgiqnff">&#xe9b8;</button><code id="ylvphyobhkpfvdjyaxrjtmckpnxxdytrwblowfrvpjopztnrawexskdattklnezrkbveldbtkblrmzdrojbhsvcnfuawylgiqnff">pre code {
+  background: radial-gradient(circle at top right, #5b747e, #0d1a1e 1200px);
+  color: #e9e8e8;
+  width: var(--content-width);
+  display: block;
+  position: relative;
+  left: - $content-padding;
+  overflow-x: auto;
+  font-size: 0.8em;
+  line-height: 1.4em;
+  padding: 12px 25px;
+  box-shadow: inset 0px 7px 11px -7px rgba(35, 30, 30, 0.8);
+  border-left: solid 5px #3d7287;
+}
+
+.code-title {
+  background-color: var(--main-color);
+  color: white;
+  position: relative;
+  width: var(--content-width);
+  left: - $content-padding;
+  padding: 4px 0 1px;
+  padding-left: $content-padding;
+  font-size: 90%;
+}
+
+.copy-btn {
+  font-family: &#039;icomoon&#039;;
+  position: relative;
+  float: right;
+  margin: -12px;
+  z-index: 3;
+  top: 24px;
+  opacity: 0;
+  transition: $default-transition;
+  background-color: transparent;
+  border: none;
+  color: #e9e8e8;
+  cursor: pointer;
+}
+
+.copy-btn::before {
+  content: &quot;Copied!&quot;;
+  padding-right: 6px;
+  font-family: &quot;Lato&quot;,&quot;proxima-nova&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif;
+  font-size: 90%;
+  opacity: 0;
+  transition: $default-transition;
+}
+
+button:focus {outline:0;}
+
+pre:hover .copy-btn {
+  opacity: 1;
+}
+</code></pre>
+<p>The button will be only visible if the user hovers over to the code block. Nice and elegant solution.</p>
+<h1 id="feedback-to-the-user">Feedback to the user <a class="header-anchor internal-link" href="#feedback-to-the-user" aria-hidden="true">¶</a></h1>
+<p>I think it is pretty important to give a feedback about an action in any case. So I implemented the feedback system for the result of the copy command.</p>
+<p><em>Clipboard.js</em> has an exposed event API as well. The official example like this:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#gbxgiobmqebmxtxxvyppzqcfttqoyfyoswdfkyhuptfxilyobwudwkhzxodngwoyghvedkrzcbtigaeowgoyanusyyzvkedtodzp">&#xe9b8;</button><code id="gbxgiobmqebmxtxxvyppzqcfttqoyfyoswdfkyhuptfxilyobwudwkhzxodngwoyghvedkrzcbtigaeowgoyanusyyzvkedtodzp">var clipboard = new Clipboard(&#039;.btn&#039;);
+
+clipboard.on(&#039;success&#039;, function(e) {
+    console.info(&#039;Action:&#039;, e.action);
+    console.info(&#039;Text:&#039;, e.text);
+    console.info(&#039;Trigger:&#039;, e.trigger);
+
+    e.clearSelection();
+});
+
+clipboard.on(&#039;error&#039;, function(e) {
+    console.error(&#039;Action:&#039;, e.action);
+    console.error(&#039;Trigger:&#039;, e.trigger);
+});
+</code></pre>
+<p>That indicates, that we have access to the triggering button after the copy action fired. In this way, we can insert here our feedback animations as follows:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jvyoblfxzdxtizwsbvgrfjxzydhkgmkhzipqfnyiuhzfftwejzttlmaxejavjaybmgwzleqtfisuxyglqwejygqyuwysuymejqft">&#xe9b8;</button><code id="jvyoblfxzdxtizwsbvgrfjxzydhkgmkhzipqfnyiuhzfftwejzttlmaxejavjaybmgwzleqtfisuxyglqwejygqyuwysuymejqft">&lt;script&gt;
+  const clipboard = new Clipboard(&#039;.copy-btn&#039;);
+  clipboard.on(&#039;success&#039;, function(e) {
+      e.clearSelection();
+      e.trigger.classList.add(&quot;copy-success&quot;);
+      setTimeout(function() {
+        e.trigger.classList.remove(&quot;copy-success&quot;);
+      }, 1500);
+      console.log(e);
+  });
+  clipboard.on(&#039;error&#039;, function(e) {
+      alert(&#039;Copy failed :(&#039;)
+      console.log(e);
+  });
+&lt;/script&gt;
+</code></pre>
+<p>By redefining the trigger button’s <code>:before</code> selector in the <code>copy-success</code> class, we can display a message about the successful copy action to the user.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#brthtdftlmwbxzqqxfznjmluaqqzqcxpvlowouufgpdailikccsujwioziedixgkgbefljnllypbatuplxttjaenvnowsckoukmc">&#xe9b8;</button><code id="brthtdftlmwbxzqqxfznjmluaqqzqcxpvlowouufgpdailikccsujwioziedixgkgbefljnllypbatuplxttjaenvnowsckoukmc">.copy-btn::before {
+  content: &quot;Copied!&quot;;
+  padding-right: 6px;
+  font-family: &quot;Lato&quot;,&quot;proxima-nova&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif;
+  font-size: 90%;
+  opacity: 0;
+  transition: $default-transition;
+}
+
+.copy-success::before {
+  content: &quot;Copied!&quot;;
+  padding-right: 6px;
+  font-family: &quot;Lato&quot;,&quot;proxima-nova&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif;
+  font-size: 90%;
+  opacity: 1;
+  transition: $default-transition;
+}
+</code></pre>
+<p>The only drawback of this method, is that in this form, it can only display a single message. This is not the best case, but we can heavily assume, that the weakest part of the system, the id assingment, will be strong enough to not to have any problems with it.</p>
+<h1 id="conclusion">Conclusion <a class="header-anchor internal-link" href="#conclusion" aria-hidden="true">¶</a></h1>
+<p>Implementing a one-click-copy code block is not hard with the right tools.</p>
+
+          </div>
+        </article>
+      </div>
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <span><</span>
+            <a href="https://tiborsimon.io/articles/tools/my-markdown-setup" class="next-a">></a>
+              <span class="neighbour-title next-title">My Markdown setup</span>
+          </nav>
+        </div>
+      </div>
+      <div class="discussion card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h1>Discussion</h1>
+          <div id="disqus_thread"></div>
+        </div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2017</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <span><</span>
+            <a href="https://tiborsimon.io/articles/tools/my-markdown-setup" class="next-a">></a>
+              <span class="neighbour-title next-title">My Markdown setup</span>
+          </nav>
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
+          I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
+          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h2>Tags</h2>
+          <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+              hack<span>7</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+              python<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+              deploy<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+              GitHub<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+              dotfiles<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+              dsp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+              embedded<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+              LaTEX<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+              linux<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+              MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+              regexp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+              search<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+              API<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+              bash<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+              CLI<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+              control<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+              debug<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+              emacs<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+              game<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+              hardware<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+              ios<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+              java<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+              make<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              Matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+              pelican<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+              serial<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+              signals<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+              ssh<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+              tool<span>1</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
+      }
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    const clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        alert('Copy failed :(')
+        console.log(e);
+    });
+  </script>
+</body>
+</html>
+

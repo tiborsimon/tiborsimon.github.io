@@ -52,10 +52,10 @@ handle arbitrary order with the mandatory constraint. You have to do it yourself
 <p>You have to tell the regexp engine that you want allow all the possible permutation of a character list, with optional
 charachters between them. You can do it with options.</p>
 <p>For example, if you want to match words that has <code>a</code> and <code>b</code> in them in arbitrary order, you can write:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#wgcjkgyykplfkyxywvahulsydkaakejgjwftdpnwvogzonqgrikelrepxbnesyejzsvdspoiylwaakccjkzncbumifbxgwpewtfg">&#xe9b8;</button><code id="wgcjkgyykplfkyxywvahulsydkaakejgjwftdpnwvogzonqgrikelrepxbnesyejzsvdspoiylwaakccjkzncbumifbxgwpewtfg">((.*a.*b.*)|(.*b.*a.*))
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cwnhnstratvfqgilirbievnypzwfigtmsgdtodseukgszfcwzrudhbyhjlnqapiudsfcfcgamyajxnbpmwjlvkmoopbfkedozpfn">&#xe9b8;</button><code id="cwnhnstratvfqgilirbievnypzwfigtmsgdtodseukgszfcwzrudhbyhjlnqapiudsfcfcgamyajxnbpmwjlvkmoopbfkedozpfn">((.*a.*b.*)|(.*b.*a.*))
 </code></pre>
 <p>It isn’t so horrible, is it. But. We are talking about permutation. If you want to add 3 characters, the pattern length will increase:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#lxnytrbomhlybqskuakpjbccursinxdpjxhhvootdjqsawhahdoavpnikjiylwneoppeltkoroysvoqhvcxdkiupchudmqcebgpj">&#xe9b8;</button><code id="lxnytrbomhlybqskuakpjbccursinxdpjxhhvootdjqsawhahdoavpnikjiylwneoppeltkoroysvoqhvcxdkiupchudmqcebgpj">((.*a.*b.*c.*)|
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ehaakdgjalkcmqfiuoglqwlfukbrfksnidkiqtbclbwcnmfdigvuumomuydeblolvksebtbplvexgrnvqupohrjugmttfngkigsa">&#xe9b8;</button><code id="ehaakdgjalkcmqfiuoglqwlfukbrfksnidkiqtbclbwcnmfdigvuumomuydeblolvksebtbplvexgrnvqupohrjugmttfngkigsa">((.*a.*b.*c.*)|
  (.*a.*c.*b.*)|
  (.*b.*a.*c.*)|
  (.*b.*c.*a.*)|
@@ -63,7 +63,7 @@ charachters between them. You can do it with options.</p>
  (.*c.*b.*a.*))
 </code></pre>
 <p>For 4 characters, it reaches the 409 charachters length:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#qoqjhuvbuqutcnqwrphgvtdhlvblikxwfxaihocqtnzwjbsujedumqthsbvbnvtcxlusjfpnflsisgmbhuvbdcibtyoxldmtqodi">&#xe9b8;</button><code id="qoqjhuvbuqutcnqwrphgvtdhlvblikxwfxaihocqtnzwjbsujedumqthsbvbnvtcxlusjfpnflsisgmbhuvbdcibtyoxldmtqodi">((.*a.*b.*c.*d.*)|
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rtxfalzkyghxxkhbdraidhnvqcucgahamxaeseciusezvaaqiaxdidwflvxakinmmbrvqpxrjkjzfvtqcmkgwgrajenlmxsjsfky">&#xe9b8;</button><code id="rtxfalzkyghxxkhbdraidhnvqcucgahamxaeseciusezvaaqiaxdidwflvxakinmmbrvqpxrjkjzfvtqcmkgwgrajenlmxsjsfky">((.*a.*b.*c.*d.*)|
  (.*a.*b.*d.*c.*)|
  (.*a.*c.*b.*d.*)|
  (.*a.*c.*d.*b.*)|
@@ -90,7 +90,7 @@ charachters between them. You can do it with options.</p>
 </code></pre>
 <h1 id="generator-in-python">Generator in python <a class="header-anchor internal-link" href="#generator-in-python" aria-hidden="true">¶</a></h1>
 <p>You can write a generator for this regexp pattern easily in python:</p>
-<pre><button class="copy-btn " title="Copy code to clipboard" data-clipboard-target="#bhdktjsnbuicsrxjoacazlmrckysftecabpcggnlptjecyezdxhylxitezbmiegolqfwhdjwubmetqeeoejihkfvbrkwnamvegsv">&#xe9b8;</button><code id="bhdktjsnbuicsrxjoacazlmrckysftecabpcggnlptjecyezdxhylxitezbmiegolqfwhdjwubmetqeeoejihkfvbrkwnamvegsv">from itertools import permutations
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nqobaqaqjuhutaxcspodlsjbkutxuxlqlqyfeiievsclgnycbjwbeypkefiugzgnktcpwoyqhgwkftnrmoaxiclqtkauvfblxucd">&#xe9b8;</button><code id="nqobaqaqjuhutaxcspodlsjbkutxuxlqlqyfeiievsclgnycbjwbeypkefiugzgnktcpwoyqhgwkftnrmoaxiclqtkauvfblxucd">from itertools import permutations
 import re
 
 def generate_mandatory_arbitrary(content):
@@ -186,32 +186,32 @@ print(generate_mandatory_arbitrary(&#039;abc&#039;))
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
             <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>7</span>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/github/#articles" class="count">
               GitHub<span>3</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>

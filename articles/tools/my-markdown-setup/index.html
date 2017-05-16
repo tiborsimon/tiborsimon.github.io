@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>My Markdown setup - Tibor's Lab</title>
-  <meta name="description" content="For my site I use a highly customised Markdown configuration for the articles. Let me show you the details.">
+  <meta name="description" content="I use a highly customised Markdown engine for my blog. It is backed up by the javascript based pluggable Markdown-it engine. In this article I am going to show you all the features it has.">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
 </head>
@@ -46,10 +46,107 @@
         <article class="content card padded">
           <div class="fade-loader"></div>
           <div class="fade-in">
-            <div class="summary">For my site I use a highly customised Markdown configuration for the articles. Let me show you the details.</div>
+            <div class="summary">I use a highly customised Markdown engine for my blog. It is backed up by the javascript based pluggable Markdown-it engine. In this article I am going to show you all the features it has.</div>
             <hr>
-            <p>This will be an <a href="https://google.com" class="external-link" target="_blank">external-link</a> and this will be an <a href="/#about" class="internal-link">internal-link</a>. Thats is.</p>
+            <p>I use the <a href="https://github.com/markdown-it/markdown-it" class="external-link" target="_blank">Markdown-it</a> engine to implement the feature set I find useful to have for my articles:</p>
+<ol>
+<li>Easy to use figures with indexing and referencing.</li>
+<li>Code snippets with optional titles and the ability to copy the cope with one button.</li>
+<li>External link handling.</li>
+<li>Section dividers with optional titles.</li>
+<li>Message boxes.</li>
+<li>Anchor links.</li>
+</ol>
+<p>I used the following software components:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Package</th>
+<th style="text-align:left">Version</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it" class="external-link" target="_blank">markdown-it</a></td>
+<td style="text-align:left"><em>8.3.1</em></td>
+<td style="text-align:left">Core engine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-anchor" class="external-link" target="_blank">markdown-it-anchor</a></td>
+<td style="text-align:left"><em>4.0.0</em></td>
+<td style="text-align:left">Anchor links for header.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-container" class="external-link" target="_blank">markdown-it-container</a></td>
+<td style="text-align:left"><em>2.0.0</em></td>
+<td style="text-align:left">Custom containers with predefined classes.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a></td>
+<td style="text-align:left"><em>0.1.0</em></td>
+<td style="text-align:left">Custom blocks with custom renderers.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-external-links" class="external-link" target="_blank">markdown-it-external-links</a></td>
+<td style="text-align:left"><em>0.0.6</em></td>
+<td style="text-align:left">External link handling.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-footnote" class="external-link" target="_blank">markdown-it-footnote</a></td>
+<td style="text-align:left"><em>3.0.1</em></td>
+<td style="text-align:left">Footnote system.</td>
+</tr>
+</tbody>
+</table>
+<p>Since I am using <a href="http://www.metalsmith.io/" class="external-link" target="_blank">Metalsmith</a> for my blog, I was implemented the custom Markdown system as a <strong>Metalsmith plugin</strong> with a few helper function. The sources for the whole system can be found on my <a href="https://github.com/tiborsimon/site" class="external-link" target="_blank">site’s GitHub repository</a>.</p>
+<hr>
 <h1 id="figure-system">Figure system <a class="header-anchor internal-link" href="#figure-system" aria-hidden="true">¶</a></h1>
+<p>My <strong>figure system</strong> uses the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin to define the necessary custom renderer function as follows:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bhigupstuhrsbbytvogifkobxgsmvsmssklaghbctieqgdvwokbucddtwcvwjwijhbolzcwrxmxkyynsezefufscncdiqhwpwfhe">&#xe9b8;</button><code id="bhigupstuhrsbbytvogifkobxgsmvsmssklaghbctieqgdvwokbucddtwcvwjwijhbolzcwrxmxkyynsezefufscncdiqhwpwfhe">const md = new MarkdownIt()
+md.use(mdCustomBlock, {
+  img (raw) {
+    const [index, alt, width, url] = raw.split(&#039;#&#039;)
+    return `&lt;figure id=&quot;fig${index}&quot;&gt;
+      &lt;img width=${width} src=&quot;/assets/images/${url}&quot; alt=&quot;${alt}&quot;&gt;
+      &lt;figcaption&gt;Fig ${index}: ${alt}&lt;/figcaption&gt;
+    &lt;/figure&gt;`
+  }
+})
+</code></pre>
+<p>That code snippet will define a custom <code>@[img](index#title#width#image_url)</code> block that can be used to insert figures. This one-liner will result the following html code:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#doeicprlctarhowtgsbdqnaywqshkahkzcvgyjnqldsuopctbvakstxrrkevkbzpzmitwykgeznmnzqoexenaamdzmroiownnaam">&#xe9b8;</button><code id="doeicprlctarhowtgsbdqnaywqshkahkzcvgyjnqldsuopctbvakstxrrkevkbzpzmitwykgeznmnzqoexenaamdzmroiownnaam">&lt;figure id=&quot;fig${index}&quot;&gt;
+  &lt;img width=${width} src=&quot;/assets/images/${image_url}&quot; alt=&quot;${title}&quot;&gt;
+  &lt;figcaption&gt;Fig ${index}: ${title}&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+<p>Using a bit of CSS wizardry will create automatic wrapper-less borders around the image blocks:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pttneioxiizkdtfqmdpksthqkkieurqbizhcnslscqpbojwzulmnsjmljjflikfmyoxjfopclaqbbesnkglfggxvtksnszilfsca">&#xe9b8;</button><code id="pttneioxiizkdtfqmdpksthqkkieurqbizhcnslscqpbojwzulmnsjmljjflikfmyoxjfopclaqbbesnkglfggxvtksnszilfsca">figure {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid palette(Black, Dividers);
+  width: var(--content-width);
+  left: - $content-padding;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    max-width: 740px;
+    margin: 20px 0px 8px;
+  }
+  figcaption {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+}
+:not(figure)+figure {
+  border-top: 1px solid palette(Black, Dividers);
+}
+</code></pre>
+<h2 id="figures-example">Figures example <a class="header-anchor internal-link" href="#figures-example" aria-hidden="true">¶</a></h2>
+<p>The following markup will be rendered as a figure group containing three images. Each images will have its own <em>figure id</em>, title, and a hidden anchor <code>/#fig&lt;number&gt;</code> link for later references.</p>
 <figure id="fig1">
           <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 1.">
           <figcaption>Fig 1: Test figure 1.</figcaption>
@@ -62,49 +159,57 @@
           <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 3.">
           <figcaption>Fig 3: Test figure 3.</figcaption>
         </figure>
-<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#aknkyseruyfextjksaspurxrgxjisljbkfrghiskrtcuigaacfhcjruoschyrvmdphyegpqzicemadpwvjrejpxegbsfxezjvyzb">&#xe9b8;</button><code id="aknkyseruyfextjksaspurxrgxjisljbkfrghiskrtcuigaacfhcjruoschyrvmdphyegpqzicemadpwvjrejpxegbsfxezjvyzb">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
+<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bazvpypztnnpldskgoayykhqtvteiknjxgegjkluxqyrufcwqkwgqdrtokvceaoiqcozwlfdgjowaxcmgtpjmpkoqdzyvxntedgy">&#xe9b8;</button><code id="bazvpypztnnpldskgoayykhqtvteiknjxgegjkluxqyrufcwqkwgqdrtokvceaoiqcozwlfdgjowaxcmgtpjmpkoqdzyvxntedgy">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
 
 @[img](2#Test figure 2.#160#tibor2017-600.jpg)
 
 @[img](3#Test figure 3.#160#tibor2017-600.jpg)
 </code></pre>
+<hr>
 <h1 id="divider">Divider <a class="header-anchor internal-link" href="#divider" aria-hidden="true">¶</a></h1>
+<p>Similarly to the figures, the dividers also implemented with the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#tgpgymptxlwekijbapnezyhxekqvaolfqocbetgczfcroewayoaweinevrwspgsvylpfwwzdgeaqnpleztlukzqnmixqfxygaopt">&#xe9b8;</button><code id="tgpgymptxlwekijbapnezyhxekqvaolfqocbetgczfcroewayoaweinevrwspgsvylpfwwzdgeaqnpleztlukzqnmixqfxygaopt">const md = new MarkdownIt()
+md.use(mdCustomBlock, {
+  divider (text) {
+    return `&lt;div class=&quot;divider&quot;&gt;${text}&lt;/div&gt;`
+  }
+})
+</code></pre>
+<h2 id="divider-example">Divider example <a class="header-anchor internal-link" href="#divider-example" aria-hidden="true">¶</a></h2>
 <div class="divider">My first divider</div>
 <div class="divider">My second divider</div>
-<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#gcgdksjklxxckakcyrsiyjnvadqivostlrgvqpbomdnnusjlaupxvvkwoafyadkuaibylbypbdbnholdkwbmbyktcshrivdoupzs">&#xe9b8;</button><code id="gcgdksjklxxckakcyrsiyjnvadqivostlrgvqpbomdnnusjlaupxvvkwoafyadkuaibylbypbdbnholdkwbmbyktcshrivdoupzs">@[divider](My first divider)
+<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wcbpnbcjmueypfjyodqmuxmaaefimvzekglyemkzsyzewpszrzbrzblqsskfxbtnpfqztqsgiwdxochuymrtuftkauranrufkfjk">&#xe9b8;</button><code id="wcbpnbcjmueypfjyodqmuxmaaefimvzekglyemkzsyzewpszrzbrzblqsskfxbtnpfqztqsgiwdxochuymrtuftkauranrufkfjk">@[divider](My first divider)
 
 @[divider](My second divider)
 </code></pre>
+<hr>
 <h1 id="message-boxes">Message boxes <a class="header-anchor internal-link" href="#message-boxes" aria-hidden="true">¶</a></h1>
-<h2 id="success-box">Success box <a class="header-anchor internal-link" href="#success-box" aria-hidden="true">¶</a></h2>
+<p>I like to use message boxes to highlight sime important sections.</p>
 <div class="success">
 <p>This is a success message.</p>
 </div>
-<pre><div class="code-title">Success box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rgmeqsaqabahpuooggjnmfxyanbdvrdbmtovgyzdkpiykyvfuhghkkkbbjuodkeqdrpnpdrcalbphyorebrqydogyairnaaorwyr">&#xe9b8;</button><code id="rgmeqsaqabahpuooggjnmfxyanbdvrdbmtovgyzdkpiykyvfuhghkkkbbjuodkeqdrpnpdrcalbphyorebrqydogyairnaaorwyr">::: success
-This is a success message.
-:::
-</code></pre>
-<h2 id="info-box">Info box <a class="header-anchor internal-link" href="#info-box" aria-hidden="true">¶</a></h2>
 <div class="info">
 <p>This is a info message.</p>
 </div>
-<pre><div class="code-title">Info box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vvysazoyausgcfbyoqlsgwhvgvolzkkfhxuioofallrvkwoihuofzxypglzzpcckmmqwzbkgneqipzpbmktaofntbvuqevvwgbix">&#xe9b8;</button><code id="vvysazoyausgcfbyoqlsgwhvgvolzkkfhxuioofallrvkwoihuofzxypglzzpcckmmqwzbkgneqipzpbmktaofntbvuqevvwgbix">::: info
-This is a info message.
-:::
-</code></pre>
-<h2 id="warning-box">Warning box <a class="header-anchor internal-link" href="#warning-box" aria-hidden="true">¶</a></h2>
 <div class="warning">
 <p>This is a warning message.</p>
 </div>
-<pre><div class="code-title">Warning box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mjhnjetvtsgunzsyxgmshlqoyxghfmdzumszuldhzascgosimjfyvztqquezqggudoihozmxdgcnvmnxhahnzqsvdzxpxrcfegaw">&#xe9b8;</button><code id="mjhnjetvtsgunzsyxgmshlqoyxghfmdzumszuldhzascgosimjfyvztqquezqggudoihozmxdgcnvmnxhahnzqsvdzxpxrcfegaw">::: warning
-This is a warning message.
-:::
-</code></pre>
-<h2 id="danger-box">Danger box <a class="header-anchor internal-link" href="#danger-box" aria-hidden="true">¶</a></h2>
 <div class="danger">
 <p>This is a danger message.</p>
 </div>
-<pre><div class="code-title">Danger box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kxlyvsaldzrnktepuukmzgqswrpkrhqxckvijwcnhkhdjlwzsmrjcwaxlrjtsmlmxgoylrnnoomijymtzoqioljcwfwlzngpxcpy">&#xe9b8;</button><code id="kxlyvsaldzrnktepuukmzgqswrpkrhqxckvijwcnhkhdjlwzsmrjcwaxlrjtsmlmxgoylrnnoomijymtzoqioljcwfwlzngpxcpy">::: danger
+<pre><div class="code-title">Message box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#rjanhrtzkdgrgahegwhzsjemsenotzheahdrrcrovzxxcxfpntnqvimrirzhpaxrxqzohwoifoqfieoqkctswjjzcjlommmwzdwm">&#xe9b8;</button><code id="rjanhrtzkdgrgahegwhzsjemsenotzheahdrrcrovzxxcxfpntnqvimrirzhpaxrxqzohwoifoqfieoqkctswjjzcjlommmwzdwm">::: success
+This is a success message.
+:::
+
+::: info
+This is a info message.
+:::
+
+::: warning
+This is a warning message.
+:::
+
+::: danger
 This is a danger message.
 :::
 </code></pre>
@@ -116,9 +221,10 @@ This is a danger message.
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <span><</span>
+              <a href="https://tiborsimon.io/articles/tools/code-copy" class="previous-a"><</a>
             <a href="https://tiborsimon.io/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
               <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
+              <span class="neighbour-title previous-title">Copying the content of code blocks</span>
           </nav>
         </div>
       </div>
@@ -167,9 +273,10 @@ This is a danger message.
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <span><</span>
+              <a href="https://tiborsimon.io/articles/tools/code-copy" class="previous-a"><</a>
             <a href="https://tiborsimon.io/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
               <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
+              <span class="neighbour-title previous-title">Copying the content of code blocks</span>
           </nav>
         </div>
       </div>
@@ -188,32 +295,32 @@ This is a danger message.
         <div class="fade-in">
           <h2>Tags</h2>
           <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
             <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
               hack<span>7</span>
             </a>
-            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
-              javascript<span>7</span>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
             </a>
             <a href="https://tiborsimon.io/tag/web/#articles" class="count">
               web<span>5</span>
             </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
             <a href="https://tiborsimon.io/tag/python/#articles" class="count">
               python<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
-              tools<span>4</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
-              config<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
               deploy<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/github/#articles" class="count">
               GitHub<span>3</span>
-            </a>
-            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
-              metalsmith<span>3</span>
             </a>
             <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
               dotfiles<span>2</span>
