@@ -49,15 +49,15 @@
             <p>As I started to use Emacs as my primary text editor (I was a vimmer in the past), I noticed that my common config I created on my OSX machine for Emacs 24.5 doesn’t work on one of my Vagrant based virtual machines running CentOS. If I tried to bring up the Helm buffer menu, it brings up an error that the <em>nesting exceeds</em> <code>max-lisp-eval-depth</code>.</p>
 <p>I figured out that the problem was that CentOS only has Emacs 23.1 available via yum, so I needed to compile it from the sources:</p>
 <p>First of all, I have downloaded the emacs repository mirror from GitHub, and I checked out to the <code>emacs-24.5</code> tag:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#soijelamiqxbgctmejkejharwzjgqfsnwiomuasyytrpfaydrxtivclupjmvnkupjdvpzdxjsucaurjronvohnjdxpkmkqnwbiyo">&#xe9b8;</button><code id="soijelamiqxbgctmejkejharwzjgqfsnwiomuasyytrpfaydrxtivclupjmvnkupjdvpzdxjsucaurjronvohnjdxpkmkqnwbiyo">git clone https://github.com/emacs-mirror/emacs.git
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#niommpbqnjiozrjayvhjnbxnytazgkfokjvaxwfcnhqexjcvfnppydtiondghocaitzhswewxskmsnkmgerkzzodbwcpmioxwslf">&#xe9b8;</button><code id="niommpbqnjiozrjayvhjnbxnytazgkfokjvaxwfcnhqexjcvfnppydtiondghocaitzhswewxskmsnkmgerkzzodbwcpmioxwslf">git clone https://github.com/emacs-mirror/emacs.git
 cd emacs
 git checkout emacs-24.5
 </code></pre>
 <p>Then I run <code>autogen.sh</code> which has created the <code>configure</code> script.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sethudqqfyvqnrbkuibhxzprnyqwcmgzdyymayksrehqfgvbfutjjwtewhiwiavjozthqooljkmwohefmqarqnepszzyihxzjkvz">&#xe9b8;</button><code id="sethudqqfyvqnrbkuibhxzprnyqwcmgzdyymayksrehqfgvbfutjjwtewhiwiavjozthqooljkmwohefmqarqnepszzyihxzjkvz">./autogen.sh
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wrgjqiwprdfzvuvlcklzcebazeibnjpeyoduiupktsltycevebddsouhjobffonnhdzjsbcwaflkathjfkehqusgzzmrtzecibax">&#xe9b8;</button><code id="wrgjqiwprdfzvuvlcklzcebazeibnjpeyoduiupktsltycevebddsouhjobffonnhdzjsbcwaflkathjfkehqusgzzmrtzecibax">./autogen.sh
 </code></pre>
 <p>I run the created <code>configure</code> script. As it could have been expected, there was some errors, so I installed the missing packages on demand:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kumbroqpggmtbimcwatxnldgxsscgowxcyltqkhenyovelxcemzzgaunnmsaovpfkphnfmyiodufasdjmzuqprjelztvevewbzkm">&#xe9b8;</button><code id="kumbroqpggmtbimcwatxnldgxsscgowxcyltqkhenyovelxcemzzgaunnmsaovpfkphnfmyiodufasdjmzuqprjelztvevewbzkm">./configure
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#zwahivwdxazippihxjgnpveutfoopvmxuaxaaydxwigvswxyzcbtqshejclucpoxqehylzsfbmvvywyrkhvxcomaoktmhqexcnmc">&#xe9b8;</button><code id="zwahivwdxazippihxjgnpveutfoopvmxuaxaaydxwigvswxyzcbtqshejclucpoxqehylzsfbmvvywyrkhvxcomaoktmhqexcnmc">./configure
 [error] no makeinfo
 sudo yum install texinfo
 
@@ -113,13 +113,13 @@ Where should the build process find the source code?    .
   Does Emacs use toolkit scroll bars?                     yes
 </code></pre>
 <p>Finally as the <code>configure</code> script finished, I compiled the whole software package:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cgzxobodbctpllncmvjfssrgrljsvwnllqaxpmddhtkiwkmphfokbtaugxpfauzurxdztqhhfkylasvutihkwmhishzpjhpnxjom">&#xe9b8;</button><code id="cgzxobodbctpllncmvjfssrgrljsvwnllqaxpmddhtkiwkmphfokbtaugxpfauzurxdztqhhfkylasvutihkwmhishzpjhpnxjom">make
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ympwyalyhxgpkbuwewcbzmigjnzychiqcsjwgqrhgbhqgrjipzdxqzsnzuppmssttnpvlozcrpebwiomnnqxmmxnsptkxqpdscqn">&#xe9b8;</button><code id="ympwyalyhxgpkbuwewcbzmigjnzychiqcsjwgqrhgbhqgrjipzdxqzsnzuppmssttnpvlozcrpebwiomnnqxmmxnsptkxqpdscqn">make
 sudo make install
 </code></pre>
 <p>After that, I had a fully functioning Emacs installation, that worked flawlesly with my configuration.</p>
 <h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
 <p>You can compile Emacs from sources with the following commands:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jvxvptycaaksfofwlnchypbnjnocgxygsicjchcqcwjtrhsiotphzypdyjhwpjlookevufzrmzcfstpznnpukbrryqrijodpwuxl">&#xe9b8;</button><code id="jvxvptycaaksfofwlnchypbnjnocgxygsicjchcqcwjtrhsiotphzypdyjhwpjlookevufzrmzcfstpznnpukbrryqrijodpwuxl">git clone https://github.com/emacs-mirror/emacs.git
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#yybtdqbiiosrujgzvrkknimkillbmcqwjokeenwxxslnzwyssjngbdzvafpmxydnrxlyvmefrchmvbigxoezvvmixkzhyqwaqpav">&#xe9b8;</button><code id="yybtdqbiiosrujgzvrkknimkillbmcqwjokeenwxxslnzwyssjngbdzvafpmxydnrxlyvmefrchmvbigxoezvvmixkzhyqwaqpav">git clone https://github.com/emacs-mirror/emacs.git
 cd emacs
 git checkout emacs-24.5
 sudo yum install texinfo libX11-devel Xaw3d-devel libjpeg-devel libpng-devel libungif-devel libtiff-devel ncurses-devel

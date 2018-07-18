@@ -49,7 +49,7 @@
             <hr>
             <p>First thing first, we are going to need a way to access the visitors clipboard. I find a pure javascript library <a href="https://clipboardjs.com/" class="external-link" target="_blank">clipboard.js</a> for the purpose.</p>
 <p>Integrating <em>clipboard.js</em> is easy. You can put your code in a html tag, name it with and id, then pass that id to a button that has the class that the library is expecting for, and thats it.</p>
-<pre><div class="code-title">Basic example copied from the documentation</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vulzskwwcemoypeoirpbppeabcpxdtetewfiynensrekqvwlkvfgwwwpoejkevwmjowxnpbpnqixxxcxsuvhpxlqipanymwphxbh">&#xe9b8;</button><code id="vulzskwwcemoypeoirpbppeabcpxdtetewfiynensrekqvwlkvfgwwwpoejkevwmjowxnpbpnqixxxcxsuvhpxlqipanymwphxbh">&lt;!-- Target --&gt;
+<pre><div class="code-title">Basic example copied from the documentation</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xakcpbibcdntggkgqhtnkosqbvjsmgsfdlxbvpxlppxtatyadqfpruvfshwyvbkmtnxvezxskgijzsxcriphpnaccarcpatdaava">&#xe9b8;</button><code id="xakcpbibcdntggkgqhtnkosqbvjsmgsfdlxbvpxlppxtatyadqfpruvfshwyvbkmtnxvezxskgijzsxcriphpnaccarcpatdaava">&lt;!-- Target --&gt;
 &lt;textarea id=&quot;bar&quot;&gt;Mussum ipsum cacilds...&lt;/textarea&gt;
 
 &lt;!-- Trigger --&gt;
@@ -58,19 +58,19 @@
 &lt;/button&gt;
 </code></pre>
 <p>I initialized the library to look for elements with the <code>copy-btn</code> class on them. This can be configured with the initialization code.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cepypogvmxwdrjcluzuyaksqgamkkrofaqqqnwygcerxpxhpjtuhnuemtbwjxcqwzmqnhqacmbdmpkjawirmuaekqfdvqcypxgbo">&#xe9b8;</button><code id="cepypogvmxwdrjcluzuyaksqgamkkrofaqqqnwygcerxpxhpjtuhnuemtbwjxcqwzmqnhqacmbdmpkjawirmuaekqfdvqcypxgbo">&lt;script&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ipldwgjzbsdpjyjhnhelwcjguxtovmcviqflhruzorbtspbvxmgpstckjvkqgbwrnvxovesgyziaiamkexexxtxpgvhiuwcpiwfg">&#xe9b8;</button><code id="ipldwgjzbsdpjyjhnhelwcjguxtovmcviqflhruzorbtspbvxmgpstckjvkqgbwrnvxovesgyziaiamkexexxtxpgvhiuwcpiwfg">&lt;script&gt;
   const clipboard = new Clipboard(&#039;.copy-btn&#039;);
 &lt;/script&gt;
 </code></pre>
 <p>In case of a static website that is generated from a Markdown file there is a bit of an issue. You don’t want to bother naming each code snippet with a unique name, and to create the necessary button for them. You want all of these task happen automatically in compile time.</p>
 <h2 id="generating-the-code-blocks">Generating the code blocks <a class="header-anchor internal-link" href="#generating-the-code-blocks" aria-hidden="true">¶</a></h2>
 <p>Since I use <a href="https://github.com/markdown-it/markdown-it" class="external-link" target="_blank">Markdown-it</a> as a Markdown engine for my site, I integrated the code block generator code in to the exposed highlighter API of the library. You can give the library a function that will be called with the raw string and the optional language identifier on code block render request. You can generate your own version of html embedded code, and you can simply return it as a string. The html escaping has to be done manually.</p>
-<pre><div class="code-title">Integrating the code block renderer to</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#pwjxviccphkaqwlodvqjupwusvzwkysyjalduesedvfuappjtpzkowyshpkwshjatkcjddcliogivsbczalctkpcgbgyylvtifqv">&#xe9b8;</button><code id="pwjxviccphkaqwlodvqjupwusvzwkysyjalduesedvfuappjtpzkowyshpkwshjatkcjddcliogivsbczalctkpcgbgyylvtifqv">const md = new MarkdownIt({
+<pre><div class="code-title">Integrating the code block renderer to</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ikpgvbtqxexaxwpcltkkvzegfvsavlezmnynciosfdowksnlzhgwlqkyfxuwcexltymvlngyrlmmmmdeqwaddbazgxxmwtdfckwn">&#xe9b8;</button><code id="ikpgvbtqxexaxwpcltkkvzegfvsavlezmnynciosfdowksnlzhgwlqkyfxuwcexltymvlngyrlmmmmdeqwaddbazgxxmwtdfckwn">const md = new MarkdownIt({
   highlight: renderCode
 })
 </code></pre>
 <p>The <code>renderCode</code> function will be used as a code block renderer.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#yvwymakocdbezxthzuorsgpjdhqnbiohmisylurertmowazdzuogmvxfcixtxyiiaxgmcpimuecjrdjkmrjizhioufzqgnypopgl">&#xe9b8;</button><code id="yvwymakocdbezxthzuorsgpjdhqnbiohmisylurertmowazdzuogmvxfcixtxyiiaxgmcpimuecjrdjkmrjizhioufzqgnypopgl">let renderCode = function(str, info) {
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#tygrwquizytaxhouulhdkwnxrskyyiiwmwmxytexdvgcsospnkdhxorwgpzuflfucudbeygbaoisltnmlskaekohisluztfqdkri">&#xe9b8;</button><code id="tygrwquizytaxhouulhdkwnxrskyyiiwmwmxytexdvgcsospnkdhxorwgpzuflfucudbeygbaoisltnmlskaekohisluztfqdkri">let renderCode = function(str, info) {
   const id = getId()
   const title = info.replace(/_/g, &quot; &quot;)
   let front = &#039;&lt;pre&gt;&#039;
@@ -87,7 +87,7 @@
 </ol>
 <p>The fisrt isse is solved by the third line. We simply use <em>underscore</em> separated titles in the language keyword field, and then we replace the <em>underscores</em> with spaces. This is a simple but effective hack though.</p>
 <p>The second issue is a bit more harder. We need a semi unique identifier to solve it. The identifier only has to be unique for an article. I solved this issue by generating a 100 character long random hash for each code.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sqaswqnvvauwluxwyzszezrpqntqadeozjpsxpxfibzkxrwvumjychkwwugpmlymnzxokuqdwdbyvwevehoxhomggizjzcpmwrzb">&#xe9b8;</button><code id="sqaswqnvvauwluxwyzszezrpqntqadeozjpsxpxfibzkxrwvumjychkwwugpmlymnzxokuqdwdbyvwevehoxhomggizjzcpmwrzb">let getId = function() {
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wnwmqfoskntqyctfomiyqdzllxdoktshepminoczuxvetvmuipmwfktnttxdykkxxrxasqfayhxbgckskpmloqagshiugjnxedcc">&#xe9b8;</button><code id="wnwmqfoskntqyctfomiyqdzllxdoktshepminoczuxvetvmuipmwfktnttxdykkxxrxasqfayhxbgckskpmloqagshiugjnxedcc">let getId = function() {
   let text = &quot;&quot;;
   const possible = &quot;abcdefghijklmnopqrstuvwxyz&quot;;
   for( let i=0; i &lt; 100; i++ )
@@ -97,7 +97,7 @@
 </code></pre>
 <p>The 100 characters will ensure that I will be able to write pretty long articles and having a pretty good confidence that there will be no interference with the generated identifiers.</p>
 <p>The rest of the <code>renderCode</code> function is self explanatory. If there was a language keyword in the code block, we will add that too to the generated code. Of course, I am using a standard escape function to escape unwanted characters.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#iazsnaoclchjstnqenteqybfsfrhhnvcyhjsrnusgzuemvnroknxoyocwxwkxcnpizpspgvgdwdyaejycibsdgwztviusdttrvvr">&#xe9b8;</button><code id="iazsnaoclchjstnqenteqybfsfrhhnvcyhjsrnusgzuemvnroknxoyocwxwkxcnpizpspgvgdwdyaejycibsdgwztviusdttrvvr">let escapeHtml = function(unsafe) {
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#lpixivrsdiacztlduqnfrgodccrkxxowafiuesuoussapjfcpzmslmfdlnofpxjzrkzpdwvcujjdubkytptpsllfvspewehayufe">&#xe9b8;</button><code id="lpixivrsdiacztlduqnfrgodccrkxxowafiuesuoussapjfcpzmslmfdlnofpxjzrkzpdwvcujjdubkytptpsllfvspewehayufe">let escapeHtml = function(unsafe) {
   return unsafe
    .replace(/&amp;/g, &quot;&amp;amp;&quot;)
    .replace(/&lt;/g, &quot;&amp;lt;&quot;)
@@ -107,7 +107,7 @@
 }
 </code></pre>
 <p>With a little bit of CSS, the embedded code block is looking good:</p>
-<pre><div class="code-title">Style for the code blocks</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xejpqmskwdoiicskkrbdamxsvkctnabsvrrgrxvzuzzcssympqmdbvfkrjeyiewajdqlhxtwshcfiknvzbxonvhwmzhrnycfupdy">&#xe9b8;</button><code id="xejpqmskwdoiicskkrbdamxsvkctnabsvrrgrxvzuzzcssympqmdbvfkrjeyiewajdqlhxtwshcfiknvzbxonvhwmzhrnycfupdy">pre code {
+<pre><div class="code-title">Style for the code blocks</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#foyyccdwvzkibxnwsiofogwfvemwwnrrwrpffipkgqvocpipghuvyrnnmskzaofbqneqyfmflousxwbcaejngnodqbpfxnjvynyd">&#xe9b8;</button><code id="foyyccdwvzkibxnwsiofogwfvemwwnrrwrpffipkgqvocpipghuvyrnnmskzaofbqneqyfmflousxwbcaejngnodqbpfxnjvynyd">pre code {
   background: radial-gradient(circle at top right, #5b747e, #0d1a1e 1200px);
   color: #e9e8e8;
   width: var(--content-width);
@@ -167,7 +167,7 @@ pre:hover .copy-btn {
 <h1 id="feedback-to-the-user">Feedback to the user <a class="header-anchor internal-link" href="#feedback-to-the-user" aria-hidden="true">¶</a></h1>
 <p>I think it is pretty important to give a feedback about an action in any case. So I implemented the feedback system for the result of the copy command.</p>
 <p><em>Clipboard.js</em> has an exposed event API as well. The official example like this:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nbwrfnnvlhogpzlwfcrwuzdtkexuvwcilhmgadqhuordauwpgvfwjirprbyolgftjdnccdlabllatujakaioutqmlxkkxsciziwu">&#xe9b8;</button><code id="nbwrfnnvlhogpzlwfcrwuzdtkexuvwcilhmgadqhuordauwpgvfwjirprbyolgftjdnccdlabllatujakaioutqmlxkkxsciziwu">var clipboard = new Clipboard(&#039;.btn&#039;);
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ijblnpplarxldkzyhjvebvrxhkrmznifspkbwvbgfirtcesjztbomfsonbqsarmmsyehwkbubourytunwixybsvjkkrersquimre">&#xe9b8;</button><code id="ijblnpplarxldkzyhjvebvrxhkrmznifspkbwvbgfirtcesjztbomfsonbqsarmmsyehwkbubourytunwixybsvjkkrersquimre">var clipboard = new Clipboard(&#039;.btn&#039;);
 
 clipboard.on(&#039;success&#039;, function(e) {
     console.info(&#039;Action:&#039;, e.action);
@@ -183,7 +183,7 @@ clipboard.on(&#039;error&#039;, function(e) {
 });
 </code></pre>
 <p>That indicates, that we have access to the triggering button after the copy action fired. In this way, we can insert here our feedback animations as follows:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wvttevshcrcwxmbkjsxkymvovhvekrkodzevpoybqtlwqxezfypbpfifgzkrqkwdztqcbvikaosdxniaptsopcxkzwyessjonqoo">&#xe9b8;</button><code id="wvttevshcrcwxmbkjsxkymvovhvekrkodzevpoybqtlwqxezfypbpfifgzkrqkwdztqcbvikaosdxniaptsopcxkzwyessjonqoo">&lt;script&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#zgulfhlkwunaktkntypgemqzgnllqmgdjnjmqrcjwomljyrpuwypsfpojgfkxfkttrdgasvcxswahneffqdlqtfwtffbajgvirdw">&#xe9b8;</button><code id="zgulfhlkwunaktkntypgemqzgnllqmgdjnjmqrcjwomljyrpuwypsfpojgfkxfkttrdgasvcxswahneffqdlqtfwtffbajgvirdw">&lt;script&gt;
   const clipboard = new Clipboard(&#039;.copy-btn&#039;);
   clipboard.on(&#039;success&#039;, function(e) {
       e.clearSelection();
@@ -200,7 +200,7 @@ clipboard.on(&#039;error&#039;, function(e) {
 &lt;/script&gt;
 </code></pre>
 <p>By redefining the trigger button’s <code>:before</code> selector in the <code>copy-success</code> class, we can display a message about the successful copy action to the user.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#dyjdsyvhtwjurfhpcjciwfgjyunjskmzbvhwvygxrkrijhjsvpateqprmaqjuflplgmswfqkjatkxwqydkysvpfvrxukfqqbcsyq">&#xe9b8;</button><code id="dyjdsyvhtwjurfhpcjciwfgjyunjskmzbvhwvygxrkrijhjsvpateqprmaqjuflplgmswfqkjatkxwqydkysvpfvrxukfqqbcsyq">.copy-btn::before {
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#wwvhtmepqcxzjaeoewpxcfxthdjovtijaktywkeecadypztmlwjkgoxonqbzkthzabtdmwqgpwgswwfulvpsykonuncbgulmhqrv">&#xe9b8;</button><code id="wwvhtmepqcxzjaeoewpxcfxthdjovtijaktywkeecadypztmlwjkgoxonqbzkthzabtdmwqgpwgswwfulvpsykonuncbgulmhqrv">.copy-btn::before {
   content: &quot;Copied!&quot;;
   padding-right: 6px;
   font-family: &quot;Lato&quot;,&quot;proxima-nova&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif;

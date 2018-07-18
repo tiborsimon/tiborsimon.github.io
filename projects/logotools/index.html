@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BusPirate setup for OSX - Tibor's Lab</title>
-  <meta name="description" content="As I have switched to mac in the past days, I want to set up my BusPirate to be able to communicate with other circuits.">
+  <title>Logotools - Tibor's Lab</title>
+  <meta name="description" content="Logotools. ">
   <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
   <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
 </head>
@@ -30,53 +30,57 @@
           <div class="fade-loader"></div>
           <div class="fade-in">
             <div class="banner"></div>
-            <div class="article-title">BusPirate setup for OSX</div>
+            <div class="article-title">Logotools</div>
             <div class="details">
               <div class="tag-list">
-                <a href="https://tiborsimon.io/tag/tools/">tools</a>
-                <a href="https://tiborsimon.io/tag/embedded/">embedded</a>
-                <a href="https://tiborsimon.io/tag/serial/">serial</a>
-                <a href="https://tiborsimon.io/tag/hardware/">hardware</a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
               </div>
-              <div class="timestamp">2015. 09. 13.</div>
+              <div class="timestamp">2018. 06. 30.</div>
             </div>
           </div>
         </header>
         <article class="content card padded">
           <div class="fade-loader"></div>
           <div class="fade-in">
-            <div class="summary">As I have switched to mac in the past days, I want to set up my BusPirate to be able to communicate with other circuits.</div>
+            <div class="summary">Logotools. </div>
             <hr>
-            <p>On my windows machine I used <strong>Putty</strong>
-for this purpose. In mac there is <strong>Zterm</strong> as an alternative, but I wanted to
-use the terminal. <strong>Screen</strong> is the perfect alternative for this job. The
-workflow is the following:</p>
-<h1 id="1-find-out-the-serial-number-of-your-buspirate">1. Find out the serial number of your BusPirate <a class="header-anchor internal-link" href="#1-find-out-the-serial-number-of-your-buspirate" aria-hidden="true">¶</a></h1>
-<p>To be able to communicate your BusPirate you have to know it’s serial number.
-List the connected devices before you connect your Buspirate with the following
-command:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#fotvosmrqltrawgiccsnoirrmcuhcbrtdqgkparpcqdiunolhgxncchyxuvblqumnlrgcpbqxglpwajzowyhrrfkovspjqdujzgx">&#xe9b8;</button><code id="fotvosmrqltrawgiccsnoirrmcuhcbrtdqgkparpcqdiunolhgxncchyxuvblqumnlrgcpbqxglpwajzowyhrrfkovspjqdujzgx">$ ls /dev
-</code></pre>
-<p>This command will list all the connected devices. Save them somewhere, and then
-connect your BusPirate and list the devices again. Find the one that is only
-present when you connect your BusPirate to your machine.</p>
-<p>There you go, mine was: <code>tty.usbserial-AD01W63E</code></p>
-<h1 id="2-connect-to-your-device">2. Connect to your device <a class="header-anchor internal-link" href="#2-connect-to-your-device" aria-hidden="true">¶</a></h1>
-<p>Use <strong>screen</strong> to connect to your BusPirate:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#dgncxlbnzulqvyrwnyqkltljewzupicvhcrmyvsqlgrgnpddqhlfaqmgnmhzrshhpbmtublqywoqcxvjffuqrbzujzvfpvtnpuem">&#xe9b8;</button><code id="dgncxlbnzulqvyrwnyqkltljewzupicvhcrmyvsqlgrgnpddqhlfaqmgnmhzrshhpbmtublqywoqcxvjffuqrbzujzvfpvtnpuem">$ screen /dev/tty.usbserial-AD01W63E 115200 8N1
-</code></pre>
-<p>The BusPirate console should appear on your terminal. To exit the session press
-<kbd>control</kbd>+<kbd>a</kbd> then <kbd>k</kbd> and after the prompt press
-<kbd>y</kbd> to kill the screen.</p>
-<p><strong>Screen</strong> could be weird at first, but there are tons of shortcuts that will
-help you. <a href="http://ss64.com/osx/screen.html" class="external-link" target="_blank">Screen manual for osx</a>.</p>
-<h1 id="3-make-your-life-easier">3. Make your life easier <a class="header-anchor internal-link" href="#3-make-your-life-easier" aria-hidden="true">¶</a></h1>
-<p>Create an alias for the connection by writing into your <em>~/.bashrc</em>
-file.</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ygxumklpwiogtxlwfuifeltmgszlvqkijysoqrmtkmwojvsouebpclbewlzlpttrgxksifbixqcnmldbhilgdeesfxaubcgnuxbl">&#xe9b8;</button><code id="ygxumklpwiogtxlwfuifeltmgszlvqkijysoqrmtkmwojvsouebpclbewlzlpttrgxksifbixqcnmldbhilgdeesfxaubcgnuxbl">alias buspirate=&#039;screen /dev/tty.usbserial-AD01W63E 115200 8N1&#039;
-</code></pre>
-<p>Source the modified file or restart the terminal, and type in <code>buspirate</code>, and
-the BusPirate terminal should open.</p>
+            <p>Logotools.</p>
 
           </div>
         </article>
@@ -85,10 +89,9 @@ the BusPirate terminal should open.</p>
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/dsp/generating-sinusoids" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/web/redirect-external-links-to-new-tab" class="next-a">></a>
-              <span class="neighbour-title next-title">Redirect external links to new tab</span>
-              <span class="neighbour-title previous-title">Generating sinusoid signals</span>
+              <span><</span>
+            <a href="https://tiborsimon.io/projects/regart" class="next-a">></a>
+              <span class="neighbour-title next-title">Regart</span>
           </nav>
         </div>
       </div>
@@ -137,10 +140,9 @@ the BusPirate terminal should open.</p>
         <div class="fade-loader"></div>
         <div class="fade-in">
           <nav class="sidebar-nav">
-              <a href="https://tiborsimon.io/articles/dsp/generating-sinusoids" class="previous-a"><</a>
-            <a href="https://tiborsimon.io/articles/web/redirect-external-links-to-new-tab" class="next-a">></a>
-              <span class="neighbour-title next-title">Redirect external links to new tab</span>
-              <span class="neighbour-title previous-title">Generating sinusoid signals</span>
+              <span><</span>
+            <a href="https://tiborsimon.io/projects/regart" class="next-a">></a>
+              <span class="neighbour-title next-title">Regart</span>
           </nav>
         </div>
       </div>

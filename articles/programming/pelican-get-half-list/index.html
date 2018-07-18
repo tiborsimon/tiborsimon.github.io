@@ -8,7 +8,7 @@
 <li>Use the round filter</li>
 <li>Cast the result to <em>integer</em></li>
 </ol>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#etpwonxegugqnxttqkmynthcqrxpmswwkfekjfkiaxsdiagxlpzuxgiibmxhdoikvmzzfjwahozoaizqyjbqwgynoqpihewdeanv">&#xe9b8;</button><code id="etpwonxegugqnxttqkmynthcqrxpmswwkfekjfkiaxsdiagxlpzuxgiibmxhdoikvmzzfjwahozoaizqyjbqwgynoqpihewdeanv">{% set article_middle_index = articles|length / 2 %}
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jkybxzyclnudxsayrmwkbmfvtkklkuslwkllaatbxdxmytojbvrvokfyvdqxaixhgkedkqyauzggqlonypkylhyfbnndrghjytqm">&#xe9b8;</button><code id="jkybxzyclnudxsayrmwkbmfvtkklkuslwkllaatbxdxmytojbvrvokfyvdqxaixhgkedkqyauzggqlonypkylhyfbnndrghjytqm">{% set article_middle_index = articles|length / 2 %}
 {% set article_middle_index = article_middle_index + 0.2 %}
 {% set article_middle_index = article_middle_index|round %}
 {% set article_middle_index = article_middle_index|int %}
@@ -16,7 +16,7 @@
 <p>Since <code>{ 0.5|round }</code> is <code>0.0</code> according to Jinja2, we need to add a small number to the halfed number, to achieve the ceil-like behavior.</p>
 <h1 id="writing-a-custom-jinja-filter">Writing a custom Jinja filter <a class="header-anchor internal-link" href="#writing-a-custom-jinja-filter" aria-hidden="true">¶</a></h1>
 <p>We can also write a custom Jinja filter that calculates the middle index of a list, by appending a small function definition and a special dictionary that tells Pelican to use the function definition as a Jinja filter to the <code>pelicanconf.py</code> file:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jjnlxkqthjbkbiaqujxzsqznrkbwantwlkvtbdmpnjlfnsmwcikntgmstalqqxwpnfnmcoslgzcrgsvrxyfbjjjwgvyojbrbamqb">&#xe9b8;</button><code id="jjnlxkqthjbkbiaqujxzsqznrkbwantwlkvtbdmpnjlfnsmwcikntgmstalqqxwpnfnmcoslgzcrgsvrxyfbjjjwgvyojbrbamqb">def list_half_index(content, *args):
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#xuciwlztnhgvdpoosaxztkqikdggrwwiajsukfatvepdmzjwwtrunkydnxarlbgspqmuadvylgpftqejdejzareljdhzyhadwxzr">&#xe9b8;</button><code id="xuciwlztnhgvdpoosaxztkqikdggrwwiajsukfatvepdmzjwwtrunkydnxarlbgspqmuadvylgpftqejdejzareljdhzyhadwxzr">def list_half_index(content, *args):
     return ceil(len(content))
 
 JINJA_FILTERS = {
@@ -24,11 +24,11 @@ JINJA_FILTERS = {
 }
 </code></pre>
 <p>In the Pelican template files, we can use our custom filter as follows:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#aiosrhyemvvskocyvobadzzpdysbuxejfjqmxdeqlvovttpdbhqcyoruaxrhyozerfrwdpreyqufejxdrsgtgylinafxuuxwteph">&#xe9b8;</button><code id="aiosrhyemvvskocyvobadzzpdysbuxejfjqmxdeqlvovttpdbhqcyoruaxrhyozerfrwdpreyqufejxdrsgtgylinafxuuxwteph">{% set article_middle_index = articles|middle_index %}
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bmbaovynteridxawndxhdirufmjeldgampcsbzklqvzzxgmnsgkmerslcksiglooxyakvlqvedjhwherunbzthgnhskveeaamnau">&#xe9b8;</button><code id="bmbaovynteridxawndxhdirufmjeldgampcsbzklqvzzxgmnsgkmerslcksiglooxyakvlqvedjhwherunbzthgnhskveeaamnau">{% set article_middle_index = articles|middle_index %}
 </code></pre>
 <h1 id="using-the-middle-index">Using the middle index <a class="header-anchor internal-link" href="#using-the-middle-index" aria-hidden="true">¶</a></h1>
 <p>We have now the middle index of an article list, so we can use it to split the list to half:</p>
-<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#aovddnklmxllwdddhzpqtmjzmfeovalsrvmlsrzyxdcrawkynvzevtiyqwotdqhiixvvlubnzzdvkoeppbzhrzaabzhizrmiyjjj">&#xe9b8;</button><code id="aovddnklmxllwdddhzpqtmjzmfeovalsrvmlsrzyxdcrawkynvzevtiyqwotdqhiixvvlubnzzdvkoeppbzhrzaabzhizrmiyjjj">&lt;div class=&quot;row&quot;&gt;
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#veeathagetsewwjetnuhdjoxquqrnpsqnkdxpkmbivzxxlejvyatzygkslbvuemwftmdhndkqjnmpyrfozcuwsxxjbpnermyoisz">&#xe9b8;</button><code id="veeathagetsewwjetnuhdjoxquqrnpsqnkdxpkmbivzxxlejvyatzygkslbvuemwftmdhndkqjnmpyrfozcuwsxxjbpnermyoisz">&lt;div class=&quot;row&quot;&gt;
   &lt;div class=&quot;6u 6u(tablet) 12u(mobile)&quot;&gt;
     {% for article in articles[:article_middle_index] %}
       {% include &#039;includes/article-card.html&#039; %}
