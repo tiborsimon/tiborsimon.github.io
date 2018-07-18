@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generating sinusoid signals - Tibor's Lab</title>
+  <meta name="description" content="Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn&#x27;t. Many people struggles with it.">
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navmenu-wrapper">
+    <div class="fade-loader"></div>
+    <div class="fade-in">
+      <div class="navmenu">
+        <a class="logo" href="https://tiborsimon.io">
+          Tibor's Lab 
+        </a>
+        <div class="group">
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="banner"></div>
+            <div class="article-title">Generating sinusoid signals</div>
+            <div class="details">
+              <div class="tag-list">
+                <a href="https://tiborsimon.io/tag/signals/">signals</a>
+                <a href="https://tiborsimon.io/tag/dsp/">dsp</a>
+                <a href="https://tiborsimon.io/tag/matlab/">Matlab</a>
+              </div>
+              <div class="timestamp">2015. 10. 17.</div>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="summary">Generating sinusoid signals is often the first step for executing a more complex computation. It should be a routine, but actually it isn't. Many people struggles with it.</div>
+            <hr>
+            <h1 id="the-problem">The problem <a class="header-anchor internal-link" href="#the-problem" aria-hidden="true">¶</a></h1>
+<p>The equation of a sinusoid signal is a known fact:</p>
+<p class="equation">
+  $$y(t) = A \sin(2 \pi f t + \varphi) = A \sin(\omega t + \varphi).$$
+</p>
+<p>However. This equation is only valid in the <strong>continuous time</strong> domain, therefore without any modification it is useless in the <strong>discrete time</strong> domain used by every digital machine. You won’t be able to create a continuous variable that spans through the duration of the signal from the beginning to the end while taking up every possible value.</p>
+<p>Machines work with <em>discrete time series</em> that has a property called <strong>resolution</strong>. Resolution is the link between <em>continous</em> and <em>discrete</em> time domain. This property is implemented with <strong>sampling</strong>. It tells us how many data points were sampled equidistantly from the continuous signal within a time segment. In this way we can represent a continuous signal with discrete data points<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<p>Therefore the <em>t</em> variable in the equation can be represented as a vector of data points. To create such a time vector, you have to choose a sampling interval.</p>
+<p>Let’s say you want to get <strong>10 samples per seconds</strong> <em>(fs=10Hz)</em>, and you want to have <strong>20 samples</strong> in your vector. That also means that your time vector will cover almost <strong>2 seconds</strong><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> of continuous time.</p>
+<p>You can test that the <code>t1</code> and <code>t2</code> vector are exactly the same. Both vector starts from zero and ends at 1.9. Having the time vector we can generate a sinusoid signal with a frequency of 1Hz. This will result 2 periods in the signal:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#idodqegzbwqwnvviagniothtfckrdblvsvmogydluwvjzuxakuwyxvpvtmtohadvunwzfzzlmfluyjgaocebridxutqdescjetzi">&#xe9b8;</button><code id="idodqegzbwqwnvviagniothtfckrdblvsvmogydluwvjzuxakuwyxvpvtmtohadvunwzfzzlmfluyjgaocebridxutqdescjetzi">s = sin(2*pi*1*t1);
+</code></pre>
+<p>If we plot the generated signal, we can see, that it is not a sine signal at all. It is a discrete signal, that has values in discrete points as we expected.</p>
+<figure id="fig1">
+          <img width=740 src="/assets/images/articles/generating-sinusoids/signal001.png" alt="Discrete vs continous time sine signal.">
+          <figcaption>Fig 1: Discrete vs continous time sine signal.</figcaption>
+        </figure>
+<p>This method is one of the 4 main signal generation methods where we link the discrete time signal to the continuous time. Having such a connection between the two domain, the signal can be played back with the computer’s <em>digital to analog converter</em>.</p>
+<p>However. There are other use cases when we don’t want to link the <strong>discrete time</strong> to the <strong>continuous time</strong>, so we don’t have to bother with the sampling frequency, and we can generate a time vector from 0 to 1, and pass it to the equation:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#bkofcnuyidfuwbzttobsodkjcqmofhjdstbbeonnqytsllwrspxxegiqvclphzkjvjspxecbkqqqeksxftotfsfgdhmhinidogpz">&#xe9b8;</button><code id="bkofcnuyidfuwbzttobsodkjcqmofhjdstbbeonnqytsllwrspxxegiqvclphzkjvjspxecbkqqqeksxftotfsfgdhmhinidogpz">t = linspace(0,1,100);
+s = sin(2*pi*3*t);
+</code></pre>
+<p>The result will be a 100 sample long sinusoid signal, that contains 3 periods. But be careful. This signal can’t be used as the previous one until we specify the sampling frequency.</p>
+<figure id="fig2">
+          <img width=740 src="/assets/images/articles/generating-sinusoids/signal002.png" alt="100 samples long sinusoid without discrete/continous time lock.">
+          <figcaption>Fig 2: 100 samples long sinusoid without discrete/continous time lock.</figcaption>
+        </figure>
+<p>As you can see, generating sinusoids with these basic methods isn’t hard at all. But you <strong>have to think</strong> about the method, the formulas and the units. This could be a bit time consuming if you have to think about it every time you want to generate a signal…</p>
+<h1 id="sinusoid-signal-parameters">Sinusoid signal parameters <a class="header-anchor internal-link" href="#sinusoid-signal-parameters" aria-hidden="true">¶</a></h1>
+<p>There are 9 parameters that a pure sinusoid signal could have. In order to be able to generate any kind of sinusoid signals, you should be familiar with the parameters.</p>
+<figure id="fig3">
+          <img width=740 src="/assets/images/articles/generating-sinusoids/detailed.png" alt="Sinusoid signal parameters.">
+          <figcaption>Fig 3: Sinusoid signal parameters.</figcaption>
+        </figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter name</th>
+<th style="text-align:left">Unit</th>
+<th style="text-align:left">Possible parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>phi</code></td>
+<td style="text-align:left">[degree]</td>
+<td style="text-align:left">phase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>A</code></td>
+<td style="text-align:left">[full scale]</td>
+<td style="text-align:left">amplitude<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>f</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">frequency</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fs</code></td>
+<td style="text-align:left">[Hz]</td>
+<td style="text-align:left">sample rate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>T</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">period</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dt</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">sample time</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>L</code></td>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">signal duration</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>N</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of periods</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>n</code></td>
+<td style="text-align:left">[-]</td>
+<td style="text-align:left">number of samples</td>
+</tr>
+</tbody>
+</table>
+<p>With these parameters there are 5 main generation methods for sinusoid signals. Each of them have alternatives that doesn’t count as an individual generation method due to the used parameters can be derived from the others if you apply the following formulas: <em>fs = 1/dt</em>, <em>T = 1/f</em> and <em>L=n*dt</em>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method index</th>
+<th style="text-align:left">Required parameters</th>
+<th style="text-align:left">CT DT lock</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><code>n</code> <code>N</code></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">a signal consisting of <code>n</code> data points with <code>N</code><br> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><code>L</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left"><code>L</code> seconds long signal sampled at <code>fs</code> consisting of <br><code>N</code> periods in it</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><code>f</code> <code>N</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with <code>N</code> <br>periods in it with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><code>f</code> <code>n</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal consisting of <code>n</code> <br>data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code></td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><code>f</code> <code>L</code> <code>fs</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">a signal sampled at <code>fs</code> sampling rate with the <br>duration of <code>L</code> seconds with the frequency <code>f</code></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s try out all methods, to see how you can use them in practice. Let’s generate the same 60 samples of sinusoid signal with 2.5 periods in it with the amplitude 1 at an arbitrary sampling frequency:</p>
+<figure id="fig4">
+          <img width=740 src="/assets/images/articles/generating-sinusoids/demo_signal.png" alt="Reference signal for all the following generation methods.">
+          <figcaption>Fig 4: Reference signal for all the following generation methods.</figcaption>
+        </figure>
+<p>The used parameters may seem a bit odd for the first time, but due to the constraint of generating the same signal with all the methods, they will be reasonable.</p>
+<h2 id="method-1-nn">Method 1 - [n,N] <a class="header-anchor internal-link" href="#method-1-nn" aria-hidden="true">¶</a></h2>
+<p>Generating a sinusoid signal with <code>n</code> data points with <code>N</code> periods in it.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kkwadhrnmmnrmhtitwgazacjktgmhyfntcstxljanfwyrkhapflvdrzmmwefxoioenqeipaebhzcpwrxjvaiaorlkejmvuefsrom">&#xe9b8;</button><code id="kkwadhrnmmnrmhtitwgazacjktgmhyfntcstxljanfwyrkhapflvdrzmmwefxoioenqeipaebhzcpwrxjvaiaorlkejmvuefsrom">n = 60;
+N = 2.5;
+
+k = 0:n-1;
+k = k/n;
+s = sin(2*pi*N*k);
+
+stem(s)
+</code></pre>
+<h2 id="method-2-lnfs">Method 2 - [L,N,fs] <a class="header-anchor internal-link" href="#method-2-lnfs" aria-hidden="true">¶</a></h2>
+<p>Generating <code>L</code> seconds long signal sampled at <code>fs</code> consisting of <code>N</code> periods in it.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ypbpqkpjrsufqcxdvbeeapnwrmmugefngxxandqqednhpnsijocwtbalweklvqrkqntkpqzvrzyyzgqszncohhoyyczltqjtnjbl">&#xe9b8;</button><code id="ypbpqkpjrsufqcxdvbeeapnwrmmugefngxxandqqednhpnsijocwtbalweklvqrkqntkpqzvrzyyzgqszncohhoyyczltqjtnjbl">fs = 10;
+N = 2.5;
+L = 60/fs;
+
+k = 0:1/fs:L-1/fs;
+k=k/L;
+s = sin(2*pi*N*k);
+
+stem(s)
+</code></pre>
+<h2 id="method-3-fnfs">Method 3 - [f,N,fs] <a class="header-anchor internal-link" href="#method-3-fnfs" aria-hidden="true">¶</a></h2>
+<p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with <code>N</code> periods in it with the frequency <code>f</code>.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#uqtwnlpvbmechdskvrqhhorqzulmbypuccannsglrflyuyudidyrhthjwbnqlcazalvvzmtbbhierkpxnaccbxekhiwkhuecoipx">&#xe9b8;</button><code id="uqtwnlpvbmechdskvrqhhorqzulmbypuccannsglrflyuyudidyrhthjwbnqlcazalvvzmtbbhierkpxnaccbxekhiwkhuecoipx">fs = 10;
+N = 2.5;
+f = N*fs/60;
+
+k = 0:1/fs:(N/f)-1/fs;
+s = sin(2*pi*f*k);
+
+stem(s)
+</code></pre>
+<h2 id="method-4-nffs">Method 4 - [n,f,fs] <a class="header-anchor internal-link" href="#method-4-nffs" aria-hidden="true">¶</a></h2>
+<p>Generating a signal consisting of <code>n</code> data points sampled at <code>fs</code> sampling rate with the frequency <code>f</code>.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#zpwgiippqyvsneanizylwejifjfdexhwhnijcmghyjifopkmgnifdwqtgrvqrkczbedjtinrribgtbidromysjjacxwhvhcltplf">&#xe9b8;</button><code id="zpwgiippqyvsneanizylwejifjfdexhwhnijcmghyjifopkmgnifdwqtgrvqrkczbedjtinrribgtbidromysjjacxwhvhcltplf">fs = 10;
+n = 60;
+f = 2.5*fs/n;
+
+k = 0:n-1;
+k = k*(1/fs);
+s = sin(2*pi*f*k);
+
+stem(s)
+</code></pre>
+<h2 id="method-5-flfs">Method 5 - [f,L,fs] <a class="header-anchor internal-link" href="#method-5-flfs" aria-hidden="true">¶</a></h2>
+<p>Generating a sinusoid signal sampled at <code>fs</code> sampling rate with the duration of <code>L</code> seconds with the frequency <code>f</code>.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kdzwsuwzgxhqdqvyynxkxwbmzayamxstmzyjzztgadjjaabzibxmsndicbdumyevyyulderxnhxtybvrelzjtvhymrsxsqzdevqo">&#xe9b8;</button><code id="kdzwsuwzgxhqdqvyynxkxwbmzayamxstmzyjzztgadjjaabzibxmsndicbdumyevyyulderxnhxtybvrelzjtvhymrsxsqzdevqo">L = 60/fs;
+f = 2.5/L;
+
+n = 0:1/fs:L-1/fs;
+s = sin(2*pi*f*n);
+
+stem(s)
+</code></pre>
+<h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
+<p>That’s it. These 5 methods cover all the possible non redundant ways to generate sinusoidal signals. Did you understand them? Did you like them? Will you use them? Will you <em>study</em> them? Will you <em>derive</em> them over and over again?</p>
+<p>If your answers for the last two questions were both <em>nope</em>, then the go ahead and meet <b><a href="http://tiborsimon.io/projects/#TSPR0003">Smart Sinusoids</a></b>.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Of course this is a very high level overview of the <a href="http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem" class="external-link" target="_blank">sampling theorem</a>. There are much more detail how these things really work. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Because we have started our time vector from 0 as the first vector point, the remained 19 points wont cover all the 2 seconds time duration but will span until 1.9 seconds <em>(2s - 1/fs = 1.9s)</em>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>PC sound cards usually accept signals scaled -1 to 1. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+          </div>
+        </article>
+      </div>
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
+              <span class="neighbour-title next-title">BusPirate setup for OSX</span>
+              <span class="neighbour-title previous-title">Collect all nouns in hungarian</span>
+          </nav>
+        </div>
+      </div>
+      <div class="discussion card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h1>Discussion</h1>
+          <div id="disqus_thread"></div>
+        </div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2017</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/buspirate-setup-for-mac" class="next-a">></a>
+              <span class="neighbour-title next-title">BusPirate setup for OSX</span>
+              <span class="neighbour-title previous-title">Collect all nouns in hungarian</span>
+          </nav>
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
+          I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
+          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h2>Tags</h2>
+          <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+              hack<span>7</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+              python<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+              deploy<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+              GitHub<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+              dotfiles<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+              dsp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+              embedded<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+              LaTEX<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+              linux<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+              MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+              regexp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+              search<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+              API<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+              bash<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+              CLI<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+              control<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+              debug<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+              emacs<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+              game<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+              hardware<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+              ios<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+              java<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+              make<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              Matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+              pelican<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+              serial<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+              signals<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+              ssh<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+              tool<span>1</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
+      }
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    const clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        alert('Copy failed :(')
+        console.log(e);
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Markdown setup - Tibor's Lab</title>
+  <meta name="description" content="I use a highly customised Markdown engine for my blog. It is backed up by the javascript based pluggable Markdown-it engine. In this article I am going to show you all the features it has.">
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navmenu-wrapper">
+    <div class="fade-loader"></div>
+    <div class="fade-in">
+      <div class="navmenu">
+        <a class="logo" href="https://tiborsimon.io">
+          Tibor's Lab 
+        </a>
+        <div class="group">
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="banner"></div>
+            <div class="article-title">My Markdown setup</div>
+            <div class="details">
+              <div class="tag-list">
+                <a href="https://tiborsimon.io/tag/markdown/">markdown</a>
+                <a href="https://tiborsimon.io/tag/tools/">tools</a>
+                <a href="https://tiborsimon.io/tag/javascript/">javascript</a>
+                <a href="https://tiborsimon.io/tag/metalsmith/">metalsmith</a>
+                <a href="https://tiborsimon.io/tag/config/">config</a>
+              </div>
+              <div class="timestamp">2017. 05. 14.</div>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="summary">I use a highly customised Markdown engine for my blog. It is backed up by the javascript based pluggable Markdown-it engine. In this article I am going to show you all the features it has.</div>
+            <hr>
+            <p>I use the <a href="https://github.com/markdown-it/markdown-it" class="external-link" target="_blank">Markdown-it</a> engine to implement the feature set I find useful to have for my articles:</p>
+<ol>
+<li>Easy to use figures with indexing and referencing.</li>
+<li>Code snippets with optional titles and the ability to copy the cope with one button.</li>
+<li>External link handling.</li>
+<li>Section dividers with optional titles.</li>
+<li>Message boxes.</li>
+<li>Anchor links.</li>
+</ol>
+<p>I used the following software components:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Package</th>
+<th style="text-align:left">Version</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it" class="external-link" target="_blank">markdown-it</a></td>
+<td style="text-align:left"><em>8.3.1</em></td>
+<td style="text-align:left">Core engine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-anchor" class="external-link" target="_blank">markdown-it-anchor</a></td>
+<td style="text-align:left"><em>4.0.0</em></td>
+<td style="text-align:left">Anchor links for header.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-container" class="external-link" target="_blank">markdown-it-container</a></td>
+<td style="text-align:left"><em>2.0.0</em></td>
+<td style="text-align:left">Custom containers with predefined classes.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a></td>
+<td style="text-align:left"><em>0.1.0</em></td>
+<td style="text-align:left">Custom blocks with custom renderers.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-external-links" class="external-link" target="_blank">markdown-it-external-links</a></td>
+<td style="text-align:left"><em>0.0.6</em></td>
+<td style="text-align:left">External link handling.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.npmjs.com/package/markdown-it-footnote" class="external-link" target="_blank">markdown-it-footnote</a></td>
+<td style="text-align:left"><em>3.0.1</em></td>
+<td style="text-align:left">Footnote system.</td>
+</tr>
+</tbody>
+</table>
+<p>Since I am using <a href="http://www.metalsmith.io/" class="external-link" target="_blank">Metalsmith</a> for my blog, I was implemented the custom Markdown system as a <strong>Metalsmith plugin</strong> with a few helper function. The sources for the whole system can be found on my <a href="https://github.com/tiborsimon/site" class="external-link" target="_blank">site’s GitHub repository</a>.</p>
+<hr>
+<h1 id="figure-system">Figure system <a class="header-anchor internal-link" href="#figure-system" aria-hidden="true">¶</a></h1>
+<p>My <strong>figure system</strong> uses the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin to define the necessary custom renderer function as follows:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#nqypazymjmezcxndqhcjjkomtqlmwwserjzazicyrfhasjneezwemolqldvmebxsjlbbhjypkhdauojljnvgzjvicopcabniuwng">&#xe9b8;</button><code id="nqypazymjmezcxndqhcjjkomtqlmwwserjzazicyrfhasjneezwemolqldvmebxsjlbbhjypkhdauojljnvgzjvicopcabniuwng">const md = new MarkdownIt()
+md.use(mdCustomBlock, {
+  img (raw) {
+    const [index, alt, width, url] = raw.split(&#039;#&#039;)
+    return `&lt;figure id=&quot;fig${index}&quot;&gt;
+      &lt;img width=${width} src=&quot;/assets/images/${url}&quot; alt=&quot;${alt}&quot;&gt;
+      &lt;figcaption&gt;Fig ${index}: ${alt}&lt;/figcaption&gt;
+    &lt;/figure&gt;`
+  }
+})
+</code></pre>
+<p>That code snippet will define a custom <code>@[img](index#title#width#image_url)</code> block that can be used to insert figures. This one-liner will result the following html code:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sbephvolxgtlzslcipmhlgowqiaawkkcyonjfylhttckybpulklmannyapqsccajkghntrngckirolvkgudwpigfheiioqxifmds">&#xe9b8;</button><code id="sbephvolxgtlzslcipmhlgowqiaawkkcyonjfylhttckybpulklmannyapqsccajkghntrngckirolvkgudwpigfheiioqxifmds">&lt;figure id=&quot;fig${index}&quot;&gt;
+  &lt;img width=${width} src=&quot;/assets/images/${image_url}&quot; alt=&quot;${title}&quot;&gt;
+  &lt;figcaption&gt;Fig ${index}: ${title}&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+<p>Using a bit of CSS wizardry will create automatic wrapper-less borders around the image blocks:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#idenwrebxxqbkpfxryohkcvlatzqqiftahdgmayveaqvppvhframalxiufnndbtjtismkwnwxrcsmlhybstrlqzihxelphwsegwd">&#xe9b8;</button><code id="idenwrebxxqbkpfxryohkcvlatzqqiftahdgmayveaqvppvhframalxiufnndbtjtismkwnwxrcsmlhybstrlqzihxelphwsegwd">figure {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid palette(Black, Dividers);
+  width: var(--content-width);
+  left: - $content-padding;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    max-width: 740px;
+    margin: 20px 0px 8px;
+  }
+  figcaption {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+}
+:not(figure)+figure {
+  border-top: 1px solid palette(Black, Dividers);
+}
+</code></pre>
+<h2 id="figures-example">Figures example <a class="header-anchor internal-link" href="#figures-example" aria-hidden="true">¶</a></h2>
+<p>The following markup will be rendered as a figure group containing three images. Each images will have its own <em>figure id</em>, title, and a hidden anchor <code>/#fig&lt;number&gt;</code> link for later references.</p>
+<figure id="fig1">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 1.">
+          <figcaption>Fig 1: Test figure 1.</figcaption>
+        </figure>
+<figure id="fig2">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 2.">
+          <figcaption>Fig 2: Test figure 2.</figcaption>
+        </figure>
+<figure id="fig3">
+          <img width=160 src="/assets/images/tibor2017-600.jpg" alt="Test figure 3.">
+          <figcaption>Fig 3: Test figure 3.</figcaption>
+        </figure>
+<pre><div class="code-title">Figure syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#idulchoiaiatalvomjjbartlbrjpzhooittwjcrcwqgdwdfkrhdzrwupaplqckozmqojwvhbfsgxlhuizutomoefgmwtzcrledll">&#xe9b8;</button><code id="idulchoiaiatalvomjjbartlbrjpzhooittwjcrcwqgdwdfkrhdzrwupaplqckozmqojwvhbfsgxlhuizutomoefgmwtzcrledll">@[img](1#Test figure 1.#160#tibor2017-600.jpg)
+
+@[img](2#Test figure 2.#160#tibor2017-600.jpg)
+
+@[img](3#Test figure 3.#160#tibor2017-600.jpg)
+</code></pre>
+<hr>
+<h1 id="divider">Divider <a class="header-anchor internal-link" href="#divider" aria-hidden="true">¶</a></h1>
+<p>Similarly to the figures, the dividers also implemented with the <a href="https://www.npmjs.com/package/markdown-it-custom-block" class="external-link" target="_blank">markdown-it-custom-block</a> plugin.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jsnsgvpdnbqgsikxghahegbtzgkqftsdcgumsfthbkhzwlmurriylpxmtrhtzodyxszaqukwkstlnpnpexsiwazrpjdxsfgxfyut">&#xe9b8;</button><code id="jsnsgvpdnbqgsikxghahegbtzgkqftsdcgumsfthbkhzwlmurriylpxmtrhtzodyxszaqukwkstlnpnpexsiwazrpjdxsfgxfyut">const md = new MarkdownIt()
+md.use(mdCustomBlock, {
+  divider (text) {
+    return `&lt;div class=&quot;divider&quot;&gt;${text}&lt;/div&gt;`
+  }
+})
+</code></pre>
+<h2 id="divider-example">Divider example <a class="header-anchor internal-link" href="#divider-example" aria-hidden="true">¶</a></h2>
+<div class="divider">My first divider</div>
+<div class="divider">My second divider</div>
+<pre><div class="code-title">Divider syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#hxbhqyrphmuircssxilfbuenqwcomnczgvfpnuffdsjyhkuvvjrieremtplsglikcluureohpzlqtqpytjnxaknmsbpukmlflxom">&#xe9b8;</button><code id="hxbhqyrphmuircssxilfbuenqwcomnczgvfpnuffdsjyhkuvvjrieremtplsglikcluureohpzlqtqpytjnxaknmsbpukmlflxom">@[divider](My first divider)
+
+@[divider](My second divider)
+</code></pre>
+<hr>
+<h1 id="message-boxes">Message boxes <a class="header-anchor internal-link" href="#message-boxes" aria-hidden="true">¶</a></h1>
+<p>I like to use message boxes to highlight sime important sections.</p>
+<div class="success">
+<p>This is a success message.</p>
+</div>
+<div class="info">
+<p>This is a info message.</p>
+</div>
+<div class="warning">
+<p>This is a warning message.</p>
+</div>
+<div class="danger">
+<p>This is a danger message.</p>
+</div>
+<pre><div class="code-title">Message box syntax</div><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#qplondoszxrpzsgktkzormvsaycmgcsvputdtntslyeisdpvbjheipghukkdkiwxxfryfpbvgtouyiwghewakwyplxjliamqltlj">&#xe9b8;</button><code id="qplondoszxrpzsgktkzormvsaycmgcsvputdtntslyeisdpvbjheipghukkdkiwxxfryfpbvgtouyiwghewakwyplxjliamqltlj">::: success
+This is a success message.
+:::
+
+::: info
+This is a info message.
+:::
+
+::: warning
+This is a warning message.
+:::
+
+::: danger
+This is a danger message.
+:::
+</code></pre>
+
+          </div>
+        </article>
+      </div>
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/tools/code-copy" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
+              <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
+              <span class="neighbour-title previous-title">Copying the content of code blocks</span>
+          </nav>
+        </div>
+      </div>
+      <div class="discussion card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h1>Discussion</h1>
+          <div id="disqus_thread"></div>
+        </div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2017</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/tools/code-copy" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/web/metalsmith-enchanced-tag-handling" class="next-a">></a>
+              <span class="neighbour-title next-title">Metalsmith enchanced tag handling</span>
+              <span class="neighbour-title previous-title">Copying the content of code blocks</span>
+          </nav>
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
+          I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
+          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h2>Tags</h2>
+          <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+              hack<span>7</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+              python<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+              deploy<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+              GitHub<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+              dotfiles<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+              dsp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+              embedded<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+              LaTEX<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+              linux<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+              MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+              regexp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+              search<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+              API<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+              bash<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+              CLI<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+              control<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+              debug<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+              emacs<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+              game<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+              hardware<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+              ios<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+              java<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+              make<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              Matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+              pelican<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+              serial<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+              signals<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+              ssh<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+              tool<span>1</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
+      }
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    const clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        alert('Copy failed :(')
+        console.log(e);
+    });
+  </script>
+</body>
+</html>
+

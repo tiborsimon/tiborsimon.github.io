@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fuzzy search and sort algorithm - Tibor's Lab</title>
+  <meta name="description" content="What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.">
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navmenu-wrapper">
+    <div class="fade-loader"></div>
+    <div class="fade-in">
+      <div class="navmenu">
+        <a class="logo" href="https://tiborsimon.io">
+          Tibor's Lab 
+        </a>
+        <div class="group">
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="banner"></div>
+            <div class="article-title">Fuzzy search and sort algorithm</div>
+            <div class="details">
+              <div class="tag-list">
+                <a href="https://tiborsimon.io/tag/search/">search</a>
+                <a href="https://tiborsimon.io/tag/python/">python</a>
+                <a href="https://tiborsimon.io/tag/regexp/">regexp</a>
+              </div>
+              <div class="timestamp">2015. 10. 25.</div>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="summary">What do you do, if your users may not know exactly what they are looking for while typing into a search field. You can try to provide all relevant matches based on the typed in characters. Time to search in a fuzzy way.</div>
+            <hr>
+            <p>A good example for this is Sublime Text’s search mechanism. You start to type in
+your query, and apart from the exact matches you will get the matches containing
+the letters you gave but not in the exact order. In this way you will find what
+you are looking for with a good chance even if you don’t know the exact name.</p>
+<p>The problem has two parts: <strong>searching</strong> and <strong>sorting</strong>. It is not enough to
+provide all the relevant results that matched to the search query, but you have
+to sort the result in the relevance order.</p>
+<h1 id="searching">Searching <a class="header-anchor internal-link" href="#searching" aria-hidden="true">¶</a></h1>
+<p>The first part is the easier part. You only have to generate a clever regular
+expression from the given search query.</p>
+<p>You need to make sure, that between the given query’s characters there might be
+another characters. This can be achieved by inserting <code>.*</code> tokens:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#txuhqpyfyiysxpwdzxgoemqisivposmydnqejklehadphwmcmcvlafktqlzaugzbtwstnkybfnwfbvzxsfewnxochcplzmvzsmqc">&#xe9b8;</button><code id="txuhqpyfyiysxpwdzxgoemqisivposmydnqejklehadphwmcmcvlafktqlzaugzbtwstnkybfnwfbvzxsfewnxochcplzmvzsmqc">foo -&gt; .*f.*o.*o.*
+</code></pre>
+<p>You may also want to capture each provided search characters in order to know
+it’s positions for later use. The regexp engine can provide the positions for
+the matched groups.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#vgstqujzqfoukidikpxvjlrrxtqazmcurlwrlyutfovzqexniruzqyexzprmcacprficpawfmeulrxcclvcsrbqbkedkdyfalnnr">&#xe9b8;</button><code id="vgstqujzqfoukidikpxvjlrrxtqazmcurlwrlyutfovzqexniruzqyexzprmcacprficpawfmeulrxcclvcsrbqbkedkdyfalnnr">.*f.*o.*o.* -&gt; .*(f).*(o).*(o).*
+</code></pre>
+<p>But be aware. This capturing may result you an unexpected result when you want
+to use the provided group positions by the regexp engine. Consider the following
+scenario: you want to find matches for ‘x’. The search query will be transformed
+into <code>.*(x).*</code>. Everything seems to be good, until your database contains a key
+that has more than one <code>x</code> characters in it. The regexp engine will match this
+key, but it will capture the last <code>x</code> character in the key<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. If your sorting
+mechanism is based on the captured group positions, this will be misleading for
+you.</p>
+<p>To solve this issue, you have to force the regexp engine to match every
+character but to next captured character in the pattern. You need to generate a
+more complex regular expression:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#ifqyrpwrtlriqgnohbglxwzlyvithloplrkjyfkuwyuiylwetbbgmicmewmcidotliiornnurvsdvfyscqyskxjkbzetkoarjmmb">&#xe9b8;</button><code id="ifqyrpwrtlriqgnohbglxwzlyvithloplrkjyfkuwyuiylwetbbgmicmewmcidotliiornnurvsdvfyscqyskxjkbzetkoarjmmb">.*(f).*(o).*(o).* -&gt; [^f]*(f)[^o]*(o)[^o]*(o).*
+</code></pre>
+<p>This is the final regular expression we are going to use in this article. We can
+now produce the match results, it’s time to sort them.</p>
+<h1 id="sorting">Sorting <a class="header-anchor internal-link" href="#sorting" aria-hidden="true">¶</a></h1>
+<p>As I mentioned earlier, we are going to use the captured group’s positions to
+sort the matched results. The sorting algorithm will weight every match result,
+and based on that weight, the soring can be executed.</p>
+<p>The weighting is based on the distance between the captured groups in a weighted
+manner. The distance between the first characters is punished by more weight
+that the distance between the last characters. In this way if you know partly
+the first few characters you want to search, this weighting method will provide
+the results matched in the first characters first. The lightest the matched
+result, the more relevant it is, so it will be present earlier in the provided
+search result.</p>
+<p>You can implement this behavior by iterating through the captured groups
+position list from back to front, calculating the distance between the matches
+and multiplying them by a weighting factor. After each iteration you increase
+this weighting factor. And that’s is.</p>
+<h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
+<p>We have reviewed the fuzzy search and sort algorithm. You can find the usage
+example and the implementation in the following code snippets:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#mnthpohtxrjxrczmpyxnalpxlgwveckngizchxlfzhxmwzwkidztlmqeibzggkttqznemgtemjqsabrfzlhalvxqfkbwqsglfgvj">&#xe9b8;</button><code id="mnthpohtxrjxrczmpyxnalpxlgwveckngizchxlfzhxmwzwkidztlmqeibzggkttqznemgtemjqsabrfzlhalvxqfkbwqsglfgvj">import fuzzy
+from pprint import pprint
+
+data_list = [
+    &#039;efo&#039;,
+    &#039;efoo&#039;,
+    &#039;dfsfoo&#039;,
+    &#039;efiofo&#039;,
+    &#039;abc&#039;,
+    &#039;cba&#039;,
+    &#039;foo&#039;,
+    &#039;ertfo&#039;,
+    &#039;fefefofefioiio&#039;
+]
+
+result = fuzzy.search(data_list, &#039;foo&#039;)
+
+pprint(result)
+
+# &gt;&gt; [&#039;foo&#039;, &#039;efoo&#039;, &#039;efiofo&#039;, &#039;dfsfoo&#039;, &#039;fefefofefioiio&#039;]
+</code></pre>
+<p>The previous example had the following internal data structure.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#plcjzaqthxkhzdjkegwzjovvakoxodfrkluizdetbtuzhitupgcnkejcnhdwcbdlpwwcylqaxezormteupcgintfgrfsqffwveul">&#xe9b8;</button><code id="plcjzaqthxkhzdjkegwzjovvakoxodfrkluizdetbtuzhitupgcnkejcnhdwcbdlpwwcylqaxezormteupcgintfgrfsqffwveul">[{&#039;spans&#039;: ((0, 1), (1, 2), (2, 3)), &#039;string&#039;: &#039;foo&#039;, &#039;weight&#039;: 0},
+ {&#039;spans&#039;: ((1, 2), (2, 3), (3, 4)), &#039;string&#039;: &#039;efoo&#039;, &#039;weight&#039;: 4},
+ {&#039;spans&#039;: ((1, 2), (3, 4), (5, 6)), &#039;string&#039;: &#039;efiofo&#039;, &#039;weight&#039;: 7},
+ {&#039;spans&#039;: ((1, 2), (4, 5), (5, 6)), &#039;string&#039;: &#039;dfsfoo&#039;, &#039;weight&#039;: 8},
+ {&#039;spans&#039;: ((0, 1), (5, 6), (10, 11)), &#039;string&#039;: &#039;fefefofefioiio&#039;, &#039;weight&#039;: 12}]
+</code></pre>
+<p>And here is the implementation available as a gist.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#tywekgwodrrvberjdwhldfgbsmeykzrfnowmneaoduwmnytwxfbchgfaorvpufnwtxngqrakyhknfovtpjomsqfzfqhuxyqqjplj">&#xe9b8;</button><code id="tywekgwodrrvberjdwhldfgbsmeykzrfnowmneaoduwmnytwxfbchgfaorvpufnwtxngqrakyhknfovtpjomsqfzfqhuxyqqjplj">import re
+
+
+def search(raw_list, search_string, ignore_case=True):
+    if search_string == &#039;&#039;:
+        return raw_list
+    else:
+        search_pattern = _create_search_pattern_from(search_string)
+        result = _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case)
+        result = _sort_result_list(result)
+        return [r[&#039;string&#039;] for r in result]
+
+
+def _create_search_pattern_from(pattern):
+    grouped = &#039;[^{}]*&#039;.format(pattern[0])
+    for i in range(len(pattern)):
+        if i &lt; len(pattern) - 1:
+            grouped += &#039;({})[^{}]*&#039;.format(pattern[i], pattern[i + 1])
+        else:
+            grouped += &#039;({})&#039;.format(pattern[i])
+    grouped += &#039;.*&#039;
+    return grouped
+
+
+def _get_filtered_result_list_structure(raw_list, search_pattern, ignore_case):
+    if ignore_case:
+        p = re.compile(search_pattern, re.IGNORECASE)
+    else:
+        p = re.compile(search_pattern)
+    result = [{&#039;string&#039;: link, &#039;spans&#039;: p.search(link).regs[1:]} for link in raw_list if p.match(link)]
+    return result
+
+
+def _calculate_weight_for_match(spans):
+    mult = 1
+    weight = 0
+    for i in reversed(range(len(spans))):
+        prev = 0 if i == 0 else spans[i-1][1]
+        weight += (spans[i][0] - prev) * mult
+        mult *= 2
+    return weight
+
+
+def _sort_result_list(result):
+    for r in result:
+        r[&#039;weight&#039;] = _calculate_weight_for_match(r[&#039;spans&#039;])
+    result = sorted(result, key=lambda k: k[&#039;weight&#039;])
+    return result
+</code></pre>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>At least that was the case using the regexp engine shipped with Python 3.4 on OSX. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+          </div>
+        </article>
+      </div>
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="next-a">></a>
+              <span class="neighbour-title next-title">Collect all nouns in hungarian</span>
+              <span class="neighbour-title previous-title">Mandatory + arbitrary order</span>
+          </nav>
+        </div>
+      </div>
+      <div class="discussion card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h1>Discussion</h1>
+          <div id="disqus_thread"></div>
+        </div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2017</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/programming/regexp-mandatory-arbitrary" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/programming/collect-all-nouns" class="next-a">></a>
+              <span class="neighbour-title next-title">Collect all nouns in hungarian</span>
+              <span class="neighbour-title previous-title">Mandatory + arbitrary order</span>
+          </nav>
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
+          I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
+          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h2>Tags</h2>
+          <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+              hack<span>7</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+              python<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+              deploy<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+              GitHub<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+              dotfiles<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+              dsp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+              embedded<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+              LaTEX<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+              linux<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+              MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+              regexp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+              search<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+              API<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+              bash<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+              CLI<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+              control<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+              debug<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+              emacs<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+              game<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+              hardware<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+              ios<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+              java<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+              make<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              Matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+              pelican<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+              serial<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+              signals<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+              ssh<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+              tool<span>1</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
+      }
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    const clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        alert('Copy failed :(')
+        console.log(e);
+    });
+  </script>
+</body>
+</html>
+

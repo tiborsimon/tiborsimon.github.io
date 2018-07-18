@@ -1,0 +1,1707 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+/* Document
+   ========================================================================== */
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+/*
+ * Hopscotch
+ * by Jan T. Sott
+ * https://github.com/idleberg/Hopscotch
+ *
+ * This work is licensed under the Creative Commons CC0 1.0 Universal License
+ */ 
+
+/* Comment */
+.hljs-comment,
+.hljs-title {
+  color: #989498;
+}
+
+/* Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #dd464c;
+}
+
+/* Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #fd8b19;
+}
+
+/* Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: #fdcc59;
+}
+
+/* Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #8fc13e;
+}
+
+/* Aqua */
+.css .hljs-hexcolor {
+  color: #149b93;
+}
+
+/* Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #1290bf;
+}
+
+/* Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #c85e7c;
+}
+
+.hljs {
+  display: block;
+  background: #322931;
+  color: #b9b5b8;
+  padding: 0.5em;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+:root {
+  --wrapper-width: 1120px;
+  --header-height: 390px;
+  --content-width: 800px;
+  --content-padding: 19px;
+  --margin-between-cards: 14px;
+  --card-radius: 0px;
+  --main-color: #3d7287;
+  --hover-color: #92bccc;
+  --card-bg-color: #fcfcfc; }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+* {
+  box-sizing: border-box; }
+
+body {
+  font-size: 15px;
+  color: #404040;
+  overflow-y: scroll;
+  background: radial-gradient(circle at top, #4e7f94, #1a373e 1000px);
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  line-height: 1.3em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  line-height: 1em; }
+
+.my-name {
+  font-size: 1.5em;
+  margin-bottom: 25px; }
+
+.flexwrap {
+  margin: 0 auto;
+  width: var(--wrapper-width);
+  display: flex; }
+  .flexwrap > section {
+    flex: 1 1 auto;
+    margin-left: var(--margin-between-cards); }
+    .flexwrap > section:first-child {
+      margin-left: 0; }
+
+.vertflexwrap {
+  display: flex;
+  flex-direction: column; }
+
+.card {
+  box-shadow: 0 17px 12px -14px rgba(0, 0, 0, 0.82);
+  background: var(--card-bg-color);
+  margin-bottom: var(--margin-between-cards);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  position: relative; }
+  .card h2 {
+    margin: 0 0 13px;
+    font-size: 1.8em; }
+  .card .fade-loader {
+    top: 0px;
+    position: absolute;
+    width: 10px;
+    top: -1px;
+    height: 1px;
+    background: var(--main-color);
+    box-shadow: 0 -2px 7px 3px var(--main-color);
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: fade-loader-animation;
+    animation-name: fade-loader-animation;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear; }
+
+@-webkit-keyframes fade-loader-animation {
+  0% {
+    left: -10px; }
+  100% {
+    left: 100%; } }
+
+@keyframes fade-loader-animation {
+  0% {
+    left: -10px; }
+  100% {
+    left: 100%; } }
+
+.index-avatar {
+  width: 270px;
+  height: 270px;
+  overflow: hidden;
+  border-radius: var(--card-radius); }
+
+.avatar {
+  width: 264px;
+  height: 264px;
+  overflow: hidden;
+  border-radius: var(--card-radius); }
+
+.padded {
+  padding: var(--content-padding); }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.multibox-card {
+  width: 673px;
+  height: 277px; }
+  .multibox-card .multibox {
+    width: 673px;
+    height: 277px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    .multibox-card .multibox input {
+      visibility: hidden;
+      height: 0;
+      width: 0; }
+    .multibox-card .multibox label {
+      color: rgba(0, 0, 0, 0.87);
+      cursor: pointer;
+      display: block;
+      font-size: 1em;
+      height: 2.5em;
+      width: 100px;
+      line-height: 2.5em;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 2px;
+      z-index: 1; }
+    .multibox-card .multibox input:hover + label {
+      background: rgba(0, 0, 0, 0.12); }
+    .multibox-card .multibox input:checked + label {
+      background: var(--main-color);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+      z-index: 2; }
+    .multibox-card .multibox .contents {
+      width: 515px;
+      height: 239px; }
+    .multibox-card .multibox .contents > div {
+      position: absolute;
+      width: 515px;
+      height: 239px;
+      overflow-y: auto;
+      z-index: 1;
+      background: var(--card-bg-color); }
+    .multibox-card .multibox #tab-1:checked ~ .contents #content-1,
+    .multibox-card .multibox #tab-2:checked ~ .contents #content-2,
+    .multibox-card .multibox #tab-3:checked ~ .contents #content-3,
+    .multibox-card .multibox #tab-4:checked ~ .contents #content-4,
+    .multibox-card .multibox #tab-5:checked ~ .contents #content-5 {
+      z-index: 2; }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.worklog .entry .timestamp {
+  line-height: 1em;
+  position: relative;
+  margin-left: 36px;
+  color: #888; }
+  .worklog .entry .timestamp span {
+    padding: 1px 5px;
+    color: rgba(0, 0, 0, 0.87);
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    margin-left: 4px;
+    display: inline-block;
+    font-size: 0.7em;
+    position: relative;
+    bottom: 2px; }
+  .worklog .entry .timestamp:before {
+    content: " ";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 5px solid #ddd;
+    background: white;
+    position: absolute;
+    top: -4px;
+    left: -30px; }
+
+.worklog .entry .log {
+  font-size: 0.9em;
+  margin-left: 14px;
+  padding: 5px 19px 16px;
+  border-left: 7px solid #ddd;
+  line-height: 1em; }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.pypi .packages {
+  display: flex;
+  flex-wrap: wrap; }
+  .pypi .packages .package {
+    width: 240px;
+    margin-right: 6px;
+    border-radius: 3px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.87); }
+    .pypi .packages .package h3 {
+      margin: 0;
+      padding: 0;
+      font-weight: 600; }
+    .pypi .packages .package p {
+      height: 45px; }
+    .pypi .packages .package .buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%; }
+      .pypi .packages .package .buttons a {
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        background: var(--main-color);
+        border-radius: 2px;
+        padding: 2px 7px;
+        margin-bottom: 3px; }
+        .pypi .packages .package .buttons a:hover {
+          background: var(--hover-color); }
+
+.index-header {
+  display: block;
+  margin-bottom: 20px; }
+
+section {
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  max-width: var(--wrapper-width);
+  margin: 0 auto; }
+  section h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    color: rgba(0, 0, 0, 0.54); }
+
+.header-title {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 180px;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-size: 3em;
+  font-weight: 300; }
+
+.about {
+  padding: var(--content-padding);
+  height: 194px; }
+  .about h1 {
+    margin: 0; }
+  .about .text {
+    max-width: 800px; }
+    .about .text h1 {
+      color: white;
+      text-align: left; }
+  .about img {
+    width: 270px;
+    height: 270px; }
+
+.calendar-wrapper {
+  height: 153px;
+  width: 673px; }
+  .calendar-wrapper .calendar {
+    position: relative;
+    left: -29px;
+    top: -22px;
+    transition: all 0.2s ease; }
+    .calendar-wrapper .calendar h2, .calendar-wrapper .calendar .month, .calendar-wrapper .calendar .wday, .calendar-wrapper .calendar .contrib-footer, .calendar-wrapper .calendar .contrib-column {
+      display: none; }
+
+.articles-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+  .articles-wrapper .articles-title {
+    font-size: 2em;
+    line-height: 1em;
+    margin: 0; }
+  .articles-wrapper .articles {
+    width: 806px; }
+    .articles-wrapper .articles article {
+      transition: all 0.2s ease; }
+      .articles-wrapper .articles article .details hr {
+        width: 800px;
+        position: relative;
+        left: calc(-1*var(--content-padding));
+        margin: 0;
+        margin-bottom: 12px;
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        box-sizing: border-box; }
+      .articles-wrapper .articles article .details.with-thumbnail {
+        width: 600px; }
+        .articles-wrapper .articles article .details.with-thumbnail hr {
+          width: 600px; }
+      .articles-wrapper .articles article .details header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline; }
+      .articles-wrapper .articles article .details h2 {
+        margin-bottom: 3px; }
+        .articles-wrapper .articles article .details h2 > a {
+          text-decoration: none;
+          color: var(--main-color);
+          transition: all 0.2s ease;
+          position: relative;
+          left: 0px; }
+          .articles-wrapper .articles article .details h2 > a:hover {
+            position: relative;
+            left: 5px; }
+      .articles-wrapper .articles article .details .timestamp {
+        font-size: 0.8em;
+        color: rgba(0, 0, 0, 0.26);
+        position: relative; }
+      .articles-wrapper .articles article .details .snippet {
+        margin-bottom: 10px; }
+      .articles-wrapper .articles article .details .tag-list {
+        margin: 0; }
+      .articles-wrapper .articles article .image {
+        background: var(--main-color);
+        width: 200px;
+        height: 200px; }
+  .articles-wrapper .sidebar {
+    box-sizing: border-box;
+    width: 300px;
+    display: flex;
+    flex-direction: column; }
+    .articles-wrapper .sidebar .tags {
+      align-self: flex-start; }
+      .articles-wrapper .sidebar .tags .tags-list {
+        margin: 0; }
+
+#searchfield {
+  width: 100%;
+  height: 32px;
+  /* font-size: 1.1em; */
+  /* border-color: #aaa; */
+  border: 1px solid #ddd;
+  padding: 10px; }
+
+.pagination-nav {
+  align-self: flex-end;
+  display: flex;
+  text-align: center; }
+  .pagination-nav a {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.54); }
+    .pagination-nav a:hover {
+      background: var(--main-color);
+      color: white;
+      font-weight: 400;
+      transition: all 0.2s ease; }
+    .pagination-nav a:nth-child(odd) {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+  .pagination-nav span {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.12); }
+    .pagination-nav span:nth-child(odd) {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+
+.fade-in {
+  transition: all 0.8s ease;
+  opacity: 0; }
+
+.twitter-timeline {
+  height: 380px !important; }
+
+.twitter-card {
+  height: 444px; }
+
+.timeline-Header {
+  display: none !important; }
+
+.twitter-follow-button-wrapper {
+  position: relative;
+  bottom: 34px;
+  left: 253px; }
+
+.twitter-timeline-wrapper {
+  position: relative;
+  bottom: 26px; }
+
+.flickr-slideshow {
+  height: 300px; }
+
+.footer {
+  width: 800px;
+  margin: 40px auto 20px auto;
+  text-align: center;
+  color: #556a6f;
+  font-size: 0.8em; }
+
+.icons-row {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  font-size: 1.3em;
+  padding-bottom: 4px;
+  margin: 12px 0 7px 19px; }
+  .icons-row a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 50%;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.87);
+    transition: all 0.2s ease; }
+    .icons-row a:hover {
+      color: white;
+      background: var(--main-color); }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+:root {
+  --wrapper-width: 1120px;
+  --header-height: 390px;
+  --content-width: 800px;
+  --content-padding: 19px;
+  --margin-between-cards: 14px;
+  --card-radius: 0px;
+  --main-color: #3d7287;
+  --hover-color: #92bccc;
+  --card-bg-color: #fcfcfc; }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.tag-list {
+  --height: 24px;
+  --font-size: 0.8em;
+  --color: var(--main-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .tag-list a {
+    color: #616161;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: var(--font-size);
+    display: flex;
+    align-items: center;
+    background: #E0E0E0;
+    vertical-align: middle;
+    padding: 0 10px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    transition: all 0.2s ease; }
+    .tag-list a.count {
+      padding: 0 0 0 6px; }
+      .tag-list a.count span {
+        margin-left: 4px; }
+    .tag-list a span {
+      font-size: var(--font-size);
+      background: #9E9E9E;
+      color: #EEEEEE;
+      height: var(--height);
+      width: var(--height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease; }
+    .tag-list a:hover {
+      color: var(--color); }
+      .tag-list a:hover span {
+        background: var(--color); }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.navmenu-wrapper {
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background: #3d7287;
+  margin-bottom: 14px;
+  box-shadow: 0 3px 31px 0px rgba(0, 0, 0, 0.6); }
+
+.navmenu {
+  display: flex;
+  justify-content: space-between; }
+  .navmenu .logo {
+    font-size: 1.4em;
+    color: var(--color);
+    text-decoration: none;
+    transition: all 0.2s ease; }
+    .navmenu .logo:hover {
+      color: var(--hover-color); }
+  .navmenu .group {
+    display: flex;
+    align-items: center; }
+    .navmenu .group:first-child {
+      padding-left: 16px; }
+    .navmenu .group:last-child {
+      margin-right: 16px; }
+    .navmenu .group a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      border: none;
+      background: none;
+      height: var(--nav-height);
+      font-size: 1.1em;
+      color: var(--color);
+      text-decoration: none;
+      transition: all 0.2s ease; }
+      .navmenu .group a:hover {
+        color: var(--hover-color); }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.article-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: var(--wrapper-width);
+  margin: 0 auto; }
+
+.article-links {
+  background: var(--main-color); }
+  .article-links .button {
+    padding: 0 30px;
+    display: block;
+    color: white;
+    padding: 6px 30px;
+    text-decoration: none; }
+    .article-links .button:hover {
+      background: var(--action-background); }
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  margin-top: 32px; }
+
+.header-anchor {
+  opacity: 0;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 80%; }
+
+h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor {
+  opacity: 1; }
+
+.article {
+  max-width: var(--content-width); }
+  .article header .article-title {
+    padding: 25px 30px 5px 30px;
+    font-size: 300%;
+    font-weight: 400;
+    line-height: 1em; }
+  .article header .details {
+    border-top: solid 1px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0 30px 0; }
+    .article header .details .timestamp {
+      display: flex;
+      padding: 12px 0;
+      align-items: center; }
+    .article header .details .tag-list {
+      margin: 0;
+      padding: 0;
+      align-items: center; }
+      .article header .details .tag-list a {
+        color: #757575;
+        background: #E0E0E0;
+        margin-left: 0;
+        margin-right: 6px !important;
+        margin-top: 2px; }
+        .article header .details .tag-list a:hover {
+          color: var(--main-color); }
+  .article article {
+    padding: 30px; }
+    .article article .summary {
+      padding-bottom: 15px;
+      font-size: 1.3em;
+      color: rgba(0, 0, 0, 0.54);
+      line-height: 1.3em; }
+  .article a {
+    color: var(--main-color); }
+  .article hr {
+    position: relative;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    margin: 30px 0;
+    width: var(--content-width);
+    position: relative;
+    left: -30px; }
+  .article hr:first-of-type {
+    margin-top: 0; }
+  .article .code-name {
+    margin-bottom: -15px;
+    color: #5faec1;
+    box-sizing: border-box;
+    background: #0a2329;
+    position: relative;
+    width: var(--content-width);
+    padding-left: 30px;
+    left: -30px;
+    font-family: monospace;
+    font-size: 0.8em;
+    padding-top: 7px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #5faec1; }
+  .article .divider {
+    margin-top: 50px;
+    font-weight: 300;
+    color: #aaa;
+    position: relative;
+    width: var(--content-width);
+    left: -30px;
+    line-height: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-left: 30px; }
+  .article iframe.video {
+    position: relative;
+    left: -30px; }
+  .article figure {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    width: var(--content-width);
+    left: -30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .article figure img {
+      max-width: 740px;
+      margin: 20px 0px 8px; }
+    .article figure figcaption {
+      font-size: 0.9em;
+      font-style: italic;
+      margin-bottom: 10px; }
+  .article :not(figure) + figure {
+    border-top: 1px solid rgba(0, 0, 0, 0.12); }
+  .article p code {
+    color: #59727b;
+    background-color: #efefef;
+    padding: 0px 6px;
+    border-radius: 3px;
+    border: 1px solid #e1dede;
+    font-size: 90%; }
+  .article pre code {
+    background: radial-gradient(circle at top right, #5b747e, #0d1a1e 1200px);
+    color: #e9e8e8;
+    width: var(--content-width);
+    display: block;
+    position: relative;
+    left: -30px;
+    overflow-x: auto;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    padding: 12px 25px;
+    box-shadow: inset 0px 7px 11px -7px rgba(35, 30, 30, 0.8);
+    border-left: solid 5px #3d7287; }
+
+table {
+  position: relative;
+  width: var(--content-width) !important;
+  padding-left: 30px;
+  left: -30px;
+  font-size: 13px;
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1em; }
+  table thead {
+    background-color: #e8e8e8;
+    font-weight: 500; }
+  table td, table th {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    line-height: 24px;
+    padding: 6px;
+    vertical-align: top; }
+    table td:first-child, table th:first-child {
+      border-left: none;
+      padding-left: 30px; }
+    table td:last-child, table th:last-child {
+      border-right: none;
+      padding-right: 30px; }
+    table td code, table th code {
+      color: #59727b;
+      background-color: #efefef;
+      padding: 1px 6px;
+      border-radius: 3px;
+      border: 1px solid #e1dede;
+      font-size: 90%; }
+  table th {
+    vertical-align: middle; }
+
+.discussion {
+  padding: 10px 30px 30px 30px; }
+
+.sidebar {
+  --width: 306px;
+  width: var(--width); }
+  .sidebar .avatar {
+    display: block;
+    width: var(--width);
+    height: var(--width);
+    background: #2196F3; }
+
+.sidebar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+  .sidebar-nav a {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.54); }
+    .sidebar-nav a:hover {
+      background: var(--main-color);
+      color: white;
+      font-weight: 400;
+      transition: all 0.2s ease; }
+    .sidebar-nav a:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+  .sidebar-nav span {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.12); }
+    .sidebar-nav span:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.12); }
+  .sidebar-nav .neighbour-title {
+    width: 100%;
+    display: flex;
+    height: 0px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--main-color);
+    color: white;
+    transition: all 0.2s ease;
+    font-size: 0.9em; }
+  .sidebar-nav .previous-a:hover ~ .previous-title {
+    height: 41px;
+    padding: 10px; }
+  .sidebar-nav .next-a:hover ~ .next-title {
+    height: 41px;
+    padding: 10px; }
+
+.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .success p {
+    margin: 0;
+    padding: 0; }
+
+.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .info p {
+    margin: 0;
+    padding: 0; }
+
+.warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .warning p {
+    margin: 0;
+    padding: 0; }
+
+.danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 17px 25px;
+  padding-left: 30px; }
+  .danger p {
+    margin: 0;
+    padding: 0; }
+
+.code-title {
+  background-color: var(--main-color);
+  color: white;
+  position: relative;
+  width: var(--content-width);
+  left: -30px;
+  padding: 4px 0 1px;
+  padding-left: 30px;
+  font-size: 90%; }
+
+.external-link:after {
+  font-family: 'icomoon';
+  content: "\ea7e";
+  margin: 0 0 0 2px;
+  display: inline-block;
+  text-decoration: none !important; }
+
+.copy-btn {
+  font-family: 'icomoon';
+  position: relative;
+  float: right;
+  margin: -12px;
+  z-index: 3;
+  top: 24px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: none;
+  color: #e9e8e8;
+  cursor: pointer; }
+
+.copy-btn::before {
+  content: "Copied!";
+  padding-right: 6px;
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  font-size: 90%;
+  opacity: 0;
+  transition: all 0.2s ease; }
+
+button:focus {
+  outline: 0; }
+
+.copy-success::before {
+  content: "Copied!";
+  padding-right: 6px;
+  font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+  font-size: 90%;
+  opacity: 1;
+  transition: all 0.2s ease; }
+
+pre:hover .copy-btn {
+  opacity: 1; }
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+.project-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .project-list .project {
+    display: flex;
+    flex-direction: row;
+    height: 180px;
+    width: 553px; }
+    .project-list .project .project-description {
+      padding: 14px; }
+
+.projects-title {
+  font-size: 2em;
+  line-height: 1em;
+  margin: 0 !important; }
+
+.portfolio-list {
+  --portfolio-item-width: calc(var(--wrapper-width) / 4);
+  display: flex;
+  flex-wrap: wrap;
+  width: var(--wrapper-width);
+  margin: 0 auto;
+  background: white; }
+  .portfolio-list .portfolio-item {
+    width: var(--portfolio-item-width);
+    height: var(--portfolio-item-width); }
+    .portfolio-list .portfolio-item figure {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      margin: 0; }
+      .portfolio-list .portfolio-item figure img {
+        width: 100%; }
+      .portfolio-list .portfolio-item figure figcaption {
+        width: 100%;
+        height: 100%;
+        display: table;
+        background: var(--main-color);
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.2s ease; }
+        .portfolio-list .portfolio-item figure figcaption .overlay {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          vertical-align: middle;
+          padding: 20px; }
+          .portfolio-list .portfolio-item figure figcaption .overlay .title {
+            color: white;
+            font-weight: 400;
+            font-size: 2em;
+            margin-bottom: 25px;
+            line-height: 1em; }
+          .portfolio-list .portfolio-item figure figcaption .overlay small {
+            color: rgba(255, 255, 255, 0.7); }
+          .portfolio-list .portfolio-item figure figcaption .overlay a {
+            color: rgba(0, 0, 0, 0.54);
+            background: white;
+            padding: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            align-self: flex-end;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 20px;
+            right: 20px; }
+      .portfolio-list .portfolio-item figure:hover figcaption {
+        opacity: 1; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("/assets/fonts/icomoon.eot?ni7780");
+  src: url("/assets/fonts/icomoon.eot?ni7780#iefix") format("embedded-opentype"), url("/assets/fonts/icomoon.ttf?ni7780") format("truetype"), url("/assets/fonts/icomoon.woff?ni7780") format("woff"), url("/assets/fonts/icomoon.svg?ni7780#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-home:before {
+  content: "\e900"; }
+
+.icon-image:before {
+  content: "\e90d"; }
+
+.icon-images:before {
+  content: "\e90e"; }
+
+.icon-camera:before {
+  content: "\e90f"; }
+
+.icon-books:before {
+  content: "\e920"; }
+
+.icon-file-text:before {
+  content: "\e922"; }
+
+.icon-file-empty:before {
+  content: "\e924"; }
+
+.icon-files-empty:before {
+  content: "\e925"; }
+
+.icon-file-text2:before {
+  content: "\e926"; }
+
+.icon-file-zip:before {
+  content: "\e92b"; }
+
+.icon-copy:before {
+  content: "\e92c"; }
+
+.icon-paste:before {
+  content: "\e92d"; }
+
+.icon-folder:before {
+  content: "\e92f"; }
+
+.icon-folder-open:before {
+  content: "\e930"; }
+
+.icon-price-tag:before {
+  content: "\e935"; }
+
+.icon-price-tags:before {
+  content: "\e936"; }
+
+.icon-qrcode:before {
+  content: "\e938"; }
+
+.icon-calendar:before {
+  content: "\e953"; }
+
+.icon-box-add:before {
+  content: "\e95e"; }
+
+.icon-clipboard:before {
+  content: "\e9b8"; }
+
+.icon-link:before {
+  content: "\e9cb"; }
+
+.icon-bookmark:before {
+  content: "\e9d2"; }
+
+.icon-bookmarks:before {
+  content: "\e9d3"; }
+
+.icon-plus:before {
+  content: "\ea0a"; }
+
+.icon-minus:before {
+  content: "\ea0b"; }
+
+.icon-checkmark:before {
+  content: "\ea10"; }
+
+.icon-checkmark2:before {
+  content: "\ea11"; }
+
+.icon-checkbox-checked:before {
+  content: "\ea52"; }
+
+.icon-checkbox-unchecked:before {
+  content: "\ea53"; }
+
+.icon-share:before {
+  content: "\ea7d"; }
+
+.icon-new-tab:before {
+  content: "\ea7e"; }
+
+.icon-embed:before {
+  content: "\ea7f"; }
+
+.icon-embed2:before {
+  content: "\ea80"; }
+
+.icon-terminal:before {
+  content: "\ea81"; }
+
+.icon-share2:before {
+  content: "\ea82"; }
+
+.icon-instagram:before {
+  content: "\ea92"; }
+
+.icon-twitter:before {
+  content: "\ea96"; }
+
+.icon-youtube:before {
+  content: "\ea9d"; }
+
+.icon-vimeo:before {
+  content: "\eaa0"; }
+
+.icon-flickr2:before {
+  content: "\eaa4"; }
+
+.icon-github:before {
+  content: "\eab0"; }
+
+.icon-npm:before {
+  content: "\eab1"; }
+
+.icon-soundcloud:before {
+  content: "\eac3"; }
+
+.icon-linkedin2:before {
+  content: "\eaca"; }
+
+.icon-stackoverflow:before {
+  content: "\ead0"; }
+
+.icon-paypal:before {
+  content: "\ead8"; }
+
+.icon-git:before {
+  content: "\eae7"; }
+
+.icon-codepen:before {
+  content: "\eae8"; }

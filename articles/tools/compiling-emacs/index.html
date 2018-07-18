@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compiling Emacs on CentOS - Tibor's Lab</title>
+  <meta name="description" content="Let&#x27;s compile Emacs 24.5 for my CentOS based virtual machine that has an older version of it.">
+  <link rel="stylesheet" href="https://tiborsimon.io/css/style.css">
+  <link rel="shortcut icon" href="https://tiborsimon.io/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navmenu-wrapper">
+    <div class="fade-loader"></div>
+    <div class="fade-in">
+      <div class="navmenu">
+        <a class="logo" href="https://tiborsimon.io">
+          Tibor's Lab 
+        </a>
+        <div class="group">
+          <a href="https://tiborsimon.io#articles">Articles</a>
+          <a href="https://tiborsimon.io#projects">Projects</a>
+          <a href="https://tiborsimon.io#about">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="article-wrapper">
+    <div class="content-colon">
+      <div class="article">
+        <header class="card">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="banner"></div>
+            <div class="article-title">Compiling Emacs on CentOS</div>
+            <div class="details">
+              <div class="tag-list">
+                <a href="https://tiborsimon.io/tag/emacs/">emacs</a>
+                <a href="https://tiborsimon.io/tag/make/">make</a>
+                <a href="https://tiborsimon.io/tag/linux/">linux</a>
+              </div>
+              <div class="timestamp">2016. 07. 15.</div>
+            </div>
+          </div>
+        </header>
+        <article class="content card padded">
+          <div class="fade-loader"></div>
+          <div class="fade-in">
+            <div class="summary">Let's compile Emacs 24.5 for my CentOS based virtual machine that has an older version of it.</div>
+            <hr>
+            <p>As I started to use Emacs as my primary text editor (I was a vimmer in the past), I noticed that my common config I created on my OSX machine for Emacs 24.5 doesn’t work on one of my Vagrant based virtual machines running CentOS. If I tried to bring up the Helm buffer menu, it brings up an error that the <em>nesting exceeds</em> <code>max-lisp-eval-depth</code>.</p>
+<p>I figured out that the problem was that CentOS only has Emacs 23.1 available via yum, so I needed to compile it from the sources:</p>
+<p>First of all, I have downloaded the emacs repository mirror from GitHub, and I checked out to the <code>emacs-24.5</code> tag:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#soijelamiqxbgctmejkejharwzjgqfsnwiomuasyytrpfaydrxtivclupjmvnkupjdvpzdxjsucaurjronvohnjdxpkmkqnwbiyo">&#xe9b8;</button><code id="soijelamiqxbgctmejkejharwzjgqfsnwiomuasyytrpfaydrxtivclupjmvnkupjdvpzdxjsucaurjronvohnjdxpkmkqnwbiyo">git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
+</code></pre>
+<p>Then I run <code>autogen.sh</code> which has created the <code>configure</code> script.</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#sethudqqfyvqnrbkuibhxzprnyqwcmgzdyymayksrehqfgvbfutjjwtewhiwiavjozthqooljkmwohefmqarqnepszzyihxzjkvz">&#xe9b8;</button><code id="sethudqqfyvqnrbkuibhxzprnyqwcmgzdyymayksrehqfgvbfutjjwtewhiwiavjozthqooljkmwohefmqarqnepszzyihxzjkvz">./autogen.sh
+</code></pre>
+<p>I run the created <code>configure</code> script. As it could have been expected, there was some errors, so I installed the missing packages on demand:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#kumbroqpggmtbimcwatxnldgxsscgowxcyltqkhenyovelxcemzzgaunnmsaovpfkphnfmyiodufasdjmzuqprjelztvevewbzkm">&#xe9b8;</button><code id="kumbroqpggmtbimcwatxnldgxsscgowxcyltqkhenyovelxcemzzgaunnmsaovpfkphnfmyiodufasdjmzuqprjelztvevewbzkm">./configure
+[error] no makeinfo
+sudo yum install texinfo
+
+./configure
+[error] no x
+sudo yum install libX11-devel
+
+./configure
+[error] no aw3d
+sudo yum install Xaw3d-devel
+
+./configure
+[error] no libpng libjpg libgif/libungif libtiff
+sudo yum install libjpeg-devel libpng-devel libungif-devel libtiff-devel
+
+./configure
+[error] no tputs
+sudo yum install ncurses-devel
+
+Where should the build process find the source code?    .
+  What compiler should emacs be built with?               gcc -std=gnu99 -g3 -O2
+  Should Emacs use the GNU version of malloc?             yes
+      (Using Doug Lea&#039;s new malloc from the GNU C Library.)
+  Should Emacs use a relocating allocator for buffers?    no
+  Should Emacs use mmap(2) for buffer allocation?         no
+  What window system should Emacs use?                    x11
+  What toolkit should Emacs use?                          LUCID
+  Where do we find X Windows header files?                Standard dirs
+  Where do we find X Windows libraries?                   Standard dirs
+  Does Emacs use -lXaw3d?                                 yes
+  Does Emacs use -lXpm?                                   yes
+  Does Emacs use -ljpeg?                                  yes
+  Does Emacs use -ltiff?                                  yes
+  Does Emacs use a gif library?                           yes -lgif
+  Does Emacs use a png library?                           yes -lpng15 -lz -lm
+  Does Emacs use -lrsvg-2?                                no
+  Does Emacs use imagemagick?                             no
+  Does Emacs support sound?                               yes
+  Does Emacs use -lgpm?                                   no
+  Does Emacs use -ldbus?                                  no
+  Does Emacs use -lgconf?                                 no
+  Does Emacs use GSettings?                               no
+  Does Emacs use a file notification library?             yes -lglibc (inotify)
+  Does Emacs use access control lists?                    no
+  Does Emacs use -lselinux?                               no
+  Does Emacs use -lgnutls?                                no
+  Does Emacs use -lxml2?                                  no
+  Does Emacs use -lfreetype?                              no
+  Does Emacs use -lm17n-flt?                              no
+  Does Emacs use -lotf?                                   no
+  Does Emacs use -lxft?                                   no
+  Does Emacs directly use zlib?                           yes
+  Does Emacs use toolkit scroll bars?                     yes
+</code></pre>
+<p>Finally as the <code>configure</code> script finished, I compiled the whole software package:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#cgzxobodbctpllncmvjfssrgrljsvwnllqaxpmddhtkiwkmphfokbtaugxpfauzurxdztqhhfkylasvutihkwmhishzpjhpnxjom">&#xe9b8;</button><code id="cgzxobodbctpllncmvjfssrgrljsvwnllqaxpmddhtkiwkmphfokbtaugxpfauzurxdztqhhfkylasvutihkwmhishzpjhpnxjom">make
+sudo make install
+</code></pre>
+<p>After that, I had a fully functioning Emacs installation, that worked flawlesly with my configuration.</p>
+<h1 id="summary">Summary <a class="header-anchor internal-link" href="#summary" aria-hidden="true">¶</a></h1>
+<p>You can compile Emacs from sources with the following commands:</p>
+<pre><button class="copy-btn" title="Copy code to clipboard" data-clipboard-target="#jvxvptycaaksfofwlnchypbnjnocgxygsicjchcqcwjtrhsiotphzypdyjhwpjlookevufzrmzcfstpznnpukbrryqrijodpwuxl">&#xe9b8;</button><code id="jvxvptycaaksfofwlnchypbnjnocgxygsicjchcqcwjtrhsiotphzypdyjhwpjlookevufzrmzcfstpznnpukbrryqrijodpwuxl">git clone https://github.com/emacs-mirror/emacs.git
+cd emacs
+git checkout emacs-24.5
+sudo yum install texinfo libX11-devel Xaw3d-devel libjpeg-devel libpng-devel libungif-devel libtiff-devel ncurses-devel
+./autogen.sh
+./configure
+make
+sudo make install
+</code></pre>
+
+          </div>
+        </article>
+      </div>
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/web/debugging-metalsmith" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="next-a">></a>
+              <span class="neighbour-title next-title">My dotfile system</span>
+              <span class="neighbour-title previous-title">Debugging metalsmith</span>
+          </nav>
+        </div>
+      </div>
+      <div class="discussion card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h1>Discussion</h1>
+          <div id="disqus_thread"></div>
+        </div>
+        <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+           var disqus_config = function () {
+           this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+           this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+           };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//tiborsimonio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+      <div class="footer">
+        <h4>© TIBOR SIMON 2017</h4>
+        Every content of this site is created and owned by Tibor Simon except the small brand icons in the about section. 
+        tiborsimon.io by Simon Tibor is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License .
+        Engineering with Passion
+      </div>
+    </div>
+    <div class="sidebar">
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <img src="/assets/images/tibor2017-600.jpg" class="avatar"></img>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <nav class="sidebar-nav">
+              <a href="https://tiborsimon.io/articles/web/debugging-metalsmith" class="previous-a"><</a>
+            <a href="https://tiborsimon.io/articles/tools/dotfile-system" class="next-a">></a>
+              <span class="neighbour-title next-title">My dotfile system</span>
+              <span class="neighbour-title previous-title">Debugging metalsmith</span>
+          </nav>
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <div class="my-name">My name is <strong>Tibor Simon.</strong></div>
+          I am a graduated <strong>electrical engineer</strong> with a master's degree. I live in <strong>Budapest</strong> and I am currently working at Nokia Networks.
+          As an engineer I constantly pushing myself to be better at what I am doing. I like to <strong>discover</strong> new technologies, <strong>experiment</strong> with ideas. I am a <strong>Vimmer</strong>, I use <strong>Linux</strong>, I am a late night <strong>owl</strong>, and I prefer the <strong>command line</strong> over the mouse. Yes, I felt into the <strong>unproductive hole of tools</strong> a few times, yes I have a huge pile of <strong>unfinished projects</strong> and yes this is the (n+1)th iteration of my webpage. But hey, that doens't matter as far as <strong>I enjoy it</strong>. Oh, and I like to play the <strong>guitar</strong> and I also like to take <strong>pictures</strong>. Hope you find someting useful here.
+        </div>
+      </div>
+    
+      <div class="card padded">
+        <div class="fade-loader"></div>
+        <div class="fade-in">
+          <h2>Tags</h2>
+          <div class="tag-list">
+            <a href="https://tiborsimon.io/tag/javascript/#articles" class="count">
+              javascript<span>8</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hack/#articles" class="count">
+              hack<span>7</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tools/#articles" class="count">
+              tools<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/web/#articles" class="count">
+              web<span>5</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/config/#articles" class="count">
+              config<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/metalsmith/#articles" class="count">
+              metalsmith<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/python/#articles" class="count">
+              python<span>4</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/deploy/#articles" class="count">
+              deploy<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/github/#articles" class="count">
+              GitHub<span>3</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dotfiles/#articles" class="count">
+              dotfiles<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/dsp/#articles" class="count">
+              dsp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/embedded/#articles" class="count">
+              embedded<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/latex/#articles" class="count">
+              LaTEX<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/linux/#articles" class="count">
+              linux<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/mathjax/#articles" class="count">
+              MathJax<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/plugin/#articles" class="count">
+              plugin<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/regexp/#articles" class="count">
+              regexp<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/search/#articles" class="count">
+              search<span>2</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/api/#articles" class="count">
+              API<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/bash/#articles" class="count">
+              bash<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/cli/#articles" class="count">
+              CLI<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/control/#articles" class="count">
+              control<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/debug/#articles" class="count">
+              debug<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/emacs/#articles" class="count">
+              emacs<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/game/#articles" class="count">
+              game<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/hardware/#articles" class="count">
+              hardware<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ios/#articles" class="count">
+              ios<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/java/#articles" class="count">
+              java<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/make/#articles" class="count">
+              make<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/markdown/#articles" class="count">
+              markdown<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/matlab/#articles" class="count">
+              Matlab<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/pelican/#articles" class="count">
+              pelican<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/serial/#articles" class="count">
+              serial<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/signals/#articles" class="count">
+              signals<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/ssh/#articles" class="count">
+              ssh<span>1</span>
+            </a>
+            <a href="https://tiborsimon.io/tag/tool/#articles" class="count">
+              tool<span>1</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    function loaderDone(event) {
+      let myElements = document.querySelectorAll(".fade-in");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].style.opacity = 1;
+      }
+      myElements = document.querySelectorAll(".fade-loader");
+      for (let i = 0; i < myElements.length; i++) {
+        myElements[i].remove();
+      }
+    }
+    document.onreadystatechange = function () {
+      if(document.readyState === 'complete') {
+        setTimeout(function(){loaderDone();}, 400);
+      }
+    };
+  })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-68408613-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>
+  <script>
+    const clipboard = new Clipboard('.copy-btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.classList.add("copy-success");
+        setTimeout(function() {
+          e.trigger.classList.remove("copy-success");
+        }, 1500);
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        alert('Copy failed :(')
+        console.log(e);
+    });
+  </script>
+</body>
+</html>
+
